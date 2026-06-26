@@ -1,0 +1,16 @@
+# Paths are resolved relative to project_root.
+project_root: .
+split_csv: data/processed/splits/extreme_5fold.csv
+image_dir: data/raw/images
+output_dir: data/processed/global_face/global_face_oval_blackbg_224_png_simalign_strict_forehead015_side004_chin002
+
+image_size: 224
+min_detection_confidence: 0.5
+mask_low_warning: 0.35
+mask_high_warning: 0.85
+num_qc_preview: 20
+forehead_expand_ratio: 0.15
+side_expand_ratio: 0.04
+chin_expand_ratio: 0.02
+show_original_mask_in_qc: true
+overwrite: false

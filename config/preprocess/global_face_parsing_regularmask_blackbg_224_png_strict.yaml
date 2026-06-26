@@ -1,0 +1,28 @@
+# Paths are resolved relative to project_root.
+project_root: .
+split_csv: data/processed/splits/extreme_5fold.csv
+image_dir: data/raw/images
+output_dir: data/processed/global_face/global_face_parsing_regularmask_blackbg_224_png_strict
+
+image_size: 224
+min_detection_confidence: 0.5
+
+parsing_model: bisenet
+# Compatible 19-class CelebAMask-HQ BiSeNet checkpoint.
+parsing_checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+parsing_device: auto
+
+mask_low_warning: 0.35
+mask_high_warning: 0.85
+hair_warning: 0.10
+heavy_hair_warning: 0.20
+
+forehead_expand_ratio: 0.18
+side_expand_ratio: 0.05
+chin_expand_ratio: 0.03
+feather_kernel: 11
+
+num_qc_preview: 20
+max_samples: null
+seed: 42
+overwrite: false
