@@ -14,6 +14,22 @@ import torch
 import yaml
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def resolve_project_path(
+    value: str | Path | None,
+    project_root: str | Path = PROJECT_ROOT,
+) -> Path | None:
+    """Resolve paths relative to the repository root unless already absolute."""
+    if value in {None, ""}:
+        return None
+    path = Path(value).expanduser()
+    if path.is_absolute():
+        return path.resolve()
+    return (Path(project_root).expanduser().resolve() / path).resolve()
+
+
 def load_yaml(path: str | Path) -> dict[str, Any]:
     config_path = Path(path).expanduser().resolve()
     if not config_path.is_file():
@@ -56,7 +72,9 @@ def choose_device() -> torch.device:
 def create_experiment_dir(
     output_root: str | Path, experiment_name: str
 ) -> Path:
-    root = Path(output_root).expanduser().resolve()
+    root = resolve_project_path(output_root)
+    if root is None:
+        raise ValueError("output_root must not be empty")
     root.mkdir(parents=True, exist_ok=True)
     candidate = root / experiment_name
     if candidate.exists():

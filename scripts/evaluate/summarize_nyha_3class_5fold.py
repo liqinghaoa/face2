@@ -19,7 +19,7 @@ from metrics.classification_metrics import (  # noqa: E402
     compute_classification_metrics,
     flatten_metrics,
 )
-from utils.experiment_utils import load_yaml  # noqa: E402
+from utils.experiment_utils import load_yaml, resolve_project_path  # noqa: E402
 
 
 MAIN_METRICS = [
@@ -46,6 +46,9 @@ AUXILIARY_METRICS = [
     "severe_vs_rest_auc",
     "normal_vs_abnormal_auc",
 ]
+
+
+BACKBONE_FEATURE_DIMS = {"resnet18": 512, "resnet34": 512, "resnet50": 2048}
 
 
 def parse_args() -> argparse.Namespace:
@@ -122,6 +125,39 @@ def _loss_report_lines(config: dict[str, Any]) -> list[str]:
     ]
 
 
+def _model_report_lines(config: dict[str, Any]) -> list[str]:
+    model_config = config["model"]
+    data_config = config["data"]
+    model_type = str(model_config.get("type", "single_image"))
+    lines = [
+        f"- Model type: {model_type}",
+        f"- Backbone: {model_config['backbone']}",
+        f"- Pretrained weights: {model_config['pretrained']}",
+    ]
+    if model_type == "multi_roi_fusion":
+        roi_names = list(data_config["roi_names"])
+        feature_dim = BACKBONE_FEATURE_DIMS[str(model_config["backbone"]).lower()]
+        fusion_dim = feature_dim * len(roi_names)
+        fusion_head = model_config.get("fusion_head", {}) or {}
+        lines.extend(
+            [
+                "- Dataset: ROI_Fusion_500",
+                f"- Split dir: `{data_config['split_dir']}`",
+                f"- ROI root: `{data_config['roi_root']}`",
+                f"- ROI names: {', '.join(roi_names)}",
+                f"- Number of ROIs: {len(roi_names)}",
+                f"- Shared backbone: {str(model_config['shared_backbone']).lower()}",
+                f"- Fusion method: {model_config['fusion_method']}",
+                f"- Feature dim per ROI: {feature_dim}",
+                f"- Fusion dim: {fusion_dim}",
+                f"- Fusion head hidden dim: {fusion_head.get('hidden_dim')}",
+                f"- Fusion head dropout: {fusion_head.get('dropout')}",
+                f"- Fusion head batchnorm: {str(fusion_head.get('use_batchnorm')).lower()}",
+            ]
+        )
+    return lines
+
+
 def _write_report(
     path: Path,
     config: dict[str, Any],
@@ -137,8 +173,7 @@ def _write_report(
         "",
         "## Experiment setup",
         "",
-        f"- Model: {config['model']['backbone']}",
-        f"- Pretrained weights: {config['model']['pretrained']}",
+        *_model_report_lines(config),
         f"- Input: RGB {image_size}\u00d7{image_size}",
         f"- Fixed fold files: `{config['data']['split_dir']}`",
         *(
@@ -153,7 +188,21 @@ def _write_report(
             f"early stopping patience={config['train']['early_stopping_patience']}"
         ),
         *_loss_report_lines(config),
-        "- Augmentation: resize + horizontal flip (train only); no crop or color jitter",
+        (
+            "- Class weight rule: fold-specific N / (num_classes * class_count)"
+        ),
+        (
+            "- Augmentation: resize + horizontal flip (train only); "
+            "no crop or color jitter"
+        ),
+        *(
+            [
+                "- same_flip_for_all_rois: "
+                f"{str(config['augmentation'].get('same_flip_for_all_rois')).lower()}"
+            ]
+            if config["model"].get("type") == "multi_roi_fusion"
+            else []
+        ),
         "",
         "## Fold-level mean \u00b1 std",
         "",
@@ -206,7 +255,9 @@ def _write_report(
 
 def main() -> Path:
     args = parse_args()
-    experiment_dir = args.experiment_dir.expanduser().resolve()
+    experiment_dir = resolve_project_path(args.experiment_dir)
+    if experiment_dir is None:
+        raise ValueError("--experiment-dir must not be empty")
     config = load_yaml(experiment_dir / "config.yaml")
     summary_dir = experiment_dir / "summary"
     summary_dir.mkdir(parents=True, exist_ok=True)

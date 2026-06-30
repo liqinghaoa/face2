@@ -16,7 +16,7 @@ from sklearn.model_selection import StratifiedGroupKFold
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path(r"E:\projects\face2")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 LABEL_CSV = PROJECT_ROOT / "data" / "raw" / "label_raw.csv"
 PROCESSED_IMAGE_ROOT = (
     PROJECT_ROOT
@@ -46,7 +46,6 @@ OUTPUT_COLUMNS = [
     "NYHA",
     "label_3class",
     "label_3class_name",
-    "image_path",
     "stratum",
     "fold",
 ]

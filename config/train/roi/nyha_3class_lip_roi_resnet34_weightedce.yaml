@@ -1,10 +1,10 @@
 experiment:
-  name: Global224_ImageNetResNet50_NYHA3Class_WeightedCE_5Fold
-  output_dir: experiments/470Data
+  name: ROI_Lip_ImageNetResNet34_NYHA3Class_WeightedCE_5Fold_raw
+  output_dir: experiments/ROI_500
 
 data:
-  split_dir: data/processed/splits_470
-  image_root: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict/images
+  split_dir: data/processed/splits_500
+  image_root: data/processed/roi_dataset/manual_shift_data//lip_roi
   image_filename_template: "{ID}.png"
   n_folds: 5
   image_size: 224
@@ -14,7 +14,7 @@ data:
   val_csv_pattern: fold_{fold}_val.csv
 
 model:
-  backbone: resnet50
+  backbone: resnet34
   pretrained: imagenet
   num_classes: 3
   freeze_backbone: false
@@ -43,18 +43,5 @@ normalize:
   std: [0.229, 0.224, 0.225]
 
 metrics:
-  main:
-    - macro_auc
-    - accuracy
-    - macro_precision
-    - macro_recall
-    - macro_f1
-    - balanced_accuracy
-  auxiliary:
-    - per_class_auc
-    - per_class_precision
-    - per_class_recall
-    - per_class_f1
-    - severe_vs_rest_auc
-    - normal_vs_abnormal_auc
-    - confusion_matrix
+  main: [macro_auc, accuracy, macro_precision, macro_recall, macro_f1, balanced_accuracy]
+  auxiliary: [per_class_auc, per_class_precision, per_class_recall, per_class_f1, severe_vs_rest_auc, normal_vs_abnormal_auc, confusion_matrix]

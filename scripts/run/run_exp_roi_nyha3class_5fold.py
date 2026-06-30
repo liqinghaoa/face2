@@ -19,8 +19,7 @@ ROI_ROOT = (
     / "data"
     / "processed"
     / "roi_dataset"
-    / "global_aligned_face_parsing_roi_final5_224_canvas_500"
-    / "roi_masked"
+    / "manual_shift_data"
 )
 SPLIT_DIR = PROJECT_ROOT / "data" / "processed" / "splits_500"
 ROI_CHOICES = ("cheek_roi", "chin_roi", "eye_roi", "forehead_roi", "lip_roi")
@@ -67,9 +66,20 @@ def load_config(path: Path) -> dict:
 
 
 def _resolve_image_path(config: dict, identifier: str) -> Path:
-    image_root = Path(config["data"]["image_root"]).expanduser().resolve()
+    image_root = resolve_project_path(config["data"]["image_root"])
+    if image_root is None:
+        raise ValueError("data.image_root must not be empty")
     template = str(config["data"].get("image_filename_template", "{ID}.png"))
     return image_root / template.format(ID=identifier)
+
+
+def resolve_project_path(value: str | Path | None) -> Path | None:
+    if value in {None, ""}:
+        return None
+    path = Path(value).expanduser()
+    if path.is_absolute():
+        return path.resolve()
+    return (PROJECT_ROOT / path).resolve()
 
 
 def validate_roi_config(config: dict) -> None:
@@ -77,10 +87,14 @@ def validate_roi_config(config: dict) -> None:
     model_config = config["model"]
     train_config = config["train"]
 
-    split_dir = Path(data_config["split_dir"]).expanduser().resolve()
+    split_dir = resolve_project_path(data_config["split_dir"])
+    if split_dir is None:
+        raise ValueError("data.split_dir must not be empty")
     if split_dir != SPLIT_DIR.resolve():
         raise ValueError(f"ROI experiments must use {SPLIT_DIR}, got {split_dir}")
-    image_root = Path(data_config["image_root"]).expanduser().resolve()
+    image_root = resolve_project_path(data_config["image_root"])
+    if image_root is None:
+        raise ValueError("data.image_root must not be empty")
     if image_root.parent != ROI_ROOT.resolve():
         raise ValueError(f"ROI image_root must be under {ROI_ROOT}, got {image_root}")
     if image_root.name not in ROI_CHOICES:
@@ -142,8 +156,10 @@ def validate_roi_config(config: dict) -> None:
 
 def preflight(config_path: Path, config: dict) -> None:
     validate_roi_config(config)
-    split_dir = Path(config["data"]["split_dir"]).expanduser().resolve()
-    image_root = Path(config["data"]["image_root"]).expanduser().resolve()
+    split_dir = resolve_project_path(config["data"]["split_dir"])
+    image_root = resolve_project_path(config["data"]["image_root"])
+    if split_dir is None or image_root is None:
+        raise ValueError("data.split_dir and data.image_root must not be empty")
     if not split_dir.is_dir():
         raise FileNotFoundError(f"Split directory does not exist: {split_dir}")
     if not image_root.is_dir():
@@ -268,7 +284,9 @@ def preflight(config_path: Path, config: dict) -> None:
 
 
 def select_output_dir(config: dict) -> Path:
-    root = Path(config["experiment"]["output_dir"]).expanduser().resolve()
+    root = resolve_project_path(config["experiment"]["output_dir"])
+    if root is None:
+        raise ValueError("experiment.output_dir must not be empty")
     root.mkdir(parents=True, exist_ok=True)
     candidate = root / str(config["experiment"]["name"])
     if candidate.exists():

@@ -23,18 +23,25 @@ from datasets.nyha_3class_face_dataset import (  # noqa: E402
     NYHA3ClassFaceDataset,
     build_transforms,
 )
+from datasets.nyha_3class_multi_roi_dataset import (  # noqa: E402
+    NYHA3ClassMultiROIDataset,
+)
 from evaluators.nyha_3class_evaluator import NYHA3ClassEvaluator  # noqa: E402
 from losses.classification_losses import (  # noqa: E402
     build_criterion,
     compute_class_weights,
 )
 from models.resnet_nyha_3class import build_resnet_nyha_model  # noqa: E402
+from models.multi_roi_fusion_nyha_3class import (  # noqa: E402
+    ConfigurableMultiROIFusionResNet,
+)
 from trainers.nyha_3class_trainer import NYHA3ClassTrainer  # noqa: E402
 from utils.experiment_utils import (  # noqa: E402
     choose_device,
     configure_logging,
     create_experiment_dir,
     load_yaml,
+    resolve_project_path,
     save_yaml,
     seed_worker,
     set_random_seed,
@@ -106,7 +113,7 @@ def _resolve_loss_settings(config: dict) -> dict:
 
 
 def _build_loader(
-    dataset: NYHA3ClassFaceDataset,
+    dataset: NYHA3ClassFaceDataset | NYHA3ClassMultiROIDataset,
     batch_size: int,
     shuffle: bool,
     num_workers: int,
@@ -124,6 +131,100 @@ def _build_loader(
         persistent_workers=num_workers > 0,
         worker_init_fn=seed_worker,
         generator=generator,
+    )
+
+
+def _is_multi_roi_config(config: dict) -> bool:
+    return str(config.get("model", {}).get("type", "")).lower() == "multi_roi_fusion"
+
+
+def _build_datasets(
+    config: dict,
+    fold: int,
+    split_dir: Path,
+    train_transform,
+    val_transform,
+) -> tuple[NYHA3ClassFaceDataset | NYHA3ClassMultiROIDataset, NYHA3ClassFaceDataset | NYHA3ClassMultiROIDataset]:
+    data_config = config["data"]
+    train_csv = split_dir / data_config["train_csv_pattern"].format(fold=fold)
+    val_csv = split_dir / data_config["val_csv_pattern"].format(fold=fold)
+    if _is_multi_roi_config(config):
+        roi_root = resolve_project_path(data_config["roi_root"])
+        if roi_root is None:
+            raise ValueError("data.roi_root must not be empty for multi_roi_fusion")
+        return (
+            NYHA3ClassMultiROIDataset(
+                train_csv,
+                roi_root=roi_root,
+                roi_names=data_config["roi_names"],
+                image_filename_template=str(
+                    data_config.get("image_filename_template", "{ID}.png")
+                ),
+                image_size=int(data_config["image_size"]),
+                label_col=str(data_config.get("label_col", "label_3class")),
+                train=True,
+                horizontal_flip=bool(config["augmentation"]["horizontal_flip"]),
+                same_flip_for_all_rois=bool(
+                    config["augmentation"].get("same_flip_for_all_rois", True)
+                ),
+                mean=config["normalize"]["mean"],
+                std=config["normalize"]["std"],
+            ),
+            NYHA3ClassMultiROIDataset(
+                val_csv,
+                roi_root=roi_root,
+                roi_names=data_config["roi_names"],
+                image_filename_template=str(
+                    data_config.get("image_filename_template", "{ID}.png")
+                ),
+                image_size=int(data_config["image_size"]),
+                label_col=str(data_config.get("label_col", "label_3class")),
+                train=False,
+                horizontal_flip=False,
+                same_flip_for_all_rois=True,
+                mean=config["normalize"]["mean"],
+                std=config["normalize"]["std"],
+            ),
+        )
+
+    image_root = resolve_project_path(data_config.get("image_root"))
+    image_filename_template = str(data_config.get("image_filename_template", "{ID}.png"))
+    return (
+        NYHA3ClassFaceDataset(
+            train_csv,
+            train_transform,
+            image_root=image_root,
+            image_filename_template=image_filename_template,
+        ),
+        NYHA3ClassFaceDataset(
+            val_csv,
+            val_transform,
+            image_root=image_root,
+            image_filename_template=image_filename_template,
+        ),
+    )
+
+
+def _build_model(config: dict) -> torch.nn.Module:
+    model_config = config["model"]
+    if _is_multi_roi_config(config):
+        fusion_head = model_config.get("fusion_head", {}) or {}
+        return ConfigurableMultiROIFusionResNet(
+            backbone=model_config["backbone"],
+            pretrained=model_config["pretrained"],
+            num_rois=len(config["data"]["roi_names"]),
+            num_classes=int(model_config["num_classes"]),
+            shared_backbone=bool(model_config["shared_backbone"]),
+            fusion_method=str(model_config["fusion_method"]),
+            hidden_dim=int(fusion_head.get("hidden_dim", 512)),
+            dropout=float(fusion_head.get("dropout", 0.3)),
+            use_batchnorm=bool(fusion_head.get("use_batchnorm", True)),
+            freeze_backbone=bool(model_config.get("freeze_backbone", False)),
+        )
+    return build_resnet_nyha_model(
+        backbone=model_config["backbone"],
+        num_classes=int(model_config["num_classes"]),
+        pretrained=_pretrained_enabled(model_config["pretrained"]),
     )
 
 
@@ -152,7 +253,9 @@ def main() -> Path:
             config["experiment"]["name"],
         )
     else:
-        experiment_dir = args.output_dir.expanduser().resolve()
+        experiment_dir = resolve_project_path(args.output_dir)
+        if experiment_dir is None:
+            raise ValueError("--output-dir must not be empty")
         experiment_dir.mkdir(parents=True, exist_ok=True)
 
     configure_logging(experiment_dir / "experiment.log")
@@ -162,22 +265,23 @@ def main() -> Path:
     LOGGER.info("TORCH_HOME: %s", os.environ.get("TORCH_HOME"))
     LOGGER.info("Torch hub directory: %s", torch.hub.get_dir())
 
-    split_dir = Path(config["data"]["split_dir"]).expanduser().resolve()
-    image_root_value = config["data"].get("image_root")
-    image_root = (
-        Path(image_root_value).expanduser().resolve()
-        if image_root_value not in {None, ""}
-        else None
-    )
-    image_filename_template = str(
-        config["data"].get("image_filename_template", "{ID}.png")
-    )
+    split_dir = resolve_project_path(config["data"]["split_dir"])
+    if split_dir is None:
+        raise ValueError("data.split_dir must not be empty")
     LOGGER.info("Split directory: %s", split_dir)
-    if image_root is not None:
+    if _is_multi_roi_config(config):
+        LOGGER.info(
+            "Multi-ROI input: roi_root=%s, roi_names=%s, filename template=%s",
+            resolve_project_path(config["data"]["roi_root"]),
+            config["data"]["roi_names"],
+            config["data"].get("image_filename_template", "{ID}.png"),
+        )
+    else:
+        image_root = resolve_project_path(config["data"].get("image_root"))
         LOGGER.info(
             "Image root override: %s; filename template: %s",
             image_root,
-            image_filename_template,
+            config["data"].get("image_filename_template", "{ID}.png"),
         )
     image_size = int(config["data"]["image_size"])
     mean = config["normalize"]["mean"]
@@ -213,19 +317,12 @@ def main() -> Path:
             model_config["num_classes"],
             model_config.get("freeze_backbone", False),
         )
-        train_csv = split_dir / config["data"]["train_csv_pattern"].format(fold=fold)
-        val_csv = split_dir / config["data"]["val_csv_pattern"].format(fold=fold)
-        train_dataset = NYHA3ClassFaceDataset(
-            train_csv,
+        train_dataset, val_dataset = _build_datasets(
+            config,
+            fold,
+            split_dir,
             train_transform,
-            image_root=image_root,
-            image_filename_template=image_filename_template,
-        )
-        val_dataset = NYHA3ClassFaceDataset(
-            val_csv,
             val_transform,
-            image_root=image_root,
-            image_filename_template=image_filename_template,
         )
         train_loader = _build_loader(
             train_dataset,
@@ -244,11 +341,7 @@ def main() -> Path:
             pin_memory,
         )
 
-        model = build_resnet_nyha_model(
-            backbone=model_config["backbone"],
-            num_classes=int(model_config["num_classes"]),
-            pretrained=_pretrained_enabled(model_config["pretrained"]),
-        )
+        model = _build_model(config)
         class_weights = compute_class_weights(
             train_dataset.labels, int(config["data"]["num_classes"])
         )

@@ -16,13 +16,11 @@ DEFAULT_CONFIG = (
     PROJECT_ROOT
     / "config"
     / "train"
-    / "roi"
-    / "nyha_3class_lip_roi_resnet18_weightedce.yaml"
+    / "nyha_3class_global224_imagenet_resnet18.yaml"
 )
-REQUIRED_COLUMNS = {
+REQUIRED_METADATA_COLUMNS = {
     "ID",
     "patient_group_id",
-    "image_path",
     "NYHA",
     "label_3class",
     "label_3class_name",
@@ -30,6 +28,24 @@ REQUIRED_COLUMNS = {
     "sex_name",
     "fold",
 }
+IMAGE_PATH_COLUMN = "image_path"
+
+
+def resolve_project_path(value: str | Path | None) -> Path | None:
+    if value in {None, ""}:
+        return None
+    path = Path(value).expanduser()
+    if path.is_absolute():
+        return path.resolve()
+    return (PROJECT_ROOT / path).resolve()
+
+
+def resolve_image_path(config: dict, row: object) -> Path:
+    image_root = resolve_project_path(config["data"].get("image_root"))
+    if image_root is None:
+        return Path(str(getattr(row, IMAGE_PATH_COLUMN))).expanduser()
+    template = str(config["data"].get("image_filename_template", "{ID}.png"))
+    return image_root / template.format(ID=str(getattr(row, "ID")))
 
 
 def load_config(path: Path) -> dict:
@@ -43,9 +59,14 @@ def load_config(path: Path) -> dict:
 
 
 def preflight(config_path: Path, config: dict) -> None:
-    split_dir = Path(config["data"]["split_dir"]).expanduser().resolve()
+    split_dir = resolve_project_path(config["data"]["split_dir"])
+    if split_dir is None:
+        raise ValueError("data.split_dir must not be empty")
     if not split_dir.is_dir():
         raise FileNotFoundError(f"Split directory does not exist: {split_dir}")
+    image_root = resolve_project_path(config["data"].get("image_root"))
+    if image_root is not None and not image_root.is_dir():
+        raise FileNotFoundError(f"Image root does not exist: {image_root}")
 
     n_folds = int(config["data"]["n_folds"])
     missing_images: list[tuple[str, str]] = []
@@ -66,7 +87,10 @@ def preflight(config_path: Path, config: dict) -> None:
                 dtype={"ID": "string", "patient_group_id": "string"},
                 encoding="utf-8-sig",
             )
-            missing_columns = sorted(REQUIRED_COLUMNS.difference(frame.columns))
+            required_columns = set(REQUIRED_METADATA_COLUMNS)
+            if image_root is None:
+                required_columns.add(IMAGE_PATH_COLUMN)
+            missing_columns = sorted(required_columns.difference(frame.columns))
             if missing_columns:
                 raise ValueError(
                     f"{csv_path} is missing required columns: {missing_columns}"
@@ -111,7 +135,7 @@ def preflight(config_path: Path, config: dict) -> None:
                 raise ValueError(f"SEX/sex_name mapping is inconsistent in {csv_path}")
             fold_frames[split_name] = frame
             for row in frame.itertuples(index=False):
-                image_path = Path(str(row.image_path)).expanduser()
+                image_path = resolve_image_path(config, row)
                 if not image_path.is_file():
                     missing_images.append((str(row.ID), str(image_path)))
         train_groups = set(fold_frames["train"]["patient_group_id"].astype(str))
@@ -144,7 +168,9 @@ def preflight(config_path: Path, config: dict) -> None:
 
 
 def select_output_dir(config: dict) -> Path:
-    root = Path(config["experiment"]["output_dir"]).expanduser().resolve()
+    root = resolve_project_path(config["experiment"]["output_dir"])
+    if root is None:
+        raise ValueError("experiment.output_dir must not be empty")
     root.mkdir(parents=True, exist_ok=True)
     name = str(config["experiment"]["name"])
     candidate = root / name

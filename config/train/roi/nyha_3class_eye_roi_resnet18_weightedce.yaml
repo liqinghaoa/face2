@@ -1,10 +1,10 @@
 experiment:
   name: ROI_Eye_ImageNetResNet18_NYHA3Class_WeightedCE_5Fold
-  output_dir: E:/projects/face2/experiments/ROI_500
+  output_dir: experiments/ROI_500
 
 data:
-  split_dir: E:/projects/face2/data/processed/splits_500
-  image_root: E:/projects/face2/data/processed/roi_dataset/global_aligned_face_parsing_roi_final5_224_canvas_500/roi_masked/eye_roi
+  split_dir: data/processed/splits_500
+  image_root: data/processed/roi_dataset/manual_shift_data/eye_roi
   image_filename_template: "{ID}.png"
   n_folds: 5
   image_size: 224

@@ -1,9 +1,11 @@
 experiment:
   name: Global224_ImageNetResNet34_NYHA3Class_WeightedCE_5Fold
-  output_dir: E:/projects/face2/experiments/500Data_manual
+  output_dir: experiments/500Data_manual
 
 data:
-  split_dir: E:/projects/face2/data/processed/splits_500_manual
+  split_dir: data/processed/splits_500_manual
+  image_root: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict/images
+  image_filename_template: "{ID}.png"
   n_folds: 5
   image_size: 224
   num_classes: 3
