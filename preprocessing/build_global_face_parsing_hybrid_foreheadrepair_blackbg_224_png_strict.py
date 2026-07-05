@@ -87,6 +87,9 @@ LOG_COLUMNS = (
     "hair_repair_threshold", "jaggedness_threshold",
     "enable_jaggedness_trigger", "background_mode", "feather_enabled",
     "feather_kernel", "output_format", "image_size",
+    "save_intermediates", "aligned_rgb_path", "final_mask_path",
+    "selected_semantic_mask_path", "semantic_regularized_mask_path",
+    "candidate_envelope_path", "parsing_label_path", "parsing_label_dtype",
 )
 
 FAILED_COLUMNS = (
@@ -172,6 +175,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--seed", type=int, default=None)
     parser.add_argument(
+        "--save-intermediates",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Save aligned RGB, masks and parsing labels for downstream ablations.",
+    )
+    parser.add_argument(
         "--overwrite",
         action="store_true",
         default=None,
@@ -251,6 +260,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "num_qc_preview": 20,
         "max_samples": None,
         "seed": 42,
+        "save_intermediates": False,
         "overwrite": False,
     }
     values: dict[str, Any] = {"project_root": project_root, "config": cli.config}
@@ -317,7 +327,10 @@ def load_split_table(split_csv: Path, max_samples: int | None) -> pd.DataFrame:
 
 
 def prepare_output_dirs(
-    output_dir: Path, overwrite: bool, project_root: Path
+    output_dir: Path,
+    overwrite: bool,
+    project_root: Path,
+    save_intermediates: bool = False,
 ) -> dict[str, Path]:
     output_dir = output_dir.resolve()
     protected = {
@@ -351,6 +364,16 @@ def prepare_output_dirs(
         "qc_preview/failed_empty_mask",
         "qc_preview/.staging_success",
     )
+    if save_intermediates:
+        names = (
+            *names,
+            "aligned_rgb",
+            "final_mask",
+            "selected_semantic_mask",
+            "semantic_regularized_mask",
+            "candidate_envelope",
+            "parsing_label",
+        )
     dirs = {"root": output_dir}
     for name in names:
         key = name.split("/")[-1]
@@ -747,9 +770,83 @@ def _initial_log_row(
             "background_mode": "black_rgb_0_0_0", "feather_enabled": True,
             "feather_kernel": int(args.feather_kernel),
             "output_format": "PNG", "image_size": int(args.image_size),
+            "save_intermediates": bool(args.save_intermediates),
+            "aligned_rgb_path": "",
+            "final_mask_path": "",
+            "selected_semantic_mask_path": "",
+            "semantic_regularized_mask_path": "",
+            "candidate_envelope_path": "",
+            "parsing_label_path": "",
+            "parsing_label_dtype": "",
         }
     )
     return row
+
+
+def _save_single_channel_png(path: Path, image: np.ndarray) -> None:
+    """Save a single-channel uint8/uint16 PNG with Unicode-safe Windows paths."""
+    if image.ndim != 2:
+        raise alignment.SampleFailure("failed_save", "Single-channel PNG must be HxW")
+    if image.dtype not in (np.uint8, np.uint16):
+        raise alignment.SampleFailure(
+            "failed_save", "Single-channel PNG must be uint8 or uint16"
+        )
+    ok, encoded = cv2.imencode(".png", image, [cv2.IMWRITE_PNG_COMPRESSION, 3])
+    if not ok:
+        raise alignment.SampleFailure("failed_save", "cv2.imencode('.png') failed")
+    try:
+        path.write_bytes(encoded.tobytes())
+    except OSError as exc:
+        raise alignment.SampleFailure("failed_save", str(exc)) from exc
+
+
+def _as_binary_uint8(mask: np.ndarray) -> np.ndarray:
+    return (mask > 0).astype(np.uint8) * 255
+
+
+def _save_intermediates(
+    image_id: str,
+    row: dict[str, Any],
+    args: argparse.Namespace,
+    aligned_rgb: np.ndarray,
+    final_mask: np.ndarray,
+    selected_mask: np.ndarray,
+    semantic_mask: np.ndarray,
+    candidate_envelope: np.ndarray,
+    label_map: np.ndarray,
+) -> None:
+    if not bool(args.save_intermediates):
+        return
+    dirs: dict[str, Path] = getattr(args, "intermediate_dirs", {})
+    paths = {
+        "aligned_rgb_path": dirs["aligned_rgb"] / f"{image_id}.png",
+        "final_mask_path": dirs["final_mask"] / f"{image_id}.png",
+        "selected_semantic_mask_path": (
+            dirs["selected_semantic_mask"] / f"{image_id}.png"
+        ),
+        "semantic_regularized_mask_path": (
+            dirs["semantic_regularized_mask"] / f"{image_id}.png"
+        ),
+        "candidate_envelope_path": dirs["candidate_envelope"] / f"{image_id}.png",
+        "parsing_label_path": dirs["parsing_label"] / f"{image_id}.png",
+    }
+    for key, path in paths.items():
+        row[key] = str(path)
+
+    alignment.save_png(paths["aligned_rgb_path"], aligned_rgb)
+    _save_single_channel_png(paths["final_mask_path"], _as_binary_uint8(final_mask))
+    _save_single_channel_png(
+        paths["selected_semantic_mask_path"], _as_binary_uint8(selected_mask)
+    )
+    _save_single_channel_png(
+        paths["semantic_regularized_mask_path"], _as_binary_uint8(semantic_mask)
+    )
+    _save_single_channel_png(
+        paths["candidate_envelope_path"], _as_binary_uint8(candidate_envelope)
+    )
+    label_dtype = np.uint8 if int(np.max(label_map)) <= 255 else np.uint16
+    row["parsing_label_dtype"] = np.dtype(label_dtype).name
+    _save_single_channel_png(paths["parsing_label_path"], label_map.astype(label_dtype))
 
 
 def process_one_sample(
@@ -923,6 +1020,17 @@ def process_one_sample(
         alpha = parsing.feather_mask(final_mask, int(args.feather_kernel))
         final_rgb = alignment.apply_black_background(aligned_rgb, alpha)
         previews.final = final_rgb
+        _save_intermediates(
+            image_id,
+            row,
+            args,
+            aligned_rgb,
+            final_mask,
+            selected_mask,
+            semantic_mask,
+            candidate_envelope,
+            label_map,
+        )
         alignment.save_png(output_path, final_rgb)
         row["status"] = "success"
     except alignment.SampleFailure as exc:
@@ -1086,6 +1194,8 @@ def summarize_logs(
         [
             "",
             f"Output directory: {output_dir}",
+            f"Save intermediates: {bool(args.save_intermediates)}",
+            "Parsing label intermediate dtype: uint8 unless class IDs exceed 255.",
             "Parameters:",
             *[f"  {key}: {value}" for key, value in vars(args).items()],
             "",
@@ -1182,8 +1292,23 @@ def main(argv: Sequence[str] | None = None) -> int:
         str(args.parsing_model), args.parsing_checkpoint, parsing_device
     )
     dirs = prepare_output_dirs(
-        args.output_dir, bool(args.overwrite), project_root
+        args.output_dir,
+        bool(args.overwrite),
+        project_root,
+        save_intermediates=bool(args.save_intermediates),
     )
+    if bool(args.save_intermediates):
+        args.intermediate_dirs = {
+            name: dirs[name]
+            for name in (
+                "aligned_rgb",
+                "final_mask",
+                "selected_semantic_mask",
+                "semantic_regularized_mask",
+                "candidate_envelope",
+                "parsing_label",
+            )
+        }
 
     random.seed(int(args.seed))
     np.random.seed(int(args.seed))

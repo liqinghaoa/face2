@@ -79,6 +79,17 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Override DataLoader workers.",
     )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=None,
+        help="Override DataLoader batch size.",
+    )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume incomplete folds from fold_x/checkpoints/last.pth and skip completed folds.",
+    )
     return parser.parse_args()
 
 
@@ -239,6 +250,10 @@ def main() -> Path:
         if args.num_workers < 0:
             raise ValueError("--num-workers cannot be negative")
         config["train"]["num_workers"] = args.num_workers
+    if args.batch_size is not None:
+        if args.batch_size < 1:
+            raise ValueError("--batch-size must be at least 1")
+        config["train"]["batch_size"] = args.batch_size
     if bool(config["model"].get("freeze_backbone", False)):
         raise ValueError("This baseline requires freeze_backbone=false")
     if str(config["train"].get("monitor_metric", "macro_auc")) != "macro_auc":
@@ -308,6 +323,17 @@ def main() -> Path:
     folds = list(dict.fromkeys(folds))
 
     for fold in folds:
+        fold_dir = experiment_dir / f"fold_{fold}"
+        fold_metrics_path = fold_dir / "metrics" / "fold_metrics.csv"
+        best_checkpoint_path = fold_dir / "checkpoints" / "best_macro_auc.pth"
+        if args.resume and fold_metrics_path.is_file() and best_checkpoint_path.is_file():
+            LOGGER.info(
+                "Skipping fold %d because resume mode found completed artifacts: %s",
+                fold,
+                fold_metrics_path,
+            )
+            continue
+
         LOGGER.info("Preparing held-out validation fold %d/%d", fold, n_folds - 1)
         LOGGER.info(
             "Model configuration: backbone=%s, pretrained=%s, num_classes=%s, "
@@ -380,7 +406,11 @@ def main() -> Path:
             weight_decay=float(train_config["weight_decay"]),
         )
 
-        fold_dir = experiment_dir / f"fold_{fold}"
+        resume_checkpoint = None
+        last_checkpoint_path = fold_dir / "checkpoints" / "last.pth"
+        if args.resume and last_checkpoint_path.is_file():
+            resume_checkpoint = last_checkpoint_path
+
         trainer = NYHA3ClassTrainer(
             model=model,
             criterion=criterion,
@@ -394,6 +424,7 @@ def main() -> Path:
             use_amp=bool(train_config.get("use_amp", False)),
             fold=fold,
             config=config,
+            resume_from=resume_checkpoint,
         )
         trainer.fit(train_loader, val_loader)
 

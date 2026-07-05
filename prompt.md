@@ -1,649 +1,1060 @@
-任务：实现配置驱动型 Multi-ROI 特征级融合 NYHA 三分类实验
-请基于项目目录：
-E:\projects\face2
-实现一个可配置的 Multi-ROI 特征级融合实验框架，用于 NYHA 三分类任务。
-当前项目已经有全局人脸图三分类、ROI-only 三分类、ResNet18/34/50、WeightedCE、五折训练和汇总等基础框架。请不要重新实现整套训练系统，而是在现有框架基础上新增 Multi-ROI Dataset、Multi-ROI Fusion Model 和通用 ROI fusion run 入口。
-一、实验目标
-当前任务是 NYHA 三分类：
+你现在在 Windows + PyCharm 项目中工作，项目根目录为：
+
+E:/projects/face2
+
+本次任务目标：
+在当前最佳预处理方案 hybrid_imagenet_meanbg 的基础上，开展多 backbone 模型探索实验，评估 ResNet 之外的深度学习分类模型是否能提升 NYHA 三分类性能。
+
+本轮实验定位：
+模型架构消融实验。
+
+核心问题：
+在固定同一套数据、同一套五折划分、同一套预处理、同一套 loss、optimizer、epoch 和 augmentation 的前提下，DenseNet、EfficientNet、ConvNeXt、Swin、MobileNetV3 等非 ResNet backbone 是否能优于当前 ResNet18 + hybrid_imagenet_meanbg 基线。
+
+请严格遵守以下原则：
+
+1. 本轮只改变 model.backbone。
+2. 不改变数据预处理。
+3. 不改变五折划分。
+4. 不改变 loss。
+5. 不改变 optimizer。
+6. 不改变 learning rate。
+7. 不改变 weight decay。
+8. 不改变 epoch。
+9. 不改变 early stopping。
+10. 不改变数据增强。
+11. 不加入 label smoothing。
+12. 不加入 focal loss。
+13. 不加入 ColorJitter。
+14. 不加入 ROI fusion。
+15. 不加入阈值优化作为训练结果。
+16. 不安装新依赖。
+17. 不使用 timm。
+18. 只使用 torchvision.models。
+19. 所有训练必须严格串行执行，不允许并行训练。
+20. 必须保持旧 ResNet 配置完全兼容。
+
+========================================
+一、当前项目与环境信息
+========================================
+
+项目根目录：
+
+E:/projects/face2
+
+Python 环境：
+
+E:/resarch/Anaconda3/envs/face_heart/python.exe
+
+当前环境已确认：
+
+torch = 2.3.0
+torchvision = 0.18.0
+cuda = True
+
+当前 torchvision.models 已确认支持以下模型：
+
+densenet121
+efficientnet_b0
+convnext_tiny
+swin_t
+mobilenet_v3_large
+
+因此本轮不需要安装 timm，也不要引入其他新依赖。
+
+当前通用 YAML 配置训练入口已存在，并已跑通过：
+
+scripts/run/run_nyha3class_5fold_with_config.py
+
+该脚本已经在 Backbone Check 中成功运行多个 YAML 配置，因此本轮继续复用它，不要重新实现五折训练入口。
+
+当前训练脚本：
+
+scripts/train/train_nyha_3class_5fold.py
+
+当前单图像分支中，_build_model(config) 仍直接调用：
+
+models/resnet_nyha_3class.py::build_resnet_nyha_model
+
+当前逻辑类似：
+
+return build_resnet_nyha_model(
+    backbone=model_config["backbone"],
+    num_classes=int(model_config["num_classes"]),
+    pretrained=_pretrained_enabled(model_config["pretrained"]),
+)
+
+本轮需要小幅修改这个模型构建入口，使其支持非 ResNet backbone。
+
+允许修改：
+
+scripts/train/train_nyha_3class_5fold.py
+
+但修改范围必须限制在模型构建入口，不允许改动训练流程、loss、optimizer、scheduler、early stopping、metrics、dataset、split 或 augmentation。
+
+========================================
+二、本轮固定数据与基线
+========================================
+
+固定五折划分目录：
+
+data/processed/splits_500
+
+固定图像输入目录：
+
+data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+
+固定预处理方案：
+
+hybrid_imagenet_meanbg
+
+固定类别定义：
+
 0 = normal
 1 = mild
 2 = severe
-标签映射为：
-NYHA 0     → normal
-NYHA 1、2  → mild
-NYHA 3、4  → severe
-本次实验目标是实现 feature-level ROI fusion：
-多个 ROI 图像
-    → 共享 ResNet backbone 提取特征
-    → 拼接多个 ROI 特征
-    → MLP 分类头
-    → 输出 normal / mild / severe 三分类 logits
-本次不是做单个固定 ROI 组合，而是实现配置驱动框架，使后续可以通过 YAML 配置自由设置：
-1. ROI 组合：eye / lip / cheek / forehead / chin 的任意组合
-2. Backbone：resnet18 / resnet34 / resnet50
-3. 融合方式：第一版只支持 concat
-二、已有框架约束
-请先阅读并理解以下现有代码，再做修改：
-E:\projects\face2\scripts\train\train_nyha_3class_5fold.py
-E:\projects\face2\scripts\evaluate\summarize_nyha_3class_5fold.py
-E:\projects\face2\datasets\nyha_3class_face_dataset.py
-E:\projects\face2\models\resnet_nyha_3class.py
-E:\projects\face2\losses\classification_losses.py
-E:\projects\face2\trainers\nyha_3class_trainer.py
-E:\projects\face2\evaluators\nyha_3class_evaluator.py
-当前 ROI-only 训练框架的基本逻辑是：
-run_exp_roi_nyha3class_5fold.py
-  -> preflight 检查 ROI 图像与 splits_500
-  -> scripts/train/train_nyha_3class_5fold.py
-  -> datasets/nyha_3class_face_dataset.py
-  -> models/resnet_nyha_3class.py
-  -> losses/classification_losses.py
-  -> trainers/nyha_3class_trainer.py
-  -> evaluators/nyha_3class_evaluator.py
-  -> scripts/evaluate/summarize_nyha_3class_5fold.py
-Multi-ROI 融合实验应尽量复用：
+
+固定标签列：
+
+label_3class
+
+固定图像尺寸：
+
+224 x 224
+
+固定训练基础设置：
+
+loss = weighted_cross_entropy
+optimizer = AdamW
+lr = 0.0001
+weight_decay = 0.0001
+epochs = 50
+early_stopping_patience = 10
+monitor_metric = macro_auc
+random_seed = 2026
+num_workers = 0
+pin_memory = false
+use_amp = false
+
+固定 transform：
+沿用当前 Dataset 和训练脚本逻辑，不新增 ColorJitter、RandomCrop、RandomRotation 或其他增强。
+
+参考基线：
+
+ResNet18 + hybrid_imagenet_meanbg
+
+基线目录：
+
+E:/projects/face2/experiments/preprocess_ablation_500Data/PreprocAblation_ResNet18_NYHA3Class_hybrid_imagenet_meanbg
+
+该目录已确认包含：
+
+summary/fold_metrics_all.csv
+summary/mean_metrics.csv
+summary/oof_metrics.csv
+summary/oof_predictions.csv
+summary/summary_report.md
+
+基线关键指标：
+
+macro-AUC = 0.7094
+balanced accuracy = 0.5353
+macro-F1 = 0.5111
+severe recall = 0.4333
+
+后续 model exploration 汇总时，需要与这个 ResNet18 meanbg 基线做 delta 对比。
+
+========================================
+三、本轮候选模型
+========================================
+
+第一轮支持 5 个候选模型：
+
+1. densenet121
+2. efficientnet_b0
+3. convnext_tiny
+4. swin_t
+5. mobilenet_v3_large
+
+正式训练时需要支持 --only 参数，因此可以先只跑前三个模型：
+
+densenet121
+efficientnet_b0
+convnext_tiny
+
+但代码和配置生成阶段需要完整支持 5 个模型。
+
+建议 batch size：
+
+densenet121: 16
+efficientnet_b0: 16
+convnext_tiny: 8
+swin_t: 8
+mobilenet_v3_large: 16
+
+理由：
+当前设备是笔记本 RTX 4060。convnext_tiny 和 swin_t 显存占用相对更高，第一轮使用 batch size 8 更稳。
+
+========================================
+四、任务 1：新增通用 backbone factory
+========================================
+
+请新增文件：
+
+models/nyha_backbone_factory.py
+
+目标：
+构建统一的 NYHA 三分类模型工厂，支持 ResNet 和非 ResNet backbone。
+
+需要提供主函数：
+
+def build_nyha_classification_model(
+    backbone: str,
+    num_classes: int = 3,
+    pretrained: bool | str = True,
+    freeze_backbone: bool = False,
+    dropout: float | None = None,
+) -> torch.nn.Module:
+    ...
+
+要求支持以下 backbone：
+
+resnet18
+resnet34
+resnet50
+densenet121
+efficientnet_b0
+convnext_tiny
+swin_t
+mobilenet_v3_large
+
+实现要求：
+
+1. 优先使用 torchvision.models。
+2. 不使用 timm。
+3. 不安装新包。
+4. pretrained=True 或 pretrained="imagenet" 时，使用 torchvision 对应 DEFAULT weights。
+5. pretrained=False 或 pretrained=None 时，weights=None。
+6. 对不支持的 backbone 抛出清晰错误。
+7. 保持 ResNet18/34/50 与旧逻辑兼容。
+8. 每个模型都替换最终分类头为 num_classes=3。
+9. 支持 freeze_backbone。
+10. 支持 dropout 参数，但默认不启用。
+11. 返回标准 torch.nn.Module。
+12. 提供参数统计函数。
+
+建议同时实现：
+
+def count_parameters(model: torch.nn.Module) -> dict:
+    返回：
+    total_params
+    trainable_params
+
+def get_supported_backbones() -> list[str]:
+    返回当前支持的 backbone 名称。
+
+各模型分类头替换建议：
+
+1. ResNet18/34/50：
+可以继续调用旧的 build_resnet_nyha_model，或在 factory 内直接使用 torchvision.models.resnet18/resnet34/resnet50。
+为了最大兼容旧实验，建议 factory 对 ResNet 系列优先复用：
+models/resnet_nyha_3class.py::build_resnet_nyha_model
+
+2. DenseNet121：
+model = torchvision.models.densenet121(weights=...)
+in_features = model.classifier.in_features
+model.classifier = nn.Linear(in_features, num_classes)
+
+3. EfficientNet-B0：
+model = torchvision.models.efficientnet_b0(weights=...)
+in_features = model.classifier[-1].in_features
+model.classifier[-1] = nn.Linear(in_features, num_classes)
+
+4. ConvNeXt-Tiny：
+model = torchvision.models.convnext_tiny(weights=...)
+torchvision 中 classifier 结构可能因版本略有差异。
+请不要硬编码过死。
+建议在 model.classifier 中反向查找最后一个 nn.Linear 并替换。
+如果找不到 nn.Linear，抛出清晰错误。
+
+5. Swin-Tiny：
+model = torchvision.models.swin_t(weights=...)
+in_features = model.head.in_features
+model.head = nn.Linear(in_features, num_classes)
+
+6. MobileNetV3-Large：
+model = torchvision.models.mobilenet_v3_large(weights=...)
+in_features = model.classifier[-1].in_features
+model.classifier[-1] = nn.Linear(in_features, num_classes)
+
+freeze_backbone 逻辑：
+如果 freeze_backbone=True：
+先将所有参数 requires_grad=False；
+然后将最终分类头参数 requires_grad=True。
+需要根据不同模型找到分类头：
+resnet: fc
+densenet: classifier
+efficientnet: classifier
+convnext: classifier
+swin: head
+mobilenet_v3_large: classifier
+
+本轮配置中 freeze_backbone=false，但 factory 仍应支持该参数，保持通用性。
+
+dropout 逻辑：
+本轮默认 dropout=None，不启用。
+如果配置中给出 dropout，可在分类头前加入 Dropout。
+但不要影响默认无 dropout 行为。
+
+请在 factory 中加入清晰注释，说明每个 backbone 的分类头替换逻辑。
+
+========================================
+五、任务 2：小幅修改训练脚本模型构建入口
+========================================
+
+请修改：
+
+scripts/train/train_nyha_3class_5fold.py
+
+修改目标：
+让 _build_model(config) 从通用 factory 构建模型，而不是只能调用 build_resnet_nyha_model。
+
+建议修改为：
+
+from models.nyha_backbone_factory import build_nyha_classification_model, count_parameters
+
+然后在 _build_model(config) 中读取：
+
+model_config = config["model"]
+backbone = model_config["backbone"]
+num_classes = int(model_config["num_classes"])
+pretrained = _pretrained_enabled(model_config["pretrained"])
+freeze_backbone = bool(model_config.get("freeze_backbone", False))
+dropout = model_config.get("dropout", None)
+
+model = build_nyha_classification_model(
+    backbone=backbone,
+    num_classes=num_classes,
+    pretrained=pretrained,
+    freeze_backbone=freeze_backbone,
+    dropout=dropout,
+)
+
+然后打印或记录：
+
+backbone
+total_params
+trainable_params
+
+必须保持旧配置兼容：
+
+resnet18
+resnet34
+resnet50
+
+旧 ResNet 配置必须仍能正常跑。
+
+不要修改：
+
+dataset
+transform
 loss
 optimizer
-trainer
-evaluator
+scheduler
+early stopping
 metrics
-summarizer
-只新增或小幅扩展：
-Dataset
-Model
-train script 分支
-run script / preflight
-config
-三、数据输入约束
-ROI 图像根目录固定为：
-E:\projects\face2\data\processed\roi_dataset\manual_shift_data
-已有 ROI 子目录包括：
-cheek_roi
-chin_roi
-eye_roi
-forehead_roi
-lip_roi
-每个 ROI 子目录下图像文件命名为：
-{ID}.png
-固定五折划分目录为：
-E:\projects\face2\data\processed\splits_500
-每折读取：
-fold_0_train.csv
-fold_0_val.csv
-...
-fold_4_train.csv
-fold_4_val.csv
-不要重新划分数据。
-不要从 ROI 图像目录自动生成标签。
-标签、fold、patient_group_id、NYHA、SEX 等信息全部来自 splits_500 中的 CSV。
-四、新增 Multi-ROI Dataset
-请新增文件：
-E:\projects\face2\datasets\nyha_3class_multi_roi_dataset.py
-新增核心类：
-class NYHA3ClassMultiROIDataset(Dataset):
-    ...
-4.1 初始化参数建议
-class NYHA3ClassMultiROIDataset(Dataset):
-    def __init__(
-        self,
-        csv_path,
-        roi_root,
-        roi_names,
-        image_filename_template="{ID}.png",
-        image_size=224,
-        label_col="label_3class",
-        train=False,
-        horizontal_flip=False,
-        same_flip_for_all_rois=True,
-        mean=(0.485, 0.456, 0.406),
-        std=(0.229, 0.224, 0.225),
-    ):
-        ...
-4.2 Dataset 读取逻辑
-对于每一行 CSV，读取 ID，然后按配置中的 roi_names 依次读取：
-{roi_root}/{roi_name}/{ID}.png
-例如配置：
-roi_names:
-  - eye_roi
-  - lip_roi
-  - cheek_roi
-  - forehead_roi
-则某个样本 ID 为 9300017987 时，读取：
-manual_shift_data/eye_roi/9300017987.png
-manual_shift_data/lip_roi/9300017987.png
-manual_shift_data/cheek_roi/9300017987.png
-manual_shift_data/forehead_roi/9300017987.png
-4.3 返回格式
-__getitem__ 返回：
-images, label, meta
-其中：
-images: Tensor [R, 3, 224, 224]
-label: int
-meta: dict
-R = len(roi_names)。
-DataLoader 组 batch 后应为：
-images: [B, R, 3, 224, 224]
-labels: [B]
-meta 至少包含：
-ID
-patient_group_id
-NYHA
-label_3class
-SEX
-fold
-如果当前 trainer/evaluator 对 meta 格式有固定要求，请与现有 NYHA3ClassFaceDataset 保持兼容。
-4.4 同步水平翻转
-训练集仍然只使用水平翻转，不使用 color jitter，不使用 random crop。
-但 Multi-ROI Dataset 中必须保证：同一病例的所有 ROI 使用相同的水平翻转决策。
-不要对每张 ROI 图像单独使用 RandomHorizontalFlip，否则会出现一个样本内不同 ROI 翻转状态不一致的问题。
-推荐在 __getitem__ 中统一生成：
-do_flip = self.train and self.horizontal_flip and random.random() < 0.5
-然后对该样本所有 ROI：
-if do_flip:
-    img = TF.hflip(img)
-训练集处理：
-Resize(224,224)
-same RandomHorizontalFlip(p=0.5) for all ROIs
-ToTensor
-ImageNet Normalize
-验证集处理：
-Resize(224,224)
-ToTensor
-ImageNet Normalize
-五、新增 Multi-ROI Fusion Model
-请新增文件：
-E:\projects\face2\models\multi_roi_fusion_nyha_3class.py
-新增核心类：
-class ConfigurableMultiROIFusionResNet(nn.Module):
-    ...
-5.1 初始化参数建议
-class ConfigurableMultiROIFusionResNet(nn.Module):
-    def __init__(
-        self,
-        backbone="resnet34",
-        pretrained="imagenet",
-        num_rois=4,
-        num_classes=3,
-        shared_backbone=True,
-        fusion_method="concat",
-        hidden_dim=512,
-        dropout=0.3,
-        use_batchnorm=True,
-        freeze_backbone=False,
-    ):
-        ...
-5.2 第一版支持范围
-第一版必须支持：
-backbone: resnet18 / resnet34 / resnet50
-pretrained: imagenet
-shared_backbone: true
-fusion_method: concat
-num_classes: 3
-第一版可以暂不实现：
-shared_backbone: false
-attention fusion
-global + ROI fusion
-sex feature fusion
-label smoothing
-如果配置中出现不支持的选项，请明确报错，不要静默忽略。
-5.3 Backbone 构建要求
-请支持 torchvision ImageNet 预训练权重：
-resnet18 → ResNet18_Weights.IMAGENET1K_V1
-resnet34 → ResNet34_Weights.IMAGENET1K_V1
-resnet50 → ResNet50_Weights.IMAGENET1K_V1
-如果项目已有兼容新旧 torchvision 的写法，请沿用现有写法。
-构建 backbone 时，不要保留原始分类头。
-应使用：
-feature_dim = model.fc.in_features
-model.fc = nn.Identity()
-注意不要写死 512，因为：
-resnet18 / resnet34: feature_dim = 512
-resnet50: feature_dim = 2048
-5.4 Forward 逻辑
-输入：
-x: [B, R, 3, 224, 224]
-其中：
-B = batch size
-R = ROI 数量
-forward 逻辑：
-B, R, C, H, W = x.shape
+evaluator
+fold split
+class weights
+summary format
 
-if R != self.num_rois:
-    raise ValueError(...)
+如果当前训练脚本没有合适日志位置，可以至少 print 参数统计信息，并把信息写入每个 fold 的 logs/model_summary.txt 或实验根目录下的 model_summary.txt。
 
-x = x.reshape(B * R, C, H, W)
-features = self.backbone(x)          # [B*R, D]
-features = features.reshape(B, R, -1) # [B, R, D]
+建议每个实验输出：
 
-fused = features.reshape(B, R * D)    # [B, R*D]
-logits = self.classifier(fused)       # [B, 3]
+model_summary.txt
 
-return logits
-输出必须是 logits，不加 softmax。
-5.5 Fusion Classifier
-第一版使用 concat fusion：
-fusion_dim = num_rois * feature_dim
-分类头建议：
-layers = [
-    nn.Linear(fusion_dim, hidden_dim),
-]
+内容包括：
 
-if use_batchnorm:
-    layers.append(nn.BatchNorm1d(hidden_dim))
-
-layers.extend([
-    nn.ReLU(inplace=True),
-    nn.Dropout(dropout),
-    nn.Linear(hidden_dim, num_classes),
-])
-对于 ResNet50 + 多 ROI，fusion_dim 可能很大，例如 4 ROI 时为 8192。因此必须通过 hidden_dim 降维，不要直接接复杂大头。
-5.6 冻结策略
-第一版：
-freeze_backbone: false
-所有参数参与训练。
-如果配置中 freeze_backbone=true，可以支持，也可以先报错。为了和现有实验保持一致，建议第一版强制要求 false。
-六、训练脚本适配
-请小幅修改：
-E:\projects\face2\scripts\train\train_nyha_3class_5fold.py
-使其支持：
-model:
-  type: multi_roi_fusion
-6.1 Dataset 分支
-如果：
-cfg["model"]["type"] == "multi_roi_fusion"
-则使用：
-NYHA3ClassMultiROIDataset
-否则继续使用现有：
-NYHA3ClassFaceDataset
-MultiROI train dataset 构建时从 config 读取：
-data.roi_root
-data.roi_names
-data.image_filename_template
-data.image_size
-data.label_col
-augmentation.horizontal_flip
-augmentation.same_flip_for_all_rois
-normalize.mean
-normalize.std
-6.2 Model 分支
-如果：
-cfg["model"]["type"] == "multi_roi_fusion"
-则构建：
-ConfigurableMultiROIFusionResNet(
-    backbone=cfg["model"]["backbone"],
-    pretrained=cfg["model"]["pretrained"],
-    num_rois=len(cfg["data"]["roi_names"]),
-    num_classes=cfg["model"]["num_classes"],
-    shared_backbone=cfg["model"]["shared_backbone"],
-    fusion_method=cfg["model"]["fusion_method"],
-    hidden_dim=cfg["model"]["fusion_head"]["hidden_dim"],
-    dropout=cfg["model"]["fusion_head"]["dropout"],
-    use_batchnorm=cfg["model"]["fusion_head"]["use_batchnorm"],
-    freeze_backbone=cfg["model"]["freeze_backbone"],
-)
-否则继续走现有单图 ResNet 构建逻辑。
-6.3 Loss 不改
-本次实验继续使用：
-weighted_cross_entropy
-类别权重仍然每个 fold 根据训练集动态计算：
-class_weight = N / (C × class_count)
-不要改成 label smoothing。
-不要使用 focal loss。
-不要修改当前 loss factory 中已有逻辑，除非为了兼容 config 的 loss 字段。
-6.4 Trainer / Evaluator 尽量不改
-如果现有 trainer/evaluator 只是将 images 送入 model(images)，则无需修改。
-如果代码中强制要求：
-images.ndim == 4
-请改成允许：
-images.ndim in [4, 5]
-因为 Multi-ROI 输入是：
-[B, R, 3, 224, 224]
-Evaluator 最终仍然只需要模型输出：
-logits: [B, 3]
-所以 metrics、AUC、confusion matrix、OOF 逻辑都不需要改变。
-七、新增通用 ROI Fusion Run 脚本
-请新增：
-E:\projects\face2\scripts\run\run_exp_roi_fusion_nyha3class_5fold.py
-第一版只要求支持：
-python scripts/run/run_exp_roi_fusion_nyha3class_5fold.py --config config/train/roi_fusion/nyha_3class_multiroi_shared_resnet34_concat_weightedce.yaml
-不强制第一版实现命令行覆盖 --rois 和 --backbone，但可以预留。
-7.1 Run 脚本职责
-该 run 脚本负责：
-1. 读取 config
-2. 执行 ROI fusion preflight 检查
-3. 创建实验输出目录
-4. 避免覆盖旧实验目录
-5. 调用 scripts/train/train_nyha_3class_5fold.py
-6. 调用 scripts/evaluate/summarize_nyha_3class_5fold.py
-7. 写入 run_5fold.log
-调用训练脚本形式：
-python scripts/train/train_nyha_3class_5fold.py --config <config_path> --output-dir <experiment_dir>
-调用汇总脚本形式：
-python scripts/evaluate/summarize_nyha_3class_5fold.py --experiment-dir <experiment_dir>
-输出目录：
-E:\projects\face2\experiments\ROI_Fusion_500\{experiment_name}
-如果目录已存在，自动追加时间戳，或清楚提示，不要直接覆盖。
-八、Preflight 检查
-ROI fusion 的 preflight 必须严格。
-请在 run 脚本中实现 preflight(config) 或放在独立 utils 中。
-8.1 配置检查
-检查：
-config 文件存在
-experiment.name 非空
-data.split_dir == E:\projects\face2\data\processed\splits_500
-data.roi_root == E:\projects\face2\data\processed\roi_dataset\manual_shift_data
-data.roi_names 存在且长度 >= 2
-data.roi_names 无重复
-data.image_filename_template == "{ID}.png"
-data.n_folds == 5
-data.image_size == 224
-data.num_classes == 3
-model.type == multi_roi_fusion
-model.backbone in [resnet18, resnet34, resnet50]
-model.pretrained == imagenet
-model.shared_backbone == true
-model.fusion_method == concat
-model.num_classes == 3
-model.freeze_backbone == false
-loss.name == weighted_cross_entropy
-loss.class_weight == true
-augmentation.horizontal_flip == true
-augmentation.same_flip_for_all_rois == true
-augmentation.color_jitter == false
-augmentation.random_crop == false
-8.2 ROI 目录检查
-允许 ROI 名称：
-cheek_roi
-chin_roi
-eye_roi
-forehead_roi
-lip_roi
-检查每个 roi_name：
-roi_root / roi_name 目录存在
-8.3 Split CSV 检查
-检查每折 CSV：
-fold_{fold}_train.csv
-fold_{fold}_val.csv
-必须存在。
-必须包含列：
-ID
-patient_group_id
-NYHA
-label_3class
-SEX
-fold
-如果存在以下列，也检查一致性：
-label_3class_name
-sex_name
-检查：
-label_3class 只能是 0/1/2
-NYHA 到 label_3class 映射必须一致：
-  NYHA 0 -> 0
-  NYHA 1/2 -> 1
-  NYHA 3/4 -> 2
-val CSV 中 fold 必须等于当前 fold
-train CSV 中不能包含当前 fold
-train/val 之间不能有 patient_group_id 泄漏
-同一 ID 不应在同一 fold 的 train 和 val 同时出现
-8.4 多 ROI 图像完整性检查
-对所有 split 中出现的 ID，检查每个 ROI 都有对应图像：
-{roi_root}/{roi_name}/{ID}.png
-检查所有 ROI 子目录中的 split ID 是否一致。
-建议检查：
-每个 ROI 子目录中的 PNG 数量
-每个 ROI 子目录是否包含所有 split ID
-是否存在 split 外额外 PNG
-如果存在额外 PNG，第一版可以沿用 ROI-only 的严格逻辑，直接报错；或者至少清楚警告。为了与当前 ROI-only 框架一致，建议直接报错。
-九、新增配置文件
-请新增目录：
-E:\projects\face2\config\train\roi_fusion
-新增第一版配置文件：
-E:\projects\face2\config\train\roi_fusion\nyha_3class_multiroi_shared_resnet34_concat_weightedce.yaml
-配置内容建议如下：
-experiment:
-  name: MultiROI4_ImageNetResNet34_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-  output_dir: E:\projects\face2\experiments\ROI_Fusion_500
-
-data:
-  split_dir: E:\projects\face2\data\processed\splits_500
-  roi_root: E:\projects\face2\data\processed\roi_dataset\manual_shift_data
-  roi_names:
-    - eye_roi
-    - lip_roi
-    - cheek_roi
-    - forehead_roi
-  image_filename_template: "{ID}.png"
-  n_folds: 5
-  image_size: 224
-  num_classes: 3
-  label_col: label_3class
-
-model:
-  type: multi_roi_fusion
-  backbone: resnet34
-  pretrained: imagenet
-  shared_backbone: true
-  fusion_method: concat
-  num_classes: 3
-  freeze_backbone: false
-  fusion_head:
-    hidden_dim: 512
-    dropout: 0.3
-    use_batchnorm: true
-
-loss:
-  name: weighted_cross_entropy
-  class_weight: true
-
-train:
-  batch_size: 16
-  epochs: 50
-  optimizer: AdamW
-  lr: 0.0001
-  weight_decay: 0.0001
-  early_stopping_patience: 10
-  monitor_metric: macro_auc
-  random_seed: 2026
-  num_workers: 0
-  pin_memory: false
-  use_amp: false
-
-augmentation:
-  horizontal_flip: true
-  same_flip_for_all_rois: true
-  color_jitter: false
-  random_crop: false
-
-normalize:
-  mean: [0.485, 0.456, 0.406]
-  std: [0.229, 0.224, 0.225]
-
-metrics:
-  main:
-    - macro_auc
-    - accuracy
-    - macro_precision
-    - macro_recall
-    - macro_f1
-    - balanced_accuracy
-  auxiliary:
-    - per_class_auc
-    - per_class_precision
-    - per_class_recall
-    - per_class_f1
-    - severe_vs_rest_auc
-    - normal_vs_abnormal_auc
-    - confusion_matrix
-十、后续配置示例
-实现时要确保后续可以通过复制 YAML 并修改配置完成不同实验。
-10.1 改 ROI 组合
-例如只融合 eye + lip：
-experiment:
-  name: MultiROI2_EyeLip_ImageNetResNet34_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-
-data:
-  roi_names:
-    - eye_roi
-    - lip_roi
-模型应自动识别 num_rois=2，不需要修改代码。
-10.2 改 backbone
-例如 ResNet18：
-experiment:
-  name: MultiROI4_ImageNetResNet18_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-
-model:
-  backbone: resnet18
-例如 ResNet50：
-experiment:
-  name: MultiROI4_ImageNetResNet50_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-
-model:
-  backbone: resnet50
-模型应自动识别：
-resnet18/resnet34 feature_dim = 512
-resnet50 feature_dim = 2048
-不要写死融合维度。
-十一、summary_report.md 需要记录的信息
-请确保最终 summary report 中除了原有指标，还记录：
-Experiment name
-Dataset: ROI_Fusion_500
-Split dir: splits_500
-ROI root
-ROI names
-Number of ROIs
-Model type: multi_roi_fusion
-Backbone
-Pretrained weights
-Shared backbone
-Fusion method
-Feature dim per ROI
-Fusion dim
-Fusion head hidden dim
-Fusion head dropout
-Loss
-Class weight rule
-Augmentation
-same_flip_for_all_rois
-例如：
-ROI names: eye_roi, lip_roi, cheek_roi, forehead_roi
-Number of ROIs: 4
-Backbone: resnet34
-Feature dim per ROI: 512
-Fusion dim: 2048
-Fusion method: concat
-Shared backbone: true
-Loss: weighted_cross_entropy
-十二、输出结构
-输出目录：
-E:\projects\face2\experiments\ROI_Fusion_500\MultiROI4_ImageNetResNet34_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-目录结构沿用当前五折实验：
-MultiROI4_ImageNetResNet34_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-├── config.yaml
-├── run_5fold.log
-├── fold_0
-│   ├── checkpoints
-│   ├── logs
-│   ├── predictions
-│   ├── metrics
-│   └── curves
-├── fold_1
-├── fold_2
-├── fold_3
-├── fold_4
-└── summary
-    ├── fold_metrics_all.csv
-    ├── mean_metrics.csv
-    ├── oof_predictions.csv
-    ├── oof_metrics.csv
-    └── summary_report.md
-十三、Smoke Test
-实现后，请做以下检查。
-13.1 Dataset 检查
-临时读取一个样本：
-dataset = NYHA3ClassMultiROIDataset(...)
-images, label, meta = dataset[0]
-print(images.shape)
-print(label)
-print(meta)
-期望：
-torch.Size([4, 3, 224, 224])
-label 为 0/1/2
-meta 中包含 ID、NYHA、fold 等信息
-13.2 Model forward 检查
-model = ConfigurableMultiROIFusionResNet(
-    backbone="resnet34",
-    pretrained="imagenet",
-    num_rois=4,
-    num_classes=3,
-    shared_backbone=True,
-    fusion_method="concat",
-)
-
-x = torch.randn(2, 4, 3, 224, 224)
-y = model(x)
-print(y.shape)
-期望：
-torch.Size([2, 3])
-13.3 ResNet50 检查
-model = ConfigurableMultiROIFusionResNet(
-    backbone="resnet50",
-    pretrained="imagenet",
-    num_rois=4,
-    num_classes=3,
-    shared_backbone=True,
-    fusion_method="concat",
-)
-x = torch.randn(2, 4, 3, 224, 224)
-y = model(x)
-print(y.shape)
-期望：
-torch.Size([2, 3])
-确认不会因为 ResNet50 feature_dim=2048 而维度错误。
-13.4 运行入口检查
-运行：
-python E:\projects\face2\scripts\run\run_exp_roi_fusion_nyha3class_5fold.py --config E:\projects\face2\config\train\roi_fusion\nyha_3class_multiroi_shared_resnet34_concat_weightedce.yaml
-先确认 preflight 能通过并开始训练。
-如果支持单 fold 调试，可以先只跑 fold_0；如果现有框架不支持，则直接完整五折。
-十四、不要做的事情
-本次不要做以下修改：
-不要重新划分数据
-不要切换到 522Data
-不要使用 470Data / 500Data 的非 splits_500 之外划分
-不要修改 label 映射
-不要修改 sex 映射
-不要修改评价指标
-不要修改 WeightedCE 逻辑
-不要加入 label smoothing
-不要加入 focal loss
-不要加入 ColorJitter
-不要加入 random crop
-不要加入 sex 特征
-不要加入 global image
-不要实现 attention fusion
-不要默认使用 independent backbone
-不要写死 ROI 数量为 4
-不要写死 ROI 名称
-不要写死 feature_dim=512
-不要把 ResNet50 融合维度写错
-不要让同一病例的不同 ROI 随机翻转状态不一致
-不要覆盖已有 ROI-only 或 global-only 实验输出目录
-十五、最终目标
-实现完成后，我可以通过配置文件控制 ROI 组合和 backbone。
-第一版运行：
-python E:\projects\face2\scripts\run\run_exp_roi_fusion_nyha3class_5fold.py --config E:\projects\face2\config\train\roi_fusion\nyha_3class_multiroi_shared_resnet34_concat_weightedce.yaml
-完成实验：
-MultiROI4_ImageNetResNet34_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
-该实验应实现：
-eye_roi + lip_roi + cheek_roi + forehead_roi
-shared ResNet34
-concat feature fusion
-WeightedCE
-splits_500
-5-fold training + OOF summary
-后续我可以只改 YAML：
-roi_names
 backbone
-experiment.name
-来运行不同 ROI 组合和不同 ResNet backbone 的融合实验。
+pretrained
+freeze_backbone
+num_classes
+total_params
+trainable_params
+model_class_name
 
-代码实现后，不要直接运行实验，指导我人工运行实验。
+========================================
+六、任务 3：生成多 backbone 配置
+========================================
+
+请新增配置目录：
+
+config/train/model_exploration_imagenet_meanbg/
+
+请新增脚本：
+
+scripts/run/generate_model_exploration_configs.py
+
+功能：
+自动生成本轮 5 个模型配置。
+
+配置模板：
+优先读取当前已有 ResNet18 配置，例如：
+
+config/train/nyha_3class_global224_imagenet_resnet18.yaml
+
+如果该文件不存在，则从其他可用 ResNet 配置复制结构，但必须保持字段完整。
+
+输出 5 个 YAML：
+
+1. nyha_3class_densenet121_imagenet_meanbg.yaml
+2. nyha_3class_efficientnet_b0_imagenet_meanbg.yaml
+3. nyha_3class_convnext_tiny_imagenet_meanbg.yaml
+4. nyha_3class_swin_t_imagenet_meanbg.yaml
+5. nyha_3class_mobilenet_v3_large_imagenet_meanbg.yaml
+
+每个配置统一设置：
+
+experiment.output_dir:
+experiments/model_exploration_500Data
+
+data.split_dir:
+data/processed/splits_500
+
+data.image_root:
+data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+
+data.image_filename_template:
+"{ID}.png"
+
+data.n_folds:
+5
+
+data.image_size:
+224
+
+data.num_classes:
+3
+
+data.label_col:
+label_3class
+
+data.train_csv_pattern:
+fold_{fold}_train.csv
+
+data.val_csv_pattern:
+fold_{fold}_val.csv
+
+model.pretrained:
+imagenet
+
+model.num_classes:
+3
+
+model.freeze_backbone:
+false
+
+train.epochs:
+50
+
+train.optimizer:
+AdamW
+
+train.lr:
+0.0001
+
+train.weight_decay:
+0.0001
+
+train.loss:
+weighted_cross_entropy
+
+train.early_stopping_patience:
+10
+
+train.monitor_metric:
+macro_auc
+
+train.random_seed:
+2026
+
+train.num_workers:
+0
+
+train.pin_memory:
+false
+
+train.use_amp:
+false
+
+每个模型差异字段：
+
+1. densenet121：
+experiment.name = ModelExploration_DenseNet121_ImageNetMeanBG
+model.backbone = densenet121
+train.batch_size = 16
+
+2. efficientnet_b0：
+experiment.name = ModelExploration_EfficientNetB0_ImageNetMeanBG
+model.backbone = efficientnet_b0
+train.batch_size = 16
+
+3. convnext_tiny：
+experiment.name = ModelExploration_ConvNeXtTiny_ImageNetMeanBG
+model.backbone = convnext_tiny
+train.batch_size = 8
+
+4. swin_t：
+experiment.name = ModelExploration_SwinTiny_ImageNetMeanBG
+model.backbone = swin_t
+train.batch_size = 8
+
+5. mobilenet_v3_large：
+experiment.name = ModelExploration_MobileNetV3Large_ImageNetMeanBG
+model.backbone = mobilenet_v3_large
+train.batch_size = 16
+
+生成 manifest：
+
+config/train/model_exploration_imagenet_meanbg/model_exploration_config_manifest.csv
+
+manifest 字段：
+
+job_id
+backbone
+config_path
+image_root
+experiment_name
+output_root
+batch_size
+supported
+status
+error_message
+
+在生成配置前请检查：
+
+1. data/processed/splits_500 是否存在；
+2. data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images 是否存在；
+3. torchvision 是否支持每个 backbone；
+4. scripts/run/run_nyha3class_5fold_with_config.py 是否存在。
+
+如果某模型当前 torchvision 不支持，则 manifest 中 supported=false，status=UNSUPPORTED，不生成对应训练作业，且不要安装新依赖。
+
+========================================
+七、任务 4：批量串行运行多 backbone 五折实验
+========================================
+
+请新增脚本：
+
+scripts/run/run_model_exploration_nyha3class_5fold.py
+
+功能：
+读取：
+
+config/train/model_exploration_imagenet_meanbg/model_exploration_config_manifest.csv
+
+按顺序串行运行支持的模型：
+
+1. densenet121
+2. efficientnet_b0
+3. convnext_tiny
+4. swin_t
+5. mobilenet_v3_large
+
+每个模型调用：
+
+E:/resarch/Anaconda3/envs/face_heart/python.exe scripts/run/run_nyha3class_5fold_with_config.py --config <config_path>
+
+必须使用 subprocess.run 阻塞执行。
+禁止使用非阻塞 Popen 后直接启动下一个任务。
+禁止并行训练多个模型。
+
+脚本参数：
+
+--manifest
+默认：
+config/train/model_exploration_imagenet_meanbg/model_exploration_config_manifest.csv
+
+--only
+可选，只跑指定 backbone，逗号分隔。
+例如：
+--only densenet121,efficientnet_b0,convnext_tiny
+
+--start-from
+从指定 backbone 开始。
+
+--dry-run
+只打印将执行的命令，不真正训练。
+
+--skip-existing
+如果目标实验目录下已有完整 summary 文件，则跳过。
+
+--resume
+跳过 SUCCESS，继续 PENDING、FAILED 或 RUNNING 状态作业。
+
+--rerun-failed
+只重跑 FAILED 作业。
+
+--continue-on-error
+某个作业失败后继续后续作业。
+
+--allow-cpu
+默认不允许 CPU 长时间训练。
+如果 CUDA 不可用且未设置 --allow-cpu，应停止训练并明确提示。
+
+输出根目录：
+
+experiments/model_exploration_500Data/
+
+输出 job queue：
+
+experiments/model_exploration_500Data/model_exploration_job_queue.csv
+
+字段：
+
+job_id
+backbone
+config_path
+image_root
+experiment_name
+status
+start_time
+end_time
+duration_minutes
+output_dir
+exit_code
+error_message
+total_params
+trainable_params
+
+status 取值：
+
+PENDING
+RUNNING
+SUCCESS
+FAILED
+SKIPPED
+UNSUPPORTED
+
+日志目录：
+
+experiments/model_exploration_500Data/logs/
+
+每个模型保存：
+
+<backbone>_stdout.log
+<backbone>_stderr.log
+
+每个作业开始前打印并记录 GPU 信息：
+
+torch.cuda.is_available()
+torch.cuda.device_count()
+torch.cuda.get_device_name(0)
+torch.cuda.memory_allocated()
+torch.cuda.memory_reserved()
+
+如果 CUDA 不可用，输出：
+
+CUDA is not available.
+
+如果未设置 --allow-cpu，则停止训练并标记作业 FAILED，避免静默 CPU 长时间训练。
+
+每个作业训练完成后，必须检查以下文件是否存在：
+
+<output_dir>/<experiment_name>/summary/fold_metrics_all.csv
+<output_dir>/<experiment_name>/summary/mean_metrics.csv
+<output_dir>/<experiment_name>/summary/oof_metrics.csv
+<output_dir>/<experiment_name>/summary/oof_predictions.csv
+<output_dir>/<experiment_name>/summary/summary_report.md
+
+注意：
+具体路径请根据 run_nyha3class_5fold_with_config.py 的实际输出逻辑确定。如果该脚本将 experiment.output_dir 和 experiment.name 拼接为最终实验目录，则按该逻辑检查。
+不要凭空假设路径，先阅读该脚本确认。
+
+如果 summary 文件缺失，不能标记 SUCCESS，应标记 FAILED。
+
+========================================
+八、任务 5：汇总多 backbone 实验结果
+========================================
+
+请新增脚本：
+
+scripts/evaluate/summarize_model_exploration_experiments.py
+
+功能：
+扫描：
+
+experiments/model_exploration_500Data/
+
+读取每个模型实验的：
+
+summary/fold_metrics_all.csv
+summary/mean_metrics.csv
+summary/oof_metrics.csv
+summary/oof_predictions.csv
+summary/summary_report.md
+
+同时读取 ResNet18 meanbg 参考基线：
+
+experiments/preprocess_ablation_500Data/PreprocAblation_ResNet18_NYHA3Class_hybrid_imagenet_meanbg
+
+并将该基线纳入对比。
+
+输出：
+
+experiments/model_exploration_500Data/model_exploration_summary.xlsx
+experiments/model_exploration_500Data/model_exploration_summary.csv
+experiments/model_exploration_500Data/model_exploration_summary.md
+
+xlsx 至少包含以下 sheet：
+
+1. experiment_summary
+
+每个模型一行，字段包括：
+
+backbone
+experiment_name
+output_dir
+batch_size
+total_params
+trainable_params
+macro_auc_mean
+macro_auc_std
+balanced_accuracy_mean
+balanced_accuracy_std
+macro_f1_mean
+macro_f1_std
+macro_recall_mean
+macro_recall_std
+accuracy_mean
+accuracy_std
+severe_vs_rest_auc_mean
+normal_vs_abnormal_auc_mean
+recall_normal_mean
+recall_mild_mean
+recall_severe_mean
+f1_normal_mean
+f1_mild_mean
+f1_severe_mean
+oof_macro_auc
+oof_balanced_accuracy
+oof_macro_f1
+oof_macro_recall
+oof_accuracy
+oof_severe_vs_rest_auc
+oof_normal_vs_abnormal_auc
+
+2. fold_metrics_all
+
+所有模型每折指标长表。
+
+3. oof_metrics_all
+
+所有模型 OOF 指标。
+
+4. delta_vs_resnet18_meanbg
+
+以 ResNet18 + hybrid_imagenet_meanbg 为基线，计算每个模型相对差值：
+
+delta_macro_auc_mean
+delta_balanced_accuracy_mean
+delta_macro_f1_mean
+delta_recall_severe_mean
+delta_f1_severe_mean
+delta_severe_vs_rest_auc_mean
+delta_normal_vs_abnormal_auc_mean
+delta_oof_macro_auc
+delta_oof_balanced_accuracy
+delta_oof_macro_f1
+delta_oof_severe_vs_rest_auc
+delta_oof_normal_vs_abnormal_auc
+
+基线参考值：
+
+macro_auc = 0.7094
+balanced_accuracy = 0.5353
+macro_f1 = 0.5111
+recall_severe = 0.4333
+
+但不要只硬编码这几个值。
+优先从基线目录的 summary/mean_metrics.csv 和 summary/oof_metrics.csv 中读取真实值。
+如果读取失败，再使用上述数值作为 fallback，并在 summary.md 中注明 fallback。
+
+5. ranking
+
+至少按照以下指标分别排名：
+
+rank_by_macro_auc_mean
+rank_by_balanced_accuracy_mean
+rank_by_macro_f1_mean
+rank_by_recall_severe_mean
+rank_by_oof_macro_auc
+rank_by_oof_balanced_accuracy
+rank_by_oof_macro_f1
+
+6. model_complexity
+
+字段：
+
+backbone
+total_params
+trainable_params
+batch_size
+params_vs_resnet18_meanbg
+performance_note
+
+7. recommendation
+
+自动给出每个模型是否进入第二轮调参。
+
+推荐规则：
+
+如果某模型相比 ResNet18 meanbg 满足以下任一条件，则标记为 candidate_for_tuning：
+
+1. macro_auc_mean 下降不超过 0.02，且 balanced_accuracy_mean 提升 >= 0.02；
+2. macro_auc_mean 下降不超过 0.02，且 macro_f1_mean 提升 >= 0.02；
+3. severe recall 提升，且 macro_f1_mean 和 balanced_accuracy_mean 不明显下降；
+4. oof_macro_f1 或 oof_balanced_accuracy 明显优于 ResNet18 meanbg。
+
+如果模型 severe recall 很高，但 macro_f1 和 balanced_accuracy 明显下降，则标记为 high_severe_recall_but_unbalanced，不推荐作为主模型。
+
+如果模型总体指标接近 ResNet18 meanbg，但参数明显更少，例如 MobileNetV3-Large，则标记为 lightweight_candidate。
+
+如果模型 macro_auc、BA、macro-F1 均下降，则标记为 not_recommended。
+
+summary.md 内容必须包括：
+
+1. 实验目的；
+2. 固定变量说明；
+3. 模型清单；
+4. 与 ResNet18 meanbg 的对比；
+5. 哪个模型 macro-AUC 最好；
+6. 哪个模型 balanced accuracy 最好；
+7. 哪个模型 macro-F1 最好；
+8. 哪个模型 severe recall 最好；
+9. 哪些模型推荐进入第二轮调参；
+10. 如果所有模型均未明显优于 ResNet18，则说明：
+   当前性能瓶颈可能不主要来自 backbone，而可能来自 mild/severe 标签边界、类别不平衡、样本量、决策阈值或 ROI 信息融合不足。
+11. 下一步建议：
+   - top 2 模型做 lr/weight_decay/dropout/label smoothing 轻量调参；
+   - 对 top 模型做混淆矩阵和 OOF 阈值扫描；
+   - 若 backbone 改进有限，则转向 ordinal classification、two-stage classification 或 ROI/global fusion。
+
+========================================
+九、任务 6：总控脚本
+========================================
+
+请新增总控脚本：
+
+scripts/run/run_model_exploration_pipeline.py
+
+功能：
+按顺序执行：
+
+1. generate_model_exploration_configs.py
+2. run_model_exploration_nyha3class_5fold.py
+3. summarize_model_exploration_experiments.py
+
+参数：
+
+--skip-config-generation
+--skip-training
+--skip-summary
+--dry-run
+--only
+--start-from
+--resume
+--rerun-failed
+--skip-existing
+--continue-on-error
+--allow-cpu
+
+输出日志：
+
+experiments/model_exploration_500Data/model_exploration_pipeline_log.txt
+experiments/model_exploration_500Data/model_exploration_pipeline_status.json
+
+每个阶段记录：
+
+stage_name
+command
+start_time
+end_time
+duration_minutes
+status
+return_code
+error_message
+
+如果 --dry-run：
+只打印将执行的命令，不真正训练。
+
+如果 --only densenet121,efficientnet_b0,convnext_tiny：
+只运行这三个模型。
+
+========================================
+十、兼容性与安全检查
+========================================
+
+实现时请先阅读以下文件：
+
+scripts/train/train_nyha_3class_5fold.py
+scripts/run/run_nyha3class_5fold_with_config.py
+models/resnet_nyha_3class.py
+datasets/nyha_3class_face_dataset.py
+metrics/classification_metrics.py
+losses/classification_losses.py
+config/train/nyha_3class_global224_imagenet_resnet18.yaml
+
+在修改前先确认：
+
+1. run_nyha3class_5fold_with_config.py 的实际 config 读取逻辑；
+2. experiment.output_dir 和 experiment.name 如何组合为最终输出目录；
+3. train 脚本 _build_model(config) 的实际位置；
+4. 当前 metrics 文件中指标字段命名；
+5. mean_metrics.csv 和 oof_metrics.csv 的字段命名；
+6. 是否已有类似 model factory，避免重复冲突。
+
+不得破坏旧 ResNet 训练。
+
+请完成后做兼容性 smoke test：
+
+1. 构建 resnet18：
+调用 build_nyha_classification_model("resnet18", num_classes=3, pretrained=False)，确认可正常 forward。
+
+2. 构建 densenet121：
+确认可正常 forward。
+
+3. 构建 efficientnet_b0：
+确认可正常 forward。
+
+4. 构建 convnext_tiny：
+确认可正常 forward。
+
+5. 构建 swin_t：
+确认可正常 forward。
+
+6. 构建 mobilenet_v3_large：
+确认可正常 forward。
+
+forward 输入：
+
+torch.randn(2, 3, 224, 224)
+
+输出 shape 必须是：
+
+[2, 3]
+
+请新增或使用简单测试脚本：
+
+scripts/run/smoke_test_backbone_factory.py
+
+输出每个 backbone：
+
+backbone
+status
+output_shape
+total_params
+trainable_params
+error_message
+
+========================================
+十一、测试命令
+========================================
+
+请在实现完成后执行或至少给出以下测试命令。
+
+进入项目根目录：
+
+cd /d E:\projects\face2
+
+语法检查：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile models\nyha_backbone_factory.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\train\train_nyha_3class_5fold.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\run\generate_model_exploration_configs.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\run\run_model_exploration_nyha3class_5fold.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\evaluate\summarize_model_exploration_experiments.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\run\run_model_exploration_pipeline.py
+E:\resarch\Anaconda3\envs\face_heart\python.exe -m py_compile scripts\run\smoke_test_backbone_factory.py
+
+模型工厂 smoke test：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\smoke_test_backbone_factory.py
+
+生成配置：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\generate_model_exploration_configs.py
+
+检查 manifest：
+
+config\train\model_exploration_imagenet_meanbg\model_exploration_config_manifest.csv
+
+dry-run 批量训练：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --dry-run
+
+只 dry-run 前三个模型：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --only densenet121,efficientnet_b0,convnext_tiny --dry-run
+
+正式只跑前三个模型：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --only densenet121,efficientnet_b0,convnext_tiny --continue-on-error
+
+正式跑全部五个模型：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --continue-on-error
+
+断点续跑：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --resume --continue-on-error
+
+只重跑失败：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_nyha3class_5fold.py --rerun-failed --continue-on-error
+
+汇总结果：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\evaluate\summarize_model_exploration_experiments.py
+
+一键 dry-run：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_pipeline.py --dry-run
+
+一键正式运行前三个模型：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_pipeline.py --only densenet121,efficientnet_b0,convnext_tiny --continue-on-error
+
+一键正式运行全部模型：
+
+E:\resarch\Anaconda3\envs\face_heart\python.exe scripts\run\run_model_exploration_pipeline.py --continue-on-error
+
+========================================
+十二、最终交付说明
+========================================
+
+实现完成后，请汇报：
+
+1. 新增了哪些文件；
+2. 修改了哪些旧文件；
+3. 是否保持 ResNet 旧配置兼容；
+4. 是否新增 models/nyha_backbone_factory.py；
+5. 每个 backbone 的分类头如何替换；
+6. 是否通过 smoke_test_backbone_factory.py；
+7. 生成了哪些 YAML 配置；
+8. manifest 路径；
+9. 如何只运行前三个模型；
+10. 如何运行全部模型；
+11. 如何断点续跑；
+12. 如何只重跑失败；
+13. 汇总结果输出在哪里；
+14. 如何查看 model_exploration_summary.xlsx 和 model_exploration_summary.md；
+15. 哪些模型进入第二轮调参；
+16. 如果没有模型明显优于 ResNet18 meanbg，请明确说明可能的研究解释。
+
+注意：
+本轮实验是模型架构消融，不要把结论写成最终临床模型结论。
+所有指标应继续按 5-fold mean ± std 和 OOF 两套结果同时报告。
+如果模型结果只提高 severe recall 但 BA/macro-F1 下降，不推荐作为主模型。
+如果模型 BA/macro-F1 提升且 severe recall 不下降，推荐进入第二轮调参。

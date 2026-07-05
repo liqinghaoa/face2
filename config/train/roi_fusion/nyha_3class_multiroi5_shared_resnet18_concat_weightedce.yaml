@@ -1,10 +1,16 @@
 experiment:
-  name: Global224_ImageNetResNet18_NYHA3Class_WeightedCE_5Fold
-  output_dir: experiments/500Data
+  name: MultiROI5_ImageNetResNet18_SharedBackbone_ConcatFusion_NYHA3Class_WeightedCE_5Fold
+  output_dir: experiments/ROI_Fusion_500
 
 data:
   split_dir: data/processed/splits_500
-  image_root: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict/images
+  roi_root: data/processed/roi_dataset/manual_shift_data
+  roi_names:
+    - eye_roi
+    - lip_roi
+    - cheek_roi
+    - forehead_roi
+    - chin_roi
   image_filename_template: "{ID}.png"
   n_folds: 5
   image_size: 224
@@ -14,10 +20,21 @@ data:
   val_csv_pattern: fold_{fold}_val.csv
 
 model:
+  type: multi_roi_fusion
   backbone: resnet18
   pretrained: imagenet
+  shared_backbone: true
+  fusion_method: concat
   num_classes: 3
   freeze_backbone: false
+  fusion_head:
+    hidden_dim: 512
+    dropout: 0.3
+    use_batchnorm: true
+
+loss:
+  name: weighted_cross_entropy
+  class_weight: true
 
 train:
   batch_size: 16
@@ -25,7 +42,6 @@ train:
   optimizer: AdamW
   lr: 0.0001
   weight_decay: 0.0001
-  loss: weighted_cross_entropy
   early_stopping_patience: 10
   monitor_metric: macro_auc
   random_seed: 2026
@@ -35,6 +51,7 @@ train:
 
 augmentation:
   horizontal_flip: true
+  same_flip_for_all_rois: true
   color_jitter: false
   random_crop: false
 

@@ -36,6 +36,7 @@ class NYHA3ClassTrainer:
         use_amp: bool = False,
         fold: int | None = None,
         config: dict[str, Any] | None = None,
+        resume_from: str | Path | None = None,
     ) -> None:
         self.model = model.to(device)
         self.criterion = criterion
@@ -47,6 +48,7 @@ class NYHA3ClassTrainer:
         self.use_amp = bool(use_amp and device.type == "cuda")
         self.fold = fold
         self.config = config or {}
+        self.resume_from = Path(resume_from) if resume_from is not None else None
 
         self.checkpoint_dir = self.output_dir / "checkpoints"
         self.log_dir = self.output_dir / "logs"
@@ -157,12 +159,73 @@ class NYHA3ClassTrainer:
         plt.savefig(self.curve_dir / "metrics_curve.png", dpi=160)
         plt.close()
 
+    def _load_resume_state(self) -> tuple[int, float, int, list[dict[str, float | int]]]:
+        if self.resume_from is None:
+            return 1, float("-inf"), 0, []
+        if not self.resume_from.is_file():
+            raise FileNotFoundError(f"Resume checkpoint does not exist: {self.resume_from}")
+
+        checkpoint_path = self.resume_from
+        try:
+            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        except Exception as error:
+            fallback_path = checkpoint_path.with_name("best_macro_auc.pth")
+            if checkpoint_path.name != "last.pth" or not fallback_path.is_file():
+                raise
+            LOGGER.warning(
+                "Failed to load resume checkpoint %s (%s). Falling back to %s.",
+                checkpoint_path,
+                error,
+                fallback_path,
+            )
+            checkpoint_path = fallback_path
+            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        self.model.load_state_dict(checkpoint["model_state_dict"])
+        self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+
+        completed_epoch = int(checkpoint.get("epoch", 0))
+        best_macro_auc = float(checkpoint.get("best_macro_auc", float("-inf")))
+        history_path = self.log_dir / "train_log.csv"
+        records: list[dict[str, float | int]] = []
+        if history_path.is_file():
+            history = pd.read_csv(history_path)
+            history = history[pd.to_numeric(history["epoch"], errors="coerce") <= completed_epoch]
+            records = history.to_dict("records")
+            if "val_macro_auc" in history and not history.empty:
+                best_macro_auc = float(pd.to_numeric(history["val_macro_auc"]).max())
+                best_epoch = int(
+                    history.loc[
+                        pd.to_numeric(history["val_macro_auc"]).idxmax(), "epoch"
+                    ]
+                )
+                epochs_without_improvement = max(completed_epoch - best_epoch, 0)
+            else:
+                epochs_without_improvement = 0
+        else:
+            epochs_without_improvement = 0
+
+        start_epoch = completed_epoch + 1
+        LOGGER.info(
+            "Resuming fold=%s from %s at epoch=%d with best_macro_auc=%s "
+            "and patience=%d/%d",
+            self.fold,
+            checkpoint_path,
+            start_epoch,
+            f"{best_macro_auc:.4f}" if math.isfinite(best_macro_auc) else "unavailable",
+            epochs_without_improvement,
+            self.patience,
+        )
+        return start_epoch, best_macro_auc, epochs_without_improvement, records
+
     def fit(
         self, train_loader: DataLoader, val_loader: DataLoader
     ) -> pd.DataFrame:
-        best_macro_auc = float("-inf")
-        epochs_without_improvement = 0
-        records: list[dict[str, float | int]] = []
+        (
+            start_epoch,
+            best_macro_auc,
+            epochs_without_improvement,
+            records,
+        ) = self._load_resume_state()
 
         LOGGER.info(
             "Starting fold=%s on device=%s, AMP=%s",
@@ -170,7 +233,17 @@ class NYHA3ClassTrainer:
             self.device,
             self.use_amp,
         )
-        for epoch in range(1, self.epochs + 1):
+        if start_epoch > self.epochs:
+            LOGGER.info(
+                "Fold=%s already reached configured epochs=%d; skipping training loop.",
+                self.fold,
+                self.epochs,
+            )
+            history = pd.DataFrame(records)
+            self._save_curves(history)
+            return history
+
+        for epoch in range(start_epoch, self.epochs + 1):
             train_loss = self._train_epoch(train_loader)
             val_loss, val_metrics = self._validate(val_loader)
             macro_auc = float(val_metrics["macro_auc"])
