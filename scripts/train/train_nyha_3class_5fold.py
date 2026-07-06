@@ -31,7 +31,10 @@ from losses.classification_losses import (  # noqa: E402
     build_criterion,
     compute_class_weights,
 )
-from models.resnet_nyha_3class import build_resnet_nyha_model  # noqa: E402
+from models.nyha_backbone_factory import (  # noqa: E402
+    build_nyha_classification_model,
+    count_parameters,
+)
 from models.multi_roi_fusion_nyha_3class import (  # noqa: E402
     ConfigurableMultiROIFusionResNet,
 )
@@ -96,7 +99,7 @@ def parse_args() -> argparse.Namespace:
 def _pretrained_enabled(value: object) -> bool:
     if isinstance(value, bool):
         return value
-    return str(value).lower() in {"imagenet", "true", "yes", "1"}
+    return str(value).lower() in {"imagenet", "default", "true", "yes", "1"}
 
 
 def _resolve_loss_settings(config: dict) -> dict:
@@ -232,11 +235,35 @@ def _build_model(config: dict) -> torch.nn.Module:
             use_batchnorm=bool(fusion_head.get("use_batchnorm", True)),
             freeze_backbone=bool(model_config.get("freeze_backbone", False)),
         )
-    return build_resnet_nyha_model(
-        backbone=model_config["backbone"],
+    return build_nyha_classification_model(
+        backbone=str(model_config["backbone"]),
         num_classes=int(model_config["num_classes"]),
-        pretrained=_pretrained_enabled(model_config["pretrained"]),
+        pretrained=_pretrained_enabled(model_config.get("pretrained", True)),
+        freeze_backbone=bool(model_config.get("freeze_backbone", False)),
+        dropout=model_config.get("dropout", None),
     )
+
+
+def _write_model_summary(
+    experiment_dir: Path,
+    model: torch.nn.Module,
+    config: dict,
+) -> dict[str, int]:
+    model_config = config["model"]
+    parameter_counts = count_parameters(model)
+    lines = [
+        f"backbone: {model_config.get('backbone')}",
+        f"pretrained: {model_config.get('pretrained')}",
+        f"freeze_backbone: {bool(model_config.get('freeze_backbone', False))}",
+        f"num_classes: {model_config.get('num_classes')}",
+        f"total_params: {parameter_counts['total_params']}",
+        f"trainable_params: {parameter_counts['trainable_params']}",
+        f"model_class_name: {model.__class__.__name__}",
+    ]
+    (experiment_dir / "model_summary.txt").write_text(
+        "\n".join(lines) + "\n", encoding="utf-8"
+    )
+    return parameter_counts
 
 
 def main() -> Path:
@@ -368,6 +395,12 @@ def main() -> Path:
         )
 
         model = _build_model(config)
+        parameter_counts = _write_model_summary(experiment_dir, model, config)
+        LOGGER.info(
+            "Model parameters: total=%d, trainable=%d",
+            parameter_counts["total_params"],
+            parameter_counts["trainable_params"],
+        )
         class_weights = compute_class_weights(
             train_dataset.labels, int(config["data"]["num_classes"])
         )
