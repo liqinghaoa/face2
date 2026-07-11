@@ -1,0 +1,47 @@
+experiment:
+  name: ROI_Chin_ImageNetResNet34_NYHA3Class_WeightedCE_5Fold_raw
+  output_dir: experiments/ROI_500
+
+data:
+  split_dir: data/processed/splits_500
+  image_root: data/processed/roi_dataset/manual_shift_data//chin_roi
+  image_filename_template: "{ID}.png"
+  n_folds: 5
+  image_size: 224
+  num_classes: 3
+  label_col: label_3class
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+
+model:
+  backbone: resnet34
+  pretrained: imagenet
+  num_classes: 3
+  freeze_backbone: false
+
+train:
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  loss: weighted_cross_entropy
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  random_seed: 2026
+  num_workers: 0
+  pin_memory: false
+  use_amp: false
+
+augmentation:
+  horizontal_flip: true
+  color_jitter: false
+  random_crop: false
+
+normalize:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+metrics:
+  main: [macro_auc, accuracy, macro_precision, macro_recall, macro_f1, balanced_accuracy]
+  auxiliary: [per_class_auc, per_class_precision, per_class_recall, per_class_f1, severe_vs_rest_auc, normal_vs_abnormal_auc, confusion_matrix]

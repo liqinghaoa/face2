@@ -1,0 +1,3 @@
+﻿job_id,experiment_key,config_path,experiment_name,output_root,backbone,lr,loss_name,label_smoothing,batch_size,status,error_message
+01_lr5e5,lr5e5,config/train/swin_tiny_second_stage/swin_tiny_imagenet_meanbg_lr5e5.yaml,SwinTiny_ImageNetMeanBG_LR5e5_WeightedCE_5Fold,experiments/swin_tiny_second_stage_500Data,swin_t,5e-05,weighted_cross_entropy,,8,PENDING,
+02_ls005,ls005,config/train/swin_tiny_second_stage/swin_tiny_imagenet_meanbg_weightedsoftce_ls005.yaml,SwinTiny_ImageNetMeanBG_WeightedSoftCE_LS005_5Fold,experiments/swin_tiny_second_stage_500Data,swin_t,0.0001,weighted_soft_cross_entropy,0.05,8,PENDING,
