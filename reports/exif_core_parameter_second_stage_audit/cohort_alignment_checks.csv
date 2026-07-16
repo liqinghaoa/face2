@@ -1,0 +1,21 @@
+﻿check,status,detail
+exif_unique_id,PASS,"rows=522, unique=522"
+full_split_unique_id,PASS,"rows=522, unique=522"
+formal_split_unique_id,PASS,"rows=500, unique=500"
+exif_equals_full_split,PASS,"exif_only=0, split_only=0"
+formal_subset_of_full,PASS,formal_not_full=0
+formal_has_exif,PASS,formal_without_exif=0
+formal_metadata_agreement,PASS,"patient_group_id, NYHA, SEX and label_3class compared for all formal IDs"
+full_patient_group_no_cross_fold,PASS,leaking_groups=[]
+full_nyha_mapping,PASS,mismatch_ids=[]
+full_group_sex_consistency,PASS,conflicting_groups=[]
+formal_patient_group_no_cross_fold,PASS,leaking_groups=[]
+formal_nyha_mapping,PASS,mismatch_ids=[]
+formal_group_sex_consistency,PASS,conflicting_groups=[]
+formal_config_points_to_splits_500,PASS,E:\projects\face2\config\train\preprocess_ablation_resnet18\nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg.yaml
+formal_config_points_to_meanbg,PASS,E:\projects\face2\data\processed\global_face\preprocess_ablation\hybrid_imagenet_meanbg\images
+formal_meanbg_images_available,PASS,missing_n=0; IDs=[]
+aligned_rgb_available_for_full_queue,PASS,missing_n=0; IDs=[]
+parsing_label_available_for_full_queue,PASS,missing_n=0; IDs=[]
+core_exif_values_complete_and_positive,PASS,valid_n=522/522; invalid_IDs=[]
+no_conflicting_duplicate_core_or_aux_tags,PASS,conflicts=[]

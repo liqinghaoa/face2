@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "manifest_rows": 500,
+  "unique_ids": 500,
+  "mask_counts": {
+    "forehead": 500,
+    "cheek_image_left": 500,
+    "cheek_image_right": 500
+  },
+  "total_mask_count": 1500,
+  "empty_counts": {
+    "forehead": 0,
+    "cheek_image_left": 0,
+    "cheek_image_right": 0
+  },
+  "nonfinite_exif_derived_count": 0,
+  "historical_input_inventory_before_sha256": "134f2e8cbbc06c18838f8edeb21520e85d653925b36dbdcdba128c069ed5305c",
+  "historical_input_inventory_after_sha256": "134f2e8cbbc06c18838f8edeb21520e85d653925b36dbdcdba128c069ed5305c",
+  "historical_inputs_unchanged": true
+}

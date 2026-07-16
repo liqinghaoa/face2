@@ -1,0 +1,45 @@
+# Stage 2A: label-free EXIF/device-conditioned regional optical calibration.
+project_root: .
+task: optical_condition_calibration_stage2a
+method: acquisition-conditioned optical calibration using fixed multi-output Ridge
+
+first_stage_csv: data/processed/optical_observations_v1/regional_optical_observations.csv
+first_stage_schema: data/processed/optical_observations_v1/feature_schema.json
+first_stage_manifest: data/processed/optical_observations_v1/extraction_manifest.json
+
+split_dir: data/processed/splits_500
+train_csv_pattern: fold_{fold}_train.csv
+val_csv_pattern: fold_{fold}_val.csv
+n_folds: 5
+
+experiment_output_dir: experiments/optical_condition_calibration_stage2a
+report_output_dir: reports/optical_condition_calibration_stage2a
+
+reference_camera: HONOR/BVL-AN00
+camera_mapping:
+  HONOR/BVL-AN00: 0
+  Xiaomi/M2006J10C: 1
+
+condition_names:
+  - relative_optical_exposure
+  - log2_iso_condition
+design_feature_names:
+  - camera_xiaomi
+  - z_relative_optical_exposure
+  - z_log2_iso_condition
+  - camera_xiaomi_x_z_exposure
+  - camera_xiaomi_x_z_iso
+cheek_targets:
+  - cheek_mean_log2_y
+  - cheek_mean_log2_rg
+  - cheek_mean_log2_bg
+forehead_cheek_targets:
+  - forehead_minus_cheek_log2_y
+  - forehead_minus_cheek_log2_rg
+  - forehead_minus_cheek_log2_bg
+
+alpha: 1.0
+fit_intercept: true
+penalize_intercept: false
+std_epsilon: 1.0e-8
+overwrite: false

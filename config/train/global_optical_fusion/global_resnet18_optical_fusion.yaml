@@ -1,0 +1,91 @@
+experiment:
+  name: GlobalResNet18_OpticalFusion_NYHA3Class_5Fold
+  output_root: experiments/global_resnet18_optical_fusion
+  variants:
+    - global_only
+    - global_mask
+    - global_raw
+    - global_stage2a
+    - global_stage2b
+
+data:
+  image_root: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+  image_filename_template: "{ID}.png"
+  label_path: data/raw/label_raw_nyha2_remove22_sex_balanced_500.csv
+  split_root: data/processed/splits_500
+  master_split: data/processed/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+  folds: [0, 1, 2, 3, 4]
+  expected_num_samples: 500
+  expected_patient_groups: 483
+  expected_multi_image_patient_groups: 17
+  expected_class_counts: [115, 237, 148]
+
+features:
+  raw_source: data/processed/optical_observations_v1/regional_optical_observations.csv
+  raw_schema: data/processed/optical_observations_v1/feature_schema.json
+  raw_manifest: data/processed/optical_observations_v1/extraction_manifest.json
+  stage2a_root: experiments/optical_condition_calibration_stage2a
+  stage2a_schema: experiments/optical_condition_calibration_stage2a/summary/calibration_feature_schema.json
+  stage2a_manifest: experiments/optical_condition_calibration_stage2a/summary/run_manifest.json
+  stage2a_oof: experiments/optical_condition_calibration_stage2a/summary/oof_calibrated_features.csv
+  stage2b_root: experiments/optical_condition_calibration_stage2b
+  stage2b_schema: experiments/optical_condition_calibration_stage2b/summary/calibration_stage2b_feature_schema.json
+  stage2b_manifest: experiments/optical_condition_calibration_stage2b/summary/run_manifest.json
+  stage2b_oof: experiments/optical_condition_calibration_stage2b/summary/oof_nn_calibrated_features.csv
+  forbid_oof_as_classifier_input: true
+  strict_positive_allowlist: true
+
+model:
+  backbone: resnet18
+  pretrained: imagenet
+  num_classes: 3
+  global_feature_dim: 512
+  direct_concat: true
+  freeze_backbone: false
+
+train:
+  device: auto
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  scheduler: none
+  warmup: none
+  gradient_clipping: none
+  loss: weighted_cross_entropy
+  label_smoothing: 0
+  amp: false
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  monitor_mode: max
+  minimum_improvement: 0
+  tie_breaking: earlier_epoch
+  seed: 2026
+  num_workers: 0
+  pin_memory: false
+
+transforms:
+  image_size: 224
+  resize: [224, 224]
+  horizontal_flip_probability: 0.5
+  imagenet_normalization: true
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  color_jitter: false
+  random_crop: false
+
+feature_standardization:
+  ddof: 0
+  std_epsilon: 1.0e-8
+  missing_fill_after_standardization: 0
+  train_only: true
+
+summary:
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 2026
+  bootstrap_minimum_valid_repetitions: 1900
+  bootstrap_ci: [0.025, 0.975]
+  expected_oof_rows: 500

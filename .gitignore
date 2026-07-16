@@ -25,6 +25,8 @@ env/
 
 # Data and generated datasets
 data/
+!scripts/data/
+!scripts/data/**/*.py
 data.zip
 *.zip
 *.rar

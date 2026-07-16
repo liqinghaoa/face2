@@ -1,0 +1,379 @@
+﻿cohort,outcome,comparison_context,camera_id,variable,test,n,statistic,p_value,effect_name,effect_size,distribution_overlap_min,p_fdr_bh
+all_exif_522,NYHA_3class,raw_overall,ALL,ExposureTime,Kruskal-Wallis,522,53.97233707122654,1.9057060699749583e-12,epsilon_squared,0.10013937778656366,0.6834900117508813,3.0491297119599332e-12
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,ExposureTime,Spearman,522,-0.29904878814055696,3.029275318340928e-12,spearman_rho,-0.29904878814055696,,4.846840509345485e-12
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,ExposureTime,Mann-Whitney U,522,26927.0,8.445128814476157e-05,rank_biserial_male_minus_female,-0.19737097038615736,0.8593975885658077,0.000270244122063237
+all_exif_522,NYHA_3class,raw_overall,ALL,FNumber,Kruskal-Wallis,522,170.29760900368066,1.0479584508101136e-37,epsilon_squared,0.3242728497180745,0.2702702702702703,5.589111737653939e-37
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,FNumber,Spearman,522,0.4636712079716232,3.482889184800718e-29,spearman_rho,0.4636712079716232,,1.857540898560383e-28
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,FNumber,Mann-Whitney U,522,38356.0,0.0013007312308916444,rank_biserial_male_minus_female,0.14329999850962039,0.8587865329299373,0.0020314937606829763
+all_exif_522,NYHA_3class,raw_overall,ALL,ISOSpeedRatings,Kruskal-Wallis,522,36.37137345345292,1.264901201092117e-08,epsilon_squared,0.06622615308950466,0.6508309551787812,1.556801478267221e-08
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,ISOSpeedRatings,Spearman,522,0.19341367349639904,8.567758295266534e-06,spearman_rho,0.19341367349639904,,1.0544933286481888e-05
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,ISOSpeedRatings,Mann-Whitney U,522,29949.5,0.03519760787425599,rank_biserial_male_minus_female,-0.10727752358525722,0.87188696961116,0.03754411506587306
+all_exif_522,NYHA_3class,raw_overall,ALL,BrightnessValue,Kruskal-Wallis,522,148.42222743517726,5.895529496323155e-33,epsilon_squared,0.28212375228357855,0.28378378378378377,2.358211798529262e-32
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,BrightnessValue,Spearman,522,-0.42804043828251215,1.137961224521605e-24,spearman_rho,-0.42804043828251215,,4.55184489808642e-24
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,BrightnessValue,Mann-Whitney U,522,31554.5,0.2436968374320747,rank_biserial_male_minus_female,-0.05943633843539953,0.8464909012325439,0.2436968374320747
+all_exif_522,NYHA_3class,raw_overall,ALL,log2_exposure_time,Kruskal-Wallis,522,53.97233707122654,1.9057060699749583e-12,epsilon_squared,0.10013937778656366,0.6767332549941246,3.0491297119599332e-12
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,log2_exposure_time,Spearman,522,-0.29904878814055696,3.029275318340928e-12,spearman_rho,-0.29904878814055696,,4.846840509345485e-12
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,log2_exposure_time,Mann-Whitney U,522,26927.0,8.445128814476157e-05,rank_biserial_male_minus_female,-0.19737097038615736,0.8546283738468188,0.000270244122063237
+all_exif_522,NYHA_3class,raw_overall,ALL,log2_iso_gain,Kruskal-Wallis,522,36.37137345345292,1.264901201092117e-08,epsilon_squared,0.06622615308950466,0.6643612556656036,1.556801478267221e-08
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,log2_iso_gain,Spearman,522,0.19341367349639904,8.567758295266534e-06,spearman_rho,0.19341367349639904,,1.0544933286481888e-05
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,log2_iso_gain,Mann-Whitney U,522,29949.5,0.03519760787425599,rank_biserial_male_minus_female,-0.10727752358525722,0.8648523779006513,0.03754411506587306
+all_exif_522,NYHA_3class,raw_overall,ALL,log2_fnumber,Kruskal-Wallis,522,170.29760900368066,1.0479584508101136e-37,epsilon_squared,0.3242728497180745,0.2702702702702703,5.589111737653939e-37
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,log2_fnumber,Spearman,522,0.4636712079716232,3.482889184800718e-29,spearman_rho,0.4636712079716232,,1.857540898560383e-28
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,log2_fnumber,Mann-Whitney U,522,38356.0,0.0013007312308916444,rank_biserial_male_minus_female,0.14329999850962039,0.8587865329299373,0.0020314937606829763
+all_exif_522,NYHA_3class,raw_overall,ALL,aperture_value_from_f,Kruskal-Wallis,522,170.29760900368066,1.0479584508101136e-37,epsilon_squared,0.3242728497180745,0.2702702702702703,5.589111737653939e-37
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,aperture_value_from_f,Spearman,522,0.4636712079716232,3.482889184800718e-29,spearman_rho,0.4636712079716232,,1.857540898560383e-28
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,aperture_value_from_f,Mann-Whitney U,522,38356.0,0.0013007312308916444,rank_biserial_male_minus_female,0.14329999850962039,0.8587865329299373,0.0020314937606829763
+all_exif_522,NYHA_3class,raw_overall,ALL,time_value_from_t,Kruskal-Wallis,522,53.97233707122654,1.9057060699749583e-12,epsilon_squared,0.10013937778656366,0.6767332549941246,3.0491297119599332e-12
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,time_value_from_t,Spearman,522,0.29904878814055696,3.029275318340928e-12,spearman_rho,0.29904878814055696,,4.846840509345485e-12
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,time_value_from_t,Mann-Whitney U,522,40170.0,8.445128814476157e-05,rank_biserial_male_minus_female,0.19737097038615725,0.8546283738468188,0.000270244122063237
+all_exif_522,NYHA_3class,raw_overall,ALL,EV100,Kruskal-Wallis,522,63.10882704128574,1.977389976175236e-14,epsilon_squared,0.11774340470382609,0.6767332549941246,4.519748516971968e-14
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,EV100,Spearman,522,0.31793374597452345,1.0035087418689668e-13,spearman_rho,0.31793374597452345,,2.293734267129067e-13
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,EV100,Mann-Whitney U,522,40652.0,2.4808295242953997e-05,rank_biserial_male_minus_female,0.21173822972711154,0.8546283738468188,0.00019846636194363197
+all_exif_522,NYHA_3class,raw_overall,ALL,relative_optical_exposure,Kruskal-Wallis,522,63.10882704128574,1.977389976175236e-14,epsilon_squared,0.11774340470382609,0.6767332549941246,4.519748516971968e-14
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,relative_optical_exposure,Spearman,522,-0.31793374597452345,1.0035087418689668e-13,spearman_rho,-0.31793374597452345,,2.293734267129067e-13
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,relative_optical_exposure,Mann-Whitney U,522,26445.0,2.4808295242953997e-05,rank_biserial_male_minus_female,-0.21173822972711154,0.8546283738468188,0.00019846636194363197
+all_exif_522,NYHA_3class,raw_overall,ALL,combined_exposure_gain,Kruskal-Wallis,522,3.7485199504202,0.15346849532381138,epsilon_squared,0.0033690172455109824,0.7619607184824576,0.1535337911918798
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,combined_exposure_gain,Spearman,522,0.016242209129955762,0.7112142896633818,spearman_rho,0.016242209129955762,,0.7112142896633818
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,combined_exposure_gain,Mann-Whitney U,522,27502.0,0.00040574086850912294,rank_biserial_male_minus_female,-0.18023160498979085,0.8554778902186386,0.0009408365667677389
+all_exif_522,NYHA_3class,raw_overall,ALL,sensitivity_value,Kruskal-Wallis,522,36.37137345345292,1.264901201092117e-08,epsilon_squared,0.06622615308950466,0.6643612556656036,1.556801478267221e-08
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,sensitivity_value,Spearman,522,0.19341367349639904,8.567758295266534e-06,spearman_rho,0.19341367349639904,,1.0544933286481888e-05
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,sensitivity_value,Mann-Whitney U,522,29949.5,0.03519760787425599,rank_biserial_male_minus_female,-0.10727752358525722,0.8648523779006513,0.03754411506587306
+all_exif_522,NYHA_3class,raw_overall,ALL,brightness_apex_pred,Kruskal-Wallis,522,3.747669196247726,0.1535337911918798,epsilon_squared,0.0033673780274522665,0.7619607184824576,0.1535337911918798
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,brightness_apex_pred,Spearman,522,-0.01625156482632955,0.7110553932236654,spearman_rho,-0.01625156482632955,,0.7112142896633818
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,brightness_apex_pred,Mann-Whitney U,522,39588.5,0.00041161599796088575,rank_biserial_male_minus_female,0.18003785564183206,0.8554778902186386,0.0009408365667677389
+all_exif_522,NYHA_3class,raw_overall,ALL,brightness_residual,Kruskal-Wallis,522,131.37359477814798,2.968837041916285e-29,epsilon_squared,0.24927474909084388,0.27027027027027023,9.500278534132112e-29
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,brightness_residual,Spearman,522,-0.4095896979751025,1.5540824794239142e-22,spearman_rho,-0.4095896979751025,,4.973063934156526e-22
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,brightness_residual,Mann-Whitney U,522,29198.0,0.010965914006165284,rank_biserial_male_minus_female,-0.12967792896850827,0.8388601576821617,0.014621218674887046
+all_exif_522,NYHA_3class,raw_overall,ALL,device_centered_brightness,Kruskal-Wallis,522,4.531812263340574,0.10373599347140273,epsilon_squared,0.004878250989095518,0.7986234681886856,0.11855542111017456
+all_exif_522,NYHA_ordered_exploratory,raw_overall,ALL,device_centered_brightness,Spearman,522,-0.04081409116230868,0.35203725772811234,spearman_rho,-0.04081409116230868,,0.4023282945464141
+all_exif_522,SEX_male_vs_female,raw_overall,ALL,device_centered_brightness,Mann-Whitney U,522,39013.0,0.0013966519604695462,rank_biserial_male_minus_female,0.16288358644946865,0.8389644842541396,0.0020314937606829763
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,ExposureTime,Kruskal-Wallis,283,,,epsilon_squared,,0.893968253968254,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,ExposureTime,Spearman,283,-0.07825938721107172,0.18927937125256974,spearman_rho,-0.07825938721107172,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,ExposureTime,Mann-Whitney U,283,8333.5,0.09673869746569663,rank_biserial_male_minus_female,-0.11166186973670189,0.8519347617524784,0.12898492995426217
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,FNumber,Kruskal-Wallis,283,,,epsilon_squared,,0.9464021164021165,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,FNumber,Spearman,283,-0.12921212676745472,0.02976663884866675,spearman_rho,-0.12921212676745472,,0.15875540719288933
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,FNumber,Mann-Whitney U,283,9451.0,0.76506958874413,rank_biserial_male_minus_female,0.007461891056390613,0.9925381089436094,0.76506958874413
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Kruskal-Wallis,283,,,epsilon_squared,,0.8621693121693121,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Spearman,283,-0.02792249571899207,0.6399696056269106,spearman_rho,-0.02792249571899207,,0.6399696056269106
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Mann-Whitney U,283,7943.0,0.03013434504527557,rank_biserial_male_minus_female,-0.15328856198699503,0.8423942010446648,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,BrightnessValue,Kruskal-Wallis,283,,,epsilon_squared,,0.8103703703703702,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,BrightnessValue,Spearman,283,0.06433079328813693,0.28079321176559496,spearman_rho,0.06433079328813693,,0.4084264898408654
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,BrightnessValue,Mann-Whitney U,283,10801.0,0.03315026320128766,rank_biserial_male_minus_female,0.15136979000106598,0.8613154247947981,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_exposure_time,Kruskal-Wallis,283,,,epsilon_squared,,0.8768253968253968,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_exposure_time,Spearman,283,-0.07825938721107172,0.18927937125256974,spearman_rho,-0.07825938721107172,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_exposure_time,Mann-Whitney U,283,8333.5,0.09673869746569663,rank_biserial_male_minus_female,-0.11166186973670189,0.8595032512525316,0.12898492995426217
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_iso_gain,Kruskal-Wallis,283,,,epsilon_squared,,0.8325925925925926,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_iso_gain,Spearman,283,-0.02792249571899207,0.6399696056269106,spearman_rho,-0.02792249571899207,,0.6399696056269106
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_iso_gain,Mann-Whitney U,283,7943.0,0.03013434504527557,rank_biserial_male_minus_female,-0.15328856198699503,0.8479373201151262,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_fnumber,Kruskal-Wallis,283,,,epsilon_squared,,0.9464021164021165,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_fnumber,Spearman,283,-0.12921212676745472,0.02976663884866675,spearman_rho,-0.12921212676745472,,0.15875540719288933
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_fnumber,Mann-Whitney U,283,9451.0,0.76506958874413,rank_biserial_male_minus_female,0.007461891056390613,0.9925381089436094,0.76506958874413
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Kruskal-Wallis,283,,,epsilon_squared,,0.9464021164021165,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Spearman,283,-0.12921212676745472,0.02976663884866675,spearman_rho,-0.12921212676745472,,0.15875540719288933
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Mann-Whitney U,283,9451.0,0.76506958874413,rank_biserial_male_minus_female,0.007461891056390613,0.9925381089436094,0.76506958874413
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,time_value_from_t,Kruskal-Wallis,283,,,epsilon_squared,,0.8768253968253968,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,time_value_from_t,Spearman,283,0.07825938721107172,0.18927937125256974,spearman_rho,0.07825938721107172,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,time_value_from_t,Mann-Whitney U,283,10428.5,0.09673869746569663,rank_biserial_male_minus_female,0.11166186973670178,0.8595032512525317,0.12898492995426217
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,EV100,Kruskal-Wallis,283,,,epsilon_squared,,0.8646031746031746,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,EV100,Spearman,283,0.07765510954829405,0.19272947141397573,spearman_rho,0.07765510954829405,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,EV100,Mann-Whitney U,283,10467.5,0.08547243912038287,rank_biserial_male_minus_female,0.11581920903954801,0.8444195714742565,0.12898492995426217
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Kruskal-Wallis,283,,,epsilon_squared,,0.8646031746031746,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Spearman,283,-0.07765510954829405,0.19272947141397573,spearman_rho,-0.07765510954829405,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Mann-Whitney U,283,8294.5,0.08547243912038287,rank_biserial_male_minus_female,-0.11581920903954801,0.8444195714742564,0.12898492995426217
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Kruskal-Wallis,283,,,epsilon_squared,,0.8777777777777778,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Spearman,283,-0.05782043518868813,0.33244727389335904,spearman_rho,-0.05782043518868813,,0.4096229100421158
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Mann-Whitney U,283,7808.0,0.0181238909921094,rank_biserial_male_minus_female,-0.16767935188146255,0.8575311800447714,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,sensitivity_value,Kruskal-Wallis,283,,,epsilon_squared,,0.8325925925925926,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,sensitivity_value,Spearman,283,-0.02792249571899207,0.6399696056269106,spearman_rho,-0.02792249571899207,,0.6399696056269106
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,sensitivity_value,Mann-Whitney U,283,7943.0,0.03013434504527557,rank_biserial_male_minus_female,-0.15328856198699503,0.8479373201151262,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Kruskal-Wallis,283,,,epsilon_squared,,0.8777777777777778,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Spearman,283,0.0577761157808317,0.3328186144092191,spearman_rho,0.0577761157808317,,0.4096229100421158
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Mann-Whitney U,283,10947.5,0.018606614476294206,rank_biserial_male_minus_female,0.16698646199765488,0.8575311800447712,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,brightness_residual,Kruskal-Wallis,283,,,epsilon_squared,,0.8718518518518519,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,brightness_residual,Spearman,283,0.0808493768317447,0.17500418283930516,spearman_rho,0.0808493768317447,,0.34263017140262353
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,brightness_residual,Mann-Whitney U,283,8808.5,0.3906574019585447,rank_biserial_male_minus_female,-0.06102760899690862,0.8257648438332801,0.48080911010282423
+all_exif_522,NYHA_3class,within_camera,HONOR/BVL-AN00,device_centered_brightness,Kruskal-Wallis,283,,,epsilon_squared,,0.8103703703703702,
+all_exif_522,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,device_centered_brightness,Spearman,283,0.06433079328813693,0.28079321176559496,spearman_rho,0.06433079328813693,,0.4084264898408654
+all_exif_522,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,device_centered_brightness,Mann-Whitney U,283,10801.0,0.03315026320128766,rank_biserial_male_minus_female,0.15136979000106598,0.8613154247947981,0.0757720301743718
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,ExposureTime,Kruskal-Wallis,239,6.179167620474168,0.04552089579357013,epsilon_squared,0.01770833737489054,0.8089026915113872,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,ExposureTime,Spearman,239,0.14314120661493537,0.026917342251380212,spearman_rho,0.14314120661493537,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,ExposureTime,Mann-Whitney U,239,5703.5,0.003910871057050819,rank_biserial_male_minus_female,-0.2005186431174657,0.8254835996635829,0.010168264748332129
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,FNumber,Kruskal-Wallis,239,,,epsilon_squared,,1.0,
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,FNumber,Mann-Whitney U,239,,,rank_biserial_male_minus_female,,1.0,
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Kruskal-Wallis,239,6.3186168443747475,0.04245509192975514,epsilon_squared,0.01829922391684215,0.6945652173913044,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Spearman,239,0.14230891220138295,0.027827078676788606,spearman_rho,0.14230891220138295,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Mann-Whitney U,239,5969.0,0.029258703155442812,rank_biserial_male_minus_female,-0.16330249509391648,0.7789458929072048,0.03169692841839638
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,BrightnessValue,Kruskal-Wallis,239,4.468038571062221,0.10709711005230471,epsilon_squared,0.010457790555348392,0.6978260869565218,0.11602186922333009
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,BrightnessValue,Spearman,239,-0.13199630265025764,0.0414655721605284,spearman_rho,-0.13199630265025764,,0.0449210365072391
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,BrightnessValue,Mann-Whitney U,239,8439.5,0.014526812629573421,rank_biserial_male_minus_female,0.1829969161760583,0.808242220353238,0.02098317379827272
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Kruskal-Wallis,239,6.179167620474168,0.04552089579357013,epsilon_squared,0.01770833737489054,0.8056935817805383,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Spearman,239,0.14314120661493537,0.026917342251380212,spearman_rho,0.14314120661493537,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Mann-Whitney U,239,5703.5,0.003910871057050819,rank_biserial_male_minus_female,-0.2005186431174657,0.8254835996635829,0.010168264748332129
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Kruskal-Wallis,239,6.3186168443747475,0.04245509192975514,epsilon_squared,0.01829922391684215,0.7250000000000001,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Spearman,239,0.14230891220138295,0.027827078676788606,spearman_rho,0.14230891220138295,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Mann-Whitney U,239,5969.0,0.029258703155442812,rank_biserial_male_minus_female,-0.16330249509391648,0.8023549201009252,0.03169692841839638
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_fnumber,Kruskal-Wallis,239,,,epsilon_squared,,1.0,
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_fnumber,Mann-Whitney U,239,,,rank_biserial_male_minus_female,,1.0,
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,aperture_value_from_f,Kruskal-Wallis,239,,,epsilon_squared,,1.0,
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,aperture_value_from_f,Mann-Whitney U,239,,,rank_biserial_male_minus_female,,1.0,
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,time_value_from_t,Kruskal-Wallis,239,6.179167620474168,0.04552089579357013,epsilon_squared,0.01770833737489054,0.8056935817805383,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,time_value_from_t,Spearman,239,-0.14314120661493537,0.026917342251380212,spearman_rho,-0.14314120661493537,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,time_value_from_t,Mann-Whitney U,239,8564.5,0.003910871057050819,rank_biserial_male_minus_female,0.2005186431174657,0.8254835996635829,0.010168264748332129
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,EV100,Kruskal-Wallis,239,6.179167620474168,0.04552089579357013,epsilon_squared,0.01770833737489054,0.8056935817805383,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,EV100,Spearman,239,-0.14314120661493537,0.026917342251380212,spearman_rho,-0.14314120661493537,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,EV100,Mann-Whitney U,239,8564.5,0.003910871057050819,rank_biserial_male_minus_female,0.2005186431174657,0.8254835996635829,0.010168264748332129
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Kruskal-Wallis,239,6.179167620474168,0.04552089579357013,epsilon_squared,0.01770833737489054,0.8056935817805383,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Spearman,239,0.14314120661493537,0.026917342251380212,spearman_rho,0.14314120661493537,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Mann-Whitney U,239,5703.5,0.003910871057050819,rank_biserial_male_minus_female,-0.2005186431174657,0.8254835996635829,0.010168264748332129
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Kruskal-Wallis,239,7.009055610990105,0.0300609646156942,epsilon_squared,0.02122481191097502,0.7152173913043477,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Spearman,239,0.1506211288827841,0.01982495768411537,spearman_rho,0.1506211288827841,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Mann-Whitney U,239,5749.0,0.009547354482386925,rank_biserial_male_minus_female,-0.1941407345107934,0.7624053826745164,0.017730801181575717
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,sensitivity_value,Kruskal-Wallis,239,6.3186168443747475,0.04245509192975514,epsilon_squared,0.01829922391684215,0.7250000000000001,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,sensitivity_value,Spearman,239,0.14230891220138295,0.027827078676788606,spearman_rho,0.14230891220138295,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,sensitivity_value,Mann-Whitney U,239,5969.0,0.029258703155442812,rank_biserial_male_minus_female,-0.16330249509391648,0.8023549201009252,0.03169692841839638
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Kruskal-Wallis,239,7.009055610990105,0.0300609646156942,epsilon_squared,0.02122481191097502,0.7152173913043476,0.059177164531641166
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Spearman,239,-0.1506211288827841,0.01982495768411537,spearman_rho,-0.1506211288827841,,0.03617520227982519
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Mann-Whitney U,239,8519.0,0.009547354482386925,rank_biserial_male_minus_female,0.19414073451079328,0.7624053826745165,0.017730801181575717
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,brightness_residual,Kruskal-Wallis,239,2.290751163689198,0.31810442110617715,epsilon_squared,0.0012319964563101608,0.7043478260869566,0.31810442110617715
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,brightness_residual,Spearman,239,-0.040389817332577155,0.5343421181443246,spearman_rho,-0.040389817332577155,,0.5343421181443246
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,brightness_residual,Mann-Whitney U,239,8093.5,0.07261413744719386,rank_biserial_male_minus_female,0.13449677600224286,0.7856041491449397,0.07261413744719386
+all_exif_522,NYHA_3class,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Kruskal-Wallis,239,4.468038571062221,0.10709711005230471,epsilon_squared,0.010457790555348392,0.6978260869565218,0.11602186922333009
+all_exif_522,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Spearman,239,-0.13199630265025764,0.0414655721605284,spearman_rho,-0.13199630265025764,,0.0449210365072391
+all_exif_522,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Mann-Whitney U,239,8439.5,0.014526812629573421,rank_biserial_male_minus_female,0.1829969161760583,0.808242220353238,0.02098317379827272
+all_exif_522,NYHA_3class,device_adjusted,ALL,ExposureTime,Kruskal-Wallis,522,5.024798598486356,0.08107348614489143,epsilon_squared,0.005828128320782959,0.4132197414806111,0.1297175778318263
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,ExposureTime,Spearman,522,-0.0960450425326645,0.028222049299029994,spearman_rho,-0.0960450425326645,,0.09031055775689598
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,ExposureTime,Mann-Whitney U,522,27301.0,0.00020659806930528325,rank_biserial_male_minus_female,-0.18622293098052078,0.844329850813002,0.0006704589143382356
+all_exif_522,NYHA_3class,device_adjusted,ALL,FNumber,Kruskal-Wallis,522,8.80215478083154,0.012264119537751986,epsilon_squared,0.013106271254010675,0.9575289575289575,0.06540863753467725
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,FNumber,Spearman,522,0.0005077399613601961,0.9907665369040981,spearman_rho,0.0005077399613601961,,0.9907665369040981
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,FNumber,Mann-Whitney U,522,33878.5,0.4579081250323195,rank_biserial_male_minus_female,0.009836505357914582,0.9901634946420854,0.4579081250323195
+all_exif_522,NYHA_3class,device_adjusted,ALL,ISOSpeedRatings,Kruskal-Wallis,522,1.2496976635806571,0.5353423491470048,epsilon_squared,0.0,0.572502937720329,0.5710318390901385
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,ISOSpeedRatings,Spearman,522,0.006436145721816568,0.8833706504876615,spearman_rho,0.006436145721816568,,0.9907665369040981
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,ISOSpeedRatings,Mann-Whitney U,522,28275.5,0.0020293964378529,rank_biserial_male_minus_female,-0.15717543258267885,0.8428245674173211,0.0027058619171372
+all_exif_522,NYHA_3class,device_adjusted,ALL,BrightnessValue,Kruskal-Wallis,522,4.405402823961551,0.11050423731905441,epsilon_squared,0.004634687522083914,0.772502937720329,0.14733898309207255
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,BrightnessValue,Spearman,522,-0.036133924414412266,0.4100229366152961,spearman_rho,-0.036133924414412266,,0.7289296650938597
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,BrightnessValue,Mann-Whitney U,522,38927.5,0.0016588727162727241,rank_biserial_male_minus_female,0.1603350373340089,0.8223020403296719,0.002682430790354281
+all_exif_522,NYHA_3class,device_adjusted,ALL,log2_exposure_time,Kruskal-Wallis,522,5.230607708577468,0.0731455597269446,epsilon_squared,0.006224677665852539,0.29729729729729737,0.1297175778318263
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,log2_exposure_time,Spearman,522,-0.09834537398787545,0.024640599206944423,spearman_rho,-0.09834537398787545,,0.09031055775689598
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,log2_exposure_time,Mann-Whitney U,522,27307.0,0.00020951841073069865,rank_biserial_male_minus_female,-0.18604408542855866,0.8398140006259593,0.0006704589143382356
+all_exif_522,NYHA_3class,device_adjusted,ALL,log2_iso_gain,Kruskal-Wallis,522,2.5513146538309424,0.2792473510798353,epsilon_squared,0.0010622633021790796,0.7820379385596776,0.319139829805526
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,log2_iso_gain,Spearman,522,0.02671741823626109,0.5424801847027063,spearman_rho,0.02671741823626109,,0.7890620868403001
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,log2_iso_gain,Mann-Whitney U,522,28204.0,0.001761769240992776,rank_biserial_male_minus_female,-0.15930667541022703,0.855925004098544,0.002682430790354281
+all_exif_522,NYHA_3class,device_adjusted,ALL,log2_fnumber,Kruskal-Wallis,522,8.80215478083154,0.012264119537751986,epsilon_squared,0.013106271254010675,0.9575289575289575,0.06540863753467725
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,log2_fnumber,Spearman,522,0.0005077399613601961,0.9907665369040981,spearman_rho,0.0005077399613601961,,0.9907665369040981
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,log2_fnumber,Mann-Whitney U,522,33878.5,0.4579081250323195,rank_biserial_male_minus_female,0.009836505357914582,0.9901634946420854,0.4579081250323195
+all_exif_522,NYHA_3class,device_adjusted,ALL,aperture_value_from_f,Kruskal-Wallis,522,8.80215478083154,0.012264119537751986,epsilon_squared,0.013106271254010675,0.9575289575289575,0.06540863753467725
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,aperture_value_from_f,Spearman,522,0.0005077399613601961,0.9907665369040981,spearman_rho,0.0005077399613601961,,0.9907665369040981
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,aperture_value_from_f,Mann-Whitney U,522,33878.5,0.4579081250323195,rank_biserial_male_minus_female,0.009836505357914582,0.9901634946420854,0.4579081250323195
+all_exif_522,NYHA_3class,device_adjusted,ALL,time_value_from_t,Kruskal-Wallis,522,5.230607708577468,0.0731455597269446,epsilon_squared,0.006224677665852539,0.2972972972972973,0.1297175778318263
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,time_value_from_t,Spearman,522,0.09834537398787545,0.024640599206944423,spearman_rho,0.09834537398787545,,0.09031055775689598
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,time_value_from_t,Mann-Whitney U,522,39790.0,0.00020951841073069865,rank_biserial_male_minus_female,0.18604408542855855,0.8398140006259595,0.0006704589143382356
+all_exif_522,NYHA_3class,device_adjusted,ALL,EV100,Kruskal-Wallis,522,5.215877268777242,0.07368628168275275,epsilon_squared,0.006196295315563087,0.2972972972972973,0.1297175778318263
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,EV100,Spearman,522,0.09822557613647548,0.024816925723434816,spearman_rho,0.09822557613647548,,0.09031055775689598
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,EV100,Mann-Whitney U,522,39829.0,0.00019187868929944568,rank_biserial_male_minus_female,0.1872065815163122,0.8398140006259595,0.0006704589143382356
+all_exif_522,NYHA_3class,device_adjusted,ALL,relative_optical_exposure,Kruskal-Wallis,522,5.215877268777242,0.07368628168275275,epsilon_squared,0.006196295315563087,0.29729729729729737,0.1297175778318263
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,relative_optical_exposure,Spearman,522,-0.09822557613647548,0.024816925723434816,spearman_rho,-0.09822557613647548,,0.09031055775689598
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,relative_optical_exposure,Mann-Whitney U,522,27268.0,0.00019187868929944568,rank_biserial_male_minus_female,-0.1872065815163122,0.8398140006259593,0.0006704589143382356
+all_exif_522,NYHA_3class,device_adjusted,ALL,combined_exposure_gain,Kruskal-Wallis,522,6.691341031072285,0.035236580560111135,epsilon_squared,0.009039192738096887,0.7426556991774382,0.11280444636377432
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,combined_exposure_gain,Spearman,522,0.04359803724768284,0.320133722466867,spearman_rho,0.04359803724768284,,0.7040745154562247
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,combined_exposure_gain,Mann-Whitney U,522,27777.0,0.0007368317486133194,rank_biserial_male_minus_female,-0.17203451719152874,0.8548221231947777,0.0017075916325340601
+all_exif_522,NYHA_3class,device_adjusted,ALL,sensitivity_value,Kruskal-Wallis,522,2.740672527111052,0.2540215270078279,epsilon_squared,0.0014271146957823742,0.7820379385596776,0.3126418793942497
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,sensitivity_value,Spearman,522,0.029077654375815595,0.5073984391939149,spearman_rho,0.029077654375815595,,0.7890620868403001
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,sensitivity_value,Mann-Whitney U,522,28227.0,0.0018441711683685684,rank_biserial_male_minus_female,-0.1586211007943723,0.855925004098544,0.002682430790354281
+all_exif_522,NYHA_3class,device_adjusted,ALL,brightness_apex_pred,Kruskal-Wallis,522,6.690500664764333,0.03525138948867947,epsilon_squared,0.009037573535191393,0.7426556991774382,0.11280444636377432
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,brightness_apex_pred,Spearman,522,-0.04360741262958087,0.3200295705337725,spearman_rho,-0.04360741262958087,,0.7040745154562247
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,brightness_apex_pred,Mann-Whitney U,522,39313.5,0.0007470713392336513,rank_biserial_male_minus_female,0.17184076784356983,0.8548221231947777,0.0017075916325340601
+all_exif_522,NYHA_3class,device_adjusted,ALL,brightness_residual,Kruskal-Wallis,522,0.18168600436166993,0.9131610639414991,epsilon_squared,0.0,0.6462397179788484,0.9131610639414991
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,brightness_residual,Spearman,522,-0.005460549950233079,0.9009504563828693,spearman_rho,-0.005460549950233079,,0.9907665369040981
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,brightness_residual,Mann-Whitney U,522,34968.5,0.40648674320148004,rank_biserial_male_minus_female,0.042326780631026795,0.8636451704249072,0.4579081250323195
+all_exif_522,NYHA_3class,device_adjusted,ALL,device_centered_brightness,Kruskal-Wallis,522,4.531812263340574,0.10373599347140273,epsilon_squared,0.004878250989095518,0.7986234681886856,0.14733898309207255
+all_exif_522,NYHA_ordered_exploratory,device_adjusted,ALL,device_centered_brightness,Spearman,522,-0.04081409116230868,0.35203725772811234,spearman_rho,-0.04081409116230868,,0.7040745154562247
+all_exif_522,SEX_male_vs_female,device_adjusted,ALL,device_centered_brightness,Mann-Whitney U,522,39013.0,0.0013966519604695462,rank_biserial_male_minus_female,0.16288358644946865,0.8389644842541396,0.002682430790354281
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,ExposureTime,Kruskal-Wallis,500,53.08196831083626,2.9743840052824873e-12,epsilon_squared,0.10278062034373493,0.6834900117508813,4.759014408451979e-12
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,ExposureTime,Spearman,500,-0.30571936050516835,2.809131198299273e-12,spearman_rho,-0.30571936050516835,,4.494609917278837e-12
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,ExposureTime,Mann-Whitney U,500,24420.5,6.221572031938559e-05,rank_biserial_male_minus_female,-0.20552736027067475,0.8513891599973973,0.00019909030502203388
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,FNumber,Kruskal-Wallis,500,166.89851121312273,5.733882263594258e-37,epsilon_squared,0.33178774891976404,0.2702702702702703,3.058070540583604e-36
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,FNumber,Spearman,500,0.47399644532850216,2.2707973017064608e-29,spearman_rho,0.47399644532850216,,1.2110918942434457e-28
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,FNumber,Mann-Whitney U,500,35395.0,0.0008980712463070036,rank_biserial_male_minus_female,0.15150627887305612,0.8502505042618258,0.0013894659764974353
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,ISOSpeedRatings,Kruskal-Wallis,500,33.791329393465524,4.5952173091763135e-08,epsilon_squared,0.0639664575321238,0.6435516419005687,5.655652072832386e-08
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,ISOSpeedRatings,Spearman,500,0.19897250857470888,7.362658432118215e-06,spearman_rho,0.19897250857470888,,9.061733454914727e-06
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,ISOSpeedRatings,Mann-Whitney U,500,27136.5,0.02447915819507047,rank_biserial_male_minus_female,-0.11716767519031812,0.8548051272041122,0.026111102074741835
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,BrightnessValue,Kruskal-Wallis,500,142.30131532365647,1.257945986047462e-31,epsilon_squared,0.2822964091019245,0.28378378378378377,5.031783944189848e-31
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,BrightnessValue,Spearman,500,-0.43559386716706194,1.4374689987802434e-24,spearman_rho,-0.43559386716706194,,5.7498759951209734e-24
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,BrightnessValue,Mann-Whitney U,500,28865.0,0.24246205276754018,rank_biserial_male_minus_female,-0.06093434836358902,0.8377252911705382,0.24246205276754018
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,log2_exposure_time,Kruskal-Wallis,500,53.08196831083626,2.9743840052824873e-12,epsilon_squared,0.10278062034373493,0.6767332549941246,4.759014408451979e-12
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,log2_exposure_time,Spearman,500,-0.30571936050516835,2.809131198299273e-12,spearman_rho,-0.30571936050516835,,4.494609917278837e-12
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,log2_exposure_time,Mann-Whitney U,500,24420.5,6.221572031938559e-05,rank_biserial_male_minus_female,-0.20552736027067475,0.8436788340165268,0.00019909030502203388
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,log2_iso_gain,Kruskal-Wallis,500,33.791329393465524,4.5952173091763135e-08,epsilon_squared,0.0639664575321238,0.6739130434782609,5.655652072832386e-08
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,log2_iso_gain,Spearman,500,0.19897250857470888,7.362658432118215e-06,spearman_rho,0.19897250857470888,,9.061733454914727e-06
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,log2_iso_gain,Mann-Whitney U,500,27136.5,0.02447915819507047,rank_biserial_male_minus_female,-0.11716767519031812,0.8571800377383044,0.026111102074741835
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,log2_fnumber,Kruskal-Wallis,500,166.89851121312273,5.733882263594258e-37,epsilon_squared,0.33178774891976404,0.2702702702702703,3.058070540583604e-36
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,log2_fnumber,Spearman,500,0.47399644532850216,2.2707973017064608e-29,spearman_rho,0.47399644532850216,,1.2110918942434457e-28
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,log2_fnumber,Mann-Whitney U,500,35395.0,0.0008980712463070036,rank_biserial_male_minus_female,0.15150627887305612,0.8502505042618258,0.0013894659764974353
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,aperture_value_from_f,Kruskal-Wallis,500,166.89851121312273,5.733882263594258e-37,epsilon_squared,0.33178774891976404,0.2702702702702703,3.058070540583604e-36
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,aperture_value_from_f,Spearman,500,0.47399644532850216,2.2707973017064608e-29,spearman_rho,0.47399644532850216,,1.2110918942434457e-28
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,aperture_value_from_f,Mann-Whitney U,500,35395.0,0.0008980712463070036,rank_biserial_male_minus_female,0.15150627887305612,0.8502505042618258,0.0013894659764974353
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,time_value_from_t,Kruskal-Wallis,500,53.08196831083626,2.9743840052824873e-12,epsilon_squared,0.10278062034373493,0.6767332549941246,4.759014408451979e-12
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,time_value_from_t,Spearman,500,0.30571936050516835,2.809131198299273e-12,spearman_rho,0.30571936050516835,,4.494609917278837e-12
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,time_value_from_t,Mann-Whitney U,500,37055.5,6.221572031938559e-05,rank_biserial_male_minus_female,0.20552736027067464,0.8436788340165268,0.00019909030502203388
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,EV100,Kruskal-Wallis,500,62.47214592423291,2.718603528422048e-14,epsilon_squared,0.12167433787572014,0.6767332549941246,6.213950922107539e-14
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,EV100,Spearman,500,0.32558316231647455,8.239773989436736e-14,spearman_rho,0.32558316231647455,,1.8833769118712538e-13
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,EV100,Mann-Whitney U,500,37545.5,1.604790836420003e-05,rank_biserial_male_minus_female,0.22146854056867715,0.8436788340165268,0.00012838326691360025
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,relative_optical_exposure,Kruskal-Wallis,500,62.47214592423291,2.718603528422048e-14,epsilon_squared,0.12167433787572014,0.6767332549941246,6.213950922107539e-14
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,relative_optical_exposure,Spearman,500,-0.32558316231647455,8.239773989436736e-14,spearman_rho,-0.32558316231647455,,1.8833769118712538e-13
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,relative_optical_exposure,Mann-Whitney U,500,23930.5,1.604790836420003e-05,rank_biserial_male_minus_female,-0.22146854056867715,0.8436788340165268,0.00012838326691360025
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,combined_exposure_gain,Kruskal-Wallis,500,3.20393715252007,0.20149946024979878,epsilon_squared,0.0024224087575856544,0.7746468537882957,0.20149946024979878
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,combined_exposure_gain,Spearman,500,0.017561677624687647,0.695251511980875,spearman_rho,0.017561677624687647,,0.6954159311474859
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,combined_exposure_gain,Mann-Whitney U,500,24810.5,0.00021526839898493828,rank_biserial_male_minus_female,-0.19283948207430546,0.8373348949183421,0.0005011924407475938
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,sensitivity_value,Kruskal-Wallis,500,33.791329393465524,4.5952173091763135e-08,epsilon_squared,0.0639664575321238,0.6739130434782609,5.655652072832386e-08
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,sensitivity_value,Spearman,500,0.19897250857470888,7.362658432118215e-06,spearman_rho,0.19897250857470888,,9.061733454914727e-06
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,sensitivity_value,Mann-Whitney U,500,27136.5,0.02447915819507047,rank_biserial_male_minus_female,-0.11716767519031812,0.8571800377383044,0.026111102074741835
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,brightness_apex_pred,Kruskal-Wallis,500,3.204767638946061,0.20141580633606979,epsilon_squared,0.002424079756430706,0.7746468537882957,0.20149946024979878
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,brightness_apex_pred,Spearman,500,-0.01755170476826259,0.6954159311474859,spearman_rho,-0.01755170476826259,,0.6954159311474859
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,brightness_apex_pred,Mann-Whitney U,500,36658.0,0.0002192716928270723,rank_biserial_male_minus_female,0.19259548441668284,0.8373348949183421,0.0005011924407475938
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,brightness_residual,Kruskal-Wallis,500,127.77477880693496,1.7949787803993012e-28,epsilon_squared,0.25306796540630777,0.27027027027027023,5.743932097277764e-28
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,brightness_residual,Spearman,500,-0.42177539944304704,5.508876041939508e-23,spearman_rho,-0.42177539944304704,,1.7628403334206425e-22
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,brightness_residual,Mann-Whitney U,500,26445.5,0.007383101299792974,rank_biserial_male_minus_female,-0.1396479927126033,0.8293968377903571,0.009844135066390631
+formal_global_meanbg_500,NYHA_3class,raw_overall,ALL,device_centered_brightness,Kruskal-Wallis,500,3.7495634577106376,0.15338844346244115,epsilon_squared,0.0035202484058564137,0.7874151531829022,0.1753010782427899
+formal_global_meanbg_500,NYHA_ordered_exploratory,raw_overall,ALL,device_centered_brightness,Spearman,500,-0.043288032611807206,0.3340541779785361,spearman_rho,-0.043288032611807206,,0.3817762034040412
+formal_global_meanbg_500,SEX_male_vs_female,raw_overall,ALL,device_centered_brightness,Mann-Whitney U,500,36030.5,0.0009552578588419867,rank_biserial_male_minus_female,0.1721810137289348,0.827119526319214,0.0013894659764974353
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,ExposureTime,Kruskal-Wallis,267,,,epsilon_squared,,0.8780573025856045,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,ExposureTime,Spearman,267,-0.08434573003097079,0.16937828301132032,spearman_rho,-0.08434573003097079,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,ExposureTime,Mann-Whitney U,267,7242.0,0.07145655691764818,rank_biserial_male_minus_female,-0.1254679386547518,0.8450066417099383,0.09527540922353091
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,FNumber,Kruskal-Wallis,267,,,epsilon_squared,,0.9400768693221524,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,FNumber,Spearman,267,-0.1419528844180686,0.02031875578473985,spearman_rho,-0.1419528844180686,,0.10836669751861254
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,FNumber,Mann-Whitney U,267,8335.0,0.8063509554864592,rank_biserial_male_minus_female,0.006520951575896605,0.9934790484241034,0.8063509554864592
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Kruskal-Wallis,267,,,epsilon_squared,,0.8411949685534591,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Spearman,267,-0.03537754070363076,0.5649249329072056,spearman_rho,-0.03537754070363076,,0.5649249329072056
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,ISOSpeedRatings,Mann-Whitney U,267,6739.5,0.01087327113049906,rank_biserial_male_minus_female,-0.1861490158193455,0.7945900253592562,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,BrightnessValue,Kruskal-Wallis,267,,,epsilon_squared,,0.8043326345213138,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,BrightnessValue,Spearman,267,0.07371251957617972,0.2299626123851468,spearman_rho,0.07371251957617972,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,BrightnessValue,Mann-Whitney U,267,9778.5,0.01383718649842056,rank_biserial_male_minus_female,0.18083564786861483,0.8333534597270861,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_exposure_time,Kruskal-Wallis,267,,,epsilon_squared,,0.8588399720475192,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_exposure_time,Spearman,267,-0.08434573003097079,0.16937828301132032,spearman_rho,-0.08434573003097079,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_exposure_time,Mann-Whitney U,267,7242.0,0.07145655691764818,rank_biserial_male_minus_female,-0.1254679386547518,0.8535804854486174,0.09527540922353091
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_iso_gain,Kruskal-Wallis,267,,,epsilon_squared,,0.8109713487071978,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_iso_gain,Spearman,267,-0.03537754070363076,0.5649249329072056,spearman_rho,-0.03537754070363076,,0.5649249329072056
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_iso_gain,Mann-Whitney U,267,6739.5,0.01087327113049906,rank_biserial_male_minus_female,-0.1861490158193455,0.8005071851225697,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,log2_fnumber,Kruskal-Wallis,267,,,epsilon_squared,,0.9400768693221524,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,log2_fnumber,Spearman,267,-0.1419528844180686,0.02031875578473985,spearman_rho,-0.1419528844180686,,0.10836669751861254
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,log2_fnumber,Mann-Whitney U,267,8335.0,0.8063509554864592,rank_biserial_male_minus_female,0.006520951575896605,0.9934790484241034,0.8063509554864592
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Kruskal-Wallis,267,,,epsilon_squared,,0.9400768693221524,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Spearman,267,-0.1419528844180686,0.02031875578473985,spearman_rho,-0.1419528844180686,,0.10836669751861254
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,aperture_value_from_f,Mann-Whitney U,267,8335.0,0.8063509554864592,rank_biserial_male_minus_female,0.006520951575896605,0.9934790484241034,0.8063509554864592
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,time_value_from_t,Kruskal-Wallis,267,,,epsilon_squared,,0.8588399720475192,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,time_value_from_t,Spearman,267,0.08434573003097079,0.16937828301132032,spearman_rho,0.08434573003097079,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,time_value_from_t,Mann-Whitney U,267,9320.0,0.07145655691764818,rank_biserial_male_minus_female,0.12546793865475192,0.8535804854486173,0.09527540922353091
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,EV100,Kruskal-Wallis,267,,,epsilon_squared,,0.84958071278826,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,EV100,Spearman,267,0.08320806147936385,0.17522527561639872,spearman_rho,0.08320806147936385,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,EV100,Mann-Whitney U,267,9355.0,0.06287420457652283,rank_biserial_male_minus_female,0.1296944813428329,0.8390894819466248,0.09527540922353091
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Kruskal-Wallis,267,,,epsilon_squared,,0.8495807127882599,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Spearman,267,-0.08320806147936385,0.17522527561639872,spearman_rho,-0.08320806147936385,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,relative_optical_exposure,Mann-Whitney U,267,7207.0,0.06287420457652283,rank_biserial_male_minus_female,-0.129694481342833,0.8390894819466248,0.09527540922353091
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Kruskal-Wallis,267,,,epsilon_squared,,0.8752620545073375,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Spearman,267,-0.06865987048154631,0.263580838193068,spearman_rho,-0.06865987048154631,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,combined_exposure_gain,Mann-Whitney U,267,6620.0,0.006254798825482362,rank_biserial_male_minus_female,-0.20057964014007967,0.8294891921265548,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,sensitivity_value,Kruskal-Wallis,267,,,epsilon_squared,,0.8109713487071978,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,sensitivity_value,Spearman,267,-0.03537754070363076,0.5649249329072056,spearman_rho,-0.03537754070363076,,0.5649249329072056
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,sensitivity_value,Mann-Whitney U,267,6739.5,0.01087327113049906,rank_biserial_male_minus_female,-0.1861490158193455,0.8005071851225697,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Kruskal-Wallis,267,,,epsilon_squared,,0.8752620545073375,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Spearman,267,0.06870995482404521,0.26323186189812586,spearman_rho,0.06870995482404521,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,brightness_apex_pred,Mann-Whitney U,267,9934.5,0.006492995952433737,rank_biserial_male_minus_female,0.19967395242120523,0.8294891921265548,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,brightness_residual,Kruskal-Wallis,267,,,epsilon_squared,,0.8574423480083857,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,brightness_residual,Spearman,267,0.07341709978471353,0.2318405812589093,spearman_rho,0.07341709978471353,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,brightness_residual,Mann-Whitney U,267,7605.0,0.26668702029257507,rank_biserial_male_minus_female,-0.08163265306122447,0.8756188866078976,0.32823017882163086
+formal_global_meanbg_500,NYHA_3class,within_camera,HONOR/BVL-AN00,device_centered_brightness,Kruskal-Wallis,267,,,epsilon_squared,,0.8043326345213138,
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,HONOR/BVL-AN00,device_centered_brightness,Spearman,267,0.07371251957617972,0.2299626123851468,spearman_rho,0.07371251957617972,,0.32440718546839137
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,HONOR/BVL-AN00,device_centered_brightness,Mann-Whitney U,267,9778.5,0.01383718649842056,rank_biserial_male_minus_female,0.18083564786861483,0.8333534597270861,0.03162785485353271
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,ExposureTime,Kruskal-Wallis,233,4.353377206240629,0.11341647646688978,epsilon_squared,0.010232074809741866,0.8228260869565218,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,ExposureTime,Spearman,233,0.1305248594482014,0.04657084127114876,spearman_rho,0.1305248594482014,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,ExposureTime,Mann-Whitney U,233,5464.5,0.005670029257355478,rank_biserial_male_minus_female,-0.1940265486725664,0.8289823008849557,0.014742076069124244
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,FNumber,Kruskal-Wallis,233,,,epsilon_squared,,1.0,
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,FNumber,Mann-Whitney U,233,,,rank_biserial_male_minus_female,,1.0,
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Kruskal-Wallis,233,4.092380320525213,0.12922629841246955,epsilon_squared,0.00909730574141397,0.6619565217391304,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Spearman,233,0.12628395632065653,0.05423093207406942,spearman_rho,0.12628395632065653,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,ISOSpeedRatings,Mann-Whitney U,233,5686.5,0.03353564739486841,rank_biserial_male_minus_female,-0.161283185840708,0.7821533923303834,0.03633028467777411
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,BrightnessValue,Kruskal-Wallis,233,3.1263504889727094,0.20946989599358504,epsilon_squared,0.00489717603901178,0.6978260869565218,0.21232100352868966
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,BrightnessValue,Spearman,233,-0.11607696975739679,0.07701225423105243,spearman_rho,-0.11607696975739679,,0.08342994208364013
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,BrightnessValue,Mann-Whitney U,233,7998.5,0.017803530006768112,rank_biserial_male_minus_female,0.17971976401179934,0.8117994100294985,0.02571621000977616
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Kruskal-Wallis,233,4.353377206240629,0.11341647646688978,epsilon_squared,0.010232074809741866,0.8228260869565218,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Spearman,233,0.1305248594482014,0.04657084127114876,spearman_rho,0.1305248594482014,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_exposure_time,Mann-Whitney U,233,5464.5,0.005670029257355478,rank_biserial_male_minus_female,-0.1940265486725664,0.8289823008849557,0.014742076069124244
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Kruskal-Wallis,233,4.092380320525213,0.12922629841246955,epsilon_squared,0.00909730574141397,0.7076086956521739,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Spearman,233,0.12628395632065653,0.05423093207406942,spearman_rho,0.12628395632065653,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_iso_gain,Mann-Whitney U,233,5686.5,0.03353564739486841,rank_biserial_male_minus_female,-0.161283185840708,0.7994100294985251,0.03633028467777411
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,log2_fnumber,Kruskal-Wallis,233,,,epsilon_squared,,1.0,
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,log2_fnumber,Mann-Whitney U,233,,,rank_biserial_male_minus_female,,1.0,
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,aperture_value_from_f,Kruskal-Wallis,233,,,epsilon_squared,,1.0,
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,aperture_value_from_f,Mann-Whitney U,233,,,rank_biserial_male_minus_female,,1.0,
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,time_value_from_t,Kruskal-Wallis,233,4.353377206240629,0.11341647646688978,epsilon_squared,0.010232074809741866,0.8228260869565218,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,time_value_from_t,Spearman,233,-0.1305248594482014,0.04657084127114876,spearman_rho,-0.1305248594482014,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,time_value_from_t,Mann-Whitney U,233,8095.5,0.005670029257355478,rank_biserial_male_minus_female,0.1940265486725663,0.8289823008849557,0.014742076069124244
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,EV100,Kruskal-Wallis,233,4.353377206240629,0.11341647646688978,epsilon_squared,0.010232074809741866,0.8228260869565218,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,EV100,Spearman,233,-0.1305248594482014,0.04657084127114876,spearman_rho,-0.1305248594482014,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,EV100,Mann-Whitney U,233,8095.5,0.005670029257355478,rank_biserial_male_minus_female,0.1940265486725663,0.8289823008849557,0.014742076069124244
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Kruskal-Wallis,233,4.353377206240629,0.11341647646688978,epsilon_squared,0.010232074809741866,0.8228260869565218,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Spearman,233,0.1305248594482014,0.04657084127114876,spearman_rho,0.1305248594482014,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,relative_optical_exposure,Mann-Whitney U,233,5464.5,0.005670029257355478,rank_biserial_male_minus_female,-0.1940265486725664,0.8289823008849557,0.014742076069124244
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Kruskal-Wallis,233,4.774533403624201,0.09188047771744084,epsilon_squared,0.012063188711409567,0.7152173913043477,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Spearman,233,0.13576897397555251,0.03837036255840974,spearman_rho,0.13576897397555251,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,combined_exposure_gain,Mann-Whitney U,233,5483.5,0.011723165725886114,rank_biserial_male_minus_female,-0.19122418879056047,0.7643805309734513,0.021771593490931353
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,sensitivity_value,Kruskal-Wallis,233,4.092380320525213,0.12922629841246955,epsilon_squared,0.00909730574141397,0.7076086956521739,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,sensitivity_value,Spearman,233,0.12628395632065653,0.05423093207406942,spearman_rho,0.12628395632065653,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,sensitivity_value,Mann-Whitney U,233,5686.5,0.03353564739486841,rank_biserial_male_minus_female,-0.161283185840708,0.7994100294985251,0.03633028467777411
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Kruskal-Wallis,233,4.774533403624201,0.09188047771744084,epsilon_squared,0.012063188711409567,0.7152173913043476,0.1679941879362104
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Spearman,233,-0.13576897397555251,0.03837036255840974,spearman_rho,-0.13576897397555251,,0.07050021169629025
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,brightness_apex_pred,Mann-Whitney U,233,8076.5,0.011723165725886114,rank_biserial_male_minus_female,0.19122418879056058,0.7643805309734513,0.021771593490931353
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,brightness_residual,Kruskal-Wallis,233,3.099311963835684,0.21232100352868966,epsilon_squared,0.004779617234068191,0.6880434782608696,0.21232100352868966
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,brightness_residual,Spearman,233,-0.033621564980318555,0.6096345314569677,spearman_rho,-0.033621564980318555,,0.6096345314569677
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,brightness_residual,Mann-Whitney U,233,7766.5,0.0551761406604691,rank_biserial_male_minus_female,0.14550147492625376,0.7831858407079647,0.0551761406604691
+formal_global_meanbg_500,NYHA_3class,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Kruskal-Wallis,233,3.1263504889727094,0.20946989599358504,epsilon_squared,0.00489717603901178,0.6978260869565218,0.21232100352868966
+formal_global_meanbg_500,NYHA_ordered_exploratory,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Spearman,233,-0.11607696975739679,0.07701225423105243,spearman_rho,-0.11607696975739679,,0.08342994208364013
+formal_global_meanbg_500,SEX_male_vs_female,within_camera,Xiaomi/M2006J10C,device_centered_brightness,Mann-Whitney U,233,7998.5,0.017803530006768112,rank_biserial_male_minus_female,0.17971976401179934,0.8117994100294985,0.02571621000977616
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,ExposureTime,Kruskal-Wallis,500,4.959065219638362,0.08378237550197686,epsilon_squared,0.005953853560640568,0.4132197414806111,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,ExposureTime,Spearman,500,-0.098420945545668,0.027764625907690466,spearman_rho,-0.098420945545668,,0.08884680290460949
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,ExposureTime,Mann-Whitney U,500,24847.0,0.000187300178112996,rank_biserial_male_minus_female,-0.19165202680720927,0.8348298523000846,0.0006069315022187461
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,FNumber,Kruskal-Wallis,500,9.769751938334545,0.007560061384602287,epsilon_squared,0.015633303698862264,0.9535864978902954,0.04032032738454553
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,FNumber,Spearman,500,-0.0005383907411021945,0.9904187121083599,spearman_rho,-0.0005383907411021945,,0.9904187121083599
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,FNumber,Mann-Whitney U,500,31046.0,0.4690314614208847,rank_biserial_male_minus_female,0.010020170473030054,0.9899798295269698,0.4690314614208847
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,ISOSpeedRatings,Kruskal-Wallis,500,0.848409546683347,0.6542898870634435,epsilon_squared,0.0,0.5811410750321042,0.697909212867673
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,ISOSpeedRatings,Spearman,500,0.0022780361768220915,0.9594761170597635,spearman_rho,0.0022780361768220915,,0.9904187121083599
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,ISOSpeedRatings,Mann-Whitney U,500,25329.5,0.0007288964938717843,rank_biserial_male_minus_female,-0.17595484416682938,0.8116663413364564,0.0011894228703424655
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,BrightnessValue,Kruskal-Wallis,500,3.68471470172344,0.1584434786464875,epsilon_squared,0.0033897680115159757,0.777178499357916,0.21125797152865
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,BrightnessValue,Spearman,500,-0.03849389990200924,0.39038808286509696,spearman_rho,-0.03849389990200924,,0.6940232584268391
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,BrightnessValue,Mann-Whitney U,500,35983.5,0.0010601642994539427,rank_biserial_male_minus_female,0.17065196174116726,0.8216865118094866,0.0014135523992719237
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,log2_exposure_time,Kruskal-Wallis,500,5.180004606786016,0.07501986728489016,epsilon_squared,0.0063983996112394696,0.29729729729729737,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,log2_exposure_time,Spearman,500,-0.10085495814322493,0.02411487538033355,spearman_rho,-0.10085495814322493,,0.08884680290460949
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,log2_exposure_time,Mann-Whitney U,500,24852.0,0.00018966609444335815,rank_biserial_male_minus_female,-0.19148936170212771,0.8346021211529703,0.0006069315022187461
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,log2_iso_gain,Kruskal-Wallis,500,1.4987642798288396,0.47265849936151083,epsilon_squared,0.0,0.7729590900752156,0.540181142127441
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,log2_iso_gain,Spearman,500,0.019672316832375566,0.6607862699099993,spearman_rho,0.019672316832375566,,0.9672570026370628
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,log2_iso_gain,Mann-Whitney U,500,25328.5,0.000727676960485492,rank_biserial_male_minus_female,-0.17598737718784563,0.8661266185177956,0.0011894228703424655
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,log2_fnumber,Kruskal-Wallis,500,9.769751938334545,0.007560061384602287,epsilon_squared,0.015633303698862264,0.9535864978902954,0.04032032738454553
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,log2_fnumber,Spearman,500,-0.0005383907411021945,0.9904187121083599,spearman_rho,-0.0005383907411021945,,0.9904187121083599
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,log2_fnumber,Mann-Whitney U,500,31046.0,0.4690314614208847,rank_biserial_male_minus_female,0.010020170473030054,0.9899798295269698,0.4690314614208847
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,aperture_value_from_f,Kruskal-Wallis,500,9.769751938334545,0.007560061384602287,epsilon_squared,0.015633303698862264,0.9535864978902954,0.04032032738454553
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,aperture_value_from_f,Spearman,500,-0.0005383907411021945,0.9904187121083599,spearman_rho,-0.0005383907411021945,,0.9904187121083599
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,aperture_value_from_f,Mann-Whitney U,500,31046.0,0.4690314614208847,rank_biserial_male_minus_female,0.010020170473030054,0.9899798295269698,0.4690314614208847
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,time_value_from_t,Kruskal-Wallis,500,5.180004606786016,0.07501986728489016,epsilon_squared,0.0063983996112394696,0.2972972972972973,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,time_value_from_t,Spearman,500,0.10085495814322493,0.02411487538033355,spearman_rho,0.10085495814322493,,0.08884680290460949
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,time_value_from_t,Mann-Whitney U,500,36624.0,0.00018966609444335815,rank_biserial_male_minus_female,0.1914893617021276,0.8346021211529703,0.0006069315022187461
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,EV100,Kruskal-Wallis,500,5.15454765881486,0.0759808587167735,epsilon_squared,0.006347178387957466,0.2972972972972973,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,EV100,Spearman,500,0.10063739369391009,0.02442330573016343,spearman_rho,0.10063739369391009,,0.08884680290460949
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,EV100,Mann-Whitney U,500,36659.0,0.000174263274425251,rank_biserial_male_minus_female,0.1926280174376993,0.8346021211529703,0.0006069315022187461
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,relative_optical_exposure,Kruskal-Wallis,500,5.15454765881486,0.0759808587167735,epsilon_squared,0.006347178387957466,0.29729729729729737,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,relative_optical_exposure,Spearman,500,-0.10063739369391009,0.02442330573016343,spearman_rho,-0.10063739369391009,,0.08884680290460949
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,relative_optical_exposure,Mann-Whitney U,500,24817.0,0.000174263274425251,rank_biserial_male_minus_female,-0.1926280174376993,0.8346021211529703,0.0006069315022187461
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,combined_exposure_gain,Kruskal-Wallis,500,5.2330593899919595,0.07305594985721134,epsilon_squared,0.006505149678052232,0.7633828655292607,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,combined_exposure_gain,Spearman,500,0.041283989794203356,0.35693539233387717,spearman_rho,0.041283989794203356,,0.6940232584268391
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,combined_exposure_gain,Mann-Whitney U,500,25064.0,0.0003968448431135807,rank_biserial_male_minus_female,-0.18459236124666534,0.8335610644804476,0.0009232861593704208
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,sensitivity_value,Kruskal-Wallis,500,1.510791908645346,0.469824548835162,epsilon_squared,0.0,0.7729590900752156,0.540181142127441
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,sensitivity_value,Spearman,500,0.01941268600598987,0.6649891893129807,spearman_rho,0.01941268600598987,,0.9672570026370628
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,sensitivity_value,Mann-Whitney U,500,25338.0,0.0007433892939640409,rank_biserial_male_minus_female,-0.17567831348819052,0.8661266185177956,0.0011894228703424655
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,brightness_apex_pred,Kruskal-Wallis,500,5.230726672483796,0.07314120901558244,epsilon_squared,0.006500456081456331,0.7633828655292607,0.13405180080316298
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,brightness_apex_pred,Spearman,500,-0.04131405054555231,0.3565850625795186,spearman_rho,-0.04131405054555231,,0.6940232584268391
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,brightness_apex_pred,Mann-Whitney U,500,36404.5,0.00040393769472455907,rank_biserial_male_minus_female,0.18434836358904283,0.8335610644804476,0.0009232861593704208
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,brightness_residual,Kruskal-Wallis,500,0.001113773701092217,0.9994432681821561,epsilon_squared,0.0,0.6887779083431258,0.9994432681821561
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,brightness_residual,Spearman,500,-0.001344444946263846,0.9760770436928914,spearman_rho,-0.001344444946263846,,0.9904187121083599
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,brightness_residual,Mann-Whitney U,500,32060.5,0.4092648408951005,rank_biserial_male_minus_female,0.043024920294098434,0.878912095777214,0.4690314614208847
+formal_global_meanbg_500,NYHA_3class,device_adjusted,ALL,device_centered_brightness,Kruskal-Wallis,500,3.7495634577106376,0.15338844346244115,epsilon_squared,0.0035202484058564137,0.7874151531829022,0.21125797152865
+formal_global_meanbg_500,NYHA_ordered_exploratory,device_adjusted,ALL,device_centered_brightness,Spearman,500,-0.043288032611807206,0.3340541779785361,spearman_rho,-0.043288032611807206,,0.6940232584268391
+formal_global_meanbg_500,SEX_male_vs_female,device_adjusted,ALL,device_centered_brightness,Mann-Whitney U,500,36030.5,0.0009552578588419867,rank_biserial_male_minus_female,0.1721810137289348,0.827119526319214,0.0013894659764974353

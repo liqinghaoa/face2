@@ -1,0 +1,34 @@
+# Regional Optical Observations V1. All paths resolve from project_root.
+project_root: .
+
+task_name: Regional Facial Optical Observation Extraction V1
+version: "1.0"
+image_size: 224
+
+study_id_dir: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+roi_manifest: data/processed/optical_roi_dataset_v1/optical_roi_manifest.csv
+roi_build_manifest: data/processed/optical_roi_dataset_v1/build_manifest.json
+aligned_rgb_dir: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates/aligned_rgb
+mask_root: data/processed/optical_roi_dataset_v1/masks
+
+data_output_dir: data/processed/optical_observations_v1
+report_output_dir: reports/optical_observations_v1
+
+roi_names:
+  - forehead
+  - cheek_image_left
+  - cheek_image_right
+
+epsilon: 1.0e-6
+log_base: 2
+y_coefficients:
+  r: 0.2126
+  g: 0.7152
+  b: 0.0722
+forehead_available_threshold: 0.20
+
+assumed_color_encoding: sRGB
+linearization: inverse_sRGB_transfer_function
+id_order: lexicographic_ascending_complete_string_ID
+csv_nan_representation: empty_field
+overwrite: false

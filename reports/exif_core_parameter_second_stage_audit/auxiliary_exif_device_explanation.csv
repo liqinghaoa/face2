@@ -1,0 +1,15 @@
+﻿auxiliary_field,analysis,cramers_v,chi_square_p,unique_n,core_field,r_squared
+MeteringMode,camera_association,0.16976319625144493,0.00014703736342392413,2.0,,
+Flash,camera_association,0.2564202936445145,9.824448284550898e-09,2.0,,
+MeteringMode+Flash,auxiliary_only,,,,ExposureTime,0.019254438164164278
+MeteringMode+Flash,camera_only,,,,ExposureTime,0.20259458782591055
+MeteringMode+Flash,auxiliary_plus_camera,,,,ExposureTime,0.20408825855567048
+MeteringMode+Flash,auxiliary_only,,,,FNumber,0.002074858317184902
+MeteringMode+Flash,camera_only,,,,FNumber,0.18572052692695273
+MeteringMode+Flash,auxiliary_plus_camera,,,,FNumber,0.19483574886268928
+MeteringMode+Flash,auxiliary_only,,,,ISOSpeedRatings,0.018644098002307152
+MeteringMode+Flash,camera_only,,,,ISOSpeedRatings,0.11666741974187167
+MeteringMode+Flash,auxiliary_plus_camera,,,,ISOSpeedRatings,0.1175965154785229
+MeteringMode+Flash,auxiliary_only,,,,BrightnessValue,0.08610000701412723
+MeteringMode+Flash,camera_only,,,,BrightnessValue,0.8505277743890152
+MeteringMode+Flash,auxiliary_plus_camera,,,,BrightnessValue,0.8507537158473311

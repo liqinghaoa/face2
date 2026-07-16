@@ -1,0 +1,42 @@
+experiment:
+  name: OrdinalStage1_Nested5x5CV_ResNet18MeanBG_WeightedCE
+  output_root: experiments/ordinal_stage1_nested5x5_500Data
+task:
+  type: multiclass
+  method: ce
+data:
+  outer_split_dir: data/processed/splits_500
+  image_root: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+  image_filename_template: "{ID}.png"
+  image_size: 224
+  num_classes: 3
+  outer_folds: 5
+  inner_folds: 5
+model:
+  backbone: resnet18
+  pretrained: imagenet1k_v1
+  freeze_backbone: false
+train:
+  batch_size: 16
+  inner_max_epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  scheduler: none
+  use_amp: false
+  num_workers: 0
+  pin_memory: false
+  base_seed: 2026
+  cudnn_deterministic: true
+  cudnn_benchmark: false
+augmentation:
+  horizontal_flip: true
+  color_jitter: false
+  random_crop: false
+normalize:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+selection:
+  metric: mean_inner_val_macro_auc
+  tie_tolerance: 1.0e-8
+

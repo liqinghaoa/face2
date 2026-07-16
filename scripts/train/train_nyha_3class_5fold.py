@@ -361,7 +361,14 @@ def main() -> Path:
             )
             continue
 
+        fold_seed = seed + fold
+        if _is_multi_roi_config(config):
+            # Make every ROI-fusion fold independent from earlier folds so a
+            # standalone fold or resumed sweep starts from the same RNG state.
+            set_random_seed(fold_seed)
         LOGGER.info("Preparing held-out validation fold %d/%d", fold, n_folds - 1)
+        if _is_multi_roi_config(config):
+            LOGGER.info("ROI-fusion fold-specific random seed: %d", fold_seed)
         LOGGER.info(
             "Model configuration: backbone=%s, pretrained=%s, num_classes=%s, "
             "freeze_backbone=%s",
@@ -382,7 +389,7 @@ def main() -> Path:
             batch_size,
             True,
             num_workers,
-            seed + fold,
+            fold_seed,
             pin_memory,
         )
         val_loader = _build_loader(

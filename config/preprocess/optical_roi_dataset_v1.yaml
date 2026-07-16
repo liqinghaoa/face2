@@ -1,0 +1,29 @@
+# Optical ROI Dataset V1. All paths are resolved relative to project_root.
+project_root: .
+
+dataset_name: Optical ROI Dataset V1
+version: "1.0"
+image_size: 224
+
+study_id_dir: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+aligned_rgb_dir: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates/aligned_rgb
+parsing_label_dir: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates/parsing_label
+final_mask_dir: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates/final_mask
+bbox_log: data/processed/roi_dataset/global_aligned_face_parsing_roi_final5_224_canvas_500/logs/roi_metadata.csv
+
+exif_identity_csv: reports/exif_parameter_audit/image_parameter_audit.csv
+exif_parameter_long_csv: reports/exif_parameter_audit/parameter_values_long.csv
+skin_label_source_code: preprocessing/build_global_face_parsing_regularmask_blackbg_224_png_strict.py
+
+dataset_output_dir: data/processed/optical_roi_dataset_v1
+report_output_dir: reports/optical_roi_dataset_v1
+
+manual_forehead_review_ids:
+  - "9300518956"
+  - "206664979"
+  - "A001471135"
+
+low_coverage_n: 10
+preview_columns: 2
+png_compress_level: 3
+overwrite: false

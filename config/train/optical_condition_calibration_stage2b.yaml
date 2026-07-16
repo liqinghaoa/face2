@@ -1,0 +1,69 @@
+# Stage 2B: fixed label-free nonlinear EXIF/device condition-response calibration.
+project_root: .
+task: optical_condition_calibration_stage2b
+method: EXIF-conditioned nonlinear acquisition response calibration
+
+first_stage_csv: data/processed/optical_observations_v1/regional_optical_observations.csv
+first_stage_schema: data/processed/optical_observations_v1/feature_schema.json
+first_stage_manifest: data/processed/optical_observations_v1/extraction_manifest.json
+stage2a_experiment_dir: experiments/optical_condition_calibration_stage2a
+stage2a_report: reports/optical_condition_calibration_stage2a/optical_condition_calibration_stage2a_report.md
+stage2a_run_manifest: experiments/optical_condition_calibration_stage2a/summary/run_manifest.json
+stage2a_oof: experiments/optical_condition_calibration_stage2a/summary/oof_calibrated_features.csv
+split_dir: data/processed/splits_500
+train_csv_pattern: fold_{fold}_train.csv
+val_csv_pattern: fold_{fold}_val.csv
+
+experiment_output_dir: experiments/optical_condition_calibration_stage2b
+report_output_dir: reports/optical_condition_calibration_stage2b
+
+n_folds: 5
+reference_camera: HONOR/BVL-AN00
+camera_mapping:
+  HONOR/BVL-AN00: 0
+  Xiaomi/M2006J10C: 1
+condition_names:
+  - relative_optical_exposure
+  - log2_iso_condition
+condition_feature_names:
+  - camera_xiaomi
+  - z_relative_optical_exposure
+  - z_log2_iso_condition
+  - camera_xiaomi_x_z_exposure
+  - camera_xiaomi_x_z_iso
+cheek_targets:
+  - cheek_mean_log2_y
+  - cheek_mean_log2_rg
+  - cheek_mean_log2_bg
+forehead_cheek_targets:
+  - forehead_minus_cheek_log2_y
+  - forehead_minus_cheek_log2_rg
+  - forehead_minus_cheek_log2_bg
+
+architecture:
+  input_dim: 5
+  hidden_dims: [8, 8]
+  output_dim: 3
+  activation: Tanh
+  parameter_count: 147
+
+device: cpu
+dtype: float32
+optimizer: AdamW
+learning_rate: 1.0e-2
+weight_decay: 1.0e-4
+batch_mode: full_batch
+max_epochs: 500
+minimum_epochs: 50
+early_stopping_patience: 50
+minimum_improvement: 1.0e-6
+gradient_clip_max_norm: 5.0
+scheduler: none
+amp: false
+loss: mean_standardized_target_mse
+target_std_epsilon: 1.0e-8
+condition_std_epsilon: 1.0e-8
+inner_val_fraction: 0.20
+base_seed: 2026
+torch_threads: 1
+overwrite: false

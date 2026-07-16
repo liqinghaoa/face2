@@ -13,6 +13,7 @@ data:
     - chin_roi
   image_filename_template: "{ID}.png"
   n_folds: 5
+  expected_num_samples: 500
   image_size: 224
   num_classes: 3
   label_col: label_3class

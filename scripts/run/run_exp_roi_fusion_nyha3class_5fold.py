@@ -26,6 +26,7 @@ EXPECTED_SPLIT_DIR = (PROJECT_ROOT / "data" / "processed" / "splits_500").resolv
 EXPECTED_ROI_ROOT = (
     PROJECT_ROOT / "data" / "processed" / "roi_dataset" / "manual_shift_data"
 ).resolve()
+EXPECTED_SAMPLE_COUNT = 500
 
 
 def parse_args() -> argparse.Namespace:
@@ -80,6 +81,10 @@ def validate_config(config: dict) -> None:
         raise ValueError("data.image_size must be 224")
     if int(data_config["num_classes"]) != 3:
         raise ValueError("data.num_classes must be 3")
+    if int(data_config.get("expected_num_samples", -1)) != EXPECTED_SAMPLE_COUNT:
+        raise ValueError(
+            f"data.expected_num_samples must be {EXPECTED_SAMPLE_COUNT}"
+        )
 
     model_config = config["model"]
     if str(model_config.get("type")) != "multi_roi_fusion":
@@ -102,6 +107,12 @@ def validate_config(config: dict) -> None:
         raise ValueError("loss.name must be 'weighted_cross_entropy'")
     if loss_config.get("class_weight") is not True:
         raise ValueError("loss.class_weight must be true")
+
+    if int(config["train"].get("num_workers", -1)) != 0:
+        raise ValueError(
+            "train.num_workers must be 0 so synchronized ROI augmentation and "
+            "checkpoint RNG restoration remain exactly reproducible on Windows"
+        )
 
     expected_aug = {
         "horizontal_flip": True,
@@ -155,6 +166,14 @@ def preflight(config: dict) -> None:
                 raise ValueError(f"{csv_path} is missing required columns: {missing_columns}")
             if frame.empty:
                 raise ValueError(f"Fold CSV contains no rows: {csv_path}")
+            duplicated_ids = frame.loc[
+                frame["ID"].duplicated(keep=False), "ID"
+            ].astype(str)
+            if not duplicated_ids.empty:
+                raise ValueError(
+                    f"Duplicate IDs in {csv_path}: "
+                    f"{duplicated_ids.unique()[:20].tolist()}"
+                )
             labels = pd.to_numeric(frame["label_3class"], errors="coerce")
             if labels.isna().any() or not labels.isin([0, 1, 2]).all():
                 raise ValueError(f"Invalid label_3class values in {csv_path}")
@@ -225,6 +244,26 @@ def preflight(config: dict) -> None:
         raise ValueError(
             "Samples occur in more than one validation fold: "
             f"{duplicated_validation_ids[:20].tolist()}"
+        )
+
+    if len(split_ids) != EXPECTED_SAMPLE_COUNT:
+        raise ValueError(
+            f"Split files contain {len(split_ids)} unique IDs; "
+            f"expected {EXPECTED_SAMPLE_COUNT}"
+        )
+    if len(validation_ids) != EXPECTED_SAMPLE_COUNT:
+        raise ValueError(
+            f"OOF validation rows total {len(validation_ids)}; "
+            f"expected {EXPECTED_SAMPLE_COUNT}"
+        )
+    validation_id_set = set(validation_ids)
+    missing_validation_ids = sorted(split_ids.difference(validation_id_set))
+    unexpected_validation_ids = sorted(validation_id_set.difference(split_ids))
+    if missing_validation_ids or unexpected_validation_ids:
+        raise ValueError(
+            "OOF validation IDs do not exactly match all split IDs. "
+            f"Missing={missing_validation_ids[:20]}, "
+            f"unexpected={unexpected_validation_ids[:20]}"
         )
 
     for roi_name in roi_names:

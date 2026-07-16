@@ -1,0 +1,71 @@
+experiment:
+  name: S2_425_P2_RelativeOpticalPhenotype_ResNet18_WeightedCE_5Fold
+  output_dir: experiments
+
+data:
+  split_dir: data/processed/s2_425
+  manifest: data/processed/s2_425_p2/s2_p2_manifest.csv
+  global_image_root: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict/images
+  eye_image_root: data/processed/s2_425_p2/assets/eye_roi
+  cheek_image_root: data/processed/s2_425_p2/assets/cheek_roi
+  eye_mask_root: data/processed/s2_425_p2/assets/eye_mask
+  cheek_mask_root: data/processed/s2_425_p2/assets/cheek_mask
+  image_size: 224
+  image_filename_template: "{ID}.png"
+  mask_filename_template: "{ID}.png"
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+  expected_sample_count: 425
+  expected_patient_groups: 415
+  n_folds: 5
+
+model:
+  type: relative_optical_global_eye_cheek
+  global_backbone: resnet18
+  roi_backbone: resnet18
+  pretrained: imagenet
+  share_roi_encoder: true
+  projection_dim: 256
+  dropout: 0.3
+  optical_channels:
+    - chrom_r
+    - chrom_g
+    - chrom_b
+    - log_rg
+    - log_bg
+    - lab_a
+    - lab_b
+  relative_operations:
+    - signed_difference
+    - absolute_difference
+  num_classes: 3
+
+optical:
+  epsilon: 0.0001
+  use_train_fold_stats: true
+  mask_background_value: 0
+  lab_conversion: opencv_float32_rgb_to_lab_signed_ab
+
+train:
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  random_seed: 2026
+  num_workers: 0
+  pin_memory: false
+  use_amp: false
+
+loss:
+  name: weighted_cross_entropy
+  class_weight: true
+
+augmentation:
+  horizontal_flip: true
+  synchronized_horizontal_flip: true
+  color_jitter: false
+  random_crop: false
+  random_rotation: false

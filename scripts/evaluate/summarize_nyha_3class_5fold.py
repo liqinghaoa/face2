@@ -79,6 +79,33 @@ def _mean_std_rows(
     return pd.DataFrame(rows)
 
 
+def _expected_oof_ids(config: dict[str, Any]) -> list[str]:
+    data_config = config["data"]
+    split_dir = resolve_project_path(data_config["split_dir"])
+    if split_dir is None or not split_dir.is_dir():
+        raise FileNotFoundError(f"Split directory does not exist: {split_dir}")
+
+    expected_ids: list[str] = []
+    for fold in range(int(data_config["n_folds"])):
+        val_path = split_dir / str(data_config["val_csv_pattern"]).format(fold=fold)
+        if not val_path.is_file():
+            raise FileNotFoundError(f"Validation split does not exist: {val_path}")
+        frame = pd.read_csv(val_path, dtype={"ID": "string"}, encoding="utf-8-sig")
+        if "ID" not in frame.columns:
+            raise ValueError(f"Validation split is missing ID column: {val_path}")
+        expected_ids.extend(frame["ID"].astype(str).tolist())
+
+    duplicated = pd.Series(expected_ids, dtype="string").duplicated(keep=False)
+    if duplicated.any():
+        duplicate_ids = (
+            pd.Series(expected_ids, dtype="string")[duplicated].unique()[:20].tolist()
+        )
+        raise ValueError(
+            f"Validation split files contain duplicate OOF IDs: {duplicate_ids}"
+        )
+    return expected_ids
+
+
 def _loss_report_lines(config: dict[str, Any]) -> list[str]:
     if "loss" in config and isinstance(config["loss"], dict):
         loss_config = config["loss"]
@@ -294,6 +321,9 @@ def main() -> Path:
         summary_dir / "mean_metrics.csv", index=False, encoding="utf-8-sig"
     )
     auxiliary_frame = _mean_std_rows(fold_metrics, AUXILIARY_METRICS)
+    auxiliary_frame.to_csv(
+        summary_dir / "auxiliary_metrics.csv", index=False, encoding="utf-8-sig"
+    )
 
     oof = pd.concat(prediction_frames, ignore_index=True).sort_values(
         ["fold", "ID"], kind="stable"
@@ -302,6 +332,27 @@ def main() -> Path:
         duplicates = oof.loc[oof["ID"].duplicated(keep=False), "ID"].tolist()
         raise ValueError(
             f"OOF predictions contain duplicate sample IDs: {duplicates[:10]}"
+        )
+    expected_ids = _expected_oof_ids(config)
+    expected_num_samples = config["data"].get("expected_num_samples")
+    if expected_num_samples is not None and len(oof) != int(expected_num_samples):
+        raise ValueError(
+            f"OOF predictions contain {len(oof)} rows; "
+            f"expected {int(expected_num_samples)}"
+        )
+    if len(oof) != len(expected_ids):
+        raise ValueError(
+            f"OOF predictions contain {len(oof)} rows but validation splits contain "
+            f"{len(expected_ids)} rows"
+        )
+    oof_ids = set(oof["ID"].astype(str))
+    expected_id_set = set(expected_ids)
+    missing_ids = sorted(expected_id_set.difference(oof_ids))
+    unexpected_ids = sorted(oof_ids.difference(expected_id_set))
+    if missing_ids or unexpected_ids:
+        raise ValueError(
+            "OOF prediction IDs do not exactly match validation split IDs. "
+            f"Missing={missing_ids[:20]}, unexpected={unexpected_ids[:20]}"
         )
     oof.to_csv(
         summary_dir / "oof_predictions.csv", index=False, encoding="utf-8-sig"

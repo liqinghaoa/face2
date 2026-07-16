@@ -1,0 +1,2418 @@
+{
+  "name": "exif_core_parameter_second_stage_audit",
+  "created_at_utc": "2026-07-14T07:55:16.913980+00:00",
+  "overall_status": "COMPLETE",
+  "project_root": "E:\\projects\\face2",
+  "output_dir": "E:\\projects\\face2\\reports\\exif_core_parameter_second_stage_audit",
+  "input_files": {
+    "Image_Metadata_All.xlsx": {
+      "path": "E:\\projects\\face2\\data\\raw\\EXIF\\Image_Metadata_All.xlsx",
+      "sha256": "f0b7524121dcfb892d3c041d06db614811fbbe42d820953e8d93feffd6888d96"
+    },
+    "EXIF_Inform.csv": {
+      "path": "E:\\projects\\face2\\data\\raw\\EXIF\\EXIF_Inform.csv",
+      "sha256": "44889d1c86d6022a3d89cfb78534fd2b7aef83b9da5cee1155f6c75c9af1a369"
+    },
+    "nyha_3class_sex_stratified_group_5fold.csv": {
+      "path": "E:\\projects\\face2\\data\\processed\\splits_500\\nyha_3class_sex_stratified_group_5fold.csv",
+      "sha256": "a05ae7b693d23e2fbb1dd2d8eae64ea50cfa6500822e6f4f8161377668b5c65b"
+    },
+    "nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg.yaml": {
+      "path": "E:\\projects\\face2\\config\\train\\preprocess_ablation_resnet18\\nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg.yaml",
+      "sha256": "4984a5f87c5fc1bc83791f21739e49a560b9c660ea2cefbb077aa7517c711d03"
+    },
+    "label_raw.csv": {
+      "path": "E:\\projects\\face2\\data\\raw\\label_raw.csv",
+      "sha256": "d68c7089bcc7320cda5ea8f6a6e28121f91323118b52ed170c868c76b64503e2"
+    },
+    "label_raw_nyha2_remove22_sex_balanced_500.csv": {
+      "path": "E:\\projects\\face2\\data\\raw\\label_raw_nyha2_remove22_sex_balanced_500.csv",
+      "sha256": "43727945922907289dd7f7467c5427a00d4d56e6c953617ea802269cb11ae8e5"
+    },
+    "build_nyha_3class_sex_stratified_group_5fold_split.py": {
+      "path": "E:\\projects\\face2\\scripts\\5fold\\build_nyha_3class_sex_stratified_group_5fold_split.py",
+      "sha256": "36121347e11a8f95e83ffc49750f660b511e97db9c68bbe12a411dc4d1acd4f5"
+    },
+    "audit_exif_parameter_completeness.py": {
+      "path": "E:\\projects\\face2\\scripts\\analysis\\audit_exif_parameter_completeness.py",
+      "sha256": "13e9884483a9cbd3131c994ffd50ee6a862cf5ce8ea792ff67151fa178f60a8f"
+    }
+  },
+  "input_directories": {
+    "formal_meanbg_images": {
+      "path": "E:\\projects\\face2\\data\\processed\\global_face\\preprocess_ablation\\hybrid_imagenet_meanbg\\images",
+      "pattern": "*.png",
+      "file_count": 500,
+      "total_bytes": 24934456,
+      "content_manifest_sha256": "2fbe5bdfa407f8cbff7d285f78d0af6e2db647fbc85d30c9b3af81cf4dabb836"
+    },
+    "aligned_rgb": {
+      "path": "E:\\projects\\face2\\data\\processed\\global_face\\global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates\\aligned_rgb",
+      "pattern": "*.png",
+      "file_count": 522,
+      "total_bytes": 48428279,
+      "content_manifest_sha256": "a7d1922e5e3dede71058d0446963666fb79a73ccb1f93238c11739cfdbe13875"
+    },
+    "parsing_label": {
+      "path": "E:\\projects\\face2\\data\\processed\\global_face\\global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates\\parsing_label",
+      "pattern": "*.png",
+      "file_count": 522,
+      "total_bytes": 1263217,
+      "content_manifest_sha256": "8b4c111ea8cefee9ea37dee2ec9d8af629ab48a31c2027fd548c67f50800d47c"
+    }
+  },
+  "cohorts": {
+    "all_exif_522": {
+      "definition": "All IDs in Image_Metadata_All.xlsx aligned one-to-one to the fixed 522 master split",
+      "image_n": 522,
+      "unique_id_n": 522,
+      "patient_group_n": 505
+    },
+    "formal_global_meanbg_500": {
+      "definition": "Current Global/meanbg main config data.split_dir=data/processed/splits_500",
+      "image_n": 500,
+      "unique_id_n": 500,
+      "patient_group_n": 483,
+      "split_path": "E:\\projects\\face2\\data\\processed\\splits_500\\nyha_3class_sex_stratified_group_5fold.csv",
+      "split_sha256": "a05ae7b693d23e2fbb1dd2d8eae64ea50cfa6500822e6f4f8161377668b5c65b",
+      "image_root": "E:\\projects\\face2\\data\\processed\\global_face\\preprocess_ablation\\hybrid_imagenet_meanbg\\images"
+    },
+    "excluded_interpretation": "S2_425 is post-hoc and was not used as the current formal cohort"
+  },
+  "label_mapping": {
+    "NYHA_0": "normal/0",
+    "NYHA_1_or_2": "mild/1",
+    "NYHA_3_or_4": "severe/2",
+    "SEX_0": "female",
+    "SEX_1": "male"
+  },
+  "patient_group_source": "split patient_group_id; image suffix -digits removed by authoritative split builder",
+  "fields": {
+    "core": [
+      "ExposureTime",
+      "FNumber",
+      "ISOSpeedRatings",
+      "BrightnessValue"
+    ],
+    "auxiliary_audit_only": [
+      "Make",
+      "Model",
+      "MeteringMode",
+      "Flash",
+      "ShutterSpeedValue"
+    ],
+    "derived": [
+      "log2_exposure_time",
+      "log2_iso_gain",
+      "log2_fnumber",
+      "aperture_value_from_f",
+      "time_value_from_t",
+      "EV100",
+      "relative_optical_exposure",
+      "combined_exposure_gain",
+      "sensitivity_value",
+      "brightness_apex_pred",
+      "brightness_residual",
+      "device_centered_brightness"
+    ]
+  },
+  "derived_formulas": {
+    "log2_exposure_time": "log2(ExposureTime)",
+    "log2_iso_gain": "log2(ISOSpeedRatings/100)",
+    "aperture_value_from_f": "2*log2(FNumber)",
+    "time_value_from_t": "-log2(ExposureTime)",
+    "EV100": "aperture_value_from_f + time_value_from_t",
+    "relative_optical_exposure": "log2(ExposureTime) - 2*log2(FNumber)",
+    "combined_exposure_gain": "relative_optical_exposure + log2_iso_gain",
+    "sensitivity_value": "log2(ISOSpeedRatings/3.125)",
+    "brightness_apex_pred": "aperture_value_from_f + time_value_from_t - sensitivity_value",
+    "brightness_residual": "BrightnessValue - brightness_apex_pred",
+    "device_centered_brightness_descriptive": "(BrightnessValue - full-cohort camera median)/camera IQR",
+    "device_centered_brightness_cv": "(BrightnessValue - training-fold camera median)/training-fold camera IQR"
+  },
+  "statistical_methods": {
+    "descriptive": "image-level and patient_group median; quantiles, IQR, raw MAD",
+    "outliers": "within-camera IQR 1.5 rule and robust z=0.67448975*(x-median)/MAD, abs(z)>3.5; known high ISO abs(z)>5",
+    "APEX": "Pearson, Spearman, OLS slope/intercept/R2 and camera interaction",
+    "NYHA": "Kruskal-Wallis, epsilon squared, empirical histogram overlap, BH-FDR",
+    "SEX": "Mann-Whitney U, rank-biserial effect, empirical histogram overlap, BH-FDR",
+    "device_adjustment": "camera-median centered exploratory rank tests",
+    "bootstrap": "patient_group_id cluster bootstrap, repeats=2000, seed=2026",
+    "correlation": "Pearson and Spearman overall and within camera",
+    "VIF": "1/(1-R2), exact deterministic dependencies reported as infinity"
+  },
+  "image_quality": {
+    "source": "existing color-preserving aligned_rgb with existing parsing_label class 1 skin mask",
+    "not_used": [
+      "raw full-frame without aligned mask",
+      "meanbg",
+      "black-background image",
+      "ImageNet-normalized tensor"
+    ],
+    "metrics": [
+      "median RGB",
+      "sRGB-linearized relative luminance",
+      "Lab L* from linear Y",
+      "over/underexposure ratios",
+      "channel clipping ratio",
+      "Laplacian variance",
+      "Gaussian high-frequency residual MAD",
+      "skin pixel ratio"
+    ]
+  },
+  "models": {
+    "feature_groups": {
+      "E0_log2_exposure_time": {
+        "numeric": [
+          "log2_exposure_time"
+        ],
+        "camera": false
+      },
+      "E0_log2_iso_gain": {
+        "numeric": [
+          "log2_iso_gain"
+        ],
+        "camera": false
+      },
+      "E0_log2_fnumber": {
+        "numeric": [
+          "log2_fnumber"
+        ],
+        "camera": false
+      },
+      "E0_BrightnessValue": {
+        "numeric": [
+          "BrightnessValue"
+        ],
+        "camera": false
+      },
+      "E1_four_core_transformed": {
+        "numeric": [
+          "log2_exposure_time",
+          "log2_iso_gain",
+          "log2_fnumber",
+          "BrightnessValue"
+        ],
+        "camera": false
+      },
+      "E2_compact_physical": {
+        "numeric": [
+          "relative_optical_exposure",
+          "log2_iso_gain",
+          "BrightnessValue"
+        ],
+        "camera": false
+      },
+      "E3_device_centered_physical": {
+        "numeric": [
+          "relative_optical_exposure",
+          "log2_iso_gain",
+          "device_centered_brightness_fold"
+        ],
+        "camera": false
+      },
+      "E4_camera_only": {
+        "numeric": [],
+        "camera": true
+      },
+      "E5_E3_plus_camera": {
+        "numeric": [
+          "relative_optical_exposure",
+          "log2_iso_gain",
+          "device_centered_brightness_fold"
+        ],
+        "camera": true
+      }
+    },
+    "logistic": {
+      "penalty": "l2",
+      "C": 1.0,
+      "solver": "lbfgs",
+      "class_weight": "balanced",
+      "random_state": 2026,
+      "max_iter": 3000
+    },
+    "random_forest": {
+      "n_estimators": 300,
+      "max_depth": 3,
+      "min_samples_leaf": 20,
+      "class_weight": "balanced",
+      "random_state": 2026
+    },
+    "fold_preprocessing_audit": {
+      "multinomial_logistic/E0_log2_exposure_time": {
+        "0": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.822375040197194
+          ],
+          "train_scaler_scale": [
+            0.7422488393951675
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.801218194954458
+          ],
+          "train_scaler_scale": [
+            0.7220529165145
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601
+          ],
+          "train_scaler_mean": [
+            -5.809459975471484
+          ],
+          "train_scaler_scale": [
+            0.7576635531120252
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601
+          ],
+          "train_scaler_mean": [
+            -5.805306239865542
+          ],
+          "train_scaler_scale": [
+            0.7568907874181543
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.826734231690156
+          ],
+          "train_scaler_scale": [
+            0.76756848446379
+          ]
+        }
+      },
+      "multinomial_logistic/E0_log2_iso_gain": {
+        "0": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.2720200969775535
+          ],
+          "train_scaler_mean": [
+            1.2996674273513797
+          ],
+          "train_scaler_scale": [
+            0.9956250937566673
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.201620224981776
+          ],
+          "train_scaler_mean": [
+            1.2454821972822583
+          ],
+          "train_scaler_scale": [
+            1.0210370606509063
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.1374886197215779
+          ],
+          "train_scaler_mean": [
+            1.2484831768681803
+          ],
+          "train_scaler_scale": [
+            1.0423710368840742
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.2203299548795556
+          ],
+          "train_scaler_mean": [
+            1.2574946868602337
+          ],
+          "train_scaler_scale": [
+            1.0205072046928885
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.3132195683486576
+          ],
+          "train_scaler_mean": [
+            1.3141105628957652
+          ],
+          "train_scaler_scale": [
+            1.0280570940287115
+          ]
+        }
+      },
+      "multinomial_logistic/E0_log2_fnumber": {
+        "0": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9244425332031484
+          ],
+          "train_scaler_scale": [
+            0.012665528628840003
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9240862351070668
+          ],
+          "train_scaler_scale": [
+            0.012115821651128745
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9242141376798522
+          ],
+          "train_scaler_scale": [
+            0.012703979565938151
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9240291362262428
+          ],
+          "train_scaler_scale": [
+            0.012124607087424907
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9243664013620497
+          ],
+          "train_scaler_scale": [
+            0.012678815718237516
+          ]
+        }
+      },
+      "multinomial_logistic/E0_BrightnessValue": {
+        "0": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            2.88
+          ],
+          "train_scaler_mean": [
+            3.6403
+          ],
+          "train_scaler_scale": [
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            3.8163
+          ],
+          "train_scaler_scale": [
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.715
+          ],
+          "train_scaler_mean": [
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.505
+          ],
+          "train_scaler_mean": [
+            3.863575
+          ],
+          "train_scaler_scale": [
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            2.815
+          ],
+          "train_scaler_mean": [
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            3.78596569450913
+          ]
+        }
+      },
+      "multinomial_logistic/E1_four_core_transformed": {
+        "0": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.2720200969775535,
+            0.925999418556223,
+            2.88
+          ],
+          "train_scaler_mean": [
+            -5.822375040197194,
+            1.2996674273513797,
+            0.9244425332031484,
+            3.6403
+          ],
+          "train_scaler_scale": [
+            0.7422488393951675,
+            0.9956250937566673,
+            0.012665528628840003,
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.201620224981776,
+            0.925999418556223,
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            -5.801218194954458,
+            1.2454821972822583,
+            0.9240862351070668,
+            3.8163
+          ],
+          "train_scaler_scale": [
+            0.7220529165145,
+            1.0210370606509063,
+            0.012115821651128745,
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601,
+            1.1374886197215779,
+            0.925999418556223,
+            3.715
+          ],
+          "train_scaler_mean": [
+            -5.809459975471484,
+            1.2484831768681803,
+            0.9242141376798522,
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            0.7576635531120252,
+            1.0423710368840742,
+            0.012703979565938151,
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601,
+            1.2203299548795556,
+            0.925999418556223,
+            3.505
+          ],
+          "train_scaler_mean": [
+            -5.805306239865542,
+            1.2574946868602337,
+            0.9240291362262428,
+            3.863575
+          ],
+          "train_scaler_scale": [
+            0.7568907874181543,
+            1.0205072046928885,
+            0.012124607087424907,
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.3132195683486576,
+            0.925999418556223,
+            2.815
+          ],
+          "train_scaler_mean": [
+            -5.826734231690156,
+            1.3141105628957652,
+            0.9243664013620497,
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            0.76756848446379,
+            1.0280570940287115,
+            0.012678815718237516,
+            3.78596569450913
+          ]
+        }
+      },
+      "multinomial_logistic/E2_compact_physical": {
+        "0": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            2.88
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            3.6403
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            3.8163
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            3.715
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            3.505
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            3.863575
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            2.815
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            3.78596569450913
+          ]
+        }
+      },
+      "multinomial_logistic/E3_device_centered_physical": {
+        "0": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.16
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            0.009524101307189463
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            0.720948339122847
+          ]
+        },
+        "1": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.565,
+              "iqr": 2.1550000000000002
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.45,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            2.5587171270657905e-17
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            0.007712911150539063
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            0.7326175309992626
+          ]
+        },
+        "2": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.2399999999999998
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            0.03312106092436965
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            0.7371684036237122
+          ]
+        },
+        "3": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.54,
+              "iqr": 2.28
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            0.024536248710010203
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            0.7235873102693919
+          ]
+        },
+        "4": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.55,
+              "iqr": 2.21
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.5,
+              "iqr": 1.7500000000000018
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            -0.008986102133160964
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            0.7237706001091248
+          ]
+        }
+      },
+      "multinomial_logistic/E4_camera_only": {
+        "0": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "1": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "2": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "3": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "4": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        }
+      },
+      "multinomial_logistic/E5_E3_plus_camera": {
+        "0": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.16
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            0.009524101307189463
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            0.720948339122847
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "1": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.565,
+              "iqr": 2.1550000000000002
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.45,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            2.5587171270657905e-17
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            0.007712911150539063
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            0.7326175309992626
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "2": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.2399999999999998
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            0.03312106092436965
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            0.7371684036237122
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "3": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.54,
+              "iqr": 2.28
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            0.024536248710010203
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            0.7235873102693919
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "4": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.55,
+              "iqr": 2.21
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.5,
+              "iqr": 1.7500000000000018
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            -0.008986102133160964
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            0.7237706001091248
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        }
+      },
+      "random_forest_shallow/E0_log2_exposure_time": {
+        "0": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.822375040197194
+          ],
+          "train_scaler_scale": [
+            0.7422488393951675
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.801218194954458
+          ],
+          "train_scaler_scale": [
+            0.7220529165145
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601
+          ],
+          "train_scaler_mean": [
+            -5.809459975471484
+          ],
+          "train_scaler_scale": [
+            0.7576635531120252
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601
+          ],
+          "train_scaler_mean": [
+            -5.805306239865542
+          ],
+          "train_scaler_scale": [
+            0.7568907874181543
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_exposure_time"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724
+          ],
+          "train_scaler_mean": [
+            -5.826734231690156
+          ],
+          "train_scaler_scale": [
+            0.76756848446379
+          ]
+        }
+      },
+      "random_forest_shallow/E0_log2_iso_gain": {
+        "0": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.2720200969775535
+          ],
+          "train_scaler_mean": [
+            1.2996674273513797
+          ],
+          "train_scaler_scale": [
+            0.9956250937566673
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.201620224981776
+          ],
+          "train_scaler_mean": [
+            1.2454821972822583
+          ],
+          "train_scaler_scale": [
+            1.0210370606509063
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.1374886197215779
+          ],
+          "train_scaler_mean": [
+            1.2484831768681803
+          ],
+          "train_scaler_scale": [
+            1.0423710368840742
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.2203299548795556
+          ],
+          "train_scaler_mean": [
+            1.2574946868602337
+          ],
+          "train_scaler_scale": [
+            1.0205072046928885
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_iso_gain"
+          ],
+          "train_imputation_medians": [
+            1.3132195683486576
+          ],
+          "train_scaler_mean": [
+            1.3141105628957652
+          ],
+          "train_scaler_scale": [
+            1.0280570940287115
+          ]
+        }
+      },
+      "random_forest_shallow/E0_log2_fnumber": {
+        "0": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9244425332031484
+          ],
+          "train_scaler_scale": [
+            0.012665528628840003
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9240862351070668
+          ],
+          "train_scaler_scale": [
+            0.012115821651128745
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9242141376798522
+          ],
+          "train_scaler_scale": [
+            0.012703979565938151
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9240291362262428
+          ],
+          "train_scaler_scale": [
+            0.012124607087424907
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_fnumber"
+          ],
+          "train_imputation_medians": [
+            0.925999418556223
+          ],
+          "train_scaler_mean": [
+            0.9243664013620497
+          ],
+          "train_scaler_scale": [
+            0.012678815718237516
+          ]
+        }
+      },
+      "random_forest_shallow/E0_BrightnessValue": {
+        "0": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            2.88
+          ],
+          "train_scaler_mean": [
+            3.6403
+          ],
+          "train_scaler_scale": [
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            3.8163
+          ],
+          "train_scaler_scale": [
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.715
+          ],
+          "train_scaler_mean": [
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            3.505
+          ],
+          "train_scaler_mean": [
+            3.863575
+          ],
+          "train_scaler_scale": [
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            2.815
+          ],
+          "train_scaler_mean": [
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            3.78596569450913
+          ]
+        }
+      },
+      "random_forest_shallow/E1_four_core_transformed": {
+        "0": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.2720200969775535,
+            0.925999418556223,
+            2.88
+          ],
+          "train_scaler_mean": [
+            -5.822375040197194,
+            1.2996674273513797,
+            0.9244425332031484,
+            3.6403
+          ],
+          "train_scaler_scale": [
+            0.7422488393951675,
+            0.9956250937566673,
+            0.012665528628840003,
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.201620224981776,
+            0.925999418556223,
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            -5.801218194954458,
+            1.2454821972822583,
+            0.9240862351070668,
+            3.8163
+          ],
+          "train_scaler_scale": [
+            0.7220529165145,
+            1.0210370606509063,
+            0.012115821651128745,
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601,
+            1.1374886197215779,
+            0.925999418556223,
+            3.715
+          ],
+          "train_scaler_mean": [
+            -5.809459975471484,
+            1.2484831768681803,
+            0.9242141376798522,
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            0.7576635531120252,
+            1.0423710368840742,
+            0.012703979565938151,
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643567679616601,
+            1.2203299548795556,
+            0.925999418556223,
+            3.505
+          ],
+          "train_scaler_mean": [
+            -5.805306239865542,
+            1.2574946868602337,
+            0.9240291362262428,
+            3.863575
+          ],
+          "train_scaler_scale": [
+            0.7568907874181543,
+            1.0205072046928885,
+            0.012124607087424907,
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "log2_exposure_time",
+            "log2_iso_gain",
+            "log2_fnumber",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -5.643856189774724,
+            1.3132195683486576,
+            0.925999418556223,
+            2.815
+          ],
+          "train_scaler_mean": [
+            -5.826734231690156,
+            1.3141105628957652,
+            0.9243664013620497,
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            0.76756848446379,
+            1.0280570940287115,
+            0.012678815718237516,
+            3.78596569450913
+          ]
+        }
+      },
+      "random_forest_shallow/E2_compact_physical": {
+        "0": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            2.88
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            3.6403
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            3.7144160927392074
+          ]
+        },
+        "1": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            3.3449999999999998
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            3.8163
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            3.717112698049388
+          ]
+        },
+        "2": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            3.715
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            3.8935250000000003
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            3.73106182264178
+          ]
+        },
+        "3": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            3.505
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            3.863575
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            3.7247901242049863
+          ]
+        },
+        "4": {
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "BrightnessValue"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            2.815
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            3.7074000000000003
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            3.78596569450913
+          ]
+        }
+      },
+      "random_forest_shallow/E3_device_centered_physical": {
+        "0": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.16
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            0.009524101307189463
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            0.720948339122847
+          ]
+        },
+        "1": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.565,
+              "iqr": 2.1550000000000002
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.45,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            2.5587171270657905e-17
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            0.007712911150539063
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            0.7326175309992626
+          ]
+        },
+        "2": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.2399999999999998
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            0.03312106092436965
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            0.7371684036237122
+          ]
+        },
+        "3": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.54,
+              "iqr": 2.28
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            0.024536248710010203
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            0.7235873102693919
+          ]
+        },
+        "4": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.55,
+              "iqr": 2.21
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.5,
+              "iqr": 1.7500000000000018
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            -0.008986102133160964
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            0.7237706001091248
+          ]
+        }
+      },
+      "random_forest_shallow/E4_camera_only": {
+        "0": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "1": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "2": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "3": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "4": {
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        }
+      },
+      "random_forest_shallow/E5_E3_plus_camera": {
+        "0": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.16
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.2720200969775535,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.671260106603491,
+            1.2996674273513797,
+            0.009524101307189463
+          ],
+          "train_scaler_scale": [
+            0.7414648396148982,
+            0.9956250937566673,
+            0.720948339122847
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "1": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.565,
+              "iqr": 2.1550000000000002
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.45,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.201620224981776,
+            2.5587171270657905e-17
+          ],
+          "train_scaler_mean": [
+            -7.649390665168592,
+            1.2454821972822583,
+            0.007712911150539063
+          ],
+          "train_scaler_scale": [
+            0.7225663557101653,
+            1.0210370606509063,
+            0.7326175309992626
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "2": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.57,
+              "iqr": 2.2399999999999998
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.1374886197215779,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.6578882508311885,
+            1.2484831768681803,
+            0.03312106092436965
+          ],
+          "train_scaler_scale": [
+            0.7576804383443632,
+            1.0423710368840742,
+            0.7371684036237122
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "3": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.54,
+              "iqr": 2.28
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.4,
+              "iqr": 1.700000000000001
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.480340148509297,
+            1.2203299548795556,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.653364512318027,
+            1.2574946868602337,
+            0.024536248710010203
+          ],
+          "train_scaler_scale": [
+            0.7567208609447724,
+            1.0205072046928885,
+            0.7235873102693919
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        },
+        "4": {
+          "device_brightness_train_median_iqr": {
+            "HONOR/BVL-AN00": {
+              "median": 0.55,
+              "iqr": 2.21
+            },
+            "Xiaomi/M2006J10C": {
+              "median": 7.5,
+              "iqr": 1.7500000000000018
+            }
+          },
+          "numeric_fields": [
+            "relative_optical_exposure",
+            "log2_iso_gain",
+            "device_centered_brightness_fold"
+          ],
+          "train_imputation_medians": [
+            -7.49585502688717,
+            1.3132195683486576,
+            0.0
+          ],
+          "train_scaler_mean": [
+            -7.675467034414254,
+            1.3141105628957652,
+            -0.008986102133160964
+          ],
+          "train_scaler_scale": [
+            0.7670101944899239,
+            1.0280570940287115,
+            0.7237706001091248
+          ],
+          "camera_categories": [
+            [
+              "HONOR/BVL-AN00",
+              "Xiaomi/M2006J10C"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "random_seed": 2026,
+  "bootstrap_repeats": 2000,
+  "software": {
+    "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "python_executable": "E:\\resarch\\Anaconda3\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "scikit_learn": "1.7.2",
+    "matplotlib": "3.10.6",
+    "statsmodels": "0.14.5",
+    "openpyxl": "3.1.5",
+    "Pillow": "12.0.0"
+  },
+  "git_commit": "b58ad3fafb5bc992aa8e63e94996ef04a7a38b55",
+  "alignment_checks": [
+    {
+      "check": "exif_unique_id",
+      "status": "PASS",
+      "detail": "rows=522, unique=522"
+    },
+    {
+      "check": "full_split_unique_id",
+      "status": "PASS",
+      "detail": "rows=522, unique=522"
+    },
+    {
+      "check": "formal_split_unique_id",
+      "status": "PASS",
+      "detail": "rows=500, unique=500"
+    },
+    {
+      "check": "exif_equals_full_split",
+      "status": "PASS",
+      "detail": "exif_only=0, split_only=0"
+    },
+    {
+      "check": "formal_subset_of_full",
+      "status": "PASS",
+      "detail": "formal_not_full=0"
+    },
+    {
+      "check": "formal_has_exif",
+      "status": "PASS",
+      "detail": "formal_without_exif=0"
+    },
+    {
+      "check": "formal_metadata_agreement",
+      "status": "PASS",
+      "detail": "patient_group_id, NYHA, SEX and label_3class compared for all formal IDs"
+    },
+    {
+      "check": "full_patient_group_no_cross_fold",
+      "status": "PASS",
+      "detail": "leaking_groups=[]"
+    },
+    {
+      "check": "full_nyha_mapping",
+      "status": "PASS",
+      "detail": "mismatch_ids=[]"
+    },
+    {
+      "check": "full_group_sex_consistency",
+      "status": "PASS",
+      "detail": "conflicting_groups=[]"
+    },
+    {
+      "check": "formal_patient_group_no_cross_fold",
+      "status": "PASS",
+      "detail": "leaking_groups=[]"
+    },
+    {
+      "check": "formal_nyha_mapping",
+      "status": "PASS",
+      "detail": "mismatch_ids=[]"
+    },
+    {
+      "check": "formal_group_sex_consistency",
+      "status": "PASS",
+      "detail": "conflicting_groups=[]"
+    },
+    {
+      "check": "formal_config_points_to_splits_500",
+      "status": "PASS",
+      "detail": "E:\\projects\\face2\\config\\train\\preprocess_ablation_resnet18\\nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg.yaml"
+    },
+    {
+      "check": "formal_config_points_to_meanbg",
+      "status": "PASS",
+      "detail": "E:\\projects\\face2\\data\\processed\\global_face\\preprocess_ablation\\hybrid_imagenet_meanbg\\images"
+    },
+    {
+      "check": "formal_meanbg_images_available",
+      "status": "PASS",
+      "detail": "missing_n=0; IDs=[]"
+    },
+    {
+      "check": "aligned_rgb_available_for_full_queue",
+      "status": "PASS",
+      "detail": "missing_n=0; IDs=[]"
+    },
+    {
+      "check": "parsing_label_available_for_full_queue",
+      "status": "PASS",
+      "detail": "missing_n=0; IDs=[]"
+    },
+    {
+      "check": "core_exif_values_complete_and_positive",
+      "status": "PASS",
+      "detail": "valid_n=522/522; invalid_IDs=[]"
+    },
+    {
+      "check": "no_conflicting_duplicate_core_or_aux_tags",
+      "status": "PASS",
+      "detail": "conflicts=[]"
+    }
+  ],
+  "oof_validation": [
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E0_BrightnessValue",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E0_log2_exposure_time",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E0_log2_fnumber",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 1.1102230246251565e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E0_log2_iso_gain",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E1_four_core_transformed",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E2_compact_physical",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E3_device_centered_physical",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E4_camera_only",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 1.1102230246251565e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "multinomial_logistic",
+      "feature_group": "E5_E3_plus_camera",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 2.220446049250313e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E0_BrightnessValue",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 9.992007221626409e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E0_log2_exposure_time",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 7.771561172376096e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E0_log2_fnumber",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 1.1102230246251565e-15,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E0_log2_iso_gain",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 8.881784197001252e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E1_four_core_transformed",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 8.881784197001252e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E2_compact_physical",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 8.881784197001252e-16,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E3_device_centered_physical",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 1.2212453270876722e-15,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E4_camera_only",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 1.1102230246251565e-15,
+      "same_patient_cross_fold": false
+    },
+    {
+      "model_type": "random_forest_shallow",
+      "feature_group": "E5_E3_plus_camera",
+      "rows": 500,
+      "unique_ids": 500,
+      "each_id_once": true,
+      "probabilities_finite": true,
+      "max_probability_sum_abs_error": 9.992007221626409e-16,
+      "same_patient_cross_fold": false
+    }
+  ],
+  "report_summary": {
+    "shortcut_level": "中等",
+    "shortcut_answer": "存在需要严肃控制的设备/采集捷径，但尚不足以否定受约束的物理校正路线。",
+    "optical_support": "支持继续条件光学反演，但必须禁止camera_id/raw EXIF进入NYHA分类分支并做设备敏感性分析。",
+    "camera_label_cramers_v": 0.5872172012652564,
+    "camera_label_chi_square_p": 3.640871835888994e-38,
+    "best_model_type": "random_forest_shallow",
+    "best_feature_group": "E1_four_core_transformed",
+    "best_macro_auc": 0.7136009419397563
+  },
+  "prohibitions_observed": {
+    "source_files_modified": false,
+    "fixed_splits_regenerated": false,
+    "outliers_deleted": false,
+    "deep_image_training_started": false,
+    "dependencies_installed_or_upgraded": false
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "name": "exif_four_field_physical_audit",
+  "created_at_utc": "2026-07-14T08:15:08.053079+00:00",
+  "completion_status": "COMPLETE",
+  "input_files": {
+    "parameter_values_long.csv": {
+      "path": "E:\\projects\\face2\\reports\\exif_parameter_audit\\parameter_values_long.csv",
+      "sha256": "4b3195730802bad2f1121b79e28c088422c262da6f80c3ebad70b891ec502e99"
+    },
+    "image_parameter_audit.csv": {
+      "path": "E:\\projects\\face2\\reports\\exif_parameter_audit\\image_parameter_audit.csv",
+      "sha256": "5f3cd3a131bf324e2242e28138710a613e6b799c49810a59b4584d2d2791a966"
+    },
+    "parameter_value_issues.csv": {
+      "path": "E:\\projects\\face2\\reports\\exif_parameter_audit\\parameter_value_issues.csv",
+      "sha256": "e932a5972e050bad2a9e896641e6d22894b77ecf917c0d90d4434ac2de3aa21f"
+    },
+    "exif_parameter_audit_report.md": {
+      "path": "E:\\projects\\face2\\reports\\exif_parameter_audit\\exif_parameter_audit_report.md",
+      "sha256": "95b6f4c464560963e14d71c40b06cf468a73143f2fb8c8e4310d64f98d6bb36d"
+    },
+    "Image_Metadata_All.xlsx": {
+      "path": "E:\\projects\\face2\\data\\raw\\EXIF\\Image_Metadata_All.xlsx",
+      "sha256": "f0b7524121dcfb892d3c041d06db614811fbbe42d820953e8d93feffd6888d96"
+    },
+    "EXIF_Inform.csv": {
+      "path": "E:\\projects\\face2\\data\\raw\\EXIF\\EXIF_Inform.csv",
+      "sha256": "44889d1c86d6022a3d89cfb78534fd2b7aef83b9da5cee1155f6c75c9af1a369"
+    },
+    "build_global_face_parsing_regularmask_blackbg_224_png_strict.py": {
+      "path": "E:\\projects\\face2\\preprocessing\\build_global_face_parsing_regularmask_blackbg_224_png_strict.py",
+      "sha256": "284a6c2e96f52163a5d2d054d3b373cd18ec385bd29c1223c8615d10200cd6bf"
+    }
+  },
+  "input_image_directories": {
+    "aligned_rgb": {
+      "path": "E:\\projects\\face2\\data\\processed\\global_face\\global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates\\aligned_rgb",
+      "file_count": 522,
+      "total_bytes": 48428279,
+      "content_manifest_sha256": "a7d1922e5e3dede71058d0446963666fb79a73ccb1f93238c11739cfdbe13875"
+    },
+    "parsing_label": {
+      "path": "E:\\projects\\face2\\data\\processed\\global_face\\global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict_intermediates\\parsing_label",
+      "file_count": 522,
+      "total_bytes": 1263217,
+      "content_manifest_sha256": "8b4c111ea8cefee9ea37dee2ec9d8af629ab48a31c2027fd548c67f50800d47c"
+    }
+  },
+  "image_queue": {
+    "n": 522,
+    "unique_id_n": 522,
+    "definition": "IDs in existing first-stage EXIF image audit with one valid value for each of the four fields"
+  },
+  "exif_data_source": {
+    "authoritative_workbook": "E:\\projects\\face2\\data\\raw\\EXIF\\Image_Metadata_All.xlsx",
+    "reused_derived_table": "E:\\projects\\face2\\reports\\exif_parameter_audit\\parameter_values_long.csv",
+    "reason": "Reused the previously audited per-image table to avoid duplicate extraction"
+  },
+  "camera_id_definition": "Make + '/' + Model",
+  "camera_counts": {
+    "HONOR/BVL-AN00": 283,
+    "Xiaomi/M2006J10C": 239
+  },
+  "raw_fields": [
+    "ExposureTime",
+    "FNumber",
+    "ISOSpeedRatings",
+    "BrightnessValue"
+  ],
+  "derived_formulas": {
+    "log2_exposure_time": "log2(ExposureTime)",
+    "log2_iso_gain": "log2(ISOSpeedRatings/100)",
+    "aperture_value_from_f": "2*log2(FNumber)",
+    "time_value_from_t": "-log2(ExposureTime)",
+    "EV100": "aperture_value_from_f + time_value_from_t",
+    "relative_optical_exposure": "log2(ExposureTime) - 2*log2(FNumber)",
+    "combined_exposure_gain": "relative_optical_exposure + log2_iso_gain",
+    "sensitivity_value": "log2(ISOSpeedRatings/3.125)",
+    "brightness_apex_pred": "aperture_value_from_f + time_value_from_t - sensitivity_value",
+    "brightness_residual": "BrightnessValue - brightness_apex_pred",
+    "device_centered_brightness": "(BrightnessValue - device_median)/(device_IQR + 1e-8)"
+  },
+  "image_region": {
+    "source": "existing CelebAMask-HQ parsing_label class 1 (skin)",
+    "aligned_image": "existing 224x224 color-preserving aligned_rgb",
+    "new_segmentation_training": false
+  },
+  "image_color_space": {
+    "input": "RGB uint8 sRGB-aligned PNG",
+    "linear_luminance": "sRGB inverse transfer then Y=0.2126R+0.7152G+0.0722B",
+    "Lab_L_star": "computed from relative linear Y with D65-normalized Yn=1",
+    "not_used": [
+      "ImageNet-normalized tensor",
+      "meanbg for color statistics",
+      "black-background composite for color statistics"
+    ]
+  },
+  "statistical_methods": {
+    "descriptive": "n, missing, unique, min, P1/P5/P25/P50/P75/P95/P99, max, mean, sample std, IQR, raw MAD",
+    "outliers": "within-device 1.5*IQR and robust z=0.67448975*(x-median)/MAD, abs(z)>3.5",
+    "correlations": "Pearson and Spearman; image relationships emphasize Spearman overall and by device",
+    "APEX": "linear regression overall/by device plus camera intercept and slope interaction OLS",
+    "device_shift": "median difference, Hedges g, empirical histogram overlap, descriptive Mann-Whitney U",
+    "causal_interpretation": false
+  },
+  "software": {
+    "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "python_executable": "E:\\resarch\\Anaconda3\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.6",
+    "statsmodels": "0.14.5",
+    "Pillow": "12.0.0",
+    "scikit_learn": "1.7.2"
+  },
+  "git_commit": "b58ad3fafb5bc992aa8e63e94996ef04a7a38b55",
+  "project_inventory": "unavailable",
+  "report_summary": {
+    "brightness_needs_device_standardization": true,
+    "fnumber_has_per_image_value": false,
+    "supports_continued_inversion": true,
+    "high_iso_metadata_anomaly_n": 0,
+    "high_iso_low_quality_n": 0,
+    "v1_vector": [
+      "relative_optical_exposure",
+      "log2_iso_gain",
+      "device_centered_brightness"
+    ]
+  },
+  "prohibited_actions_check": {
+    "NYHA_used": false,
+    "SEX_used": false,
+    "split_used": false,
+    "classification_or_cross_validation": false,
+    "new_segmentation_training": false,
+    "dependency_install_or_upgrade": false,
+    "source_data_modified": false,
+    "outlier_deleted": false
+  }
+}

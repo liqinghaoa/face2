@@ -1,0 +1,13 @@
+{
+  "metadata_xlsx": "E:\\projects\\face2\\data\\raw\\EXIF\\Image_Metadata_All.xlsx",
+  "checklist_csv": "E:\\projects\\face2\\data\\raw\\EXIF\\EXIF_Inform.csv",
+  "group_manifest": "E:\\projects\\face2\\data\\processed\\splits\\nyha_3class_sex_stratified_group_5fold.csv",
+  "output_dir": "E:\\projects\\face2\\reports\\exif_parameter_audit",
+  "image_n": 522,
+  "patient_group_n": 505,
+  "checklist_parameter_n": 42,
+  "core_ready_image_n": 515,
+  "core_ready_patient_group_n": 498,
+  "issue_n": 2031,
+  "created_at": "2026-07-14T14:44:21.418822"
+}

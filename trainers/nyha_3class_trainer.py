@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import math
+import random
 import shutil
 from pathlib import Path
 from typing import Any
@@ -19,6 +20,14 @@ from metrics.classification_metrics import compute_classification_metrics
 
 
 LOGGER = logging.getLogger(__name__)
+
+
+def _load_checkpoint(path: Path, device: torch.device) -> dict[str, Any]:
+    """Load full training state, including NumPy/Python RNG payloads."""
+    try:
+        return torch.load(path, map_location=device, weights_only=False)
+    except TypeError:
+        return torch.load(path, map_location=device)
 
 
 class NYHA3ClassTrainer:
@@ -71,10 +80,69 @@ class NYHA3ClassTrainer:
         except AttributeError:
             return torch.cuda.amp.autocast(enabled=self.use_amp)
 
+    def _loss_normalizer(self, labels: torch.Tensor) -> float:
+        """Return the denominator used by a mean-reduced batch loss.
+
+        ``CrossEntropyLoss(weight=..., reduction='mean')`` divides by the sum
+        of target-class weights, not by batch size. Other criteria used by the
+        project currently average over samples.
+        """
+        if (
+            isinstance(self.criterion, nn.CrossEntropyLoss)
+            and self.criterion.reduction == "mean"
+            and self.criterion.weight is not None
+        ):
+            weights = self.criterion.weight.to(labels.device)
+            return float(weights.index_select(0, labels.long()).sum().item())
+        return float(labels.size(0))
+
+    @staticmethod
+    def _capture_rng_state(train_loader: DataLoader) -> dict[str, Any]:
+        generator = getattr(train_loader, "generator", None)
+        return {
+            "python": random.getstate(),
+            "numpy": np.random.get_state(),
+            "torch_cpu": torch.get_rng_state(),
+            "torch_cuda": (
+                torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None
+            ),
+            "train_loader_generator": (
+                generator.get_state() if generator is not None else None
+            ),
+        }
+
+    @staticmethod
+    def _restore_rng_state(
+        state: dict[str, Any] | None,
+        train_loader: DataLoader,
+    ) -> None:
+        if not state:
+            LOGGER.warning(
+                "Resume checkpoint has no RNG state; continuation will not be "
+                "bitwise-equivalent to uninterrupted training."
+            )
+            return
+        if state.get("python") is not None:
+            random.setstate(state["python"])
+        if state.get("numpy") is not None:
+            np.random.set_state(state["numpy"])
+        if state.get("torch_cpu") is not None:
+            torch.set_rng_state(state["torch_cpu"].cpu())
+        cuda_states = state.get("torch_cuda")
+        if cuda_states is not None and torch.cuda.is_available():
+            for device_index, cuda_state in enumerate(
+                cuda_states[: torch.cuda.device_count()]
+            ):
+                torch.cuda.set_rng_state(cuda_state.cpu(), device=device_index)
+        generator = getattr(train_loader, "generator", None)
+        generator_state = state.get("train_loader_generator")
+        if generator is not None and generator_state is not None:
+            generator.set_state(generator_state.cpu())
+
     def _train_epoch(self, loader: DataLoader) -> float:
         self.model.train()
         running_loss = 0.0
-        sample_count = 0
+        normalization_total = 0.0
         for batch in loader:
             images = batch["image"].to(self.device, non_blocking=True)
             labels = batch["label"].to(self.device, non_blocking=True)
@@ -86,16 +154,16 @@ class NYHA3ClassTrainer:
             self.scaler.step(self.optimizer)
             self.scaler.update()
 
-            batch_size = labels.size(0)
-            running_loss += float(loss.detach().item()) * batch_size
-            sample_count += batch_size
-        return running_loss / max(sample_count, 1)
+            normalizer = self._loss_normalizer(labels)
+            running_loss += float(loss.detach().item()) * normalizer
+            normalization_total += normalizer
+        return running_loss / max(normalization_total, 1.0)
 
     @torch.no_grad()
     def _validate(self, loader: DataLoader) -> tuple[float, dict[str, Any]]:
         self.model.eval()
         running_loss = 0.0
-        sample_count = 0
+        normalization_total = 0.0
         labels_all: list[np.ndarray] = []
         probabilities_all: list[np.ndarray] = []
         for batch in loader:
@@ -106,27 +174,32 @@ class NYHA3ClassTrainer:
                 loss = self.criterion(logits, labels)
             probabilities = torch.softmax(logits, dim=1)
 
-            batch_size = labels.size(0)
-            running_loss += float(loss.item()) * batch_size
-            sample_count += batch_size
+            normalizer = self._loss_normalizer(labels)
+            running_loss += float(loss.item()) * normalizer
+            normalization_total += normalizer
             labels_all.append(labels.cpu().numpy())
             probabilities_all.append(probabilities.cpu().numpy())
 
         metrics = compute_classification_metrics(
             np.concatenate(labels_all), np.concatenate(probabilities_all)
         )
-        return running_loss / max(sample_count, 1), metrics
+        return running_loss / max(normalization_total, 1.0), metrics
 
     def _checkpoint_payload(
-        self, epoch: int, best_macro_auc: float
+        self,
+        epoch: int,
+        best_macro_auc: float,
+        train_loader: DataLoader,
     ) -> dict[str, Any]:
         return {
             "epoch": epoch,
             "fold": self.fold,
             "model_state_dict": self.model.state_dict(),
             "optimizer_state_dict": self.optimizer.state_dict(),
+            "scaler_state_dict": self.scaler.state_dict(),
             "best_macro_auc": best_macro_auc,
             "config": self.config,
+            "rng_state": self._capture_rng_state(train_loader),
         }
 
     def _save_curves(self, history: pd.DataFrame) -> None:
@@ -159,7 +232,10 @@ class NYHA3ClassTrainer:
         plt.savefig(self.curve_dir / "metrics_curve.png", dpi=160)
         plt.close()
 
-    def _load_resume_state(self) -> tuple[int, float, int, list[dict[str, float | int]]]:
+    def _load_resume_state(
+        self,
+        train_loader: DataLoader,
+    ) -> tuple[int, float, int, list[dict[str, float | int]]]:
         if self.resume_from is None:
             return 1, float("-inf"), 0, []
         if not self.resume_from.is_file():
@@ -167,7 +243,7 @@ class NYHA3ClassTrainer:
 
         checkpoint_path = self.resume_from
         try:
-            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+            checkpoint = _load_checkpoint(checkpoint_path, self.device)
         except Exception as error:
             fallback_path = checkpoint_path.with_name("best_macro_auc.pth")
             if checkpoint_path.name != "last.pth" or not fallback_path.is_file():
@@ -179,9 +255,12 @@ class NYHA3ClassTrainer:
                 fallback_path,
             )
             checkpoint_path = fallback_path
-            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+            checkpoint = _load_checkpoint(checkpoint_path, self.device)
         self.model.load_state_dict(checkpoint["model_state_dict"])
         self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        if checkpoint.get("scaler_state_dict") is not None:
+            self.scaler.load_state_dict(checkpoint["scaler_state_dict"])
+        self._restore_rng_state(checkpoint.get("rng_state"), train_loader)
 
         completed_epoch = int(checkpoint.get("epoch", 0))
         best_macro_auc = float(checkpoint.get("best_macro_auc", float("-inf")))
@@ -225,7 +304,7 @@ class NYHA3ClassTrainer:
             best_macro_auc,
             epochs_without_improvement,
             records,
-        ) = self._load_resume_state()
+        ) = self._load_resume_state(train_loader)
 
         LOGGER.info(
             "Starting fold=%s on device=%s, AMP=%s",
@@ -274,14 +353,14 @@ class NYHA3ClassTrainer:
                 best_macro_auc = macro_auc
                 epochs_without_improvement = 0
                 torch.save(
-                    self._checkpoint_payload(epoch, best_macro_auc),
+                    self._checkpoint_payload(epoch, best_macro_auc, train_loader),
                     self.checkpoint_dir / "best_macro_auc.pth",
                 )
             else:
                 epochs_without_improvement += 1
 
             torch.save(
-                self._checkpoint_payload(epoch, best_macro_auc),
+                self._checkpoint_payload(epoch, best_macro_auc, train_loader),
                 self.checkpoint_dir / "last.pth",
             )
             LOGGER.info(
