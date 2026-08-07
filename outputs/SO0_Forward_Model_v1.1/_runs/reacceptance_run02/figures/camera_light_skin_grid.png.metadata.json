@@ -1,0 +1,9 @@
+{
+  "data_source": "tables/resolution_1nm_vs_5nm_by_camera_light.csv",
+  "filters": {},
+  "generated_at": "2026-08-01T06:28:26.022890+00:00",
+  "row_count": 112,
+  "sha256": "9e423c85a7f48548dfea3ea437d2345dd2215eec1a3284db6cc2abd0de366d26",
+  "x_field": "illuminant_name",
+  "y_field": "camera_name"
+}

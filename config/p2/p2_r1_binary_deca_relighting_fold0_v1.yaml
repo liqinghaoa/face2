@@ -1,0 +1,48 @@
+experiment: {name: P2_R1_Binary_DECARelighting_Fold0_v1, stage: P2, role: fixed_single_fold_relighting_screen}
+task: {type: binary_control_vs_patient, num_classes: 2, class_names: {0: Control, 1: Patient}}
+p2: {use_deca_latents: false, use_reliability_gate: false, use_auxiliary_features: false, use_relighting_only: true}
+data:
+  split_root: data/processed/splits_500
+  split_dir: data/processed/splits_500
+  train_csv: data/processed/splits_500/fold_0_train.csv
+  val_csv: data/processed/splits_500/fold_0_val.csv
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+  n_folds: 5
+  image_root: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+  image_filename_template: "{ID}.png"
+  image_size: 224
+  fold: 0
+p1:
+  root: data/processed/P1_DECA_Full500_v1
+  ready_cases_csv: data/processed/P1_DECA_Full500_v1/indexes/p1_ready_cases.csv
+  cases_subdir: cases
+  maps_filename: maps.npz
+  relighting_filename: relighting.npz
+  success_filename: _SUCCESS.json
+  alpha_key: alpha
+  relighting_key: images
+  relighting_layout: NHWC
+  relighting_range: float_rgb_unclipped_nonnegative
+  alpha_layout: HW
+  preset_names: [neutral_front, left, right, top, dim_front, bright_front]
+  mean_background_rgb_uint8: [124, 116, 104]
+relighting: {num_presets: 6, selection: deterministic_epoch_rotation, alpha_mean_background_composite: true, synchronized_horizontal_flip: true}
+model: {backbone: resnet18, pretrained: imagenet, num_classes: 2, freeze_backbone: false}
+training:
+  seed: 2026
+  batch_size: 16
+  num_workers: 0
+  pin_memory: false
+  persistent_workers: false
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  max_epochs: 50
+  early_stopping_patience: 10
+  monitor: raw_val_macro_auc
+  monitor_mode: max
+  amp: false
+loss: {type: raw_relight_js, raw_ce_weight: 1.0, relight_ce_weight: 0.5, consistency_type: js, consistency_weight: 0.2, consistency_start_epoch: 4}
+evaluation: {reference_b0_dir: experiments/500Data/P2_B0_BinaryRGB_Fold0_v1, threshold_search: false, evaluate_all_relighting_presets: true}
+normalize: {mean: [0.485, 0.456, 0.406], std: [0.229, 0.224, 0.225]}

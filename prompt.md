@@ -1,2102 +1,1582 @@
-你现在需要在当前面部NYHA三分类项目中，正式实现“Global ResNet18 + 六维光学表型融合对照实验”。
+你正在 E:\projects\face2 项目中继续执行普通手机人脸照片心功能二分类研究。
 
-本任务包括：
+本轮任务名称：
 
-1. 编写完整实验代码；
-2. 新增模型、Dataset、特征预处理器、Trainer、Evaluator、runner和summary；
-3. 新增配置文件；
-4. 新增单元测试和协议测试；
-5. 执行只读preflight；
-6. 执行CPU可完成的单元测试、协议测试和轻量冒烟测试；
-7. 生成服务器正式训练命令；
-8. 不在当前CPU-only环境启动完整25次训练。
+Stage3_C0_SH093_224_SameCameraSignal_and_DeviceDomain_Audit_v1
 
-不得修改或重新运行第一阶段、Stage 2A、Stage 2B。
+本轮一次性依次完成两个核心子实验：
 
-==================================================
-一、项目与实现背景
-==================================================
+C0-A：
+Xiaomi-only SH093 224×224 Control vs Patient严格patient-group嵌套五折实验。
 
-实际项目根目录：
+C0-B：
+Patient-only SH093 224×224 Xiaomi vs HONOR相机相关域可预测性实验。
 
-E:\projects\face2
+可选但高优先级控制臂：
 
-当前仓库存在用户未提交的修改，尤其包括：
+C0-A-Control：
+与SH093 224×224输入几何和背景严格匹配的原始RGB 224×224 Xiaomi-only二分类实验。
 
-- trainers/nyha_3class_trainer.py
-- scripts/train/train_nyha_3class_5fold.py
-- scripts/evaluate/summarize_nyha_3class_5fold.py
-- Stage 1/2A/2B相关代码、配置、测试和报告
+不得进入：
 
-因此本任务必须优先新增独立文件，禁止覆盖或重写用户已有修改。
+- 多SH训练；
+- 跨SH测试；
+- Exposure/Gamma鲁棒训练；
+- R3DPR一致性训练；
+- Stage3-B1；
+- ROI实验；
+- 模型结构搜索；
+- 超参数搜索。
 
-正式数据队列为500例，三分类数量：
+======================================================================
+一、研究背景
+======================================================================
 
-- normal：115；
-- mild：237；
-- severe：148。
+现有完整500例SH093重光照二分类历史结果为：
 
-类别索引固定为：
+macro_auc = 0.8281
+accuracy = 0.7820
+macro_precision = 0.7168
+macro_recall = 0.7731
+macro_f1 = 0.7314
+balanced_accuracy = 0.7731
 
-- normal = 0；
-- mild = 1；
-- severe = 2。
+该历史实验实际使用的输入目录为：
 
-原始NYHA映射：
+E:/projects/face2/data/processed/global_face/fixedSH_origcam_menafg
 
-- NYHA 0 → normal；
-- NYHA 1、2 → mild；
-- NYHA 3、4 → severe。
+其上游R3DPR原始SH093输出目录为：
 
-固定五折：
+E:/projects/face2/data/processed/P2_ExampleSH093_FixedLight_v1/images/fixedSH_origcam
 
-- fold编号0–4；
-- 每折400例train；
-- 每折100例val；
-- 五折val拼接后为500例唯一ID；
-- 按label_3class × SEX分层；
-- patient_group_id不跨fold。
+R3DPR实际流程为：
 
-==================================================
-二、实验目标
-==================================================
+原始手机RGB
+→ CropPose检测、裁剪和原视角估计
+→ DPR估计原始SH
+→ 主编码得到planes和superres_ws
+→ 保留每例CropPose原视角
+→ 将显式光照替换为固定SH093
+→ 生成fixedSH_origcam
+→ 后续处理为224×224 fixedSH_origcam_menafg
 
-实现并公平比较以下五个variant：
+因此，SH093统一的是最终生成阶段的显式球谐光照，不代表：
 
-1. global_only / G0
+- 已完全消除原始手机ISP；
+- 已完全消除相机相关生成偏差；
+- 已获得真实相机无关反射率；
+- 已完全排除所有光照残留；
+- 已证明分类信息属于医学表型。
 
-输入：
+Stage3-B0已经得到：
 
-- Global meanbg RGB图像；
-- ResNet18输出512维Global特征；
-- 不读取任何光学特征；
-- 不读取forehead_available；
-- 分类头输入维度512。
+Xiaomi-only原始RGB：
+pooled OOF AUC = 0.4964
+95% CI = 0.4237–0.5724
+Balanced Accuracy = 0.5099
+Macro-F1 = 0.5081
 
-2. global_mask / G-Mask
+说明在固定Xiaomi相机后，原始RGB没有表现出稳定同相机区分信号。
 
-输入：
+本轮需要回答：
 
-- 512维Global特征；
-- 一维forehead_available；
-- 分类头输入维度513。
+1. 固定为Xiaomi后，SH093生成式统一光照表征是否能恢复稳定的Control–Patient区分信号？
+2. SH093 224×224输入是否仍保留能够预测原手机设备域的信息？
+3. 完整500例SH093 AUC 0.8281更可能来自同相机疾病相关表征，还是来自设备/采集域残留？
+4. SH093是否具备成为后续主要二分类输入的资格？
 
-3. global_raw / G-Raw
+======================================================================
+二、核心实验定义
+======================================================================
 
-输入：
-
-- 512维Global特征；
-- 第一阶段Raw六维光学表型；
-- 一维forehead_available；
-- 分类头输入维度519。
-
-4. global_stage2a / G-A
-
-输入：
-
-- 512维Global特征；
-- Stage 2A Ridge calibrated六维表型；
-- 一维forehead_available；
-- 分类头输入维度519。
-
-5. global_stage2b / G-B
+C0-A：
 
 输入：
+SH093 224×224图像。
 
-- 512维Global特征；
-- Stage 2B MLP calibrated六维表型；
-- 一维forehead_available；
-- 分类头输入维度519。
+队列：
+Xiaomi M2006J10C全部233例。
 
-核心比较：
+标签：
+0 = Control
+1 = Patient
 
-- G-Mask vs G0；
-- G-Raw vs G-Mask；
-- G-A vs G-Mask；
-- G-B vs G-Mask；
-- G-A vs G-Raw；
-- G-B vs G-Raw；
-- G-B vs G-A。
+目标：
+判断SH093在固定手机型号后是否具有稳定疾病区分能力。
 
-==================================================
-三、先检查仓库状态
-==================================================
+C0-B：
 
-开始实现前必须：
+输入：
+同一套SH093 224×224图像。
 
-1. 确认实际project root；
-2. 运行git status；
-3. 记录branch和commit；
-4. 检查计划新增的目标文件是否已经存在；
-5. 检查现有未提交修改；
-6. 不得执行git reset、checkout、clean或任何破坏性操作；
-7. 不得覆盖用户已有文件；
-8. 如果建议新增的文件已经存在，先读取并判断来源；
-9. 如果存在无法安全合并的冲突，停止并报告，不得静默覆盖。
+队列：
+仅Patient，预计385例。
 
-本任务原则上不修改现有历史文件。
+标签：
+0 = Xiaomi M2006J10C
+1 = HONOR BVL-AN00
 
-为避免修改__init__.py，允许直接通过完整模块路径导入新增模块。
+目标：
+判断在全部样本均为Patient后，SH093图像是否仍具有相机相关域可预测性。
 
-==================================================
-四、必须先阅读的现有代码
-==================================================
+两个实验共享：
 
-编码前必须实际读取并理解：
+- 图像资产审计；
+- Dataset基础实现；
+- 图像读取和标准化；
+- patient-group防泄漏规则；
+- 指标实现；
+- patient-group bootstrap；
+- 运行环境；
+- 输出完整性审计。
 
-1. models/resnet_nyha_3class.py
-2. models/nyha_backbone_factory.py
-3. 当前NYHA3ClassFaceDataset所在文件
-4. trainers/nyha_3class_trainer.py
-5. 当前NYHA evaluator
-6. scripts/train/train_nyha_3class_5fold.py
-7. scripts/evaluate/summarize_nyha_3class_5fold.py
-8. 当前metrics实现
-9. 当前weighted CrossEntropy实现
-10. 当前build_transforms实现
-11. 当前YAML配置读取方式
-12. 当前checkpoint和resume格式
-13. 当前run manifest风格
-14. Stage 1/2A/2B的schema、manifest和相关测试
-15. 预实现审计报告：
+两个实验必须独立：
 
-reports/global_resnet18_optical_fusion_preimplementation/
-global_resnet18_optical_fusion_preimplementation_audit.md
-
-必须尽量复用：
-
-- ResNet18构造语义；
-- ImageNet权重选择；
-- 图像transform；
-- weighted CrossEntropy；
-- 分类metrics；
-- checkpoint选择逻辑；
-- 训练日志和曲线风格；
-- OOF输出格式；
-- YAML解析风格；
-- Stage 1/2A/2B的schema和哈希验证风格。
-
-不得仅根据本提示词概念性创建代码。
-
-==================================================
-五、正式数据来源
-==================================================
-
-A. Global meanbg图像
-
-根目录：
-
-data/processed/global_face/preprocess_ablation/
-hybrid_imagenet_meanbg/images/
-
-命名格式：
-
-{ID}.png
-
-要求：
-
-- 总计500张；
-- 使用Pillow读取；
-- convert("RGB")；
-- 输入224×224；
-- 不重新生成meanbg；
-- 不再次进行背景替换。
-
-B. 固定五折
-
-根目录：
-
-data/processed/splits_500/
-
-正式master split：
-
-data/processed/splits_500/
-nyha_3class_sex_stratified_group_5fold.csv
-
-同时读取现有实际逐折train/val文件命名方式，不能只假设文件名。
-
-要求：
-
-- fold=0–4；
-- 每折400/100；
-- train/val ID交集为0；
-- patient_group_id交集为0；
-- 五个val恰好覆盖500例；
-- split角色由明确的train/val文件路径决定；
-- 不重新生成split。
-
-C. 标签
-
-原始标签血缘：
-
-data/raw/label_raw_nyha2_remove22_sex_balanced_500.csv
-
-实际训练优先沿用split CSV中的label_3class。
-
-要求：
-
-- ID按字符串读取；
-- 不丢失“-1”等后缀；
-- 不按数值类型读取ID；
-- 类别顺序固定为normal、mild、severe；
-- 不重新生成或修改标签。
-
-==================================================
-六、第一阶段Raw特征
-==================================================
-
-正式文件：
-
-data/processed/optical_observations_v1/
-regional_optical_observations.csv
-
-schema：
-
-data/processed/optical_observations_v1/
-feature_schema.json
-
-manifest：
-
-data/processed/optical_observations_v1/
-extraction_manifest.json
-
-Raw六维固定顺序：
-
-1. cheek_mean_log2_y
-2. cheek_mean_log2_rg
-3. cheek_mean_log2_bg
-4. forehead_minus_cheek_log2_y
-5. forehead_minus_cheek_log2_rg
-6. forehead_minus_cheek_log2_bg
-
-availability字段：
-
-forehead_available
-
-统计期望：
-
-- 500行；
-- 500唯一ID；
-- forehead_available=1：486例；
-- forehead_available=0：14例；
-- 前三项cheek全部有限；
-- 后三项仅14例unavailable为NaN。
-
-G-Mask只允许读取：
-
-- ID；
-- forehead_available。
-
-G-Raw只允许读取：
-
-- ID；
-- 上述六维Raw；
-- forehead_available。
-
-禁止自动读取“所有数值字段”。
-
-==================================================
-七、Stage 2A特征
-==================================================
-
-正式根目录：
-
-experiments/optical_condition_calibration_stage2a/
-
-schema：
-
-experiments/optical_condition_calibration_stage2a/
-summary/calibration_feature_schema.json
-
-run manifest：
-
-experiments/optical_condition_calibration_stage2a/
-summary/run_manifest.json
-
-G-A六维固定顺序：
-
-1. calibrated_cheek_mean_log2_y
-2. calibrated_cheek_mean_log2_rg
-3. calibrated_cheek_mean_log2_bg
-4. calibrated_forehead_minus_cheek_log2_y
-5. calibrated_forehead_minus_cheek_log2_rg
-6. calibrated_forehead_minus_cheek_log2_bg
-
-分类fold k必须读取：
-
-train：
-
-experiments/optical_condition_calibration_stage2a/
-fold_k/train_calibrated_features.csv
-
-val：
-
-experiments/optical_condition_calibration_stage2a/
-fold_k/val_calibrated_features.csv
-
-只允许读取：
-
-- ID；
-- fold；
-- split_role；
-- forehead_available；
-- 六个calibrated字段。
-
-禁止输入：
-
-- raw_*；
-- predicted_acquisition_*；
-- residual_*；
-- camera_id；
-- EXIF；
-- condition；
-- z条件；
-- QC；
-- NYHA；
-- SEX；
-- 其他数值字段。
-
-禁止使用：
-
-summary/oof_calibrated_features.csv
-
-作为分类器train输入。
-
-OOF文件只允许用于输入完整性审计，不得重新拆成400/100。
-
-==================================================
-八、Stage 2B特征
-==================================================
-
-正式根目录：
-
-experiments/optical_condition_calibration_stage2b/
-
-schema：
-
-experiments/optical_condition_calibration_stage2b/
-summary/calibration_stage2b_feature_schema.json
-
-run manifest：
-
-experiments/optical_condition_calibration_stage2b/
-summary/run_manifest.json
-
-G-B六维固定顺序：
-
-1. calibrated_nn_cheek_mean_log2_y
-2. calibrated_nn_cheek_mean_log2_rg
-3. calibrated_nn_cheek_mean_log2_bg
-4. calibrated_nn_forehead_minus_cheek_log2_y
-5. calibrated_nn_forehead_minus_cheek_log2_rg
-6. calibrated_nn_forehead_minus_cheek_log2_bg
-
-分类fold k必须读取：
-
-train：
-
-experiments/optical_condition_calibration_stage2b/
-fold_k/train_nn_calibrated_features.csv
-
-val：
-
-experiments/optical_condition_calibration_stage2b/
-fold_k/val_nn_calibrated_features.csv
-
-只允许读取：
-
-- ID；
-- fold；
-- split_role；
-- forehead_available；
-- 六个calibrated_nn字段。
-
-禁止输入：
-
-- raw_*；
-- predicted_condition_nn_*；
-- residual_nn_*；
-- camera_id；
-- EXIF；
-- condition；
-- z条件；
-- QC；
-- NYHA；
-- SEX；
-- 其他数值字段。
-
-禁止使用：
-
-summary/oof_nn_calibrated_features.csv
-
-作为分类器train输入。
-
-==================================================
-九、正向字段白名单
-==================================================
-
-必须在代码中使用显式variant→字段映射，不得通过：
-
-- dtype；
-- 正则匹配所有calibrated字段；
-- 排除少数字段；
-- CSV剩余数值列；
-- 列位置；
-
-自动推断输入。
-
-建立不可变常量，例如：
-
-VARIANT_FEATURE_COLUMNS = {
-    "global_only": [],
-    "global_mask": [],
-    "global_raw": [...6 fields...],
-    "global_stage2a": [...6 fields...],
-    "global_stage2b": [...6 fields...],
-}
-
-VARIANT_AUX_DIM = {
-    "global_only": 0,
-    "global_mask": 1,
-    "global_raw": 7,
-    "global_stage2a": 7,
-    "global_stage2b": 7,
-}
-
-要求：
-
-- 字段顺序与schema交叉核验；
-- schema顺序与代码顺序不一致时停止；
-- 禁止字段意外进入时停止；
-- aux最终shape必须严格匹配variant；
-- G0不得读取Stage 1、2A或2B特征文件；
-- G-Mask不得读取六维数值，只读取availability。
-
-==================================================
-十、特征预处理器
-==================================================
-
-新增：
-
-utils/optical_feature_preprocessor.py
-
-实现独立、可测试的fit/transform接口。
-
-建议包含：
-
-- variant定义；
-- 字段白名单；
-- 特征源解析；
-- schema验证；
-- ID和split验证；
-- FeatureScaler数据类；
-- fit；
-- transform；
-- save_json；
-- load_json；
-- 哈希和manifest生成；
-- 禁止OOF路径检查。
-
-A. 计算精度
-
-- mean/std使用float64计算；
-- ddof=0；
-- transform后转换为float32；
-- std阈值为1e-8；
-- std<1e-8立即报错；
-- 不静默替换std；
-- 不winsorize；
-- 不clip；
-- 不删除异常病例。
-
-B. Cheek三维
-
-前三项使用当前outer fold全部400个train病例计算：
-
-- mean；
-- std；
-- valid_n。
-
-要求：
-
-- 全部有限；
-- 任一NaN或Inf立即报错。
-
-C. Forehead-minus-cheek三维
-
-后三项只使用当前outer train中：
-
-forehead_available == 1
-
-的病例计算mean/std。
-
-要求：
-
-- available病例必须全部有限；
-- unavailable病例应为NaN；
-- availability与NaN模式严格匹配；
-- 不能把unavailable病例的NaN当作0参与均值；
-- 不能用val病例拟合。
-
-D. 缺失填充
-
-对于forehead_available=0：
-
-- 保留前三项cheek；
-- 后三项在标准化之后填0；
-- availability作为最后一维0；
-- 不删除病例。
-
-对于forehead_available=1：
-
-- 后三项正常标准化；
-- availability作为最后一维1。
-
-E. variant行为
-
-global_only：
-
-- 不拟合scaler；
-- aux维度0。
-
-global_mask：
-
-- 不拟合六维scaler；
-- aux只有availability；
-- aux维度1。
-
-global_raw/global_stage2a/global_stage2b：
-
-- 独立拟合当前fold当前variant的六维scaler；
-- aux为6个标准化特征+availability；
-- aux维度7。
-
-Raw、2A、2B不得共用scaler。
-
-F. scaler保存
-
-每个fold、每个需要六维特征的variant保存：
-
-feature_scaler.json
-
-至少包含：
-
-- schema_version；
-- variant；
-- fold；
-- feature_names及顺序；
-- mean；
-- std；
-- valid_n；
-- forehead_available_train_n；
-- forehead_unavailable_train_n；
-- ddof=0；
-- std_epsilon；
-- missing_fill_after_standardization=0；
-- availability_position；
-- source相对路径；
-- source SHA256；
-- schema SHA256；
-- train ID SHA256；
-- split SHA256；
-- fit_timestamp；
-- code/config SHA256。
-
-checkpoint中保存相同scaler payload或其完整哈希。
-
-Evaluator只允许load和transform，禁止refit。
-
-==================================================
-十一、Dataset
-==================================================
-
-新增：
-
-datasets/global_optical_fusion_dataset.py
-
-建议实现：
-
-GlobalOpticalFusionDataset
-
-优先采用组合方式复用现有NYHA3ClassFaceDataset的图像加载、标签、ID和transform逻辑，不修改历史Dataset。
-
-要求：
-
-1. split CSV行顺序是唯一主顺序；
-2. 特征表通过完整字符串ID进行一对一join；
-3. 不按行号或排序位置join；
-4. join后保持split CSV原行顺序；
-5. 不允许缺失ID；
-6. 不允许额外ID；
-7. 不允许重复ID；
-8. Stage 2A/2B的fold必须等于当前classification fold；
-9. Stage 2A/2B的split_role必须与train/val文件角色一致；
-10. train与val必须使用各自对应文件；
-11. G0不读取任何光学表；
-12. G-Mask只读取Stage 1 availability；
-13. G-Raw读取Stage 1；
-14. G-A读取同fold Stage 2A；
-15. G-B读取同fold Stage 2B。
-
-统一batch建议返回：
-
-- image；
-- aux_features；
-- label；
-- ID；
-- patient_group_id；
-- NYHA；
-- SEX；
-- sex_name；
-- label_3class_name；
-- fold；
-- split_role。
-
-其中：
-
-- global_only的aux_features形状为[0]；
-- DataLoader后为[B,0]；
-- global_mask为[B,1]；
-- 其余为[B,7]。
-
-aux_features必须为float32且全部有限。
-
-禁止把以下字段放入aux tensor：
-
-- label；
-- NYHA；
-- SEX；
-- patient_group_id；
-- fold；
-- split_role；
-- camera_id；
-- EXIF；
-- predicted condition；
-- residual；
-- QC。
-
-image_path可以在Dataset内部使用，但不得写入最终OOF CSV绝对路径。
-
-==================================================
-十二、图像transform
-==================================================
-
-严格复用正式meanbg配置：
-
-train：
-
-1. Resize(224,224)；
-2. RandomHorizontalFlip(p=0.5)；
-3. ToTensor；
-4. ImageNet Normalize。
-
-val：
-
-1. Resize(224,224)；
-2. ToTensor；
-3. ImageNet Normalize。
-
-ImageNet：
-
-mean = [0.485, 0.456, 0.406]
-std = [0.229, 0.224, 0.225]
-
-禁止加入：
-
-- RandomCrop；
-- RandomResizedCrop；
-- Rotation；
-- ColorJitter；
-- brightness；
-- contrast；
-- saturation；
-- hue；
-- gamma；
-- RandomErasing；
-- MixUp；
-- CutMix；
-- 任何新增强。
-
-水平翻转不改变六维特征，因为六维只包含脸颊均值和额部−脸颊差值，没有左右方向性。
-
-==================================================
-十三、融合模型
-==================================================
-
-新增：
-
-models/resnet18_optical_fusion.py
-
-建议实现：
-
-ResNet18OpticalFusion
-
-要求：
-
-1. 使用与现有Global基线相同的torchvision ResNet18；
-2. pretrained=ImageNet时使用：
-   ResNet18_Weights.IMAGENET1K_V1；
-3. ResNet18原fc替换为Identity；
-4. forward_features(image)输出[B,512]；
-5. backbone全部可训练；
-6. 不冻结；
-7. 不分阶段解冻；
-8. 不设置差异学习率；
-9. 无Dropout；
-10. 无BatchNorm新增；
-11. 无MLP；
-12. 无投影层；
-13. 无attention；
-14. 无gate；
-15. 无FiLM；
-16. 无特征交互模块；
-17. 只做拼接后单Linear分类。
-
-模型结构：
-
-global_only：
-
-global_features [B,512]
-→ Linear(512,3)
-
-global_mask：
-
-global_features [B,512]
-+
-aux [B,1]
-→ concat [B,513]
-→ Linear(513,3)
-
-global_raw/global_stage2a/global_stage2b：
-
-global_features [B,512]
-+
-aux [B,7]
-→ concat [B,519]
-→ Linear(519,3)
-
-分类头参数量期望：
-
-- global_only：1539；
-- global_mask：1542；
-- 三个融合variant：1560。
-
-forward签名建议统一为：
-
-forward(images, aux_features=None)
-
-或：
-
-forward(images, aux_features)
-
-但必须满足：
-
-- G0只接受None或[B,0]；
-- G-Mask严格要求[B,1]；
-- 其他严格要求[B,7]；
-- batch维必须一致；
-- dtype兼容；
-- aux必须有限；
-- availability必须为0或1；
-- 维度错误立即报错；
-- 不允许静默截断或padding。
-
-输出为未归一化logits [B,3]。
-
-softmax只在Evaluator和指标计算时使用。
-
-==================================================
-十四、模型初始化和公平性
-==================================================
-
-五个variant必须：
-
-- 使用相同ImageNet backbone权重；
-- 使用相同fold；
-- 使用相同训练数据；
-- 使用相同train顺序；
-- 使用相同val顺序；
-- 使用相同图像增强协议；
-- 使用相同loss；
-- 使用相同训练预算；
-- 使用相同checkpoint规则。
-
-不允许：
-
-- 从历史G0 checkpoint初始化融合模型；
-- 先训练G0再继续训练融合模型；
-- 给某个variant额外epoch；
-- 给某个variant不同learning rate；
-- 给某个variant不同early stopping；
-- 搜索多个seed后选择最好结果。
-
-建议固定：
-
-base_seed = 2026
-fold_seed = base_seed + fold
-
-同一fold的五个variant使用相同fold_seed。
-
-至少分离并记录：
-
-- model seed；
-- DataLoader shuffle generator seed；
-- augmentation seed；
-- NumPy seed；
-- Python random seed；
-- torch CPU seed；
-- torch CUDA seed。
-
-为了让不同分类头维度不影响数据随机流：
-
-1. 每个variant开始时重新设置seed；
-2. 构建模型；
-3. 构建模型后重新设置数据/augmentation seed；
-4. DataLoader显式传入torch.Generator；
-5. num_workers=0；
-6. 每个epoch开始前重置该epoch的augmentation seed；
-7. 相同fold、相同epoch的五个variant应产生相同样本顺序和水平翻转序列。
-
-不需要创建复杂的增强系统；应以最小可靠实现为原则。
-
-保存每个run的实际seed值。
-
-==================================================
-十五、训练配置
-==================================================
-
-新增：
-
-config/train/global_optical_fusion/
-global_resnet18_optical_fusion.yaml
-
-正式配置固定：
-
-device: auto
-backbone: resnet18
-pretrained: imagenet
-num_classes: 3
-image_size: 224
-
-batch_size: 16
-epochs: 50
-optimizer: AdamW
-learning_rate: 1e-4
-weight_decay: 1e-4
-
-scheduler: none
-warmup: none
-gradient_clipping: none
-
-loss: weighted_cross_entropy
-label_smoothing: 0
-AMP: false
-
-early_stopping_patience: 10
-monitor_metric: macro_auc
-monitor_mode: max
-minimum_improvement: 0
-tie_breaking: earlier_epoch
-
-seed: 2026
-num_workers: 0
-pin_memory: false
-
-transforms:
-  resize: [224,224]
-  horizontal_flip_probability: 0.5
-  imagenet_normalization: true
-  color_jitter: false
-  random_crop: false
-
-feature_standardization:
-  ddof: 0
-  std_epsilon: 1e-8
-  missing_fill_after_standardization: 0
-  train_only: true
-
-配置支持：
-
-variants:
-  - global_only
-  - global_mask
-  - global_raw
-  - global_stage2a
-  - global_stage2b
-
-auxiliary_input_dim和fused_input_dim必须由variant推导并断言，不允许用户配置出不一致值。
-
-==================================================
-十六、损失函数
-==================================================
-
-严格复用现有fold-specific weighted CrossEntropy。
-
-每个fold只使用当前400例train标签计算：
-
-weight_c =
-    N_train
-    /
-    (num_classes * count_c)
-
-要求：
-
-- G0、G-Mask、G-Raw、G-A、G-B使用相同权重；
-- 权重只由当前fold train计算；
-- val不参与；
-- reduction="mean"；
-- 不使用label smoothing；
-- 不同时使用其他loss；
-- 不加入auxiliary loss；
-- 不加入feature reconstruction loss；
-- 不加入camera adversarial loss；
-- 不加入EXIF decorrelation loss；
-- 不加入设备不变性loss。
-
-==================================================
-十七、Trainer
-==================================================
-
-新增：
-
-trainers/global_optical_fusion_trainer.py
-
-优先复用现有Trainer的：
-
-- optimizer创建；
-- weighted loss；
-- train/val循环；
-- Macro-AUC计算；
-- early stopping；
+- 标签；
+- split；
 - checkpoint；
-- CSV日志；
-- 曲线图；
-- resume语义。
+- OOF；
+- 模型；
+- 训练日志；
+- 统计结论。
 
-但不得覆盖现有Trainer。
+禁止联合训练或多任务训练。
 
-训练时：
+======================================================================
+三、运行环境
+======================================================================
 
-logits = model(images, aux_features)
+必须使用：
 
-每epoch记录：
+E:\resarch\Anaconda3\envs\face2\python.exe
 
-- epoch；
-- train_loss；
-- val_loss；
-- train_accuracy；
-- val_accuracy；
-- train_macro_auc；
-- val_macro_auc；
-- val_balanced_accuracy；
-- val_macro_f1；
-- learning_rate；
-- elapsed_seconds；
-- is_best；
-- patience_counter。
+记录：
 
-checkpoint选择：
-
-- 指标：val Macro-AUC；
-- 新值严格大于旧值才算改善；
-- 相等时保留较早epoch；
-- patience=10；
-- 最多50 epochs；
-- 保存best_macro_auc.pth；
-- 保存last_checkpoint.pth。
-
-必须承认：
-
-outer val每epoch参与early stopping，因此这里是五折held-out validation，不是独立test。
-
-所有variant必须使用相同规则。
-
-==================================================
-十八、checkpoint内容
-==================================================
-
-每个best/last checkpoint至少保存：
-
-- model_state_dict；
-- optimizer_state_dict；
-- epoch；
-- best_epoch；
-- best_macro_auc；
-- patience_counter；
-- fold；
-- variant；
-- architecture；
-- backbone；
-- pretrained weights名称；
-- num_classes；
-- global_feature_dim；
-- auxiliary_input_dim；
-- fused_input_dim；
-- classifier_head结构；
-- parameter_count；
-- trainable_parameter_count；
-- feature_names及顺序；
-- availability位置；
-- feature scaler payload或哈希；
-- feature source相对路径；
-- feature source SHA256；
-- feature schema SHA256；
-- Stage 1/2A/2B manifest SHA256；
-- train ID SHA256；
-- val ID SHA256；
-- split SHA256；
-- config；
-- config SHA256；
-- class mapping；
-- class weights；
-- transform定义；
-- seed信息；
 - Python版本；
 - PyTorch版本；
-- torchvision版本；
+- TorchVision版本；
 - CUDA版本；
-- device；
-- git commit；
-- clinical fields used=false；
-- camera used=false；
-- exif used=false；
-- outer_validation_tuning=true；
-- historical_inputs_modified=false。
-
-resume时必须恢复：
-
-- model；
-- optimizer；
-- epoch；
-- best metric；
-- patience；
-- RNG状态；
-- scaler一致性。
-
-恢复后必须验证variant、feature order、scaler hash和split hash一致，不一致时拒绝resume。
-
-==================================================
-十九、Evaluator
-==================================================
-
-新增：
-
-evaluators/global_optical_fusion_evaluator.py
-
-要求：
-
-1. 加载best_macro_auc.pth；
-2. 恢复模型；
-3. 加载并验证feature scaler；
-4. 不得重新fit scaler；
-5. 对当前fold val进行一次最终推理；
-6. softmax得到三类概率；
-7. 保存逐例结果；
-8. 计算现有全部分类指标；
-9. 保存confusion matrix；
-10. 验证checkpoint与当前variant/fold一致。
-
-逐折val_predictions.csv至少包含：
-
-- ID；
-- patient_group_id；
-- fold；
-- true_label；
-- true_class_name；
-- prob_normal；
-- prob_mild；
-- prob_severe；
-- pred_class；
-- pred_class_name；
-- correct；
-- NYHA；
-- SEX；
-- sex_name；
-- forehead_available。
-
-其中：
-
-- G0的forehead_available可以保留为仅评估/QC字段，但不得作为模型输入；
-- 不包含绝对image_path；
-- 不包含六维具体数值；
-- 不包含camera_id；
-- 不包含EXIF；
-- 不包含predicted condition；
-- 不包含residual；
-- 不包含QC中间量。
-
-指标至少包括：
-
-- Accuracy；
-- Balanced Accuracy；
-- Macro Precision；
-- Macro Recall；
-- Macro F1；
-- Macro OvR AUC；
-- normal Precision/Recall/F1/AUC；
-- mild Precision/Recall/F1/AUC；
-- severe Precision/Recall/F1/AUC；
-- severe-vs-rest AUC；
-- normal-vs-abnormal AUC；
-- confusion matrix。
-
-类别顺序固定：
-
-normal, mild, severe
-
-==================================================
-二十、五折OOF与汇总
-==================================================
-
-新增：
-
-scripts/evaluate/
-summarize_global_optical_fusion_5fold.py
-
-每个variant完成五折后拼接五个val_predictions.csv，生成：
-
-- 500行；
-- 500唯一ID；
-- 每ID恰好出现一次；
-- fold=0–4；
-- fold映射与固定split完全一致；
-- 概率有限；
-- 每行概率和为1；
-- 无重复；
-- 无缺失。
-
-每个variant输出：
-
-summary/{variant}/
-    fold_metrics.csv
-    aggregate_fold_metrics.csv
-    oof_predictions.csv
-    oof_metrics.json
-    oof_confusion_matrix.csv
-    oof_confusion_matrix.png
-    training_curve_summary.png
-
-aggregate_fold_metrics至少报告：
-
-- 五折mean；
-- 五折sample std，ddof=1；
-- median；
-- min；
-- max；
-- valid fold数量。
-
-同时计算500例pooled OOF指标。
-
-五折平均指标和pooled OOF指标必须分别报告，不能混为一项。
-
-==================================================
-二十一、配对比较
-==================================================
+- cuDNN版本；
+- GPU型号；
+- NumPy版本；
+- Pillow版本；
+- OpenCV版本；
+- scikit-learn版本；
+- 当前Git commit；
+- git status；
+- 工作目录；
+- 执行命令。
 
-实现以下配对比较：
+输出：
 
-1. global_mask - global_only
-2. global_raw - global_mask
-3. global_stage2a - global_mask
-4. global_stage2b - global_mask
-5. global_stage2a - global_raw
-6. global_stage2b - global_raw
-7. global_stage2b - global_stage2a
-
-生成：
-
-summary/pairwise_comparison.csv
-summary/foldwise_metric_deltas.csv
-summary/oof_metrics_all_variants.csv
-summary/pairwise_bootstrap_deltas.csv
-
-A. 逐fold差值
-
-对以下指标计算candidate-reference：
-
-- Macro-AUC；
-- Accuracy；
-- Balanced Accuracy；
-- Macro-F1；
-- 三类AUC；
-- 三类Recall；
-- severe-vs-rest AUC；
-- normal-vs-abnormal AUC。
-
-每项报告：
-
-- fold 0–4差值；
-- 平均差；
-- sample std；
-- 中位数；
-- 最小值；
-- 最大值；
-- candidate更优的fold数量；
-- reference更优的fold数量；
-- 完全相等的fold数量。
-
-B. OOF差值
-
-严格按：
-
-- ID；
-- patient_group_id；
-- fold；
-- true_label；
+logs/runtime_environment.txt
+logs/git_status.txt
+logs/execution_commands.txt
 
-对齐两个variant。
-
-对齐不一致时停止，不得通过排序强行拼接。
-
-C. 患者组级配对bootstrap
-
-由于500张图像对应483个patient_group_id，bootstrap必须以patient_group_id为采样单位，不能把同患者多图当作完全独立样本。
-
-建议固定：
-
-- bootstrap_repetitions=2000；
-- bootstrap_seed=2026；
-- percentile CI；
-- 2.5%和97.5%；
-- 同一个bootstrap样本同时用于reference和candidate；
-- 按true_label分层抽取patient_group_id；
-- 保留被抽中patient group的全部图像；
-- patient group被重复抽中时相应重复其全部图像。
-
-至少对以下delta输出95% CI：
-
-- Macro-AUC；
-- Accuracy；
-- Balanced Accuracy；
-- Macro-F1；
-- normal AUC；
-- mild AUC；
-- severe AUC。
-
-不得根据bootstrap p值自动宣布胜负。
-
-如果bootstrap样本计算失败：
-
-- 记录失败原因；
-- 不填伪造结果；
-- 报告有效重复次数；
-- 有效重复次数不足预设阈值时停止summary。
-
-==================================================
-二十二、六维特征分布审计
-==================================================
-
-生成：
-
-summary/feature_distribution_audit.csv
-
-对global_raw、global_stage2a、global_stage2b的每fold、每个六维特征记录：
-
-- train valid_n；
-- val valid_n；
-- train mean；
-- train std；
-- train median；
-- train min；
-- train max；
-- val mean；
-- val std；
-- val median；
-- val min；
-- val max；
-- standardized mean difference；
-- train unavailable数量；
-- val unavailable数量；
-- train availability比例；
-- val availability比例。
-
-同时可记录标准化后的train/val统计。
-
-该审计只用于解释：
-
-- Raw/2A/2B的折间变化；
-- Stage 2B train in-sample与val out-of-sample分布偏移。
-
-禁止根据该审计：
-
-- 删除病例；
-- 重新拟合Stage 2B；
-- 调整loss；
-- 调整网络；
-- 对某个variant单独标准化到验证集；
-- 事后修改特征。
-
-==================================================
-二十三、Runner
-==================================================
-
-新增：
-
-scripts/run/
-run_global_optical_fusion_5fold.py
-
-以及：
-
-scripts/train/
-train_global_optical_fusion_5fold.py
-
-runner至少支持：
-
---config
---variant global_only
---variant global_mask
---variant global_raw
---variant global_stage2a
---variant global_stage2b
---variant all
-
---fold 0
---fold all
-
---protocol-only
---smoke-test
---summarize-only
---resume
---skip-completed
---overwrite
---allow-cpu-training
-
-默认行为：
-
-- 不覆盖已有结果；
-- 已完成run在skip-completed时跳过；
-- 未明确overwrite时不得删除；
-- overwrite只能作用于本次新实验目录；
-- 不得删除历史实验。
-
-设备规则：
-
-1. protocol-only和单元测试允许CPU；
-2. smoke-test允许CPU；
-3. 正式all variants × all folds训练时，若CUDA不可用：
-   - 默认拒绝启动；
-   - 打印明确原因；
-   - 只有显式--allow-cpu-training才允许；
-4. 不安装或升级PyTorch；
-5. 正式服务器训练device=auto时优先CUDA；
-6. 使用sys.executable调用子进程；
-7. 路径全部project-root相对解析；
-8. 必须兼容Windows路径。
-
-smoke-test要求：
-
-- 不下载新依赖；
-- 不运行完整fold；
-- 可在临时目录或独立smoke目录；
-- 使用很小样本；
-- 最多1个epoch；
-- 验证五个variant的完整forward/backward/checkpoint/evaluator通路；
-- 验证三种aux维度；
-- 验证保存和加载；
-- 不写入正式fold完成标志；
-- 不把smoke结果当正式结果。
-
-==================================================
-二十四、Preflight
-==================================================
-
-正式训练前必须通过preflight。
-
-生成：
-
-experiments/global_resnet18_optical_fusion/
-protocol/
-    environment_audit.json
-    input_audit.csv
-    feature_source_audit.csv
-    fold_alignment_audit.csv
-    schema_audit.json
-    protocol_manifest.json
+不得使用base环境或系统Python。
+
+======================================================================
+四、输入资产
+======================================================================
+
+4.1 SH093 224×224正式输入
+
+必须使用用户指定的现有目录，路径字符串按字面使用：
+
+E:/projects/face2/data/processed/global_face/fixedSH_origcam_menafg
+
+不得改用：
+
+- 正式六SH目录中的512×512 relight_neutral_front.png；
+- fixedSH_fixedcam；
+- 原始512×512 fixedSH_origcam；
+- 重新resize得到的新目录；
+- 其他SH编号。
+
+4.2 R3DPR上游原图
+
+仅用于资产链审计，不作为本轮分类输入：
+
+E:/projects/face2/data/processed/P2_ExampleSH093_FixedLight_v1/images/fixedSH_origcam
+
+4.3 Stage3-B0冻结输出
+
+实验根目录：
+
+E:/projects/face2/experiments/lighting_confounding/Stage3_B0_XiaomiOnly_ResNet18_ControlVsPatient_Group5Fold_v1
+
+重点读取：
+
+reports/stage3_b0_report.md
+reports/stage3_b0_machine_summary.json
+oof/xiaomi_b0_oof_predictions.csv
+splits/xiaomi_control_patient_group5fold_v1.csv
+splits/inner/
+training_contract/
+fold_0/ 到 fold_4/
+
+C0-A必须复用B0：
+
+- 完全相同的233例；
+- 完全相同的outer fold；
+- 完全相同的inner train/validation划分；
+- 完全相同的patient_group定义。
+
+4.4 相机和标签信息
+
+优先从Stage1冻结主表读取：
+
+E:/projects/face2/experiments/lighting_confounding/Lighting_Confounding_Audit_Stage1_v1/metadata/stage1_master_500.csv
+
+必要时结合：
+
+E:/projects/face2/data/raw/EXIF/Image_Metadata_All.xlsx
+
+4.5 旧SH093完整500例实验
+
+Codex必须搜索项目中：
+
+- 对fixedSH_origcam_menafg的代码引用；
+- 训练配置；
+- 实验目录；
+- OOF；
+- 五折split；
+- 结果报告；
+- 得到macro_auc 0.8281的具体模型。
+
+使用命令行或代码检索：
+
+fixedSH_origcam_menafg
+0.8281
+fixedSH_origcam
+SH093
+
+必须输出旧实验定位报告。
+
+旧实验只作为历史审计，不得复用旧checkpoint作为C0-A正式结果。
+
+4.6 本轮输出目录
+
+E:/projects/face2/experiments/lighting_confounding/Stage3_C0_SH093_224_SameCameraSignal_and_DeviceDomain_Audit_v1
+
+不得覆盖任何已有实验。
+
+======================================================================
+五、SH093 224×224资产与处理契约审计
+======================================================================
+
+在训练前必须定位：
+
+- fixedSH_origcam_menafg的生成脚本；
+- 配置文件；
+- 输入目录；
+- 输出目录；
+- 人脸检测方式；
+- 对齐方式；
+- crop方式；
+- resize方式；
+- 插值方法；
+- mask方式；
+- 背景定义；
+- “menafg”在代码中的实际含义；
+- 图像格式；
+- 图像色彩空间；
+- 是否保存PNG；
+- 是否进行ImageNet标准化；
+- 是否使用标签、NYHA、fold或预测结果参与像素处理。
+
+不得仅根据目录名推断。
 
 必须验证：
 
-1. meanbg图像500张；
-2. 标签500个唯一ID；
-3. split 500个唯一ID；
-4. Stage 1 500个唯一ID；
-5. Stage 2A OOF 500个唯一ID；
-6. Stage 2B OOF 500个唯一ID；
-7. 六个集合完全一致；
-8. 类别数量115/237/148；
-9. 每fold train/val为400/100；
-10. train/val ID无交集；
-11. patient_group_id无交集；
-12. 五折val覆盖500例一次；
-13. Stage 2A每fold train/val文件存在；
-14. Stage 2B每fold train/val文件存在；
-15. Stage 2A/B split_role正确；
-16. Stage 2A/B fold正确；
-17. Stage 2A/B与分类split逐折一致；
-18. Stage 1/2A/2B Raw字段最大差不超过允许浮点误差；
-19. availability为486/14；
-20. cheek字段全部有限；
-21. forehead字段缺失与availability严格一致；
-22. schema字段顺序正确；
-23. run manifest状态为COMPLETE；
-24. NYHA未进入Stage 1/2A/2B aux字段；
-25. camera/EXIF/condition/predicted/residual/QC未进入正向白名单；
-26. OOF文件未被配置为classifier train source；
-27. 配置训练参数与锁定协议一致。
+- 500个预期病例是否均存在；
+- 文件名与sample_id是否一一对应；
+- 图像是否严格224×224；
+- 通道是否RGB；
+- dtype是否uint8；
+- 文件是否可解码；
+- 图像是否finite；
+- 是否存在重复文件hash；
+- 是否存在全黑图；
+- 是否存在异常纯色图；
+- 是否存在严重截断；
+- 背景是否符合预处理契约；
+- C0-A的233例是否全部存在；
+- C0-B的Patient样本是否全部存在。
 
-任一关键检查失败，停止正式训练。
+输出：
 
-==================================================
-二十五、代码文件计划
-==================================================
+shared_asset_audit/sh093_224_asset_inventory.csv
+shared_asset_audit/sh093_224_asset_contract.json
+shared_asset_audit/sh093_224_asset_audit.json
+shared_asset_audit/sh093_224_asset_report.md
+shared_asset_audit/sh093_224_hash_inventory.csv
+shared_asset_audit/sh093_224_failures.csv
+shared_asset_audit/sh093_224_qc_panel.png
 
-优先新增：
+若C0-A任一233例缺图，停止整个任务。
 
-models/resnet18_optical_fusion.py
-datasets/global_optical_fusion_dataset.py
-utils/optical_feature_preprocessor.py
-trainers/global_optical_fusion_trainer.py
-evaluators/global_optical_fusion_evaluator.py
-scripts/train/train_global_optical_fusion_5fold.py
-scripts/run/run_global_optical_fusion_5fold.py
-scripts/evaluate/summarize_global_optical_fusion_5fold.py
-config/train/global_optical_fusion/global_resnet18_optical_fusion.yaml
-tests/test_global_optical_fusion_model.py
-tests/test_global_optical_fusion_dataset.py
-tests/test_global_optical_fusion_protocol.py
-tests/test_global_optical_fusion_checkpoint.py
-tests/test_global_optical_fusion_summary.py
+若C0-B存在缺图，停止C0-B，不影响已经通过并完成的C0-A，但必须明确报告。
 
-如果当前项目实际目录命名略有不同，可以做最小适配。
+======================================================================
+六、匹配原始RGB 224×224控制资产审计
+======================================================================
 
-原则：
+本控制臂用于区分：
 
-- 不修改历史Global模型；
-- 不修改历史Dataset；
-- 不修改历史Trainer；
-- 不修改历史Evaluator；
-- 不修改Stage 1/2A/2B；
-- 不修改split、标签、图像；
-- 不进行无关重构；
-- 不为了减少少量重复代码而重构整个训练框架。
+- SH093重光照效应；
+- 224×224几何、背景和预处理效应。
 
-==================================================
-二十六、输出结构
-==================================================
+Codex必须在以下位置检索已有资产和生成代码：
 
-正式实验输出：
+E:/projects/face2/data/processed/global_face
+E:/projects/face2/preprocessing
+E:/projects/face2/src
+E:/projects/face2/scripts
+E:/projects/face2/experiments
 
-experiments/global_resnet18_optical_fusion/
-    protocol/
-        environment_audit.json
-        input_audit.csv
-        feature_source_audit.csv
-        fold_alignment_audit.csv
-        schema_audit.json
-        protocol_manifest.json
+寻找与fixedSH_origcam_menafg满足以下条件的原始RGB输入：
 
-    global_only/
-        fold_0/
-            resolved_config.yaml
-            training_log.csv
-            training_curves.png
-            best_macro_auc.pth
-            last_checkpoint.pth
-            val_predictions.csv
-            metrics.json
-            confusion_matrix.csv
-            confusion_matrix.png
-            feature_distribution.csv
-            fold_manifest.json
-        ...
-        fold_4/
+1. 同样224×224；
+2. 同样的人脸几何定义；
+3. 同样的对齐或裁剪方式；
+4. 同样的mask定义；
+5. 同样的背景定义；
+6. 仅输入源不同：
+   - 一个来自原始RGB；
+   - 一个来自fixedSH_origcam。
 
-    global_mask/
-        fold_0/
-        ...
-        fold_4/
+禁止仅因为都是224×224就认定为匹配。
 
-    global_raw/
-        fold_0/
-            feature_scaler.json
-            ...
-        ...
-        fold_4/
+若找到唯一可信资产：
 
-    global_stage2a/
-        fold_0/
-            feature_scaler.json
-            ...
-        ...
-        fold_4/
+- 将其冻结为C0-A-Control输入；
+- 记录路径、代码、配置和hash；
+- 使用与C0-A完全相同的split和训练协议。
 
-    global_stage2b/
-        fold_0/
-            feature_scaler.json
-            ...
-        ...
-        fold_4/
+若找到多个候选且不能唯一判断：
 
-    summary/
-        global_only/
-            fold_metrics.csv
-            aggregate_fold_metrics.csv
-            oof_predictions.csv
-            oof_metrics.json
-            oof_confusion_matrix.csv
-            oof_confusion_matrix.png
+- 不自行选择；
+- 输出候选比较表；
+- 将matched_control_status标记为ambiguous；
+- 不运行控制臂。
 
-        global_mask/
-        global_raw/
-        global_stage2a/
-        global_stage2b/
+若没有精确匹配资产：
 
-        oof_metrics_all_variants.csv
-        foldwise_metric_deltas.csv
-        pairwise_comparison.csv
-        pairwise_bootstrap_deltas.csv
-        feature_distribution_audit.csv
-        experiment_summary.json
-        run_manifest.json
+- matched_control_status = unavailable；
+- 不在本轮临时生成新数据；
+- C0-A与C0-B继续正常执行；
+- 原始RGB Stage3-B0仅作描述性历史参照。
 
-报告输出：
+输出：
 
-reports/global_resnet18_optical_fusion/
-    global_resnet18_optical_fusion_implementation_report.md
-    global_resnet18_optical_fusion_report.md
-    oof_metrics_all_variants.csv
-    pairwise_comparison.csv
-    pairwise_bootstrap_deltas.csv
-    foldwise_metric_deltas.csv
-    feature_distribution_audit.csv
-    training_curves/
-    confusion_matrices/
+matched_control/preflight/original_rgb_224_candidate_inventory.csv
+matched_control/preflight/original_rgb_224_contract_comparison.csv
+matched_control/preflight/matched_control_decision.json
+matched_control/preflight/matched_control_report.md
 
-在本地仅完成代码实现和测试时：
+======================================================================
+七、旧SH093 0.8281实验审计
+======================================================================
 
-- 生成implementation_report；
-- 不生成虚假的正式实验结果；
-- global_resnet18_optical_fusion_report.md可以由summarize-only在服务器五个variant全部完成后生成；
-- 未完整训练时不得写EXPERIMENT_STATUS=COMPLETE。
+需要回答：
 
-==================================================
-二十七、单元测试
-==================================================
+- 旧实验代码位置；
+- 实验输出目录；
+- 输入是否确为fixedSH_origcam_menafg；
+- 样本数是否500；
+- 标签定义；
+- split文件；
+- split是否patient-group安全；
+- 同一patient不同visit是否跨fold；
+- 是否使用outer test选epoch；
+- 是否存在独立inner validation；
+- 模型结构；
+- 输入尺寸；
+- train/val transform；
+- loss；
+- optimizer；
+- learning rate；
+- batch size；
+- max epoch；
+- early stopping；
+- checkpoint选择方式；
+- OOF是否完整；
+- macro_auc 0.8281如何计算；
+- 是否为pooled OOF AUC；
+- 是否为五折平均；
+- 是否有测试数据泄漏；
+- 是否根据分类结果选择SH093。
 
-测试必须能在CPU运行，并避免下载ImageNet权重。测试模型可以使用pretrained=false或mock backbone。
+SH093是依据视觉质量标准预先选择，不是依据分类AUC选择。报告中应如实记录。
 
-A. 模型测试
+输出：
 
-- forward_features输出[B,512]；
-- G0输出[B,3]；
-- G-Mask输出[B,3]；
-- G-Raw/G-A/G-B输出[B,3]；
-- 分类头输入维度512/513/519；
-- 分类头参数量1539/1542/1560；
-- 只有一个Linear分类头；
-- 无额外MLP；
-- 无新增BN；
-- 无Dropout；
-- 无attention/gate/FiLM；
-- 错误aux维度报错；
-- batch不一致报错；
-- aux NaN/Inf报错；
-- mask非0/1报错；
-- G0输入非空aux报错；
-- 非法variant报错。
+legacy_audit/legacy_sh093_experiment_inventory.csv
+legacy_audit/legacy_sh093_training_contract.json
+legacy_audit/legacy_sh093_split_audit.json
+legacy_audit/legacy_sh093_result_reproduction_audit.json
+legacy_audit/legacy_sh093_report.md
 
-B. scaler测试
+本轮不要求重新训练完整500例旧实验。
 
-- ddof=0；
-- float64拟合；
-- float32输出；
-- 只使用train；
-- val不影响mean/std；
-- cheek使用全部train；
-- forehead只使用available train；
-- unavailable不参与mean/std；
-- 标准化后unavailable后三维为0；
-- cheek仍保留；
-- mask正确附加；
-- std<1e-8报错；
-- available但NaN时报错；
-- unavailable但有限值时按正式规则检查并明确处理；
-- save/load逐元素一致；
-- source hash和train ID hash一致。
+若无法唯一定位旧实验，记录为not_uniquely_identified，不影响C0-A和C0-B执行。
 
-C. Dataset测试
+======================================================================
+八、C0-A Xiaomi-only SH093疾病分类
+======================================================================
 
-- ID字符串和后缀保留；
-- split顺序保持；
-- ID一对一join；
-- 重复ID报错；
-- 缺失ID报错；
-- 额外ID报错；
-- 2A/2B fold不一致报错；
-- split_role不一致报错；
-- train/val文件串用报错；
-- 2A/2B串用报错；
-- OOF路径报错；
-- G0不读取特征；
-- G-Mask只读取availability；
-- aux shape正确；
-- 禁止字段不进入aux。
+8.1 队列
 
-D. checkpoint测试
+严格复用Stage3-B0队列：
 
-- 保存后恢复模型；
-- 恢复前后预测一致；
-- variant一致；
-- feature order一致；
-- scaler一致；
-- split hash一致；
-- source hash一致；
-- 不一致时拒绝恢复；
-- resume恢复optimizer、epoch、patience和RNG。
+- 总计233例；
+- Control 115；
+- Patient 118；
+- patient groups 232；
+- camera model全部为M2006J10C。
 
-E. RNG公平测试
+必须逐行核对：
 
-- 相同fold seed下五个variant样本顺序一致；
-- 相同fold/epoch下翻转决策一致；
-- 重复运行得到相同顺序；
-- variant执行顺序不改变单个variant结果；
-- 不同fold seed不同且可复现。
+- sample_id；
+- patient_group_id；
+- binary_label；
+- outer_fold；
+- image_path；
+- SH093图像是否存在。
 
-F. summary测试
+输出：
 
-使用合成OOF：
+c0a_disease/cohort/c0a_xiaomi_sh093_cohort.csv
+c0a_disease/cohort/c0a_cohort_audit.json
 
-- 五个variant严格ID对齐；
-- 500行要求可配置为小型测试数量；
-- 概率和为1；
-- 重复ID报错；
-- fold不一致报错；
-- true label不一致报错；
-- 指标差值方向正确；
-- paired bootstrap使用同一抽样；
-- patient group整体抽样；
-- 多图患者不会被拆开；
-- 固定seed结果一致。
+8.2 Split
 
-==================================================
-二十八、协议测试
-==================================================
+必须直接读取并复用：
 
-正式训练前必须使用真实项目元数据执行协议测试，但不需要加载全部图像进入GPU。
+Stage3-B0外层split；
+Stage3-B0每折inner split。
 
-至少验证：
+不得：
 
-- 正式500例队列；
-- 115/237/148类别数量；
-- 483个patient_group_id；
-- 17个多图patient group；
-- patient group不跨fold；
-- Stage 1/2A/2B ID完全一致；
-- 每fold文件完整；
-- 每fold 400/100；
-- 486/14 availability；
-- 三套六维顺序正确；
-- G0/G-Mask/G-Raw/G-A/G-B输入维度正确；
-- OOF文件未被用作train source；
-- camera/EXIF未进入输入；
-- scaler只fit train；
-- config与锁定协议一致；
-- 输出目录不会覆盖历史实验。
+- 重新生成；
+- 更换seed；
+- 为SH093优化fold；
+- 调整类别分布；
+- 删除难例；
+- 根据SH093质量筛选病例。
 
-协议测试失败时不得启动正式训练。
+生成复用证明：
 
-==================================================
-二十九、正式执行顺序
-==================================================
+c0a_disease/splits/c0a_reused_outer_split.csv
+c0a_disease/splits/c0a_reused_inner_split_inventory.csv
+c0a_disease/splits/c0a_split_identity_audit.json
 
-本地Codex执行：
+要求：
 
-1. 检查git状态；
-2. 阅读现有实现；
-3. 新增代码；
-4. 静态检查；
-5. 运行新增单元测试；
-6. 运行相关Stage 1/2A/2B既有测试；
-7. 运行protocol-only；
-8. 运行CPU smoke-test；
-9. 验证checkpoint恢复；
-10. 生成implementation report；
-11. 输出服务器正式命令；
-12. 不运行完整25次训练。
+- 外层split与B0逐行一致；
+- inner split与B0逐行一致；
+- hash一致或内容逐字段一致；
+- patient_group无泄漏。
 
-服务器正式执行顺序：
+8.3 模型训练契约
 
-1. protocol-only；
-2. 单元/协议测试；
-3. global_only fold 0–4；
-4. global_mask fold 0–4；
-5. global_raw fold 0–4；
-6. global_stage2a fold 0–4；
-7. global_stage2b fold 0–4；
-8. summarize-only；
-9. 拼接五套OOF；
-10. 生成逐折比较；
-11. 执行paired cluster bootstrap；
-12. 生成正式实验报告；
-13. 生成run manifest；
-14. 验收所有输出。
+优先复用旧SH093 0.8281实验的224×224训练契约，因为输入数据定义相同。
 
-推荐服务器命令形式：
+必须保留：
 
-python scripts/run/run_global_optical_fusion_5fold.py \
-  --config config/train/global_optical_fusion/global_resnet18_optical_fusion.yaml \
-  --variant all \
-  --fold all
+- ResNet具体版本；
+- ImageNet初始化；
+- 分类头；
+- dropout；
+- 224×224输入；
+- RGB顺序；
+- ImageNet normalization；
+- train transform；
+- val transform；
+- optimizer；
+- scheduler；
+- learning rate；
+- weight decay；
+- batch size；
+- max epoch；
+- patience；
+- BN策略；
+- AMP策略。
 
-Windows终端可以写成单行。
+但必须采用严格nested评价：
 
-==================================================
-三十、正式报告
-==================================================
+inner validation选择checkpoint；
+outer test只在checkpoint冻结后推理一次。
 
-完整服务器训练后生成：
+若旧SH093契约无法唯一定位，则使用Stage3-B0的ResNet18基础契约，并只将输入尺寸调整为224×224：
 
-reports/global_resnet18_optical_fusion/
-global_resnet18_optical_fusion_report.md
+- ResNet18 ImageNet初始化；
+- dropout 0.3；
+- ImageNet normalization；
+- train仅水平翻转；
+- AdamW；
+- lr=1e-4；
+- weight_decay=1e-4；
+- batch_size=16；
+- max_epoch=30；
+- patience=5；
+- BN frozen eval；
+- AMP=false；
+- BCEWithLogitsLoss(pos_weight=1.0)。
 
-至少包含：
+必须在training_contract中记录使用了：
 
-1. 完成状态；
-2. 数据和队列；
-3. 类别分布；
-4. 五折划分；
-5. Global meanbg图像来源；
-6. Stage 1/2A/2B来源；
-7. 为什么2A/2B使用逐折文件；
-8. 为什么不使用500行OOF作为train；
-9. 五个variant定义；
-10. 模型结构；
-11. 参数量；
-12. 六维字段顺序；
-13. 标准化；
-14. 缺失处理；
-15. availability控制组；
-16. 训练配置；
-17. loss和类别权重；
-18. 图像增强；
-19. checkpoint选择；
-20. outer val用于early stopping的限制；
-21. 每折best epoch；
-22. 每折训练曲线；
-23. 每折指标；
-24. 五折mean±std；
-25. pooled OOF指标；
-26. G-Mask vs G0；
-27. G-Raw/G-A/G-B vs G-Mask；
-28. G-A vs G-Raw；
-29. G-B vs G-Raw；
-30. G-B vs G-A；
-31. 更优fold数量；
-32. paired patient-group bootstrap 95% CI；
-33. 三类AUC和Recall变化；
-34. confusion matrix；
-35. 六维train/val分布；
-36. Stage 2B in-sample/out-of-sample偏移；
-37. 是否存在过拟合；
-38. 是否存在某类性能牺牲；
-39. OOF完整性；
-40. 测试结果；
-41. 确定性与seed；
-42. 历史数据未修改声明；
-43. 局限性；
-44. 最终候选建议。
+legacy_sh093_contract
+或
+stage3_b0_fallback_contract
 
-报告不得只展示最佳variant。
+不得同时尝试两套契约后选择结果更好的版本。
 
-必须同时报告：
+8.4 禁止项
 
-- 所有五个variant；
-- 所有五折；
-- 正向和负向变化；
-- 折间不一致；
+C0-A禁止：
+
+- 使用HONOR；
+- 使用EXIF；
+- 使用camera label；
+- 使用原始RGB双分支；
+- 使用R3DPR中间planes；
+- 使用original_camera.npy；
+- 使用original_sh；
+- 使用其他SH；
+- 使用Exposure/Gamma增强；
+- 使用颜色归一化搜索；
+- 使用类别重采样；
+- 使用测试fold选epoch；
+- 使用旧完整500例checkpoint；
+- 调整阈值。
+
+分类阈值固定0.5。
+
+8.5 checkpoint选择
+
+每个outer fold：
+
+inner train训练；
+inner validation选择best checkpoint；
+outer test在best checkpoint冻结后只推理一次。
+
+checkpoint主选择指标：
+
+inner validation ROC-AUC。
+
+tie-break：
+
+1. 更高inner validation AUC；
+2. 更低inner validation loss；
+3. 更早epoch。
+
+保存：
+
+c0a_disease/fold_k/checkpoints/best_auc.pth
+c0a_disease/fold_k/checkpoints/last.pth
+c0a_disease/fold_k/history/training_history.csv
+c0a_disease/fold_k/predictions/outer_test_predictions.csv
+
+8.6 OOF
+
+合并：
+
+c0a_disease/oof/c0a_xiaomi_sh093_oof_predictions.csv
+
+必须满足：
+
+- 233行；
+- 233个唯一sample_id；
+- 每例仅一次outer test预测；
+- fold与B0一致；
+- 无缺失；
+- probability和logit finite。
+
+字段至少包括：
+
+sample_id
+patient_group_id
+outer_fold
+binary_label
+logit_patient
+probability_patient
+prediction_05
+correct
+selected_epoch
+checkpoint_sha256
+
+8.7 指标
+
+主要终点：
+
+pooled OOF ROC-AUC。
+
+同时计算：
+
+- patient-group cluster bootstrap 95% CI；
+- Accuracy；
+- Balanced Accuracy；
+- Macro-Precision；
+- Macro-Recall；
+- Macro-F1；
+- Sensitivity；
+- Specificity；
+- Brier score；
+- calibration intercept；
+- calibration slope；
+- confusion matrix；
+- 每折AUC；
+- 每折BA；
+- 每折Sensitivity；
+- 每折Specificity；
+- 每折Macro-F1。
+
+bootstrap：
+
+iterations=2000
+seed=2026
+抽样单位=patient_group_id
+
+8.8 与Stage3-B0原始RGB比较
+
+使用完全相同的233例进行配对比较：
+
+SH093-224 C0-A
+vs
+Original RGB Stage3-B0 256×320
+
+计算：
+
+delta_auc
+delta_balanced_accuracy
+delta_macro_f1
+delta_sensitivity
+delta_specificity
+delta_brier
+
+使用patient-group cluster paired bootstrap。
+
+必须明确：
+
+该比较同时包含重光照和输入预处理差异，只能作为配对描述性/综合管线比较，不能把全部差异归因于SH093。
+
+8.9 与匹配Original-RGB-224控制比较
+
+仅当matched_control_status=available时运行。
+
+使用：
+
+- 相同233例；
+- 相同outer split；
+- 相同inner split；
+- 相同模型和训练契约；
+- 相同随机种子；
+- 相同指标；
+- 相同bootstrap。
+
+此比较才是主要的预处理匹配对照：
+
+AUC_SH093_224 - AUC_OriginalRGB_224
+
+若控制臂不可用，不得伪造或替代。
+
+8.10 C0-A信号判定
+
+输出：
+
+c0a_same_camera_signal_level:
+- none
+- weak
+- moderate
+- strong
+- indeterminate
+
+建议判定：
+
+none：
+- pooled AUC接近0.5；
+- CI跨0.5；
+- 少于3/5折AUC>0.5；
+- BA接近0.5；
+- 存在预测塌缩。
+
+weak：
+- AUC点估计约0.55–0.62；
+- CI跨0.5或折间不稳定；
+- 未明确优于控制。
+
+moderate：
+- AUC CI下界高于0.5；
+- 至少4/5折AUC>0.5；
+- BA>0.55；
+- 无单侧类别塌缩；
+- 相对B0有明确配对提升。
+
+strong：
+- 在moderate基础上；
+- AUC较高且折间稳定；
+- 明显优于匹配Original-RGB-224；
+- 不由单一fold驱动。
+
+这些是项目内部证据等级，不是临床标准。
+
+======================================================================
+九、C0-B Patient-only SH093相机相关域分类
+======================================================================
+
+9.1 主要队列
+
+只使用Patient。
+
+预计：
+
+Xiaomi Patient = 118
+HONOR Patient = 267
+总计 = 385
+
+禁止加入Control。
+
+原因：
+
+完整500例中Control全部为Xiaomi，若直接做相机分类，会使疾病标签和相机标签直接混杂。
+
+标签定义：
+
+camera_label = 0：
+Xiaomi M2006J10C
+
+camera_label = 1：
+HONOR BVL-AN00
+
+必须核对实际标准化相机字符串。
+
+输出：
+
+c0b_camera/cohort/c0b_patient_only_camera_cohort.csv
+c0b_camera/cohort/c0b_camera_cohort_audit.json
+c0b_camera/cohort/c0b_camera_cohort_report.md
+
+若数量不是118、267、385，停止C0-B并输出差异。
+
+9.2 patient-group外层五折
+
+为C0-B新建专用五折。
+
+固定：
+
+n_splits=5
+shuffle=true
+seed=2026
+
+优先级：
+
+1. patient_group_id不得跨fold；
+2. camera_label分层；
+3. 尽量平衡NYHA原始等级或轻重症组；
+4. 尽量平衡sex；
+5. 尽量平衡age；
+6. 各折样本数接近。
+
+每折必须同时包含Xiaomi Patient和HONOR Patient。
+
+输出：
+
+c0b_camera/splits/c0b_patient_camera_group5fold.csv
+c0b_camera/splits/c0b_outer_split_audit.csv
+c0b_camera/splits/c0b_outer_split_report.md
+
+9.3 inner validation
+
+在每个outer development中建立固定inner split。
+
+建议：
+
+StratifiedGroupKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=12026 + outer_fold
+)
+
+取第一个split为inner validation。
+
+要求：
+
+- outer test不进入inner split；
+- patient_group不跨inner train/val；
+- inner train和val均包含两种相机；
+- 每折确定性可复现。
+
+9.4 模型协议
+
+使用与C0-A相同的224×224 ResNet18基础协议。
+
+唯一变化：
+
+预测标签由疾病变为相机域。
+
+由于类别不平衡，使用：
+
+BCEWithLogitsLoss(pos_weight=n_xiaomi_train/n_honor_train的正确二分类定义)
+
+注意：
+
+若HONOR定义为正类1，则：
+
+pos_weight =
+N_negative_Xiaomi / N_positive_HONOR
+
+必须仅根据当前inner train计算。
+
+不得使用完整385例提前计算权重。
+
+不得使用WeightedRandomSampler。
+
+9.5 主要指标
+
+主要终点：
+
+pooled Patient-only camera ROC-AUC。
+
+同时计算：
+
+- Balanced Accuracy；
+- Macro-F1；
+- Xiaomi recall；
+- HONOR recall；
+- Accuracy；
+- Brier；
+- calibration；
+- confusion matrix；
+- patient-group bootstrap 95% CI；
+- 每折AUC；
+- 每折BA；
+- 每折两类recall。
+
+不能只报告Accuracy。
+
+9.6 相机域证据等级
+
+输出：
+
+camera_domain_predictability_level:
+- none
+- weak
+- moderate
+- strong
+- indeterminate
+
+建议：
+
+none：
+- AUC接近0.5；
+- CI跨0.5；
+- 折间不稳定。
+
+weak：
+- AUC约0.55–0.65；
+- CI或折间证据有限。
+
+moderate：
+- AUC约0.65–0.80；
+- CI下界高于0.5；
+- 至少4/5折AUC>0.5。
+
+strong：
+- AUC≥0.80；
+- CI下界高于0.5；
+- 五折稳定；
+- 两类recall均不过度塌缩。
+
+不得称为“纯手机传感器指纹”。
+
+正式表述：
+
+camera-associated domain predictability
+相机相关域可预测性
+
+因为仍可能包含：
+
+- NYHA分布差异；
+- 年龄差异；
+- 性别差异；
+- 采集时间差异；
+- 操作者差异；
+- 病房或环境差异；
+- 生成质量差异。
+
+======================================================================
+十、C0-B人群协变量基线
+======================================================================
+
+建立仅使用非图像变量的相机预测基线。
+
+候选变量：
+
+- age；
+- sex；
+- original NYHA grade；
+- mild/severe NYHA grouping；
+- 其他明确可用且非图像的基础人口学变量。
+
+禁止使用：
+
+- 图像颜色；
+- EXIF；
+- BrightnessValue；
+- 相机字段本身；
+- sample_id；
+- 时间戳，除非单独作为采集流程敏感性分析。
+
+使用与C0-B相同outer folds。
+
+每fold：
+
+- 仅在outer development拟合；
+- 数值缺失用训练折中位数；
+- 分类缺失用训练折众数或显式missing；
+- 标准化只在训练折拟合；
+- LogisticRegression C=1.0；
+- 不调参。
+
+输出：
+
+c0b_camera/baselines/covariate_baseline_oof.csv
+c0b_camera/baselines/covariate_baseline_metrics.csv
+
+作用：
+
+判断相机分类能力是否可能仅由Patient人群组成差异解释。
+
+======================================================================
+十一、C0-B低维图像域基线
+======================================================================
+
+从SH093 224×224图计算低维特征，仅用于相机域审计：
+
+- mean_R/G/B；
+- std_R/G/B；
+- mean_Lab_L/a/b；
+- skin或有效人脸区域亮度分位数，如已有可靠mask；
+- p01、p05、p50、p95、p99；
+- dark pixel fraction；
+- bright pixel fraction；
+- saturation fraction；
+- black background fraction；
+- Laplacian variance；
+- high-frequency energy；
+- edge density；
+- 有效非黑区域面积比例；
+- 水平和垂直边界黑边比例。
+
+若没有与SH093 224严格匹配的可靠人脸mask，只使用全图和非黑区域统计，不得误用原始RGB mask。
+
+使用与C0-B相同outer folds：
+
+- 训练折中位数填补；
+- 训练折标准化；
+- LogisticRegression C=1.0；
+- 不调参；
+- outer test cross-fitting。
+
+输出：
+
+c0b_camera/baselines/lowlevel_feature_table.csv
+c0b_camera/baselines/lowlevel_oof_predictions.csv
+c0b_camera/baselines/lowlevel_metrics.csv
+c0b_camera/baselines/lowlevel_coefficients.csv
+
+若低维特征已经能高AUC预测相机，说明SH093管线中存在明显低层域差异。
+
+======================================================================
+十二、C0-B 1:1匹配敏感性分析
+======================================================================
+
+目的：
+
+减少Xiaomi Patient和HONOR Patient在人群构成上的差异。
+
+匹配必须在patient_group层面完成。
+
+优先变量：
+
+1. sex精确匹配；
+2. NYHA原始等级或预定义轻/重症组精确匹配；
+3. age最近邻匹配，如age可用；
+4. 不使用图像或模型输出。
+
+建议方法：
+
+- 每个Xiaomi Patient group匹配一个HONOR Patient group；
+- 无放回；
+- 固定seed=2026；
+- age使用标准化绝对距离；
+- age caliper=0.20 pooled SD；
+- 若无法全部匹配，记录匹配成功率；
+- 不为达到118对而放宽到不合理距离。
+
+如果age缺失率较高：
+
+- 主匹配仅使用sex + NYHA；
+- age平衡作为审计；
+- 不静默填补后强行匹配。
+
+形成：
+
+约118 Xiaomi Patient groups
+vs
+约118 HONOR Patient groups
+
+或实际可匹配数量。
+
+必须报告标准化差异：
+
+- age SMD；
+- sex SMD；
+- NYHA分布差异；
+- 匹配前后对比。
+
+匹配集仍使用patient-group五折，不能在完整数据上训练后只评估匹配子集。
+
+为控制计算量，本轮允许：
+
+方案A，优先：
+在冻结匹配队列上重新执行独立nested五折相机分类。
+
+禁止：
+使用主C0-B模型预测后再挑选匹配效果最好的子集。
+
+输出：
+
+c0b_camera/matched/matching_contract.json
+c0b_camera/matched/matched_group_pairs.csv
+c0b_camera/matched/matching_balance.csv
+c0b_camera/matched/matched_split.csv
+c0b_camera/matched/matched_oof_predictions.csv
+c0b_camera/matched/matched_metrics.csv
+c0b_camera/matched/matched_report.md
+
+若匹配样本太少，例如每类少于60个patient groups：
+
+- 不运行深度模型匹配五折；
+- 只输出匹配可行性和低维/协变量分析；
+- 标记matched_deep_model_status=insufficient_sample。
+
+======================================================================
+十三、联合解释
+======================================================================
+
+生成联合矩阵：
+
+A. C0-A疾病信号none/weak，
+C0-B相机域moderate/strong：
+
+结论：
+完整500例SH093高性能高度疑似由设备、采集流程或生成域捷径驱动。
+SH093不适合作为主要无偏疾病分类输入。
+
+B. C0-A疾病信号moderate/strong，
+C0-B相机域moderate/strong：
+
+结论：
+SH093在Xiaomi同相机内可能保留分类信号，但同时仍保留明显设备域信息。
+完整500例SH093结果不能单独作为主要医学证据。
+后续必须以Xiaomi-only结果为主，并继续多SH和生成质量审计。
+
+C. C0-A疾病信号moderate/strong，
+C0-B相机域none/weak：
+
+结论：
+这是最有利结果。
+支持SH093在降低设备域可预测性的同时保留同相机区分信号。
+仍不能称为纯医学信号，但具备成为主要方法候选的资格。
+
+D. C0-A疾病信号none/weak，
+C0-B相机域none/weak：
+
+结论：
+SH093可能削弱设备域信息，但未保留稳定疾病分类信号。
+不适合作为主要二分类输入。
+
+还要结合：
+
+- C0-B匹配相机AUC；
+- 人群协变量基线；
+- 低维图像域基线；
+- 匹配Original-RGB-224控制；
+- 五折稳定性；
 - 置信区间；
-- Stage 2B可能的分布偏移；
-- outer val选模带来的乐观性。
+- 类别塌缩情况。
 
-==================================================
-三十一、结果解释规则
-==================================================
+======================================================================
+十四、主要决策字段
+======================================================================
 
-不得使用单一指标自动宣布胜负。
+输出：
 
-A. 如果G-Mask优于G0
+sh093_main_binary_candidate:
+- true
+- false
+- conditional
 
-说明availability或额部质量状态本身可能提供分类信息。
+c0a_same_camera_signal_level:
+- none
+- weak
+- moderate
+- strong
+- indeterminate
 
-不能把G-Raw/G-A/G-B相对G0的全部提升归因于六维表型。
+c0b_camera_domain_predictability_level:
+- none
+- weak
+- moderate
+- strong
+- indeterminate
 
-B. 如果G-Raw优于G-Mask
+full500_sh093_interpretation:
+- likely_device_or_collection_shortcut
+- mixed_same_camera_signal_and_domain_shortcut
+- potentially_relighting_supported_signal
+- no_reliable_signal
+- indeterminate
 
-说明Raw六维光学表型包含Global图像之外的增量信息。
+next_stage_recommendation:
+- stop_sh093_mainline
+- proceed_multi_sh_stability_audit
+- proceed_fixedcam_vs_origcam_audit
+- proceed_both_audits
+- collect_balanced_device_data
+- indeterminate
 
-C. 如果G-A优于G-Raw
+SH093成为主要方法候选至少需要：
 
-可以谨慎说明：
+1. C0-A AUC CI下界高于0.5；
+2. 至少4/5折AUC>0.5；
+3. BA>0.55；
+4. 无明显预测塌缩；
+5. 相对B0有明确配对提升；
+6. 若匹配Original-RGB-224存在，应明显优于该控制；
+7. C0-B相机域可预测性不能为strong，或匹配后需明显下降；
+8. 低维域特征不能完全解释C0-B结果；
+9. 不能由单一fold驱动。
 
-线性采集条件校准可能提高了光学表型与Global视觉特征的互补性。
+======================================================================
+十五、统计方法
+======================================================================
 
-不能声称完全去除了设备影响。
+所有OOF主要指标均基于独立outer test预测。
 
-D. 如果G-B优于G-A
+Bootstrap：
 
-只有同时满足以下条件，才支持Stage 2B作为主候选：
+- patient_group cluster bootstrap；
+- iterations=2000；
+- seed=2026；
+- 95% percentile CI；
+- 记录无效bootstrap次数。
 
-- pooled OOF Macro-AUC更高；
-- 五折平均Macro-AUC更高；
-- 至少3/5折方向一致；
-- Macro-F1和Balanced Accuracy没有明显下降；
-- 三类Recall没有不可接受的牺牲；
-- bootstrap结果支持方向稳定；
-- 提升不是只来自一个异常fold。
+配对比较：
 
-E. 如果G-A与G-B接近
+- 相同病例；
+- 相同patient_group抽样；
+- 每次bootstrap同时计算两个模型指标；
+- 输出delta及95% CI。
 
-优先Stage 2A，因为：
+不需要进行大量p值检验。
 
-- Ridge更简单；
-- 可解释性更好；
-- Stage 2B存在折外泛化和分布偏移风险；
-- Stage 2B此前没有整体降低设备差异。
+若进行多个次要比较：
 
-F. 如果G-Raw最好
+- 明确标记exploratory；
+- 使用Benjamini–Hochberg FDR；
+- 不用次要p值推翻主要OOF结论。
 
-可能说明：
+======================================================================
+十六、过拟合和稳定性审计
+======================================================================
 
-- 校准删除了与NYHA有关的个体光学信息；
-- 或校准分布偏移削弱了分类；
-- 不得直接解释为“物理思路完全无效”。
+C0-A和C0-B均必须输出：
 
-G. 如果三套六维均不优于G-Mask
+- 每fold train loss；
+- inner val loss；
+- train AUC；
+- inner val AUC；
+- selected epoch；
+- outer test AUC；
+- train-val AUC gap；
+- fold AUC range；
+- fold AUC SD；
+- AUC>0.5折数；
+- prediction positive rate；
+- 每类recall；
+- 是否预测塌缩。
 
-说明六维表型可能与ResNet18 Global特征冗余。
+警示包括：
 
-H. 如果只有G-Mask提升
+- train AUC接近1但inner/outer接近0.5；
+- inner val明显高于outer test；
+- selected epoch极不稳定；
+- 某fold全部预测为单一类别；
+- pooled结果由单一fold驱动。
 
-说明增益更可能来自额部可用性或图像质量信息，而不是六维光学表型。
+过拟合警示不能自动删除fold。
 
-==================================================
-三十二、run manifest
-==================================================
+======================================================================
+十七、图形
+======================================================================
 
-生成：
+至少生成：
 
-experiments/global_resnet18_optical_fusion/
-summary/run_manifest.json
+shared_asset_audit/sh093_qc_panel.png
 
-至少记录：
+c0a_disease/figures/c0a_roc_curve.png
+c0a_disease/figures/c0a_fold_auc.png
+c0a_disease/figures/c0a_confusion_matrix.png
+c0a_disease/figures/c0a_probability_distribution.png
+c0a_disease/figures/c0a_calibration_curve.png
+c0a_disease/figures/c0a_training_validation_auc.png
+c0a_disease/figures/c0a_training_validation_loss.png
+c0a_disease/figures/c0a_vs_b0_paired_comparison.png
 
-- task；
-- status；
-- variants；
-- completed_variants；
-- completed_folds；
-- model architecture；
-- backbone；
-- pretrained weights；
-- feature dimensions；
-- parameter counts；
-- training config；
-- class mapping；
-- class counts；
-- split SHA256；
-- Stage 1 SHA256；
-- Stage 2A manifest/schema SHA256；
-- Stage 2B manifest/schema SHA256；
-- 每fold特征源SHA256；
-- 每foldtrain/val ID SHA256；
-- 每foldscaler SHA256；
-- 每foldbest checkpoint SHA256；
-- 每variant OOF SHA256；
-- config SHA256；
-- code SHA256；
-- seed规则；
-- software versions；
-- device；
-- CUDA版本；
-- git commit；
-- tests；
-- protocol status；
-- smoke-test status；
-- full_training_executed；
-- outer_validation_tuning=true；
-- camera_used=false；
-- exif_used=false；
-- clinical_features_used=false；
-- oof_used_as_classifier_train=false；
-- stage1_modified=false；
-- stage2a_modified=false；
-- stage2b_modified=false；
-- split_modified=false；
-- labels_modified=false；
-- historical_inputs_modified=false。
+若控制臂可用：
 
-==================================================
-三十三、实现边界
-==================================================
+matched_control/figures/sh093_vs_original224_auc.png
+matched_control/figures/sh093_vs_original224_probability.png
 
-本任务禁止：
+c0b_camera/figures/c0b_camera_roc_curve.png
+c0b_camera/figures/c0b_fold_auc.png
+c0b_camera/figures/c0b_confusion_matrix.png
+c0b_camera/figures/c0b_probability_distribution.png
+c0b_camera/figures/c0b_covariate_vs_image_baselines.png
+c0b_camera/figures/c0b_lowlevel_feature_importance.png
+c0b_camera/figures/c0b_matched_vs_full_auc.png
 
-- 修改历史Global代码；
-- 覆盖用户未提交修改；
-- 修改Stage 1；
-- 修改Stage 2A；
-- 修改Stage 2B；
-- 重跑Stage 1/2A/2B；
-- 修改五折split；
-- 修改标签；
-- 修改图像；
-- 使用522例历史队列；
-- 使用strict-blackbg替代meanbg；
-- 使用历史0.7025直接充当G0；
-- 使用500例2A/2B OOF作为分类train；
-- 使用camera或EXIF；
-- 使用predicted condition或residual；
-- 使用Raw+2A+2B同时拼接；
-- 加入临床特征；
-- 加入性别作为模型输入；
-- 加入新ROI；
-- 加入额外MLP；
-- 加入attention/gating/FiLM；
-- 搜索学习率；
-- 搜索batch size；
-- 搜索epoch；
-- 搜索patience；
-- 搜索loss；
-- 搜索seed；
-- 运行多个seed后选最优；
-- 给某个variant单独调参；
-- 安装或升级依赖；
-- 在CPU环境误启动完整25次训练；
-- 根据smoke-test结果选择模型；
-- 伪造未完成的正式结果；
-- 进行无关重构。
+joint/figures/joint_evidence_matrix.png
 
-==================================================
-三十四、本地实现报告
-==================================================
+图中不得使用“pure medical signal”或“camera removed”等未经证明表述。
 
-本地代码实现完成后生成：
+======================================================================
+十八、输出目录
+======================================================================
 
-reports/global_resnet18_optical_fusion/
-global_resnet18_optical_fusion_implementation_report.md
+输出根目录：
 
-至少包括：
+E:/projects/face2/experiments/lighting_confounding/Stage3_C0_SH093_224_SameCameraSignal_and_DeviceDomain_Audit_v1
 
-1. 实现状态；
-2. 新增文件；
-3. 是否修改历史文件；
-4. 读取的现有基线；
-5. 五个variant；
-6. 模型结构；
-7. Dataset数据流；
-8. 六维字段；
-9. 逐折2A/2B文件选择；
-10. scaler实现；
-11. 缺失处理；
-12. checkpoint；
-13. Trainer；
-14. Evaluator；
-15. OOF和summary；
-16. paired bootstrap；
-17. RNG公平；
-18. preflight结果；
-19. 单元测试结果；
-20. 既有Stage测试结果；
-21. 协议测试结果；
-22. smoke-test结果；
-23. 当前CUDA状态；
-24. 是否运行正式训练；
-25. 未完成事项；
-26. 服务器正式命令；
-27. 验收条件；
-28. 历史输入未修改声明。
+建议结构：
 
-本地只完成代码和测试时，状态应为：
+shared_asset_audit/
+legacy_audit/
+matched_control/
+c0a_disease/
+  cohort/
+  splits/
+  training_contract/
+  fold_0/
+  fold_1/
+  fold_2/
+  fold_3/
+  fold_4/
+  oof/
+  metrics/
+  bootstrap/
+  comparison/
+  stability/
+  figures/
+  reports/
+c0b_camera/
+  cohort/
+  splits/
+  training_contract/
+  fold_0/
+  fold_1/
+  fold_2/
+  fold_3/
+  fold_4/
+  oof/
+  metrics/
+  bootstrap/
+  baselines/
+  matched/
+  stability/
+  figures/
+  reports/
+joint/
+  figures/
+  reports/
+logs/
+preflight/
 
-READY_FOR_SERVER_TRAINING
+必须至少生成：
 
-不得写：
+preflight/stage3_c0_preflight_summary.json
+preflight/stage3_c0_preflight_report.md
+preflight/input_inventory.csv
 
-EXPERIMENT_COMPLETE
+c0a_disease/oof/c0a_xiaomi_sh093_oof_predictions.csv
+c0a_disease/metrics/c0a_oof_metrics.json
+c0a_disease/metrics/c0a_fold_metrics.csv
+c0a_disease/bootstrap/c0a_cluster_bootstrap_ci.csv
+c0a_disease/comparison/c0a_vs_stage3_b0.csv
+c0a_disease/comparison/c0a_vs_stage3_b0_bootstrap.csv
+c0a_disease/stability/c0a_stability_audit.csv
+c0a_disease/reports/c0a_report.md
+c0a_disease/reports/c0a_machine_summary.json
 
-==================================================
-三十五、最终终端输出
-==================================================
+c0b_camera/oof/c0b_patient_camera_oof_predictions.csv
+c0b_camera/metrics/c0b_oof_metrics.json
+c0b_camera/metrics/c0b_fold_metrics.csv
+c0b_camera/bootstrap/c0b_cluster_bootstrap_ci.csv
+c0b_camera/baselines/covariate_baseline_metrics.csv
+c0b_camera/baselines/lowlevel_metrics.csv
+c0b_camera/matched/matched_metrics.csv
+c0b_camera/stability/c0b_stability_audit.csv
+c0b_camera/reports/c0b_report.md
+c0b_camera/reports/c0b_machine_summary.json
 
-本地实现结束时打印：
+joint/reports/stage3_c0_joint_report.md
+joint/reports/stage3_c0_joint_machine_summary.json
+joint/reports/stage3_c0_final_decision.json
+joint/reports/stage3_c0_next_stage_decision.md
+joint/reports/stage3_c0_output_inventory.json
 
-- GLOBAL_OPTICAL_FUSION_IMPLEMENTATION_STATUS；
-- 实际project root；
-- git branch；
-- git commit；
-- 当前CUDA是否可用；
-- 新增文件；
-- 修改的历史文件数量；
-- 五个variant是否实现；
-- 模型维度测试；
-- Dataset测试；
-- scaler测试；
-- checkpoint测试；
-- RNG公平测试；
-- summary测试；
-- Stage 1/2A/2B相关既有测试；
-- protocol-only状态；
-- smoke-test状态；
-- 是否启动完整训练；
-- 是否修改Stage 1；
-- 是否修改Stage 2A；
-- 是否修改Stage 2B；
-- 是否修改split；
-- 是否修改标签；
-- 是否修改图像；
-- implementation report路径；
-- protocol manifest路径；
-- 服务器正式训练命令；
-- 是否满足READY_FOR_SERVER_TRAINING。
+logs/run.log
+logs/warnings.csv
+logs/failures.csv
 
-如果实现未完成：
+======================================================================
+十九、Preflight停止门控
+======================================================================
 
-- 不得声称READY；
-- 明确停止步骤；
-- 输出真实错误；
-- 保留日志；
-- 不覆盖用户文件；
-- 给出准确恢复方式；
-- 不估算或伪造测试结果。
+整个任务启动前必须确认：
 
-服务器完整训练结束时打印：
+- face2环境正确；
+- SH093 224目录存在；
+- C0-A的233例图像全部存在；
+- C0-A样本和B0 split严格一致；
+- B0 outer和inner split可读取；
+- sample_id映射唯一；
+- patient_group完整；
+- 图像均为224×224 RGB；
+- 输出目录不覆盖原实验；
+- 旧实验审计已至少完成检索；
+- C0-B Patient相机标签可构建。
 
-- GLOBAL_OPTICAL_FUSION_EXPERIMENT_STATUS；
-- 完成variant数量；
-- 完成fold数量；
-- 每variant OOF行数和唯一ID数；
-- 每variant pooled OOF Macro-AUC；
-- 每variant五折平均Macro-AUC；
-- 每variant Accuracy；
-- 每variant Balanced Accuracy；
-- 每variant Macro-F1；
-- G-Mask vs G0差值；
-- G-Raw vs G-Mask差值；
-- G-A vs G-Mask差值；
-- G-B vs G-Mask差值；
-- G-A vs G-Raw差值；
-- G-B vs G-Raw差值；
-- G-B vs G-A差值；
-- 每个比较更优fold数量；
-- bootstrap有效重复次数；
-- Stage 2B分布偏移摘要；
-- 测试状态；
-- OOF路径；
-- pairwise comparison路径；
-- bootstrap路径；
-- 正式报告路径；
-- run manifest路径；
-- 是否满足全部验收条件。
+停止规则：
 
-只有五个variant、25个fold run、五套OOF、配对比较和正式报告全部完成后，才允许：
+1. C0-A资产或split失败：
+   停止整个任务，不运行任何训练。
 
-GLOBAL_OPTICAL_FUSION_EXPERIMENT_STATUS=COMPLETE
+2. C0-A通过但C0-B队列失败：
+   完成C0-A，停止C0-B，并生成部分完成报告。
+
+3. 匹配Original-RGB-224不可用：
+   不停止C0-A/C0-B，只跳过控制臂。
+
+4. Patient 1:1匹配不足：
+   不停止主C0-B，只跳过匹配深度模型。
+
+======================================================================
+二十、测试要求
+======================================================================
+
+新增测试目录：
+
+tests/stage3_c0_sh093_224
+
+至少测试：
+
+1. SH093输入目录存在；
+2. C0-A 233例完整；
+3. C0-A Control 115；
+4. C0-A Patient 118；
+5. C0-A仅Xiaomi；
+6. C0-A复用B0 outer split；
+7. C0-A复用B0 inner split；
+8. patient_group不跨outer fold；
+9. patient_group不跨inner train/val；
+10. 图像严格224×224；
+11. 图像为RGB；
+12. 图像可解码；
+13. 图像hash无异常重复；
+14. C0-A未使用HONOR；
+15. C0-A未使用EXIF；
+16. C0-A未使用camera label；
+17. C0-A未使用其他SH；
+18. C0-A未使用旧checkpoint；
+19. outer test不参与checkpoint选择；
+20. OOF严格233行；
+21. 每例恰好一个OOF预测；
+22. 分类阈值固定0.5；
+23. bootstrap按patient_group；
+24. Stage3-B0配对样本一致；
+25. C0-B只包含Patient；
+26. C0-B Xiaomi Patient预计118；
+27. C0-B HONOR Patient预计267；
+28. C0-B不包含Control；
+29. C0-B每fold包含两台相机；
+30. C0-B patient_group不泄漏；
+31. C0-B class weight仅从inner train计算；
+32. C0-B OOF覆盖全部主队列；
+33. 协变量基线外层cross-fit；
+34. 低维基线外层cross-fit；
+35. 匹配不使用图像特征；
+36. 匹配不使用模型预测；
+37. 匹配按patient_group；
+38. 未运行多SH；
+39. 未运行fixedcam实验；
+40. 未运行Exposure/Gamma训练；
+41. 未进入Stage3-B1；
+42. 输出报告完整；
+43. 机器摘要完整；
+44. 决策字段完整。
+
+运行：
+
+E:\resarch\Anaconda3\envs\face2\python.exe -m pytest -q tests/stage3_c0_sh093_224
+
+======================================================================
+二十一、执行顺序
+======================================================================
+
+严格按以下顺序：
+
+1. 读取本提示词和项目现有代码；
+2. 审计fixedSH_origcam_menafg生成契约；
+3. 审计500例SH093 224资产；
+4. 定位旧0.8281实验；
+5. 检索匹配Original-RGB-224控制资产；
+6. 构建Preflight；
+7. Preflight通过后运行C0-A；
+8. 完成C0-A五折训练；
+9. 合并C0-A OOF；
+10. 与Stage3-B0执行配对比较；
+11. 若匹配控制可用，运行C0-A-Control；
+12. 生成C0-A报告；
+13. 构建C0-B Patient-only队列；
+14. 生成C0-B外层和inner split；
+15. 运行C0-B五折训练；
+16. 合并C0-B OOF；
+17. 运行人群协变量基线；
+18. 运行低维图像域基线；
+19. 执行Patient 1:1匹配；
+20. 匹配规模允许时运行匹配C0-B；
+21. 生成C0-B报告；
+22. 联合解释C0-A和C0-B；
+23. 生成最终决策；
+24. 运行全部测试；
+25. 执行输出完整性审计；
+26. 停止。
+
+不得自动进入后续实验。
+
+======================================================================
+二十二、正式报告要求
+======================================================================
+
+联合报告必须包括：
+
+1. 研究目的；
+2. R3DPR SH093实际数据流；
+3. fixedSH_origcam与fixedSH_fixedcam区别；
+4. fixedSH_origcam_menafg生成契约；
+5. SH093统一了什么；
+6. SH093不能保证消除什么；
+7. 旧0.8281实验审计；
+8. C0-A队列和split；
+9. C0-A训练协议；
+10. C0-A pooled OOF指标；
+11. C0-A五折结果；
+12. C0-A置信区间；
+13. C0-A与Stage3-B0配对比较；
+14. 匹配Original-RGB-224控制结果或不可用原因；
+15. C0-A同相机信号等级；
+16. C0-B为何使用Patient-only；
+17. C0-B队列和split；
+18. C0-B pooled camera AUC；
+19. C0-B五折结果；
+20. C0-B相机域证据等级；
+21. 人群协变量基线；
+22. 低维图像域基线；
+23. 1:1匹配敏感性；
+24. C0-A和C0-B联合解释；
+25. 0.8281结果当前应如何定位；
+26. SH093是否可作为主要二分类输入；
+27. 是否建议多SH稳定性审计；
+28. 是否建议fixedcam vs origcam审计；
+29. 是否建议终止SH093主线；
+30. 研究限制。
+
+必须明确声明：
+
+- SH093统一的是显式SH光照；
+- SH093不是相机无关反射率图；
+- C0-B是相机相关域可预测性，不是纯设备指纹；
+- 未使用HONOR进行C0-A；
+- 未使用Control进行C0-B；
+- 未进入Stage3-B1；
+- 未进行多SH训练。
+
+======================================================================
+二十三、Codex最终回复要求
+======================================================================
+
+完成后回复：
+
+1. 新增和修改的代码文件；
+2. 实际运行环境；
+3. SH093 224预处理契约；
+4. 旧0.8281实验定位结果；
+5. 旧实验是否存在split或checkpoint选择问题；
+6. 匹配Original-RGB-224是否找到；
+7. C0-A实际队列数量；
+8. C0-A五折分布；
+9. C0-A每fold best epoch；
+10. C0-A每fold inner val AUC；
+11. C0-A每fold outer test AUC；
+12. C0-A pooled OOF AUC和95% CI；
+13. C0-A Accuracy；
+14. C0-A Balanced Accuracy；
+15. C0-A Macro-F1；
+16. C0-A Sensitivity；
+17. C0-A Specificity；
+18. C0-A Brier；
+19. C0-A有几折AUC>0.5；
+20. C0-A与Stage3-B0 Delta AUC和95% CI；
+21. 匹配Original-RGB-224结果；
+22. c0a_same_camera_signal_level；
+23. C0-B实际队列数量；
+24. C0-B Xiaomi/HONOR数量；
+25. C0-B五折分布；
+26. C0-B每fold AUC；
+27. C0-B pooled camera AUC和95% CI；
+28. C0-B Balanced Accuracy；
+29. C0-B Macro-F1；
+30. Xiaomi recall；
+31. HONOR recall；
+32. 人群协变量基线AUC；
+33. 低维图像域基线AUC；
+34. 匹配成功数量；
+35. 匹配后camera AUC；
+36. c0b_camera_domain_predictability_level；
+37. full500_sh093_interpretation；
+38. sh093_main_binary_candidate；
+39. next_stage_recommendation；
+40. 测试结果；
+41. C0-A报告路径；
+42. C0-B报告路径；
+43. 联合报告路径；
+44. 两个OOF路径；
+45. split路径；
+46. checkpoint路径；
+47. 最终决策JSON路径；
+48. 明确声明未进入多SH、fixedcam或Stage3-B1。
+
+不要只回复“任务完成”。
+
+必须提供足够具体的数值，使后续可以判断：
+
+- SH093是否在Xiaomi同相机内恢复稳定疾病信号；
+- SH093是否仍保留明显设备/采集域信息；
+- 完整500例AUC 0.8281是否可信；
+- SH093是否有资格成为主要二分类实验；
+- 下一步应进入多SH稳定性、fixedcam审计，还是终止该路线。

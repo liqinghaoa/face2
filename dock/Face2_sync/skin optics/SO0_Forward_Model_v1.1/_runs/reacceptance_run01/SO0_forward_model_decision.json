@@ -1,0 +1,473 @@
+{
+  "audit_completeness": {
+    "missing": [],
+    "status": "PASS"
+  },
+  "autograd": {
+    "failures": 0,
+    "rows": 500,
+    "status": "PASS"
+  },
+  "backend_parity": {
+    "rows": [
+      {
+        "comparison": "numpy64_vs_torch64",
+        "max_abs_error": 6.661338147750939e-16,
+        "observation_space": "camera_rgb_raw",
+        "status": "PASS"
+      },
+      {
+        "comparison": "numpy64_vs_torch64",
+        "max_abs_error": 1.1102230246251565e-15,
+        "observation_space": "camera_rgb_wb",
+        "status": "PASS"
+      },
+      {
+        "comparison": "numpy64_vs_torch64",
+        "max_abs_error": 3.552713678800501e-15,
+        "observation_space": "linear_srgb_unclipped",
+        "status": "PASS"
+      },
+      {
+        "comparison": "numpy64_vs_torch64",
+        "max_abs_error": 1.1102230246251565e-16,
+        "observation_space": "reflectance",
+        "status": "PASS"
+      },
+      {
+        "comparison": "numpy64_vs_torch64",
+        "max_abs_error": 1.4432899320127035e-15,
+        "observation_space": "xyz_d65",
+        "status": "PASS"
+      },
+      {
+        "comparison": "torch32_vs_torch64",
+        "max_abs_error": 3.724540031946333e-07,
+        "observation_space": "camera_rgb_raw",
+        "status": "PASS"
+      },
+      {
+        "comparison": "torch32_vs_torch64",
+        "max_abs_error": 5.32612514758668e-07,
+        "observation_space": "camera_rgb_wb",
+        "status": "PASS"
+      },
+      {
+        "comparison": "torch32_vs_torch64",
+        "max_abs_error": 1.199121400174974e-06,
+        "observation_space": "linear_srgb_unclipped",
+        "status": "PASS"
+      },
+      {
+        "comparison": "torch32_vs_torch64",
+        "max_abs_error": 1.429711236067277e-07,
+        "observation_space": "reflectance",
+        "status": "PASS"
+      },
+      {
+        "comparison": "torch32_vs_torch64",
+        "max_abs_error": 1.0269125310102822e-06,
+        "observation_space": "xyz_d65",
+        "status": "PASS"
+      }
+    ],
+    "status": "PASS"
+  },
+  "code_hash": "24e552fc94dabecb5fd6f897cb7c5a0c283d715543c64b329ac5a252eeaf5b91",
+  "colorchecker": {
+    "canon_5dmarkii_d65_qualified": true,
+    "failed_pairs": [
+      {
+        "camera_name": "Point Grey Grasshopper 50S5C",
+        "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+        "illuminant_name": "D65"
+      },
+      {
+        "camera_name": "Point Grey Grasshopper 50S5C",
+        "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+        "illuminant_name": "A"
+      },
+      {
+        "camera_name": "Point Grey Grasshopper 50S5C",
+        "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+        "illuminant_name": "FL2"
+      }
+    ],
+    "qualified": 109,
+    "qualified_by_light": {
+      "A": 27,
+      "D65": 27,
+      "FL11": 28,
+      "FL2": 27
+    },
+    "qualified_fraction": 0.9732142857142857,
+    "status": "PASS",
+    "total": 112
+  },
+  "config_hash": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+  "frozen_asset_hash": {
+    "after": "PASS",
+    "before": "PASS"
+  },
+  "hard_failures": [],
+  "numerical_stability": {
+    "status": "PASS"
+  },
+  "observation_separability": {
+    "condition_number_max": 122.81709807560689,
+    "condition_number_median": 27.181152966256324,
+    "condition_number_p95": 68.15832915442367,
+    "rank2_count": 8175,
+    "rank2_fraction": 1.0,
+    "sigma_ratio_median": 0.03679019801851072,
+    "sigma_ratio_min": 0.008142188796745503,
+    "sigma_ratio_p01": 0.01150873261514055,
+    "sigma_ratio_p05": 0.014671725247351237,
+    "status": "PASS",
+    "total_count": 8175
+  },
+  "physics_regression": {
+    "max_abs_diff": 6.89407588794e-08,
+    "status": "PASS"
+  },
+  "pytest": {
+    "duration_seconds": 6.363391876220703,
+    "errors": 0,
+    "failures": 0,
+    "return_code": 0,
+    "skipped": 0,
+    "status": "PASS",
+    "tests": 29
+  },
+  "resolution": {
+    "camera_chroma_l1_p95": 0.0009851192427970203,
+    "camera_condition_count": 121968,
+    "camera_rgb_relative_error_max": 0.0073744131954305405,
+    "camera_rgb_relative_error_median": 0.0004979199821815034,
+    "camera_rgb_relative_error_p95": 0.0019007522261505366,
+    "cie_condition_count": 4356,
+    "cie_deltae00_median": 0.015019024691273945,
+    "cie_deltae00_p95": 0.08632044412219098,
+    "finite_fraction": 1.0,
+    "status": "PASS"
+  },
+  "run_id": "reacceptance_run01",
+  "sensitivity": {
+    "dermis_thickness": "PASS",
+    "epidermis_thickness": "PASS",
+    "melanin_formula": "PASS",
+    "oxygenation": "PASS"
+  },
+  "shading_specular_exposure": {
+    "rows": [
+      {
+        "effect": "shading",
+        "max_abs_error": 3.3306690738754696e-16,
+        "max_relative_error": 9.034540020872082e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "camera_rgb_raw",
+        "p95_relative_error": 3.663598230293224e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "shading",
+        "max_abs_error": 5.551115123125783e-16,
+        "max_relative_error": 8.169898521093787e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "camera_rgb_wb",
+        "p95_relative_error": 3.3956902739320573e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "shading",
+        "max_abs_error": 3.3306690738754696e-16,
+        "max_relative_error": 6.260056207581615e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "cie_xyz",
+        "p95_relative_error": 3.6407428370262647e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "shading",
+        "max_abs_error": 3.469446951953614e-18,
+        "max_relative_error": 2.6415172636129185e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "spectral_radiance",
+        "p95_relative_error": 2.002491367371057e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "specular",
+        "max_abs_error": 3.7470027081099033e-16,
+        "max_relative_error": 3.1525803384268514e-14,
+        "median_relative_error": 1.989254097976417e-15,
+        "observation_space": "camera_rgb_raw",
+        "p95_relative_error": 8.486121803134284e-15,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "specular",
+        "max_abs_error": 4.0592529337857286e-16,
+        "max_relative_error": 3.6602665343110516e-14,
+        "median_relative_error": 2.775557561562889e-15,
+        "observation_space": "camera_rgb_wb",
+        "p95_relative_error": 1.1102230246251556e-14,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "specular",
+        "max_abs_error": 1.8735013540549517e-16,
+        "max_relative_error": 1.6653345369377332e-14,
+        "median_relative_error": 2.2288986109532195e-15,
+        "observation_space": "cie_xyz",
+        "p95_relative_error": 7.904246589395215e-15,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "specular",
+        "max_abs_error": 3.577867169202165e-18,
+        "max_relative_error": 7.92179166718611e-15,
+        "median_relative_error": 1.5437161220915701e-15,
+        "observation_space": "spectral_radiance",
+        "p95_relative_error": 5.55915204714815e-15,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "exposure",
+        "max_abs_error": 3.885780586188048e-16,
+        "max_relative_error": 9.174920121123175e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "camera_rgb_raw",
+        "p95_relative_error": 3.9361952933504144e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "exposure",
+        "max_abs_error": 4.440892098500626e-16,
+        "max_relative_error": 8.374942858612546e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "camera_rgb_wb",
+        "p95_relative_error": 3.4878680931425236e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "exposure",
+        "max_abs_error": 3.3306690738754696e-16,
+        "max_relative_error": 6.762742360709986e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "cie_xyz",
+        "p95_relative_error": 4.238989344587528e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      },
+      {
+        "effect": "exposure",
+        "max_abs_error": 3.469446951953614e-18,
+        "max_relative_error": 2.6978292302042745e-16,
+        "median_relative_error": 0.0,
+        "observation_space": "spectral_radiance",
+        "p95_relative_error": 1.9059451985230577e-16,
+        "sample_count": 4032,
+        "status": "PASS"
+      }
+    ],
+    "status": "PASS"
+  },
+  "so1_authorized": false,
+  "spectral_separability": {
+    "median": 0.7777422816276411,
+    "p95": 0.8472699053487714,
+    "status": "PASS"
+  },
+  "stage_status": {
+    "SO-0A": {
+      "artifact_validation": true,
+      "hard_failures": [],
+      "metrics": {},
+      "required_artifacts": [
+        "frozen_config.yaml",
+        "formula_registry.yaml"
+      ],
+      "status": "PASS",
+      "thresholds": {},
+      "warnings": []
+    },
+    "SO-0B": {
+      "artifact_validation": true,
+      "hard_failures": [],
+      "metrics": {
+        "hemoglobin_band_spearman": 1.0,
+        "status": "PASS"
+      },
+      "required_artifacts": [
+        "tables/monotonicity_metrics.csv",
+        "tables/backend_parity.csv"
+      ],
+      "status": "PASS",
+      "thresholds": {
+        "cie_lstar_melanin_spearman_max": -0.995,
+        "hemoglobin_band_spearman_min": 0.995,
+        "max_allowed": 1.000000000001,
+        "melanin_monotonic_tolerance": 1e-10,
+        "min_allowed": -1e-12
+      },
+      "warnings": []
+    },
+    "SO-0C": {
+      "artifact_validation": true,
+      "hard_failures": [],
+      "metrics": {
+        "camera_chroma_l1_p95": 0.0009851192427970203,
+        "camera_condition_count": 121968,
+        "camera_rgb_relative_error_max": 0.0073744131954305405,
+        "camera_rgb_relative_error_median": 0.0004979199821815034,
+        "camera_rgb_relative_error_p95": 0.0019007522261505366,
+        "cie_condition_count": 4356,
+        "cie_deltae00_median": 0.015019024691273945,
+        "cie_deltae00_p95": 0.08632044412219098,
+        "finite_fraction": 1.0,
+        "status": "PASS"
+      },
+      "required_artifacts": [
+        "tables/resolution_1nm_vs_5nm_summary.csv"
+      ],
+      "status": "PASS",
+      "thresholds": {
+        "camera_chroma_l1_p95_max": 0.01,
+        "camera_rgb_relative_error_max_max": 0.08,
+        "camera_rgb_relative_error_median_max": 0.01,
+        "camera_rgb_relative_error_p95_max": 0.03
+      },
+      "warnings": []
+    },
+    "SO-0D": {
+      "artifact_validation": true,
+      "hard_failures": [],
+      "metrics": {
+        "canon_5dmarkii_d65_qualified": true,
+        "failed_pairs": [
+          {
+            "camera_name": "Point Grey Grasshopper 50S5C",
+            "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+            "illuminant_name": "D65"
+          },
+          {
+            "camera_name": "Point Grey Grasshopper 50S5C",
+            "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+            "illuminant_name": "A"
+          },
+          {
+            "camera_name": "Point Grey Grasshopper 50S5C",
+            "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+            "illuminant_name": "FL2"
+          }
+        ],
+        "qualified": 109,
+        "qualified_by_light": {
+          "A": 27,
+          "D65": 27,
+          "FL11": 28,
+          "FL2": 27
+        },
+        "qualified_fraction": 0.9732142857142857,
+        "status": "PASS",
+        "total": 112
+      },
+      "required_artifacts": [
+        "tables/colorchecker_calibration_metrics.csv"
+      ],
+      "status": "PASS",
+      "thresholds": {
+        "condition_number_max": "1.0e6",
+        "loocv_deltae00_median_max": 4.0,
+        "loocv_deltae00_p95_max": 8.0,
+        "pass_min_qualified_per_light": 20,
+        "pass_qualified_fraction_min": 0.9,
+        "pass_with_limits_min_qualified_per_light": 12,
+        "pass_with_limits_qualified_fraction_min": 0.6
+      },
+      "warnings": []
+    },
+    "SO-0E": {
+      "artifact_validation": true,
+      "hard_failures": [],
+      "metrics": {
+        "artifact_completeness": "PASS",
+        "autograd": "PASS",
+        "backend_parity": "PASS",
+        "colorchecker": "PASS",
+        "frozen_asset_hash": "PASS",
+        "linearity": "PASS",
+        "monotonicity": "PASS",
+        "observation_separability": "PASS",
+        "pytest": "PASS",
+        "resolution": "PASS",
+        "spectral_separability": "PASS"
+      },
+      "required_artifacts": [],
+      "status": "PASS",
+      "thresholds": {
+        "backend_parity": {
+          "camera_xyz_float32_max_abs": 2e-05,
+          "numpy_torch_float64_max_abs": 1e-09,
+          "srgb_float32_max_abs": 0.0002,
+          "torch_float32_reflectance_max_abs": 1e-05
+        },
+        "color": {
+          "bradford_d65_identity_max_abs": 1e-10,
+          "bradford_roundtrip_max_abs": 1e-10,
+          "resolution_deltae00_median_max": 1.0,
+          "resolution_deltae00_p95_max": 2.5,
+          "srgb_roundtrip_max_abs": 1e-12
+        },
+        "colorchecker": {
+          "condition_number_max": "1.0e6",
+          "loocv_deltae00_median_max": 4.0,
+          "loocv_deltae00_p95_max": 8.0,
+          "pass_min_qualified_per_light": 20,
+          "pass_qualified_fraction_min": 0.9,
+          "pass_with_limits_min_qualified_per_light": 12,
+          "pass_with_limits_qualified_fraction_min": 0.6
+        },
+        "linearity": {
+          "batch_float64_max_abs": 1e-09,
+          "relative_error_max": 1e-06
+        },
+        "reflectance": {
+          "cie_lstar_melanin_spearman_max": -0.995,
+          "hemoglobin_band_spearman_min": 0.995,
+          "max_allowed": 1.000000000001,
+          "melanin_monotonic_tolerance": 1e-10,
+          "min_allowed": -1e-12
+        },
+        "resolution": {
+          "camera_chroma_l1_p95_max": 0.01,
+          "camera_rgb_relative_error_max_max": 0.08,
+          "camera_rgb_relative_error_median_max": 0.01,
+          "camera_rgb_relative_error_p95_max": 0.03
+        },
+        "separability": {
+          "observation_rank2_pass_fraction_min": 0.95,
+          "observation_rank2_pass_with_limits_fraction_min": 0.8,
+          "rank_ratio_min": 0.001,
+          "sigma_max_min": 1e-10,
+          "spectral_abs_cosine_median_max": 0.95,
+          "spectral_abs_cosine_p95_max": 0.98
+        }
+      },
+      "warnings": []
+    }
+  },
+  "status": "PASS",
+  "warnings": []
+}

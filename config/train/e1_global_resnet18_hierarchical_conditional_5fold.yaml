@@ -1,0 +1,51 @@
+experiment:
+  name: E1_Global_ResNet18_Hierarchical_Conditional_Classification
+  output_dir: experiments
+
+# E0 is the legacy 500Data Global224 ImageNet ResNet18 baseline.
+data:
+  split_dir: data/processed/splits_500
+  image_root: data/processed/global_face/global_face_parsing_hybrid_foreheadrepair_blackbg_224_png_strict/images
+  image_filename_template: "{ID}.png"
+  n_folds: 5
+  image_size: 224
+  num_classes: 3
+  label_col: label_3class
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+
+model:
+  backbone: resnet18
+  pretrained: imagenet
+  freeze_backbone: false
+
+train:
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  random_seed: 2026
+  num_workers: 0
+  pin_memory: false
+  use_amp: false
+
+augmentation:
+  horizontal_flip: true
+  color_jitter: false
+  random_crop: false
+
+normalize:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+loss:
+  name: hierarchical_conditional_weighted_bce
+  severity_loss_weight: 1.0
+  mask_normal_from_severity: true
+  class_weights: fold_specific
+
+metrics:
+  ece_bins: 15

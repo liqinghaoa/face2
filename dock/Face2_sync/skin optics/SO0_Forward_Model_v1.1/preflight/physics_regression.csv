@@ -1,0 +1,14 @@
+array,max_abs_diff,status,qualified_count
+skin_reflectance,0.0,PASS,
+cie_xyz_source,0.0,PASS,
+cie_xyz_d65,0.0,PASS,
+cie_linear_srgb_unclipped,0.0,PASS,
+cie_srgb_unclipped,0.0,PASS,
+camera_rgb_raw,0.0,PASS,
+camera_rgb_wb,0.0,PASS,
+camera_xyz_d65,0.0,PASS,
+camera_linear_srgb_unclipped,0.0,PASS,
+camera_srgb_unclipped,0.0,PASS,
+torch64_camera_linear_srgb_unclipped,6.89407588794e-08,PASS,
+torch32_camera_linear_srgb_unclipped,0.0,PASS,
+colorchecker_qualified_count,0.0,PASS,109.0

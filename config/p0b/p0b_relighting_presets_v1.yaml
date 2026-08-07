@@ -1,0 +1,9 @@
+project_root: .
+sample_count: 4096
+presets:
+  neutral_front: {direction: [0.0, 0.0, 1.0], ambient: 0.35, diffuse: 0.65}
+  left: {direction: [-0.7, 0.0, 0.7], ambient: 0.25, diffuse: 0.75}
+  right: {direction: [0.7, 0.0, 0.7], ambient: 0.25, diffuse: 0.75}
+  top: {direction: [0.0, -0.7, 0.7], ambient: 0.25, diffuse: 0.75}
+  dim_front: {direction: [0.0, 0.0, 1.0], ambient: 0.12, diffuse: 0.30}
+  bright_front: {direction: [0.0, 0.0, 1.0], ambient: 0.60, diffuse: 1.00}

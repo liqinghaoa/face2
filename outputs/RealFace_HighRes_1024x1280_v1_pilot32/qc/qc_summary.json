@@ -1,0 +1,75 @@
+{
+  "pilot_total": 32,
+  "success_count": 32,
+  "failure_count": 0,
+  "warning_case_count": 27,
+  "roll_angle": {
+    "min": 0.10978028240918396,
+    "median": 2.6731121532079207,
+    "p95": 7.054928976548228,
+    "max": 9.381178342968756
+  },
+  "residual_roll": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "aligned_face_width_fraction": {
+    "min": 0.9234053492546082,
+    "median": 0.9474043250083923,
+    "p95": 0.9642344772815704,
+    "max": 0.9735538363456726
+  },
+  "aligned_face_height_fraction": {
+    "min": 0.8529388427734375,
+    "median": 0.9334684371948242,
+    "p95": 0.9575036811828613,
+    "max": 0.9619636535644531
+  },
+  "skin_fraction": {
+    "min": 0.5483024597167969,
+    "median": 0.6426258087158203,
+    "p95": 0.6838455200195312,
+    "max": 0.7055351257324218
+  },
+  "hair_fraction_in_face_region": {
+    "median": 0.010208152979654597,
+    "p95": 0.0336812167300109,
+    "max": 0.09041686861674024
+  },
+  "source_valid_fraction": {
+    "min": 0.9928016662597656,
+    "median": 1.0,
+    "p95": 1.0
+  },
+  "top_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "bottom_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.1439666748046875
+  },
+  "left_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.03207720588235294
+  },
+  "right_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "failure_code_counts": {},
+  "warning_code_counts": {
+    "bottom_invalid_area": 1,
+    "face_near_canvas_border": 26,
+    "high_skin_fraction": 10
+  }
+}

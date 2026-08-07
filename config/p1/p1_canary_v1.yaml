@@ -1,0 +1,8 @@
+base_config: config/p1/p1_deca_full500_v1.yaml
+canary_manifest: data/manifests/p1/p1_canary_manifest_v1.csv
+repeat_case_count: 4
+expected_case_count: 24
+# GPU renderer kernels are repeatable within this bounded numerical tolerance,
+# not required to be bitwise identical across launches.
+determinism_atol: 1.0e-3
+determinism_rtol: 1.0e-4

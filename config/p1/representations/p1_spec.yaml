@@ -1,0 +1,8 @@
+experiment_key: p1_spec
+display_name: P1-Spec
+representation: specular
+input_type: unavailable
+model_type: none
+availability: unavailable_by_current_frontend
+stage_two_status: SKIPPED_UNAVAILABLE_BY_CURRENT_FRONTEND
+

@@ -1,0 +1,40 @@
+reflectance:
+  min_allowed: -1.0e-12
+  max_allowed: 1.000000000001
+  melanin_monotonic_tolerance: 1.0e-10
+  hemoglobin_band_spearman_min: 0.995
+  cie_lstar_melanin_spearman_max: -0.995
+backend_parity:
+  numpy_torch_float64_max_abs: 1.0e-9
+  torch_float32_reflectance_max_abs: 1.0e-5
+  camera_xyz_float32_max_abs: 2.0e-5
+  srgb_float32_max_abs: 2.0e-4
+color:
+  srgb_roundtrip_max_abs: 1.0e-12
+  bradford_roundtrip_max_abs: 1.0e-10
+  bradford_d65_identity_max_abs: 1.0e-10
+  resolution_deltae00_median_max: 1.0
+  resolution_deltae00_p95_max: 2.5
+colorchecker:
+  condition_number_max: 1.0e6
+  loocv_deltae00_median_max: 4.0
+  loocv_deltae00_p95_max: 8.0
+  pass_qualified_fraction_min: 0.90
+  pass_with_limits_qualified_fraction_min: 0.60
+  pass_min_qualified_per_light: 20
+  pass_with_limits_min_qualified_per_light: 12
+separability:
+  spectral_abs_cosine_median_max: 0.95
+  spectral_abs_cosine_p95_max: 0.98
+  observation_rank2_pass_fraction_min: 0.95
+  observation_rank2_pass_with_limits_fraction_min: 0.80
+  sigma_max_min: 1.0e-10
+  rank_ratio_min: 1.0e-3
+resolution:
+  camera_rgb_relative_error_median_max: 0.01
+  camera_rgb_relative_error_p95_max: 0.03
+  camera_rgb_relative_error_max_max: 0.08
+  camera_chroma_l1_p95_max: 0.01
+linearity:
+  relative_error_max: 1.0e-6
+  batch_float64_max_abs: 1.0e-9

@@ -1,0 +1,179 @@
+{
+  "SO-0A": {
+    "artifact_validation": true,
+    "hard_failures": [],
+    "metrics": {},
+    "required_artifacts": [
+      "frozen_config.yaml",
+      "formula_registry.yaml"
+    ],
+    "status": "PASS",
+    "thresholds": {},
+    "warnings": []
+  },
+  "SO-0B": {
+    "artifact_validation": true,
+    "hard_failures": [],
+    "metrics": {
+      "hemoglobin_band_spearman": 1.0,
+      "status": "PASS"
+    },
+    "required_artifacts": [
+      "tables/monotonicity_metrics.csv",
+      "tables/backend_parity.csv"
+    ],
+    "status": "PASS",
+    "thresholds": {
+      "cie_lstar_melanin_spearman_max": -0.995,
+      "hemoglobin_band_spearman_min": 0.995,
+      "max_allowed": 1.000000000001,
+      "melanin_monotonic_tolerance": 1e-10,
+      "min_allowed": -1e-12
+    },
+    "warnings": []
+  },
+  "SO-0C": {
+    "artifact_validation": true,
+    "hard_failures": [],
+    "metrics": {
+      "camera_chroma_l1_p95": 0.0009851192427970203,
+      "camera_condition_count": 121968,
+      "camera_rgb_relative_error_max": 0.0073744131954305405,
+      "camera_rgb_relative_error_median": 0.0004979199821815034,
+      "camera_rgb_relative_error_p95": 0.0019007522261505366,
+      "cie_condition_count": 4356,
+      "cie_deltae00_median": 0.015019024691273945,
+      "cie_deltae00_p95": 0.08632044412219098,
+      "finite_fraction": 1.0,
+      "status": "PASS"
+    },
+    "required_artifacts": [
+      "tables/resolution_1nm_vs_5nm_summary.csv"
+    ],
+    "status": "PASS",
+    "thresholds": {
+      "camera_chroma_l1_p95_max": 0.01,
+      "camera_rgb_relative_error_max_max": 0.08,
+      "camera_rgb_relative_error_median_max": 0.01,
+      "camera_rgb_relative_error_p95_max": 0.03
+    },
+    "warnings": []
+  },
+  "SO-0D": {
+    "artifact_validation": true,
+    "hard_failures": [],
+    "metrics": {
+      "canon_5dmarkii_d65_qualified": true,
+      "failed_pairs": [
+        {
+          "camera_name": "Point Grey Grasshopper 50S5C",
+          "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+          "illuminant_name": "D65"
+        },
+        {
+          "camera_name": "Point Grey Grasshopper 50S5C",
+          "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+          "illuminant_name": "A"
+        },
+        {
+          "camera_name": "Point Grey Grasshopper 50S5C",
+          "failure_reasons": "loocv_median_gt_4;loocv_p95_gt_8",
+          "illuminant_name": "FL2"
+        }
+      ],
+      "qualified": 109,
+      "qualified_by_light": {
+        "A": 27,
+        "D65": 27,
+        "FL11": 28,
+        "FL2": 27
+      },
+      "qualified_fraction": 0.9732142857142857,
+      "status": "PASS",
+      "total": 112
+    },
+    "required_artifacts": [
+      "tables/colorchecker_calibration_metrics.csv"
+    ],
+    "status": "PASS",
+    "thresholds": {
+      "condition_number_max": "1.0e6",
+      "loocv_deltae00_median_max": 4.0,
+      "loocv_deltae00_p95_max": 8.0,
+      "pass_min_qualified_per_light": 20,
+      "pass_qualified_fraction_min": 0.9,
+      "pass_with_limits_min_qualified_per_light": 12,
+      "pass_with_limits_qualified_fraction_min": 0.6
+    },
+    "warnings": []
+  },
+  "SO-0E": {
+    "artifact_validation": true,
+    "hard_failures": [],
+    "metrics": {
+      "artifact_completeness": "PASS",
+      "autograd": "PASS",
+      "backend_parity": "PASS",
+      "colorchecker": "PASS",
+      "frozen_asset_hash": "PASS",
+      "linearity": "PASS",
+      "monotonicity": "PASS",
+      "observation_separability": "PASS",
+      "pytest": "PASS",
+      "resolution": "PASS",
+      "spectral_separability": "PASS"
+    },
+    "required_artifacts": [],
+    "status": "PASS",
+    "thresholds": {
+      "backend_parity": {
+        "camera_xyz_float32_max_abs": 2e-05,
+        "numpy_torch_float64_max_abs": 1e-09,
+        "srgb_float32_max_abs": 0.0002,
+        "torch_float32_reflectance_max_abs": 1e-05
+      },
+      "color": {
+        "bradford_d65_identity_max_abs": 1e-10,
+        "bradford_roundtrip_max_abs": 1e-10,
+        "resolution_deltae00_median_max": 1.0,
+        "resolution_deltae00_p95_max": 2.5,
+        "srgb_roundtrip_max_abs": 1e-12
+      },
+      "colorchecker": {
+        "condition_number_max": "1.0e6",
+        "loocv_deltae00_median_max": 4.0,
+        "loocv_deltae00_p95_max": 8.0,
+        "pass_min_qualified_per_light": 20,
+        "pass_qualified_fraction_min": 0.9,
+        "pass_with_limits_min_qualified_per_light": 12,
+        "pass_with_limits_qualified_fraction_min": 0.6
+      },
+      "linearity": {
+        "batch_float64_max_abs": 1e-09,
+        "relative_error_max": 1e-06
+      },
+      "reflectance": {
+        "cie_lstar_melanin_spearman_max": -0.995,
+        "hemoglobin_band_spearman_min": 0.995,
+        "max_allowed": 1.000000000001,
+        "melanin_monotonic_tolerance": 1e-10,
+        "min_allowed": -1e-12
+      },
+      "resolution": {
+        "camera_chroma_l1_p95_max": 0.01,
+        "camera_rgb_relative_error_max_max": 0.08,
+        "camera_rgb_relative_error_median_max": 0.01,
+        "camera_rgb_relative_error_p95_max": 0.03
+      },
+      "separability": {
+        "observation_rank2_pass_fraction_min": 0.95,
+        "observation_rank2_pass_with_limits_fraction_min": 0.8,
+        "rank_ratio_min": 0.001,
+        "sigma_max_min": 1e-10,
+        "spectral_abs_cosine_median_max": 0.95,
+        "spectral_abs_cosine_p95_max": 0.98
+      }
+    },
+    "warnings": []
+  }
+}

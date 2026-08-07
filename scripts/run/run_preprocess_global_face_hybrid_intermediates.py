@@ -40,7 +40,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--output-dir", type=Path, default=None)
+    parser.add_argument("--start-index", type=int, default=None)
     parser.add_argument("--max-samples", type=int, default=None)
+    parser.add_argument("--append-existing", action="store_true")
     parser.add_argument("--overwrite", action="store_true")
     return parser.parse_args()
 
@@ -50,18 +52,22 @@ def _resolve_path(value: str | Path) -> Path:
     return path.resolve() if path.is_absolute() else (PROJECT_ROOT / path).resolve()
 
 
+def _load_config(config_path: Path) -> dict:
+    with config_path.open("r", encoding="utf-8") as handle:
+        return yaml.safe_load(handle) or {}
+
+
 def _load_output_dir(config_path: Path, override: Path | None) -> Path:
     if override is not None:
         return _resolve_path(override)
-    with config_path.open("r", encoding="utf-8") as handle:
-        config = yaml.safe_load(handle) or {}
+    config = _load_config(config_path)
     output_dir = config.get("output_dir")
     if not output_dir:
         raise ValueError(f"output_dir is missing in {config_path}")
     return _resolve_path(output_dir)
 
 
-def _check_output(output_dir: Path) -> dict[str, int]:
+def _check_output(output_dir: Path, image_size: int) -> dict[str, int]:
     missing_dirs = [
         name for name in REQUIRED_DIRS if not (output_dir / name).is_dir()
     ]
@@ -86,8 +92,10 @@ def _check_output(output_dir: Path) -> dict[str, int]:
         mask = cv2.imdecode(np.fromfile(str(mask_path), dtype=np.uint8), cv2.IMREAD_GRAYSCALE)
         if mask is None:
             raise ValueError(f"Cannot read final_mask PNG: {mask_path}")
-        if mask.shape != (224, 224):
-            raise ValueError(f"final_mask must be 224x224, got {mask.shape}: {mask_path}")
+        if mask.shape != (image_size, image_size):
+            raise ValueError(
+                f"final_mask must be {image_size}x{image_size}, got {mask.shape}: {mask_path}"
+            )
         values = set(int(v) for v in pd.unique(mask.reshape(-1)))
         if not values.issubset({0, 255}):
             raise ValueError(f"final_mask is not binary 0/255: {mask_path}, values={values}")
@@ -103,19 +111,27 @@ def _check_output(output_dir: Path) -> dict[str, int]:
 def main() -> int:
     args = parse_args()
     config_path = _resolve_path(args.config)
+    config = _load_config(config_path)
+    image_size = int(config.get("image_size", 224))
+    if image_size <= 0:
+        raise ValueError(f"image_size must be positive, got: {image_size}")
     output_dir = _load_output_dir(config_path, args.output_dir)
     forwarded = ["--config", str(config_path)]
     if args.output_dir is not None:
         forwarded.extend(["--output-dir", str(output_dir)])
+    if args.start_index is not None:
+        forwarded.extend(["--start-index", str(args.start_index)])
     if args.max_samples is not None:
         forwarded.extend(["--max-samples", str(args.max_samples)])
+    if args.append_existing:
+        forwarded.append("--append-existing")
     if args.overwrite:
         forwarded.append("--overwrite")
 
     exit_code = preprocess.main(forwarded)
     if exit_code != 0:
         return int(exit_code)
-    stats = _check_output(output_dir)
+    stats = _check_output(output_dir, image_size)
     print(
         "Intermediate preprocessing completed: "
         f"success={stats['success']}, failed={stats['failed']}, "

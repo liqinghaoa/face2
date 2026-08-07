@@ -1,0 +1,77 @@
+project:
+  name: SO0_Forward_Model_v1.1
+  workspace_root: /mnt/e/projects/face2
+  standardized_asset_root: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1
+  raw_asset_root: data/external/SO0_Spectral_Assets_v1/raw
+  output_dir: outputs/SO0_Forward_Model_v1.1
+  random_seed: 20260801
+assets:
+  required_decision_status: PASS_WITH_5NM_FALLBACK
+  reference_step_nm: 1
+  production_step_nm: 5
+  forbid_production_10nm: true
+parameters:
+  melanin_fraction:
+    min: 0.013
+    max: 0.43
+    unit: fraction
+    trainable: false
+  blood_fraction:
+    min: 0.02
+    max: 0.07
+    unit: fraction
+    trainable: false
+  oxygenation:
+    primary: 0.75
+    sensitivity: [0.60, 0.90]
+    unit: fraction
+    trainable: false
+  epidermis_thickness_cm:
+    primary: 0.006
+    sensitivity: [0.004, 0.010]
+    unit: cm
+    trainable: false
+  dermis_thickness_cm:
+    primary: 0.20
+    sensitivity: [0.10, 0.30]
+    unit: cm
+    trainable: false
+  melanin_control:
+    min: 0.0
+    max: 1.0
+    unit: unitless_control
+    trainable: false
+  hemoglobin_control:
+    min: 0.0
+    max: 1.0
+    unit: unitless_control
+    trainable: false
+  shading:
+    primary_range: [0.25, 2.0]
+    sensitivity_range: [0.0, 2.5]
+    unit: unitless_multiplier
+    trainable: false
+  specular:
+    interpretation: additive_achromatic_reflectance
+    primary_range: [0.0, 0.10]
+    sensitivity_max: 0.20
+    unit: reflectance_like_unitless
+    trainable: false
+  exposure:
+    primary_range: [0.5, 2.0]
+    sensitivity_range: [0.1, 3.0]
+    unit: unitless_multiplier
+    trainable: false
+color:
+  camera_to_xyz:
+    model: linear_3x3_no_intercept
+    solver: numpy.linalg.lstsq
+    regularisation: none
+    polynomial_terms: false
+    neural_mapping: false
+  chromatic_adaptation:
+    method: Bradford
+    target_white: D65
+  display:
+    physical_path_clipping: false
+    display_copy_clipping: true

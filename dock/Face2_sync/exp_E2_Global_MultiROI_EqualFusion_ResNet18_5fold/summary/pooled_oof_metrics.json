@@ -1,0 +1,49 @@
+{
+  "accuracy": 0.512,
+  "macro_precision": 0.483051269557685,
+  "macro_recall": 0.509120815917734,
+  "macro_f1": 0.46071921821440665,
+  "balanced_accuracy": 0.509120815917734,
+  "auc_normal": 0.8321174477696217,
+  "precision_normal": 0.46808510638297873,
+  "recall_normal": 0.7652173913043478,
+  "f1_normal": 0.5808580858085809,
+  "auc_mild": 0.6172690956345959,
+  "precision_mild": 0.5610687022900763,
+  "recall_mild": 0.620253164556962,
+  "f1_mild": 0.5891783567134269,
+  "auc_severe": 0.6229269041769042,
+  "precision_severe": 0.42,
+  "recall_severe": 0.14189189189189189,
+  "f1_severe": 0.21212121212121213,
+  "macro_auc": 0.6907711491937073,
+  "severe_vs_rest_auc": 0.6229269041769042,
+  "normal_vs_abnormal_auc": 0.8321174477696217,
+  "confusion_matrix": [
+    [
+      88,
+      25,
+      2
+    ],
+    [
+      63,
+      147,
+      27
+    ],
+    [
+      37,
+      90,
+      21
+    ]
+  ],
+  "ordinal_mae": 0.566,
+  "normal_to_severe_count": 2,
+  "severe_to_normal_count": 37,
+  "two_step_error_count": 39,
+  "two_step_error_rate": 0.078,
+  "qwk": 0.3047209639148256,
+  "severe_recall": 0.14189189189189189,
+  "multiclass_brier_score": 0.6797979155988587,
+  "ece_15_equal_width": 0.22656619429588315,
+  "nll": 1.1936110019539528
+}

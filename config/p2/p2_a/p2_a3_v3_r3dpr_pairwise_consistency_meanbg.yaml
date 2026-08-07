@@ -1,0 +1,84 @@
+experiment_id: p2_a3_v3_r3dpr_pairwise_consistency_meanbg
+project_root: E:/projects/face2
+manifest_path: data/processed/global_face/SixRelighting_OriginalCamera_meanfg/p2_a3_v3_assets/p2_a3_v3_pair_manifest.csv
+pair_cycle_schedule_path: data/processed/global_face/SixRelighting_OriginalCamera_meanfg/p2_a3_v3_assets/p2_a3_v3_pair_cycle_schedule.json
+output_root: experiments/500Data/P2_A3_v3_R3DPR_PairwiseConsistency_MeanBG
+smoke_output_root: experiments/500Data/P2_A3_v3_R3DPR_PairwiseConsistency_MeanBG/_smoke
+
+path_resolution:
+  enabled: true
+  known_project_roots:
+    - /mnt/e/projects/face2
+    - E:/projects/face2
+    - E:\projects\face2
+  require_exists: true
+  rewrite_manifest: false
+
+display_experiment_id: P2-A3-v3_R3DPR_PairwiseConsistency_MeanBG
+input_mode: pairwise_consistency
+training_mode: pairwise_consistency
+pair_cycle_enabled: true
+relighting_sampling: deterministic_pair_cycle
+num_relighted_views: 6
+color_jitter_enabled: false
+relighting_enabled: true
+consistency_enabled: true
+use_color_jitter: false
+use_prediction_consistency: true
+use_feature_consistency: true
+consistency_loss_weights:
+  prediction: 0.5
+  feature: 0.1
+consistency_warmup_epochs: 5
+
+model:
+  architecture: resnet18
+  pretrained: imagenet
+  num_classes: 2
+  feature_dim: 512
+
+training:
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  max_epochs: 50
+  early_stopping_patience: 10
+  checkpoint_metric: macro_auc
+  seed: 2026
+  amp: false
+
+data:
+  image_size: 224
+  original_rgb_source: p0_e0b_meanbg_224_or_identical_new_original
+  relighted_rgb_source: r3dpr_sixrelighting_originalcamera_meanfg
+  data_root: data/processed/global_face/SixRelighting_OriginalCamera_meanfg
+  horizontal_flip_probability: 0.5
+  synchronized_geometric_augmentation: true
+  num_workers: 0
+  normalization: p1_rgb_official
+  normalization_mean: [0.485, 0.456, 0.406]
+  normalization_std: [0.229, 0.224, 0.225]
+
+evaluation:
+  save_validation_features: true
+  evaluate_all_relighting_presets: true
+
+smoke:
+  max_epochs: 2
+  train_cases: 24
+  val_cases: 8
+
+bootstrap:
+  iterations: 2000
+  seed: 2026
+  confidence_interval: percentile_95
+
+comparisons:
+  primary_reference:
+    experiment_id: p2_a2_v2_r3dpr_meanbg
+    directory: experiments/500Data/P2_A2_v2_R3DPR_MeanBG/p2_a2_v2_r3dpr_meanbg
+  full6_reference:
+    experiment_id: p2_a3_v2_r3dpr_full6_consistency_meanbg
+    directory: experiments/500Data/P2_A3_v2_R3DPR_Full6Consistency_MeanBG/p2_a3_v2_r3dpr_full6_consistency_meanbg

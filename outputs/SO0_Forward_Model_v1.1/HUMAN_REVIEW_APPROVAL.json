@@ -1,0 +1,35 @@
+{
+  "approved_numerical_corrections": [
+    {
+      "acceptance_reason": "The correction removes float32-derived constant precision loss and improves agreement with the NumPy float64 reference.",
+      "acceptance_threshold_changed": false,
+      "color_transform_formula_changed": false,
+      "colorchecker_method_changed": false,
+      "component": "PyTorch float64 color-space constants",
+      "new_numpy64_vs_torch64_max_abs": 3.5527136788e-15,
+      "numpy_reference_output_changed": false,
+      "observation_space": "camera_linear_srgb_unclipped",
+      "old_vs_new_max_abs": 6.89407588794e-08,
+      "production_grid_changed": false,
+      "skin_optics_formula_changed": false
+    }
+  ],
+  "bundle_id": "SO0_Forward_Model_v1.1",
+  "known_limitations": [
+    "M and H are melanin-sensitive and hemoglobin-sensitive controls, not true physiological concentrations.",
+    "The forward model does not prove unique inversion of real phone JPEG images.",
+    "Three Point Grey Grasshopper 50S5C camera-light combinations remain unqualified.",
+    "Phone JPEG processing includes unknown ISP, white balance, HDR, tone mapping, sharpening, denoising, and compression."
+  ],
+  "review_basis": [
+    "SO0_forward_model_decision.json",
+    "SO0_reacceptance_report.md",
+    "preflight/physics_regression.csv",
+    "tables/backend_parity.csv",
+    "reproducibility/reproducibility_decision.json"
+  ],
+  "review_status": "APPROVED_WITH_NUMERICAL_CORRECTION",
+  "review_timestamp": "2026-08-01T14:58:00+08:00",
+  "scientific_status": "PASS",
+  "so1_authorized": false
+}

@@ -1,0 +1,8 @@
+experiment_key: p1_a
+display_name: P1-A
+representation: albedo
+input_type: image
+model_type: resnet18_single
+mask: physics_core_skin
+normalization: clip_0_1_and_imagenet_normalize
+

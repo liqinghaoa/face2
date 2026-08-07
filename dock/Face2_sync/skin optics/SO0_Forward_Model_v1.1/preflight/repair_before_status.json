@@ -1,0 +1,7 @@
+{
+  "audit_completeness_status": "FAIL",
+  "numerical_core_status": "PASS",
+  "physics_core_status": "PASS",
+  "so1_authorized": false,
+  "status": "PROVISIONAL_PASS_REQUIRES_AUDIT_REPAIR"
+}

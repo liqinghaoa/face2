@@ -1,0 +1,15 @@
+project_root: E:/projects/face2
+split_csv: E:/projects/face2/data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+metadata_xlsx: E:/projects/face2/data/raw/EXIF/Image_Metadata_All.xlsx
+oof_predictions_csv: E:/projects/face2/experiments/500Data/E0B_Global_ResNet18_ControlVsPatient_Binary_realface_256x320_blackbg_from_raw_v1_anti_overfit_v3_bn_eval_full/oof_predictions.csv
+output_dir: E:/projects/face2/experiments/lighting_confounding/Lighting_Confounding_Audit_Stage1_v1
+metadata_sheet: auto
+random_seed: 2026
+bootstrap_repeats: 2000
+permutation_repeats: 1000
+inner_cv_splits: 3
+logistic_C_grid: [1.0]
+stratification_quantiles: [0.3333, 0.6667]
+unstable_group_min_total: 30
+unstable_group_min_per_class: 10
+smoke_mode: false

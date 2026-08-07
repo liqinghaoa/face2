@@ -1,0 +1,11 @@
+name,path,exists,size_bytes,sha256,load_status,required
+deca_checkpoint,/mnt/e/projects/face2/third_party/DECA/data/deca_model.tar,True,434142943,e714ed293054cba5eea9c96bd3b6b57880074cd84b3fd00d606cbaf0bee7c5c2,not_loaded,True
+flame_model,/mnt/e/projects/face2/third_party/DECA/data/generic_model.pkl,True,53023716,efcd14cc4a69f3a3d9af8ded80146b5b6b50df3bd74cf69108213b144eba725b,not_loaded,True
+landmark_embedding,/mnt/e/projects/face2/third_party/DECA/data/landmark_embedding.npy,True,31292,8095348eeafce5a02f6bd8765146307f9567a3f03b316d788a2e47336d667954,not_loaded,True
+texture_model,/mnt/e/projects/face2/third_party/DECA/data/FLAME_albedo_from_BFM.npz,True,1258291694,c6a9986024679caa881fcfe8a49687843e9338bfe0b0bb4923dccd29e01135ad,not_loaded,True
+dense_template,/mnt/e/projects/face2/third_party/DECA/data/texture_data_256.npy,True,6677908,8563919927a2bc2ea7343d0ceef35254105d21a1947f00e5ca39e01d6ed1f9f1,not_loaded,True
+uv_face_mask,/mnt/e/projects/face2/third_party/DECA/data/uv_face_mask.png,True,12112,bbf570444e3dddcdc54eaab7eeece97fe87d61cc3761e2c8b22ef495905e56fa,not_loaded,True
+uv_face_eye_mask,/mnt/e/projects/face2/third_party/DECA/data/uv_face_eye_mask.png,True,11522,a5069d8ffaf020008ae92d5062c4e98600f723aac4eb869731f190e4630467b5,not_loaded,True
+mean_texture,/mnt/e/projects/face2/third_party/DECA/data/mean_texture.jpg,True,53722,34364c02dec9dfb30580d1575b375553c6cd8d5da5caa6ac5a611ce65b91f529,not_loaded,True
+fixed_displacement,/mnt/e/projects/face2/third_party/DECA/data/fixed_displacement_256.npy,True,524416,296d01113d67bdaace6f6fe741f7d855e58dc0707f0bb113758520ffa5d8cb93,not_loaded,True
+head_template,/mnt/e/projects/face2/third_party/DECA/data/head_template.obj,True,583480,6e97de16c1059399531888e95434502020048e133272e3e359d709fb59702e07,not_loaded,True

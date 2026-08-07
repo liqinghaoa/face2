@@ -1,0 +1,37 @@
+{
+  "approval_status": "APPROVED_WITH_NUMERICAL_CORRECTION",
+  "bundle_id": "SO0_Forward_Model_v1.1",
+  "checksums_file": "checksums.sha256",
+  "colorchecker": {
+    "qualified": 109,
+    "status": "PASS",
+    "total": 112,
+    "unqualified_pairs": [
+      "Point Grey Grasshopper 50S5C / D65",
+      "Point Grey Grasshopper 50S5C / A",
+      "Point Grey Grasshopper 50S5C / FL2"
+    ]
+  },
+  "freeze_manifest_file": "freeze_manifest.json",
+  "freeze_timestamp": "2026-08-01T15:28:03.210383+08:00",
+  "frozen_asset_hash_after": "PASS",
+  "frozen_asset_hash_before": "PASS",
+  "human_review_file": "HUMAN_REVIEW_APPROVAL.json",
+  "mh_interpretation": "melanin-sensitive and hemoglobin-sensitive synthetic controls only",
+  "modification_policy": "Do not overwrite this bundle. Any scientific or implementation change requires a new version.",
+  "production_grid_nm": 5,
+  "pytest": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 29
+  },
+  "reference_grid_nm": 1,
+  "resolution_audit": {
+    "camera_condition_count": 121968,
+    "status": "PASS"
+  },
+  "scientific_status": "PASS",
+  "so1_authorized": false,
+  "status": "FROZEN"
+}

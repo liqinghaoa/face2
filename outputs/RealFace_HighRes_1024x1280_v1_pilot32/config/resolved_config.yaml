@@ -1,0 +1,38 @@
+project_root: .
+
+paths:
+  image_dir: data/processed/P0_Physics_Audit_v1/images/raw_scene
+  split_csv: data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+  canonical_output_root: data/processed/skin_optics/RealFace_HighRes_1024x1280_v1
+  pilot_output_dir: outputs/RealFace_HighRes_1024x1280_v1_pilot32
+
+detection:
+  min_detection_confidence: 0.5
+  model_selection: 1
+  expand_top_ratio: 0.10
+  expand_bottom_ratio: 0.20
+  expand_side_ratio: 0.20
+
+geometry:
+  output_width: 1024
+  output_height: 1280
+  side_margin_ratio: 0.03
+  top_margin_ratio: 0.02
+  bottom_margin_ratio: 0.025
+  face_quantile_low: 0.02
+  face_quantile_high: 0.98
+
+parser:
+  model: bisenet
+  checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+  device: auto
+
+skin_mask:
+  exclusion_dilation_ratio: 0.006
+  min_component_area_ratio: 0.0002
+  low_skin_fraction_warning: 0.08
+  high_skin_fraction_warning: 0.65
+  high_hair_fraction_warning: 0.12
+
+pilot:
+  count: 32

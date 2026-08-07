@@ -1,0 +1,8 @@
+experiment_key: p1_l
+display_name: P1-L
+representation: light
+input_type: vector
+model_type: linear_probe
+flatten: true
+normalization: standardize_flatten_27
+

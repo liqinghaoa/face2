@@ -1,0 +1,101 @@
+{
+  "pilot_total": 32,
+  "success_count": 32,
+  "failure_count": 0,
+  "warning_case_count": 7,
+  "roll_angle": {
+    "min": 0.10978028240918396,
+    "median": 2.6731121532079207,
+    "p95": 7.054928976548228,
+    "max": 9.381178342968756
+  },
+  "residual_roll": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "aligned_face_width_fraction": {
+    "min": 0.8668703436851501,
+    "median": 0.9158762991428375,
+    "p95": 0.9473266363143921,
+    "max": 0.9549548029899597
+  },
+  "aligned_face_height_fraction": {
+    "min": 0.8529388427734375,
+    "median": 0.8971302509307861,
+    "p95": 0.8992262077331543,
+    "max": 0.9030679702758789
+  },
+  "skin_fraction": {
+    "min": 0.5060317993164063,
+    "median": 0.6127906799316406,
+    "p95": 0.6754454803466796,
+    "max": 0.7068130493164062
+  },
+  "hair_fraction_in_face_region": {
+    "median": 0.00995883542228301,
+    "p95": 0.032816716041318424,
+    "max": 0.09062178491206442
+  },
+  "source_valid_fraction": {
+    "min": 0.9926483154296875,
+    "median": 1.0,
+    "p95": 1.0
+  },
+  "top_border_skin_pixel_count": {
+    "min": 0.0,
+    "median": 499.0,
+    "p95": 738.1999999999999,
+    "max": 776.0
+  },
+  "top_border_skin_fraction": {
+    "min": 0.0,
+    "median": 0.4873046875,
+    "p95": 0.7208984374999999,
+    "max": 0.7578125
+  },
+  "number_of_cases_skin_touching_top_border": 30,
+  "fraction_of_cases_skin_touching_top_border": 0.9375,
+  "nostril_exclusion_area_ratio": {
+    "min": 0.007572174072265625,
+    "median": 0.00947265625,
+    "p95": 0.010533523559570311,
+    "max": 0.011228179931640625
+  },
+  "nostril_dilation_radius_px": {
+    "min": 3.0,
+    "median": 4.5,
+    "p95": 6.0,
+    "max": 6.0
+  },
+  "top_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "bottom_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.14703369140625
+  },
+  "left_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.03239889705882353
+  },
+  "right_invalid_fraction": {
+    "min": 0.0,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "failure_code_counts": {},
+  "warning_code_counts": {
+    "bottom_invalid_area": 1,
+    "face_near_canvas_border": 6,
+    "high_skin_fraction": 3
+  }
+}

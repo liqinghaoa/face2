@@ -1,0 +1,9 @@
+{
+  "data_source": "tables/mh_observation_separability.csv",
+  "filters": {},
+  "generated_at": "2026-08-01T06:27:30.459322+00:00",
+  "row_count": 8400,
+  "sha256": "b49560bed5aaf3f7a2a7f71f39ea4b70e1cfc86340444aac1abef98d46926e14",
+  "x_field": "sigma_ratio",
+  "y_field": "count"
+}

@@ -24,9 +24,22 @@ REQUIRED_METADATA_COLUMNS = {
 IMAGE_PATH_COLUMN = "image_path"
 
 
+def _resize_size(image_size: int | Sequence[int]) -> tuple[int, int]:
+    if isinstance(image_size, int):
+        if image_size < 1:
+            raise ValueError(f"image_size must be positive, got: {image_size}")
+        return image_size, image_size
+    if len(image_size) != 2:
+        raise ValueError(f"image_size must be an int or [height, width], got: {image_size!r}")
+    height, width = int(image_size[0]), int(image_size[1])
+    if height < 1 or width < 1:
+        raise ValueError(f"image_size dimensions must be positive, got: {image_size!r}")
+    return height, width
+
+
 def build_transforms(
     split: str,
-    image_size: int = 224,
+    image_size: int | Sequence[int] = 224,
     mean: Sequence[float] = (0.485, 0.456, 0.406),
     std: Sequence[float] = (0.229, 0.224, 0.225),
     horizontal_flip: bool = True,
@@ -36,7 +49,7 @@ def build_transforms(
     if split not in {"train", "val"}:
         raise ValueError(f"split must be 'train' or 'val', got: {split!r}")
 
-    operations: list[Any] = [transforms.Resize((image_size, image_size))]
+    operations: list[Any] = [transforms.Resize(_resize_size(image_size))]
     if split == "train" and horizontal_flip:
         operations.append(transforms.RandomHorizontalFlip(p=0.5))
     operations.extend(

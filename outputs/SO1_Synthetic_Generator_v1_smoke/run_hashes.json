@@ -1,0 +1,28 @@
+{
+  "camera_light_split_hash": "c5ec9ecec98a01c7cbfe9c9aac65d4750b0c086bd80949b3fcda70d422b9148b",
+  "disk": {
+    "free_bytes": 103244410880,
+    "full_space_warning": false,
+    "total_bytes": 1000186310656,
+    "used_bytes": 896941899776
+  },
+  "environment": {
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "cwd": "/mnt/e/projects/face2",
+    "executable": "/home/liqinghao/miniconda3/envs/p0b_deca/bin/python",
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory_bytes": 8585216000
+      }
+    ],
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.9.25 (main, Nov  3 2025, 22:33:05) \n[GCC 11.2.0]",
+    "torch": "2.4.1+cu124"
+  },
+  "generator_config_hash": "981d4dec73e5ff8e3d3fa330f2367344f7d8d7f0ef36f702e73b7839cab94b47",
+  "so0_frozen_so1_authorized_note": "FROZEN.json reports so1_authorized=false; SO-0 was not modified.",
+  "so0_range_notes": []
+}

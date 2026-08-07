@@ -1,0 +1,69 @@
+experiment:
+  name: exp_E2_Global_MultiROI_EqualFusion_ResNet18_5fold
+  output_dir: experiments
+data:
+  split_dir: data/processed/splits_500
+  global_root: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+  roi_roots:
+    eye: data/processed/roi_dataset/manual_shift_data/eye_roi
+    lip: data/processed/roi_dataset/manual_shift_data/lip_roi
+    cheek: data/processed/roi_dataset/manual_shift_data/cheek_roi
+    forehead: data/processed/roi_dataset/manual_shift_data/forehead_roi
+    chin: data/processed/roi_dataset/manual_shift_data/chin_roi
+  roi_order:
+  - eye
+  - lip
+  - cheek
+  - forehead
+  - chin
+  image_filename_template: '{ID}.png'
+  n_folds: 5
+  expected_num_samples: 500
+  image_size: 224
+  label_col: label_3class
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+model:
+  type: global_multiroi_equal_fusion
+  backbone: resnet18
+  pretrained: imagenet
+  num_classes: 3
+  global_encoder: independent_resnet18
+  roi_encoder: one_shared_resnet18
+  roi_aggregation: fixed_arithmetic_mean
+  fusion: concat_512_plus_512
+  classifier: linear_1024_to_3
+  freeze_backbone: false
+loss:
+  name: weighted_cross_entropy
+  class_weight: fold_specific
+  label_smoothing: false
+train:
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  random_seed: 2026
+  num_workers: 0
+  pin_memory: false
+  use_amp: false
+augmentation:
+  horizontal_flip: true
+  synchronized_horizontal_flip: true
+  color_jitter: false
+  random_crop: false
+  random_rotation: false
+normalize:
+  mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  std:
+  - 0.229
+  - 0.224
+  - 0.225
+metrics:
+  ece_bins: 15

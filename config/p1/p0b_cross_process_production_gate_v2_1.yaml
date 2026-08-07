@@ -1,0 +1,8 @@
+contract_version: P0B_cross_process_production_gate_v2_1
+purpose: P1_Frozen500_production_release
+contract_root: data/processed/P0B_cross_process_production_gate_v2_1
+threshold_source: data/processed/P0B_cross_process_regression_baseline_v2/metadata/thresholds.csv
+threshold_source_contract: data/processed/P0B_cross_process_regression_baseline_v2/metadata/contract.json
+ssim_policy: diagnostic_only
+fixed_input_mode: direct_p0_aligned
+full_500_started: false

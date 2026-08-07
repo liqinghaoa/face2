@@ -1,0 +1,18 @@
+project_root: .
+p0a_root: data/processed/P0_Physics_Audit_v1
+output_root: data/processed/P0B_DECA_Pilot12_v1
+deca_root: third_party/DECA
+device: cuda
+seed: 42
+pilot_size: 12
+license_status: not_confirmed
+input_modes: [direct_p0_aligned, mask_bbox_crop]
+fixed_input_mode: null
+excluded_ids: [A001917272-1, A002081031-1]
+selection_groups: {Xiaomi Control: 4, Xiaomi Patient: 4, HONOR Patient: 4}
+acquisition_group_rules:
+  Xiaomi Control: {camera_make: Xiaomi, camera_model: M2006J10C, binary_name: Control}
+  Xiaomi Patient: {camera_make: Xiaomi, camera_model: M2006J10C, binary_name: Patient}
+  HONOR Patient: {camera_make: HONOR, camera_model: BVL-AN00, binary_name: Patient}
+mask_bbox_expand_ratio: 0.15
+relighting_config: config/p0b/p0b_relighting_presets_v1.yaml

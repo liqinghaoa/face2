@@ -1,0 +1,9 @@
+{
+  "data_source": "tables/colorchecker_calibration_metrics.csv",
+  "filters": {},
+  "generated_at": "2026-08-01T06:28:25.766406+00:00",
+  "row_count": 112,
+  "sha256": "d68d20914aff2bd5db1bda7feca61fb69262383f52ab6fb0577c124c2fb31e75",
+  "x_field": "loocv_deltae00_p95",
+  "y_field": "count"
+}

@@ -1,0 +1,16 @@
+{
+  "cuda_available": false,
+  "packages": {
+    "colour": "0.4.7",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "pytest": "9.1.1",
+    "scipy": "1.17.1",
+    "torch": "2.4.1+cpu",
+    "yaml": "6.0.3"
+  },
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "pwd": "/mnt/e/projects/face2",
+  "python": "/home/liqinghao/miniconda3/envs/so0_spectra/bin/python",
+  "python_version": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]"
+}

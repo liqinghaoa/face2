@@ -1,0 +1,100 @@
+{
+  "baseline_root": "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32",
+  "revA_root": "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA",
+  "comparison_csv": "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparison.csv",
+  "comparison_images": [
+    "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparisons\\A000477213_base_vs_revA.png",
+    "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparisons\\A002012347_base_vs_revA.png",
+    "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparisons\\A001636890_base_vs_revA.png",
+    "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparisons\\100037382_base_vs_revA.png",
+    "E:\\projects\\face2\\outputs\\RealFace_HighRes_1024x1280_v1_pilot32_revA\\qc\\revision_comparisons\\200887343-1_base_vs_revA.png"
+  ],
+  "representative_ids": [
+    "A000477213",
+    "A002012347",
+    "A001636890",
+    "100037382",
+    "200887343-1"
+  ],
+  "parameter_comparison": {
+    "base_top_margin_ratio": 0.02,
+    "revA_top_margin_ratio": 0.08,
+    "base_side_margin_ratio": 0.03,
+    "revA_side_margin_ratio": 0.03,
+    "base_bottom_margin_ratio": 0.025,
+    "revA_bottom_margin_ratio": 0.025,
+    "base_exclusion_dilation_ratio": 0.006,
+    "revA_eye_brow_lip_dilation_ratio": 0.006,
+    "revA_nostril_dilation_ratio": 0.003
+  },
+  "top_border": {
+    "baseline_number_of_cases_skin_touching_top_border": 31,
+    "revA_number_of_cases_skin_touching_top_border": 30,
+    "baseline_fraction_of_cases_skin_touching_top_border": 0.96875,
+    "revA_fraction_of_cases_skin_touching_top_border": 0.9375,
+    "baseline_top_border_skin_fraction": {
+      "min": 0.0,
+      "median": 0.6513671875,
+      "p95": 0.7728515625,
+      "max": 0.7890625
+    },
+    "revA_top_border_skin_fraction": {
+      "min": 0.0,
+      "median": 0.4873046875,
+      "p95": 0.7208984374999999,
+      "max": 0.7578125
+    }
+  },
+  "composition": {
+    "baseline_aligned_face_width_fraction": {
+      "min": 0.9234053492546082,
+      "median": 0.9474043250083923,
+      "p95": 0.9642344772815704,
+      "max": 0.9735538363456726
+    },
+    "revA_aligned_face_width_fraction": {
+      "min": 0.8668703436851501,
+      "median": 0.9158762991428375,
+      "p95": 0.9473266363143921,
+      "max": 0.9549548029899597
+    },
+    "baseline_aligned_face_height_fraction": {
+      "min": 0.8529388427734375,
+      "median": 0.9334684371948242,
+      "p95": 0.9575036811828613,
+      "max": 0.9619636535644531
+    },
+    "revA_aligned_face_height_fraction": {
+      "min": 0.8529388427734375,
+      "median": 0.8971302509307861,
+      "p95": 0.8992262077331543,
+      "max": 0.9030679702758789
+    },
+    "baseline_skin_fraction": {
+      "min": 0.5483024597167969,
+      "median": 0.6426258087158203,
+      "p95": 0.6838455200195312,
+      "max": 0.7055351257324218
+    },
+    "revA_skin_fraction": {
+      "min": 0.5060317993164063,
+      "median": 0.6127906799316406,
+      "p95": 0.6754454803466796,
+      "max": 0.7068130493164062
+    }
+  },
+  "nostril": {
+    "revA_nostril_exclusion_area_ratio": {
+      "min": 0.007572174072265625,
+      "median": 0.00947265625,
+      "p95": 0.010533523559570311,
+      "max": 0.011228179931640625
+    },
+    "revA_nostril_dilation_radius_px": {
+      "min": 3.0,
+      "median": 4.5,
+      "p95": 6.0,
+      "max": 6.0
+    }
+  }
+}

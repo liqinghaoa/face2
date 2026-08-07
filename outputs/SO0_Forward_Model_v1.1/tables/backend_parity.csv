@@ -1,0 +1,11 @@
+comparison,observation_space,max_abs_error,status
+numpy64_vs_torch64,camera_rgb_raw,6.66133814775e-16,PASS
+numpy64_vs_torch64,camera_rgb_wb,1.11022302463e-15,PASS
+numpy64_vs_torch64,linear_srgb_unclipped,3.5527136788e-15,PASS
+numpy64_vs_torch64,reflectance,1.11022302463e-16,PASS
+numpy64_vs_torch64,xyz_d65,1.44328993201e-15,PASS
+torch32_vs_torch64,camera_rgb_raw,3.72454003195e-07,PASS
+torch32_vs_torch64,camera_rgb_wb,5.32612514759e-07,PASS
+torch32_vs_torch64,linear_srgb_unclipped,1.19912140017e-06,PASS
+torch32_vs_torch64,reflectance,1.42971123607e-07,PASS
+torch32_vs_torch64,xyz_d65,1.02691253101e-06,PASS

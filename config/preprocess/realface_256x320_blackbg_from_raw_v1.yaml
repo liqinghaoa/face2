@@ -1,0 +1,56 @@
+project_root: .
+
+paths:
+  image_dir: data/processed/P0_Physics_Audit_v1/images/raw_scene
+  split_csv: data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+  pilot_output_dir: data/processed/global_face/realface_256x320_blackbg_from_raw_v1_pilot32
+  full_output_dir: data/processed/global_face/realface_256x320_blackbg_from_raw_v1
+
+detection:
+  min_detection_confidence: 0.5
+  model_selection: 0
+  expand_top_ratio: 0.10
+  expand_bottom_ratio: 0.20
+  expand_side_ratio: 0.20
+
+geometry:
+  output_width: 256
+  output_height: 320
+  side_margin_ratio: 0.03
+  top_margin_ratio: 0.08
+  bottom_margin_ratio: 0.025
+  face_quantile_low: 0.02
+  face_quantile_high: 0.98
+
+parser:
+  model: bisenet
+  checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+  device: auto
+
+face_mask:
+  scheme: B_keep_facial_features_remove_hair_background
+  min_component_area_ratio: 0.0002
+  keep_classes:
+    - skin
+    - nose
+    - left_brow
+    - right_brow
+    - left_eye
+    - right_eye
+    - mouth
+    - upper_lip
+    - lower_lip
+  remove_classes:
+    - eye_glasses
+    - hair
+    - left_ear
+    - right_ear
+    - earring
+    - neck
+    - necklace
+    - cloth
+    - hat
+    - background
+
+pilot:
+  count: 32

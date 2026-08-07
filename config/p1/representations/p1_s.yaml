@@ -1,0 +1,8 @@
+experiment_key: p1_s
+display_name: P1-S
+representation: shading
+input_type: image
+model_type: resnet18_single
+mask: face_valid
+normalization: clip_p01_p99_then_imagenet_normalize
+

@@ -1,0 +1,87 @@
+experiment_id: p2_a2_v2_r3dpr_meanbg
+project_root: E:/projects/face2
+manifest_path: data/processed/global_face/SixRelighting_OriginalCamera_meanfg/p2_a2_v2_manifest.csv
+output_root: experiments/500Data/P2_A2_v2_R3DPR_MeanBG
+smoke_output_root: experiments/500Data/P2_A2_v2_R3DPR_MeanBG/_smoke
+
+path_resolution:
+  enabled: true
+  known_project_roots:
+    - /mnt/e/projects/face2
+    - E:/projects/face2
+    - E:\projects\face2
+  require_exists: true
+  rewrite_manifest: false
+
+display_experiment_id: P2-A2-v2_R3DPR_MeanBG
+input_mode: relight_mix
+original_probability: 0.5
+relighted_probability: 0.5
+relighting_sampling: uniform
+num_relighted_views: 6
+color_jitter_enabled: false
+relighting_enabled: true
+consistency_enabled: false
+use_color_jitter: false
+use_consistency_loss: false
+
+model:
+  architecture: resnet18
+  pretrained: imagenet
+  num_classes: 2
+  feature_dim: 512
+
+training:
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  batch_size: 16
+  max_epochs: 50
+  early_stopping_patience: 10
+  checkpoint_metric: macro_auc
+  seed: 2026
+  amp: false
+
+data:
+  image_size: 224
+  original_rgb_source: p0_e0b_meanbg_224_or_identical_new_original
+  relighted_rgb_source: r3dpr_sixrelighting_originalcamera_meanfg
+  data_root: data/processed/global_face/SixRelighting_OriginalCamera_meanfg
+  horizontal_flip_probability: 0.5
+  normalization: p1_rgb_official
+  normalization_mean: [0.485, 0.456, 0.406]
+  normalization_std: [0.229, 0.224, 0.225]
+  num_workers: 0
+
+evaluation:
+  save_validation_features: true
+  evaluate_all_relighting_presets: true
+
+smoke:
+  max_epochs: 2
+  train_cases: 32
+  val_cases: 12
+
+bootstrap:
+  iterations: 2000
+  seed: 2026
+  confidence_interval: percentile_95
+
+gate:
+  comparison:
+    candidate: p2_a2_v2_r3dpr_meanbg
+    reference: p2_a1_colorjitter
+  performance_tolerance:
+    macro_auc_max_drop: 0.01
+    macro_f1_max_drop: 0.02
+    balanced_accuracy_max_drop: 0.02
+    sensitivity_max_drop: 0.03
+    specificity_max_drop: 0.03
+  positive_signals:
+    any_classification_metric_improved: true
+    any_stability_metric_improved: true
+  stability_metrics:
+    prediction_std_lower_is_better: true
+    case_flip_rate_lower_is_better: true
+    worst_light_auc_higher_is_better: true
+  require_no_performance_collapse: true

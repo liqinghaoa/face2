@@ -1,0 +1,38 @@
+project_root: .
+p0_unified_root: data/processed/P0_Physics_Audit_v1
+p0_master_index: data/processed/P0_Physics_Audit_v1/metadata/master_index.csv
+p0_exif_index: data/processed/P0_Physics_Audit_v1/metadata/exif_500.csv
+fixed_split_csv: data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+frozen_deca_root: data/processed/P1_DECA_Frozen500_v1
+frozen_contract: data/processed/P0B_cross_process_production_gate_v2_1/metadata/FROZEN.json
+output_root: data/processed/P1_Component_Audit_v1
+report_path: reports/p1_data_interface_and_component_statistics_audit.md
+audit_statistics_are_not_training_normalization_parameters: true
+derive_shooting_time_period: true
+shooting_time_period_rules:
+  morning: [5, 12]
+  afternoon: [12, 18]
+  evening: [18, 22]
+  night: [22, 5]
+required_case_files:
+  - latents.npz
+  - maps.npz
+  - relighting.npz
+  - quality.json
+  - provenance.json
+  - _SUCCESS.json
+image_components:
+  - rgb
+  - albedo_like
+  - normal_coarse
+  - shading_like
+  - reconstruction
+  - signed_residual
+  - absolute_residual
+regions:
+  - full_image
+  - face_valid
+  - skin_strict
+  - physics_core_skin
+qc_iqr_multiplier: 3.0
+montage_case_count: 12

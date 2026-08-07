@@ -1,0 +1,2 @@
+# Populate from the actual isolated p0b_deca environment after DECA's official requirements are audited.
+# Do not install these packages into face2.

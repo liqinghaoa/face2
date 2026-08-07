@@ -1,0 +1,84 @@
+project_root: .
+output_root: experiments/500Data/P1_Component_Sweep_v1
+manifest_path: data/processed/P1_Component_Audit_v1/manifests/p1_master_manifest.csv
+fixed_split_path: data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+fixed_split_sha256: d5a20fb56c96e657dd7902b6d829bed78b6d43d3e58ec47e6bd3542ec34378cb
+frozen_deca_root: data/processed/P1_DECA_Frozen500_v1
+frozen_contract: data/processed/P0B_cross_process_production_gate_v2_1/metadata/FROZEN.json
+phase2_approval_file: metadata/PHASE2_EXECUTION_APPROVED.json
+baseline_root: experiments/500Data/P1_RGB_P0Aligned_ResNet18_5fold_v1
+baseline_case_predictions: experiments/500Data/P1_RGB_P0Aligned_ResNet18_5fold_v1/oof/oof_predictions_case.csv
+baseline_protocol_correction: experiments/500Data/P1_RGB_P0Aligned_ResNet18_5fold_v1/metadata/evaluation_protocol_correction.json
+baseline_longitudinal_summary: experiments/500Data/P1_RGB_P0Aligned_ResNet18_5fold_v1/metadata/patient_group_longitudinal_label_summary.json
+training:
+  optimizer:
+    name: AdamW
+    learning_rate: 1.0e-4
+    weight_decay: 1.0e-4
+  batch_size: 16
+  max_epochs: 50
+  early_stopping_patience: 10
+  checkpoint_metric: macro_auc
+  checkpoint_level: visit_case
+  seed: 2026
+  amp: false
+experiments:
+  p1_a:
+    display_name: P1-A
+    enabled: true
+    availability: runnable
+    representation: albedo
+    input_type: image
+    model_type: resnet18_single
+    mask: physics_core_skin
+  p1_n:
+    display_name: P1-N
+    enabled: true
+    availability: runnable
+    representation: normal
+    input_type: image
+    model_type: resnet18_single
+    mask: face_valid
+    horizontal_flip:
+      enabled: false
+      mode: disabled_due_to_unverified_coordinate_convention
+      coordinate_status: unverified
+  p1_l:
+    display_name: P1-L
+    enabled: true
+    availability: runnable
+    representation: light
+    input_type: vector
+    model_type: linear_probe
+    flatten: true
+  p1_s:
+    display_name: P1-S
+    enabled: true
+    availability: runnable
+    representation: shading
+    input_type: image
+    model_type: resnet18_single
+    mask: face_valid
+  p1_spec:
+    display_name: P1-Spec
+    enabled: false
+    availability: unavailable_by_current_frontend
+    representation: specular
+    input_type: unavailable
+    model_type: none
+  p1_r:
+    display_name: P1-R
+    enabled: true
+    availability: runnable
+    representation: residual
+    input_type: image
+    model_type: resnet18_single
+    mask: face_valid
+  p1_rgb_a:
+    display_name: P1-RGB+A
+    enabled: true
+    availability: runnable
+    representation: rgb_albedo
+    input_type: dual_image
+    model_type: shared_resnet18_dual_branch
+    mask: physics_core_skin

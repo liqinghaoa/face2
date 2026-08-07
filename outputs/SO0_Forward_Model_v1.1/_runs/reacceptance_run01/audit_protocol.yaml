@@ -1,0 +1,99 @@
+protocol:
+  name: SO0_reacceptance_v1_1
+  run_ids:
+    - reacceptance_run01
+    - reacceptance_run02
+  pythonhashseed: 20260801
+  random_seed: 20260801
+golden_regression:
+  melanin_control: [0.0, 0.2, 0.5, 0.8, 1.0]
+  hemoglobin_control: [0.0, 0.2, 0.5, 0.8, 1.0]
+  shading: [0.5, 1.0, 1.5]
+  specular: [0.0, 0.03, 0.10]
+  exposure: [0.5, 1.0, 2.0]
+  illuminants: [D65, A, FL2, FL11]
+  required_cameras:
+    - Canon 5DMarkII
+    - Nokia N900
+    - Point Grey Grasshopper 50S5C
+  include_first_camera: true
+  include_last_camera: true
+  thresholds:
+    skin_reflectance_max_abs: 1.0e-12
+    cie_xyz_max_abs: 1.0e-12
+    camera_rgb_max_abs: 1.0e-12
+    linear_srgb_max_abs: 1.0e-11
+    torch_float64_max_abs: 1.0e-11
+    torch_float32_max_abs: 2.0e-6
+    colorchecker_matrix_max_abs: 1.0e-10
+resolution_audit:
+  melanin_control_count: 11
+  hemoglobin_control_count: 11
+  shading: [0.5, 1.0, 1.5]
+  specular: [0.0, 0.03, 0.10]
+  exposure: [1.0]
+  illuminants: [D65, A, FL2, FL11]
+  use_all_cameras: true
+linearity_audit:
+  melanin_control: [0.2, 0.5, 0.8]
+  hemoglobin_control: [0.2, 0.5, 0.8]
+  shading_pairs:
+    - [0.25, 0.5]
+    - [0.5, 1.0]
+    - [1.0, 1.5]
+    - [1.0, 2.0]
+  specular: [0.0, 0.01, 0.03, 0.05, 0.10]
+  exposure: [0.5, 1.0, 1.5, 2.0]
+  illuminants: [D65, A, FL2, FL11]
+  use_all_cameras: true
+autograd_audit:
+  parameter_points:
+    - [0.2, 0.2]
+    - [0.5, 0.5]
+    - [0.8, 0.8]
+    - [0.2, 0.8]
+    - [0.8, 0.2]
+  shading: 1.0
+  specular: 0.03
+  exposure: 1.0
+  parameters: [m, h, shading, specular, exposure]
+  illuminants: [D65, A, FL2, FL11]
+  required_cameras:
+    - Canon 5DMarkII
+    - Nokia N900
+    - Point Grey Grasshopper 50S5C
+    - Nikon D3
+    - SONY NEX-5N
+mh_audit:
+  controls: [0.20, 0.35, 0.50, 0.65, 0.80]
+  finite_difference_delta: 1.0e-3
+  observation_spaces: [camera_rgb_wb, linear_srgb_unclipped, chromaticity]
+  shading: 1.0
+  specular: 0.0
+  exposure: 1.0
+multicamera_multilight_audit:
+  melanin_control: [0.0, 0.5, 1.0]
+  hemoglobin_control: [0.0, 0.5, 1.0]
+  shading: [0.25, 1.0, 2.0]
+  specular: [0.0, 0.10]
+  exposure: [0.5, 1.0, 2.0]
+  illuminants: [D65, A, FL2, FL11]
+  use_all_cameras: true
+backend_parity_audit:
+  melanin_control: [0.2, 0.5, 0.8]
+  hemoglobin_control: [0.2, 0.5, 0.8]
+  shading: [0.5, 1.0, 1.5]
+  specular: [0.0, 0.03, 0.10]
+  exposure: [0.5, 1.0, 2.0]
+  illuminants: [D65, A, FL2, FL11]
+  representative_cameras:
+    - Canon 5DMarkII
+    - Nokia N900
+    - Point Grey Grasshopper 50S5C
+    - Nikon D3
+    - SONY NEX-5N
+sensitivity_audit:
+  oxygenation: [0.60, 0.75, 0.90]
+  epidermis_thickness_cm: [0.004, 0.006, 0.010]
+  dermis_thickness_cm: [0.10, 0.20, 0.30]
+  melanin_formula: [primary, alternative]

@@ -1,0 +1,26 @@
+{
+  "file_hash_count": 34,
+  "full_generation_started": false,
+  "independent_regeneration": {
+    "independent_count": 32,
+    "independent_mask_exact": 32,
+    "independent_pass": 32,
+    "independent_rgb_float16_max_abs": 0.00048828125,
+    "independent_rgb_float32_max_abs": 8.344650268554688e-07,
+    "independent_rgb_max_ulp": 1,
+    "independent_rgb_mismatch_count": 232,
+    "independent_rgb_mismatch_fraction": 3.6875406901041664e-05,
+    "independent_target_exact": 32,
+    "same_context_count": 32,
+    "same_context_pass": 32
+  },
+  "output_root": "outputs/SO1_Synthetic_Generator_v1_smoke",
+  "rows": 64,
+  "same_context_replay": {
+    "count": 32,
+    "pass": 32,
+    "rgb_bitwise_exact": true
+  },
+  "smoke": true,
+  "status": "COMPLETED"
+}

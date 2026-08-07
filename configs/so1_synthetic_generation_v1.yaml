@@ -1,0 +1,63 @@
+version: SO1_Synthetic_v1
+global_seed: 20260801
+
+patch:
+  size: 256
+
+counts:
+  train_base_latents: 10000
+  train_variants_per_latent: 2
+  validation: 2000
+  id_test: 2000
+  camera_ood: 1000
+  light_ood: 1000
+  joint_ood: 1000
+
+controls:
+  m_min: 0.0
+  m_max: 1.0
+  h_min: 0.0
+  h_max: 1.0
+  m_base_min: 0.05
+  m_base_max: 0.95
+  h_base_min: 0.05
+  h_base_max: 0.95
+  shading_min: 0.25
+  shading_max: 2.0
+  specular_min: 0.0
+  specular_max: 0.10
+  exposure: 1.0
+
+mask:
+  full_probability: 0.50
+  boundary_probability: 0.20
+  holes_probability: 0.20
+  mixed_probability: 0.10
+  min_valid_fraction: 0.20
+
+lights:
+  seen:
+    - D65
+    - A
+    - FL2
+  unseen:
+    - FL11
+
+render:
+  batch_size: 8
+  oom_fallback_batch_sizes:
+    - 4
+    - 2
+    - 1
+  compute_dtype: float32
+  max_total_clip_fraction: 0.05
+  max_channel_clip_fraction: 0.10
+  max_retries: 8
+
+storage:
+  rgb_dtype: float16
+  target_dtype: float16
+  mask_dtype: uint8
+  format: numpy_open_memmap
+  save_full_srgb_dataset: false
+

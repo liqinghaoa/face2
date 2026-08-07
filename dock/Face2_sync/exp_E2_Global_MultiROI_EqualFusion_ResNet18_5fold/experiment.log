@@ -1,0 +1,72 @@
+2026-07-22 21:57:42,496 | INFO | train_e2_equal_fusion | Global root=data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images; split root=data/processed/splits_500; ROI roots={'eye': 'data/processed/roi_dataset/manual_shift_data/eye_roi', 'lip': 'data/processed/roi_dataset/manual_shift_data/lip_roi', 'cheek': 'data/processed/roi_dataset/manual_shift_data/cheek_roi', 'forehead': 'data/processed/roi_dataset/manual_shift_data/forehead_roi', 'chin': 'data/processed/roi_dataset/manual_shift_data/chin_roi'}; ROI order=['eye', 'lip', 'cheek', 'forehead', 'chin']
+2026-07-22 21:57:42,496 | INFO | train_e2_equal_fusion | Two independent backbones; one shared ROI backbone; fixed equal ROI mean; full fine-tuning; batch_size=16; monitor=macro_auc
+2026-07-22 21:57:42,689 | INFO | train_e2_equal_fusion | fold=0 n_train=400 n_val=100 counts=[92, 189, 119] weights=[1.4492753744125366, 0.7054673433303833, 1.1204482316970825] total_params=22356099 trainable_params=22356099
+2026-07-22 21:58:01,733 | INFO | trainers.e2_trainer | fold=0 epoch=1 train_loss=0.99758 val_loss=1.15085 val_macro_auc=0.6636 best=0.6636 patience=0/10
+2026-07-22 21:58:06,861 | INFO | trainers.e2_trainer | fold=0 epoch=2 train_loss=0.59892 val_loss=1.05024 val_macro_auc=0.6126 best=0.6636 patience=1/10
+2026-07-22 21:58:11,705 | INFO | trainers.e2_trainer | fold=0 epoch=3 train_loss=0.34160 val_loss=1.18272 val_macro_auc=0.6300 best=0.6636 patience=2/10
+2026-07-22 21:58:16,541 | INFO | trainers.e2_trainer | fold=0 epoch=4 train_loss=0.24911 val_loss=1.24107 val_macro_auc=0.6327 best=0.6636 patience=3/10
+2026-07-22 21:58:21,383 | INFO | trainers.e2_trainer | fold=0 epoch=5 train_loss=0.15796 val_loss=1.26570 val_macro_auc=0.6635 best=0.6636 patience=4/10
+2026-07-22 21:58:26,215 | INFO | trainers.e2_trainer | fold=0 epoch=6 train_loss=0.10927 val_loss=1.37954 val_macro_auc=0.6604 best=0.6636 patience=5/10
+2026-07-22 21:58:31,053 | INFO | trainers.e2_trainer | fold=0 epoch=7 train_loss=0.07263 val_loss=1.37557 val_macro_auc=0.6621 best=0.6636 patience=6/10
+2026-07-22 21:58:35,894 | INFO | trainers.e2_trainer | fold=0 epoch=8 train_loss=0.06656 val_loss=1.78744 val_macro_auc=0.6305 best=0.6636 patience=7/10
+2026-07-22 21:58:40,733 | INFO | trainers.e2_trainer | fold=0 epoch=9 train_loss=0.05206 val_loss=1.76962 val_macro_auc=0.6125 best=0.6636 patience=8/10
+2026-07-22 21:58:45,589 | INFO | trainers.e2_trainer | fold=0 epoch=10 train_loss=0.05842 val_loss=2.22979 val_macro_auc=0.6314 best=0.6636 patience=9/10
+2026-07-22 21:58:50,421 | INFO | trainers.e2_trainer | fold=0 epoch=11 train_loss=0.08974 val_loss=1.80282 val_macro_auc=0.6455 best=0.6636 patience=10/10
+2026-07-22 21:58:51,382 | INFO | train_e2_equal_fusion | fold=1 n_train=400 n_val=100 counts=[92, 189, 119] weights=[1.4492753744125366, 0.7054673433303833, 1.1204482316970825] total_params=22356099 trainable_params=22356099
+2026-07-22 21:58:56,477 | INFO | trainers.e2_trainer | fold=1 epoch=1 train_loss=1.00765 val_loss=0.86854 val_macro_auc=0.7166 best=0.7166 patience=0/10
+2026-07-22 21:59:01,510 | INFO | trainers.e2_trainer | fold=1 epoch=2 train_loss=0.56959 val_loss=0.85187 val_macro_auc=0.7296 best=0.7296 patience=0/10
+2026-07-22 21:59:06,546 | INFO | trainers.e2_trainer | fold=1 epoch=3 train_loss=0.32280 val_loss=1.08619 val_macro_auc=0.7531 best=0.7531 patience=0/10
+2026-07-22 21:59:11,406 | INFO | trainers.e2_trainer | fold=1 epoch=4 train_loss=0.18605 val_loss=1.03428 val_macro_auc=0.7262 best=0.7531 patience=1/10
+2026-07-22 21:59:16,227 | INFO | trainers.e2_trainer | fold=1 epoch=5 train_loss=0.10984 val_loss=1.30160 val_macro_auc=0.7068 best=0.7531 patience=2/10
+2026-07-22 21:59:21,079 | INFO | trainers.e2_trainer | fold=1 epoch=6 train_loss=0.14328 val_loss=1.28243 val_macro_auc=0.6645 best=0.7531 patience=3/10
+2026-07-22 21:59:25,917 | INFO | trainers.e2_trainer | fold=1 epoch=7 train_loss=0.08052 val_loss=1.29750 val_macro_auc=0.6861 best=0.7531 patience=4/10
+2026-07-22 21:59:30,759 | INFO | trainers.e2_trainer | fold=1 epoch=8 train_loss=0.06129 val_loss=1.54969 val_macro_auc=0.6891 best=0.7531 patience=5/10
+2026-07-22 21:59:35,613 | INFO | trainers.e2_trainer | fold=1 epoch=9 train_loss=0.05789 val_loss=1.47447 val_macro_auc=0.6831 best=0.7531 patience=6/10
+2026-07-22 21:59:40,455 | INFO | trainers.e2_trainer | fold=1 epoch=10 train_loss=0.06560 val_loss=1.69849 val_macro_auc=0.6667 best=0.7531 patience=7/10
+2026-07-22 21:59:45,314 | INFO | trainers.e2_trainer | fold=1 epoch=11 train_loss=0.04608 val_loss=1.31480 val_macro_auc=0.7203 best=0.7531 patience=8/10
+2026-07-22 21:59:50,155 | INFO | trainers.e2_trainer | fold=1 epoch=12 train_loss=0.08939 val_loss=1.50752 val_macro_auc=0.6912 best=0.7531 patience=9/10
+2026-07-22 21:59:55,017 | INFO | trainers.e2_trainer | fold=1 epoch=13 train_loss=0.04477 val_loss=1.69004 val_macro_auc=0.7025 best=0.7531 patience=10/10
+2026-07-22 21:59:55,981 | INFO | train_e2_equal_fusion | fold=2 n_train=400 n_val=100 counts=[92, 190, 118] weights=[1.4492753744125366, 0.7017543911933899, 1.1299434900283813] total_params=22356099 trainable_params=22356099
+2026-07-22 22:00:01,039 | INFO | trainers.e2_trainer | fold=2 epoch=1 train_loss=0.98432 val_loss=1.03191 val_macro_auc=0.7306 best=0.7306 patience=0/10
+2026-07-22 22:00:05,878 | INFO | trainers.e2_trainer | fold=2 epoch=2 train_loss=0.60237 val_loss=1.04457 val_macro_auc=0.6903 best=0.7306 patience=1/10
+2026-07-22 22:00:10,738 | INFO | trainers.e2_trainer | fold=2 epoch=3 train_loss=0.37645 val_loss=1.01546 val_macro_auc=0.6986 best=0.7306 patience=2/10
+2026-07-22 22:00:15,567 | INFO | trainers.e2_trainer | fold=2 epoch=4 train_loss=0.23457 val_loss=1.24211 val_macro_auc=0.6603 best=0.7306 patience=3/10
+2026-07-22 22:00:20,418 | INFO | trainers.e2_trainer | fold=2 epoch=5 train_loss=0.19145 val_loss=1.34239 val_macro_auc=0.6656 best=0.7306 patience=4/10
+2026-07-22 22:00:25,269 | INFO | trainers.e2_trainer | fold=2 epoch=6 train_loss=0.10757 val_loss=1.46499 val_macro_auc=0.6302 best=0.7306 patience=5/10
+2026-07-22 22:00:30,097 | INFO | trainers.e2_trainer | fold=2 epoch=7 train_loss=0.07777 val_loss=1.37020 val_macro_auc=0.6680 best=0.7306 patience=6/10
+2026-07-22 22:00:34,951 | INFO | trainers.e2_trainer | fold=2 epoch=8 train_loss=0.04803 val_loss=1.58306 val_macro_auc=0.6257 best=0.7306 patience=7/10
+2026-07-22 22:00:39,791 | INFO | trainers.e2_trainer | fold=2 epoch=9 train_loss=0.04390 val_loss=1.57412 val_macro_auc=0.6439 best=0.7306 patience=8/10
+2026-07-22 22:00:44,642 | INFO | trainers.e2_trainer | fold=2 epoch=10 train_loss=0.06908 val_loss=1.72527 val_macro_auc=0.6326 best=0.7306 patience=9/10
+2026-07-22 22:00:49,478 | INFO | trainers.e2_trainer | fold=2 epoch=11 train_loss=0.04347 val_loss=1.66713 val_macro_auc=0.6453 best=0.7306 patience=10/10
+2026-07-22 22:00:50,451 | INFO | train_e2_equal_fusion | fold=3 n_train=400 n_val=100 counts=[92, 190, 118] weights=[1.4492753744125366, 0.7017543911933899, 1.1299434900283813] total_params=22356099 trainable_params=22356099
+2026-07-22 22:00:55,528 | INFO | trainers.e2_trainer | fold=3 epoch=1 train_loss=1.02265 val_loss=1.06130 val_macro_auc=0.6447 best=0.6447 patience=0/10
+2026-07-22 22:01:00,548 | INFO | trainers.e2_trainer | fold=3 epoch=2 train_loss=0.59282 val_loss=0.92570 val_macro_auc=0.6949 best=0.6949 patience=0/10
+2026-07-22 22:01:05,392 | INFO | trainers.e2_trainer | fold=3 epoch=3 train_loss=0.40870 val_loss=1.01212 val_macro_auc=0.6807 best=0.6949 patience=1/10
+2026-07-22 22:01:10,252 | INFO | trainers.e2_trainer | fold=3 epoch=4 train_loss=0.21415 val_loss=1.47529 val_macro_auc=0.6453 best=0.6949 patience=2/10
+2026-07-22 22:01:15,256 | INFO | trainers.e2_trainer | fold=3 epoch=5 train_loss=0.12882 val_loss=1.33322 val_macro_auc=0.7084 best=0.7084 patience=0/10
+2026-07-22 22:01:20,106 | INFO | trainers.e2_trainer | fold=3 epoch=6 train_loss=0.09468 val_loss=1.22960 val_macro_auc=0.6843 best=0.7084 patience=1/10
+2026-07-22 22:01:24,949 | INFO | trainers.e2_trainer | fold=3 epoch=7 train_loss=0.09172 val_loss=1.58718 val_macro_auc=0.6632 best=0.7084 patience=2/10
+2026-07-22 22:01:29,793 | INFO | trainers.e2_trainer | fold=3 epoch=8 train_loss=0.06708 val_loss=1.56801 val_macro_auc=0.6736 best=0.7084 patience=3/10
+2026-07-22 22:01:34,640 | INFO | trainers.e2_trainer | fold=3 epoch=9 train_loss=0.05302 val_loss=1.49797 val_macro_auc=0.6812 best=0.7084 patience=4/10
+2026-07-22 22:01:39,478 | INFO | trainers.e2_trainer | fold=3 epoch=10 train_loss=0.03442 val_loss=1.51713 val_macro_auc=0.6866 best=0.7084 patience=5/10
+2026-07-22 22:01:44,361 | INFO | trainers.e2_trainer | fold=3 epoch=11 train_loss=0.02981 val_loss=1.69083 val_macro_auc=0.6982 best=0.7084 patience=6/10
+2026-07-22 22:01:49,222 | INFO | trainers.e2_trainer | fold=3 epoch=12 train_loss=0.03960 val_loss=1.41161 val_macro_auc=0.6882 best=0.7084 patience=7/10
+2026-07-22 22:01:54,086 | INFO | trainers.e2_trainer | fold=3 epoch=13 train_loss=0.02298 val_loss=2.02127 val_macro_auc=0.6686 best=0.7084 patience=8/10
+2026-07-22 22:01:58,962 | INFO | trainers.e2_trainer | fold=3 epoch=14 train_loss=0.01573 val_loss=1.64276 val_macro_auc=0.7047 best=0.7084 patience=9/10
+2026-07-22 22:02:03,807 | INFO | trainers.e2_trainer | fold=3 epoch=15 train_loss=0.02114 val_loss=2.28711 val_macro_auc=0.6926 best=0.7084 patience=10/10
+2026-07-22 22:02:04,765 | INFO | train_e2_equal_fusion | fold=4 n_train=400 n_val=100 counts=[92, 190, 118] weights=[1.4492753744125366, 0.7017543911933899, 1.1299434900283813] total_params=22356099 trainable_params=22356099
+2026-07-22 22:02:09,836 | INFO | trainers.e2_trainer | fold=4 epoch=1 train_loss=0.99674 val_loss=1.03488 val_macro_auc=0.6794 best=0.6794 patience=0/10
+2026-07-22 22:02:14,870 | INFO | trainers.e2_trainer | fold=4 epoch=2 train_loss=0.64765 val_loss=1.03402 val_macro_auc=0.6811 best=0.6811 patience=0/10
+2026-07-22 22:02:19,730 | INFO | trainers.e2_trainer | fold=4 epoch=3 train_loss=0.37138 val_loss=1.16824 val_macro_auc=0.6782 best=0.6811 patience=1/10
+2026-07-22 22:02:24,612 | INFO | trainers.e2_trainer | fold=4 epoch=4 train_loss=0.17396 val_loss=1.15487 val_macro_auc=0.6742 best=0.6811 patience=2/10
+2026-07-22 22:02:29,645 | INFO | trainers.e2_trainer | fold=4 epoch=5 train_loss=0.12961 val_loss=1.43007 val_macro_auc=0.7097 best=0.7097 patience=0/10
+2026-07-22 22:02:34,513 | INFO | trainers.e2_trainer | fold=4 epoch=6 train_loss=0.08010 val_loss=1.46619 val_macro_auc=0.6787 best=0.7097 patience=1/10
+2026-07-22 22:02:39,364 | INFO | trainers.e2_trainer | fold=4 epoch=7 train_loss=0.08008 val_loss=1.42130 val_macro_auc=0.6928 best=0.7097 patience=2/10
+2026-07-22 22:02:44,232 | INFO | trainers.e2_trainer | fold=4 epoch=8 train_loss=0.06186 val_loss=1.59831 val_macro_auc=0.6872 best=0.7097 patience=3/10
+2026-07-22 22:02:49,106 | INFO | trainers.e2_trainer | fold=4 epoch=9 train_loss=0.06248 val_loss=1.72605 val_macro_auc=0.6449 best=0.7097 patience=4/10
+2026-07-22 22:02:53,960 | INFO | trainers.e2_trainer | fold=4 epoch=10 train_loss=0.07985 val_loss=1.81193 val_macro_auc=0.6867 best=0.7097 patience=5/10
+2026-07-22 22:02:58,820 | INFO | trainers.e2_trainer | fold=4 epoch=11 train_loss=0.07200 val_loss=1.85633 val_macro_auc=0.6914 best=0.7097 patience=6/10
+2026-07-22 22:03:03,665 | INFO | trainers.e2_trainer | fold=4 epoch=12 train_loss=0.12174 val_loss=2.60829 val_macro_auc=0.6639 best=0.7097 patience=7/10
+2026-07-22 22:03:08,526 | INFO | trainers.e2_trainer | fold=4 epoch=13 train_loss=0.13406 val_loss=1.92707 val_macro_auc=0.6899 best=0.7097 patience=8/10
+2026-07-22 22:03:13,370 | INFO | trainers.e2_trainer | fold=4 epoch=14 train_loss=0.09926 val_loss=1.67059 val_macro_auc=0.6879 best=0.7097 patience=9/10
+2026-07-22 22:03:18,211 | INFO | trainers.e2_trainer | fold=4 epoch=15 train_loss=0.03100 val_loss=1.83184 val_macro_auc=0.6733 best=0.7097 patience=10/10

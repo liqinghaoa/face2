@@ -1,0 +1,2 @@
+status,rank2_fraction,rank2_count,total_count,sigma_ratio_median,sigma_ratio_p05,sigma_ratio_p01,sigma_ratio_min,condition_number_median,condition_number_p95,condition_number_max
+PASS,1.0,8175,8175,0.0367901980185,0.0146717252474,0.0115087326151,0.00814218879675,27.1811529663,68.1583291544,122.817098076

@@ -1,0 +1,7 @@
+contract_version: p0b_cross_process_v2
+contract_root: data/processed/P0B_cross_process_regression_baseline_v2
+calibration_runs: [run_01, run_02, run_03]
+holdout_run: run_04
+fixed_input_mode: direct_p0_aligned
+threshold_formula: "warning=observed_maximum; hard=max(1.5*observed_maximum, observed_maximum+numerical_floor)"
+full_500_started: false

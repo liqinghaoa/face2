@@ -1,0 +1,460 @@
+{
+  "files": [
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "FREEZE_CANDIDATE.json",
+      "sha256": "272a2574cc0cfce1a5d755417a7854d8927bea26b03832b640176df2df3bb1d1",
+      "size_bytes": 88,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "SO0_forward_model_decision.json",
+      "sha256": "68e5529600894a7cfcd2a624d82f23a96688333e62223e2611923c69d5628ead",
+      "size_bytes": 14685,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "SO0_reacceptance_report.md",
+      "sha256": "474cf941b6333750a605da45e23cd24f920092f95ed15f272a8df216dde78371",
+      "size_bytes": 4928,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "acceptance_thresholds.yaml",
+      "sha256": "d1558ce80f5545f7502912ef79d29df9691c6078bbd578e00e7d77e714e1e57e",
+      "size_bytes": 1302,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "audit_protocol.yaml",
+      "sha256": "9c56e221235fe7d9a360baa7df26c791f7c71ed6344ef2b376eafa0483d0c1ba",
+      "size_bytes": 2674,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "colorchecker_matrices.npz",
+      "sha256": "28ee54c6aa4426c62fbc33ac5057261a80ac7fd56efa655fb60005eeb841ddcb",
+      "size_bytes": 7953,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "environment.json",
+      "sha256": "a1076a1d1f46ef85d0f9a77e701b77435323d92933996f9bcb487e7c9711bb2b",
+      "size_bytes": 467,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/camera_light_skin_grid.png",
+      "sha256": "9e423c85a7f48548dfea3ea437d2345dd2215eec1a3284db6cc2abd0de366d26",
+      "size_bytes": 56045,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/camera_light_skin_grid.png.metadata.json",
+      "sha256": "bb810e44ca4320174be8cc37ad332337cf4b96b4facd4a9e92e533cb46ce646c",
+      "size_bytes": 302,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/colorchecker_deltae_distribution.png",
+      "sha256": "d68d20914aff2bd5db1bda7feca61fb69262383f52ab6fb0577c124c2fb31e75",
+      "size_bytes": 20455,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/colorchecker_deltae_distribution.png.metadata.json",
+      "sha256": "b1839c079f84c6c2f274d1faa1f1193f02b6ee4282f33d4eda00262e89991af4",
+      "size_bytes": 294,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/hemoglobin_color_sweep.png",
+      "sha256": "07b9dc5461dc78e761ffa070f6d458613e26de45c6702c52464331d880804fcf",
+      "size_bytes": 34365,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/hemoglobin_color_sweep.png.metadata.json",
+      "sha256": "a3e001fb329c9d0863d7d691c305920ae429e6b73f3018d93d2291d4ca56ad28",
+      "size_bytes": 282,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/melanin_color_sweep.png",
+      "sha256": "d29003edb2d00b4449cbd923264d0caf83f5bd3c9afc178df62dcebdb8922ac9",
+      "size_bytes": 31756,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/melanin_color_sweep.png.metadata.json",
+      "sha256": "7bb2d453ca1a2d87b77a8c492520ca97661a301e110f157515003ede69f4604f",
+      "size_bytes": 282,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/mh_jacobian_cosine.png",
+      "sha256": "dddad65100fb21dda642110e47cae16af3b6c6b4cf9617b88e86c1adbb7ffaf3",
+      "size_bytes": 22663,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/mh_jacobian_cosine.png.metadata.json",
+      "sha256": "9d7dccebcf08faba3254fce9bdcfeda07dab4ef3e36d4f2858d81f3a1d3545c9",
+      "size_bytes": 264,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/observation_conditioning.png",
+      "sha256": "b49560bed5aaf3f7a2a7f71f39ea4b70e1cfc86340444aac1abef98d46926e14",
+      "size_bytes": 17989,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/observation_conditioning.png.metadata.json",
+      "sha256": "98546ea10a1f1019c46d2202a8c326d99da868e8fee6d837f8a115ed0a5abbf8",
+      "size_bytes": 283,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/resolution_error_by_camera.png",
+      "sha256": "7c802e361b104a00362488e70e0eb82f8b3c1741e94ea7a3656b571bb9052ba5",
+      "size_bytes": 53432,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/resolution_error_by_camera.png.metadata.json",
+      "sha256": "87f3b2d360e71feb74c9fc0ed2843fb7d9ed4baea6e4d327cf92785113094a0b",
+      "size_bytes": 309,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/resolution_error_by_light.png",
+      "sha256": "5ed25c3c8064bb543c8c9610989f3f6dd223db75c97f0ed72f3e4e87ad8dd144",
+      "size_bytes": 22785,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/resolution_error_by_light.png.metadata.json",
+      "sha256": "dd1ec088549c4d6311c39f415634c1334badec862e9c9c011a704515660a1ad2",
+      "size_bytes": 313,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/skin_reflectance_h_sweep.png",
+      "sha256": "5dadaa679775143ba4af97b376b6cd02f7b81c854752b31f9c28471c868d99a5",
+      "size_bytes": 78430,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/skin_reflectance_h_sweep.png.metadata.json",
+      "sha256": "fd3373f65abfcf30e59c2f3ef8a1f1fa3cff2d17c6f3ed49d94801797dcdac45",
+      "size_bytes": 297,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "figures/skin_reflectance_m_sweep.png",
+      "sha256": "f25e98dadacf11fb5e793d80c07ab105e52c557fcb57f757db5e8e2319503dd7",
+      "size_bytes": 86550,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "figures/skin_reflectance_m_sweep.png.metadata.json",
+      "sha256": "df10d0b4522bf75effa8636c453e11dd8294a12ebbc0ea00a25dc00406b3e332",
+      "size_bytes": 297,
+      "stage": "figures"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "formula_registry.yaml",
+      "sha256": "b1d12d2b702f53394dea44193d161d616f6ea6628a5d02dc134959d899e47a90",
+      "size_bytes": 6608,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "frozen_asset_hash_after.txt",
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f",
+      "size_bytes": 3257,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "frozen_asset_hash_before.txt",
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f",
+      "size_bytes": 3257,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "frozen_config.yaml",
+      "sha256": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+      "size_bytes": 1888,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": false,
+      "relative_path": "pytest_full.log",
+      "sha256": "c34202cc15a9537a0625eadf38e7e8fc900733b99e2d29c7a19326340402038e",
+      "size_bytes": 99,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "pytest_report.xml",
+      "sha256": "30de72b33be11e4ab8315302fd8a51d9928d427d6c383c1a21a27b887a321d5e",
+      "size_bytes": 3152,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "stage_status.json",
+      "sha256": "118075c5fdcf3ee1a04a821c3ac24219aad10bf76a1418af75d1a083a4c92daf",
+      "size_bytes": 5356,
+      "stage": "reacceptance_run01"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/autograd_audit.csv",
+      "sha256": "10cfe64cb43622ccae36a502f85e777307dd88bcc8367df0d2649a8791b3d2d2",
+      "size_bytes": 67400,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/backend_parity.csv",
+      "sha256": "2d97339f95538ee431ff173abbfade7e4239d212eb6f05bef64be6c756c040d5",
+      "size_bytes": 611,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/colorchecker_calibration_metrics.csv",
+      "sha256": "912a93b86eaa9e1875ed802533134336fd571796662a6a7a74276259005e185f",
+      "size_bytes": 30623,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/dermis_thickness_sensitivity.csv",
+      "sha256": "8f98ff454cdf476f93a6b72064051776397f8a2c91f012d8f1b89048c42a5319",
+      "size_bytes": 197,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/epidermis_thickness_sensitivity.csv",
+      "sha256": "565ee5d89d7b87c5b65b0ff99fb269025bca6f8228999ec0b67f7284859e83a8",
+      "size_bytes": 203,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/exposure_linearity_detail.csv",
+      "sha256": "afccd19da0be8262a7eaa03cbfc3a8a3e4d041ba3ac864cd93e4a9d290c1db0e",
+      "size_bytes": 998378,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/melanin_formula_sensitivity.csv",
+      "sha256": "bfdd9eacbc4fa224f165e28d4f22c34548ff1ea890b62f84dea0e63807bdbf45",
+      "size_bytes": 169,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/mh_observation_separability.csv",
+      "sha256": "faf2887e49ea154b13bcf440d276d86ff6bd7e2e83c7a789009de2b19bb1b2cf",
+      "size_bytes": 999106,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/mh_observation_separability_summary.csv",
+      "sha256": "78be68f6cde2fea60bb49147fdc9e20cd3457f0dc44a811fe81aa69a1d84b702",
+      "size_bytes": 305,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/mh_observation_worst_cases.csv",
+      "sha256": "5d7c21bc1a9da7856ad300dec691645d88355925ccad0bb957200f2cd14bec10",
+      "size_bytes": 10679,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/mh_spectral_separability.csv",
+      "sha256": "7f490ffa956be7ed0cd609693d90e0065f17647cfb8982c9abf2a8ab49827481",
+      "size_bytes": 1612,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/monotonicity_metrics.csv",
+      "sha256": "f3492e5d91deb89705796f7efdcb2da1f993cbd3691b3cb327c2a1fd06ebfe6a",
+      "size_bytes": 95,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/multicamera_metrics.csv",
+      "sha256": "e89f6da91b7fd01ae67e2c03e28cc3c4f054a64a0507eeccaa5ccca69f1dd512",
+      "size_bytes": 2603,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/multilight_metrics.csv",
+      "sha256": "a593537a6f4b371191d222129a8da5c5d56978f162919b0559c4f2f29672408f",
+      "size_bytes": 408,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/numerical_stability.csv",
+      "sha256": "cfd40d53e1142a5001276d871649e0951a23941b0ffdd58e725da70724816a30",
+      "size_bytes": 215286,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/oxygenation_sensitivity.csv",
+      "sha256": "6d330c388d622fa79082327bf2290f7a6810747bf926f7abb55a635717cbe42c",
+      "size_bytes": 198,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/resolution_1nm_vs_5nm_by_camera_light.csv",
+      "sha256": "c348b22ab345e4bef9eeb9450343e683a973a76cdd8b3855a091a3e3610be0f7",
+      "size_bytes": 10226,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/resolution_1nm_vs_5nm_cie_detail.csv",
+      "sha256": "185e6ef772b6d31086b035e74b800cd5bc24f5fd00a35b090fd39af23075e3ca",
+      "size_bytes": 158144,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/resolution_1nm_vs_5nm_detail.csv.gz",
+      "sha256": "4a9c89d4ea4985b1bf75e87f2941b968560b252a473996f71478e745eaa222a0",
+      "size_bytes": 5877699,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/resolution_1nm_vs_5nm_summary.csv",
+      "sha256": "6eb855440cbd6e2bcd3dcdf45dde508d94021659417552c79c2c537c0342f6ff",
+      "size_bytes": 340,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/shading_linearity_detail.csv",
+      "sha256": "ac66a0721f3743b3c9f82815b0425dfa263e8a90a266b9d6ca8f3598c1244096",
+      "size_bytes": 982571,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/shading_specular_linearity.csv",
+      "sha256": "49cda043ba4623132eef0cfd8de6bd4a55027d64b0ecc264a5d9eee3f77414f4",
+      "size_bytes": 1256,
+      "stage": "tables"
+    },
+    {
+      "generated_at": "2026-08-01T06:27:31.433301+00:00",
+      "participates_in_final_decision": true,
+      "relative_path": "tables/specular_linearity_detail.csv",
+      "sha256": "0a7c419a4abb1e34bd561a5c9a2d76bee681f57ffd40a33b4fe86afbae517e6b",
+      "size_bytes": 1335785,
+      "stage": "tables"
+    }
+  ]
+}

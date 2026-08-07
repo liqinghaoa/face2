@@ -1,0 +1,45 @@
+experiment:
+  name: E0B_Global_ResNet18_ControlVsPatient_Binary_5fold
+  output_dir: experiments/500Data
+
+task:
+  type: binary_control_vs_patient
+  num_classes: 2
+  negative_class: control
+  positive_class: patient
+
+data:
+  split_dir: data/processed/splits_500
+  image_root: data/processed/global_face/preprocess_ablation/hybrid_imagenet_meanbg/images
+  image_filename_template: "{ID}.png"
+  n_folds: 5
+  image_size: 224
+  train_csv_pattern: fold_{fold}_train.csv
+  val_csv_pattern: fold_{fold}_val.csv
+
+model:
+  backbone: resnet18
+  pretrained: imagenet
+  num_classes: 2
+  freeze_backbone: false
+
+train:
+  batch_size: 16
+  epochs: 50
+  optimizer: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+  loss: weighted_cross_entropy
+  early_stopping_patience: 10
+  monitor_metric: macro_auc
+  random_seed: 2026
+  num_workers: 0
+  pin_memory: false
+  use_amp: false
+
+augmentation:
+  horizontal_flip: true
+
+normalize:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]

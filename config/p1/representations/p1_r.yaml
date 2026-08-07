@@ -1,0 +1,8 @@
+experiment_key: p1_r
+display_name: P1-R
+representation: residual
+input_type: image
+model_type: resnet18_single
+mask: face_valid
+normalization: scale_abs_p99_then_clip_to_unit_interval
+

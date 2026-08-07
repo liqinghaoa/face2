@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>皮肤光学敏感表征人脸心功能二分类 - 高密度组会报告</title>
+  <style>
+    :root {
+      --bg: #eef1f3;
+      --sheet: #fbfcfd;
+      --ink: #111827;
+      --sub: #4b5563;
+      --faint: #6b7280;
+      --line: #cfd6df;
+      --line-dark: #94a3b8;
+      --blue: #1d4ed8;
+      --cyan: #0e7490;
+      --green: #15803d;
+      --red: #b91c1c;
+      --amber: #b45309;
+      --violet: #6d28d9;
+      --pad: clamp(14px, 2vw, 28px);
+      --gap: clamp(7px, 1vw, 14px);
+      --h1: clamp(26px, 4.4vw, 54px);
+      --h2: clamp(18px, 2.4vw, 30px);
+      --h3: clamp(12px, 1.35vw, 17px);
+      --body: clamp(10px, 1.05vw, 14px);
+      --small: clamp(8px, 0.82vw, 11px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      scroll-snap-align: start;
+      display: grid;
+      place-items: center;
+      padding: clamp(8px, 1.1vw, 18px);
+    }
+
+    .sheet {
+      width: min(96vw, calc(96dvh * 16 / 9));
+      height: min(96dvh, calc(96vw * 9 / 16));
+      background: var(--sheet);
+      border: 1px solid var(--line-dark);
+      box-shadow: 0 14px 44px rgba(15, 23, 42, 0.14);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .topbar {
+      min-height: 34px;
+      padding: 8px var(--pad) 6px;
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .section-id {
+      color: var(--blue);
+      font-size: var(--small);
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .running-title {
+      color: var(--faint);
+      font-size: var(--small);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .content {
+      min-height: 0;
+      padding: var(--pad);
+      display: grid;
+      gap: var(--gap);
+      align-content: stretch;
+      overflow: hidden;
+    }
+
+    .footbar {
+      min-height: 30px;
+      padding: 5px var(--pad);
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--faint);
+      font-size: var(--small);
+    }
+
+    .progress {
+      width: min(180px, 18vw);
+      height: 4px;
+      background: #dbe2ea;
+      border: 1px solid #cbd5e1;
+    }
+
+    .progress span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: var(--blue);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: var(--h1);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: var(--h2);
+      line-height: 1.14;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: var(--h3);
+      line-height: 1.2;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    p, li {
+      font-size: var(--body);
+      line-height: 1.36;
+      color: var(--sub);
+    }
+
+    strong { color: var(--ink); }
+
+    .title-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: calc(var(--gap) * 1.5);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .headline {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      min-width: 0;
+      max-width: 1060px;
+    }
+
+    .subtitle {
+      font-size: clamp(13px, 1.6vw, 19px);
+      line-height: 1.42;
+      color: var(--sub);
+      max-width: 920px;
+    }
+
+    .meta-box {
+      border: 1px solid var(--line-dark);
+      background: #f8fafc;
+      padding: 14px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      border: 1px solid #93c5fd;
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 3px 6px;
+      font-size: var(--small);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); min-height: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); min-height: 0; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); min-height: 0; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--gap); min-height: 0; }
+    .span-2 { grid-column: span 2; }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      min-height: 0;
+      padding: clamp(7px, 1vw, 12px);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      overflow: hidden;
+    }
+
+    .panel.blue { border-top: 4px solid var(--blue); }
+    .panel.cyan { border-top: 4px solid var(--cyan); }
+    .panel.green { border-top: 4px solid var(--green); }
+    .panel.red { border-top: 4px solid var(--red); }
+    .panel.amber { border-top: 4px solid var(--amber); }
+    .panel.violet { border-top: 4px solid var(--violet); }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    .panel-title small {
+      font-size: var(--small);
+      color: var(--faint);
+      white-space: nowrap;
+    }
+
+    .dense-list {
+      margin: 0;
+      padding-left: 1.1em;
+      display: grid;
+      gap: 3px;
+    }
+
+    .dense-list li::marker { color: var(--blue); }
+
+    .note {
+      border-left: 4px solid var(--blue);
+      background: #f1f5f9;
+      padding: 7px 9px;
+      color: var(--ink);
+      font-size: var(--body);
+      line-height: 1.35;
+    }
+
+    .warn {
+      border-left-color: var(--red);
+      background: #fff1f2;
+    }
+
+    .mono {
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: var(--small);
+      line-height: 1.28;
+      color: #0f172a;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      padding: 7px;
+      white-space: pre-line;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: var(--small);
+      line-height: 1.24;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 5px 6px;
+      vertical-align: top;
+      word-break: break-word;
+      color: var(--sub);
+    }
+
+    th {
+      background: #e8eef7;
+      color: var(--ink);
+      font-weight: 850;
+    }
+
+    td:first-child { color: var(--ink); font-weight: 700; }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+    }
+
+    .node {
+      border: 1px solid var(--line-dark);
+      background: #f8fafc;
+      padding: 7px;
+      min-height: 72px;
+      position: relative;
+    }
+
+    .node::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 50%;
+      width: 7px;
+      border-top: 2px solid var(--line-dark);
+    }
+
+    .node:last-child::after { display: none; }
+
+    .node b {
+      display: block;
+      color: var(--blue);
+      font-size: var(--h3);
+      margin-bottom: 5px;
+    }
+
+    .node span {
+      display: block;
+      color: var(--sub);
+      font-size: var(--small);
+      line-height: 1.25;
+    }
+
+    .role-cell {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: start;
+      min-height: 86px;
+    }
+
+    .symbol {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--blue);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .symbol.h { background: var(--red); }
+    .symbol.s { background: var(--amber); }
+    .symbol.p { background: var(--cyan); }
+
+    .metric {
+      border: 1px solid var(--line-dark);
+      background: #fff;
+      padding: 10px;
+      min-height: 96px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .metric .label {
+      font-size: var(--small);
+      color: var(--faint);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .metric .value {
+      font-size: clamp(20px, 3.2vw, 36px);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .bar {
+      height: 7px;
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      background: var(--blue);
+    }
+
+    .image-panel {
+      border: 1px solid var(--line-dark);
+      background: #fff;
+      padding: 8px;
+      display: grid;
+      place-items: center;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .image-panel img {
+      max-width: 98%;
+      max-height: 98%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .roadmap-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gap);
+      min-height: 0;
+    }
+
+    .roadmap-layout .image-panel { height: 100%; }
+
+    .mini-kpi {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 10px;
+      align-items: baseline;
+      font-size: var(--small);
+    }
+
+    .mini-kpi b {
+      color: var(--ink);
+      font-size: var(--body);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .28s ease, transform .28s ease;
+    }
+
+    .slide.is-active .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide.is-active .reveal:nth-child(2) { transition-delay: .04s; }
+    .slide.is-active .reveal:nth-child(3) { transition-delay: .08s; }
+    .slide.is-active .reveal:nth-child(4) { transition-delay: .12s; }
+
+    @media (max-width: 900px) {
+      :root {
+        --pad: clamp(7px, 2vw, 12px);
+        --gap: 5px;
+        --body: clamp(7px, 1.45vw, 10px);
+        --small: clamp(6px, 1.1vw, 8px);
+        --h2: clamp(12px, 2.4vw, 18px);
+        --h3: clamp(8px, 1.5vw, 11px);
+      }
+
+      .topbar { min-height: 22px; padding-top: 4px; padding-bottom: 3px; }
+      .footbar { min-height: 20px; padding-top: 3px; padding-bottom: 3px; }
+      .panel { padding: 5px; gap: 4px; }
+      th, td { padding: 3px; }
+      .node { padding: 4px; min-height: 42px; }
+      .role-cell { min-height: 48px; padding: 4px; gap: 5px; }
+      .symbol { width: 20px; height: 20px; font-size: 12px; }
+      .metric { min-height: 56px; padding: 5px; }
+      .metric .value { font-size: clamp(12px, 3vw, 20px); }
+      .bar { height: 4px; }
+      .roadmap-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) and (orientation: portrait) {
+      :root {
+        --body: 5.7px;
+        --small: 4.9px;
+        --h2: 10px;
+        --h3: 6.8px;
+      }
+
+      .sheet {
+        width: 96vw;
+        height: 96dvh;
+      }
+
+      .title-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .grid-5,
+      .roadmap-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .content {
+        align-content: start;
+        gap: 3px;
+      }
+
+      .pipeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .node::after {
+        display: none;
+      }
+
+      .meta-box {
+        grid-template-rows: auto;
+      }
+
+      .image-panel {
+        min-height: 0;
+        max-height: 36dvh;
+      }
+
+      .grid-5 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .panel {
+        padding: 3px;
+        gap: 2px;
+      }
+
+      .panel-title {
+        padding-bottom: 1px;
+      }
+
+      .note {
+        display: none;
+      }
+
+      th, td {
+        padding: 1px 2px;
+        line-height: 1.05;
+      }
+
+      .dense-list {
+        gap: 0;
+        padding-left: 0.95em;
+      }
+
+      p, li {
+        line-height: 1.12;
+      }
+    }
+
+    @media (max-height: 520px) {
+      :root {
+        --pad: 6px;
+        --gap: 4px;
+        --body: 7px;
+        --small: 6px;
+        --h1: 22px;
+        --h2: 12px;
+        --h3: 8px;
+      }
+
+      .sheet { width: min(98vw, calc(98dvh * 16 / 9)); height: min(98dvh, calc(98vw * 9 / 16)); }
+      .topbar, .footbar { min-height: 18px; padding-top: 2px; padding-bottom: 2px; }
+      .panel { padding: 4px; gap: 3px; }
+      .panel-title { padding-bottom: 2px; }
+      .node { min-height: 36px; padding: 3px; }
+      .node b { margin-bottom: 2px; }
+      .dense-list { gap: 1px; }
+      .mono { padding: 4px; line-height: 1.12; }
+      th, td { padding: 2px 3px; line-height: 1.12; }
+      .role-cell { min-height: 36px; padding: 3px; }
+      .metric { min-height: 44px; padding: 4px; }
+      .roadmap-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar">
+          <div class="section-id">Group Meeting Report</div>
+          <div class="running-title">Face Cardiac Function Binary Classification via Skin-Optics-Informed Representations</div>
+        </header>
+        <div class="content title-grid">
+          <div class="headline reveal">
+            <h1>基于皮肤光学敏感表征的人脸心功能二分类</h1>
+            <p class="subtitle">从冻结 SO-0 前向模型出发，用合成监督训练 SO-1 分解网络，再迁移到真实普通手机人脸图像，评价 M/H 是否能为 Control vs Patient 提供 RGB 之外的增量。</p>
+            <div class="tag-row">
+              <span class="tag">SO-0 frozen</span>
+              <span class="tag">SO-1 synthetic supervision</span>
+              <span class="tag">M/H/S/P decomposition</span>
+              <span class="tag">224 classification</span>
+              <span class="tag">fold / leakage control</span>
+            </div>
+          </div>
+        </div>
+        <footer class="footbar"><span>Use arrow keys / wheel / swipe</span><span class="page-label">01 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">01 · Research Framing</div><div class="running-title">研究问题、术语边界与判定目标</div></header>
+        <div class="content grid-2">
+          <div class="panel blue reveal">
+            <div class="panel-title"><h2>研究问题</h2><small>what to prove</small></div>
+            <p class="note">基于皮肤光学前向模型合成监督所学习的 melanin-sensitive 与 hemoglobin-sensitive 分布图，能否在真实普通手机人脸图像中形成稳定表征，并为心功能状态二分类提供 RGB 之外的增量信息？</p>
+            <table>
+              <tbody>
+                <tr><td>研究对象</td><td>普通手机人脸图像，不是标准化光谱/色卡环境。</td></tr>
+                <tr><td>主判定</td><td>RGB+M+H 是否相对 RGB 有稳定增量。</td></tr>
+                <tr><td>负结论</td><td>允许成为正式结论，不通过堆模型复杂度掩盖失败。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel red reveal">
+            <div class="panel-title"><h2>术语边界</h2><small>what not to claim</small></div>
+            <table>
+              <thead><tr><th>变量</th><th>允许表述</th><th>禁止解释</th></tr></thead>
+              <tbody>
+                <tr><td>M</td><td>melanin-sensitive representation</td><td>真实黑色素浓度</td></tr>
+                <tr><td>H</td><td>hemoglobin-sensitive representation</td><td>真实血红蛋白浓度 / 血氧</td></tr>
+                <tr><td>S</td><td>shading-related component</td><td>定量光照或真实法线</td></tr>
+                <tr><td>P</td><td>specular-related component</td><td>定量表面反射生理量</td></tr>
+              </tbody>
+            </table>
+            <p class="note warn">没有标准色卡同步采集、皮肤光谱仪、组织学真值或已知手机 ISP，因此 M/H 只能作为光学约束的敏感表征。</p>
+          </div>
+        </div>
+        <footer class="footbar"><span>Research logic: representation first, classification increment second</span><span class="page-label">02 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">02 · Roadmap</div><div class="running-title">用户提供研究思路图 + 端到端主链路</div></header>
+        <div class="content roadmap-layout">
+          <div class="image-panel reveal">
+            <img src="assets/skin_optics_roadmap.png" alt="皮肤光学研究思路总览图" />
+          </div>
+        </div>
+        <footer class="footbar"><span>Roadmap image copied to assets/skin_optics_roadmap.png</span><span class="page-label">03 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">03 · System Architecture</div><div class="running-title">六模块与两级评价阶段</div></header>
+        <div class="content">
+          <div class="pipeline reveal">
+            <div class="node"><b>A · SO-0</b><span>冻结皮肤光学前向模型；M/H/S/P + 相机/光源/曝光 → sRGB patch。</span></div>
+            <div class="node"><b>B · Synthetic</b><span>随机参数和空间场生成器；产出 RGB patch 与 M/H/S/P 真值。</span></div>
+            <div class="node"><b>C · SO-1</b><span>U-Net 学习 linear-RGB → M/H/S/P 的逆向分解。</span></div>
+            <div class="node"><b>D · Real prep</b><span>真实人脸对齐、全脸皮肤 mask、统一颜色入口。</span></div>
+            <div class="node"><b>E · Patch</b><span>256 patch 切分、SO-1 推理、重叠区域加权合并。</span></div>
+            <div class="node"><b>F · Classifier</b><span>RGB / M+H / RGB+M+H / probes 的 ResNet18 二分类。</span></div>
+          </div>
+          <div class="grid-4 reveal">
+            <div class="role-cell"><div class="symbol">M</div><div><h3>melanin-sensitive</h3><p>黑色素吸收方向变化；主医学敏感表征之一。</p></div></div>
+            <div class="role-cell"><div class="symbol h">H</div><div><h3>hemoglobin-sensitive</h3><p>血红蛋白吸收方向变化；二分类增量关注重点。</p></div></div>
+            <div class="role-cell"><div class="symbol s">S</div><div><h3>shading-related</h3><p>吸收明暗、方向性光照和部分曝光影响。</p></div></div>
+            <div class="role-cell"><div class="symbol p">P</div><div><h3>specular-related</h3><p>吸收高光和表面直接反射，防止污染 M/H。</p></div></div>
+          </div>
+          <div class="grid-2 reveal">
+            <div class="panel green">
+              <div class="panel-title"><h3>SO-2 fold 0</h3><small>快速筛选</small></div>
+              <p>先判断 M/H 是否有可用信号、RGB+M+H 是否存在正向趋势、S/P 和 mask 是否暴露捷径。</p>
+            </div>
+            <div class="panel violet">
+              <div class="panel-title"><h3>SO-3 fixed 5-fold</h3><small>正式验证</small></div>
+              <p>只有 SO-2 出现正向信号后，才进入完整固定五折、OOF 预测、配对置信区间和 fold 稳定性分析。</p>
+            </div>
+          </div>
+        </div>
+        <footer class="footbar"><span>Modules must not be mixed: decomposition is not classification</span><span class="page-label">04 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">04 · SO-0 / Synthetic Dataset</div><div class="running-title">冻结物理与合成监督协议</div></header>
+        <div class="content grid-3">
+          <div class="panel blue reveal">
+            <div class="panel-title"><h2>SO-0 冻结状态</h2><small>fixed physics</small></div>
+            <ul class="dense-list">
+              <li>版本：<strong>SO0_Forward_Model_v1.1</strong></li>
+              <li>NumPy 与 PyTorch 后端一致性通过。</li>
+              <li>正式生产波长网格：5 nm；参考审计网格：1 nm。</li>
+              <li>112 个 camera-light 组合中 109 个合格。</li>
+              <li>M/H 在已测试合成观测空间中未发生秩退化。</li>
+            </ul>
+          </div>
+          <div class="panel cyan reveal">
+            <div class="panel-title"><h2>颜色形成链</h2><small>camera path</small></div>
+            <div class="mono">skin reflectance
+→ spectral_radiance
+→ camera_rgb_raw
+→ camera_rgb_wb
+→ xyz_source → xyz_d65
+→ linear_srgb_unclipped
+→ srgb_unclipped
+→ srgb_display_clipped</div>
+            <p>合成可观察图固定为 standard sRGB patch，再经 inverse sRGB 进入 SO-1。</p>
+          </div>
+          <div class="panel green reveal">
+            <div class="panel-title"><h2>合成数据规模</h2><small>27,000 patches</small></div>
+            <table>
+              <tbody>
+                <tr><td>Train</td><td>20,000</td><td>参数更新</td></tr>
+                <tr><td>Val</td><td>2,000</td><td>早停 / ckpt</td></tr>
+                <tr><td>ID</td><td>2,000</td><td>已见相机光源</td></tr>
+                <tr><td>Camera-OOD</td><td>1,000</td><td>未见相机</td></tr>
+                <tr><td>Light-OOD</td><td>1,000</td><td>未见光源</td></tr>
+                <tr><td>Joint-OOD</td><td>1,000</td><td>联合未见</td></tr>
+              </tbody>
+            </table>
+            <p>训练集建议：10,000 组基础 M/H × 2 种采集条件。</p>
+          </div>
+        </div>
+        <footer class="footbar"><span>SO-0 must not be edited according to classification results</span><span class="page-label">05 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">05 · SO-1 / Real-Face Inference</div><div class="running-title">分解网络、真实图接口与 patch 合并</div></header>
+        <div class="content grid-3">
+          <div class="panel blue reveal">
+            <div class="panel-title"><h2>SO-1 目标</h2><small>decomposition</small></div>
+            <div class="mono">linear-RGB skin patch
+→ M-sensitive
+→ H-sensitive
+→ S-related
+→ P-related</div>
+            <ul class="dense-list">
+              <li>输入：3 × 256 × 256 linear-RGB。</li>
+              <li>输出：4 × 256 × 256，channel = M/H/S/P。</li>
+              <li>网络：标准容量 U-Net，64→128→256→512→1024。</li>
+              <li>初始化：随机初始化，不使用 Carvana 预训练。</li>
+            </ul>
+          </div>
+          <div class="panel cyan reveal">
+            <div class="panel-title"><h2>训练损失 / 配置</h2><small>minimal protocol</small></div>
+            <div class="mono">L_total = (L_M + L_H + L_S + L_P) / 4
+checkpoint = argmin(val_M_MAE + val_H_MAE)
+optimizer = AdamW
+lr = 1e-3, wd = 1e-4
+epochs = 25, patience = 5
+seed = 20260801</div>
+            <p>RGB 重建仅作离线物理一致性审计，不作为 v1 训练损失。</p>
+          </div>
+          <div class="panel green reveal">
+            <div class="panel-title"><h2>真实人脸推理</h2><small>single interface</small></div>
+            <table>
+              <tbody>
+                <tr><td>颜色入口</td><td>RGB → sRGB [0,1] → inverse sRGB → linear-RGB</td></tr>
+                <tr><td>mask</td><td>全脸有效皮肤；排除头发、眼球、鼻孔、嘴唇等</td></tr>
+                <tr><td>patch</td><td>256×256；overlap=15；stride=241；skin ≥ 0.20</td></tr>
+                <tr><td>合并</td><td>重叠区域线性渐变 / 平滑窗加权</td></tr>
+                <tr><td>输出</td><td>M/H/S/P_full.npy + preview PNG + QC 图</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <footer class="footbar"><span>Real images use the same color transform function for every case</span><span class="page-label">06 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">06 · Classification Matrix</div><div class="running-title">分类资产、实验矩阵与评价指标</div></header>
+        <div class="content grid-2">
+          <div class="panel blue reveal">
+            <div class="panel-title"><h2>分类数据构建</h2><small>224 × 224</small></div>
+            <table>
+              <thead><tr><th>资产</th><th>形状</th><th>处理规则</th></tr></thead>
+              <tbody>
+                <tr><td>RGB_224</td><td>[3,224,224]</td><td>沿用既有最佳 224 RGB 基线和 ImageNet 归一化</td></tr>
+                <tr><td>M_224 / H_224</td><td>[1,224,224]</td><td>从高分辨率浮点图双线性插值</td></tr>
+                <tr><td>S_224 / P_224</td><td>[1,224,224]</td><td>probe 使用，不作为主证据</td></tr>
+                <tr><td>mask_224</td><td>[1,224,224]</td><td>最近邻插值；resize 后再次 map *= mask</td></tr>
+              </tbody>
+            </table>
+            <p class="note">不能从预览 PNG 读取分布图；分类单位固定为 visit/case，不进行 patient-level prediction averaging。</p>
+          </div>
+          <div class="panel green reveal">
+            <div class="panel-title"><h2>实验矩阵</h2><small>SO-2 / SO-3</small></div>
+            <table>
+              <thead><tr><th>实验</th><th>输入</th><th>目的</th></tr></thead>
+              <tbody>
+                <tr><td>RGB</td><td>3 通道</td><td>既有基线</td></tr>
+                <tr><td>M+H</td><td>2 通道</td><td>M/H 是否有独立分类信号</td></tr>
+                <tr><td>RGB+M+H</td><td>5 通道</td><td>M/H 是否提供 RGB 外增量</td></tr>
+                <tr><td>S+P probe</td><td>2 通道</td><td>检查采集条件捷径</td></tr>
+                <tr><td>Mask-only probe</td><td>1 通道</td><td>检查 mask 形状 / 姿态泄漏</td></tr>
+              </tbody>
+            </table>
+            <p>第一版固定输入级通道融合；除第一层卷积外，网络、训练轮数、优化器、类别权重、early stopping 和 folds 保持一致。</p>
+          </div>
+          <div class="panel cyan reveal span-2">
+            <div class="panel-title"><h2>统一评价指标</h2><small>classification report</small></div>
+            <table>
+              <tbody>
+                <tr><td>基础指标</td><td>Macro-AUC、Accuracy、Macro-Precision、Macro-Recall、Macro-F1、Balanced Accuracy、Patient sensitivity、Control specificity</td></tr>
+                <tr><td>正式五折增加</td><td>OOF 预测、patient-cluster bootstrap、配对置信区间、fold 级稳定性、camera/EXIF probe、R3DPR 跨光照稳定性</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <footer class="footbar"><span>All classification branches must share the same fold and training protocol</span><span class="page-label">07 / 09</span></footer>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="sheet">
+        <header class="topbar"><div class="section-id">07 · Binary Result</div><div class="running-title">最终二分类指标与读数</div></header>
+        <div class="content">
+          <div class="grid-5 reveal">
+            <div class="metric"><div class="label">Macro-AUC</div><div class="value">0.858882</div><div class="bar"><span style="--w:85.8882%"></span></div></div>
+            <div class="metric"><div class="label">Macro-F1</div><div class="value">0.731066</div><div class="bar"><span style="--w:73.1066%"></span></div></div>
+            <div class="metric"><div class="label">Balanced Acc.</div><div class="value">0.755167</div><div class="bar"><span style="--w:75.5167%"></span></div></div>
+            <div class="metric"><div class="label">Sensitivity</div><div class="value">0.823377</div><div class="bar"><span style="--w:82.3377%"></span></div></div>
+            <div class="metric"><div class="label">Specificity</div><div class="value">0.686957</div><div class="bar"><span style="--w:68.6957%"></span></div></div>
+          </div>
+          <div class="grid-3 reveal">
+            <div class="panel blue">
+              <div class="panel-title"><h2>主要读数</h2><small>classification strength</small></div>
+              <p>Macro-AUC 接近 0.86，说明当前二分类结果已经具备较强区分能力；Macro-F1 与 BA 处于可汇报水平。</p>
+            </div>
+            <div class="panel amber">
+              <div class="panel-title"><h2>错误结构</h2><small>sensitivity vs specificity</small></div>
+              <p>Sensitivity 高于 Specificity，提示 Patient 识别更充分，Control 侧仍需通过阈值、校准或样本结构进一步审计。</p>
+            </div>
+            <div class="panel green">
+              <div class="panel-title"><h2>解释要求</h2><small>increment claim</small></div>
+              <p>该结果需放入 RGB、M+H、RGB+M+H、S+P、Mask-only 的同折对照中解释，不能只凭单表宣称光学增量。</p>
+            </div>
+          </div>
+        </div>
+        <footer class="footbar"><span>Final classification result added per user-provided metrics</span><span class="page-label">08 / 08</span></footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    class ResearchDeck {
+      constructor() {
+        this.slides = Array.from(document.querySelectorAll(".slide"));
+        this.index = 0;
+        this.locked = false;
+        this.touchY = 0;
+        this.progress = document.createElement("div");
+        this.progress.className = "progress";
+        this.progress.innerHTML = "<span></span>";
+        this.setupObserver();
+        this.bind();
+        this.go(0, false);
+      }
+
+      setupObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("is-active", entry.isIntersecting);
+            if (entry.isIntersecting) {
+              this.index = this.slides.indexOf(entry.target);
+              this.update();
+            }
+          });
+        }, { threshold: 0.6 });
+        this.slides.forEach((slide) => observer.observe(slide));
+      }
+
+      bind() {
+        window.addEventListener("keydown", (event) => {
+          const next = ["ArrowDown", "ArrowRight", "PageDown", " "];
+          const prev = ["ArrowUp", "ArrowLeft", "PageUp"];
+          if (next.includes(event.key)) {
+            event.preventDefault();
+            this.go(this.index + 1);
+          }
+          if (prev.includes(event.key)) {
+            event.preventDefault();
+            this.go(this.index - 1);
+          }
+          if (event.key === "Home") this.go(0);
+          if (event.key === "End") this.go(this.slides.length - 1);
+        });
+
+        window.addEventListener("wheel", (event) => {
+          if (this.locked || Math.abs(event.deltaY) < 20) return;
+          this.locked = true;
+          this.go(this.index + (event.deltaY > 0 ? 1 : -1));
+          window.setTimeout(() => { this.locked = false; }, 420);
+        }, { passive: true });
+
+        window.addEventListener("touchstart", (event) => {
+          this.touchY = event.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener("touchend", (event) => {
+          const delta = this.touchY - event.changedTouches[0].clientY;
+          if (Math.abs(delta) > 42) this.go(this.index + (delta > 0 ? 1 : -1));
+        }, { passive: true });
+      }
+
+      go(index, smooth = true) {
+        const next = Math.max(0, Math.min(this.slides.length - 1, index));
+        this.index = next;
+        this.slides[next].scrollIntoView({ block: "start", behavior: smooth ? "smooth" : "auto" });
+        this.update();
+      }
+
+      update() {
+        const current = String(this.index + 1).padStart(2, "0");
+        const total = String(this.slides.length).padStart(2, "0");
+        document.querySelectorAll(".page-label").forEach((el, i) => {
+          if (i === this.index) el.textContent = `${current} / ${total}`;
+        });
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => new ResearchDeck());
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+illuminant_name,camera_count,qualified_camera_count,finite_fraction,reflectance_bounds_pass,camera_rgb_finite_fraction,mean_out_of_gamut_rate,max_out_of_gamut_rate,status
+A,28,27,1.0,True,1.0,0.0223214285714,0.0694444444444,PASS
+D65,28,27,1.0,True,1.0,0.014880952381,0.0555555555556,PASS
+FL11,28,28,1.0,True,1.0,0.016369047619,0.0277777777778,PASS
+FL2,28,27,1.0,True,1.0,0.0178571428571,0.0277777777778,PASS

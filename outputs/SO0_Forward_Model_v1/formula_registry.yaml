@@ -1,0 +1,144 @@
+formulas:
+  - name: melanin_fraction_mapping
+    expression: f_mel = 0.013 + 0.417 * m
+    inputs: {m: "unitless melanin-sensitive control in [0,1]"}
+    outputs: {f_mel: epidermal melanin-sensitive fraction}
+    units: {m: unitless, f_mel: fraction}
+    source_category: project_defined_control_mapping
+    jung_overall_idea: true
+    public_optics: false
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: blood_fraction_mapping
+    expression: f_blood = 0.02 + 0.05 * h
+    inputs: {h: "unitless hemoglobin-sensitive control in [0,1]"}
+    outputs: {f_blood: dermal blood-sensitive fraction}
+    units: {h: unitless, f_blood: fraction}
+    source_category: project_defined_control_mapping
+    jung_overall_idea: true
+    public_optics: false
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: epidermis_absorption
+    expression: mu_a_epi(lambda) = f_mel * mu_a_mel_primary(lambda) + (1 - f_mel) * mu_a_base(lambda)
+    inputs: {f_mel: fraction, mu_a_mel_primary: absorption spectrum, mu_a_base: baseline absorption}
+    outputs: {mu_a_epi: epidermis absorption coefficient}
+    units: {mu_a_epi: cm^-1, spectra: cm^-1}
+    source_category: public_optics_linear_mixture
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: epidermis_transmission
+    expression: T_epi(lambda) = exp(-mu_a_epi(lambda) * d_epi)
+    inputs: {mu_a_epi: absorption coefficient, d_epi: epidermis thickness}
+    outputs: {T_epi: one-way epidermis transmission}
+    units: {mu_a_epi: cm^-1, d_epi: cm, T_epi: unitless}
+    source_category: beer_lambert_public_optics
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: false
+    trainable: false
+    later_modification_allowed: false
+  - name: dermis_absorption
+    expression: mu_a_dermis(lambda) = f_blood * mu_a_blood_y075(lambda) + (1 - f_blood) * mu_a_base(lambda)
+    inputs: {f_blood: fraction, mu_a_blood_y075: blood absorption, mu_a_base: baseline absorption}
+    outputs: {mu_a_dermis: dermis absorption coefficient}
+    units: {mu_a_dermis: cm^-1, spectra: cm^-1}
+    source_category: public_optics_linear_mixture
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: dermis_reduced_scattering
+    expression: mu_s_prime(lambda) = musp_total_cm1(lambda)
+    inputs: {musp_total_cm1: frozen reduced scattering spectrum}
+    outputs: {mu_s_prime: dermis reduced scattering coefficient}
+    units: {mu_s_prime: cm^-1}
+    source_category: frozen_asset_selection
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: kubelka_munk_finite_dermis
+    expression: R = ((1 - beta^2) * tanh(kappa*d)) / ((1 + beta^2) * tanh(kappa*d) + 2*beta)
+    inputs: {beta: sqrt(mu_a/(mu_a+2*mu_s_prime)), kappa: sqrt(mu_a*(mu_a+2*mu_s_prime)), d: dermis thickness}
+    outputs: {R_dermis: dermis reflectance}
+    units: {mu_a: cm^-1, mu_s_prime: cm^-1, d: cm, R_dermis: unitless}
+    source_category: kubelka_munk_public_optics
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: false
+    trainable: false
+    later_modification_allowed: false
+  - name: skin_reflectance
+    expression: R_skin(lambda) = T_epi(lambda)^2 * R_dermis(lambda)
+    inputs: {T_epi: one-way epidermis transmission, R_dermis: dermis reflectance}
+    outputs: {R_skin: synthetic skin reflectance}
+    units: {R_skin: unitless}
+    source_category: project_layered_skin_assumption
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: spectral_radiance
+    expression: E(lambda) = exposure * illuminant_Y1(lambda) * (shading * R_skin(lambda) + specular)
+    inputs: {exposure: unitless multiplier, illuminant_Y1: Y-normalised SPD, shading: unitless multiplier, R_skin: reflectance, specular: additive reflectance-like control}
+    outputs: {E: synthetic spectral radiance}
+    units: {E: relative spectral radiance}
+    source_category: project_image_formation_assumption
+    jung_overall_idea: true
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: cie_xyz_integration
+    expression: XYZ = sum(weights_nm * E(lambda) * cie_xyz_2deg(lambda))
+    inputs: {weights_nm: wavelength integration weights, E: spectral radiance, cie_xyz_2deg: CIE observer}
+    outputs: {XYZ: source-referred tristimulus values}
+    units: {weights_nm: nm, XYZ: relative tristimulus}
+    source_category: cie_public_colorimetry
+    jung_overall_idea: false
+    public_optics: true
+    project_independent_assumption: false
+    trainable: false
+    later_modification_allowed: false
+  - name: camera_rgb_integration
+    expression: rgb_raw = sum(weights_nm * E(lambda) * camera_ssf(lambda))
+    inputs: {weights_nm: wavelength integration weights, E: spectral radiance, camera_ssf: frozen camera spectral sensitivity}
+    outputs: {rgb_raw: camera raw response}
+    units: {rgb_raw: relative response}
+    source_category: spectral_camera_public_method
+    jung_overall_idea: false
+    public_optics: true
+    project_independent_assumption: false
+    trainable: false
+    later_modification_allowed: false
+  - name: diagonal_white_balance
+    expression: rgb_wb = rgb_raw / white_response
+    inputs: {rgb_raw: camera response, white_response: camera response to ideal diffuser under same illuminant}
+    outputs: {rgb_wb: white-balanced camera response}
+    units: {rgb_wb: unitless relative response}
+    source_category: fixed_camera_normalisation
+    jung_overall_idea: false
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false
+  - name: colorchecker_matrix
+    expression: X_camera @ M = Y_XYZ solved by numpy.linalg.lstsq without intercept
+    inputs: {X_camera: 24x3 white-balanced ColorChecker camera responses, Y_XYZ: 24x3 source XYZ references}
+    outputs: {M: fixed 3x3 camera-to-XYZ matrix}
+    units: {M: unitless linear transform}
+    source_category: virtual_colorchecker_project_calibration
+    jung_overall_idea: false
+    public_optics: true
+    project_independent_assumption: true
+    trainable: false
+    later_modification_allowed: false

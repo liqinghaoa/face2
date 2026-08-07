@@ -1,0 +1,406 @@
+## git status
+## main...origin/main
+ M config/train/global_roi_fusion/global_roi_fusion_config_manifest.csv
+ M config/train/global_roi_fusion/global_roi_fusion_global_cheek_resnet18.yaml
+ M config/train/global_roi_fusion/global_roi_fusion_global_eye_cheek_resnet18.yaml
+ M config/train/global_roi_fusion/global_roi_fusion_global_eye_resnet18.yaml
+ M config/train/model_exploration_imagenet_meanbg/model_exploration_config_manifest.csv
+ M config/train/model_exploration_imagenet_meanbg/nyha_3class_convnext_tiny_imagenet_meanbg.yaml
+ M config/train/model_exploration_imagenet_meanbg/nyha_3class_densenet121_imagenet_meanbg.yaml
+ M config/train/model_exploration_imagenet_meanbg/nyha_3class_efficientnet_b0_imagenet_meanbg.yaml
+ M config/train/model_exploration_imagenet_meanbg/nyha_3class_mobilenet_v3_large_imagenet_meanbg.yaml
+ M config/train/model_exploration_imagenet_meanbg/nyha_3class_swin_t_imagenet_meanbg.yaml
+ M config/train/preprocess_ablation_backbone_check/backbone_check_config_manifest.csv
+ M config/train/preprocess_ablation_backbone_check/nyha_3class_resnet34_preproc_hybrid_black_baseline.yaml
+ M config/train/preprocess_ablation_backbone_check/nyha_3class_resnet34_preproc_hybrid_imagenet_meanbg.yaml
+ M config/train/preprocess_ablation_backbone_check/nyha_3class_resnet50_preproc_hybrid_black_baseline.yaml
+ M config/train/preprocess_ablation_backbone_check/nyha_3class_resnet50_preproc_hybrid_imagenet_meanbg.yaml
+ M config/train/preprocess_ablation_resnet18/config_manifest.csv
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_baseline.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_clahe_l.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_gray3ch.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_labl_norm.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_masked_grayworld_wb.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_black_retinex_msr.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg.yaml
+ M config/train/preprocess_ablation_resnet18/nyha_3class_resnet18_preproc_hybrid_imagenet_meanbg_labl_norm.yaml
+ M config/train/swin_tiny_second_stage/swin_tiny_imagenet_meanbg_lr5e5.yaml
+ M config/train/swin_tiny_second_stage/swin_tiny_imagenet_meanbg_weightedsoftce_ls005.yaml
+ M config/train/swin_tiny_second_stage/swin_tiny_second_stage_config_manifest.csv
+ M "dock/Face2_sync/\345\220\204\345\256\236\351\252\214\346\225\260\346\215\256\351\242\204\345\244\204\347\220\206\346\200\235\350\267\257.md"
+ M "dock/Face2_sync/\345\220\204\345\256\236\351\252\214\346\250\241\345\236\213\350\256\255\347\273\203\346\200\235\350\267\257.md"
+ M prompt.md
+ M reports/exif_core_parameter_second_stage_audit/aligned_skin_image_quality_metrics.csv
+ M reports/exif_core_parameter_second_stage_audit/auxiliary_exif_device_crosstab.csv
+ M reports/exif_core_parameter_second_stage_audit/auxiliary_exif_device_explanation.csv
+ M reports/exif_core_parameter_second_stage_audit/cohort_alignment_audit.csv
+ M reports/exif_core_parameter_second_stage_audit/cohort_alignment_checks.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_apex_consistency.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_by_camera_nyha.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_by_device.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_by_nyha.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_by_sex.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_confounding_tests.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_correlations.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_decision_table.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_device_identity.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_image_quality_correlations.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_outliers.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_summary.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_values_and_derived.csv
+ M reports/exif_core_parameter_second_stage_audit/core_parameter_vif.csv
+ M reports/exif_core_parameter_second_stage_audit/exif_core_parameter_audit_report.md
+ M reports/exif_core_parameter_second_stage_audit/exif_only_confusion_matrices.csv
+ M reports/exif_core_parameter_second_stage_audit/exif_only_cv_metrics.csv
+ M reports/exif_core_parameter_second_stage_audit/exif_only_fold_metrics.csv
+ M reports/exif_core_parameter_second_stage_audit/exif_only_oof_predictions.csv
+ M reports/exif_core_parameter_second_stage_audit/exif_only_oof_validation.csv
+ M reports/exif_core_parameter_second_stage_audit/figures/brightness_residual_by_device.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/brightness_value_vs_apex_prediction.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/camera_by_nyha_grouped.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/core_and_derived_correlation_heatmap.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/core_original_distributions_by_device.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/core_parameters_by_nyha.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/exif_only_oof_confusion_matrix.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/exif_only_oof_roc.svg
+ M reports/exif_core_parameter_second_stage_audit/figures/exif_vs_aligned_skin_image_quality.svg
+ M reports/exif_core_parameter_second_stage_audit/image_quality_failures.csv
+ M reports/exif_core_parameter_second_stage_audit/known_high_iso_outliers.csv
+ M reports/exif_core_parameter_second_stage_audit/run_manifest.json
+ M reports/exif_four_field_physical_audit/aligned_skin_image_quality_metrics.csv
+ M reports/exif_four_field_physical_audit/brightness_apex_consistency_statistics.csv
+ M reports/exif_four_field_physical_audit/exif_device_shift_statistics.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_by_device.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_decision_table.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_image_relationships.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_outliers.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_summary.csv
+ M reports/exif_four_field_physical_audit/exif_four_field_values_and_derived.csv
+ M reports/exif_four_field_physical_audit/exif_original_and_derived_correlations.csv
+ M reports/exif_four_field_physical_audit/figures/brightness_apex_consistency.svg
+ M reports/exif_four_field_physical_audit/figures/brightness_residual_by_device.svg
+ M reports/exif_four_field_physical_audit/figures/correlation_heatmap.svg
+ M reports/exif_four_field_physical_audit/figures/exif_vs_image_quality.svg
+ M reports/exif_four_field_physical_audit/figures/four_field_by_device.svg
+ M reports/exif_four_field_physical_audit/figures/four_field_distributions.svg
+ M reports/exif_four_field_physical_audit/high_iso_14_image_review.csv
+ M reports/exif_four_field_physical_audit/image_quality_failures.csv
+ M reports/exif_four_field_physical_audit/run_manifest.json
+ M reports/exif_parameter_audit/device_parameter_coverage.csv
+ M reports/exif_parameter_audit/image_parameter_audit.csv
+ M reports/exif_parameter_audit/parameter_coverage.csv
+ M reports/exif_parameter_audit/parameter_value_issues.csv
+ M reports/exif_parameter_audit/parameter_values_long.csv
+ M reports/exif_parameter_audit/patient_level_audit.csv
+ M reports/exif_parameter_audit/run_manifest.json
+ M reports/global_resnet18_optical_fusion/feature_distribution_audit.csv
+ M reports/global_resnet18_optical_fusion/foldwise_metric_deltas.csv
+ M reports/global_resnet18_optical_fusion/global_resnet18_optical_fusion_report.md
+ M reports/global_resnet18_optical_fusion/oof_metrics_all_variants.csv
+ M reports/global_resnet18_optical_fusion/pairwise_bootstrap_deltas.csv
+ M reports/global_resnet18_optical_fusion/pairwise_comparison.csv
+ M reports/optical_condition_calibration_stage2a/.stage2a_owner.json
+ M reports/optical_condition_calibration_stage2a/optical_condition_calibration_stage2a_report.md
+ M reports/optical_condition_calibration_stage2a/run.log
+ M reports/optical_condition_calibration_stage2b/.stage2b_owner.json
+ M reports/optical_condition_calibration_stage2b/optical_condition_calibration_stage2b_report.md
+ M reports/optical_condition_calibration_stage2b/run.log
+ M reports/optical_inversion_preprocess_audit/bbox_overlay_20/bbox_overlay_20_review.csv
+ M reports/optical_inversion_preprocess_audit/bbox_overlay_20/bbox_overlay_20_selection.csv
+ M reports/optical_observations_v1/extraction_run.log
+ M reports/optical_observations_v1/optical_observation_extraction_report.md
+ M reports/optical_roi_dataset_v1/logs/integrity_validation.json
+ M reports/optical_roi_dataset_v1/logs/test_output.txt
+ M reports/optical_roi_dataset_v1/low_coverage_cases.csv
+ M reports/optical_roi_dataset_v1/mask_coverage_summary.csv
+ M test.py
+?? .agents/
+?? config/p0b/
+?? config/p1/
+?? config/p2/
+?? config/preprocess/p0_physics_audit_assets_v1.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_5fold.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_anti_overfit_v1.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_anti_overfit_v3_bn_eval_full.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_fixSH_fixCamera_menafg_5fold.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_fixSH_fixCamera_menafg_anti_overfit_v1.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_fixedSH_origcam_menafg_5fold.yaml
+?? config/train/e0b_global_resnet18_control_patient_binary_fixedSH_origcam_menafg_anti_overfit_v1.yaml
+?? config/train/e1_global_resnet18_hierarchical_conditional_5fold.yaml
+?? config/train/e2_global_multiroi_equal_fusion_resnet18_5fold.yaml
+?? config/train/global_optical_fusion_overfit_control/
+?? config/train/optical_phenotype_only/
+?? config/train/p1_rgb_p0aligned_resnet18_5fold_v1.yaml
+?? datasets/control_patient_binary_dataset.py
+?? datasets/e2_global_multiroi_dataset.py
+?? datasets/p1_component_dataset.py
+?? datasets/p1_rgb_binary_dataset.py
+?? datasets/p2_a1_rgb_deca_aux_dataset.py
+?? datasets/p2_r1_relighting_dataset.py
+?? "dock/Face2_sync/ChatGPT Image 2026\345\271\2647\346\234\21025\346\227\245 11_08_57.png"
+?? "dock/Face2_sync/DECA\347\211\251\347\220\206\345\274\225\345\257\274\351\207\207\351\233\206\344\270\215\345\217\230\345\255\246\344\271\240_P0\351\230\266\346\256\265\345\256\236\347\216\260.md"
+?? "dock/Face2_sync/Face_Cardiac_P2_Physics_Relighting_Research_Plan_\347\262\276\347\256\200\344\277\256\350\256\242\347\211\210.md"
+?? dock/Face2_sync/Face_Cardiac_Physics_Informed_Research_Roadmap.md
+?? dock/Face2_sync/P0B_DECA_Pilot12_v1/
+?? "dock/Face2_sync/P1_DECA_Frozen500_v1_\346\225\260\346\215\256\350\257\264\346\230\216.md"
+?? dock/Face2_sync/P1_relighting_row_example_100037382.png
+?? dock/Face2_sync/P1_relighting_row_example_100037382_corrected.png
+?? dock/Face2_sync/exp_E2_Global_MultiROI_EqualFusion_ResNet18_5fold/
+?? dock/Face2_sync/p1/
+?? dock/Face2_sync/po-A/
+?? "dock/Face2_sync/processed_P\347\263\273\345\210\227\347\233\256\345\275\225\346\225\260\346\215\256\345\234\260\345\233\276_\344\276\233\347\240\224\347\251\266\345\210\206\346\236\220.md"
+?? dock/Face2_sync/reviewer_package/
+?? "dock/Face2_sync/skin optics/"
+?? dock/Face2_sync/two_binaty_report/
+?? environments/
+?? evaluators/e1_hierarchical_conditional_evaluator.py
+?? evaluators/e2_evaluator.py
+?? evaluators/global_optical_fusion_overfit_evaluator.py
+?? evaluators/p1_component_evaluator.py
+?? losses/e1_hierarchical_conditional_loss.py
+?? losses/p2_r1_consistency_loss.py
+?? metadata/
+?? metrics/binary_classification_metrics.py
+?? metrics/e1_hierarchical_metrics.py
+?? metrics/e2_metrics.py
+?? models/e1_global_resnet18_hierarchical.py
+?? models/e2_global_multiroi_equal_fusion.py
+?? models/optical_phenotype_logistic_classifier.py
+?? models/p1_component_models.py
+?? models/p1_independent_dual_resnet18.py
+?? models/p1_independent_triple_resnet18.py
+?? models/p1_light_linear_probe.py
+?? models/p1_shared_dual_resnet18.py
+?? models/p2_a1_rgb_deca_residual_fusion.py
+?? outputs/SO0_Forward_Model_v1.1/
+?? outputs/SO0_Forward_Model_v1/
+?? p0b_deca/
+?? p2_counterfactual/
+?? preprocessing/build_p0_physics_audit_assets_v1.py
+?? preprocessing/build_prealigned_face_parsing_hybrid_imagenet_meanbg.py
+?? preprocessing/finalize_p0_physics_audit_assets_v1.py
+?? preprocessing/p0_physics_assets/
+?? preprocessing/run_sixrelighting_originalcamera_meanfg.py
+?? reports/archive/
+?? reports/e2_global_multiroi_equal_fusion_implementation_report.md
+?? reports/global_optical_fusion_overfit_control/
+?? reports/optical_phenotype_only_nyha/
+?? reports/p0_physics_audit_assets_v1_implementation_report.md
+?? reports/p0b_blind_review_package_generation.md
+?? reports/p0b_cross_process_regression_baseline_v2_report.md
+?? reports/p0b_deca_pilot12_v1_implementation_report.md
+?? reports/p0b_environment_gate_resolution_and_b1_run.md
+?? reports/p0b_input_mode_engineering_decision.md
+?? reports/p0b_representation_noncollapse_audit.md
+?? reports/p1_a_results.md
+?? reports/p1_component_sweep_framework_implementation_report.md
+?? reports/p1_component_sweep_phase2_results.md
+?? reports/p1_data_interface_and_component_statistics_audit.md
+?? reports/p1_deca_frozen500_asset_generation_report.md
+?? reports/p1_deca_frozen500_final_completion_report.md
+?? reports/p1_extension_abc_decision_report.md
+?? reports/p1_extension_stage_a_oof_complementarity_report.md
+?? reports/p1_extension_stage_b_fusion_results_report.md
+?? reports/p1_extension_stage_c_acquisition_audit_report.md
+?? reports/p1_l_results.md
+?? reports/p1_n_results.md
+?? reports/p1_phase2_result_integrity_correction_report.md
+?? reports/p1_pilot12_cross_process_reproducibility_audit.md
+?? reports/p1_r_results.md
+?? reports/p1_rgb_a_results.md
+?? reports/p1_rgb_p0aligned_resnet18_5fold_report.md
+?? reports/p1_s_results.md
+?? reports/p1_stage_d_rgbsr_triplebranch_v1_results.md
+?? reports/p2_a3_v2_r3dpr_full6_consistency_code_audit.md
+?? reports/p2_a_framework_implementation_report.md
+?? reports/p2_manifest_freeze_consistency_diagnosis.md
+?? reports/p2_manifest_path_resolution_fix_report.md
+?? resource/
+?? scripts/evaluate/correct_p1_rgb_evaluation_protocol.py
+?? scripts/evaluate/summarize_e0b_global_resnet18_control_patient_binary_5fold.py
+?? scripts/evaluate/summarize_e1_global_resnet18_hierarchical_conditional_5fold.py
+?? scripts/evaluate/summarize_e2_global_multiroi_equal_fusion_5fold.py
+?? scripts/evaluate/summarize_global_optical_fusion_overfit_control.py
+?? scripts/evaluate/summarize_optical_phenotype_only_nyha.py
+?? scripts/evaluate/summarize_p1_rgb_p0aligned_resnet18_5fold.py
+?? scripts/evaluate/summarize_p2_a1_5fold.py
+?? scripts/evaluate/summarize_p2_a1_vs_b0.py
+?? scripts/evaluate/summarize_p2_b0_binary_rgb_fold0.py
+?? scripts/evaluate/summarize_p2_r1_vs_b0.py
+?? scripts/p0b/
+?? scripts/p1/
+?? scripts/p2/
+?? scripts/run/run_e0b_global_resnet18_control_patient_binary_5fold.py
+?? scripts/run/run_global_optical_fusion_overfit_control.py
+?? scripts/run/run_p1_rgb_p0aligned_resnet18_5fold.py
+?? scripts/run/run_p2_a1_binary_rgb_deca_aux_5fold.py
+?? scripts/run/run_p2_a1_binary_rgb_deca_aux_fold0.py
+?? scripts/run/run_p2_b0_binary_rgb_fold0.py
+?? scripts/run/run_p2_r1_binary_deca_relighting_fold0.py
+?? scripts/train/run_optical_phenotype_only_nyha.py
+?? scripts/train/train_e0b_global_resnet18_control_patient_binary_5fold.py
+?? scripts/train/train_e1_global_resnet18_hierarchical_conditional_5fold.py
+?? scripts/train/train_e2_global_multiroi_equal_fusion_5fold.py
+?? scripts/train/train_global_optical_fusion_overfit_control_5fold.py
+?? scripts/train/train_p1_rgb_p0aligned_resnet18_5fold.py
+?? scripts/train/train_p2_a1_binary_rgb_deca_aux.py
+?? scripts/train/train_p2_a1_binary_rgb_deca_aux_fold0.py
+?? scripts/train/train_p2_r1_binary_deca_relighting_fold0.py
+?? src/
+?? tests/p0b/
+?? tests/p1/
+?? tests/p1_extension/
+?? tests/p1_stage_d/
+?? tests/p2/
+?? tests/preprocessing/
+?? tests/test_e0b_control_patient_binary.py
+?? tests/test_e1_hierarchical_conditional.py
+?? tests/test_e2_global_multiroi_equal_fusion.py
+?? tests/test_frozen_batchnorm_behavior.py
+?? tests/test_optical_phenotype_only_classifier.py
+?? tests/test_optical_phenotype_only_dataset.py
+?? tests/test_optical_phenotype_only_protocol.py
+?? tests/test_overfit_control_checkpoint.py
+?? tests/test_overfit_control_deterministic_eval.py
+?? tests/test_overfit_control_optimizer_groups.py
+?? tests/test_overfit_control_protocol.py
+?? tests/test_overfit_control_summary.py
+?? tests/test_p2_a1_rgb_deca_aux.py
+?? tests/test_p2_a1_rgb_deca_aux_5fold.py
+?? tests/test_p2_b0_binary_rgb_fold0.py
+?? tests/test_p2_r1_relighting.py
+?? tests/test_partial_layer4_behavior.py
+?? tests/test_resnet18_trainability_strategy.py
+?? third_party/
+?? trainers/e1_hierarchical_conditional_trainer.py
+?? trainers/e2_trainer.py
+?? trainers/global_optical_fusion_overfit_trainer.py
+?? trainers/p1_component_trainer.py
+?? utils/e0b_binary_audit.py
+?? utils/p1_cluster_bootstrap.py
+?? utils/p1_component_comparison.py
+?? utils/p1_component_phase2.py
+?? utils/p1_component_preflight.py
+?? utils/p1_component_registry.py
+?? utils/p1_longitudinal_label_audit.py
+?? utils/p1_representation_normalization.py
+?? utils/p1_rgb_audit.py
+?? utils/p1_sweep_state.py
+?? utils/p2_b0_protocol.py
+?? utils/resnet18_anti_overfit.py
+?? utils/resnet_trainability.py
+## git diff --stat
+ .../global_roi_fusion_config_manifest.csv          |     8 +-
+ .../global_roi_fusion_global_cheek_resnet18.yaml   |   146 +-
+ ...lobal_roi_fusion_global_eye_cheek_resnet18.yaml |   148 +-
+ .../global_roi_fusion_global_eye_resnet18.yaml     |   146 +-
+ .../model_exploration_config_manifest.csv          |    12 +-
+ .../nyha_3class_convnext_tiny_imagenet_meanbg.yaml |   120 +-
+ .../nyha_3class_densenet121_imagenet_meanbg.yaml   |   120 +-
+ ...yha_3class_efficientnet_b0_imagenet_meanbg.yaml |   120 +-
+ ..._3class_mobilenet_v3_large_imagenet_meanbg.yaml |   120 +-
+ .../nyha_3class_swin_t_imagenet_meanbg.yaml        |   120 +-
+ .../backbone_check_config_manifest.csv             |    10 +-
+ ...ass_resnet34_preproc_hybrid_black_baseline.yaml |   120 +-
+ ...ss_resnet34_preproc_hybrid_imagenet_meanbg.yaml |   120 +-
+ ...ass_resnet50_preproc_hybrid_black_baseline.yaml |   120 +-
+ ...ss_resnet50_preproc_hybrid_imagenet_meanbg.yaml |   120 +-
+ .../config_manifest.csv                            |    18 +-
+ ...ass_resnet18_preproc_hybrid_black_baseline.yaml |   120 +-
+ ...lass_resnet18_preproc_hybrid_black_clahe_l.yaml |   120 +-
+ ...lass_resnet18_preproc_hybrid_black_gray3ch.yaml |   120 +-
+ ...ss_resnet18_preproc_hybrid_black_labl_norm.yaml |   120 +-
+ ...8_preproc_hybrid_black_masked_grayworld_wb.yaml |   120 +-
+ ..._resnet18_preproc_hybrid_black_retinex_msr.yaml |   120 +-
+ ...ss_resnet18_preproc_hybrid_imagenet_meanbg.yaml |   120 +-
+ ...8_preproc_hybrid_imagenet_meanbg_labl_norm.yaml |   120 +-
+ .../swin_tiny_imagenet_meanbg_lr5e5.yaml           |   120 +-
+ ..._tiny_imagenet_meanbg_weightedsoftce_ls005.yaml |   132 +-
+ .../swin_tiny_second_stage_config_manifest.csv     |     6 +-
+ ...244\204\347\220\206\346\200\235\350\267\257.md" |   861 +-
+ ...256\255\347\273\203\346\200\235\350\267\257.md" |  1421 +-
+ prompt.md                                          |  3735 +-
+ .../aligned_skin_image_quality_metrics.csv         |  1046 +-
+ .../auxiliary_exif_device_crosstab.csv             |    18 +-
+ .../auxiliary_exif_device_explanation.csv          |    30 +-
+ .../cohort_alignment_audit.csv                     |  1046 +-
+ .../cohort_alignment_checks.csv                    |    42 +-
+ .../core_parameter_apex_consistency.csv            |    30 +-
+ .../core_parameter_by_camera_nyha.csv              |   642 +-
+ .../core_parameter_by_device.csv                   |   258 +-
+ .../core_parameter_by_nyha.csv                     |   386 +-
+ .../core_parameter_by_sex.csv                      |   258 +-
+ .../core_parameter_confounding_tests.csv           |   758 +-
+ .../core_parameter_correlations.csv                |  6146 +--
+ .../core_parameter_decision_table.csv              |    20 +-
+ .../core_parameter_device_identity.csv             |    36 +-
+ .../core_parameter_image_quality_correlations.csv  |    74 +-
+ .../core_parameter_outliers.csv                    |   466 +-
+ .../core_parameter_summary.csv                     |   130 +-
+ .../core_parameter_values_and_derived.csv          |  1046 +-
+ .../core_parameter_vif.csv                         |   194 +-
+ .../exif_core_parameter_audit_report.md            |   496 +-
+ .../exif_only_confusion_matrices.csv               |   326 +-
+ .../exif_only_cv_metrics.csv                       |   326 +-
+ .../exif_only_fold_metrics.csv                     |  1622 +-
+ .../exif_only_oof_predictions.csv                  | 18002 ++++----
+ .../exif_only_oof_validation.csv                   |    38 +-
+ .../figures/brightness_residual_by_device.svg      |   558 +-
+ .../brightness_value_vs_apex_prediction.svg        |  2124 +-
+ .../figures/camera_by_nyha_grouped.svg             |  2772 +-
+ .../core_and_derived_correlation_heatmap.svg       |  1046 +-
+ .../core_original_distributions_by_device.svg      |  4742 +-
+ .../figures/core_parameters_by_nyha.svg            |  2194 +-
+ .../figures/exif_only_oof_confusion_matrix.svg     |   570 +-
+ .../figures/exif_only_oof_roc.svg                  |  1672 +-
+ .../figures/exif_vs_aligned_skin_image_quality.svg |  5846 +--
+ .../image_quality_failures.csv                     |     2 +-
+ .../known_high_iso_outliers.csv                    |    30 +-
+ .../run_manifest.json                              |  4836 +-
+ .../aligned_skin_image_quality_metrics.csv         |  1046 +-
+ .../brightness_apex_consistency_statistics.csv     |    16 +-
+ .../exif_device_shift_statistics.csv               |    32 +-
+ .../exif_four_field_by_device.csv                  |    62 +-
+ .../exif_four_field_decision_table.csv             |    26 +-
+ .../exif_four_field_image_relationships.csv        |    80 +-
+ .../exif_four_field_outliers.csv                   |   442 +-
+ .../exif_four_field_summary.csv                    |    32 +-
+ .../exif_four_field_values_and_derived.csv         |  1046 +-
+ .../exif_original_and_derived_correlations.csv     |  2702 +-
+ .../figures/brightness_apex_consistency.svg        |  2168 +-
+ .../figures/brightness_residual_by_device.svg      |   558 +-
+ .../figures/correlation_heatmap.svg                |  1006 +-
+ .../figures/exif_vs_image_quality.svg              | 15624 +++----
+ .../figures/four_field_by_device.svg               |  2028 +-
+ .../figures/four_field_distributions.svg           |  3416 +-
+ .../high_iso_14_image_review.csv                   |    30 +-
+ .../image_quality_failures.csv                     |     2 +-
+ .../run_manifest.json                              |   284 +-
+ .../device_parameter_coverage.csv                  |   170 +-
+ .../exif_parameter_audit/image_parameter_audit.csv |  1046 +-
+ .../exif_parameter_audit/parameter_coverage.csv    |    86 +-
+ .../parameter_value_issues.csv                     |  4064 +-
+ .../exif_parameter_audit/parameter_values_long.csv | 43850 +++++++++----------
+ .../exif_parameter_audit/patient_level_audit.csv   |  1012 +-
+ reports/exif_parameter_audit/run_manifest.json     |    24 +-
+ .../feature_distribution_audit.csv                 |   202 +-
+ .../foldwise_metric_deltas.csv                     |   842 +-
+ .../oof_metrics_all_variants.csv                   |    12 +-
+ .../pairwise_bootstrap_deltas.csv                  |   100 +-
+ .../pairwise_comparison.csv                        |   170 +-
+ .../.stage2a_owner.json                            |     6 +-
+ ...optical_condition_calibration_stage2a_report.md |   704 +-
+ .../optical_condition_calibration_stage2a/run.log  |    56 +-
+ .../.stage2b_owner.json                            |     6 +-
+ ...optical_condition_calibration_stage2b_report.md |   948 +-
+ .../optical_condition_calibration_stage2b/run.log  |    70 +-
+ .../bbox_overlay_20/bbox_overlay_20_review.csv     |    42 +-
+ .../bbox_overlay_20/bbox_overlay_20_selection.csv  |    42 +-
+ reports/optical_observations_v1/extraction_run.log |    42 +-
+ .../optical_observation_extraction_report.md       |   294 +-
+ .../logs/integrity_validation.json                 |    42 +-
+ .../optical_roi_dataset_v1/logs/test_output.txt    |     4 +-
+ .../optical_roi_dataset_v1/low_coverage_cases.csv  |    80 +-
+ .../mask_coverage_summary.csv                      |    56 +-
+ test.py                                            |     8 +-
+ 113 files changed, 75574 insertions(+), 77635 deletions(-)

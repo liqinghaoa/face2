@@ -172,6 +172,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--chin-expand-ratio", type=float, default=None)
     parser.add_argument("--feather-kernel", type=int, default=None)
     parser.add_argument("--num-qc-preview", type=int, default=None)
+    parser.add_argument(
+        "--start-index",
+        type=int,
+        default=None,
+        help="Zero-based row offset in the split table, used for chunked preprocessing.",
+    )
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--seed", type=int, default=None)
     parser.add_argument(
@@ -185,6 +191,12 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         default=None,
         help="Remove only the selected output directory before rebuilding it.",
+    )
+    parser.add_argument(
+        "--append-existing",
+        action="store_true",
+        default=None,
+        help="Allow an existing output directory and append this chunk's rows to preprocess_log.csv.",
     )
     return parser
 
@@ -258,10 +270,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "chin_expand_ratio": 0.03,
         "feather_kernel": 11,
         "num_qc_preview": 20,
+        "start_index": 0,
         "max_samples": None,
         "seed": 42,
         "save_intermediates": False,
         "overwrite": False,
+        "append_existing": False,
     }
     values: dict[str, Any] = {"project_root": project_root, "config": cli.config}
     for key, default in defaults.items():
@@ -305,6 +319,8 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--feather-kernel must be a positive odd integer")
     if int(args.num_qc_preview) < 0:
         raise ValueError("--num-qc-preview must be non-negative")
+    if int(args.start_index) < 0:
+        raise ValueError("--start-index must be non-negative")
     if args.max_samples is not None and int(args.max_samples) <= 0:
         raise ValueError("--max-samples must be greater than zero")
 
@@ -321,9 +337,14 @@ def resolve_under_project(path_value: str | Path, project_root: Path) -> Path:
     return path.resolve() if path.is_absolute() else (project_root / path).resolve()
 
 
-def load_split_table(split_csv: Path, max_samples: int | None) -> pd.DataFrame:
+def load_split_table(
+    split_csv: Path, max_samples: int | None, start_index: int = 0
+) -> pd.DataFrame:
     table = alignment.load_split_ids(split_csv)
-    return table if max_samples is None else table.iloc[: int(max_samples)].copy()
+    start = int(start_index)
+    if max_samples is None:
+        return table.iloc[start:].copy()
+    return table.iloc[start : start + int(max_samples)].copy()
 
 
 def prepare_output_dirs(
@@ -331,6 +352,7 @@ def prepare_output_dirs(
     overwrite: bool,
     project_root: Path,
     save_intermediates: bool = False,
+    append_existing: bool = False,
 ) -> dict[str, Path]:
     output_dir = output_dir.resolve()
     protected = {
@@ -342,12 +364,15 @@ def prepare_output_dirs(
     if output_dir in protected:
         raise ValueError(f"Refusing unsafe output directory: {output_dir}")
     if output_dir.exists():
-        if not overwrite:
+        if append_existing:
+            pass
+        elif not overwrite:
             raise FileExistsError(
                 f"Output directory already exists: {output_dir}\n"
                 "Use --overwrite only for this exact dataset directory."
             )
-        shutil.rmtree(output_dir)
+        else:
+            shutil.rmtree(output_dir)
     names = (
         "images", "logs",
         "qc_preview/random_success",
@@ -1122,6 +1147,13 @@ def summarize_logs(
     output_dir: Path,
     logs_dir: Path,
 ) -> str:
+    if bool(getattr(args, "append_existing", False)):
+        existing_path = logs_dir / "preprocess_log.csv"
+        if existing_path.is_file():
+            existing = pd.read_csv(existing_path, dtype={"ID": "string"}, encoding="utf-8-sig")
+            log_df = pd.concat([existing, log_df], ignore_index=True)
+            if "ID" in log_df.columns:
+                log_df = log_df.drop_duplicates("ID", keep="last")
     log_df.to_csv(
         logs_dir / "preprocess_log.csv", index=False, encoding="utf-8-sig"
     )
@@ -1286,7 +1318,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     if not args.image_dir.is_dir():
         raise NotADirectoryError(f"Image directory does not exist: {args.image_dir}")
-    split_df = load_split_table(args.split_csv, args.max_samples)
+    split_df = load_split_table(args.split_csv, args.max_samples, int(args.start_index))
     parsing_device = parsing.resolve_parsing_device(str(args.parsing_device))
     parsing_model = parsing.load_face_parsing_model(
         str(args.parsing_model), args.parsing_checkpoint, parsing_device
@@ -1296,6 +1328,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         bool(args.overwrite),
         project_root,
         save_intermediates=bool(args.save_intermediates),
+        append_existing=bool(args.append_existing),
     )
     if bool(args.save_intermediates):
         args.intermediate_dirs = {

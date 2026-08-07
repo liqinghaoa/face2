@@ -1,0 +1,13 @@
+experiment_key: p1_n
+display_name: P1-N
+representation: normal
+input_type: image
+model_type: resnet18_single
+mask: face_valid
+normalization: fixed_masked_normal_01
+normal_flip_status: SAFE_FLIP_DISABLED
+normal_coordinate_status: UNVERIFIED
+horizontal_flip:
+  enabled: false
+  mode: disabled_due_to_unverified_coordinate_convention
+  coordinate_status: unverified

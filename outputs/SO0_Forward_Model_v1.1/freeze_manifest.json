@@ -1,0 +1,1901 @@
+{
+  "bundle_id": "SO0_Forward_Model_v1.1",
+  "files": [
+    {
+      "category": "decision",
+      "file_size_bytes": 88,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/FREEZE_CANDIDATE.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "272a2574cc0cfce1a5d755417a7854d8927bea26b03832b640176df2df3bb1d1"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 14790,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/SO0_forward_model_decision.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5b90ff82512a1e2a3b267f9134aeafead2c86a38cf65f5a09f164e8f34dd4333"
+    },
+    {
+      "category": "report",
+      "file_size_bytes": 4992,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/SO0_reacceptance_report.md",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6d8ff47c026db6c56910b241ffbb97a8e5ac4f735b6d493f5e36139ae02bfcc0"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 88,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/FREEZE_CANDIDATE.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "272a2574cc0cfce1a5d755417a7854d8927bea26b03832b640176df2df3bb1d1"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 14685,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/SO0_forward_model_decision.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "68e5529600894a7cfcd2a624d82f23a96688333e62223e2611923c69d5628ead"
+    },
+    {
+      "category": "report",
+      "file_size_bytes": 4928,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/SO0_reacceptance_report.md",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "474cf941b6333750a605da45e23cd24f920092f95ed15f272a8df216dde78371"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/acceptance_thresholds.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "d1558ce80f5545f7502912ef79d29df9691c6078bbd578e00e7d77e714e1e57e"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 2674,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/audit_protocol.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9c56e221235fe7d9a360baa7df26c791f7c71ed6344ef2b376eafa0483d0c1ba"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 7953,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/colorchecker_matrices.npz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "28ee54c6aa4426c62fbc33ac5057261a80ac7fd56efa655fb60005eeb841ddcb"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 467,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/environment.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a1076a1d1f46ef85d0f9a77e701b77435323d92933996f9bcb487e7c9711bb2b"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 56045,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/camera_light_skin_grid.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "9e423c85a7f48548dfea3ea437d2345dd2215eec1a3284db6cc2abd0de366d26"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/camera_light_skin_grid.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "bb810e44ca4320174be8cc37ad332337cf4b96b4facd4a9e92e533cb46ce646c"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 20455,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/colorchecker_deltae_distribution.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d68d20914aff2bd5db1bda7feca61fb69262383f52ab6fb0577c124c2fb31e75"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 294,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/colorchecker_deltae_distribution.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "b1839c079f84c6c2f274d1faa1f1193f02b6ee4282f33d4eda00262e89991af4"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 34365,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/hemoglobin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "07b9dc5461dc78e761ffa070f6d458613e26de45c6702c52464331d880804fcf"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/hemoglobin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a3e001fb329c9d0863d7d691c305920ae429e6b73f3018d93d2291d4ca56ad28"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 31756,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/melanin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d29003edb2d00b4449cbd923264d0caf83f5bd3c9afc178df62dcebdb8922ac9"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/melanin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7bb2d453ca1a2d87b77a8c492520ca97661a301e110f157515003ede69f4604f"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22663,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/mh_jacobian_cosine.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "dddad65100fb21dda642110e47cae16af3b6c6b4cf9617b88e86c1adbb7ffaf3"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 264,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/mh_jacobian_cosine.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "9d7dccebcf08faba3254fce9bdcfeda07dab4ef3e36d4f2858d81f3a1d3545c9"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 17989,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/observation_conditioning.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "b49560bed5aaf3f7a2a7f71f39ea4b70e1cfc86340444aac1abef98d46926e14"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 283,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/observation_conditioning.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "98546ea10a1f1019c46d2202a8c326d99da868e8fee6d837f8a115ed0a5abbf8"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 53432,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/resolution_error_by_camera.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7c802e361b104a00362488e70e0eb82f8b3c1741e94ea7a3656b571bb9052ba5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 309,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/resolution_error_by_camera.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "87f3b2d360e71feb74c9fc0ed2843fb7d9ed4baea6e4d327cf92785113094a0b"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/resolution_error_by_light.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5ed25c3c8064bb543c8c9610989f3f6dd223db75c97f0ed72f3e4e87ad8dd144"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 313,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/resolution_error_by_light.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "dd1ec088549c4d6311c39f415634c1334badec862e9c9c011a704515660a1ad2"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 78430,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/skin_reflectance_h_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5dadaa679775143ba4af97b376b6cd02f7b81c854752b31f9c28471c868d99a5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/skin_reflectance_h_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "fd3373f65abfcf30e59c2f3ef8a1f1fa3cff2d17c6f3ed49d94801797dcdac45"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 86550,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/skin_reflectance_m_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f25e98dadacf11fb5e793d80c07ab105e52c557fcb57f757db5e8e2319503dd7"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/figures/skin_reflectance_m_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "df10d0b4522bf75effa8636c453e11dd8294a12ebbc0ea00a25dc00406b3e332"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 6608,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/formula_registry.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b1d12d2b702f53394dea44193d161d616f6ea6628a5d02dc134959d899e47a90"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/frozen_asset_hash_after.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/frozen_asset_hash_before.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1888,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/frozen_config.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 99,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/pytest_full.log",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "c34202cc15a9537a0625eadf38e7e8fc900733b99e2d29c7a19326340402038e"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 3152,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/pytest_report.xml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "30de72b33be11e4ab8315302fd8a51d9928d427d6c383c1a21a27b887a321d5e"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 18075,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/run_manifest.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "3a961266b7930269e79012ed6bdccd78f9051f2d43b356dd2e959761bdf98160"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 5356,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/stage_status.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "118075c5fdcf3ee1a04a821c3ac24219aad10bf76a1418af75d1a083a4c92daf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 67400,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/autograd_audit.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "10cfe64cb43622ccae36a502f85e777307dd88bcc8367df0d2649a8791b3d2d2"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 611,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/backend_parity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "2d97339f95538ee431ff173abbfade7e4239d212eb6f05bef64be6c756c040d5"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 30623,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/colorchecker_calibration_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "912a93b86eaa9e1875ed802533134336fd571796662a6a7a74276259005e185f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 197,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/dermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "8f98ff454cdf476f93a6b72064051776397f8a2c91f012d8f1b89048c42a5319"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 203,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/epidermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "565ee5d89d7b87c5b65b0ff99fb269025bca6f8228999ec0b67f7284859e83a8"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 998378,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/exposure_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "afccd19da0be8262a7eaa03cbfc3a8a3e4d041ba3ac864cd93e4a9d290c1db0e"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 169,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/melanin_formula_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "bfdd9eacbc4fa224f165e28d4f22c34548ff1ea890b62f84dea0e63807bdbf45"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 999106,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/mh_observation_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "faf2887e49ea154b13bcf440d276d86ff6bd7e2e83c7a789009de2b19bb1b2cf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 305,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/mh_observation_separability_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "78be68f6cde2fea60bb49147fdc9e20cd3457f0dc44a811fe81aa69a1d84b702"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10679,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/mh_observation_worst_cases.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5d7c21bc1a9da7856ad300dec691645d88355925ccad0bb957200f2cd14bec10"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1612,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/mh_spectral_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7f490ffa956be7ed0cd609693d90e0065f17647cfb8982c9abf2a8ab49827481"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 95,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/monotonicity_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f3492e5d91deb89705796f7efdcb2da1f993cbd3691b3cb327c2a1fd06ebfe6a"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 2603,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/multicamera_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "e89f6da91b7fd01ae67e2c03e28cc3c4f054a64a0507eeccaa5ccca69f1dd512"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 408,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/multilight_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a593537a6f4b371191d222129a8da5c5d56978f162919b0559c4f2f29672408f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 215286,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/numerical_stability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "cfd40d53e1142a5001276d871649e0951a23941b0ffdd58e725da70724816a30"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 198,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/oxygenation_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6d330c388d622fa79082327bf2290f7a6810747bf926f7abb55a635717cbe42c"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10226,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/resolution_1nm_vs_5nm_by_camera_light.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c348b22ab345e4bef9eeb9450343e683a973a76cdd8b3855a091a3e3610be0f7"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 158144,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/resolution_1nm_vs_5nm_cie_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "185e6ef772b6d31086b035e74b800cd5bc24f5fd00a35b090fd39af23075e3ca"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 5877699,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/resolution_1nm_vs_5nm_detail.csv.gz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "4a9c89d4ea4985b1bf75e87f2941b968560b252a473996f71478e745eaa222a0"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 340,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/resolution_1nm_vs_5nm_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6eb855440cbd6e2bcd3dcdf45dde508d94021659417552c79c2c537c0342f6ff"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 982571,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/shading_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "ac66a0721f3743b3c9f82815b0425dfa263e8a90a266b9d6ca8f3598c1244096"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1256,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/shading_specular_linearity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "49cda043ba4623132eef0cfd8de6bd4a55027d64b0ecc264a5d9eee3f77414f4"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1335785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run01/tables/specular_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "0a7c419a4abb1e34bd561a5c9a2d76bee681f57ffd40a33b4fe86afbae517e6b"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 88,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/FREEZE_CANDIDATE.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "272a2574cc0cfce1a5d755417a7854d8927bea26b03832b640176df2df3bb1d1"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 14685,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/SO0_forward_model_decision.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "37ac8e2999d1dbbd2aed970942e633a27c5460fe619f27cba4c4b4613cfb761d"
+    },
+    {
+      "category": "report",
+      "file_size_bytes": 4928,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/SO0_reacceptance_report.md",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "474cf941b6333750a605da45e23cd24f920092f95ed15f272a8df216dde78371"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/acceptance_thresholds.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "d1558ce80f5545f7502912ef79d29df9691c6078bbd578e00e7d77e714e1e57e"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 2674,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/audit_protocol.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9c56e221235fe7d9a360baa7df26c791f7c71ed6344ef2b376eafa0483d0c1ba"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 7953,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/colorchecker_matrices.npz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "28ee54c6aa4426c62fbc33ac5057261a80ac7fd56efa655fb60005eeb841ddcb"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 467,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/environment.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a1076a1d1f46ef85d0f9a77e701b77435323d92933996f9bcb487e7c9711bb2b"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 56045,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/camera_light_skin_grid.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "9e423c85a7f48548dfea3ea437d2345dd2215eec1a3284db6cc2abd0de366d26"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/camera_light_skin_grid.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a34f2fd9a63c38cffcc443d59ae23b3956efd98f6f61fc18148a31bbf47b13a3"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 20455,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/colorchecker_deltae_distribution.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d68d20914aff2bd5db1bda7feca61fb69262383f52ab6fb0577c124c2fb31e75"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 294,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/colorchecker_deltae_distribution.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "1ab46ef6e740475755cd040e3fd5e57a9a153f998ec504ec280af2b7eea0b282"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 34365,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/hemoglobin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "07b9dc5461dc78e761ffa070f6d458613e26de45c6702c52464331d880804fcf"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/hemoglobin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "3b155971cdc4b33b9e4e803c20ed9e50cc667a6e84c6c7d316abe202fd627174"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 31756,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/melanin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d29003edb2d00b4449cbd923264d0caf83f5bd3c9afc178df62dcebdb8922ac9"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/melanin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f24735e2d4ef802c4925799aead535d48307309033a38bf12676b28fa5e88922"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22663,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/mh_jacobian_cosine.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "dddad65100fb21dda642110e47cae16af3b6c6b4cf9617b88e86c1adbb7ffaf3"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 264,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/mh_jacobian_cosine.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c1acce3b033d4e4d9c5185c871cf3bebf698c7f221ee316097bcedd3524b9e3f"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 17989,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/observation_conditioning.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "b49560bed5aaf3f7a2a7f71f39ea4b70e1cfc86340444aac1abef98d46926e14"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 283,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/observation_conditioning.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "03d3228f844dc175e625190a6b4df1ecead3204d426359c60d8db0f1631d5869"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 53432,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/resolution_error_by_camera.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7c802e361b104a00362488e70e0eb82f8b3c1741e94ea7a3656b571bb9052ba5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 309,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/resolution_error_by_camera.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5820d12dc12684c266c12a95149ae83e49f0eb3e1d333f35d3337ae72a13e2d1"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/resolution_error_by_light.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5ed25c3c8064bb543c8c9610989f3f6dd223db75c97f0ed72f3e4e87ad8dd144"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 313,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/resolution_error_by_light.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "939bd1167bc0f32675e1b29a383e46db038dcf4b781a75a8cf6c4c4dab664cef"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 78430,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/skin_reflectance_h_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5dadaa679775143ba4af97b376b6cd02f7b81c854752b31f9c28471c868d99a5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/skin_reflectance_h_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a8a70a65f1628019192c00588890c232c9e426a473371785a7635b7c6427de85"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 86550,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/skin_reflectance_m_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f25e98dadacf11fb5e793d80c07ab105e52c557fcb57f757db5e8e2319503dd7"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/figures/skin_reflectance_m_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "43675dc9cedf9a5bcecb3dd99a78d778354db8bac4bc8621b7ffaa983e7ec760"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 6608,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/formula_registry.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b1d12d2b702f53394dea44193d161d616f6ea6628a5d02dc134959d899e47a90"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/frozen_asset_hash_after.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/frozen_asset_hash_before.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1888,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/frozen_config.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 99,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/pytest_full.log",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "6fbb5d8a8cb350d4050e507d9f54bc0de76480dbc1f84945332f81f773b6ad21"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 3152,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/pytest_report.xml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "c31e31a1a333dd3092510a469b2f863ba0b9f585152de7a067ed4e3a30f819c3"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 18075,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/run_manifest.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6cf71211113d3dd711155628d078c6b70f982730ea536b63305d9e50b11e8025"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 5356,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/stage_status.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "118075c5fdcf3ee1a04a821c3ac24219aad10bf76a1418af75d1a083a4c92daf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 67400,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/autograd_audit.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "10cfe64cb43622ccae36a502f85e777307dd88bcc8367df0d2649a8791b3d2d2"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 611,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/backend_parity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "2d97339f95538ee431ff173abbfade7e4239d212eb6f05bef64be6c756c040d5"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 30623,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/colorchecker_calibration_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "912a93b86eaa9e1875ed802533134336fd571796662a6a7a74276259005e185f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 197,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/dermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "8f98ff454cdf476f93a6b72064051776397f8a2c91f012d8f1b89048c42a5319"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 203,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/epidermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "565ee5d89d7b87c5b65b0ff99fb269025bca6f8228999ec0b67f7284859e83a8"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 998378,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/exposure_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "afccd19da0be8262a7eaa03cbfc3a8a3e4d041ba3ac864cd93e4a9d290c1db0e"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 169,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/melanin_formula_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "bfdd9eacbc4fa224f165e28d4f22c34548ff1ea890b62f84dea0e63807bdbf45"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 999106,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/mh_observation_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "faf2887e49ea154b13bcf440d276d86ff6bd7e2e83c7a789009de2b19bb1b2cf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 305,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/mh_observation_separability_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "78be68f6cde2fea60bb49147fdc9e20cd3457f0dc44a811fe81aa69a1d84b702"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10679,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/mh_observation_worst_cases.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5d7c21bc1a9da7856ad300dec691645d88355925ccad0bb957200f2cd14bec10"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1612,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/mh_spectral_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7f490ffa956be7ed0cd609693d90e0065f17647cfb8982c9abf2a8ab49827481"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 95,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/monotonicity_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f3492e5d91deb89705796f7efdcb2da1f993cbd3691b3cb327c2a1fd06ebfe6a"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 2603,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/multicamera_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "e89f6da91b7fd01ae67e2c03e28cc3c4f054a64a0507eeccaa5ccca69f1dd512"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 408,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/multilight_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a593537a6f4b371191d222129a8da5c5d56978f162919b0559c4f2f29672408f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 215286,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/numerical_stability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "cfd40d53e1142a5001276d871649e0951a23941b0ffdd58e725da70724816a30"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 198,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/oxygenation_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6d330c388d622fa79082327bf2290f7a6810747bf926f7abb55a635717cbe42c"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10226,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/resolution_1nm_vs_5nm_by_camera_light.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c348b22ab345e4bef9eeb9450343e683a973a76cdd8b3855a091a3e3610be0f7"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 158144,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/resolution_1nm_vs_5nm_cie_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "185e6ef772b6d31086b035e74b800cd5bc24f5fd00a35b090fd39af23075e3ca"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 5877699,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/resolution_1nm_vs_5nm_detail.csv.gz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "85a1d213a15b5753fae5f5a14bd97f9394f8d4e50d5607bf48d24667578a23da"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 340,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/resolution_1nm_vs_5nm_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6eb855440cbd6e2bcd3dcdf45dde508d94021659417552c79c2c537c0342f6ff"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 982571,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/shading_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "ac66a0721f3743b3c9f82815b0425dfa263e8a90a266b9d6ca8f3598c1244096"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1256,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/shading_specular_linearity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "49cda043ba4623132eef0cfd8de6bd4a55027d64b0ecc264a5d9eee3f77414f4"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1335785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/_runs/reacceptance_run02/tables/specular_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "0a7c419a4abb1e34bd561a5c9a2d76bee681f57ffd40a33b4fe86afbae517e6b"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/acceptance_thresholds.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "d1558ce80f5545f7502912ef79d29df9691c6078bbd578e00e7d77e714e1e57e"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 2674,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/audit_protocol.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9c56e221235fe7d9a360baa7df26c791f7c71ed6344ef2b376eafa0483d0c1ba"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 56045,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/camera_light_skin_grid.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "9e423c85a7f48548dfea3ea437d2345dd2215eec1a3284db6cc2abd0de366d26"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 302,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/camera_light_skin_grid.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a34f2fd9a63c38cffcc443d59ae23b3956efd98f6f61fc18148a31bbf47b13a3"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 20455,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/colorchecker_deltae_distribution.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d68d20914aff2bd5db1bda7feca61fb69262383f52ab6fb0577c124c2fb31e75"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 294,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/colorchecker_deltae_distribution.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "1ab46ef6e740475755cd040e3fd5e57a9a153f998ec504ec280af2b7eea0b282"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 34365,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/hemoglobin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "07b9dc5461dc78e761ffa070f6d458613e26de45c6702c52464331d880804fcf"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/hemoglobin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "3b155971cdc4b33b9e4e803c20ed9e50cc667a6e84c6c7d316abe202fd627174"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 31756,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/melanin_color_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "d29003edb2d00b4449cbd923264d0caf83f5bd3c9afc178df62dcebdb8922ac9"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 282,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/melanin_color_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f24735e2d4ef802c4925799aead535d48307309033a38bf12676b28fa5e88922"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22663,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/mh_jacobian_cosine.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "dddad65100fb21dda642110e47cae16af3b6c6b4cf9617b88e86c1adbb7ffaf3"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 264,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/mh_jacobian_cosine.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c1acce3b033d4e4d9c5185c871cf3bebf698c7f221ee316097bcedd3524b9e3f"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 17989,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/observation_conditioning.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "b49560bed5aaf3f7a2a7f71f39ea4b70e1cfc86340444aac1abef98d46926e14"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 283,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/observation_conditioning.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "03d3228f844dc175e625190a6b4df1ecead3204d426359c60d8db0f1631d5869"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 53432,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/resolution_error_by_camera.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7c802e361b104a00362488e70e0eb82f8b3c1741e94ea7a3656b571bb9052ba5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 309,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/resolution_error_by_camera.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5820d12dc12684c266c12a95149ae83e49f0eb3e1d333f35d3337ae72a13e2d1"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 22785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/resolution_error_by_light.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5ed25c3c8064bb543c8c9610989f3f6dd223db75c97f0ed72f3e4e87ad8dd144"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 313,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/resolution_error_by_light.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "939bd1167bc0f32675e1b29a383e46db038dcf4b781a75a8cf6c4c4dab664cef"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 78430,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/skin_reflectance_h_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5dadaa679775143ba4af97b376b6cd02f7b81c854752b31f9c28471c868d99a5"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/skin_reflectance_h_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a8a70a65f1628019192c00588890c232c9e426a473371785a7635b7c6427de85"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 86550,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/skin_reflectance_m_sweep.png",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f25e98dadacf11fb5e793d80c07ab105e52c557fcb57f757db5e8e2319503dd7"
+    },
+    {
+      "category": "audit_figure",
+      "file_size_bytes": 297,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/figures/skin_reflectance_m_sweep.png.metadata.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "43675dc9cedf9a5bcecb3dd99a78d778354db8bac4bc8621b7ffaa983e7ec760"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 6608,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/formula_registry.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b1d12d2b702f53394dea44193d161d616f6ea6628a5d02dc134959d899e47a90"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/frozen_asset_hash_after.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1888,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/frozen_config.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 108,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/latest_successful_run.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "1c1380d0e0c2e314fad03d4f9cc0338a6ac2777fb7da821592c5b4eb37b8b15d"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 467,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/environment_before.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a1076a1d1f46ef85d0f9a77e701b77435323d92933996f9bcb487e7c9711bb2b"
+    },
+    {
+      "category": "asset_verification",
+      "file_size_bytes": 3257,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/frozen_asset_hash_before.txt",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "5d1af74296d5aa668e570ac0a07b1cf06b4fff0d15c460498a4f70fbde5cb35f"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 25018,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/git_status_before.txt",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "9f5262e0f0b4393d7f59a10ab2e90437d0f69fb3185e129604ed0b5a74bdc9dc"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 1453,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/physics_core_hash_before.txt",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c0509f726bec22e6e1e48563e394dd41493f27330b32efa02a2982c73dd02b87"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1375820,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/physics_golden_after.npz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "67d20428df04e9b7408c0fcd6b7e33ef9f65ae2f1a1067adb4a1bea9c4324c50"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1375840,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/physics_golden_before.npz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "072847049dee53c023253da2901349adb6c511a546aee504e1d42f90adf12673"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 632680,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/physics_golden_index.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "ea6b1c3e4df5cc64b1f8e4eeede4f02ddbc363b008e876e906ce5fb32b1935aa"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 478,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/physics_regression.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "1dc80659595837c1674842377e849426fe535a3e2d594ddc7e4482949cff1009"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 190,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/preflight/repair_before_status.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "ae0c772992d5c83d5ee19f5ab51f972f147fc3d305054dc86fc6c4167c47d92e"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 99,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/pytest_full.log",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "6fbb5d8a8cb350d4050e507d9f54bc0de76480dbc1f84945332f81f773b6ad21"
+    },
+    {
+      "category": "test_evidence",
+      "file_size_bytes": 3152,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/pytest_report.xml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "c31e31a1a333dd3092510a469b2f863ba0b9f585152de7a067ed4e3a30f819c3"
+    },
+    {
+      "category": "reproducibility",
+      "file_size_bytes": 74,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/reproducibility/reproducibility_decision.json",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": true,
+      "sha256": "9b7247718dc3cd47bab9950538ef64b218d7a1372255b6bed78ae70af88d2c0d"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 645,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/reproducibility/run01_vs_run02.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "49bc08b78b1b2942a13988c0a556b84870d212e1ab11620686670b52569da3a8"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 18075,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/run_manifest.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6cf71211113d3dd711155628d078c6b70f982730ea536b63305d9e50b11e8025"
+    },
+    {
+      "category": "decision",
+      "file_size_bytes": 5356,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/stage_status.json",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "118075c5fdcf3ee1a04a821c3ac24219aad10bf76a1418af75d1a083a4c92daf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 67400,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/autograd_audit.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "10cfe64cb43622ccae36a502f85e777307dd88bcc8367df0d2649a8791b3d2d2"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 611,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/backend_parity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "2d97339f95538ee431ff173abbfade7e4239d212eb6f05bef64be6c756c040d5"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 30623,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/colorchecker_calibration_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "912a93b86eaa9e1875ed802533134336fd571796662a6a7a74276259005e185f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 197,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/dermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "8f98ff454cdf476f93a6b72064051776397f8a2c91f012d8f1b89048c42a5319"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 203,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/epidermis_thickness_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "565ee5d89d7b87c5b65b0ff99fb269025bca6f8228999ec0b67f7284859e83a8"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 998378,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/exposure_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "afccd19da0be8262a7eaa03cbfc3a8a3e4d041ba3ac864cd93e4a9d290c1db0e"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 169,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/melanin_formula_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "bfdd9eacbc4fa224f165e28d4f22c34548ff1ea890b62f84dea0e63807bdbf45"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 999106,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/mh_observation_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "faf2887e49ea154b13bcf440d276d86ff6bd7e2e83c7a789009de2b19bb1b2cf"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 305,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/mh_observation_separability_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "78be68f6cde2fea60bb49147fdc9e20cd3457f0dc44a811fe81aa69a1d84b702"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10679,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/mh_observation_worst_cases.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "5d7c21bc1a9da7856ad300dec691645d88355925ccad0bb957200f2cd14bec10"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1612,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/mh_spectral_separability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "7f490ffa956be7ed0cd609693d90e0065f17647cfb8982c9abf2a8ab49827481"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 95,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/monotonicity_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "f3492e5d91deb89705796f7efdcb2da1f993cbd3691b3cb327c2a1fd06ebfe6a"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 2603,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/multicamera_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "e89f6da91b7fd01ae67e2c03e28cc3c4f054a64a0507eeccaa5ccca69f1dd512"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 408,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/multilight_metrics.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "a593537a6f4b371191d222129a8da5c5d56978f162919b0559c4f2f29672408f"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 215286,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/numerical_stability.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "cfd40d53e1142a5001276d871649e0951a23941b0ffdd58e725da70724816a30"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 198,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/oxygenation_sensitivity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6d330c388d622fa79082327bf2290f7a6810747bf926f7abb55a635717cbe42c"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 10226,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/resolution_1nm_vs_5nm_by_camera_light.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "c348b22ab345e4bef9eeb9450343e683a973a76cdd8b3855a091a3e3610be0f7"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 158144,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/resolution_1nm_vs_5nm_cie_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "185e6ef772b6d31086b035e74b800cd5bc24f5fd00a35b090fd39af23075e3ca"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 5877699,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/resolution_1nm_vs_5nm_detail.csv.gz",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "85a1d213a15b5753fae5f5a14bd97f9394f8d4e50d5607bf48d24667578a23da"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 340,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/resolution_1nm_vs_5nm_summary.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "6eb855440cbd6e2bcd3dcdf45dde508d94021659417552c79c2c537c0342f6ff"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 982571,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/shading_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "ac66a0721f3743b3c9f82815b0425dfa263e8a90a266b9d6ca8f3598c1244096"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1256,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/shading_specular_linearity.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "49cda043ba4623132eef0cfd8de6bd4a55027d64b0ecc264a5d9eee3f77414f4"
+    },
+    {
+      "category": "audit_table",
+      "file_size_bytes": 1335785,
+      "relative_path": "outputs/SO0_Forward_Model_v1.1/tables/specular_linearity_detail.csv",
+      "required_for_reproduction": false,
+      "required_for_scientific_decision": true,
+      "sha256": "0a7c419a4abb1e34bd561a5c9a2d76bee681f57ffd40a33b4fe86afbae517e6b"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 344,
+      "relative_path": "src/skin_optics_so0/AGENTS.md",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "1ec319cd864109ef80e0d185a5e709e31dd4146ee14287e42ee46173e56908d2"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 569,
+      "relative_path": "src/skin_optics_so0/README.md",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "20abc74f28de5d97b2df151742675eba24088e1ed833b985af8e4be3460e4369"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1302,
+      "relative_path": "src/skin_optics_so0/configs/so0/acceptance_thresholds.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "d1558ce80f5545f7502912ef79d29df9691c6078bbd578e00e7d77e714e1e57e"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 2674,
+      "relative_path": "src/skin_optics_so0/configs/so0/audit_protocol_v1_1.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9c56e221235fe7d9a360baa7df26c791f7c71ed6344ef2b376eafa0483d0c1ba"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 6608,
+      "relative_path": "src/skin_optics_so0/configs/so0/forward_formula_registry.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b1d12d2b702f53394dea44193d161d616f6ea6628a5d02dc134959d899e47a90"
+    },
+    {
+      "category": "configuration",
+      "file_size_bytes": 1888,
+      "relative_path": "src/skin_optics_so0/configs/so0/forward_model_mvp.yaml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 360,
+      "relative_path": "src/skin_optics_so0/pyproject.toml",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "855c4d16f5198a4a1673919e4ab2e05254257843c7bdb33975722b406ef55c80"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 2083,
+      "relative_path": "src/skin_optics_so0/scripts/build_colorchecker_matrices.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "595ecc64aa3820ce27b9f0d67273fead76d713fc5c7ac61b136b79bc74174191"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 11639,
+      "relative_path": "src/skin_optics_so0/scripts/generate_so0_forward_report.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "a392e0af5e2e4e97c5f8996cafcb6173376327608cbb44010caa30806b13a209"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 63191,
+      "relative_path": "src/skin_optics_so0/scripts/run_so0_all.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "24e552fc94dabecb5fd6f897cb7c5a0c283d715543c64b329ac5a252eeaf5b91"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1898,
+      "relative_path": "src/skin_optics_so0/scripts/run_so0_forward_sweep.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "fb8e90c5a629ebd9b13544b1a17122d7416159199728a64e443ce4769f563f0c"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 155,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/__init__.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "8604203a8041f1bc85ba89712e420a6827b57ce22b2defff3907f5871880b1ec"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 6006,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/assets.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "1820089f81969de86d3ff8a5b4e6f0f933f4241b02dfb44491d1ab5d4626194c"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 30,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/__init__.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "7e5e81217bc3abc12feb32af6eb1af1562e70ad3a6b1320e185865a28f1349a3"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1446,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/backend_parity.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "7402dcb45fe8253017b50203593759da76319d4f40bf551c3de27a71a3f31dd6"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1744,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/monotonicity.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "41855ee4ca85d05a6e86f3d6974740a78a2d96846f8367bef7a938e5203c0c8a"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1121,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/multicamera.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "99da943ec0dccef7e22ab91a2d6a2bbaa1a76eb42979617b6826e0840da07fa0"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 562,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/multilight.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "a54a0f7f8ac3e7d8b7b507a8538571466086169f0d855f67d181d989fd2da5cd"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 659,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/numerical_stability.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "6ba1802ab90028dbef4949f016cf2097e39d1bbecbdfc7a72b7b1affe526cbfc"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 3917,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/audits/separability.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "5d64663f125d998e85233df4c3369072f76dd42ec38761940eb5940e15d06747"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 8373,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/config.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "63bb9b5894cda4e622d46539825bb68ccd03230706938c25b43cdce802277afc"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 244,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/__init__.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9120a9d3a6e8281355d6633e7f3744e5d5c0f96dd52497bb800d505e69ed32cc"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 2295,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/absorption.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "fb5f9377d3e4e584b0e3839c1cbf5e6b08676e585e38dd7ffbbb6df9707f6871"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 3153,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/color_spaces.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "6f4f301ce2034b414e1a4d102a49ed655121f2bde0e4936b2d5d82df5604d9ef"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 5281,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/colorchecker.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "61c88e7a09d57b624d64a608f9378552a8c68a24f218c0655ac8f21fc212e406"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 2429,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/forward_model.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "1c1fcac00d6bbe4aa5a6470d8786945626a010afb6fd547e7dd9e7a2b37db62a"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 5876,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/image_formation.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "1af7e1452aab151350141f9e265ff11eda768ce53e0d93eaadb0c8e584427b59"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1282,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/kubelka_munk.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9076efcadd3475d8845d21f0cfd17f09446a696a473b681a477cd73b3e89e119"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 3176,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/reflectance.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "582a193c0566db520b0d2d58834d6007fe314ef894fc3eb9979be00d62edd425"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 355,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/numpy_backend/scattering.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "4211aca3f317c46e2d356ec2abd779119ed523d2db064dc689f64728ce0701e9"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 148,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/torch_backend/__init__.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "e2e2694762776233f7d68d5a9269861bfe5b58fdc7ed66149b52878696fac08c"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1648,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/torch_backend/color_spaces.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "5b015d7f9d99d366bce3c81581c1109f817408624b2453a1ba5164bab7fb653a"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 7921,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/torch_backend/forward_model.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "2176f0f703c773065ab6cd9ccf686bde6c142356986721bf283999536bd7ccae"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 2884,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/torch_backend/image_formation.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "e9d8d15710d20a1b870168a0a0222b615bec1816cd767f440eb2f8f337fd5756"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 3321,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/torch_backend/reflectance.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "fdf15598af56824dd35e4513fe0da629d91e9c75c3b6a052426e0a48e6a821ee"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1025,
+      "relative_path": "src/skin_optics_so0/src/skin_optics/types.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "279dfe20a97a9bac9fd457a640c8ea96abf284fc5d486d22b1508f6dd4ac9dee"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 277,
+      "relative_path": "src/skin_optics_so0/tests/conftest.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b5392c1c7a6e740f518ceeaee06ac6b6ef7a54c85dbf82362ee5b832a2cae2b5"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 611,
+      "relative_path": "src/skin_optics_so0/tests/test_absorption.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "a8772ab1fb673b82c685c7978c00b5781afc14546412a60d5b0b654ef0258e27"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 518,
+      "relative_path": "src/skin_optics_so0/tests/test_assets.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "0fddd95b3df4d8e689442c9441dfefedafefa44f2892cb39b9e70f4b9e3967fd"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1238,
+      "relative_path": "src/skin_optics_so0/tests/test_autograd.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "34d48f65f8ed87cc3edebb8df686b134ec26f5d7bb93b272ac4da7ef21717422"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 301,
+      "relative_path": "src/skin_optics_so0/tests/test_backend_parity.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "744c83657c85437a937a1c48aeb58254d72c45a87e1a5d82584c26df4e82e1dd"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1036,
+      "relative_path": "src/skin_optics_so0/tests/test_batch_shapes.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "f280ef3c51e4bd86638873d5bc8248a718c3a6c7f2de90c58e33fdb4cebe1234"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 599,
+      "relative_path": "src/skin_optics_so0/tests/test_camera_path.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "e7ad319a3b7368c4ae028a744155b85be17c903b8a3acd5fc1dbd9b5bbfa1cbf"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1124,
+      "relative_path": "src/skin_optics_so0/tests/test_cie_reference_path.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "d11e1ca32e3cfe11ad3fa379b295643e2b7d2962754abfd9378e4b5d99d9424b"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 920,
+      "relative_path": "src/skin_optics_so0/tests/test_color_spaces.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "9fc4a7b1d411cd3559de2201ebf3593b2264c11c40c8095b8b7e5fc5e97a7efb"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 690,
+      "relative_path": "src/skin_optics_so0/tests/test_colorchecker.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "fc7611c857f3b955aefba515e8340e9e34c288b8d4fdd414085e9afdbdfdd18a"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 561,
+      "relative_path": "src/skin_optics_so0/tests/test_config.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "b48af17a0d9f736c89a2160eced740764b4ea094841967326b17cce3228f893a"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 4264,
+      "relative_path": "src/skin_optics_so0/tests/test_config_v11.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "41de67b2ee2a61fb5fb3deda6c2f917f038ca801ec44e3619c19c95f082a52df"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 560,
+      "relative_path": "src/skin_optics_so0/tests/test_kubelka_munk.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "2de54f771103d8c1a218d999b0c543d03396e1e09dd7c7e4ff32435eac4c41c6"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 327,
+      "relative_path": "src/skin_optics_so0/tests/test_monotonicity.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "4f541c3d2718d5b8915a5e744964c4f6c63a81c0ca49ef65d8a22741d74382ad"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 534,
+      "relative_path": "src/skin_optics_so0/tests/test_reflectance.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "01ad0b0abc6ba10aacf9c700648d3f6c297663ee90fb17548dfc53786f3bd2e9"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 260,
+      "relative_path": "src/skin_optics_so0/tests/test_scattering.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "ebf095a794cf0495dd19a307488dd1877f0f10863bedbed389c4218b47c7b34e"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 237,
+      "relative_path": "src/skin_optics_so0/tests/test_separability.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "e775793de36156b8734e4f4d09d4a0d23c637827cd5489ee4865f17b0200953c"
+    },
+    {
+      "category": "source_code",
+      "file_size_bytes": 1220,
+      "relative_path": "src/skin_optics_so0/tests/test_shading_specular.py",
+      "required_for_reproduction": true,
+      "required_for_scientific_decision": false,
+      "sha256": "155a4afc2db01a363f00d8c40dc99e8015f3b05abf5b7f5dbfd53e30f2e2f5ea"
+    }
+  ]
+}

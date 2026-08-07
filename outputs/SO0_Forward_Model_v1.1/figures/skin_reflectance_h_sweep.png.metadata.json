@@ -1,0 +1,11 @@
+{
+  "data_source": "computed reflectance sweep",
+  "filters": {
+    "effect": "h"
+  },
+  "generated_at": "2026-08-01T06:28:25.433898+00:00",
+  "row_count": 6,
+  "sha256": "5dadaa679775143ba4af97b376b6cd02f7b81c854752b31f9c28471c868d99a5",
+  "x_field": "wavelength_nm",
+  "y_field": "reflectance"
+}

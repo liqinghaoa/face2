@@ -1,0 +1,18 @@
+project_root: .
+p0a_root: data/processed/P0_Physics_Audit_v1
+output_root: data/processed/P1_DECA_Frozen500_v1
+deca_root: third_party/DECA
+relighting_config: config/p0b/p0b_relighting_presets_v1.yaml
+fixed_input_mode: direct_p0_aligned
+seed: 20260726
+batch_size: 1
+deterministic: true
+atomic_case_write: true
+continue_on_case_failure: true
+overwrite_completed: false
+reproducibility_audit:
+  independent_process_runs: 3
+  record_input_arrays: true
+  record_input_tensors: true
+  enable_regionwise_map_comparison: true
+  alpha_threshold: 0.5

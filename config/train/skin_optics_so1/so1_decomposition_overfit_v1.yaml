@@ -1,0 +1,25 @@
+experiment:
+  name: SO1_Decomposition_UNet_v1_overfit16
+  output_dir: experiments/skin_optics_so1/SO1_Decomposition_UNet_v1/preflight/overfit16
+  preflight_dir: experiments/skin_optics_so1/SO1_Decomposition_UNet_v1/preflight
+data:
+  root: E:/projects/face2/data/processed/SO1_Synthetic_Generator_v1_localfull
+  subset: overfit16
+  smoke_train_count: 128
+  smoke_val_count: 32
+train:
+  seed: 20260801
+  deterministic: true
+  batch_size: 4
+  max_epochs: 250
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: none
+  eta_min: 0.000001
+  early_stopping_patience:
+  amp: false
+dataloader:
+  num_workers: 0
+  pin_memory: true
+  persistent_workers: false
+  prefetch_factor: 2

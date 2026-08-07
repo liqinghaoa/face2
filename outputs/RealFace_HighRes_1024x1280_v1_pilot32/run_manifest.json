@@ -1,0 +1,7 @@
+{
+  "started_at_utc": "2026-08-04T03:25:50.472662+00:00",
+  "config": "E:\\projects\\face2\\config\\preprocess\\skin_optics_realface_highres_1024x1280_v1.yaml",
+  "pilot_count": 32,
+  "full_500_run": false,
+  "selection_rule": "deterministic_uniform_id_spacing_no_old_qc_fields"
+}

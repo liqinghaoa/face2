@@ -1,0 +1,14 @@
+name: p0b_deca
+channels: [pytorch, nvidia, conda-forge, defaults]
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch
+  - torchvision
+  - pytorch-cuda
+  - numpy
+  - opencv
+  - pyyaml
+  - pandas
+  - pip:
+      - pytorch3d  # Resolve against the audited CUDA/PyTorch combination before install.

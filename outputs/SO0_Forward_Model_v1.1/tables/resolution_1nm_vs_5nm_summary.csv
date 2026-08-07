@@ -1,0 +1,2 @@
+camera_condition_count,cie_condition_count,cie_deltae00_median,cie_deltae00_p95,camera_rgb_relative_error_median,camera_rgb_relative_error_p95,camera_rgb_relative_error_max,camera_chroma_l1_p95,finite_fraction,status
+121968,4356,0.0150190246913,0.0863204441222,0.000497919982182,0.00190075222615,0.00737441319543,0.000985119242797,1.0,PASS

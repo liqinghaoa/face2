@@ -1,0 +1,251 @@
+{
+  "passed": false,
+  "blocked": true,
+  "block_reason": "sh_light_render",
+  "python_version": "3.9.25 (main, Nov  3 2025, 22:33:05) \n[GCC 11.2.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "torch_version": "2.4.1+cu124",
+  "torchvision_version": "0.19.1+cu124",
+  "pytorch3d_version": "0.7.9",
+  "cuda_runtime": "12.4",
+  "cuda_driver": "581.42",
+  "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "deca_commit": "a11554ae2a2b0f3998cf1fa94dd4db03babb34a2",
+  "deca_dirty": true,
+  "rasterizer_type": "pytorch3d",
+  "license_status": "confirmed_by_user",
+  "checks": {
+    "torch_import": true,
+    "cuda_available": true,
+    "pytorch3d_import": true,
+    "deca_root_exists": true,
+    "assets_present": true,
+    "deca_import": true,
+    "texture_enabled": true,
+    "rasterizer_test": true,
+    "encode_decode_render": true,
+    "sh_light_render": false,
+    "deterministic": true
+  },
+  "check_details": {
+    "torch_import": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "version": "2.4.1+cu124"
+    },
+    "cuda_available": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+    },
+    "pytorch3d_import": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null
+    },
+    "deca_root_exists": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "path": "/mnt/e/projects/face2/third_party/DECA"
+    },
+    "assets_present": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null
+    },
+    "deca_import": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "module": "decalib.deca"
+    },
+    "texture_enabled": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "use_tex": true,
+      "tex_type": "BFM",
+      "extract_tex": false,
+      "tex_path": "/mnt/e/projects/face2/third_party/DECA/data/FLAME_albedo_from_BFM.npz"
+    },
+    "rasterizer_test": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "backend": "pytorch3d",
+      "device": "cuda:0"
+    },
+    "encode_decode_render": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "output_shapes": {
+        "verts": [
+          1,
+          5023,
+          3
+        ],
+        "trans_verts": [
+          1,
+          5023,
+          3
+        ],
+        "rendered_images": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "alpha_images": [
+          1,
+          1,
+          224,
+          224
+        ],
+        "normal_images": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "albedo": [
+          1,
+          3,
+          256,
+          256
+        ],
+        "uv_detail_normals": [
+          1,
+          3,
+          256,
+          256
+        ]
+      }
+    },
+    "sh_light_render": {
+      "status": false,
+      "exception_type": "AttributeError",
+      "exception_message": "'NoneType' object has no attribute 'read_text'",
+      "traceback": "Traceback (most recent call last):\n  File \"/mnt/e/projects/face2/p0b_deca/environment_audit.py\", line 76, in run\n    details[name] = _detail(True, **(operation() or {}))\n  File \"/mnt/e/projects/face2/p0b_deca/environment_audit.py\", line 138, in sh_light_render\n    raw = yaml.safe_load(config.relighting_config.read_text(encoding=\"utf-8\"))\nAttributeError: 'NoneType' object has no attribute 'read_text'\n"
+    },
+    "deterministic": {
+      "status": true,
+      "exception_type": null,
+      "exception_message": null,
+      "traceback": null,
+      "seed": 42,
+      "eval": true,
+      "inference_mode": true,
+      "rtol": 1e-05,
+      "atol": 1e-05,
+      "max_abs_diff": 3.844499588012695e-06
+    }
+  },
+  "failed_checks": [
+    "sh_light_render"
+  ],
+  "assets": [
+    {
+      "name": "deca_checkpoint",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/deca_model.tar",
+      "exists": true,
+      "size_bytes": 434142943,
+      "sha256": "e714ed293054cba5eea9c96bd3b6b57880074cd84b3fd00d606cbaf0bee7c5c2",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "flame_model",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/generic_model.pkl",
+      "exists": true,
+      "size_bytes": 53023716,
+      "sha256": "efcd14cc4a69f3a3d9af8ded80146b5b6b50df3bd74cf69108213b144eba725b",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "landmark_embedding",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/landmark_embedding.npy",
+      "exists": true,
+      "size_bytes": 31292,
+      "sha256": "8095348eeafce5a02f6bd8765146307f9567a3f03b316d788a2e47336d667954",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "texture_model",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/FLAME_albedo_from_BFM.npz",
+      "exists": true,
+      "size_bytes": 1258291694,
+      "sha256": "c6a9986024679caa881fcfe8a49687843e9338bfe0b0bb4923dccd29e01135ad",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "dense_template",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/texture_data_256.npy",
+      "exists": true,
+      "size_bytes": 6677908,
+      "sha256": "8563919927a2bc2ea7343d0ceef35254105d21a1947f00e5ca39e01d6ed1f9f1",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "uv_face_mask",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/uv_face_mask.png",
+      "exists": true,
+      "size_bytes": 12112,
+      "sha256": "bbf570444e3dddcdc54eaab7eeece97fe87d61cc3761e2c8b22ef495905e56fa",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "uv_face_eye_mask",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/uv_face_eye_mask.png",
+      "exists": true,
+      "size_bytes": 11522,
+      "sha256": "a5069d8ffaf020008ae92d5062c4e98600f723aac4eb869731f190e4630467b5",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "mean_texture",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/mean_texture.jpg",
+      "exists": true,
+      "size_bytes": 53722,
+      "sha256": "34364c02dec9dfb30580d1575b375553c6cd8d5da5caa6ac5a611ce65b91f529",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "fixed_displacement",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/fixed_displacement_256.npy",
+      "exists": true,
+      "size_bytes": 524416,
+      "sha256": "296d01113d67bdaace6f6fe741f7d855e58dc0707f0bb113758520ffa5d8cb93",
+      "load_status": "not_loaded",
+      "required": true
+    },
+    {
+      "name": "head_template",
+      "path": "/mnt/e/projects/face2/third_party/DECA/data/head_template.obj",
+      "exists": true,
+      "size_bytes": 583480,
+      "sha256": "6e97de16c1059399531888e95434502020048e133272e3e359d709fb59702e07",
+      "load_status": "not_loaded",
+      "required": true
+    }
+  ]
+}

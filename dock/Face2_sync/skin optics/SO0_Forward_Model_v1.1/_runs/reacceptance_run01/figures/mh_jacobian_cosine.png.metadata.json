@@ -1,0 +1,9 @@
+{
+  "data_source": "tables/mh_spectral_separability.csv",
+  "filters": {},
+  "generated_at": "2026-08-01T06:27:30.267677+00:00",
+  "row_count": 25,
+  "sha256": "dddad65100fb21dda642110e47cae16af3b6c6b4cf9617b88e86c1adbb7ffaf3",
+  "x_field": "h",
+  "y_field": "m"
+}

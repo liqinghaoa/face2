@@ -1,0 +1,7 @@
+python: 3.9.25 (main, Nov  3 2025, 22:33:05)  [GCC 11.2.0]
+python_path: /home/liqinghao/miniconda3/envs/p0b_deca/bin/python
+torch: 2.4.1+cu124
+torchvision: 0.19.1+cu124
+torch_cuda_runtime: 12.4
+cuda_available: True
+gpu: NVIDIA GeForce RTX 4060 Laptop GPU

@@ -1,0 +1,13 @@
+{
+  "checksum_validation": "PASS",
+  "checksummed_file_count": 238,
+  "frozen_assets_unchanged": true,
+  "frozen_status": "FROZEN",
+  "json_validation": "PASS",
+  "manifest_file_count": 237,
+  "manifest_validation": "PASS",
+  "scientific_outputs_unchanged": true,
+  "so1_authorized": false,
+  "source_code_unchanged": true,
+  "status": "PASS"
+}

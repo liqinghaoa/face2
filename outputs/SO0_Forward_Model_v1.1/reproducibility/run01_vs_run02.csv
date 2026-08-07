@@ -1,0 +1,12 @@
+relative_path,same_shape,numeric_max_abs_diff,status
+tables/colorchecker_calibration_metrics.csv,True,0.0,PASS
+tables/resolution_1nm_vs_5nm_summary.csv,True,0.0,PASS
+tables/resolution_1nm_vs_5nm_by_camera_light.csv,True,0.0,PASS
+tables/mh_spectral_separability.csv,True,0.0,PASS
+tables/mh_observation_separability_summary.csv,True,0.0,PASS
+tables/backend_parity.csv,True,0.0,PASS
+tables/shading_specular_linearity.csv,True,0.0,PASS
+tables/oxygenation_sensitivity.csv,True,0.0,PASS
+tables/epidermis_thickness_sensitivity.csv,True,0.0,PASS
+tables/dermis_thickness_sensitivity.csv,True,0.0,PASS
+tables/melanin_formula_sensitivity.csv,True,0.0,PASS

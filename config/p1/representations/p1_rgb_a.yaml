@@ -1,0 +1,8 @@
+experiment_key: p1_rgb_a
+display_name: P1-RGB+A
+representation: rgb_albedo
+input_type: dual_image
+model_type: shared_resnet18_dual_branch
+mask: physics_core_skin
+normalization: paired_rgb_and_albedo_transforms
+

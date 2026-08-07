@@ -1,0 +1,420 @@
+{
+  "failed_count": 0,
+  "mh_mean_pearson": -0.03633891560363235,
+  "mh_mean_spearman": -0.024496336996336993,
+  "pair_counts": {
+    "camera_ood": {
+      "Canon 600D / A": 1,
+      "Canon 600D / D65": 1,
+      "Canon 600D / FL2": 1,
+      "Nikon D700 / A": 1,
+      "Nikon D700 / D65": 1,
+      "Nikon D700 / FL2": 1,
+      "Olympus E-PL2 / A": 1,
+      "Olympus E-PL2 / FL2": 1
+    },
+    "id_test": {
+      "Nikon D3X / A": 1,
+      "Nikon D40 / D65": 1,
+      "Nikon D50 / D65": 1,
+      "Nikon D80 / A": 1,
+      "Nikon D80 / D65": 1,
+      "Nokia N900 / D65": 1,
+      "Pentax K-5 / D65": 1,
+      "Phase One / FL2": 1
+    },
+    "joint_ood": {
+      "Canon 600D / FL11": 2,
+      "Nikon D700 / FL11": 3,
+      "Olympus E-PL2 / FL11": 3
+    },
+    "light_ood": {
+      "Canon 1DMarkIII / FL11": 1,
+      "Nikon D200 / FL11": 1,
+      "Nikon D3 / FL11": 1,
+      "Nikon D40 / FL11": 1,
+      "Nikon D90 / FL11": 1,
+      "Pentax K-5 / FL11": 1,
+      "Point Grey Grasshopper 50S5C / FL11": 1,
+      "SONY NEX-5N / FL11": 1
+    },
+    "train": {
+      "Canon 20D / FL2": 1,
+      "Canon 300D / A": 1,
+      "Canon 300D / D65": 1,
+      "Canon 300D / FL2": 1,
+      "Canon 40D / D65": 1,
+      "Canon 500D / A": 1,
+      "Canon 50D / A": 1,
+      "Canon 50D / D65": 1,
+      "Canon 60D / FL2": 1,
+      "Nikon D200 / D65": 1,
+      "Nikon D3 / D65": 1,
+      "Nikon D3 / FL2": 1,
+      "Nikon D3X / A": 1,
+      "Nikon D40 / FL2": 1,
+      "Nikon D50 / FL2": 1,
+      "Nikon D5100 / D65": 1,
+      "Nikon D5100 / FL2": 1,
+      "Nikon D90 / A": 1,
+      "Pentax K-5 / D65": 1,
+      "Pentax Q / A": 1,
+      "Pentax Q / D65": 1,
+      "Phase One / FL2": 1,
+      "Point Grey Grasshopper2 14S5C / A": 1,
+      "Point Grey Grasshopper2 14S5C / D65": 1
+    },
+    "validation": {
+      "Canon 20D / A": 1,
+      "Canon 500D / A": 1,
+      "Canon 5DMarkII / A": 1,
+      "Nikon D3 / FL2": 1,
+      "Nikon D3X / FL2": 1,
+      "Nikon D5100 / A": 1,
+      "Pentax K-5 / FL2": 1,
+      "SONY NEX-5N / FL2": 1
+    }
+  },
+  "pending_count": 0,
+  "smoke": true,
+  "split_counts": {
+    "camera_ood": 8,
+    "id_test": 8,
+    "joint_ood": 8,
+    "light_ood": 8,
+    "train": 24,
+    "validation": 8
+  },
+  "success_count": 64,
+  "timing": {
+    "pair_timings": {
+      "Canon 1DMarkIII / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.0254604899964761,
+        "total_seconds": 0.0254604899964761
+      },
+      "Canon 20D / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.018401294000796042,
+        "total_seconds": 0.018401294000796042
+      },
+      "Canon 20D / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.020601154988980852,
+        "total_seconds": 0.020601154988980852
+      },
+      "Canon 300D / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01783612799772527,
+        "total_seconds": 0.01783612799772527
+      },
+      "Canon 300D / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.018110319011611864,
+        "total_seconds": 0.018110319011611864
+      },
+      "Canon 40D / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 231350272,
+        "seconds_per_sample": 0.022924700999283232,
+        "total_seconds": 0.022924700999283232
+      },
+      "Canon 500D / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.013507145500625484,
+        "total_seconds": 0.027014291001250967
+      },
+      "Canon 50D / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 231350272,
+        "seconds_per_sample": 0.018991484990692697,
+        "total_seconds": 0.018991484990692697
+      },
+      "Canon 50D / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.017477211004006676,
+        "total_seconds": 0.017477211004006676
+      },
+      "Canon 5DMarkII / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.02017474500462413,
+        "total_seconds": 0.02017474500462413
+      },
+      "Canon 600D / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.025024613001733087,
+        "total_seconds": 0.025024613001733087
+      },
+      "Canon 600D / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.023003005000646226,
+        "total_seconds": 0.023003005000646226
+      },
+      "Canon 600D / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 626925568,
+        "seconds_per_sample": 0.022797126504883636,
+        "total_seconds": 0.04559425300976727
+      },
+      "Canon 600D / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.026696118991822004,
+        "total_seconds": 0.026696118991822004
+      },
+      "Canon 60D / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 197795840,
+        "seconds_per_sample": 0.29173080799228046,
+        "total_seconds": 0.29173080799228046
+      },
+      "Nikon D200 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.020963470000424422,
+        "total_seconds": 0.020963470000424422
+      },
+      "Nikon D200 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.030068694992223755,
+        "total_seconds": 0.030068694992223755
+      },
+      "Nikon D3 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.017750418002833612,
+        "total_seconds": 0.017750418002833612
+      },
+      "Nikon D3 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.03095109599235002,
+        "total_seconds": 0.03095109599235002
+      },
+      "Nikon D3 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01810751749871997,
+        "total_seconds": 0.03621503499743994
+      },
+      "Nikon D3X / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.015296664496418089,
+        "total_seconds": 0.030593328992836177
+      },
+      "Nikon D3X / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.0174742149974918,
+        "total_seconds": 0.0174742149974918
+      },
+      "Nikon D40 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.022503348998725414,
+        "total_seconds": 0.022503348998725414
+      },
+      "Nikon D40 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.027432415998191573,
+        "total_seconds": 0.027432415998191573
+      },
+      "Nikon D40 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.019150388005073182,
+        "total_seconds": 0.019150388005073182
+      },
+      "Nikon D50 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.023903694993350655,
+        "total_seconds": 0.023903694993350655
+      },
+      "Nikon D50 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.020604329998604953,
+        "total_seconds": 0.020604329998604953
+      },
+      "Nikon D5100 / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.027371383999707177,
+        "total_seconds": 0.027371383999707177
+      },
+      "Nikon D5100 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.019286968992673792,
+        "total_seconds": 0.019286968992673792
+      },
+      "Nikon D5100 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01639164800872095,
+        "total_seconds": 0.01639164800872095
+      },
+      "Nikon D700 / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.0306527630018536,
+        "total_seconds": 0.0306527630018536
+      },
+      "Nikon D700 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.031555172012303956,
+        "total_seconds": 0.031555172012303956
+      },
+      "Nikon D700 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 626925568,
+        "seconds_per_sample": 0.020049263330292888,
+        "total_seconds": 0.060147789990878664
+      },
+      "Nikon D700 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.02430192100291606,
+        "total_seconds": 0.02430192100291606
+      },
+      "Nikon D80 / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.026531201001489535,
+        "total_seconds": 0.026531201001489535
+      },
+      "Nikon D80 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.025476097012870014,
+        "total_seconds": 0.025476097012870014
+      },
+      "Nikon D90 / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.017787849996238947,
+        "total_seconds": 0.017787849996238947
+      },
+      "Nikon D90 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.023340785992331803,
+        "total_seconds": 0.023340785992331803
+      },
+      "Nokia N900 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.02392444600991439,
+        "total_seconds": 0.02392444600991439
+      },
+      "Nokia N900 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.022928178994334303,
+        "total_seconds": 0.022928178994334303
+      },
+      "Olympus E-PL2 / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.023833436003769748,
+        "total_seconds": 0.023833436003769748
+      },
+      "Olympus E-PL2 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 626925568,
+        "seconds_per_sample": 0.02137204899918288,
+        "total_seconds": 0.06411614699754864
+      },
+      "Olympus E-PL2 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.031230665001203306,
+        "total_seconds": 0.031230665001203306
+      },
+      "Pentax K-5 / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01491497799725039,
+        "total_seconds": 0.02982995599450078
+      },
+      "Pentax K-5 / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.02683684699877631,
+        "total_seconds": 0.02683684699877631
+      },
+      "Pentax K-5 / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01980584001285024,
+        "total_seconds": 0.01980584001285024
+      },
+      "Pentax Q / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.019003080000402406,
+        "total_seconds": 0.03800616000080481
+      },
+      "Pentax Q / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.022928245991352014,
+        "total_seconds": 0.022928245991352014
+      },
+      "Phase One / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.0167266660137102,
+        "total_seconds": 0.0167266660137102
+      },
+      "Point Grey Grasshopper 50S5C / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.029280798000399955,
+        "total_seconds": 0.029280798000399955
+      },
+      "Point Grey Grasshopper2 14S5C / A": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 231350272,
+        "seconds_per_sample": 0.021581327993771993,
+        "total_seconds": 0.021581327993771993
+      },
+      "Point Grey Grasshopper2 14S5C / D65": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.016186316002858803,
+        "total_seconds": 0.016186316002858803
+      },
+      "SONY NEX-5N / FL11": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.024528802998247556,
+        "total_seconds": 0.024528802998247556
+      },
+      "SONY NEX-5N / FL2": {
+        "actual_batch_size": 8,
+        "peak_memory_bytes": 429137920,
+        "seconds_per_sample": 0.01798116200370714,
+        "total_seconds": 0.01798116200370714
+      }
+    },
+    "seconds_per_sample": 0.18129424853123055,
+    "total_seconds": 11.602831905998755
+  },
+  "total_rows": 64
+}

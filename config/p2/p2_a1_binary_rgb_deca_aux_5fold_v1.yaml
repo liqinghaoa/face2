@@ -1,0 +1,58 @@
+experiment:
+  name: P2_A1_Binary_RGB_DECAAux_5Fold_v1
+  stage: P2
+  role: full_five_fold_validation
+task:
+  type: binary_control_vs_patient
+  num_classes: 2
+  class_names: {0: Control, 1: Patient}
+assets:
+  p0a_root: data/processed/P0_Physics_Audit_v1
+  p1_root: data/processed/P1_DECA_Full500_v1
+data:
+  split_csv: data/processed/P0_Physics_Audit_v1/splits_500/nyha_3class_sex_stratified_group_5fold.csv
+  image_root: data/processed/P0_Physics_Audit_v1/images/e0b_meanbg_224
+  master_index: data/processed/P0_Physics_Audit_v1/metadata/master_index.csv
+  folds: [0, 1, 2, 3, 4]
+p1:
+  cases_subdir: cases
+  latent_filename: latents.npz
+  tex_key: tex_code
+  shape_key: shape_code
+  detail_key: detail_code
+auxiliary:
+  feature_order: [tex_code, shape_code, detail_code]
+  feature_dim: 278
+  standardization: fold_train_only
+  epsilon: 1.0e-6
+model:
+  backbone: resnet18
+  pretrained: imagenet
+  num_classes: 2
+  freeze_backbone: false
+  aux_hidden_dim: 128
+  aux_output_dim: 512
+  aux_dropout: 0.10
+  fusion: residual_scalar
+  initial_alpha: 0.10
+training:
+  seed: 2026
+  batch_size: 16
+  num_workers: 0
+  pin_memory: false
+  persistent_workers: false
+  optimizer: adamw
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  max_epochs: 50
+  early_stopping_patience: 10
+  monitor: macro_auc
+  monitor_mode: max
+  amp: false
+evaluation:
+  threshold_search: false
+  require_complete_oof: true
+  reference_b0_5fold_dir: experiments/500Data/E0B_Global_ResNet18_ControlVsPatient_Binary_5fold_GPU
+normalize:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]

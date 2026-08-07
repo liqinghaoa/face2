@@ -170,6 +170,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         action=argparse.BooleanOptionalAction,
         default=True,
     )
+    parser.add_argument("--image-size", type=int, default=224)
     parser.add_argument("--feather-kernel", type=int, default=11)
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--seed", type=int, default=42)
@@ -269,6 +270,7 @@ def _process_one(
     spec: VariantSpec,
     intermediate_dir: Path,
     images_dir: Path,
+    image_size: int,
     feather_kernel: int,
     overwrite: bool,
 ) -> dict[str, Any]:
@@ -286,10 +288,16 @@ def _process_one(
             raise FileNotFoundError(f"Missing intermediate files: {missing}")
         aligned_rgb = read_rgb(aligned_path)
         final_mask = read_mask(mask_path)
-        if aligned_rgb.shape != (224, 224, 3):
-            raise ValueError(f"aligned_rgb must be 224x224 RGB, got {aligned_rgb.shape}")
-        if final_mask.shape != (224, 224):
-            raise ValueError(f"final_mask must be 224x224, got {final_mask.shape}")
+        expected_rgb_shape = (image_size, image_size, 3)
+        expected_mask_shape = (image_size, image_size)
+        if aligned_rgb.shape != expected_rgb_shape:
+            raise ValueError(
+                f"aligned_rgb must be {image_size}x{image_size} RGB, got {aligned_rgb.shape}"
+            )
+        if final_mask.shape != expected_mask_shape:
+            raise ValueError(
+                f"final_mask must be {image_size}x{image_size}, got {final_mask.shape}"
+            )
         alpha = feather_mask(final_mask, feather_kernel)
         transformed = spec.transform(aligned_rgb, final_mask)
         output_rgb = apply_background(transformed, alpha, spec.bg_mode)
@@ -359,6 +367,7 @@ def build_variant(
             spec,
             intermediate_dir,
             dirs["images"],
+            int(args.image_size),
             int(args.feather_kernel),
             bool(args.overwrite),
         )
@@ -388,6 +397,8 @@ def build_variant(
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
+    if int(args.image_size) <= 0:
+        raise ValueError(f"image_size must be positive, got: {args.image_size}")
     intermediate_dir = _resolve(args.intermediate_dir)
     output_root = _resolve(args.output_root)
     split_dir = _resolve(args.split_dir)

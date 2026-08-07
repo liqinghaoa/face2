@@ -1,0 +1,4 @@
+setting,finite,reflectance_bounds_pass,m_monotonic,d65_deltae_1nm_5nm,status
+0.1,True,True,True,0.0165891084728,PASS
+0.2,True,True,True,0.0175398811975,PASS
+0.3,True,True,True,0.0177568168465,PASS

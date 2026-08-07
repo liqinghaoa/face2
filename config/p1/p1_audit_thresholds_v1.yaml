@@ -1,0 +1,12 @@
+success_rate_go: 0.99
+success_rate_review: 0.95
+finite_rate_required: 1.0
+relighting_completeness_required: 0.99
+effective_rank_go: 3.0
+effective_rank_severe: 2.0
+camera_group_min_samples: 10
+camera_failure_review: 0.10
+camera_failure_severe: 0.25
+# Operational null size. The audit runs exactly this configured number and
+# records it; increase deliberately for a longer inferential analysis.
+permutations: 50

@@ -1,0 +1,40 @@
+{
+  "cwd": "/mnt/e/projects/face2",
+  "packages": {
+    "colour": {
+      "importable": true,
+      "version": "0.4.7"
+    },
+    "matplotlib": {
+      "importable": true,
+      "version": "3.11.1"
+    },
+    "numpy": {
+      "importable": true,
+      "version": "2.4.6"
+    },
+    "pandas": {
+      "importable": true,
+      "version": "3.0.5"
+    },
+    "pytest": {
+      "importable": true,
+      "version": "9.1.1"
+    },
+    "scipy": {
+      "importable": true,
+      "version": "1.17.1"
+    },
+    "torch": {
+      "importable": true,
+      "version": "2.4.1+cpu"
+    },
+    "yaml": {
+      "importable": true,
+      "version": "6.0.3"
+    }
+  },
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python_executable": "/home/liqinghao/miniconda3/envs/so0_spectra/bin/python",
+  "python_version": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]"
+}

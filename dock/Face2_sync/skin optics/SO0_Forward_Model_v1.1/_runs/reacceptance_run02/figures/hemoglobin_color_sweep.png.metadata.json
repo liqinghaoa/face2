@@ -1,0 +1,11 @@
+{
+  "data_source": "computed D65 Lab sweep",
+  "filters": {
+    "effect": "h"
+  },
+  "generated_at": "2026-08-01T06:28:25.616972+00:00",
+  "row_count": 11,
+  "sha256": "07b9dc5461dc78e761ffa070f6d458613e26de45c6702c52464331d880804fcf",
+  "x_field": "a_star",
+  "y_field": "b_star"
+}
