@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "task_id": "R-C1R_COMPLETE_IDENTIFIABILITY_AND_BEST_O",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "R_C1R_COMPLETE",
+  "created_utc": "2026-09-11T03:50:40.725927+00:00",
+  "preflight_checks": {
+    "r_c0r_decision_status": "R_C0R_COMPLETE",
+    "r_c0r_selected_candidate": "V2R-PS",
+    "r_c0r_audit_status": "R_C0R_COMPLETE",
+    "r_c1_reported_selected_development_candidate": "V2R-PS",
+    "r_c1_reported_status": "R_C1_COMPLETE",
+    "fold_manifest_sha256": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370",
+    "fold_manifest_sha256_matches_registered_manifest": true,
+    "forbidden_data_access_declared": false
+  },
+  "data_access": {
+    "r_b_manifest_content_reads": 1,
+    "r_c0r_artifact_content_reads": 4,
+    "r_c1_artifact_content_reads": 2,
+    "r_b_side_pair_audit_content_reads": 1,
+    "raw_hsi_reads": 0,
+    "rgb_reads": 0,
+    "validation_reads": 0,
+    "test_reads": 0,
+    "clinical_500_reads": 0
+  },
+  "subject_count": 44,
+  "profile_candidates": [
+    "V2R-PS",
+    "V2R-PSG"
+  ],
+  "best_o_base_candidates": [
+    "V2R-PS",
+    "V2R-PSG"
+  ],
+  "best_o_parameter_names": [
+    "f_mel",
+    "f_blood",
+    "s"
+  ],
+  "fit_band_count": 27,
+  "edge_band_count": 4,
+  "reflectance_clipping_applied": false,
+  "prediction_above_one_count": 0,
+  "all_inversions_converged": true,
+  "input_hashes": {
+    "r_c0r_output": {
+      "kind": "directory",
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r1\\stage1_hsi_physics\\km_bio_v2r1_candidate_ladder_resume"
+    },
+    "r_c0r_decision": "9d5dbe21ac1208eabefa9ee21aed2568093ce805de15a88b1b392f2f35043c62",
+    "r_c0r_audit": "4190d344df9bb625afe61ba62e40db7674c20d9c8dc1fb5b59b3faa8777f6ce5",
+    "r_c0r_fold_globals": "c4820cc32d310549d66cb33b0e32c539edc21584481abb6bb7269612a634eec4",
+    "r_c0r_fold_manifest": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370",
+    "r_c0r_subject_metrics": "8608276bb773445704edcccf4641b2fa175b1d678b117afdbd961a4b1334ab93",
+    "r_c1_decision": "905af448f72f3132050b0a82bb1429a875b94108ed0ea8859e1e5cd1154bdecc",
+    "r_c1_sensitivity_summary": "5b8c4f91080ce7624e873f18bb31dbb00d0fe245c0c8ef01dcb4fbea35eace46",
+    "observation_manifest": "d9d95ec627dc7e4cef92dc46b8197c439e1d4244a42419e1a82fb1a80cfccb09",
+    "side_pair_audit": "38965b3e908e34247c15465e3f860b42152c614e4ca29e72dd2ad983857204f6",
+    "optical_asset_10nm": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6"
+  },
+  "implementation_hashes": {
+    "source": "373eef3341f0d561475d9a971227988289f070992bed424a75c203139782e8d9",
+    "runner": "a9b7f6e24bb0bcdc3e71e176810bb5283c4be7ed37e586408e97082b44430c55",
+    "tests": "55e50dea065a77a9d836fed93b0af8c0698b73c7104daafa2e4228f3b8b17b02"
+  }
+}

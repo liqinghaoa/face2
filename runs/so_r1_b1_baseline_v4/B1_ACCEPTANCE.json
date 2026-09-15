@@ -1,0 +1,13 @@
+{
+  "baseline_checkpoint_authoritative": false,
+  "baseline_training_status": "NOT_COMPLETE",
+  "baseline_viability_status": "NOT_RUN",
+  "failure": "OSError(\"Cannot save file into a non-existent directory: 'E:\\\\projects\\\\face2\\\\runs\\\\so_r1_b1_baseline_v4\\\\metrics'\")",
+  "failure_type": "OSError",
+  "next_stage": null,
+  "next_stage_authorized": false,
+  "proposed_training_started": false,
+  "source_dataset_unchanged": null,
+  "status": "FAIL",
+  "training_authorized": false
+}

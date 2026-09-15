@@ -1,0 +1,2 @@
+pytest -q tests/so_r1
+29 passed in 2.91s

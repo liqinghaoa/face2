@@ -1,0 +1,175 @@
+schema_version: 1
+stage: KM-BIO-v2R.1-R-C0R
+task_id: R-C0R_RESUME_REGISTERED_CANDIDATE_LADDER
+protocol_version: KM-BIO-v2R.1
+status: preregistered_train_only_resume
+frozen_date: 2026-09-11
+
+inputs:
+  formula_contract: configs/skin_optics_hsi/km_bio_v2r_formula_contract.yaml
+  formula_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit/audit_summary.json
+  observation_contract: configs/skin_optics_hsi/km_bio_v2r_observation_contract.yaml
+  observation_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/audit_summary.json
+  observation_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/train_symmetric_observation_manifest.parquet
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+
+historical_r_c0:
+  output_directory: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder
+  decision_json: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/candidate_decision.json
+  audit_json: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/audit_summary.json
+  artifact_hash_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/artifact_hash_manifest.csv
+  fold_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/fold_manifest.csv
+  subject_metrics: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/candidate_subject_metrics.csv
+  oof_predictions: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/oof_predictions.csv
+  oof_residuals: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/oof_residuals.csv
+  outer_fold_reference_metrics: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/outer_fold_reference_metrics.csv
+  expected_status: R_C0_STOPPED_AT_FAILED_UPGRADE
+  reuse_candidates: [V2R-0, V2R-P]
+  rerun_candidates: false
+  expected_fold_manifest_sha256: e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370
+
+output_directory: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume
+
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r1_stage_c0r.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r1_stage_c0r.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r1_stage_c0r.py
+
+analysis:
+  unit: subject_level_bilateral_symmetric_spectrum
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  primary_loss: equal_weight_logrmse
+  epsilon: 1.0e-6
+  residual_definition: prediction_minus_observation
+  reflectance_clipping: forbidden
+
+parameters:
+  names: [f_mel, f_blood]
+  lower: [0.0, 0.0]
+  upper: [0.43, 0.10]
+  fixed_s0: 0.70
+  boundary_tolerance_normalized: 0.01
+
+folds:
+  source: historical_r_c0_fold_manifest
+  expected_sha256: e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370
+  count: 5
+  assignments:
+    1: [p049, p044, p006, p011, p051, p050, p019, p004, p032]
+    2: [p013, p018, p038, p041, p003, p037, p020, p010, p023]
+    3: [p046, p021, p043, p033, p028, p022, p014, p008, p015]
+    4: [p034, p048, p031, p012, p029, p005, p026, p025, p027]
+    5: [p045, p007, p040, p009, p017, p047, p042, p024]
+
+candidates:
+  historical_read_only: [V2R-0, V2R-P]
+  run: [V2R-PS, V2R-PSG]
+  V2R-PS:
+    diameter_um: 15.0
+    g0: 1.0
+    train_global_estimation: [A_s, delta_bs]
+    train_global_loss: centered_logrmse
+  V2R-PSG:
+    diameter_um: 15.0
+    freeze_from: V2R-PS
+    train_global_estimation: [g0]
+    train_global_loss: raw_logrmse
+
+solver:
+  individual:
+    name: scipy.optimize.least_squares
+    method: trf
+    loss: linear
+    scaled_parameterization: true
+    sobol_starts: 32
+    include_center: true
+    random_seed: 20260910
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev_per_start: 2000
+    dtype: float64
+  global_shape:
+    name: scipy.optimize.least_squares_joint_centered_logrmse
+    scaled_parameterization: true
+    start_global_u: [[0.4, 0.5], [0.0, 0.0], [1.0, 1.0], [0.2, 0.8], [0.8, 0.2]]
+    tie_loss_tolerance: 1.0e-12
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev_per_start: 1000
+    profile_grid_points: 51
+    profile_conditional_max_nfev: 500
+  global_gain:
+    method: analytic_bounded_raw_logrmse
+    bounds: [0.5, 1.5]
+    profile_uniform_grid_points: 201
+    include_exact_optimum: true
+
+global_identifiability_reporting:
+  acceptable_loss_delta_logrmse: 0.005
+  maximum_acceptable_normalized_envelope_span: 0.20
+  boundary_tolerance_normalized: 0.01
+  frequent_boundary_fold_count: 3
+  action: report_only_does_not_stop_registered_candidates
+
+strong_spectral_targets:
+  subject_median_logrmse_max: 0.06
+  subject_p90_logrmse_max: 0.10
+  subject_median_rmse_max: 0.03
+  subject_median_sam_deg_max: 3.0
+  maximum_abs_median_signed_band_residual: 0.03
+  outer_fold_reference_better_fraction_min: 0.6666666666666666
+  model_to_reference_median_error_ratio_max: 0.90
+
+selection:
+  primary_metric: oof_subject_median_logrmse
+  lower_is_better: true
+  simpler_candidate_if_absolute_difference_at_most: 0.005
+  complexity_order: [V2R-0, V2R-P, V2R-PS, V2R-PSG]
+
+execution:
+  stop_after_first_failed_upgrade: false
+  continue_psg_when_ps_diagnostic_flags: true
+  allowed_interruptions_only: [data_leakage, hash_mismatch, formula_band_loss_contract_deviation, reflectance_clipping, nonfinite_reflectance, negative_reflectance, unreproducible_artifact]
+  run_r_c1: false
+  run_best_o: false
+  run_validation: false
+  run_test: false
+  run_clinical_500: false
+  run_rgb_encoder_training: false
+
+access_policy:
+  allowed_split: train
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  historical_r_c0_read_only: true
+  refuse_existing_output: true
+
+required_outputs:
+  - historical_r_c0_hash_verification.csv
+  - fixed_fold_verification.csv
+  - fold_manifest.csv
+  - ps_psg_subject_metrics.csv
+  - ps_psg_multistart_results.csv
+  - ps_psg_oof_predictions.csv
+  - ps_psg_oof_residuals.csv
+  - ps_psg_outer_fold_reference_metrics.csv
+  - fold_global_parameters.csv
+  - global_parameter_profiles.csv
+  - global_profile_summary.csv
+  - four_candidate_subject_metrics.csv
+  - four_candidate_oof_predictions.csv
+  - four_candidate_oof_residuals.csv
+  - four_candidate_outer_fold_reference_metrics.csv
+  - four_candidate_summary.csv
+  - four_candidate_pairwise_comparisons.csv
+  - candidate_selection.json
+  - r_c0r_decision.json
+  - R_C0R_REPORT.md
+  - audit_summary.json
+  - artifact_hash_manifest.csv

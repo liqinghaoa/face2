@@ -1,0 +1,7 @@
+﻿condition,true_class,Control,Patient
+RGB,Control,82,33
+RGB,Patient,78,307
+RGB_B1MH,Control,71,44
+RGB_B1MH,Patient,76,309
+RGB_B2MH,Control,73,42
+RGB_B2MH,Patient,67,318

@@ -1,0 +1,10 @@
+{
+  "catastrophic_count": 3,
+  "major_channel_collapse_count": 10,
+  "severe_overall_low_clip_count": 8,
+  "major_overall_low_clip_count": 11,
+  "nonfinite_count": 0,
+  "all_zero_count": 0,
+  "all_one_count": 0,
+  "pass": false
+}

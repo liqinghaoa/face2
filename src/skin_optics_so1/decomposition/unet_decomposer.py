@@ -6,6 +6,26 @@ import torch
 from torch import nn
 
 
+LOCALIZED_FP32_BLOCK = "up1.conv"
+
+
+def parse_numerical_precision_policy(config: dict | None) -> set[str]:
+    """Validate and return the explicitly protected numerical blocks."""
+    if config is None:
+        return set()
+    mode = str(config.get("mode", "disabled"))
+    blocks = {str(value) for value in config.get("fp32_blocks", [])}
+    if mode == "disabled":
+        if blocks:
+            raise ValueError("disabled numerical precision policy cannot define fp32_blocks")
+        return set()
+    if mode != "localized_fp32":
+        raise ValueError(f"Unsupported numerical precision mode: {mode}")
+    if blocks != {LOCALIZED_FP32_BLOCK}:
+        raise ValueError("SO-1 localized FP32 policy is restricted to up1.conv")
+    return blocks
+
+
 class DoubleConv(nn.Module):
     def __init__(self, in_channels: int, out_channels: int) -> None:
         super().__init__()
@@ -32,16 +52,28 @@ class DownBlock(nn.Module):
 
 
 class UpBlock(nn.Module):
-    def __init__(self, in_channels: int, skip_channels: int, out_channels: int) -> None:
+    def __init__(
+        self,
+        in_channels: int,
+        skip_channels: int,
+        out_channels: int,
+        *,
+        conv_fp32: bool = False,
+    ) -> None:
         super().__init__()
         self.up = nn.ConvTranspose2d(in_channels, out_channels, kernel_size=2, stride=2)
         self.conv = DoubleConv(out_channels + skip_channels, out_channels)
+        self.conv_fp32 = bool(conv_fp32)
 
     def forward(self, x: torch.Tensor, skip: torch.Tensor) -> torch.Tensor:
         x = self.up(x)
         if x.shape[-2:] != skip.shape[-2:]:
             raise RuntimeError(f"U-Net skip shape mismatch: up={x.shape}, skip={skip.shape}")
-        return self.conv(torch.cat([skip, x], dim=1))
+        joined = torch.cat([skip, x], dim=1)
+        if not self.conv_fp32:
+            return self.conv(joined)
+        with torch.autocast(device_type=joined.device.type, enabled=False):
+            return self.conv(joined.float())
 
 
 class SO1UNetDecomposer(nn.Module):
@@ -50,16 +82,25 @@ class SO1UNetDecomposer(nn.Module):
     architecture_id = "SO1UNetDecomposer_v1_64_128_256_512_1024"
     target_order = ["M_norm", "H_norm", "S_norm", "P_norm"]
 
-    def __init__(self, in_channels: int = 3, out_channels: int = 4) -> None:
+    def __init__(
+        self,
+        in_channels: int = 3,
+        out_channels: int = 4,
+        *,
+        numerical_precision: dict | None = None,
+    ) -> None:
         super().__init__()
         if in_channels != 3 or out_channels != 4:
             raise ValueError("SO-1 v1 U-Net is frozen to 3 input and 4 output channels")
+        fp32_blocks = parse_numerical_precision_policy(numerical_precision)
         self.inc = DoubleConv(3, 64)
         self.down1 = DownBlock(64, 128)
         self.down2 = DownBlock(128, 256)
         self.down3 = DownBlock(256, 512)
         self.down4 = DownBlock(512, 1024)
-        self.up1 = UpBlock(1024, 512, 512)
+        self.up1 = UpBlock(
+            1024, 512, 512, conv_fp32=LOCALIZED_FP32_BLOCK in fp32_blocks
+        )
         self.up2 = UpBlock(512, 256, 256)
         self.up3 = UpBlock(256, 128, 128)
         self.up4 = UpBlock(128, 64, 64)

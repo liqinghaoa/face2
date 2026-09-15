@@ -1,0 +1,4523 @@
+{
+  "all_patch_contracts_pass": true,
+  "case_count": 500,
+  "coordinates": {
+    "x": [
+      0,
+      241,
+      482,
+      723
+    ],
+    "y": [
+      0,
+      241,
+      482,
+      723,
+      964
+    ]
+  },
+  "geometry_rows": [
+    {
+      "case_id": "100037382",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759430,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759430
+    },
+    {
+      "case_id": "100643124",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 848398,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 848398
+    },
+    {
+      "case_id": "100960732",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 729502,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 729502
+    },
+    {
+      "case_id": "101044067",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 768245,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 768245
+    },
+    {
+      "case_id": "101295911",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787995,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787995
+    },
+    {
+      "case_id": "101377780",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 803361,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 803361
+    },
+    {
+      "case_id": "101588739",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775319,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775319
+    },
+    {
+      "case_id": "101737098",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776791,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776791
+    },
+    {
+      "case_id": "102400553",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744820,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744820
+    },
+    {
+      "case_id": "200088422",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793667,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793667
+    },
+    {
+      "case_id": "200378127",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 614281,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 614281
+    },
+    {
+      "case_id": "200563014",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 724052,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 724052
+    },
+    {
+      "case_id": "200732328",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719511,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719511
+    },
+    {
+      "case_id": "200734233",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 765994,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 765994
+    },
+    {
+      "case_id": "200869357",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761069,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761069
+    },
+    {
+      "case_id": "200887343",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 699649,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 699649
+    },
+    {
+      "case_id": "200887343-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 757360,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 757360
+    },
+    {
+      "case_id": "201091104",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 743324,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 743324
+    },
+    {
+      "case_id": "201239406",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 678808,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 678808
+    },
+    {
+      "case_id": "201319100",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 768930,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 768930
+    },
+    {
+      "case_id": "201331515",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 868426,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 868426
+    },
+    {
+      "case_id": "20134065",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 642667,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 642667
+    },
+    {
+      "case_id": "201368897",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 637175,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 637175
+    },
+    {
+      "case_id": "201380940",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 684421,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 684421
+    },
+    {
+      "case_id": "201428730",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 762093,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 762093
+    },
+    {
+      "case_id": "201537151",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 778113,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 778113
+    },
+    {
+      "case_id": "201551216",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 772060,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 772060
+    },
+    {
+      "case_id": "201562603",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766676,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766676
+    },
+    {
+      "case_id": "201562603-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 716393,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 716393
+    },
+    {
+      "case_id": "201770004",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 707896,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 707896
+    },
+    {
+      "case_id": "201771352",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 779790,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 779790
+    },
+    {
+      "case_id": "201885444",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 779654,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 779654
+    },
+    {
+      "case_id": "201999677",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766308,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766308
+    },
+    {
+      "case_id": "202045494",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 736995,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 736995
+    },
+    {
+      "case_id": "202201880",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 749793,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 749793
+    },
+    {
+      "case_id": "202247956",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 735559,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 735559
+    },
+    {
+      "case_id": "202356763",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 756496,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 756496
+    },
+    {
+      "case_id": "202411756",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719403,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719403
+    },
+    {
+      "case_id": "202411756-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733004,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733004
+    },
+    {
+      "case_id": "202520620",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 666702,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 666702
+    },
+    {
+      "case_id": "202522099",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 713581,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 713581
+    },
+    {
+      "case_id": "202596604",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 796507,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 796507
+    },
+    {
+      "case_id": "203036405",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773771,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773771
+    },
+    {
+      "case_id": "203044159",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 785929,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 785929
+    },
+    {
+      "case_id": "203077259-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 769446,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 769446
+    },
+    {
+      "case_id": "203111429",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 807809,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 807809
+    },
+    {
+      "case_id": "203151068",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 749013,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 749013
+    },
+    {
+      "case_id": "203193470",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746208,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746208
+    },
+    {
+      "case_id": "203205673",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770023,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770023
+    },
+    {
+      "case_id": "203214852",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770309,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770309
+    },
+    {
+      "case_id": "203215331",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793264,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793264
+    },
+    {
+      "case_id": "203240952-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 732124,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 732124
+    },
+    {
+      "case_id": "203467839",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758306,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758306
+    },
+    {
+      "case_id": "203550372",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 769391,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 769391
+    },
+    {
+      "case_id": "203582980",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 603851,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 603851
+    },
+    {
+      "case_id": "203659997",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 791605,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 791605
+    },
+    {
+      "case_id": "203674403",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 799100,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 799100
+    },
+    {
+      "case_id": "203788587",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794758,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794758
+    },
+    {
+      "case_id": "203807236",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 771012,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 771012
+    },
+    {
+      "case_id": "203874389",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770373,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770373
+    },
+    {
+      "case_id": "203874889",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 558154,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 558154
+    },
+    {
+      "case_id": "203898750",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 768402,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 768402
+    },
+    {
+      "case_id": "203959038",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 737913,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 737913
+    },
+    {
+      "case_id": "204035001",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775727,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775727
+    },
+    {
+      "case_id": "204228087",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 690455,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 690455
+    },
+    {
+      "case_id": "204238693",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 751798,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 751798
+    },
+    {
+      "case_id": "204364833",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 726780,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 726780
+    },
+    {
+      "case_id": "204378187",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 620438,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 620438
+    },
+    {
+      "case_id": "204586681",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 750911,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 750911
+    },
+    {
+      "case_id": "204650307",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 705987,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 705987
+    },
+    {
+      "case_id": "204864836",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 749769,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 749769
+    },
+    {
+      "case_id": "204917772",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 672857,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 672857
+    },
+    {
+      "case_id": "205075256",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770117,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770117
+    },
+    {
+      "case_id": "205075256-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787776,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787776
+    },
+    {
+      "case_id": "205092932",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744549,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744549
+    },
+    {
+      "case_id": "205129144",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 695120,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 695120
+    },
+    {
+      "case_id": "205154762",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 689557,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 689557
+    },
+    {
+      "case_id": "205160104",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 777894,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 777894
+    },
+    {
+      "case_id": "205166769",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 771214,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 771214
+    },
+    {
+      "case_id": "205192459",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 720038,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 720038
+    },
+    {
+      "case_id": "205196366",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 731248,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 731248
+    },
+    {
+      "case_id": "205200934-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 785969,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 785969
+    },
+    {
+      "case_id": "205292128",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 805554,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 805554
+    },
+    {
+      "case_id": "205408994",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761849,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761849
+    },
+    {
+      "case_id": "205457005",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 790343,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 790343
+    },
+    {
+      "case_id": "205491151",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 680910,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 680910
+    },
+    {
+      "case_id": "205543285",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 780567,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 780567
+    },
+    {
+      "case_id": "205552568",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770105,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770105
+    },
+    {
+      "case_id": "205637707",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 683001,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 683001
+    },
+    {
+      "case_id": "205664479",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794547,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794547
+    },
+    {
+      "case_id": "205682172",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 803641,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 803641
+    },
+    {
+      "case_id": "206073228",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 726794,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 726794
+    },
+    {
+      "case_id": "206082263",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 740848,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 740848
+    },
+    {
+      "case_id": "206114670",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 789635,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 789635
+    },
+    {
+      "case_id": "206133320",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806318,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806318
+    },
+    {
+      "case_id": "206148129",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 726278,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 726278
+    },
+    {
+      "case_id": "206151450",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 792229,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 792229
+    },
+    {
+      "case_id": "206248971",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770865,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770865
+    },
+    {
+      "case_id": "206281747",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 765460,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 765460
+    },
+    {
+      "case_id": "206333335",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 803848,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 803848
+    },
+    {
+      "case_id": "206342969",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 804983,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 804983
+    },
+    {
+      "case_id": "206342969-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 830731,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 830731
+    },
+    {
+      "case_id": "206409114",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 751203,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 751203
+    },
+    {
+      "case_id": "206439717-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766419,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766419
+    },
+    {
+      "case_id": "206528283",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 725456,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 725456
+    },
+    {
+      "case_id": "206664979",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 764512,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 764512
+    },
+    {
+      "case_id": "206874086",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719797,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719797
+    },
+    {
+      "case_id": "9300017987-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 819499,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 819499
+    },
+    {
+      "case_id": "9300073600",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 717498,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 717498
+    },
+    {
+      "case_id": "9300122741",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 709126,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 709126
+    },
+    {
+      "case_id": "9300148243",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 796997,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 796997
+    },
+    {
+      "case_id": "9300162628",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773602,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773602
+    },
+    {
+      "case_id": "9300170515",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 783177,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 783177
+    },
+    {
+      "case_id": "9300198023",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787909,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787909
+    },
+    {
+      "case_id": "9300298484",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 728825,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 728825
+    },
+    {
+      "case_id": "9300305987",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 710322,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 710322
+    },
+    {
+      "case_id": "9300332900",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 782564,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 782564
+    },
+    {
+      "case_id": "9300332900-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759245,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759245
+    },
+    {
+      "case_id": "9300463575",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775527,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775527
+    },
+    {
+      "case_id": "9300466323",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 768161,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 768161
+    },
+    {
+      "case_id": "9300470716",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773977,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773977
+    },
+    {
+      "case_id": "9300518956",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 599673,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 599673
+    },
+    {
+      "case_id": "9300531405",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 788245,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 788245
+    },
+    {
+      "case_id": "9300552186",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 739043,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 739043
+    },
+    {
+      "case_id": "9300574781",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758638,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758638
+    },
+    {
+      "case_id": "9300577026",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 755559,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 755559
+    },
+    {
+      "case_id": "9300655391",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761636,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761636
+    },
+    {
+      "case_id": "9300706043",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 745652,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 745652
+    },
+    {
+      "case_id": "9300764848-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719154,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719154
+    },
+    {
+      "case_id": "9300768221",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 796430,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 796430
+    },
+    {
+      "case_id": "9300800427",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781700,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781700
+    },
+    {
+      "case_id": "9300858338",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 662747,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 662747
+    },
+    {
+      "case_id": "9300874275",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 799857,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 799857
+    },
+    {
+      "case_id": "9300907970",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 833414,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 833414
+    },
+    {
+      "case_id": "9300938876-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766333,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766333
+    },
+    {
+      "case_id": "9300980658",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 710259,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 710259
+    },
+    {
+      "case_id": "9301000063",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761160,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761160
+    },
+    {
+      "case_id": "9301001640",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 789443,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 789443
+    },
+    {
+      "case_id": "9301027515",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 634182,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 634182
+    },
+    {
+      "case_id": "9301078546",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 742033,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 742033
+    },
+    {
+      "case_id": "9301127865",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 717241,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 717241
+    },
+    {
+      "case_id": "9301133685",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 585468,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 585468
+    },
+    {
+      "case_id": "9301147034",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 724671,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 724671
+    },
+    {
+      "case_id": "9301159257",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711037,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711037
+    },
+    {
+      "case_id": "9301197860",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 730212,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 730212
+    },
+    {
+      "case_id": "A000010548",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719189,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719189
+    },
+    {
+      "case_id": "A000104693",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746322,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746322
+    },
+    {
+      "case_id": "A000119489",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773462,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773462
+    },
+    {
+      "case_id": "A000137479",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 725511,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 725511
+    },
+    {
+      "case_id": "A000181243-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 734469,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 734469
+    },
+    {
+      "case_id": "A000184787",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758254,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758254
+    },
+    {
+      "case_id": "A000222758",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744406,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744406
+    },
+    {
+      "case_id": "A000247949",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 741734,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 741734
+    },
+    {
+      "case_id": "A000267871",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 754966,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 754966
+    },
+    {
+      "case_id": "A000275458",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 689915,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 689915
+    },
+    {
+      "case_id": "A000289791",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761345,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761345
+    },
+    {
+      "case_id": "A000314982",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 798662,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 798662
+    },
+    {
+      "case_id": "A000327597",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 836589,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 836589
+    },
+    {
+      "case_id": "A000330769",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 753054,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 753054
+    },
+    {
+      "case_id": "A000441933",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766684,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766684
+    },
+    {
+      "case_id": "A000454833",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744034,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744034
+    },
+    {
+      "case_id": "A000463768",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 751062,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 751062
+    },
+    {
+      "case_id": "A000477213",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 771480,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 771480
+    },
+    {
+      "case_id": "A000487005",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 763941,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 763941
+    },
+    {
+      "case_id": "A000502944",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775962,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775962
+    },
+    {
+      "case_id": "A000523219",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 739268,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 739268
+    },
+    {
+      "case_id": "A000542034",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 708190,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 708190
+    },
+    {
+      "case_id": "A000590309",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766367,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766367
+    },
+    {
+      "case_id": "A000733898",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 755756,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 755756
+    },
+    {
+      "case_id": "A000808977",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 688605,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 688605
+    },
+    {
+      "case_id": "A000822630",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 767203,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 767203
+    },
+    {
+      "case_id": "A000827083",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 742759,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 742759
+    },
+    {
+      "case_id": "A000829808",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770500,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770500
+    },
+    {
+      "case_id": "A000913952",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781612,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781612
+    },
+    {
+      "case_id": "A001027349",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 810244,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 810244
+    },
+    {
+      "case_id": "A001047729",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 705238,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 705238
+    },
+    {
+      "case_id": "A001074268",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 738593,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 738593
+    },
+    {
+      "case_id": "A001083428",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 821920,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 821920
+    },
+    {
+      "case_id": "A001092475",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 727586,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 727586
+    },
+    {
+      "case_id": "A001093486",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 745489,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 745489
+    },
+    {
+      "case_id": "A001109618",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 755953,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 755953
+    },
+    {
+      "case_id": "A001126672",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 732177,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 732177
+    },
+    {
+      "case_id": "A001162446",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 621616,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 621616
+    },
+    {
+      "case_id": "A001168424",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 800182,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 800182
+    },
+    {
+      "case_id": "A001189410",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 721255,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 721255
+    },
+    {
+      "case_id": "A001199299",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758385,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758385
+    },
+    {
+      "case_id": "A001238999",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 710519,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 710519
+    },
+    {
+      "case_id": "A001250372",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 592286,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 592286
+    },
+    {
+      "case_id": "A001259001",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 737769,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 737769
+    },
+    {
+      "case_id": "A001262064",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 785088,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 785088
+    },
+    {
+      "case_id": "A001266125",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 848261,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 848261
+    },
+    {
+      "case_id": "A001332832-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 735166,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 735166
+    },
+    {
+      "case_id": "A001344516",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 795013,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 795013
+    },
+    {
+      "case_id": "A001367900",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 670338,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 670338
+    },
+    {
+      "case_id": "A001370375",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766671,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766671
+    },
+    {
+      "case_id": "A001393665",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 791289,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 791289
+    },
+    {
+      "case_id": "A001397014",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 730702,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 730702
+    },
+    {
+      "case_id": "A001397960",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 764521,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 764521
+    },
+    {
+      "case_id": "A001409228",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 741088,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 741088
+    },
+    {
+      "case_id": "A001427321",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773038,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773038
+    },
+    {
+      "case_id": "A001438120",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 699919,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 699919
+    },
+    {
+      "case_id": "A001471135",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 684718,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 684718
+    },
+    {
+      "case_id": "A001478803",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 811273,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 811273
+    },
+    {
+      "case_id": "A001506620",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770588,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770588
+    },
+    {
+      "case_id": "A001516623",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 818193,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 818193
+    },
+    {
+      "case_id": "A001521653",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 646359,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 646359
+    },
+    {
+      "case_id": "A001525457",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 811135,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 811135
+    },
+    {
+      "case_id": "A001529896",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 738918,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 738918
+    },
+    {
+      "case_id": "A001534217",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 704541,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 704541
+    },
+    {
+      "case_id": "A001544142",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 713503,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 713503
+    },
+    {
+      "case_id": "A001545475",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 608110,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 608110
+    },
+    {
+      "case_id": "A001560256",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776903,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776903
+    },
+    {
+      "case_id": "A001570399",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 754698,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 754698
+    },
+    {
+      "case_id": "A001572675",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 753323,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 753323
+    },
+    {
+      "case_id": "A001575759",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733763,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733763
+    },
+    {
+      "case_id": "A001581917",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761717,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761717
+    },
+    {
+      "case_id": "A001583377",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 754169,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 754169
+    },
+    {
+      "case_id": "A001588715",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 693158,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 693158
+    },
+    {
+      "case_id": "A001590165",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 778131,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 778131
+    },
+    {
+      "case_id": "A001598566",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 771534,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 771534
+    },
+    {
+      "case_id": "A001601034",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 763445,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 763445
+    },
+    {
+      "case_id": "A001601356",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781262,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781262
+    },
+    {
+      "case_id": "A001602118",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 815580,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 815580
+    },
+    {
+      "case_id": "A001603586",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 845928,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 845928
+    },
+    {
+      "case_id": "A001603641",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 827515,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 827515
+    },
+    {
+      "case_id": "A001604205",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 791133,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 791133
+    },
+    {
+      "case_id": "A001604824",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 709717,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 709717
+    },
+    {
+      "case_id": "A001605283",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781674,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781674
+    },
+    {
+      "case_id": "A001606059",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 754934,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 754934
+    },
+    {
+      "case_id": "A001608600",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711995,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711995
+    },
+    {
+      "case_id": "A001608618",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794658,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794658
+    },
+    {
+      "case_id": "A001608742",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787359,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787359
+    },
+    {
+      "case_id": "A001609883",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 729634,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 729634
+    },
+    {
+      "case_id": "A001610296",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775285,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775285
+    },
+    {
+      "case_id": "A001610534",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744051,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744051
+    },
+    {
+      "case_id": "A001611227",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 772262,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 772262
+    },
+    {
+      "case_id": "A001611579",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 673602,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 673602
+    },
+    {
+      "case_id": "A001612244",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776202,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776202
+    },
+    {
+      "case_id": "A001613143",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 680585,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 680585
+    },
+    {
+      "case_id": "A001613193",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746184,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746184
+    },
+    {
+      "case_id": "A001613235",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 762778,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 762778
+    },
+    {
+      "case_id": "A001613297",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 762679,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 762679
+    },
+    {
+      "case_id": "A001613504",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 778335,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 778335
+    },
+    {
+      "case_id": "A001614262",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 846431,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 846431
+    },
+    {
+      "case_id": "A001614685",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 747226,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 747226
+    },
+    {
+      "case_id": "A001616193",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 819327,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 819327
+    },
+    {
+      "case_id": "A001616219",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 707574,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 707574
+    },
+    {
+      "case_id": "A001616847",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 689699,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 689699
+    },
+    {
+      "case_id": "A001617295",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 778089,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 778089
+    },
+    {
+      "case_id": "A001619585",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 823767,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 823767
+    },
+    {
+      "case_id": "A001620289",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746340,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746340
+    },
+    {
+      "case_id": "A001620979",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766927,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766927
+    },
+    {
+      "case_id": "A001621788",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711905,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711905
+    },
+    {
+      "case_id": "A001622343",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781886,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781886
+    },
+    {
+      "case_id": "A001623863",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 743249,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 743249
+    },
+    {
+      "case_id": "A001623880",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 545466,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 545466
+    },
+    {
+      "case_id": "A001623896",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 695487,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 695487
+    },
+    {
+      "case_id": "A001627437",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 704785,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 704785
+    },
+    {
+      "case_id": "A001627943",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758776,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758776
+    },
+    {
+      "case_id": "A001628261",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 652910,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 652910
+    },
+    {
+      "case_id": "A001628911",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 715408,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 715408
+    },
+    {
+      "case_id": "A001629085",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 765526,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 765526
+    },
+    {
+      "case_id": "A001629318",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 727859,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 727859
+    },
+    {
+      "case_id": "A001630235",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 677770,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 677770
+    },
+    {
+      "case_id": "A001630396",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 772647,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 772647
+    },
+    {
+      "case_id": "A001630535",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 745068,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 745068
+    },
+    {
+      "case_id": "A001632964",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 737888,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 737888
+    },
+    {
+      "case_id": "A001633030",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758204,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758204
+    },
+    {
+      "case_id": "A001633088",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 753944,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 753944
+    },
+    {
+      "case_id": "A001633684",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 811678,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 811678
+    },
+    {
+      "case_id": "A001635014",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 722074,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 722074
+    },
+    {
+      "case_id": "A001635193",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 760840,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 760840
+    },
+    {
+      "case_id": "A001635405",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 742491,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 742491
+    },
+    {
+      "case_id": "A001636454",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 807370,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 807370
+    },
+    {
+      "case_id": "A001636890",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 680160,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 680160
+    },
+    {
+      "case_id": "A001637359",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 636014,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 636014
+    },
+    {
+      "case_id": "A001637369",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 820838,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 820838
+    },
+    {
+      "case_id": "A001638334",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 796053,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 796053
+    },
+    {
+      "case_id": "A001638543",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733289,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733289
+    },
+    {
+      "case_id": "A001639778",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 697555,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 697555
+    },
+    {
+      "case_id": "A001641354",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711568,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711568
+    },
+    {
+      "case_id": "A001641732",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 704919,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 704919
+    },
+    {
+      "case_id": "A001642726",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 756027,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 756027
+    },
+    {
+      "case_id": "A001643763",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 704118,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 704118
+    },
+    {
+      "case_id": "A001645062",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766409,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766409
+    },
+    {
+      "case_id": "A001645147",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770196,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770196
+    },
+    {
+      "case_id": "A001646267",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 734677,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 734677
+    },
+    {
+      "case_id": "A001646404",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787881,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787881
+    },
+    {
+      "case_id": "A001646696",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 818287,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 818287
+    },
+    {
+      "case_id": "A001646716",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 804861,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 804861
+    },
+    {
+      "case_id": "A001647049",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 712784,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 712784
+    },
+    {
+      "case_id": "A001647119",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 716195,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 716195
+    },
+    {
+      "case_id": "A001648933",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 669954,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 669954
+    },
+    {
+      "case_id": "A001649708",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759681,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759681
+    },
+    {
+      "case_id": "A001651146",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 737137,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 737137
+    },
+    {
+      "case_id": "A001651885",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 637394,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 637394
+    },
+    {
+      "case_id": "A001653898",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711893,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711893
+    },
+    {
+      "case_id": "A001656901",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 805799,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 805799
+    },
+    {
+      "case_id": "A001657263",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 822854,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 822854
+    },
+    {
+      "case_id": "A001660452",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 734818,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 734818
+    },
+    {
+      "case_id": "A001663062",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 700909,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 700909
+    },
+    {
+      "case_id": "A001666999",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 704961,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 704961
+    },
+    {
+      "case_id": "A001667601",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 554517,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 554517
+    },
+    {
+      "case_id": "A001669198",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794743,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794743
+    },
+    {
+      "case_id": "A001669732",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 538966,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 538966
+    },
+    {
+      "case_id": "A001669960",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 712714,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 712714
+    },
+    {
+      "case_id": "A001670882",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 708117,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 708117
+    },
+    {
+      "case_id": "A001671381",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733145,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733145
+    },
+    {
+      "case_id": "A001677153",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 731069,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 731069
+    },
+    {
+      "case_id": "A001677951",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 756571,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 756571
+    },
+    {
+      "case_id": "A001679943",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 690730,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 690730
+    },
+    {
+      "case_id": "A001682602",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 785225,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 785225
+    },
+    {
+      "case_id": "A001688703",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 692176,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 692176
+    },
+    {
+      "case_id": "A001688837-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 795602,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 795602
+    },
+    {
+      "case_id": "A001689488",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 604550,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 604550
+    },
+    {
+      "case_id": "A001690291",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806311,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806311
+    },
+    {
+      "case_id": "A001690349-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 697014,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 697014
+    },
+    {
+      "case_id": "A001692604",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 729327,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 729327
+    },
+    {
+      "case_id": "A001693188",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 791752,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 791752
+    },
+    {
+      "case_id": "A001694020",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773347,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773347
+    },
+    {
+      "case_id": "A001694036",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 782670,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 782670
+    },
+    {
+      "case_id": "A001694779",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 821042,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 821042
+    },
+    {
+      "case_id": "A001698538",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 766356,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 766356
+    },
+    {
+      "case_id": "A001699304",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 792472,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 792472
+    },
+    {
+      "case_id": "A001699615",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773966,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773966
+    },
+    {
+      "case_id": "A001703680",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 707024,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 707024
+    },
+    {
+      "case_id": "A001706850",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759316,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759316
+    },
+    {
+      "case_id": "A001709806",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 705480,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 705480
+    },
+    {
+      "case_id": "A001711513-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 630749,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 630749
+    },
+    {
+      "case_id": "A001714115",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806819,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806819
+    },
+    {
+      "case_id": "A001718170",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 789783,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 789783
+    },
+    {
+      "case_id": "A001719787",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 747793,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 747793
+    },
+    {
+      "case_id": "A001719907",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786249,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786249
+    },
+    {
+      "case_id": "A001722175",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 724833,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 724833
+    },
+    {
+      "case_id": "A001733527",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 761503,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 761503
+    },
+    {
+      "case_id": "A001736810",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 803889,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 803889
+    },
+    {
+      "case_id": "A001751277",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746949,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746949
+    },
+    {
+      "case_id": "A001755827",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 695716,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 695716
+    },
+    {
+      "case_id": "A001756024",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 800416,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 800416
+    },
+    {
+      "case_id": "A001758297",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733853,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733853
+    },
+    {
+      "case_id": "A001766155",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 728504,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 728504
+    },
+    {
+      "case_id": "A001766494",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 771746,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 771746
+    },
+    {
+      "case_id": "A001767127",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 788304,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 788304
+    },
+    {
+      "case_id": "A001772907",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 697782,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 697782
+    },
+    {
+      "case_id": "A001786645",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 769443,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 769443
+    },
+    {
+      "case_id": "A001788590",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 697922,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 697922
+    },
+    {
+      "case_id": "A001793944",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 764239,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 764239
+    },
+    {
+      "case_id": "A001794983",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 716785,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 716785
+    },
+    {
+      "case_id": "A001794983-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 713028,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 713028
+    },
+    {
+      "case_id": "A001795780",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 730166,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 730166
+    },
+    {
+      "case_id": "A001796587",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 781348,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 781348
+    },
+    {
+      "case_id": "A001808459",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 765993,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 765993
+    },
+    {
+      "case_id": "A001809356",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 712254,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 712254
+    },
+    {
+      "case_id": "A001813114",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 820050,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 820050
+    },
+    {
+      "case_id": "A001813366",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 843124,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 843124
+    },
+    {
+      "case_id": "A001814905",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770218,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770218
+    },
+    {
+      "case_id": "A001816201-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793933,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793933
+    },
+    {
+      "case_id": "A001818287",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 578203,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 578203
+    },
+    {
+      "case_id": "A001819310",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 739313,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 739313
+    },
+    {
+      "case_id": "A001825205",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 770350,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 770350
+    },
+    {
+      "case_id": "A001825367-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 737280,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 737280
+    },
+    {
+      "case_id": "A001830879",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 772308,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 772308
+    },
+    {
+      "case_id": "A001837056",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 707523,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 707523
+    },
+    {
+      "case_id": "A001840235",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 763958,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 763958
+    },
+    {
+      "case_id": "A001841852",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 769820,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 769820
+    },
+    {
+      "case_id": "A001842288",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 801567,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 801567
+    },
+    {
+      "case_id": "A001854061",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746779,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746779
+    },
+    {
+      "case_id": "A001859968",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794451,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794451
+    },
+    {
+      "case_id": "A001860884",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 763458,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 763458
+    },
+    {
+      "case_id": "A001862809",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 763351,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 763351
+    },
+    {
+      "case_id": "A001866164",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806249,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806249
+    },
+    {
+      "case_id": "A001866171",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 785521,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 785521
+    },
+    {
+      "case_id": "A001870250",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 760756,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 760756
+    },
+    {
+      "case_id": "A001870548",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 799227,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 799227
+    },
+    {
+      "case_id": "A001875951",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 795475,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 795475
+    },
+    {
+      "case_id": "A001878464",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 791074,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 791074
+    },
+    {
+      "case_id": "A001878464-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 738590,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 738590
+    },
+    {
+      "case_id": "A001879182-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 750679,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 750679
+    },
+    {
+      "case_id": "A001885772",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775022,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775022
+    },
+    {
+      "case_id": "A001887879",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 730885,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 730885
+    },
+    {
+      "case_id": "A001888679",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 720223,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 720223
+    },
+    {
+      "case_id": "A001892094",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 790121,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 790121
+    },
+    {
+      "case_id": "A001902512",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759788,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759788
+    },
+    {
+      "case_id": "A001903270-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 735648,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 735648
+    },
+    {
+      "case_id": "A001904186",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 787850,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 787850
+    },
+    {
+      "case_id": "A001904708-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775726,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775726
+    },
+    {
+      "case_id": "A001906652",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719813,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719813
+    },
+    {
+      "case_id": "A001906810",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 827798,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 827798
+    },
+    {
+      "case_id": "A001908450",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 813124,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 813124
+    },
+    {
+      "case_id": "A001911151-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759957,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759957
+    },
+    {
+      "case_id": "A001911401",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 828479,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 828479
+    },
+    {
+      "case_id": "A001911401-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793401,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793401
+    },
+    {
+      "case_id": "A001913592",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 813951,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 813951
+    },
+    {
+      "case_id": "A001913766-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 824508,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 824508
+    },
+    {
+      "case_id": "A001914197",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 753509,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 753509
+    },
+    {
+      "case_id": "A001917272",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 764021,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 764021
+    },
+    {
+      "case_id": "A001917272-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 723194,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 723194
+    },
+    {
+      "case_id": "A001917390",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 732881,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 732881
+    },
+    {
+      "case_id": "A001921437",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733075,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733075
+    },
+    {
+      "case_id": "A001922496",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 809837,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 809837
+    },
+    {
+      "case_id": "A001922673",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794351,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794351
+    },
+    {
+      "case_id": "A001922909",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 775706,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 775706
+    },
+    {
+      "case_id": "A001923658",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 742420,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 742420
+    },
+    {
+      "case_id": "A001923871",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 711969,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 711969
+    },
+    {
+      "case_id": "A001923871-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 750491,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 750491
+    },
+    {
+      "case_id": "A001926690-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793223,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793223
+    },
+    {
+      "case_id": "A001929481",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806593,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806593
+    },
+    {
+      "case_id": "A001931767",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 818247,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 818247
+    },
+    {
+      "case_id": "A001932596",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 743654,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 743654
+    },
+    {
+      "case_id": "A001934939",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 807577,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 807577
+    },
+    {
+      "case_id": "A001938232",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 699524,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 699524
+    },
+    {
+      "case_id": "A001943777",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 674154,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 674154
+    },
+    {
+      "case_id": "A001947099",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 810266,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 810266
+    },
+    {
+      "case_id": "A001956441",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786774,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786774
+    },
+    {
+      "case_id": "A001960061",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 722666,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 722666
+    },
+    {
+      "case_id": "A001961400",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 794267,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 794267
+    },
+    {
+      "case_id": "A001967399",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 769614,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 769614
+    },
+    {
+      "case_id": "A001967514",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 802105,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 802105
+    },
+    {
+      "case_id": "A001970601",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 725951,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 725951
+    },
+    {
+      "case_id": "A001972097",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 729922,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 729922
+    },
+    {
+      "case_id": "A001972942",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 730270,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 730270
+    },
+    {
+      "case_id": "A001984210",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 757834,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 757834
+    },
+    {
+      "case_id": "A001987737-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776978,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776978
+    },
+    {
+      "case_id": "A001989181",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776237,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776237
+    },
+    {
+      "case_id": "A001999129",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 830959,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 830959
+    },
+    {
+      "case_id": "A001999759",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 728280,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 728280
+    },
+    {
+      "case_id": "A002000465",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746804,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746804
+    },
+    {
+      "case_id": "A002005314",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 809280,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 809280
+    },
+    {
+      "case_id": "A002005558",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 696013,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 696013
+    },
+    {
+      "case_id": "A002006943",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 727423,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 727423
+    },
+    {
+      "case_id": "A002006943-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 776351,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 776351
+    },
+    {
+      "case_id": "A002007995",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 715979,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 715979
+    },
+    {
+      "case_id": "A002011029",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 747130,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 747130
+    },
+    {
+      "case_id": "A002011740",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 790740,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 790740
+    },
+    {
+      "case_id": "A002012347",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 638210,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 638210
+    },
+    {
+      "case_id": "A002021001",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 705564,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 705564
+    },
+    {
+      "case_id": "A002021058-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 603149,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 603149
+    },
+    {
+      "case_id": "A002021647",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 773180,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 773180
+    },
+    {
+      "case_id": "A002031804",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786522,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786522
+    },
+    {
+      "case_id": "A002037682",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 767758,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 767758
+    },
+    {
+      "case_id": "A002038079",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 816241,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 816241
+    },
+    {
+      "case_id": "A002041601",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 743072,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 743072
+    },
+    {
+      "case_id": "A002042791",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 811610,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 811610
+    },
+    {
+      "case_id": "A002053206",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 809735,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 809735
+    },
+    {
+      "case_id": "A002053811",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786297,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786297
+    },
+    {
+      "case_id": "A002064146",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 686678,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 686678
+    },
+    {
+      "case_id": "A002071372",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 805864,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 805864
+    },
+    {
+      "case_id": "A002073554",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 739242,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 739242
+    },
+    {
+      "case_id": "A002073697",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 732532,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 732532
+    },
+    {
+      "case_id": "A002076747",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 729417,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 729417
+    },
+    {
+      "case_id": "A002081031",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 755542,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 755542
+    },
+    {
+      "case_id": "A002081031-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 757356,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 757356
+    },
+    {
+      "case_id": "A002087867",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 793207,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 793207
+    },
+    {
+      "case_id": "A002087867-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 805726,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 805726
+    },
+    {
+      "case_id": "A002095165",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 743667,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 743667
+    },
+    {
+      "case_id": "A002097551",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 674445,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 674445
+    },
+    {
+      "case_id": "A002110702",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 780742,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 780742
+    },
+    {
+      "case_id": "A002116268",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 777266,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 777266
+    },
+    {
+      "case_id": "A002122236",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 759266,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 759266
+    },
+    {
+      "case_id": "A002123222",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 733087,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 733087
+    },
+    {
+      "case_id": "A002123282",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 748522,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 748522
+    },
+    {
+      "case_id": "A002123282-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 736505,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 736505
+    },
+    {
+      "case_id": "A002128820",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 817871,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 817871
+    },
+    {
+      "case_id": "A002133927",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 812832,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 812832
+    },
+    {
+      "case_id": "A002138914",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 760477,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 760477
+    },
+    {
+      "case_id": "A002140468",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 789654,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 789654
+    },
+    {
+      "case_id": "A002145202-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744146,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744146
+    },
+    {
+      "case_id": "A002147070-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 782409,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 782409
+    },
+    {
+      "case_id": "A002152807",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 815945,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 815945
+    },
+    {
+      "case_id": "A002156070",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 772091,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 772091
+    },
+    {
+      "case_id": "A002156410",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 739287,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 739287
+    },
+    {
+      "case_id": "A002158881",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 724293,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 724293
+    },
+    {
+      "case_id": "A002215062",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 747419,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 747419
+    },
+    {
+      "case_id": "A002236665",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 697651,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 697651
+    },
+    {
+      "case_id": "A002270781",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 698850,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 698850
+    },
+    {
+      "case_id": "A002326614",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 792441,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 792441
+    },
+    {
+      "case_id": "A002326614-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 757311,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 757311
+    },
+    {
+      "case_id": "A002327722",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 724704,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 724704
+    },
+    {
+      "case_id": "A002329169",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 747281,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 747281
+    },
+    {
+      "case_id": "A002331084",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 738024,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 738024
+    },
+    {
+      "case_id": "A002336513",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 806843,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 806843
+    },
+    {
+      "case_id": "A002336585",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 797978,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 797978
+    },
+    {
+      "case_id": "A002337238",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 812130,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 812130
+    },
+    {
+      "case_id": "A002338365",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 758911,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 758911
+    },
+    {
+      "case_id": "A002342514",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 744575,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 744575
+    },
+    {
+      "case_id": "A002342998",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 740818,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 740818
+    },
+    {
+      "case_id": "A002343275",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 722738,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 722738
+    },
+    {
+      "case_id": "A002343275-1",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 722679,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 722679
+    },
+    {
+      "case_id": "A002345714",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786499,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786499
+    },
+    {
+      "case_id": "A002350335",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 738171,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 738171
+    },
+    {
+      "case_id": "A002352380",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 734039,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 734039
+    },
+    {
+      "case_id": "A002352466",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 786150,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 786150
+    },
+    {
+      "case_id": "A002352679",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 815473,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 815473
+    },
+    {
+      "case_id": "A002355690",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 760409,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 760409
+    },
+    {
+      "case_id": "A002356134",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 675828,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 675828
+    },
+    {
+      "case_id": "A002358957",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 848104,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 848104
+    },
+    {
+      "case_id": "A002360612",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 734323,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 734323
+    },
+    {
+      "case_id": "A002361812",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 719632,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 719632
+    },
+    {
+      "case_id": "A002364485",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 746631,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 746631
+    },
+    {
+      "case_id": "A002366013",
+      "pass": true,
+      "patch_count": 20,
+      "physics_core_pixels": 784075,
+      "row_major_coordinates": true,
+      "union_covers_physics_core_skin": true,
+      "union_pixels": 784075
+    }
+  ],
+  "patch_count": 10000,
+  "status": "PASS"
+}

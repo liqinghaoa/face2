@@ -1,0 +1,32 @@
+{
+  "H": {
+    "bootstrap_draws": 10000,
+    "ci": [
+      -0.21101012022616422,
+      -0.08389153226280993
+    ],
+    "mean_delta": -0.14568191216614465,
+    "one_sided": false,
+    "relative_reduction_mean": -0.14568191216614465,
+    "strata": {
+      "Camera-OOD": 500,
+      "Joint-OOD": 500,
+      "Light-OOD": 500
+    }
+  },
+  "M": {
+    "bootstrap_draws": 10000,
+    "ci": [
+      -0.031688806464915134,
+      0.01955221783794862
+    ],
+    "mean_delta": -0.00549614442163603,
+    "one_sided": false,
+    "relative_reduction_mean": -0.0054961444216360305,
+    "strata": {
+      "Camera-OOD": 500,
+      "Joint-OOD": 500,
+      "Light-OOD": 500
+    }
+  }
+}

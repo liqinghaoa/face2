@@ -1,0 +1,17 @@
+camera_name,camera_name_normalized,npz_index,response_shape,wavelength_min_nm,wavelength_max_nm,wavelength_step_nm,channel_order,finite,nonnegative,illuminant_count,qualified_pair_count,finite_fraction,worst_loocv_deltae00_median,worst_loocv_deltae00_p95,worst_resolution_rgb_error,worst_mh_sigma_ratio,multicamera_status,quality_gate_pass,candidate_scope,exclusion_reason,eligible,pass,am2_eligible
+Canon 20D,canon 20d,1,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.34314821003,3.19399203114,0.0023954873956,0.0139159007797,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Canon 300D,canon 300d,2,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.97205702531,2.32082807229,0.00254328177007,0.0113581937716,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Canon 40D,canon 40d,3,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.62538900233,2.67060564819,0.00272508477922,0.0120594528373,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Canon 500D,canon 500d,4,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.00795077484,2.00217253972,0.00232985859753,0.00869398009712,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Canon 50D,canon 50d,5,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.877308586577,2.04595385727,0.00149886571466,0.00923258121597,PASS,True,consumer_mobile_candidate,eligible,True,False,False
+Canon 600D,canon 600d,7,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.22790376993,2.38718342805,0.00198618260187,0.0108670810442,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Canon 60D,canon 60d,8,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.01991283384,2.31044428427,0.00149442191401,0.0108440251138,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D3X,nikon d3x,10,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.871464986556,2.38147109936,0.00380953522352,0.0127358018485,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D200,nikon d200,11,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.05434224817,2.20018845461,0.00253167847003,0.0138529317578,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D3,nikon d3,12,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.980596711856,2.21748313443,0.00300740291878,0.0140942235455,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D300s,nikon d300s,13,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.0241882593,2.80257667415,0.00276813269375,0.0131188074553,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D40,nikon d40,14,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.839594805695,1.80012079918,0.00308884750082,0.0128672280923,PASS,True,consumer_mobile_candidate,eligible,True,False,False
+Nikon D50,nikon d50,15,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.23324963772,2.40941277745,0.00358730012292,0.0139819020574,PASS,True,consumer_mobile_candidate,eligible,True,False,False
+Nikon D700,nikon d700,17,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.952230218372,2.21085629059,0.00329268884133,0.0140794556512,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Nikon D90,nikon d90,19,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,0.991761918769,2.47448730186,0.00226229026607,0.0128396452616,PASS,True,consumer_mobile_candidate,eligible,True,True,True
+Pentax K-5,pentax k 5,22,33x3,400.0,720.0,10.0,"R,G,B",True,True,4,4,1.0,1.06318556607,2.46154611073,0.0026281554138,0.0112057017749,PASS,True,consumer_mobile_candidate,eligible,True,True,True

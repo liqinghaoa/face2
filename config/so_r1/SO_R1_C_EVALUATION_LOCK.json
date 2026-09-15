@@ -1,0 +1,13 @@
+{
+  "baseline_checkpoint_sha256": "5b1dd85f840d4d00a7c1c1f3b7c0a9306031408ecf0c5a557f53ca0810c0265b",
+  "evaluation_protocol_hash": "d98e871c6722656a827923ab600f8829fffbbdbb3c8730e6913356a39e94a4a0",
+  "proposed_checkpoint_sha256": "5cd86ceee6c9ad7f448676b59b3f1f5e8d80dc28bce106101b19d1286b6562a0",
+  "selected_lambda": 0.5,
+  "status": "FROZEN_BEFORE_TEST",
+  "test_splits": [
+    "ID Test",
+    "Camera-OOD",
+    "Light-OOD",
+    "Joint-OOD"
+  ]
+}

@@ -23,6 +23,8 @@ def compute_binary_metrics(y_true: Any, y_prob: Any) -> dict[str, Any]:
     if len(np.unique(true)) != 2:
         raise ValueError("both classes are required for binary ROC-AUC")
     prediction = probability.argmax(axis=1)
+    matrix = confusion_matrix(true, prediction, labels=[0, 1])
+    tn, fp, fn, tp = matrix.ravel()
     return {
         "macro_auc": float(roc_auc_score(true, probability[:, 1])),
         "accuracy": float(accuracy_score(true, prediction)),
@@ -30,7 +32,9 @@ def compute_binary_metrics(y_true: Any, y_prob: Any) -> dict[str, Any]:
         "macro_recall": float(recall_score(true, prediction, average="macro", zero_division=0)),
         "macro_f1": float(f1_score(true, prediction, average="macro", zero_division=0)),
         "balanced_accuracy": float(balanced_accuracy_score(true, prediction)),
-        "confusion_matrix": confusion_matrix(true, prediction, labels=[0, 1]),
+        "sensitivity": float(tp / (tp + fn)) if tp + fn else 0.0,
+        "specificity": float(tn / (tn + fp)) if tn + fp else 0.0,
+        "confusion_matrix": matrix,
     }
 
 

@@ -1,0 +1,19 @@
+{
+  "accuracy": 0.83,
+  "balanced_accuracy": 0.7981366459627328,
+  "condition": "B2_H_ONLY",
+  "fold": 3,
+  "inner_best_macro_auc": 0.8188093183779119,
+  "macro_auc": 0.8712591756070017,
+  "macro_f1": 0.7762863534675615,
+  "macro_precision": 0.7619047619047619,
+  "macro_recall": 0.7981366459627328,
+  "selected_epoch": 13,
+  "selection_epochs_run": 23,
+  "sensitivity": 0.8571428571428571,
+  "specificity": 0.7391304347826086,
+  "train_control": 73,
+  "train_patient": 247,
+  "weight_control": 2.1917808055877686,
+  "weight_patient": 0.647773265838623
+}

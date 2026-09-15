@@ -17,7 +17,14 @@ from metrics.R3DPR.binary_classification_metrics import compute_binary_metrics, 
 from utils.experiment_utils import load_yaml
 
 
-METRICS = ["macro_auc", "accuracy", "macro_precision", "macro_recall", "macro_f1", "balanced_accuracy"]
+METRICS = ["macro_auc", "macro_f1", "balanced_accuracy", "sensitivity", "specificity"]
+METRIC_LABELS = {
+    "macro_auc": "Macro-AUC",
+    "macro_f1": "Macro-F1",
+    "balanced_accuracy": "Balanced Accuracy",
+    "sensitivity": "Sensitivity",
+    "specificity": "Specificity",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -76,28 +83,30 @@ def validate_oof(oof: pd.DataFrame, expected: pd.DataFrame, n_folds: int) -> Non
 
 def make_report(config: dict, fold_metrics: pd.DataFrame, metrics: dict, matrix: np.ndarray) -> str:
     data = config["data"]
+    backbone = str(config["model"]["backbone"]).strip().lower()
+    backbone_label = backbone.replace("resnet", "ResNet")
     strategy = config["model"].get("trainability_strategy", "full_finetune")
     dropout = config["model"].get("dropout")
     train = config["train"]
     fold_rows = "\n".join(
-        f"| {int(row.fold)} | {row.macro_auc:.4f} | {row.accuracy:.4f} | {row.macro_f1:.4f} | {row.balanced_accuracy:.4f} | {int(row.best_epoch)} |"
+        f"| {int(row.fold)} | {row.macro_auc:.4f} | {row.macro_f1:.4f} | {row.balanced_accuracy:.4f} | {row.sensitivity:.4f} | {row.specificity:.4f} | {int(row.best_epoch)} |"
         for row in fold_metrics.itertuples()
     )
-    metric_rows = "\n".join(f"| {name} | {metrics[name]:.4f} |" for name in METRICS)
+    metric_rows = "\n".join(f"| {METRIC_LABELS[name]} | {metrics[name]:.4f} |" for name in METRICS)
     scheduler_text = f", lr scheduler={train.get('lr_scheduler', 'none')}" if train.get("lr_scheduler", "none") not in {"none", None} else ""
     loss_name = str(train.get("loss", "weighted_cross_entropy")).strip().lower()
     if loss_name == "weighted_ce_label_smoothing":
         loss_text = f"weighted label-smoothed cross entropy (alpha={float(train.get('label_smoothing_alpha', 0.1)):g})"
     else:
         loss_text = "weighted cross entropy"
-    return f"""# R3DPR ResNet18 Control vs Patient Binary Baseline
+    return f"""# R3DPR {backbone_label} Control vs Patient Binary Baseline
 
 ## Protocol
 
 - Direct binary label column: `{data['label_column']}`. No three-class label mapping was used.
 - One-table five-fold split: training fold != k; validation fold == k.
 - Input resize: height x width = {data['image_height']} x {data['image_width']}.
-- ResNet18 ImageNet pretrained, `{strategy}`, dropout={dropout}, BatchNorm mode=`{train.get('batchnorm_mode', 'train')}`, {loss_text} calculated within each training fold.
+- {backbone_label} ImageNet pretrained, `{strategy}`, dropout={dropout}, BatchNorm mode=`{train.get('batchnorm_mode', 'train')}`, {loss_text} calculated within each training fold.
 - AdamW (lr={train['lr']}, weight_decay={train['weight_decay']}{scheduler_text}), validation macro-AUC checkpoint selection, patience={train['early_stopping_patience']}.
 - Hard labels are softmax argmax. No threshold search was performed.
 
@@ -116,8 +125,8 @@ def make_report(config: dict, fold_metrics: pd.DataFrame, metrics: dict, matrix:
 
 ## Fold Metrics
 
-| Fold | Macro-AUC | Accuracy | Macro-F1 | Balanced Accuracy | Best epoch |
-|---:|---:|---:|---:|---:|---:|
+| Fold | Macro-AUC | Macro-F1 | Balanced Accuracy | Sensitivity | Specificity | Best epoch |
+|---:|---:|---:|---:|---:|---:|---:|
 {fold_rows}
 
 The primary result is the pooled OOF metric set, not the best individual fold or training-set metric.
@@ -144,6 +153,16 @@ def main() -> None:
     validate_oof(oof, expected, n_folds)
     metrics = compute_binary_metrics(oof["binary_label"].to_numpy(int), oof[["prob_control", "prob_patient"]].to_numpy(float))
     fold_metrics = pd.concat(metric_frames, ignore_index=True).sort_values("fold")
+    derived_fold_metrics = pd.DataFrame(
+        [
+            {"fold": fold, **flatten_metrics(compute_binary_metrics(frame["binary_label"].to_numpy(int), frame[["prob_control", "prob_patient"]].to_numpy(float)))}
+            for fold, frame in enumerate(prediction_frames)
+        ]
+    )
+    derived_fold_metrics = derived_fold_metrics.set_index("fold")
+    for metric in ("sensitivity", "specificity"):
+        if metric not in fold_metrics.columns:
+            fold_metrics[metric] = fold_metrics["fold"].map(derived_fold_metrics[metric])
     oof.to_csv(experiment_dir / "oof_predictions.csv", index=False, encoding="utf-8-sig")
     fold_metrics.to_csv(experiment_dir / "fold_metrics.csv", index=False, encoding="utf-8-sig")
     pd.DataFrame([flatten_metrics(metrics)]).to_csv(experiment_dir / "oof_metrics.csv", index=False, encoding="utf-8-sig")

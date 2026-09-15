@@ -1,0 +1,10 @@
+high_clip_element_fraction,low_clip_element_fraction,nonfinite_count,all_zero,all_one,R_zero_fraction,R_one_fraction,G_zero_fraction,G_one_fraction,B_zero_fraction,B_one_fraction,exposure_ev,camera,light,attempt
+0.0,0.11098993288590604,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,-0.5,Olympus E-PL2,FL2,36
+0.0,0.11097595078299777,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,-0.4,Olympus E-PL2,FL2,36
+0.0,0.11097595078299777,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,-0.3,Olympus E-PL2,FL2,36
+0.0,0.11097595078299777,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,-0.2,Olympus E-PL2,FL2,36
+0.0,0.11096196868008948,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,-0.1,Olympus E-PL2,FL2,36
+0.0,0.1109479865771812,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,0.0,Olympus E-PL2,FL2,36
+0.0,0.1109479865771812,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,0.1,Olympus E-PL2,FL2,36
+0.0,0.1109479865771812,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,0.2,Olympus E-PL2,FL2,36
+0.0,0.1109479865771812,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,0.31,Olympus E-PL2,FL2,36

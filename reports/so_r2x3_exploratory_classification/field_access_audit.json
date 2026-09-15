@@ -1,0 +1,13 @@
+{
+  "allowed_split_fields": [
+    "ID",
+    "patient_group_id",
+    "fold",
+    "binary_label",
+    "SEX"
+  ],
+  "forbidden_clinical_field_access_count": 0,
+  "outer_test_model_selection_access": 0,
+  "sex_used_as_model_feature": false,
+  "sex_used_for_stratification_only": true
+}

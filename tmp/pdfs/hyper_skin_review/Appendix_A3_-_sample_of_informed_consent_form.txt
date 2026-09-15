@@ -1,0 +1,205 @@
+                                  Informed Consent Form
+
+
+Title: Hyperspectral Video Analysis for Skin Health and Beauty
+
+
+Investigators:        Multimedia Laboratory Research Team, ECE Dept.
+                      Bahen Centre for Information Technology, BA 4157
+                      40 St George St, Toronto, ON M5S 2E4
+                      Telephone: 416-978-6845
+                      Email: pc.ng@utoronto.ca
+
+
+
+
+Faculty Supervisors:          Prof. Konstantinos N. Plataniotis, ECE Dept.
+                              Bahen Centre for Information Technology, BA 4140
+                              40 St George St, Toronto, ON M5S 2E4
+                              Telephone: 416-946-5605
+                              Email: kostas@ece.utoronto.ca
+
+
+
+
+Sponsor: Huawei Technologies Canada Co., Ltd
+
+
+
+1. Introduction
+
+   You are invited to participate in a research study that will investigate the feasibility of skin
+   analysis with hyperspectral images reconstructed from the normal RGB images captured from
+   a normal smartphone.
+   Please read through the description of the experiment, the procedure you will be participating
+   in, and the confidentiality notes in this study. If you have any questions, do not hesitate to ask
+   the study staff to explain anything you do not understand. Please understand that
+   participation in this study is entirely voluntary: you may leave the study at any time,
+   with no negative consequences on you as the participant.
+2. Background and Purpose
+
+  This project aims to 1) reconstruct the hyperspectral images from RGB image captured by
+  consumer grade smartphones or any end-user devices; and 2) apply the advanced
+  hyperspectral imaging (HIS) analysis techniques to predict users’ skin information, such as
+  hemoglobin, oxygen saturation, melanin, skin hydration, skin sebum.
+  Skin analysis is important for us to understand our skin condition before selecting useful skin
+  products. However, many skin analysis solutions rely on expensive clinical and laboratory
+  equipment, which are not readily available to the end users. Specifically, a skin camera
+  enabled by spectroscopic technology is used under a control environment to extract users’
+  skin information. Through spectroscopic technology, hyperspectral images can be acquired,
+  these images are capable of unveiling richer information of a skin image through different
+  wavelengths beyond the visible spectrum. However, capturing hyperspectral images needed
+  to be conducted in a control environment as the skin analysis is very sensitive to illumination
+  and environmental (ambient light) changes. On the other hand, capturing selfie image has
+  become a common activities for many people through their smartphone’s camera.
+  Smartphone-based skin analysis can benefit many people who want to get a quick overview
+  of their current skin condition before researching useful skin products that can improve their
+  skin condition.
+
+
+
+3. Study Procedure
+
+  Subjects 18 years and older are eligible to take part in this experiment. The data collection
+  campaign will involve acquiring hyperspectral image, standard RGB image, and skin image
+  from hyperspectral camera, smartphone’s camera and cosmetology camera.
+  The data collection campaign employs the following three cameras:
+  1. A hyperspectral camera to capture the hyperspectral images at different wavelengths
+     (350-1000nm). This camera will be mounted on a tripod and the image capture will be
+     triggered from a distance through a remote control.
+  2. A smartphone camera to capture standard RGB images. The data collected from this
+     camera will be used to facilitate the development of 1) hyperspectral image reconstruction.
+     And the reconstructed image will be used for 2) skin analysis (for experimental study and
+     mobile application development)
+  3. A skin camera that provides cosmetic information of a skin. The data collected from this
+     camera will be used as groundtruth facilitating the 2) skin analysis (for groundtruth
+     labelling).
+  The data collection will be taken placed in a laboratory environment (Multimedia Lab in
+  Bahen Building), where the above three camera will be setup as follows:
+  1. The hyperspectral camera will be mounted on a tripod.
+  2. The smartphone camara will also be mounted on a tripod, placing besides the
+     hyperspectral camera.
+   3. The skin camera will be held by participant hand, and the participant will be given a briefing
+      on how to operate the camera and the skin spot to be captured.
+   A short briefing will be given to ensure that all participants are aware of the data collection
+   procedures, and they agree to share their data for research purposes. Two data collection
+   produces will be followed.
+   1. For the first experiment, the image acquisition includes the use of hyperspectral and
+      smartphone’s cameras. The participant is required to sit in a designated chair. The
+      participant should remain still during the image acquisition process. The investigator will
+      signal the start of the image acquisition verbally, and the image acquisition will then be
+      triggered from a distance through a remote control. Both hyperspectral and smartphone’s
+      cameras will capture the image simultaneously when the acquisition button is pressed.
+      Three images of the facial skin will be captured. The entire image acquisition process
+      should not taken longer than 15min.
+   2. For the second experiment, the image acquisition include the use of a handheld skin
+      camera. The participant will be given a short briefing on how to use the camera and the
+      skin spot required by the experiment. The investigator can provide a short demo, if
+      required. The participant is then required to operate the skin camera by themselves and
+      take the images of the marked skin spots. The skin camera will be disinfected before and
+      after the image acquisition process. The entire image acquisition process should not taken
+      longer than 15min.
+
+
+   This data collection campaign considers the compliance to the Covid-19 protocols a serious
+   matter and any participant that are unable to follow the Covid-19 protocols will be
+   automatically withdraw from the study. Please note that before conducting the experiment,
+   these steps will be followed:
+   1. COVID-19 screening process and precautions (e.g. screening questions and wearing
+      facial mask/shield, hands/desk sanitization)
+   2. The participants (who are mainly UofT grad/undergrad students) will be asked to perform
+      self-assessment (UCheck) before coming to the Uoft premises.
+   3. Collection of personal contact information, as required by public health and the University
+      (e.g. Name, phone, address) for contact tracing.
+
+
+
+4. Risks and Benefits
+
+   Participants are familiar, through their every day activities, with cameras, and there are
+   no physical, psychological, social, or legal risks involved in this study. During the
+   experiment, participants will be asked to notify investigators if they feel discomfort for any
+   reason. Each participant will be engaged for approximately 0.5 hour (15min for each part).
+   Participants will be compensated at the rate of $20/hr, plus $10 bonus for good
+   performance. Hence, the maximum compensation is $20 per participant for a data collection
+   that last 30min. If a withdrawal should occur, participant will be compensated on a pro-rated
+   basis at $20 per hour, for the participant's involvement to that point.
+   The Covid-19 Research risk level is level 2 according to the F2F research methods identified
+   by    REB      (link:   https://research.utoronto.ca/covid-19-research-innovation-updates/u-t-
+   guidance-recovery-human-research-during-covid-19-pandemic). There are minor physical
+   contact to collect the skin data, in case the participant encounters problem in using the skin
+   camera. Otherwise, the investigator will minimize the possibility of physical contact by only
+   passing the disinfected skin camera to the participant through a distance. Above all cases,
+   the investigator will attempt to avoid possible physical contact and maintain at least 2m
+   physical distancing. On the other hand, all participants are required to comply with the Covid-
+   19 protocol defined by the Public health measures and University practices. Please note the
+   following:
+
+   •   Research site is located Multimedia Laboratory, under the jurisdiction of Ontario public
+       health. We are taking all safety precautions to reduce the risk of spread of COVID-19 and
+       expect the participant to follow public health directives as well.
+   •   If the participant feel that he/she is from a vulnerable group with respect to COVID-19
+       effects (e.g., senior, immuno-compromised), please discuss the possible participation with
+       the research team before consenting. The participant is under no obligation to participate
+       and nothing bad will happen if you change your mind about participating in the research.
+   •   Because the participant is coming onto campus, the following safety protocols must be
+       followed, as per Occupational Health and Safety (see Vaccination Guidance for Human
+       Participant Face-to-face (F2F) Research).
+   •   We will be collecting personal contact information that we must retain in order to follow up
+       with the participant and/or conduct contact tracing if the participant may have been
+       exposed to COVID-19 in coming to the research site.
+   •   Contact information will be kept separate from data collected through the research study
+       to allow for de-identification of the research data (if applicable, as detailed in the protocol).
+   •   The participant maintains his/her right to withdraw from the study at any time, including
+       research data (if applicable). If the participant does withdraw, we will continue to maintain
+       his/her contact information and will only give it to Occupational Health if required for
+       contact tracing.
+   •   We cannot guarantee anonymity as the personal contact information identifies a
+       participant.
+
+
+
+5. Confidentiality
+   All the signals collected for this study will be totally anonymized and kept in a database that
+   does not indicate the participant's name or address, or any information that directly identifies
+   them. The data from each participant will be given a unique ID that does not reveal any
+   personal information of the participant. The database will be securely stored in lab equipment
+   that is only administered and accessible by the PI and the research team.
+
+   Only a file linking ID’s to participants and their contact information will be stored privately in
+   case a participant needs to be contacted later for any reason, or if they request to withdraw
+   from the study. This private file is encrypted and only accessible to the supervisor and the
+   investigators. Participants will not be identified by name in any future publications or
+   presentations that result from this study.
+   The data and consent materials obtained from this study may be reviewed by a representative
+   of the Human Research Ethics Program (HREP) for quality assurance to ensure required laws
+   and guidelines are followed. If this is the case, all information accessed by the HREP will be
+   upheld to the same level of confidentiality that has been stated by the research team.
+
+
+
+
+Questions about the Study
+If you have any questions, concerns or would like to speak to the research team for any reason,
+you can address them to the experimenters or the principal investigators, Prof. Konstantinos N.
+Plataniotis, tel: 416-946-5605, email: kostas@ece.utoronto.ca.
+
+If you have any questions about your rights as a participant, please contact the Research
+Oversight     and Compliance Office - Human Research Ethics Program                          at
+ethics.review@utoronto.ca or 416-946-3273. This group is not part of the study team and
+oversees the ethical conduct of research studies. Everything you discuss with them will be kept
+confidential.
+
+
+Consent
+I have read the above information and understand the study, its procedures, risks and benefits,
+and confidentiality. All questions I had have been answered. I understand that I may withdraw
+from this study at any time.
+
+Please sign below:
+
+
+
+
+ Participant’s Printed Name         Participant’s Signature           Date
+

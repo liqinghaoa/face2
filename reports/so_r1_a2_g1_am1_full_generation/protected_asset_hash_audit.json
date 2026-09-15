@@ -1,0 +1,21 @@
+{
+  "actual_hashes": {
+    "am4_acceptance": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+    "am4_allowlist": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+    "am4_config": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+    "d0_acquisition_manifest": "bad2bd00805a232af675eb81d8d9f58820d928ee07004bd5e7574fbb408385a4",
+    "d0_latent_manifest": "474e8ec5083667cbffbf8058c295e517628830fddf73f01b4bc6e45143babb4c",
+    "d0_pair_manifest": "2adb847a722f51dfe2a47cba6e34db2f8310aa249cc61237aca6aace502e1fa6"
+  },
+  "changed": [],
+  "expected_hashes": {
+    "am4_acceptance": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+    "am4_allowlist": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+    "am4_config": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+    "d0_acquisition_manifest": "bad2bd00805a232af675eb81d8d9f58820d928ee07004bd5e7574fbb408385a4",
+    "d0_latent_manifest": "474e8ec5083667cbffbf8058c295e517628830fddf73f01b4bc6e45143babb4c",
+    "d0_pair_manifest": "2adb847a722f51dfe2a47cba6e34db2f8310aa249cc61237aca6aace502e1fa6"
+  },
+  "missing": [],
+  "status": "PASS"
+}

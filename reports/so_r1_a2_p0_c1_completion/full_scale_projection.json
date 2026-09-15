@@ -1,0 +1,9 @@
+{
+  "projected_bytes": 14747355808.59375,
+  "projected_gib": 13.734545380430063,
+  "point_runtime_seconds": 44056.54695585963,
+  "conservative_seconds": 55070.68369482454,
+  "required_free_space": 25484774048.59375,
+  "disk_available": 120231825408,
+  "disk_gate": "PASS"
+}

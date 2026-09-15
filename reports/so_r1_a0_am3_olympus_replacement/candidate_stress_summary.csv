@@ -1,0 +1,13 @@
+camera,acquisition_count,retry_exhausted_count,high_clip_violation_count,low_clip_violation_count,nonfinite_count,collapse_count,safety_pass
+Canon 20D,864,0,0,0,0,0,True
+Canon 40D,864,0,0,0,0,0,True
+Canon 500D,864,58,0,58,0,58,False
+Canon 600D,864,0,0,0,0,0,True
+Canon 60D,864,48,0,48,0,48,False
+Nikon D200,864,24,0,24,0,24,False
+Nikon D3,864,24,0,24,0,24,False
+Nikon D300s,864,0,0,0,0,0,True
+Nikon D3X,864,24,0,24,0,24,False
+Nikon D700,864,24,0,24,0,24,False
+Nikon D90,864,0,0,0,0,0,True
+Pentax K-5,864,24,0,24,0,24,False

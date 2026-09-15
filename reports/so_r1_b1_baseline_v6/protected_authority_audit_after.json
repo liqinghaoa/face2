@@ -1,0 +1,24 @@
+{
+  "allowlist_pair_count": 24,
+  "am4_status": "PASS",
+  "formal_inputs_unchanged": true,
+  "payload_audit_after": {
+    "ledger_records": 13500,
+    "payload_failure_count": 0,
+    "status": "PASS"
+  },
+  "sha256": {
+    "acquisition_manifest": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+    "am4_acceptance": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+    "am4_camera_config": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+    "completed_latent_ledger": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+    "d0_protocol_config": "1acbbd17c400c2075a77a3fff49ca2d671f2506de401cd530a0c744e6ea03808",
+    "d0_protocol_lock": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+    "final_24pair_allowlist": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+    "g1_acceptance": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+    "latent_manifest": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+    "pair_manifest": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+    "qc_manifest": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+  },
+  "status": "PASS"
+}

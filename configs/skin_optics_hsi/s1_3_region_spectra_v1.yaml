@@ -1,0 +1,35 @@
+schema_version: 1
+stage: S1-3
+config_id: s1_3_region_spectra_v1
+
+scope:
+  allowed_splits: [train, valid]
+  forbidden_splits: [test]
+  required_authorized_stage: S1-3
+  required_target_decision_status: PASS_FOR_DEVELOPMENT
+
+wavelength_contract:
+  required_centers_status: confirmed_from_official_code
+  required_ordering: ascending
+  allow_missing_effective_srf: true
+
+regions:
+  - left_cheek
+  - right_cheek
+  - forehead
+  - whole_skin
+
+statistics:
+  primary: median
+  uncertainty: [mad, iqr]
+  sensitivity: [mean, trimmed_mean]
+  trim_fraction_each_tail: 0.10
+  derived_clip_min: 0.0
+  derived_clip_max: 1.0
+
+gate:
+  primary_roles: [primary_development, primary_validation]
+  required_primary_regions: [left_cheek, right_cheek]
+  require_all_primary_regions_usable: true
+  require_all_usable_values_finite: true
+

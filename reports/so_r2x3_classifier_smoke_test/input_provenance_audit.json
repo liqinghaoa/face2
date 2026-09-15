@@ -1,0 +1,39 @@
+{
+  "b1_mh_source": "rgb_b1mh/*.npy",
+  "b2_mh_source": "rgb_b2mh/*.npy",
+  "batch_case_ids": [
+    "100643124",
+    "101295911",
+    "101377780",
+    "101588739",
+    "200732328",
+    "200734233",
+    "200869357",
+    "200887343",
+    "200887343-1",
+    "201091104",
+    "201331515",
+    "20134065",
+    "201368897",
+    "201380940",
+    "201428730",
+    "201562603"
+  ],
+  "cross_condition_rgb_identity": {
+    "RGB_equal_RGB_B1MH_first3": true,
+    "RGB_equal_RGB_B2MH_first3": true
+  },
+  "development_count": 400,
+  "inner_split_seed": 12026,
+  "inner_train_count": 320,
+  "inner_validation_count": 80,
+  "manifest_rows": 1500,
+  "outer_fold": 0,
+  "outer_test_forward_count": 0,
+  "p0_acceptance_status": "COMPLETE_CLASSIFIER_INPUT_PREPARATION",
+  "p0_source_tensor_mask_unchanged": true,
+  "stratification": [
+    "binary_label",
+    "SEX"
+  ]
+}

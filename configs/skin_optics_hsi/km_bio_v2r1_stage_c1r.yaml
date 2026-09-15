@@ -1,0 +1,164 @@
+schema_version: 1
+stage: KM-BIO-v2R.1-R-C1R
+task_id: R-C1R_COMPLETE_IDENTIFIABILITY_AND_BEST_O
+protocol_version: KM-BIO-v2R.1
+status: preregistered_train_only_completion
+frozen_date: 2026-09-11
+justification: >-
+  The earlier km_bio_v2r1_stage_c1 batch reported R_C1_COMPLETE without running the
+  registered V2R-BEST-O oxygen-extension candidate and without conditional-loss
+  parameter profiles on the R-A rule. This batch completes the 8.5 R-C1 contract
+  with independent config, implementation, runner, tests and output directory.
+supersedes_components:
+  batch: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1
+  components: [conditional_parameter_profiles, V2R-BEST-O]
+
+inputs:
+  r_c0r_output: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume
+  r_c0r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/r_c0r_decision.json
+  r_c0r_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/audit_summary.json
+  r_c0r_fold_globals: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/fold_global_parameters.csv
+  r_c0r_fold_manifest: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/fold_manifest.csv
+  r_c0r_subject_metrics: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/four_candidate_subject_metrics.csv
+  r_c1_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1/r_c1_decision.json
+  r_c1_sensitivity_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1/sensitivity_summary.csv
+  observation_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/train_symmetric_observation_manifest.parquet
+  side_pair_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/side_pair_audit.csv
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+
+output_directory: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r
+
+scope:
+  split: train
+  subject_count: 44
+  expected_spectra: 44
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r1_stage_c1r.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r1_stage_c1r.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r1_stage_c1r.py
+
+folds:
+  source: r_c0r_fold_manifest
+  count: 5
+  expected_sha256: e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370
+
+selection:
+  selected_development_candidate: V2R-PS
+  best_oof_candidate: V2R-PSG
+  profile_candidates: [V2R-PS, V2R-PSG]
+  median_logrmse_tolerance: 0.005
+
+analysis:
+  unit: subject_level_bilateral_symmetric_spectrum
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  epsilon: 1.0e-6
+  primary_loss: equal_weight_logrmse
+  residual_definition: prediction_minus_observation
+  fixed_s0: 0.70
+  base_parameter_names: [f_mel, f_blood]
+  base_lower: [0.0, 0.0]
+  base_upper: [0.43, 0.10]
+  fixed_diameter_um: 15.0
+  fixed_hb_g_l: 150.0
+  reflectance_clipping: forbidden
+
+solver:
+  individual:
+    name: scipy.optimize.least_squares
+    method: trf
+    loss: linear
+    scaled_parameterization: true
+    sobol_starts: 32
+    random_seed: 20260911
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev: 2000
+  sensitivity_sobol_starts: 8
+  profile_conditional_starts: 4
+  profile_grid_points: 51
+
+identifiability:
+  acceptable_loss_delta_logrmse: 0.005
+  maximum_acceptable_normalized_envelope_span: 0.20
+  boundary_tolerance_normalized: 0.01
+  reliable_min_identifiable_fraction: 0.80
+  conditional_min_identifiable_fraction: 0.50
+  reliable_max_boundary_fraction:
+    f_mel: 0.10
+    f_blood: 0.20
+    s: 0.20
+  conditional_max_boundary_fraction:
+    f_mel: 0.20
+    f_blood: 0.40
+    s: 0.40
+  action: report_only_does_not_stop_registered_candidates
+
+sensitivity:
+  diameter_um: [0.0, 7.5, 15.0, 30.0]
+  s0: [0.50, 0.70, 0.90]
+  epidermis_thickness_mm: [0.050, 0.060, 0.070]
+  whole_blood_hb_g_l: [100.0, 150.0, 200.0]
+  scattering_amplitude_multiplier: [0.90, 1.00, 1.05]
+  delta_bs_shift: [-0.10, 0.00]
+  bandwidth_nm: [[420, 680], [430, 670], [440, 660]]
+  rejected_by_registered_bounds:
+    scattering_amplitude_multiplier_1p10: A_s would exceed the 1.6 upper bound
+    delta_bs_shift_plus_0p10: delta_bs would exceed the 0.5 upper bound
+
+best_o:
+  base_candidates: [V2R-PS, V2R-PSG]
+  primary_base_candidate: V2R-PS
+  parameter_names: [f_mel, f_blood, s]
+  lower: [0.0, 0.0, 0.0]
+  upper: [0.43, 0.10, 1.0]
+  fixed_quantity_sensitivity_settings: [diameter_um, epidermis_thickness_mm, whole_blood_hb_g_l, scattering_amplitude_multiplier, delta_bs_shift, bandwidth]
+  s0_sensitivity_not_applicable: true
+
+reproduction:
+  baseline_absolute_tolerance: 1.0e-6
+  reference: r_c0r_subject_metrics
+
+execution:
+  train_only: true
+  stop_on_diagnostic_flags: false
+  run_best_o: true
+  run_validation: false
+  run_test: false
+  run_clinical_500: false
+  run_rgb_encoder_training: false
+access_policy:
+  allowed_split: train
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  refuse_existing_output: true
+
+required_outputs:
+  - baseline_oof_reproduction_check.csv
+  - fold_manifest_reused.csv
+  - fold_manifest_reused.sha256
+  - fold_global_parameters_reused.csv
+  - parameter_profile_rows.csv
+  - parameter_profile_summary.csv
+  - sensitivity_subject_metrics.csv
+  - sensitivity_summary.csv
+  - best_o_subject_metrics.csv
+  - best_o_summary.csv
+  - best_o_profile_rows.csv
+  - best_o_profile_summary.csv
+  - best_o_sensitivity_summary.csv
+  - best_o_sensitivity_subject_metrics.csv
+  - best_o_parameter_shifts.csv
+  - side_pressure_linkage.csv
+  - r_c1r_integrity_audit.json
+  - r_c1r_decision.json
+  - R_C1R_REPORT.md
+  - artifact_hash_manifest.csv

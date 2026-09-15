@@ -1,0 +1,118 @@
+{
+  "wavelength_nm": {
+    "shape": [
+      33
+    ],
+    "dtype": "float64"
+  },
+  "integration_weights_nm": {
+    "shape": [
+      33
+    ],
+    "dtype": "float64"
+  },
+  "cie_xyz_2deg": {
+    "shape": [
+      33,
+      3
+    ],
+    "dtype": "float64"
+  },
+  "core_illuminants_raw": {
+    "shape": [
+      4,
+      33
+    ],
+    "dtype": "float64"
+  },
+  "core_illuminants_y1": {
+    "shape": [
+      4,
+      33
+    ],
+    "dtype": "float64"
+  },
+  "core_illuminant_names": {
+    "shape": [
+      4
+    ],
+    "dtype": "<U4"
+  },
+  "core_illuminant_y_normalisation_factor": {
+    "shape": [
+      4
+    ],
+    "dtype": "float64"
+  },
+  "led_illuminants_raw": {
+    "shape": [
+      9,
+      33
+    ],
+    "dtype": "float64"
+  },
+  "led_illuminants_y1": {
+    "shape": [
+      9,
+      33
+    ],
+    "dtype": "float64"
+  },
+  "led_illuminant_names": {
+    "shape": [
+      9
+    ],
+    "dtype": "<U6"
+  },
+  "led_illuminant_y_normalisation_factor": {
+    "shape": [
+      9
+    ],
+    "dtype": "float64"
+  },
+  "camera_ssf": {
+    "shape": [
+      28,
+      33,
+      3
+    ],
+    "dtype": "float64"
+  },
+  "camera_names": {
+    "shape": [
+      28
+    ],
+    "dtype": "<U29"
+  },
+  "camera_channel_names": {
+    "shape": [
+      3
+    ],
+    "dtype": "<U1"
+  },
+  "colorchecker_reflectance": {
+    "shape": [
+      24,
+      33
+    ],
+    "dtype": "float64"
+  },
+  "colorchecker_patch_names": {
+    "shape": [
+      24
+    ],
+    "dtype": "<U20"
+  },
+  "epsilon_hbo2_cm1_per_mol_L": {
+    "shape": [
+      33
+    ],
+    "dtype": "float64"
+  },
+  "epsilon_hb_cm1_per_mol_L": {
+    "shape": [
+      33
+    ],
+    "dtype": "float64"
+  }
+}

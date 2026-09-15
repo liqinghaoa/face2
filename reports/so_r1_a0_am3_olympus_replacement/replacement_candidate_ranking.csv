@@ -1,0 +1,6 @@
+camera,safety_pass,minimum_SAM_to_retained_seen,mean_SAM_to_retained_seen,D65_A_FL2_FL11_stress_status,rank,selection_reason
+Canon 20D,True,0.1428924719676572,0.17508103658629784,PASS,1,safety hard gate; max minimum SAM; mean SAM; alphabetical
+Nikon D90,True,0.13793933291994362,0.17214778013747464,PASS,2,safety hard gate; max minimum SAM; mean SAM; alphabetical
+Nikon D300s,True,0.1261009173700187,0.1606142174358152,PASS,3,safety hard gate; max minimum SAM; mean SAM; alphabetical
+Canon 40D,True,0.1037422358468888,0.17847299723957685,PASS,4,safety hard gate; max minimum SAM; mean SAM; alphabetical
+Canon 600D,True,0.09817280822773677,0.17997736535492528,PASS,5,safety hard gate; max minimum SAM; mean SAM; alphabetical

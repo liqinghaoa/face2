@@ -1,0 +1,11 @@
+protocol_id: SO-R1-A2-P0
+status: AUDIT_ONLY
+root_seed: 20260822
+original_low_clip_threshold: 0.10
+catastrophic_channel_zero_fraction: 0.95
+major_channel_zero_fraction: 0.50
+severe_overall_low_clip_fraction: 0.30
+output_root: data/processed/SO_R1_A2_P0_PrefreezeAudit_v1
+report_root: reports/so_r1_a2_p0_prefreeze_audit
+frozen_split: config/so_r1/frozen_camera_light_split_v1.yaml
+a1_root: data/processed/SO_R1_A1_PairedPilot_v1

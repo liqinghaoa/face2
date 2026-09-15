@@ -1,0 +1,5 @@
+{
+  "status": "SUPERSEDED_BY_FINAL_VALID_EVALUATION",
+  "note": "This file preserves the last pre-final implementation exception. The completed C_ACCEPTANCE.json and protected-asset audit are authoritative; their pipeline validity is PASS.",
+  "final_acceptance": "data/processed/SO_R1_C_SyntheticEvaluation_v1/C_ACCEPTANCE.json"
+}

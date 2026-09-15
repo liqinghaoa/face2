@@ -1,0 +1,30 @@
+{
+  "sample_id": "p005_smile_front",
+  "created_utc": "2026-09-08T03:14:01.934964+00:00",
+  "rgb_path": "E:\\projects\\face2\\data\\raw\\Hyper-Skin(RGB, VIS)\\train\\RGB\\p005_smile_front.jpg",
+  "rgb_sha256_expected": "b4ac5dbce7b492edfd3757ea57a3ed6a26e5eae8f0f303141d796311d05a9c9f",
+  "image_shape": [
+    1024,
+    1024,
+    3
+  ],
+  "detections": 1,
+  "detection_route": "detector_expanded_crop",
+  "selected_detection_confidence": 0.6368414759635925,
+  "selected_detection_bbox": [
+    289,
+    383,
+    474,
+    474
+  ],
+  "expanded_bbox": [
+    194,
+    335,
+    664,
+    617
+  ],
+  "landmark_count": 478,
+  "parser_checkpoint": "E:\\projects\\face2\\preprocessing\\checkpoints\\face_parsing\\79999_iter.pth",
+  "parser_checkpoint_sha256": "468e13ca13a9b43cc0881a9f99083a430e9c0a38abd935431d1c28ee94b26567",
+  "parser_device": "cuda:0"
+}

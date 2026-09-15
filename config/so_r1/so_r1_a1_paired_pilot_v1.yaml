@@ -1,0 +1,22 @@
+schema_version: "1.0"
+protocol_id: "SO-R1-A1"
+dataset_id: "SO_R1_A1_PairedPilot_v1"
+root_seed: 20260822
+image_size: 256
+dataset_root: "data/processed/SO_R1_A1_PairedPilot_v1"
+reproducibility_root: "data/processed/SO_R1_A1_PairedPilot_v1_repro_run02"
+report_root: "reports/so_r1_a1_paired_pilot"
+so0_config: "src/skin_optics_so0/configs/so0/forward_model_mvp.yaml"
+so0_audit_root: "outputs/SO0_Forward_Model_v1.1"
+frozen_split: "config/so_r1/frozen_camera_light_split_v1.yaml"
+allowlist_csv: "reports/so_r1_a0_camera_light_selection/camera_light_32pair_allowlist.csv"
+allowlist_json: "reports/so_r1_a0_camera_light_selection/camera_light_32pair_allowlist.json"
+splits:
+  train_like_id: 24
+  validation_like_id: 8
+  id_test: 8
+  camera_ood: 8
+  light_ood: 8
+  joint_ood: 8
+acquisitions_per_latent: 5
+exposure_ev_range: [-0.5, 0.5]

@@ -1,0 +1,57 @@
+# D0-AM1 Protocol
+
+{
+  "stage_id": "SO-R1-A2-D0-AM1",
+  "protocol_version": "1.1",
+  "status": "FROZEN",
+  "root_seed": 20260822,
+  "camera_set": {
+    "seen": [
+      "Canon 5DMarkII",
+      "Hasselblad H2",
+      "Nikon D80",
+      "Point Grey Grasshopper2 14S5C"
+    ],
+    "unseen": [
+      "Canon 1DMarkIII",
+      "Nikon D5100"
+    ]
+  },
+  "light_set": {
+    "seen": [
+      "D65",
+      "A",
+      "FL2"
+    ],
+    "unseen": [
+      "FL11"
+    ]
+  },
+  "excluded_camera_set": [
+    "Nokia N900",
+    "Pentax Q",
+    "SONY NEX-5N",
+    "Olympus E-PL2",
+    "Canon 300D"
+  ],
+  "allowlist_source": "reports/so_r1_a0_am4_global_camera_atlas/final_24pair_allowlist.csv",
+  "counts": {
+    "latent": 13500,
+    "acquisition": 67500,
+    "pair": 54000
+  },
+  "mask_quotas": {
+    "Full": 5400,
+    "Mild": 5400,
+    "Strong": 2700
+  },
+  "storage_contract": "np.savez_compressed / float16 RGB+M+H / uint8 mask",
+  "qc_contract": {
+    "exposure_ev": [
+      -0.5,
+      0.31
+    ],
+    "max_retry": 128,
+    "low_high_clip_max": 0.1
+  }
+}

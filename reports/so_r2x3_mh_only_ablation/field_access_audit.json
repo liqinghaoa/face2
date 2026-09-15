@@ -1,0 +1,14 @@
+{
+  "allowed_split_fields": [
+    "ID",
+    "patient_group_id",
+    "fold",
+    "binary_label",
+    "SEX"
+  ],
+  "outer_test_model_selection_access": 0,
+  "patient_group_id_used_for_traceability_only": true,
+  "raw_nyha_age_laboratory_diagnosis_other_clinical_fields_read": 0,
+  "sex_used_as_model_feature": false,
+  "sex_used_for_inner_stratification_only": true
+}

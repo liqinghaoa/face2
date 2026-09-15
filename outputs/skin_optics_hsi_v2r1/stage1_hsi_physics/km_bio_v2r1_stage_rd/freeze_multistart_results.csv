@@ -1,0 +1,6 @@
+﻿start_index,start_global_A_s_u,start_global_delta_bs_u,selected,selected_A_s,selected_delta_bs,selected_centered_logrmse,optimizer_success
+0,0.4,0.5,False,,,,
+1,0.0,0.0,False,,,,
+2,1.0,1.0,False,,,,
+3,0.2,0.8,True,1.483455915077612,0.4999999999999999,0.06338284428645172,1.0
+4,0.8,0.2,False,,,,

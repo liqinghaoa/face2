@@ -126,6 +126,7 @@ def prepare_output_tree(output_dir: Path, root: Path, overwrite_confirmed: bool)
     allowed_output_roots = (
         (root / "data" / "processed" / "global_face").resolve(),
         (root / "data" / "processed" / "global_face_R3DPR").resolve(),
+        (root / "data" / "processed" / "global_face_R3DPR_v2").resolve(),
     )
     if not any(allowed_root in output_dir.parents for allowed_root in allowed_output_roots):
         allowed = ", ".join(str(path) for path in allowed_output_roots)

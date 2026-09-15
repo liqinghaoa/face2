@@ -1,0 +1,42 @@
+stage_id: SO-R1-C
+version: v1
+read_only: true
+splits:
+- ID Test
+- Camera-OOD
+- Light-OOD
+- Joint-OOD
+roles:
+- A0
+- A1
+- A2
+- A3
+- A4
+pairs:
+  camera_only:
+  - camera
+  - 1
+  light_only:
+  - light
+  - 2
+  appearance_only:
+  - appearance
+  - 3
+  joint:
+  - joint
+  - 4
+primary_ood:
+  Camera-OOD: camera
+  Light-OOD: light
+  Joint-OOD: joint
+precision: FP32
+bootstrap_draws: 10000
+quality_bootstrap_draws: 1000
+selected_lambda: 0.5
+baseline_checkpoint_sha256: 5b1dd85f840d4d00a7c1c1f3b7c0a9306031408ecf0c5a557f53ca0810c0265b
+proposed_checkpoint_sha256: 5cd86ceee6c9ad7f448676b59b3f1f5e8d80dc28bce106101b19d1286b6562a0
+b1_contract_hash: 7dcfb309d9d61c35b1de555b815a84e7c2f83be5d9b5e63f74bc91d14217b84f
+b2_lock_hash: 56a33e14bf2c81f8d8c34a06e6bbd5401c618a585120e39d4b0072ff00d385d1
+d0_protocol_hash: fff5f3a01c6c486e0d982debc462f235f56a42033e9c7c4983d9b912fa84df45
+g1_acceptance_hash: 5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb
+within_between_min_fraction: 0.5

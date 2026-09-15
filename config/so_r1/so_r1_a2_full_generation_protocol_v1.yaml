@@ -1,0 +1,22 @@
+protocol_id: SO-R1-A2-D0
+version: '1.0'
+status: FROZEN
+root_seed: 20260822
+child_configs:
+- path: config/so_r1/frozen_camera_light_split_v1_1.yaml
+  sha256: 57de567dcdaf0034f49b35961ad38add7cfbba9c36aa54ddead2895dc68cffac
+- path: config/so_r1/frozen_mask_prior_v1.yaml
+  sha256: 1904202c936f9009ecfdd809781aed32307fda4b6fb91fbdd0bf66c12b34b4e6
+- path: config/so_r1/frozen_acquisition_nuisance_protocol_v1.yaml
+  sha256: d7acb8abe7080647cd15dbdbc62a05e9aee326947c4ab8abce623c6e3a4bcd08
+- path: config/so_r1/frozen_storage_protocol_v1.yaml
+  sha256: e2cba7add541b2c3da5901846ff79cea1a8542b963a55dab86347bf60d1bf3fd
+- path: config/so_r1/frozen_full_dataset_split_v1.yaml
+  sha256: 77229c05be50bbb2c3ef59915e3ba4e049656bba1f2751312c76832e77719955
+- path: config/so_r1/frozen_camera_light_24pair_allowlist_v1_1.csv
+  sha256: 6952c32b347d34df55e0cf297cb46ee9c218f4e9b7400ad3293d2f886b839346
+input_ledger: reports/so_r1_a2_d0_protocol_freeze/d0_authoritative_input_ledger.csv
+full_generation_started: false
+formal_rgb_generated: 0
+training_authorized: false
+full_generation_stage_authorized: true

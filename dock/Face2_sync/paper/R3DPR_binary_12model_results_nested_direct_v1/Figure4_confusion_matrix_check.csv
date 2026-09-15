@@ -1,0 +1,5 @@
+Input,Model_ID,Backbone,Pooled_OOF_Macro_AUC,TN,FP,FN,TP,N
+Whole-face,whole_face_sh93_resnet18,ResNet-18,0.818272,88,27,107,278,500
+Eye,eye_roi_resnet34,ResNet-34,0.763456,63,52,61,324,500
+Cheek,cheek_roi_resnet50,ResNet-50,0.787939,80,35,101,284,500
+Lip,lip_roi_resnet50,ResNet-50,0.761084,78,37,113,272,500

@@ -1,0 +1,12 @@
+{
+  "AMP": {
+    "loss": 0.4127458930015564,
+    "peak_memory_bytes": 0,
+    "status": "PASS"
+  },
+  "FP32": {
+    "loss": 0.4127925932407379,
+    "peak_memory_bytes": 2103465472,
+    "status": "PASS"
+  }
+}

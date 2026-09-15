@@ -1,0 +1,98 @@
+{
+  "Baseline|Camera-OOD|H": {
+    "max_one_saturation": 0.00010040328925242648,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.05039552226662636,
+    "pass": true
+  },
+  "Baseline|Camera-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 1.52587890625e-05,
+    "min_variance_ratio": 0.18495935201644897,
+    "pass": true
+  },
+  "Baseline|ID Test|H": {
+    "max_one_saturation": 9.1552734375e-05,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.1030002310872078,
+    "pass": true
+  },
+  "Baseline|ID Test|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 1.52587890625e-05,
+    "min_variance_ratio": 0.0833333358168602,
+    "pass": true
+  },
+  "Baseline|Joint-OOD|H": {
+    "max_one_saturation": 0.0001068115234375,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.07345789670944214,
+    "pass": true
+  },
+  "Baseline|Joint-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.045240893959999084,
+    "pass": true
+  },
+  "Baseline|Light-OOD|H": {
+    "max_one_saturation": 0.00018310546875,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.08047855645418167,
+    "pass": true
+  },
+  "Baseline|Light-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.02304268069565296,
+    "pass": true
+  },
+  "Proposed|Camera-OOD|H": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.00014261266915127635,
+    "min_variance_ratio": 0.07428006082773209,
+    "pass": true
+  },
+  "Proposed|Camera-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.29420730471611023,
+    "pass": true
+  },
+  "Proposed|ID Test|H": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0002104598534060642,
+    "min_variance_ratio": 0.09892141819000244,
+    "pass": true
+  },
+  "Proposed|ID Test|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.12577639520168304,
+    "pass": true
+  },
+  "Proposed|Joint-OOD|H": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0004144062695559114,
+    "min_variance_ratio": 0.07927155494689941,
+    "pass": true
+  },
+  "Proposed|Joint-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.07363885641098022,
+    "pass": true
+  },
+  "Proposed|Light-OOD|H": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0001115386767196469,
+    "min_variance_ratio": 0.08555430918931961,
+    "pass": true
+  },
+  "Proposed|Light-OOD|M": {
+    "max_one_saturation": 0.0,
+    "max_zero_saturation": 0.0,
+    "min_variance_ratio": 0.1339285671710968,
+    "pass": true
+  }
+}

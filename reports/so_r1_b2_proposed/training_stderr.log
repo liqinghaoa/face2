@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b2_proposed_training.py", line 14, in <module>
+    print(run(args.project_root))
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 256, in run
+    run.mkdir(parents=True); report.mkdir(parents=True); _dump(report/"protected_asset_hash_audit_before.json",before); _dump(run/"run_manifest.json",{"status":"RUNNING","b1_contract_hash":b1["b1_acceptance"]["contract_hash"],"selection_protocol_hash":protocol_hash,"selection_lock_hash":lock_hash,"training_started":True})
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\pathlib.py", line 1116, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [WinError 183] 当文件已存在时，无法创建该文件。: 'E:\\projects\\face2\\reports\\so_r1_b2_proposed'

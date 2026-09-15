@@ -1,0 +1,8 @@
+{
+  "requested_latents": 64,
+  "completed_latents": 64,
+  "matched_latents": 64,
+  "rgb_mismatch_count": 0,
+  "metadata_mismatch_count": 0,
+  "content_hash_match": true
+}

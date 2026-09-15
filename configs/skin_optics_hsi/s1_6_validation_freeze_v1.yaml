@@ -1,0 +1,84 @@
+schema_version: 1
+stage: S1-6
+run_id: hyperskin_s1_6_validation_freeze_v1
+status: preregistered_before_validation_spectral_evaluation
+
+inputs:
+  region_spectra: data/processed/HyperSkin_Stage1_v1/region_spectra/region_spectra.parquet
+  s1_2_target_domain_decision: data/processed/HyperSkin_Stage1_v1/freeze/s1_2_target_domain_final_decision.json
+  s1_3_decision: data/processed/HyperSkin_Stage1_v1/region_spectra/s1_3_final_decision.json
+  s1_5r_representation_decision: data/processed/HyperSkin_Stage1_v1/train_development/s1_5r_representation_v3/s1_5r_representation_decision.json
+  model_registry: configs/skin_optics_hsi/s1_4_revised_registry_v3.yaml
+
+data_roles:
+  train_split: train
+  train_analysis_role: primary_development
+  validation_split: valid
+  validation_analysis_role: primary_validation
+  stress_analysis_role: stress_validation
+  primary_expression: neutral
+  primary_direction: front
+  primary_regions: [left_cheek, right_cheek]
+  usable_status: USABLE
+  expected_train_subjects: 44
+  expected_train_primary_spectra: 88
+  expected_validation_subjects: 3
+  expected_validation_primary_spectra: 6
+
+models:
+  selectable: [D1-M, D2-MH, D3-MHG, B2-PCA]
+  zero_dimensional_baselines: [B0-S, B0-R]
+  diagnostic_comparators: [B2-RPCA]
+  train_rejected: [K2-MH-KM, K3-MHS-KM, D3-MHO]
+  dimensions:
+    D1-M: 1
+    D2-MH: 2
+    D3-MHG: 3
+    B2-PCA: 2
+  same_dimension_preference: [D1-M, D2-MH, D3-MHG, B2-PCA]
+
+calibration:
+  statistic: median
+  reflectance_epsilon: 1.0e-8
+  band_weights: uniform
+  reference: subject_balanced_geometric_mean_of_train_primary_cheeks
+  side_gain: train_subject_median_paired_cheek_log_difference
+  pca_training_unit: train_subject_mean_of_side_corrected_primary_cheeks
+  pca_components: 2
+  refit_on_validation: false
+
+selection_gates:
+  required_primary_fit_fraction: 1.0
+  improved_subject_fraction_vs_B0S_min: 0.6666666666666666
+  median_shape_log_rmse_ratio_vs_B0S_max: 0.90
+  max_absolute_median_band_shape_residual: 0.15
+  parsimony_relative_tolerance_from_best: 0.10
+  require_finite_parameters: true
+  require_full_design_rank: true
+  semantic_M_H_gate: false
+
+selection_policy:
+  aggregation_unit: subject
+  selection_metric: subject_mean_shape_log_rmse
+  select_lowest_dimension_within_relative_tolerance_of_best: true
+  same_dimension_tie_break: fixed_preference_order
+  validation_stress_domains_are_nonblocking: true
+  no_new_models_or_formula_changes_after_validation_read: true
+
+freeze_policy:
+  selected_theta_name: theta_repr
+  analytic_amplitude_name: a_obs
+  analytic_amplitude_role: theta_aux
+  effective_srf_status: missing
+  interpretation_layer: deferred_to_stage2
+  physiological_M_H_claim: not_assessed_in_stage1
+  no_validation_refit_of_global_parameters: true
+  formal_test_runs_allowed_after_pass: 1
+  refuse_existing_output: true
+
+access_policy:
+  train_access_allowed: true
+  validation_access_allowed: true
+  test_access_allowed: false
+  raw_hsi_access_allowed: false
+

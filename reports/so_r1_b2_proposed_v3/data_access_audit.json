@@ -1,0 +1,8 @@
+{
+  "Camera-OOD": 0,
+  "ID Test": 0,
+  "Joint-OOD": 0,
+  "Light-OOD": 0,
+  "Train": 1010000,
+  "Validation": 530000
+}

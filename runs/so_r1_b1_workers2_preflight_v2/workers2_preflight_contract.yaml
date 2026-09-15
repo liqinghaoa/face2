@@ -1,0 +1,70 @@
+verification_id: SO-R1-B1-workers2-preflight-v1
+purpose: Windows workers=2 preflight and one complete epoch; not a formal B1 training
+  run
+formal_b1_training_started: false
+source_dataset_protocol_hash: fff5f3a01c6c486e0d982debc462f235f56a42033e9c7c4983d9b912fa84df45
+source_dataset_hashes:
+  status: PASS
+  acceptance_sha256: 5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb
+  protocol_lock_sha256: 982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3
+  manifest_hashes:
+    latent_manifest.csv: 035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046
+    acquisition_manifest.csv: 0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee
+    pair_manifest.csv: 61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac
+    qc_manifest.csv: 62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef
+  ledger_sha256: 67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16
+  ledger_records: 13500
+  payloads_verified: true
+  payload_failure_count: 0
+  first_payload_failure: []
+  target_range:
+    M:
+    - 0.0
+    - 1.0
+    H:
+    - 0.0
+    - 1.0
+  target_range_is_unit_interval: true
+seed: 983833781
+precision: FP32
+num_workers: 2
+pin_memory: true
+persistent_workers: true
+data_loader_timeout_seconds: 120
+latent_groups_per_batch: 4
+images_per_batch: 8
+epochs: 1
+optimizer:
+  type: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 25
+  eta_min: 1.0e-06
+amp_preflight:
+  FP32:
+    status: PASS
+    loss: 0.4127925932407379
+    overflow_detected: false
+    peak_memory_bytes: 2134524416
+    data_loader_workers: 2
+  AMP:
+    status: PASS
+    loss: 0.4127458930015564
+    overflow_detected: false
+    peak_memory_bytes: 1818425344
+    data_loader_workers: 2
+batch_capacity_preflight:
+  precision: FP32
+  candidates:
+    '4':
+      status: PASS
+      steps: 10
+      overflow_detected: false
+      peak_memory_bytes: 2199394816
+      last_loss: 0.11894382536411285
+      data_loader_workers: 2
+  selected_latent_groups_per_batch: 4
+  images_per_batch: 8
+  data_loader_workers: 2

@@ -1,0 +1,9 @@
+{
+  "audit_scope": "completion-time immutable-evidence baseline; AM2 start-time baseline was not captured",
+  "before_count": 1364,
+  "after_count": 1364,
+  "changed_count": 0,
+  "missing_count": 0,
+  "unexpected_new_protected_count": 0,
+  "pass": true
+}

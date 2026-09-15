@@ -1,0 +1,14 @@
+{
+  "inner_train_case_reads": 16,
+  "inner_validation_case_reads": 0,
+  "outer_test_case_reads": 0,
+  "existing_oof_probability_reads": 0,
+  "model_forward_calls": 3,
+  "backward_calls": 3,
+  "optimizer_steps": 0,
+  "scheduler_steps": 0,
+  "checkpoint_writes": 0,
+  "seed": 12026,
+  "normalization": "X3 RGB _normalise plus X3-MH M/H mean=0.5,std=0.5",
+  "synchronized_augmentation": "smoke has no augmentation"
+}

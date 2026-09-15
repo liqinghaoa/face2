@@ -1,0 +1,40 @@
+{
+  "H": {
+    "baseline_mae": 0.14560681643224088,
+    "bootstrap_draws": 10000,
+    "ci": [
+      -0.010666898200305875,
+      -0.007238302989437362
+    ],
+    "margin": 0.007280340821612045,
+    "mean_delta": -0.008964692281640601,
+    "one_sided": true,
+    "pass": true,
+    "strata": {
+      "Camera-OOD": 500,
+      "ID Test": 1000,
+      "Joint-OOD": 500,
+      "Light-OOD": 500
+    },
+    "upper95ci": -0.007238302989437362
+  },
+  "M": {
+    "baseline_mae": 0.023379731514840386,
+    "bootstrap_draws": 10000,
+    "ci": [
+      -0.0012650944246136353,
+      -0.0008932878356328002
+    ],
+    "margin": 0.0011689865757420193,
+    "mean_delta": -0.0010791471363045275,
+    "one_sided": true,
+    "pass": true,
+    "strata": {
+      "Camera-OOD": 500,
+      "ID Test": 1000,
+      "Joint-OOD": 500,
+      "Light-OOD": 500
+    },
+    "upper95ci": -0.0008932878356328002
+  }
+}

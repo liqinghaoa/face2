@@ -1,0 +1,43 @@
+{
+  "warmup_seconds": 50.02008470000874,
+  "warmup_latent_count": 16,
+  "warmup_acquisition_count": 80,
+  "warmup_completed": true,
+  "target_mask_generation_seconds": 8.958821500011254,
+  "rgb_generation_seconds": 826.3450457000872,
+  "serialization_seconds": 33.0417283000279,
+  "manifest_seconds": 0.0069860000076005235,
+  "hash_seconds": 0.0,
+  "qc_seconds": 0.0,
+  "replay_seconds": 106.47103709999647,
+  "loader_validation_seconds": 8.179432899996755,
+  "total_benchmark_wall_seconds": 872.8552935000043,
+  "rss_sampling_interval_seconds": 0.5,
+  "rss_sample_count": 1690,
+  "rss_start_bytes": 339746816,
+  "rss_peak_bytes": 730988544,
+  "rss_end_bytes": 625369088,
+  "peak_rss_recorded": true,
+  "system": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "cpu_model": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "physical_cores": 10,
+    "logical_cores": 16,
+    "total_ram_bytes": 16898727936,
+    "available_ram_start_bytes": 2418606080,
+    "gpu": "not_used",
+    "gpu_used": false,
+    "worker_count": 1,
+    "thread_blas_settings": {
+      "OMP_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset"
+    },
+    "git_commit": "3251c11630e0a438f4dfa6f6755703675ff2330f",
+    "config_hash": "70dcdba0f16eda64f66efd5a86249141b25f5edc82bd21376a256cda15b4e87b",
+    "root_seed": 20260822,
+    "started_at_utc": "2026-08-22T09:48:12Z",
+    "ended_at_utc": "2026-08-22T10:02:45Z"
+  }
+}

@@ -1,0 +1,29 @@
+camera_name,selection_role,selection_order,primary_selection_score,nearest_seen_camera,nearest_seen_distance_sam,nearest_seen_distance_tv,quality_gate_pass,candidate_scope,final_selected,not_selected_reason
+Canon 1DMarkIII,unseen,7.0,0.1578544827517647,Canon 5DMarkII,0.1578544827517647,0.0802862111570814,True,consumer_mobile_candidate,True,
+Canon 20D,not_selected,,0.1428924719676572,Canon 5DMarkII,0.1428924719676572,0.07045692786837529,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 300D,not_selected,,0.13966026893636832,SONY NEX-5N,0.13966026893636832,0.08322806005467868,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 40D,not_selected,,0.1037422358468888,Canon 5DMarkII,0.1037422358468888,0.05138307808186294,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 500D,not_selected,,0.13541970226962927,Canon 5DMarkII,0.13541970226962927,0.0825866161691995,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 50D,not_selected,,0.11166061058014187,Canon 5DMarkII,0.11166061058014187,0.069193035782856,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 5DMarkII,seen,1.0,0.2198714619219433,SONY NEX-5N,0.2198714619219433,0.11442922096058479,True,consumer_mobile_candidate,True,
+Canon 600D,not_selected,,0.09817280822773677,Canon 5DMarkII,0.09817280822773677,0.04899555525568611,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Canon 60D,not_selected,,0.09752544612467906,Canon 5DMarkII,0.09752544612467906,0.04841958015420408,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Hasselblad H2,not_selected,,0.20522449097555337,Olympus E-PL2,0.20522449097555337,0.13002622596801752,True,excluded,False,specialized_medium_format_profile
+Nikon D3X,not_selected,,0.14402544755179214,Nikon D80,0.14402544755179214,0.0726937490796021,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D200,not_selected,,0.12206232095362783,Nikon D80,0.12206232095362783,0.05670264595064509,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D3,not_selected,,0.12256720362740155,Nikon D80,0.12256720362740155,0.05925863284349342,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D300s,not_selected,,0.1261009173700187,Nikon D80,0.1261009173700187,0.07849016237404145,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D40,not_selected,,0.11045856926464387,SONY NEX-5N,0.11045856926464387,0.06918309364537474,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D50,not_selected,,0.14281386234325552,SONY NEX-5N,0.14281386234325552,0.0845715128530924,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D5100,unseen,8.0,0.15029310582683125,SONY NEX-5N,0.15029310582683125,0.06727652323394893,True,consumer_mobile_candidate,True,
+Nikon D700,not_selected,,0.12420507896927907,Nikon D80,0.12420507896927907,0.06048901160109008,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nikon D80,seen,3.0,0.2065867900502575,SONY NEX-5N,0.2065867900502575,0.12510212579020416,True,consumer_mobile_candidate,True,
+Nikon D90,not_selected,,0.13793933291994362,Nikon D80,0.13793933291994362,0.0818554318400899,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Nokia N900,seen,2.0,0.19145626024830653,Olympus E-PL2,0.19145626024830653,0.1156661186871379,True,consumer_mobile_candidate,True,
+Olympus E-PL2,seen,6.0,0.19145626024830653,Nokia N900,0.19145626024830653,0.1156661186871379,True,consumer_mobile_candidate,True,
+Pentax K-5,not_selected,,0.1187226687974547,SONY NEX-5N,0.1187226687974547,0.054790800745834846,True,consumer_mobile_candidate,False,eligible_but_not_selected
+Pentax Q,seen,4.0,0.20563925021746213,Olympus E-PL2,0.20563925021746213,0.12752086407725025,True,consumer_mobile_candidate,True,
+Point Grey Grasshopper 50S5C,not_selected,,0.48677367122882265,Pentax Q,0.48677367122882265,0.24061341696780758,False,excluded,False,failed_3_of_4_camera_light_pairs
+Point Grey Grasshopper2 14S5C,not_selected,,0.19647710854475564,Olympus E-PL2,0.19647710854475564,0.11159966094214159,True,excluded,False,industrial_camera_profile
+Phase One,not_selected,,0.2563808965594237,Canon 5DMarkII,0.2563808965594237,0.15253698575147442,True,excluded,False,specialized_medium_format_profile
+SONY NEX-5N,seen,5.0,0.2065867900502575,Nikon D80,0.2065867900502575,0.12510212579020416,True,consumer_mobile_candidate,True,

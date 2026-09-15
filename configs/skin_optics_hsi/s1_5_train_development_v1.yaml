@@ -1,0 +1,109 @@
+schema_version: 1
+stage: S1-5
+run_id: hyperskin_s1_5_train_development_v1
+status: train_only_development
+
+inputs:
+  region_spectra: data/processed/HyperSkin_Stage1_v1/region_spectra/region_spectra.parquet
+  s1_3_decision: data/processed/HyperSkin_Stage1_v1/region_spectra/s1_3_final_decision.json
+  s1_4_decision: data/processed/HyperSkin_Stage1_v1/models/s1_4_v2/s1_4_decision.json
+  model_registry: configs/skin_optics_hsi/s1_4_model_registry_v1.yaml
+  band_reliability: data/processed/HyperSkin_Stage1_v1/region_spectra/band_reliability_train_primary.csv
+
+data_roles:
+  allowed_split: train
+  primary_analysis_role: primary_development
+  primary_expression: neutral
+  primary_direction: front
+  primary_regions: [left_cheek, right_cheek]
+  stress_analysis_role: stress_development
+  stress_regions: [left_cheek, right_cheek, forehead, whole_skin]
+  usable_status: USABLE
+
+models:
+  primary: [B0, B1, P2, P3-S]
+  conditional: [P3-O, P4]
+  p3_o_activation:
+    median_detrended_residual_contrast_correlation_abs_min: 0.50
+    consistent_subject_fraction_min: 0.70
+    subject_correlation_abs_min: 0.30
+  p4_activation:
+    rule: requires_p3_o_activation_and_scattering_residual_evidence
+    p3_s_median_log_rmse_relative_improvement_min: 0.05
+    s_amp_boundary_fraction_max: 0.20
+
+fit:
+  n_starts_primary: 16
+  n_starts_stress: 4
+  n_starts_sensitivity: 4
+  max_function_evaluations: 250
+  reflectance_epsilon: 1.0e-6
+  minimum_valid_bands: 24
+  log_pseudo_huber_delta: 0.05
+  sam_weight: 0.25
+  prior_weight: 0.0
+  boundary_fraction: 0.01
+  solution_cluster_normalized_distance: 0.03
+  near_optimal_objective_relative_tolerance: 0.01
+  near_optimal_objective_absolute_tolerance: 1.0e-6
+  jacobian_relative_step: 1.0e-4
+  convergence_xtol: 1.0e-9
+  convergence_ftol: 1.0e-9
+  convergence_gtol: 1.0e-9
+
+side_nuisance:
+  estimate_from: paired_primary_train_cheeks
+  estimator: median_subject_mean_log_left_minus_right
+  centering: image_left_plus_d_over_2_image_right_minus_d_over_2
+  apply_to_primary_and_stress_fits: true
+  zero_gain_sensitivity: true
+
+perturbation:
+  repeats: 5
+  random_seed: 20260908
+  scale_formula: max(1.4826*MAD/sqrt(min(effective_pixels,100)),abs(trimmed_mean-median),0.005*median)
+  clip_min: 1.0e-6
+
+profile_likelihood:
+  enabled: true
+  scope: subject_symmetric_primary_spectra
+  models: [B1, P2, P3-S]
+  grid_fractions: [0.02, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 0.98]
+  note: Development profiles report objective geometry; S1-5 does not assign confidence coverage thresholds.
+
+stress_fit:
+  enabled: true
+  models: [P2, P3-S]
+  note: Non-primary expression, direction, forehead, and whole-skin results are non-blocking scope diagnostics.
+
+sensitivity:
+  models: [P2, P3-S]
+  scope: subject_symmetric_primary_spectra
+  band_sets: [full_31, remove_endpoints, remove_high_curvature_candidates]
+  center_shift_nm: [-5.0, -2.5, 0.0, 2.5, 5.0]
+  center_shift_band_set: remove_endpoints
+  assumed_gaussian_fwhm_nm: [0.0, 5.5, 10.0, 20.0]
+  statistic_variants: [median, trimmed_mean]
+
+development_decision:
+  no_numeric_pass_thresholds: true
+  outcomes: [READY_FOR_S1_6, REVISE_BEFORE_S1_6, STOP]
+  diagnostic_review_thresholds_not_final_test_gates:
+    best_physical_to_B0_median_log_rmse_ratio_max: 1.0
+    any_parameter_boundary_fraction_max: 0.25
+    multicluster_fit_fraction_max: 0.10
+    median_normalized_M_or_H_shift_P2_to_P3S_max: 0.10
+    median_absolute_log_residual_per_band_max: 0.15
+  revise_if:
+    - primary_model_has_widespread_parameter_boundary_collapse
+    - p3_s_improves_fit_but_s_amp_collapses_to_boundary
+    - m_h_change_materially_when_scattering_nuisance_is_added
+    - strong_structured_residual_remains
+    - multistart_or_perturbation_instability_is_widespread
+  note: S1-5 reports evidence and a threshold draft; final numeric gates are selected and frozen only in S1-6 Validation.
+
+access_policy:
+  validation_access_allowed: false
+  test_access_allowed: false
+  raw_hsi_access_allowed: false
+  refuse_existing_output: true

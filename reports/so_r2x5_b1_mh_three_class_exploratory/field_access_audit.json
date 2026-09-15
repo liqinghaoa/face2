@@ -1,0 +1,11 @@
+{
+  "NYHA_used_only_for_frozen_three_class_mapping": true,
+  "fields": [
+    "ID",
+    "patient_group_id",
+    "SEX",
+    "NYHA",
+    "fold"
+  ],
+  "no_other_clinical_fields": true
+}

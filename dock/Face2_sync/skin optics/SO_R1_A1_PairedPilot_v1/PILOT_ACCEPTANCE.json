@@ -1,0 +1,15 @@
+{
+  "protocol_id": "SO-R1-A1",
+  "dataset_id": "SO_R1_A1_PairedPilot_v1",
+  "final_status": "PASS",
+  "pilot_status": "ACCEPTED",
+  "next_stage": "SO-R1-A2",
+  "next_stage_authorized": true,
+  "latent_count": 64,
+  "acquisition_count": 320,
+  "pair_count": 256,
+  "camera_light_covered": 32,
+  "protected_assets_unchanged": true,
+  "deterministic_reproduction_pass": true,
+  "tests_pass": true
+}

@@ -1,0 +1,4 @@
+model,logits_shape,logits_finite,loss,loss_finite_positive,gradient_gate,cuda_peak_allocated,cuda_peak_reserved
+LATE_CONCAT,"[16, 2]",True,2.3301894664764404,True,True,1063357440,1551892480
+MH_LRF,"[16, 2]",True,0.9769248962402344,True,True,1159509504,1631584256
+MH_LRTM,"[16, 2]",True,0.742095947265625,True,True,1196887552,1652555776

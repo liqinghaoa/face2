@@ -1,7 +1,0 @@
-platform=WSL2
-environment_name=p0b_deca
-conda_base=/home/liqinghao/miniconda3
-python_path=/home/liqinghao/miniconda3/envs/p0b_deca/bin/python
-python_version=Python 3.9.25
-pip_path=/home/liqinghao/miniconda3/envs/p0b_deca/bin/pip
-kernel=6.18.33.2-microsoft-standard-WSL2

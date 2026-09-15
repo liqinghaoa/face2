@@ -1,0 +1,22 @@
+{
+  "allowlist": {
+    "quality_pass": 24,
+    "rows": 24,
+    "stress_pass": 24,
+    "unique": 24
+  },
+  "camera_ood_no_fl11": true,
+  "counts": {
+    "acquisition": 67500,
+    "latent": 13500,
+    "pair": 54000
+  },
+  "formal_array_file_count": 0,
+  "formal_rgb_generated": 0,
+  "id_no_fl11": true,
+  "id_no_unseen": true,
+  "light_ood_no_unseen": true,
+  "mh_plan_pass": true,
+  "no_forbidden_camera": true,
+  "pass": true
+}

@@ -1,0 +1,17 @@
+schema_version: "1.0"
+protocol_id: "SO-R1-A0"
+spectral_root: "data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1"
+so0_audit_root: "outputs/SO0_Forward_Model_v1.1"
+report_root: "reports/so_r1_a0_camera_light_selection"
+frozen_config_path: "config/so_r1/frozen_camera_light_split_v1.yaml"
+forced_seen_anchors:
+  - "Canon 5DMarkII"
+  - "Nokia N900"
+seen_lights: ["D65", "A", "FL2"]
+unseen_lights: ["FL11"]
+scope_exclusions:
+  "Point Grey Grasshopper 50S5C": "failed_3_of_4_camera_light_pairs"
+  "Point Grey Grasshopper2 14S5C": "industrial_camera_profile"
+  "Hasselblad H2": "specialized_medium_format_profile"
+  "Phase One": "specialized_medium_format_profile"
+tie_tolerance: 1.0e-12

@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "task_id": "STAGE1_OPTICAL_LAYER_DECISION",
+  "protocol_version": "KM-BIO-v2R.1",
+  "stage": "KM-BIO-v2R.1-STAGE1-DECISION",
+  "created_utc": "2026-09-11T07:47:12.719508+00:00",
+  "emitted_utc": "2026-09-11T07:47:12.726339+00:00",
+  "emission_mode": "primary_run",
+  "status": "STAGE1_OPTICAL_LAYER_DECISION_COMPLETE",
+  "selected_candidate": "V2R-PS",
+  "frozen_model_state": {
+    "candidate": "V2R-PS",
+    "A_s": 1.483455915077612,
+    "delta_bs": 0.4999999999999999,
+    "g0": 1.0,
+    "diameter_um": 15.0,
+    "s0": 0.7,
+    "epidermis_thickness_mm": 0.06,
+    "estimator": "full_train_joint_centered_log_shape",
+    "train_subject_count": 44,
+    "train_centered_logrmse": 0.06338284428645172,
+    "initial_theta_source": "historical_r_c0_candidate_subject_metrics_V2R-P",
+    "fitted_from_splits": [
+      "train"
+    ],
+    "validation_used_in_freeze": false
+  },
+  "frozen_model_state_sha256": "596df39ef5c83369fe83d1400e2cfdd15249504ed55fa8ccf9f9f159515ee239",
+  "decision_state": "V2R_SPECTRAL_ONLY",
+  "decision_state_meaning_zh": "光谱重建有用但所有生理参数均不可辨识",
+  "decision_state_action_zh": "只承认前向重建能力，不训练生理参数编码器",
+  "stage1_optical_layer_outcome": "SPECTRAL_RECONSTRUCTION_ONLY_NO_THETA_TARGET",
+  "route_conclusion": "KM-BIO 双层 K-M 生理线在阶段一收尾为**前向光谱重建模型**：其 420-680 nm 双侧对称谱重建优于固定参考谱且方向一致，但三个生理参数在 R-A 登记包络规则下全部不可辨识，因此不产出阶段二的生理参数目标。",
+  "strong_spectral_targets": {
+    "candidate": "V2R-PS",
+    "all_targets_pass": false,
+    "target_count": 7,
+    "passed_count": 3,
+    "failed_targets": [
+      "median_logrmse",
+      "p90_logrmse",
+      "median_sam_deg",
+      "maximum_abs_median_signed_band_residual"
+    ],
+    "engine_agreement": true
+  },
+  "development_candidate_oof_met": true,
+  "development_candidate_oof_evidence": {
+    "candidate": "V2R-PS",
+    "model_to_reference_median_error_ratio": 0.4431593301842419,
+    "model_better_than_reference_fraction": 0.9318181818181818,
+    "source": "r_c0r four-candidate out-of-fold ladder"
+  },
+  "validation_confirms_direction": true,
+  "spectral_reconstruction_useful": true,
+  "parameter_reliability_claim": "none",
+  "parameter_reliability": {
+    "f_mel": "unreliable",
+    "f_blood": "unreliable",
+    "s": "unreliable"
+  },
+  "observation_level_blocker_present": false,
+  "unified_scale_blocker": false,
+  "fixed_side_difference_blocker": false,
+  "fixed_side_difference_coupling_present": true,
+  "per_spectrum_high_capacity_correction_required": false,
+  "parameter_upgrade_forbidden": true,
+  "parameter_upgrade_forbidden_reason": "f_mel_f_blood_s_all_unreliable_in_R_C1R",
+  "locked_stages": {
+    "test_executed": false,
+    "clinical_500_executed": false,
+    "rgb_encoder_training_executed": false,
+    "stage2_design_executed": false,
+    "parameter_upgrade_allowed": false,
+    "parameter_upgrade_forbidden_reason": "f_mel_f_blood_s_all_unreliable_in_R_C1R"
+  },
+  "evidence_access": {
+    "summary_artifact_reads": 18,
+    "forbidden_content_reads": 0,
+    "new_data_content_reads": 0
+  },
+  "next_registered_stage": "NONE_REGISTERED",
+  "km_bio_line_status": "CLOSED_AT_STAGE1_DECISION",
+  "requires_new_registration_for": [
+    "test_evaluation",
+    "clinical_500_evaluation",
+    "rgb_encoder_training",
+    "stage2_parameter_encoder",
+    "any_band_or_bound_or_target_change"
+  ],
+  "stage2_interface": {
+    "schema_version": 1,
+    "task_id": "STAGE1_OPTICAL_LAYER_DECISION",
+    "protocol_version": "KM-BIO-v2R.1",
+    "deliverable": {
+      "name": "Fskin_forward_model",
+      "kind": "physiological_forward_spectral_model",
+      "code_entrypoint": "src/skin_optics_hsi/km_bio_v2r.py::forward_preloaded_numpy",
+      "wavelength_nm": [
+        420,
+        430,
+        440,
+        450,
+        460,
+        470,
+        480,
+        490,
+        500,
+        510,
+        520,
+        530,
+        540,
+        550,
+        560,
+        570,
+        580,
+        590,
+        600,
+        610,
+        620,
+        630,
+        640,
+        650,
+        660,
+        670,
+        680
+      ],
+      "coefficient_asset": "E:\\projects\\face2\\data\\external\\SO0_Spectral_Assets_v1\\processed\\SO0_Spectral_Standardized_v1\\production_10nm\\derived_optics_10nm.npz",
+      "coefficient_asset_sha256": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6"
+    },
+    "frozen_model_state": {
+      "candidate": "V2R-PS",
+      "A_s": 1.483455915077612,
+      "delta_bs": 0.4999999999999999,
+      "g0": 1.0,
+      "diameter_um": 15.0,
+      "s0": 0.7,
+      "epidermis_thickness_mm": 0.06,
+      "estimator": "full_train_joint_centered_log_shape",
+      "train_subject_count": 44,
+      "train_centered_logrmse": 0.06338284428645172,
+      "initial_theta_source": "historical_r_c0_candidate_subject_metrics_V2R-P",
+      "fitted_from_splits": [
+        "train"
+      ],
+      "validation_used_in_freeze": false
+    },
+    "fixed_quantities": {
+      "epidermis_thickness_mm": 0.06,
+      "diameter_um": 15.0,
+      "s0": 0.7,
+      "g0": 1.0
+    },
+    "parameter_ranges": {
+      "f_mel": [
+        0.0,
+        0.43
+      ],
+      "f_blood": [
+        0.0,
+        0.1
+      ],
+      "s": [
+        0.0,
+        1.0
+      ]
+    },
+    "primary_domain": {
+      "unit": "subject_level_bilateral_symmetric_spectrum",
+      "fit_centers_nm": [
+        420,
+        430,
+        440,
+        450,
+        460,
+        470,
+        480,
+        490,
+        500,
+        510,
+        520,
+        530,
+        540,
+        550,
+        560,
+        570,
+        580,
+        590,
+        600,
+        610,
+        620,
+        630,
+        640,
+        650,
+        660,
+        670,
+        680
+      ],
+      "edge_diagnostic_centers_nm": [
+        400,
+        410,
+        690,
+        700
+      ],
+      "train_subject_count": 44,
+      "validation_subject_count": 3,
+      "validation_is_developmental_only": true,
+      "quality_control": "R-B observation audit PASS_FOR_V2R_TRAIN_INVERSION"
+    },
+    "inversion_config": {
+      "primary_loss": "equal_weight_logrmse",
+      "residual_definition": "prediction_minus_observation",
+      "epsilon": 1e-06,
+      "reflectance_clipping": "forbidden",
+      "reliable_parameter_list": []
+    },
+    "error_tolerances": {
+      "strong_targets": {
+        "median_logrmse": 0.06,
+        "p90_logrmse": 0.1,
+        "median_rmse": 0.03,
+        "median_sam_deg": 3.0,
+        "maximum_abs_median_signed_band_residual": 0.03,
+        "reference_better_fraction": 0.6666666666666666,
+        "model_to_reference_median_error_ratio": 0.9
+      },
+      "direction_consistency_check_count": 6,
+      "direction_consistency_checks_met": 6
+    },
+    "failure_rules": [
+      "report the full 400-700 nm result only as an explicitly labelled edge diagnostic",
+      "never widen a parameter bound to make the spectral gate pass",
+      "never let downstream classification results influence the optical-layer decision",
+      "never treat the Validation 3-subject cohort as a population estimate",
+      "a narrower fit window or a changed strong target requires a new registered version"
+    ],
+    "per_sample_output_schema": [
+      "subject_id",
+      "capture_id",
+      "roi",
+      "model_version",
+      "theta_hat[3]",
+      "reflectance_hat[31]",
+      "logrmse",
+      "rmse",
+      "sam_deg",
+      "residual[31]",
+      "parameter_tolerance_intervals",
+      "boundary_flags",
+      "parameter_reliability_flags",
+      "sensitivity_flags",
+      "solver_status",
+      "input_quality_status",
+      "source_hashes"
+    ],
+    "stage2_usage": {
+      "theta_usable_as_supervised_target": false,
+      "reason": "decision_state is V2R_SPECTRAL_ONLY: every physiological parameter is unreliable, so only the forward reconstruction capability is admitted and no physiological-parameter encoder may be trained",
+      "locked_until_new_registration": [
+        "test",
+        "clinical_500",
+        "rgb_encoder_training",
+        "stage2_parameter_encoder"
+      ]
+    },
+    "all_file_hashes": {
+      "r_d_frozen_global_parameters": "596df39ef5c83369fe83d1400e2cfdd15249504ed55fa8ccf9f9f159515ee239",
+      "r_d_decision": "5266e8801003885a3a0d645358ad77ec863a77ee7b527d2d579d5878dfc32fdc",
+      "r_c1r_decision": "e2ac9fa14f0c1ede7dc6d161febd18d775d82ecd8becf0112eee39484be231e5",
+      "r_c0r_decision": "9d5dbe21ac1208eabefa9ee21aed2568093ce805de15a88b1b392f2f35043c62",
+      "optical_asset_10nm": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6",
+      "frozen_fold_manifest": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370"
+    },
+    "decision_state": "V2R_SPECTRAL_ONLY",
+    "created_utc": "2026-09-11T07:47:12.719508+00:00"
+  },
+  "interpretation": "阶段一光学层决策门：把 v1 A/B/C、v2R R-A/R-B/R-C0 与 v2R.1 R-C0R/R-C1/R-C1R/R-D 的已登记证据汇总为唯一的 7.5 决策状态，并按 3.6 节冻结阶段二接口。本批次不做任何拟合、不重算任何阈值、不读取任何新数据内容。",
+  "stage2_theta_usable_as_supervised_target": false
+}

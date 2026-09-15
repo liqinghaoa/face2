@@ -1,0 +1,16 @@
+{
+  "candidates": {
+    "4": {
+      "data_loader_workers": 2,
+      "last_loss": 0.11894382536411285,
+      "overflow_detected": false,
+      "peak_memory_bytes": 2199394816,
+      "status": "PASS",
+      "steps": 10
+    }
+  },
+  "data_loader_workers": 2,
+  "images_per_batch": 8,
+  "precision": "FP32",
+  "selected_latent_groups_per_batch": 4
+}

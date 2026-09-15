@@ -1,0 +1,5 @@
+{
+  "hyperparameters": "X3 locked nested-direct",
+  "seed": "12026+fold",
+  "split_source": "runs/so_r2x3_exploratory_classification/RGB/fold_{0..4}"
+}

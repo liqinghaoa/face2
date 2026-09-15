@@ -1,0 +1,67 @@
+{
+  "device": "cuda",
+  "dtype": "float32",
+  "loss": {
+    "label_smoothing_alpha": 0.05,
+    "type": "weighted_cross_entropy"
+  },
+  "models": {
+    "RGB": {
+      "architecture": "ResNet-18",
+      "class_order": [
+        "Control",
+        "Patient"
+      ],
+      "five_channel_conv1_init": null,
+      "full_finetune": true,
+      "input_channels": 3,
+      "logits": 2,
+      "pretrained": true
+    },
+    "RGB_B1MH": {
+      "architecture": "ResNet-18",
+      "class_order": [
+        "Control",
+        "Patient"
+      ],
+      "five_channel_conv1_init": "RGB ImageNet weights preserved; M/H each initialized from mean of original RGB conv1 channels",
+      "full_finetune": true,
+      "input_channels": 5,
+      "logits": 2,
+      "pretrained": true
+    },
+    "RGB_B2MH": {
+      "architecture": "ResNet-18",
+      "class_order": [
+        "Control",
+        "Patient"
+      ],
+      "five_channel_conv1_init": "RGB ImageNet weights preserved; M/H each initialized from mean of original RGB conv1 channels",
+      "full_finetune": true,
+      "input_channels": 5,
+      "logits": 2,
+      "pretrained": true
+    }
+  },
+  "normalization": {
+    "horizontal_flip": false,
+    "mh_mean": [
+      0.5,
+      0.5
+    ],
+    "mh_std": [
+      0.5,
+      0.5
+    ],
+    "rgb_mean": [
+      0.48500001430511475,
+      0.4560000002384186,
+      0.4059999883174896
+    ],
+    "rgb_std": [
+      0.2290000021457672,
+      0.2240000069141388,
+      0.22499999403953552
+    ]
+  }
+}

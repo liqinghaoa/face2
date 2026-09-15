@@ -1,0 +1,73 @@
+schema_version: 1
+stage: S1-7
+run_id: s1_7_v1
+
+inputs:
+  data_contract: data/processed/HyperSkin_Stage1_v1/contracts/data_contract.json
+  wavelength_evidence_amendment: data/processed/HyperSkin_Stage1_v1/contracts/wavelength_evidence_amendment_v1.json
+  registration_decision: data/processed/HyperSkin_Stage1_v1/registration_qc/registration_decision.json
+  frozen_mask_protocol: data/processed/HyperSkin_Stage1_v1/freeze/s1_2_mask_protocol.yaml
+  frozen_mask_provenance: data/processed/HyperSkin_Stage1_v1/freeze/s1_2_mask_protocol_provenance.json
+  target_domain_decision: data/processed/HyperSkin_Stage1_v1/freeze/s1_2_target_domain_final_decision.json
+  s1_6_decision: data/processed/HyperSkin_Stage1_v1/freeze/s1_6_v1/s1_6_decision.json
+  frozen_stage1_spec: data/processed/HyperSkin_Stage1_v1/freeze/s1_6_v1/frozen_stage1_spec.yaml
+  frozen_calibration: data/processed/HyperSkin_Stage1_v1/freeze/s1_6_v1/frozen_calibration.npz
+
+cohort:
+  split: test
+  expected_subjects: 4
+  expected_samples: 24
+  primary_expression: neutral
+  primary_direction: front
+  primary_regions: [left_cheek, right_cheek]
+  expected_primary_regions: 8
+
+models:
+  selected: D2-MH
+  matched_baseline: B0-S
+  frozen_data_driven_comparator: B2-PCA
+
+extraction:
+  statistic: median
+  trim_fraction: 0.10
+  reflectance_epsilon: 1.0e-8
+  derived_clip_range: [0.0, 1.0]
+  transform: transpose
+  manual_test_repair_allowed: false
+  region_level_missingness_policy: keep_any_cheek_meeting_frozen_pixel_threshold
+
+decision_gates:
+  minimum_primary_region_fraction: 0.75
+  minimum_primary_regions_per_subject: 1
+  improved_subject_fraction_vs_B0S_min: 0.6666666666666666
+  median_shape_log_rmse_ratio_vs_B0S_max: 0.90
+  max_absolute_median_band_shape_residual: 0.15
+  maximum_selected_model_fit_failure_fraction: 0.0
+  require_finite_parameters: true
+  require_full_design_rank: true
+
+decision_policy:
+  pass_label: PASS
+  nonpassing_label: REVISE
+  stop_conditions:
+    - frozen_contract_or_hash_invalid
+    - repeated_or_overwritten_formal_test
+    - wavelength_or_spatial_contract_invalid
+  stress_domain_is_nonblocking: true
+  physiological_interpretation_deferred_to_stage2: true
+
+access_policy:
+  test_rgb_access_allowed_after_lock: true
+  test_hsi_access_allowed_after_lock: true
+  train_access_allowed: false
+  validation_access_allowed: false
+  global_refit_allowed: false
+  model_reselection_allowed: false
+  threshold_changes_after_lock_allowed: false
+  maximum_formal_runs: 1
+
+output_policy:
+  refuse_existing_output: true
+  refuse_any_prior_s1_7_sibling: true
+  raw_data_write_allowed: false
+  preserve_failed_run: true

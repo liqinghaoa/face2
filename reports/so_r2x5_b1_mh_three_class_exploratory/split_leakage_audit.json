@@ -1,0 +1,50 @@
+{
+  "all_pass": true,
+  "folds": [
+    {
+      "fold": 0,
+      "group_overlap_train_validation": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_validation_outer": 0,
+      "outer": 100,
+      "train": 320,
+      "validation": 80
+    },
+    {
+      "fold": 1,
+      "group_overlap_train_validation": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_validation_outer": 0,
+      "outer": 100,
+      "train": 320,
+      "validation": 80
+    },
+    {
+      "fold": 2,
+      "group_overlap_train_validation": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_validation_outer": 0,
+      "outer": 100,
+      "train": 319,
+      "validation": 81
+    },
+    {
+      "fold": 3,
+      "group_overlap_train_validation": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_validation_outer": 0,
+      "outer": 100,
+      "train": 319,
+      "validation": 81
+    },
+    {
+      "fold": 4,
+      "group_overlap_train_validation": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_validation_outer": 0,
+      "outer": 100,
+      "train": 319,
+      "validation": 81
+    }
+  ]
+}

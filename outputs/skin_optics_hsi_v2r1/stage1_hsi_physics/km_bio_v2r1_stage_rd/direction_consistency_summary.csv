@@ -1,0 +1,3 @@
+﻿scope,median_logrmse,median_sam_deg,median_rmse,model_better_than_reference_fraction,median_model_to_reference_error_ratio,f_blood_upper_boundary_fraction,f_mel_any_boundary_fraction,edge_median_abs_signed_residual
+train,0.06075208746056712,3.435933638724144,0.018106601669606467,0.8636363636363636,0.44658466946387243,0.4772727272727273,0.0,0.18896519120134853
+valid,0.059207645017711245,3.5300410507546567,0.01917326960471714,1.0,0.5672386390545501,0.0,0.0,0.1770097874737558

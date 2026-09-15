@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v1-Stage-C",
+  "model_id": "KM2L-HF-v1",
+  "status": "REVISE_OBSERVATION_OR_MODEL",
+  "created_utc": "2026-09-09T16:40:19.033981+00:00",
+  "spectral_gate_pass": false,
+  "spectral_gates": {
+    "all_input_spectra_converged": true,
+    "input_coverage": true,
+    "subject_median_logrmse": false,
+    "subject_p90_logrmse": false,
+    "subject_median_rmse": false,
+    "subject_median_sam": false,
+    "maximum_abs_median_signed_band_residual": false,
+    "loo_better_subject_fraction": false,
+    "loo_median_error_ratio": false
+  },
+  "spectral_statistics": {
+    "subject_median_logrmse": 0.1858826752141524,
+    "subject_p90_logrmse": 0.2556715211966056,
+    "subject_median_rmse": 0.052510720550291407,
+    "subject_median_sam_deg": 9.822387535573561,
+    "maximum_abs_median_signed_band_residual": 0.18987441454827353,
+    "loo_better_subject_fraction": 0.5909090909090909,
+    "loo_median_error_ratio": 0.9434902315878846
+  },
+  "parameter_summary": [
+    {
+      "parameter": "f_mel",
+      "base_reliable_count": 0,
+      "expected_count": 88,
+      "base_reliable_coverage": 0.0,
+      "all_sensitivity_stable_fraction_among_reliable": 0.0,
+      "robustness_gate": false,
+      "parameter_ready": false
+    },
+    {
+      "parameter": "f_blood",
+      "base_reliable_count": 0,
+      "expected_count": 88,
+      "base_reliable_coverage": 0.0,
+      "all_sensitivity_stable_fraction_among_reliable": 0.0,
+      "robustness_gate": false,
+      "parameter_ready": false
+    },
+    {
+      "parameter": "s",
+      "base_reliable_count": 0,
+      "expected_count": 88,
+      "base_reliable_coverage": 0.0,
+      "all_sensitivity_stable_fraction_among_reliable": 0.0,
+      "robustness_gate": false,
+      "parameter_ready": false
+    }
+  ],
+  "observation_confounding": {
+    "primary_flag": true,
+    "by_parameter": {
+      "f_mel": true,
+      "f_blood": false,
+      "s": true
+    },
+    "details": [
+      {
+        "parameter": "f_mel",
+        "spearman_brightness_vs_parameter_difference": -0.6715997181113459,
+        "same_direction_fraction": 0.9545454545454546,
+        "median_image_left_minus_right": -0.02185565749177771,
+        "median_abs_difference": 0.02185565749177771,
+        "observation_confounding": true
+      },
+      {
+        "parameter": "f_blood",
+        "spearman_brightness_vs_parameter_difference": -0.25189005576216766,
+        "same_direction_fraction": 0.3409090909090909,
+        "median_image_left_minus_right": 0.0,
+        "median_abs_difference": 0.0,
+        "observation_confounding": false
+      },
+      {
+        "parameter": "s",
+        "spearman_brightness_vs_parameter_difference": 0.6949964763918253,
+        "same_direction_fraction": 1.0,
+        "median_image_left_minus_right": 0.4787208780114032,
+        "median_abs_difference": 0.4787208780114032,
+        "observation_confounding": true
+      }
+    ]
+  },
+  "free_gain_diagnostic": {
+    "median_logrmse": 0.17062184846534773,
+    "median_ratio_to_main": 0.9160389326370999,
+    "median_gain": 0.8687431150626127
+  },
+  "counts": {
+    "subjects": 44,
+    "region_spectra": 88,
+    "main_converged": 88,
+    "validation_content_reads": 0,
+    "test_content_reads": 0
+  },
+  "source_hashes": {
+    "config": "dae6d325176bf47814083e02ef1bec4a9f5a31adee94714d44471d8f4253bc45",
+    "observation_contract": "0fb38cf67dbe7dcbda9f668fe2ae8d4c6c4c4fe4d3f842c10bec68a10ae4f27b",
+    "observation_audit": "ea22529e30da10c1902dbefabd384a5956dcc5278c2f39c2e8957f272f78e636",
+    "observation_manifest": "1f947138769684136c3012ad7cbd0fa0f12d14805fa1964bc046f35c60fe07fa",
+    "formula_contract": "f59b2213bddee284bb898ad4a52c5735229aab7917486626832b320d47a64674",
+    "optical_asset_10nm": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6",
+    "optical_asset_1nm": "6dc1350517a45f5e13a06a025be59921e0c2f398d022b93bf2fd6bf2293feef9"
+  },
+  "outputs": {
+    "main_results_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\main_results.parquet",
+      "sha256": "3fea569218e4d165c224aec6cc1b337983c140605df6ed744bcfc8f11b38ab71"
+    },
+    "main_results_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\main_results.csv",
+      "sha256": "e19b17317f271f21e4d796f4bdcf0cec0e225d8288a2ff7f7ea50cd38c1a8b28"
+    },
+    "main_multistart_results_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\main_multistart_results.parquet",
+      "sha256": "043ff1d1e7384c92f0fbf0f26fe572763f706d0776ea9ad344d1f7fc209bf29d"
+    },
+    "main_multistart_results_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\main_multistart_results.csv",
+      "sha256": "46e150597c303fdbdc26ed582ef45d32546270f474acbc8d5a4aca6446643568"
+    },
+    "subject_summary_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\subject_summary.parquet",
+      "sha256": "6e56be65bd272f83c1f01711de382d368e212048cea7d2b2028d60d40ec5aecd"
+    },
+    "subject_summary_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\subject_summary.csv",
+      "sha256": "bc0b57dde4516a33bdbfc5149c630522a8f0a50a3cb3f2318a50a72ac973485b"
+    },
+    "loo_reference_control_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\loo_reference_control.parquet",
+      "sha256": "0689fea61847c7fc25b03ce1e91782636c0a160b93cb9ddc95cb1f8aa0e1cc33"
+    },
+    "loo_reference_control_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\loo_reference_control.csv",
+      "sha256": "4378c129c209ca9cf4317e9285bc398ef950fd5a44d1bcf2ccc8afaaa55fa1cf"
+    },
+    "profile_grid_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\profile_grid.parquet",
+      "sha256": "d3d97455d00d3d5e414818fd38696c87e9751001f3b425a74006c9bd855f68ae"
+    },
+    "profile_grid_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\profile_grid.csv",
+      "sha256": "da2b4b460f67bdd5f5ec0ae3b78ea85d5039c90477a6ba0cb9a46f7c5056a228"
+    },
+    "profile_multistart_results_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\profile_multistart_results.parquet",
+      "sha256": "4db4d7068e7841b729087e835b0b95d2a6be187619d2ccdb63c5b20fb6bb9f47"
+    },
+    "profile_multistart_results_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\profile_multistart_results.csv",
+      "sha256": "39ec8ce2c1eee617515b3ade399bf27c97f686a1b3ee355740d63577a1aaf98f"
+    },
+    "parameter_reliability_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\parameter_reliability.parquet",
+      "sha256": "b4fb59a066bc1325afdabfa1c94e1e75ef13eaea0b27c28a8037c0f749d0def3"
+    },
+    "parameter_reliability_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\parameter_reliability.csv",
+      "sha256": "b82b54dc18ab46197ad692243ae151d724ac2607685ec604e20226f4c0250f8f"
+    },
+    "parameter_summary_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\parameter_summary.parquet",
+      "sha256": "58e9cc6b7840407f57e41fb19bf4c6cdd08c75273e2d351b8587fae00b4074ed"
+    },
+    "parameter_summary_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\parameter_summary.csv",
+      "sha256": "2685b77559ab1bf4050c1b25330e38aa80595f0395bfd1a4860c6e86d39f4b3e"
+    },
+    "sensitivity_results_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\sensitivity_results.parquet",
+      "sha256": "5c75de366ae50d4026362673f52597872c19f01a03260079f392c109222036f9"
+    },
+    "sensitivity_results_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\sensitivity_results.csv",
+      "sha256": "0c871dc32238b54c2f4de0905ab1b8170ed95ec1de6ee391dceff703015520bc"
+    },
+    "sensitivity_summary_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\sensitivity_summary.parquet",
+      "sha256": "e66580242ea4aefda6cc65236298c0b93cdd7f4fcc67576262a74dbd0f43cc7d"
+    },
+    "sensitivity_summary_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\sensitivity_summary.csv",
+      "sha256": "c3d952e7fd365e93b5729495b3df145ad3945b7b4e49179a46e1fbf4b0990f0c"
+    },
+    "free_gain_diagnostic_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\free_gain_diagnostic.parquet",
+      "sha256": "39dae82c3364920ad38363d7ed0209a458fe1b15fb46009a130dc12881e6d899"
+    },
+    "free_gain_diagnostic_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\free_gain_diagnostic.csv",
+      "sha256": "b0a9450beca7bd8117d22afbac1c1d37f9b6521dce65aa028eae00cd5f73867b"
+    },
+    "side_confounding_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\side_confounding.parquet",
+      "sha256": "807bb87044fbbcfb5a6bf6206cf714891427afd6f32e3e863cbe820419842866"
+    },
+    "side_confounding_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion\\side_confounding.csv",
+      "sha256": "cce42f5ab0b798d4cc5fdec15f2a45984ab0aff85e4c73fc8838265623ebb670"
+    }
+  },
+  "next_stage_allowed": false,
+  "authorized_next_stage": null
+}

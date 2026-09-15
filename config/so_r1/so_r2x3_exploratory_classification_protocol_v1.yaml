@@ -1,0 +1,15 @@
+stage: SO-R2-X3
+design: exploratory_internal_nested_direct_5fold_oof
+input_root: data/processed/SO_R2X3_ClassifierInputs_v1
+split_table: data/processed/P0_Physics_Audit_v1/splits_500/nyha_2class_sex_stratified_group_5fold.csv
+conditions: [RGB, RGB_B1MH, RGB_B2MH]
+outer_folds: [0, 1, 2, 3, 4]
+base_seed: 2026
+inner_split_seed_offset: 10000
+inner_validation_fraction: 0.20
+stratification: [binary_label, SEX]
+model: {architecture: resnet18, pretrained: ImageNet, full_finetune: true, logits: [Control, Patient], precision: fp32}
+training: {optimizer: AdamW, learning_rate: 0.0001, weight_decay: 0.0001, batch_size: 16, max_epochs: 50, num_workers: 0, pin_memory: true, scheduler: absent, loss: weighted_cross_entropy, label_smoothing_alpha: 0.05, early_stopping_patience: 10, monitor: inner_validation_macro_auc, strict_improvement_only: true}
+augmentation: {inner_train_synchronized_horizontal_flip: true, validation_outer_test_horizontal_flip: false}
+normalization: {rgb_mean: [0.485, 0.456, 0.406], rgb_std: [0.229, 0.224, 0.225], mh_mean: [0.5, 0.5], mh_std: [0.5, 0.5]}
+status_boundary: {formal_SO_R1_C_status: FAIL, official_SO_R2_authorization: false, SO_R3_authorization: false, next_stage_authorized: false}

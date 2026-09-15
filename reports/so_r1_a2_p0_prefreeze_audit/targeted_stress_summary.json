@@ -1,0 +1,9 @@
+{
+  "original_low_clip_case_count": 14,
+  "all_nokia": true,
+  "only_fl2_or_fl11": true,
+  "max_overall_low_clip": 0.3333333333333333,
+  "catastrophic_channel_case_count": 7,
+  "mirror_equivalent": true,
+  "status": "FAIL_CAMERA_COLOR_CHAIN_ARTIFACT"
+}

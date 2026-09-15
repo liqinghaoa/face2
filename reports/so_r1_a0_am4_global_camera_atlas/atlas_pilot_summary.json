@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "latent_count": 128,
+  "acquisition_count": 640,
+  "pair_count": 512,
+  "pair_coverage": 24,
+  "same_latent_integrity": true,
+  "qc_pass": "True",
+  "float16_candidate_storage_pass": true,
+  "AUDIT_ONLY": true,
+  "TRAINING_FORBIDDEN": true,
+  "NOT_PART_OF_FORMAL_DATASET": true
+}

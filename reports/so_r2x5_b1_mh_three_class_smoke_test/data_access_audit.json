@@ -1,0 +1,9 @@
+{
+  "inner_train_reads": 16,
+  "inner_validation_reads": 0,
+  "outer_test_reads": 0,
+  "model_forward_calls": 1,
+  "backward_calls": 1,
+  "optimizer_step_count": 0,
+  "checkpoint_write_count": 0
+}

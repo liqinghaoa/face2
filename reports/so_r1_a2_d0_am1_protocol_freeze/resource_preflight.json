@@ -1,0 +1,9 @@
+{
+  "current_free_gib": 96.87360763549805,
+  "disk_gate": "PASS",
+  "formal_rgb_count": 67500,
+  "projected_dataset_gib": 17.303466796875,
+  "required_free_gib": 27.303466796875,
+  "runtime_projection_status": "planning_estimate",
+  "workers_for_future_g1": 8
+}

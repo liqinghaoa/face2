@@ -1,0 +1,209 @@
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1436)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=888)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1160)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1348)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1088)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1104)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=3388, pipe_handle=1388)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 131, in _main
+    prepare(preparation_data)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 102, in _run
+    for x in tasks:r.append(_generate_task(x))
+                            ~~~~~~~~~~~~~~^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 90, in _generate_task
+    os.replace(tmp,dst)
+    ~~~~~~~~~~^^^^^^^^^
+PermissionError: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz.tmp.npz' -> 'E:\\projects\\face2\\data\\processed\\SO_R1_A2_G1_AM1_Calibration_v1\\worker_1\\train\\F00000.npz'
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_am1_calibration.py", line 11, in <module>
+    a,ta=g._run(tasks('worker_1'),1);b,tb=g._run(tasks('worker_8'),8);la,aa,pa,qa=g._collect(a);lb,ab,pb,qb=g._collect(b)
+                                          ~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 106, in _run
+    for f in as_completed(futures):r.append(f.result())
+                                            ~~~~~~~~^^
+  File "E:\resarch\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "E:\resarch\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.

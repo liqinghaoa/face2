@@ -1,0 +1,8 @@
+﻿state,kind,priority,satisfied,meaning_zh,action_zh,evidence
+V2R_DEVELOPMENT_SPECTRAL_CANDIDATE,milestone,0,True,最佳有效候选优于固定参考谱但未达全部强目标（R-D 前的里程碑）,允许冻结后进入 Validation，只检验光谱泛化,oof_model_to_reference_ratio=0.443159<1.0; oof_better_than_reference_fraction=0.9318>=0.50; validation_confirms_direction=True
+V2R_STOP_KM,terminal,1,False,停止双层 K-M 主路线，转向另一受约束前向模型或只保留 proxy 表示,停止双层 K-M 主路线,validation_better_than_reference_fraction=1.0000; validation_model_to_reference_ratio=0.567239; direction_consistent=True; high_capacity_required=False
+V2R_STRONG_THETA_READY,terminal,2,False,七项强光谱目标全过且所输出参数达到可靠性目标,冻结后进入 Validation，输出模型条件下的区域有效参数,all_strong_targets_pass=False; all_output_parameters_reliable=False
+V2R_READY_WITH_S,terminal,3,False,基础参数可用且氧合扩展的 s 通过独立可辨识性与稳健性检查,s 可作为额外候选，仍不等同动脉 SpO2,partial_theta_met=False; s_reliable_or_conditional=False
+V2R_PARTIAL_THETA_CANDIDATE,terminal,4,False,Validation 光谱方向一致且至少一个参数 reliable/conditional,仅保留通过判定的参数，其他参数不进入阶段二,direction_consistent=True; any_parameter_reliable_or_conditional=False
+V2R_REVISE_OBSERVATION,terminal,5,False,统一尺度或固定侧差仍是主要阻断，需单独修订观测模型,单独修订观测模型，不让生理公式来吸收差异,spectral_reconstruction_useful=True; observation_level_blocker_present=False
+V2R_SPECTRAL_ONLY,terminal,6,True,光谱重建有用但所有生理参数均不可辨识,只承认前向重建能力，不训练生理参数编码器,spectral_reconstruction_useful=True; all_parameters_unreliable=True; observation_level_blocker_present=False

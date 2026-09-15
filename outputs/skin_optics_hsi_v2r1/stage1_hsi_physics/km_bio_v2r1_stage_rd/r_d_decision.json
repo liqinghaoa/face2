@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "task_id": "R-D_FREEZE_AND_DEVELOPMENTAL_VALIDATION",
+  "protocol_version": "KM-BIO-v2R.1",
+  "created_utc": "2026-09-11T06:49:47.898912+00:00",
+  "emitted_utc": "2026-09-11T06:53:15.787659+00:00",
+  "emission_mode": "finalize_reemission",
+  "status": "R_D_COMPLETE_DIRECTION_CONSISTENT",
+  "frozen_candidate": "V2R-PS",
+  "frozen_global_parameters": {
+    "candidate": "V2R-PS",
+    "A_s": 1.483455915077612,
+    "delta_bs": 0.4999999999999999,
+    "g0": 1.0,
+    "diameter_um": 15.0,
+    "s0": 0.7,
+    "epidermis_thickness_mm": 0.06,
+    "estimator": "full_train_joint_centered_log_shape",
+    "train_subject_count": 44,
+    "train_centered_logrmse": 0.06338284428645172,
+    "initial_theta_source": "historical_r_c0_candidate_subject_metrics_V2R-P",
+    "fitted_from_splits": [
+      "train"
+    ],
+    "validation_used_in_freeze": false
+  },
+  "frozen_global_parameters_sha256": "596df39ef5c83369fe83d1400e2cfdd15249504ed55fa8ccf9f9f159515ee239",
+  "freeze_train_only": true,
+  "validation_used_in_freeze": false,
+  "validation_set_size": 3,
+  "validation_is_developmental_only": true,
+  "direction_consistency": {
+    "reference": "full_train_individual_refit_with_frozen_globals",
+    "spectral_checks": {
+      "median_logrmse_not_regressed": true,
+      "median_sam_not_regressed": true,
+      "validation_beats_reference_majority": true
+    },
+    "parameter_checks": {
+      "parameter_medians_within_extended_train_range": true,
+      "edge_median_abs_signed_residual_change_ok": true,
+      "f_blood_upper_boundary_fraction_not_worse": true
+    },
+    "direction_consistent": true,
+    "note": "Validation spectral error stays in the Train direction, but no physiological parameter is reliable."
+  },
+  "train_median_logrmse": 0.0607520874605671,
+  "validation_median_logrmse": 0.0592076450177112,
+  "train_median_sam_deg": 3.435933638724144,
+  "validation_median_sam_deg": 3.5300410507546567,
+  "validation_model_better_than_reference_fraction": 1.0,
+  "validation_median_model_to_reference_error_ratio": 0.5672386390545501,
+  "train_median_f_blood": 0.09761372504386165,
+  "validation_median_f_blood": 0.0716359106426773,
+  "train_median_f_mel": 0.09441473261127656,
+  "validation_median_f_mel": 0.0847292732194318,
+  "edge_median_abs_signed_residual_train": 0.1889651912013485,
+  "edge_median_abs_signed_residual_validation": 0.1770097874737558,
+  "r_c1r_parameter_reliability": {
+    "f_mel": "unreliable",
+    "f_blood": "unreliable",
+    "s": "unreliable"
+  },
+  "decision_state": "V2R_DEVELOPMENT_SPECTRAL_CANDIDATE / V2R_SPECTRAL_ONLY",
+  "spectral_generalization_supported": true,
+  "parameter_reliability_claim": "none",
+  "parameter_upgrade_forbidden": true,
+  "parameter_upgrade_forbidden_reason": "f_mel_f_blood_s_all_unreliable_in_R_C1R",
+  "validation_claim_boundary": "Three Validation subjects support a developmental spectral review only; no stable population estimate and no physiological truth claim.",
+  "test_executed": false,
+  "clinical_500_executed": false,
+  "rgb_encoder_training_executed": false,
+  "next_registered_stage": "STAGE1_OPTICAL_LAYER_DECISION_REQUIRED",
+  "interpretation": "R-D freezes V2R-PS on the complete Train split and performs a developmental Validation spectral review. It cannot upgrade theta to physiological quantities."
+}

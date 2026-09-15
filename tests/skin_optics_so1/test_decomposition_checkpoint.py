@@ -73,3 +73,27 @@ def test_checkpoint_roundtrip_and_identity_rejection(tmp_path: Path) -> None:
             map_location="cpu",
             restore_rng=False,
         )
+
+
+def test_checkpoint_rng_restore_with_cuda_map_location(tmp_path: Path) -> None:
+    if not torch.cuda.is_available():
+        return
+    model = SO1UNetDecomposer()
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1.0e-3)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=2)
+    scaler = torch.amp.GradScaler("cuda", enabled=False)
+    path = tmp_path / "cuda_map.pt"
+    save_checkpoint(
+        path, model=model, optimizer=optimizer, scheduler=scheduler, grad_scaler=scaler,
+        epoch=1, global_step=1, best_selection_metric=1.0, early_stopping_counter=0,
+        identity=_identity(), resolved_config={}, dataset_contract={}, dataset_fingerprint={}, seed=1,
+    )
+    restored_model = SO1UNetDecomposer().cuda()
+    restored_optimizer = torch.optim.AdamW(restored_model.parameters(), lr=1.0e-3)
+    restored_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(restored_optimizer, T_max=2)
+    restored_scaler = torch.amp.GradScaler("cuda", enabled=False)
+    checkpoint = load_checkpoint(
+        path, model=restored_model, optimizer=restored_optimizer, scheduler=restored_scheduler,
+        grad_scaler=restored_scaler, expected_identity=_identity(), map_location=torch.device("cuda"), restore_rng=True,
+    )
+    assert checkpoint["epoch"] == 1

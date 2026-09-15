@@ -1,0 +1,22 @@
+{
+  "cpu_logical": 16,
+  "cpu_physical": 10,
+  "disk_free_gib": 104.9694595336914,
+  "gpu_used": false,
+  "numpy": "2.3.5",
+  "protocol_hash": "699267361007a8355d842685272074507e91163f3d770d222714a26d388112f3",
+  "python_executable": "E:\\resarch\\Anaconda3\\python.exe",
+  "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "ram_available_gib": 6.356353759765625,
+  "ram_total_gib": 15.738166809082031,
+  "requested_formal_workers": 8,
+  "status": "PASS",
+  "thread_env": {
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "windows": "Windows-11-10.0.26200-SP0",
+  "wsl_used": false
+}

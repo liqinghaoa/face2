@@ -1,0 +1,13 @@
+﻿comparison,error_type,category,count
+RGB,false_positive,count,33
+RGB,false_negative,count,78
+RGB_B1MH,false_positive,count,44
+RGB_B1MH,false_negative,count,76
+RGB_B2MH,false_positive,count,42
+RGB_B2MH,false_negative,count,67
+RGB_B2MH_vs_RGB,false_positive,shared,19
+RGB_B2MH_vs_RGB,false_positive,RGB_only,14
+RGB_B2MH_vs_RGB,false_positive,B2_only,23
+RGB_B2MH_vs_RGB,false_negative,shared,50
+RGB_B2MH_vs_RGB,false_negative,RGB_only,28
+RGB_B2MH_vs_RGB,false_negative,B2_only,17

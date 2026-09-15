@@ -1,0 +1,11 @@
+{
+  "conservative_runtime_hours": 16.0,
+  "current_free_gib": 111.05290222167969,
+  "pass": true,
+  "peak_rss_gib": 0.68,
+  "point_runtime_hours": 12.8,
+  "projected_final_compressed_gib": 14.0965,
+  "required_free_gib": 24.0965,
+  "source_c2_projection_hash": "a078373c0cf4c404023617671cf8d5eeed562a35263067dd7bff1030b6c78091",
+  "uncompressed_total_gib": 28.84
+}

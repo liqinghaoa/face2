@@ -1,0 +1,36 @@
+project_root: .
+
+paths:
+  image_dir: data/processed/P2_SixRelighting_OriginalCamera_v1/images
+  image_filename: relight_top.png
+  split_csv: data/processed/global_face_R3DPR/nyha_2class_sex_stratified_group_5fold.csv
+  pilot_output_dir: data/processed/global_face_R3DPR/relight_top_224x224_pilot5
+  full_output_dir: data/processed/global_face_R3DPR/relight_top_224x224_full
+
+detection:
+  min_detection_confidence: 0.5
+  model_selection: 0
+  expand_top_ratio: 0.10
+  expand_bottom_ratio: 0.20
+  expand_side_ratio: 0.20
+
+geometry:
+  output_width: 224
+  output_height: 224
+  side_margin_ratio: 0.03
+  top_margin_ratio: 0.08
+  bottom_margin_ratio: 0.025
+  face_quantile_low: 0.02
+  face_quantile_high: 0.98
+
+parser:
+  model: bisenet
+  checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+  device: auto
+
+face_mask:
+  scheme: B_keep_facial_features_remove_hair_background
+  min_component_area_ratio: 0.0002
+
+pilot:
+  count: 32

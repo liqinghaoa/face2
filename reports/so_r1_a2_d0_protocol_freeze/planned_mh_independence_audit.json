@@ -1,0 +1,34 @@
+{
+  "contract": "Planned strata are independent deterministic permutations; generation must separately audit actual M/H-map means.",
+  "metrics": {
+    "Camera-OOD": {
+      "pearson": -7.353629414520351e-05,
+      "spearman": -7.353629414517658e-05
+    },
+    "ID Test": {
+      "pearson": -0.02253233853233855,
+      "spearman": -0.022532338532338537
+    },
+    "Joint-OOD": {
+      "pearson": -0.004192720770883103,
+      "spearman": -0.004192720770883083
+    },
+    "Light-OOD": {
+      "pearson": 0.010408649634598543,
+      "spearman": 0.010408649634598538
+    },
+    "Train": {
+      "pearson": -0.004595228061952289,
+      "spearman": -0.004595228061952281
+    },
+    "Validation": {
+      "pearson": 0.0020913260913261035,
+      "spearman": 0.0020913260913260913
+    },
+    "all": {
+      "pearson": -0.00469052786320561,
+      "spearman": -0.004690388481327941
+    }
+  },
+  "pass": true
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "task_id": "STAGE1_OPTICAL_LAYER_DECISION",
+  "protocol_version": "KM-BIO-v2R.1",
+  "deliverable": {
+    "name": "Fskin_forward_model",
+    "kind": "physiological_forward_spectral_model",
+    "code_entrypoint": "src/skin_optics_hsi/km_bio_v2r.py::forward_preloaded_numpy",
+    "wavelength_nm": [
+      420,
+      430,
+      440,
+      450,
+      460,
+      470,
+      480,
+      490,
+      500,
+      510,
+      520,
+      530,
+      540,
+      550,
+      560,
+      570,
+      580,
+      590,
+      600,
+      610,
+      620,
+      630,
+      640,
+      650,
+      660,
+      670,
+      680
+    ],
+    "coefficient_asset": "E:\\projects\\face2\\data\\external\\SO0_Spectral_Assets_v1\\processed\\SO0_Spectral_Standardized_v1\\production_10nm\\derived_optics_10nm.npz",
+    "coefficient_asset_sha256": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6"
+  },
+  "frozen_model_state": {
+    "candidate": "V2R-PS",
+    "A_s": 1.483455915077612,
+    "delta_bs": 0.4999999999999999,
+    "g0": 1.0,
+    "diameter_um": 15.0,
+    "s0": 0.7,
+    "epidermis_thickness_mm": 0.06,
+    "estimator": "full_train_joint_centered_log_shape",
+    "train_subject_count": 44,
+    "train_centered_logrmse": 0.06338284428645172,
+    "initial_theta_source": "historical_r_c0_candidate_subject_metrics_V2R-P",
+    "fitted_from_splits": [
+      "train"
+    ],
+    "validation_used_in_freeze": false
+  },
+  "fixed_quantities": {
+    "epidermis_thickness_mm": 0.06,
+    "diameter_um": 15.0,
+    "s0": 0.7,
+    "g0": 1.0
+  },
+  "parameter_ranges": {
+    "f_mel": [
+      0.0,
+      0.43
+    ],
+    "f_blood": [
+      0.0,
+      0.1
+    ],
+    "s": [
+      0.0,
+      1.0
+    ]
+  },
+  "primary_domain": {
+    "unit": "subject_level_bilateral_symmetric_spectrum",
+    "fit_centers_nm": [
+      420,
+      430,
+      440,
+      450,
+      460,
+      470,
+      480,
+      490,
+      500,
+      510,
+      520,
+      530,
+      540,
+      550,
+      560,
+      570,
+      580,
+      590,
+      600,
+      610,
+      620,
+      630,
+      640,
+      650,
+      660,
+      670,
+      680
+    ],
+    "edge_diagnostic_centers_nm": [
+      400,
+      410,
+      690,
+      700
+    ],
+    "train_subject_count": 44,
+    "validation_subject_count": 3,
+    "validation_is_developmental_only": true,
+    "quality_control": "R-B observation audit PASS_FOR_V2R_TRAIN_INVERSION"
+  },
+  "inversion_config": {
+    "primary_loss": "equal_weight_logrmse",
+    "residual_definition": "prediction_minus_observation",
+    "epsilon": 1e-06,
+    "reflectance_clipping": "forbidden",
+    "reliable_parameter_list": []
+  },
+  "error_tolerances": {
+    "strong_targets": {
+      "median_logrmse": 0.06,
+      "p90_logrmse": 0.1,
+      "median_rmse": 0.03,
+      "median_sam_deg": 3.0,
+      "maximum_abs_median_signed_band_residual": 0.03,
+      "reference_better_fraction": 0.6666666666666666,
+      "model_to_reference_median_error_ratio": 0.9
+    },
+    "direction_consistency_check_count": 6,
+    "direction_consistency_checks_met": 6
+  },
+  "failure_rules": [
+    "report the full 400-700 nm result only as an explicitly labelled edge diagnostic",
+    "never widen a parameter bound to make the spectral gate pass",
+    "never let downstream classification results influence the optical-layer decision",
+    "never treat the Validation 3-subject cohort as a population estimate",
+    "a narrower fit window or a changed strong target requires a new registered version"
+  ],
+  "per_sample_output_schema": [
+    "subject_id",
+    "capture_id",
+    "roi",
+    "model_version",
+    "theta_hat[3]",
+    "reflectance_hat[31]",
+    "logrmse",
+    "rmse",
+    "sam_deg",
+    "residual[31]",
+    "parameter_tolerance_intervals",
+    "boundary_flags",
+    "parameter_reliability_flags",
+    "sensitivity_flags",
+    "solver_status",
+    "input_quality_status",
+    "source_hashes"
+  ],
+  "stage2_usage": {
+    "theta_usable_as_supervised_target": false,
+    "reason": "decision_state is V2R_SPECTRAL_ONLY: every physiological parameter is unreliable, so only the forward reconstruction capability is admitted and no physiological-parameter encoder may be trained",
+    "locked_until_new_registration": [
+      "test",
+      "clinical_500",
+      "rgb_encoder_training",
+      "stage2_parameter_encoder"
+    ]
+  },
+  "all_file_hashes": {
+    "r_d_frozen_global_parameters": "596df39ef5c83369fe83d1400e2cfdd15249504ed55fa8ccf9f9f159515ee239",
+    "r_d_decision": "5266e8801003885a3a0d645358ad77ec863a77ee7b527d2d579d5878dfc32fdc",
+    "r_c1r_decision": "e2ac9fa14f0c1ede7dc6d161febd18d775d82ecd8becf0112eee39484be231e5",
+    "r_c0r_decision": "9d5dbe21ac1208eabefa9ee21aed2568093ce805de15a88b1b392f2f35043c62",
+    "optical_asset_10nm": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6",
+    "frozen_fold_manifest": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370"
+  },
+  "decision_state": "V2R_SPECTRAL_ONLY",
+  "created_utc": "2026-09-11T07:47:12.719508+00:00"
+}

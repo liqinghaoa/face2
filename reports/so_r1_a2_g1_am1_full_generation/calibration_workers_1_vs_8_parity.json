@@ -1,0 +1,11 @@
+{
+  "calibration_status": "PASS",
+  "formal_generation_authorized": true,
+  "mismatch_latents": [],
+  "status": "PASS",
+  "supersedes_failed_calibration": "SO_R1_A2_G1_AM1_Calibration_v1",
+  "training_authorized": false,
+  "worker_1_seconds": 365.87879350000003,
+  "worker_8_seconds": 157.52817080000386,
+  "workers_1_vs_8_parity": "128/128 exact"
+}

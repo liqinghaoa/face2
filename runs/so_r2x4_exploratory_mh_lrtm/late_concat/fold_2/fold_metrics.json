@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.78,
+  "balanced_accuracy": 0.6284584980237153,
+  "inner_best_macro_auc": 0.8757549611734253,
+  "macro_auc": 0.8283455674760022,
+  "macro_f1": 0.6426250812215724,
+  "macro_precision": 0.6784313725490196,
+  "macro_recall": 0.6284584980237153,
+  "model_name": "LATE_CONCAT",
+  "outer_fold": 2,
+  "selected_epoch": 3,
+  "selection_epochs_run": 13,
+  "sensitivity": 0.9090909090909091,
+  "specificity": 0.34782608695652173
+}

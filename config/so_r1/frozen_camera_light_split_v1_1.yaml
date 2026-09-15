@@ -1,0 +1,12 @@
+protocol_id: SO-R1-A0-AM2-Lite-R1
+version: '1.1'
+status: FROZEN
+frozen: true
+seen_cameras: [Canon 5DMarkII, Nikon D80, Olympus E-PL2, Canon 300D]
+unseen_cameras: [Canon 1DMarkIII, Nikon D5100]
+seen_lights: [D65, A, FL2]
+unseen_lights: [FL11]
+camera_light_pair_count: 24
+selection_basis: AM2-Lite final stress plus R1 nuisance-only attribution and corrected 64/independent 128 validation
+full_generation_authorized: false
+training_authorized: false

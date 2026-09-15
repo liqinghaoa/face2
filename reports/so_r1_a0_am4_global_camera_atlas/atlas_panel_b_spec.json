@@ -1,0 +1,30 @@
+{
+  "panel_hash": "072da64d12323fe44b6e465b720e9066",
+  "latent_count": 256,
+  "mask_quota": {
+    "Full": 102,
+    "Mild": 102,
+    "Strong": 52
+  },
+  "m_strata": [
+    64,
+    64,
+    128
+  ],
+  "h_octiles": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+  ],
+  "lights": [
+    "D65",
+    "A",
+    "FL2",
+    "FL11"
+  ]
+}

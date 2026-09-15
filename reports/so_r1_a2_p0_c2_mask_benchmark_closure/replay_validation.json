@@ -1,0 +1,9 @@
+{
+  "requested_replay_latents": 32,
+  "completed_replay_latents": 32,
+  "matched_replay_latents": 32,
+  "mismatch_count": 0,
+  "mismatch_latents": [],
+  "independent_output_root": "replay",
+  "recalled_generator": true
+}

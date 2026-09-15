@@ -1,0 +1,27 @@
+{
+  "acceptance_sha256": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+  "first_payload_failure": [],
+  "ledger_records": 13500,
+  "ledger_sha256": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+  "manifest_hashes": {
+    "acquisition_manifest.csv": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+    "latent_manifest.csv": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+    "pair_manifest.csv": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+    "qc_manifest.csv": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+  },
+  "payload_failure_count": 0,
+  "payloads_verified": true,
+  "protocol_lock_sha256": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+  "status": "PASS",
+  "target_range": {
+    "H": [
+      0.0,
+      1.0
+    ],
+    "M": [
+      0.0,
+      1.0
+    ]
+  },
+  "target_range_is_unit_interval": true
+}

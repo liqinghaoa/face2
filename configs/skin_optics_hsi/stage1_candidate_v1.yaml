@@ -1,0 +1,84 @@
+schema_version: 1
+stage: stage1_hsi_physics
+status: provisional_until_real_hyperskin_contract_passes
+
+data:
+  dataset: Hyper-Skin RGB_VIS release
+  physical_quantity: reflectance
+  wavelength_start_nm: 400
+  wavelength_stop_nm: 700
+  wavelength_step_nm: 10
+  expected_bands: 31
+  mat_dataset_key: cube
+  expected_full_release_counts:
+    train: 264
+    valid: 18
+    test: 24
+  require_skin_masks: true
+  reflectance_max: 1.2
+
+spectral_assets:
+  source_standardized_npz: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_5nm/source_standardized_5nm.npz
+  usage: read_only_shared_public_spectral_source
+  note: New HSI code does not import or modify the frozen SO-0 implementation.
+
+parameters:
+  M_absorbance:
+    unit: dimensionless_path_integrated_absorbance_at_570nm
+    min: 0.005
+    max: 0.75
+    prior_center: 0.13
+    prior_scale: 0.12
+    interpretation: melanin-sensitive epidermal path-integrated absorption proxy
+    range_status: provisional_broad_range_around_Jonasson_2023_population_values
+  Hb_absorbance_proxy:
+    unit: mm^-1_absorption_amplitude_at_570nm
+    min: 0.005
+    max: 0.50
+    prior_center: 0.18
+    prior_scale: 0.10
+    interpretation: fixed-shape dermal hemoglobin-sensitive absorption proxy
+    range_status: provisional_broad_range_around_Jonasson_2023_upper_dermis_values
+
+forward_model:
+  model_id: reduced_km_two_proxy_v1
+  model_status: candidate_screening_model_not_validated
+  reference_wavelength_nm: 570.0
+  melanin_power: 4.3
+  fixed_oxygenation: 0.50
+  scattering_alpha_mm1_at_600nm: 1.99
+  scattering_mie_decay: 0.82
+  scattering_rayleigh_fraction: 0.31
+  global_reflectance_scale: 1.0
+  baseline_absorption_formula_cm1: 0.244 + 85.3*exp(-(wavelength_nm-154)/66.2)
+  dermal_reflectance: semi_infinite_kubelka_munk
+  epidermal_transmission: exp(-2*M_absorbance*melanin_shape)
+  references:
+    - Jonasson et al., Journal of Biomedical Optics 28(11), 115001 (2023)
+    - Jung et al., Journal of Biomedical Optics 28(3), 035001 (2023)
+    - OMLC Optical Absorption of Hemoglobin (spectral table provenance in frozen asset manifest)
+
+fit:
+  n_starts: 6
+  max_iterations: 400
+  gradient_tolerance: 1.0e-8
+  reflectance_epsilon: 1.0e-6
+  minimum_valid_bands: 24
+  log_huber_delta: 0.05
+  sam_weight: 0.25
+  # Default to an unpenalized fit so the first gate measures what the HSI itself
+  # identifies. A non-zero value must be justified and locked before formal use.
+  prior_weight: 0.0
+  boundary_fraction: 0.01
+  noise_relative_sd: 0.005
+  noise_repeats: 5
+  random_seed: 20260906
+
+gate_thresholds:
+  status: unset_until_train_validation_noise_and_repeatability_are_audited
+  median_log_rmse_max: null
+  median_sam_rad_max: null
+  boundary_fraction_max: null
+  multistart_relative_range_max: null
+  jacobian_condition_number_max: null
+  noise_relative_sd_max: null

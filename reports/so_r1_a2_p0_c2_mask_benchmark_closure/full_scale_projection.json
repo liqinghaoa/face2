@@ -1,0 +1,19 @@
+{
+  "measured_seconds_per_latent": 3.409590990234392,
+  "measured_seconds_per_acquisition": 0.6455820669531931,
+  "point_runtime_seconds": 46029.47836816429,
+  "conservative_runtime_seconds": 57536.847960205356,
+  "point_runtime_hours": 12.785966213378968,
+  "conservative_runtime_hours": 15.98245776672371,
+  "uncompressed_rgb_gib": 24.71923828125,
+  "uncompressed_mh_mask_gib": 4.119873046875,
+  "uncompressed_total_gib": 28.839111328125,
+  "measured_compressed_projection_gib": 13.789514834570582,
+  "metadata_projection_gib": 0.031234458219842054,
+  "filesystem_overhead_projection_gib": 0.27579029669141164,
+  "final_projection_gib": 14.096539589481836,
+  "required_free_space_bytes": 25873462370.898438,
+  "available_free_space_bytes": 119911460864,
+  "disk_gate": "PASS",
+  "comparison_to_c1": "C2 uses actual deflate-compressed per-latent NPZ bytes plus measured metadata and 2% filesystem overhead; C1 13.73 GiB was a compact-storage extrapolation without this measured loader/compression breakdown. Earlier 30–35 GiB estimates correspond to less compact or uncompressed variants."
+}

@@ -1,0 +1,13 @@
+Input,Model,N,Control,Patient,AUC
+Whole-face,ResNet-18,500,115,385,0.8207
+Whole-face,ResNet-34,500,115,385,0.7980
+Whole-face,ResNet-50,500,115,385,0.8233
+Eye,ResNet-18,500,115,385,0.8177
+Eye,ResNet-34,500,115,385,0.7737
+Eye,ResNet-50,500,115,385,0.8116
+Cheek,ResNet-18,500,115,385,0.8065
+Cheek,ResNet-34,500,115,385,0.8091
+Cheek,ResNet-50,500,115,385,0.8268
+Lip,ResNet-18,500,115,385,0.7824
+Lip,ResNet-34,500,115,385,0.7861
+Lip,ResNet-50,500,115,385,0.7484

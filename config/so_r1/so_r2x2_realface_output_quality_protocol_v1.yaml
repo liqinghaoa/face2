@@ -1,0 +1,37 @@
+stage: SO-R2-X2
+source_stage: SO-R2-X1
+map_statistics: valid-mask only
+channels:
+- M_sensitive
+- H_sensitive
+models:
+- B1_baseline
+- B2_proposed_lambda_0p50
+seam_x:
+- 241
+- 482
+- 723
+seam_y:
+- 241
+- 482
+- 723
+- 964
+reference_offset: 16
+qualitative_selection: canonical full_ids fixed quantiles
+qualitative_indices:
+- 1
+- 46
+- 91
+- 137
+- 182
+- 228
+- 273
+- 319
+- 364
+- 410
+- 455
+- 500
+forward_calls_allowed: 0
+label_access_allowed: false
+visualization:
+  map_display: per-board valid-mask percentile 1-99 only; source arrays unchanged

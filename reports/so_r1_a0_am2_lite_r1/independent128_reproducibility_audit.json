@@ -1,0 +1,9 @@
+{
+  "requested_latents": 32,
+  "matched_latents": 32,
+  "content_hash_match": true,
+  "AUDIT_ONLY": true,
+  "TRAINING_FORBIDDEN": true,
+  "ATTRIBUTION_ONLY": true,
+  "NOT_PART_OF_FORMAL_DATASET": true
+}

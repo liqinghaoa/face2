@@ -1,0 +1,5 @@
+iteration,selected_camera,selection_score_min_distance_to_seen,nearest_seen_camera_before_selection,candidate_rank,primary_distance,tie_detected,tie_break_rule
+1,Nikon D80,0.2471664744183318,Canon 5DMarkII,1,channel_mean_spectral_angle,False,not_needed
+2,Pentax Q,0.2284484261376332,Nokia N900,1,channel_mean_spectral_angle,False,not_needed
+3,SONY NEX-5N,0.2065867900502575,Nikon D80,1,channel_mean_spectral_angle,False,not_needed
+4,Olympus E-PL2,0.19145626024830653,Nokia N900,1,channel_mean_spectral_angle,False,not_needed

@@ -10,6 +10,7 @@ import random
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -58,6 +59,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-epochs", type=int)
     parser.add_argument("--benchmark-only", action="store_true")
     parser.add_argument("--allow-cpu", action="store_true")
+    parser.add_argument("--phase-output-dir", type=Path)
+    parser.add_argument("--fit-max-epochs", type=int)
     return parser.parse_args()
 
 
@@ -138,6 +141,18 @@ def environment_payload(config_path: Path, data_root: Path, seed: int, determini
         "seed": int(seed),
         "deterministic": bool(deterministic),
     }
+
+
+def memory_payload() -> dict[str, Any]:
+    try:
+        import ctypes
+        class Status(ctypes.Structure):
+            _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong), ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong), ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong), ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong), ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+        status = Status(); status.dwLength = ctypes.sizeof(Status)
+        ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status))
+        return {"system_ram_total_bytes": int(status.ullTotalPhys), "system_ram_available_bytes": int(status.ullAvailPhys), "page_file_total_bytes": int(status.ullTotalPageFile), "page_file_available_bytes": int(status.ullAvailPageFile)}
+    except Exception as exc:
+        return {"unavailable": str(exc)}
 
 
 def write_lines(path: Path, values: list[str]) -> None:
@@ -316,6 +331,7 @@ def write_report(output_dir: Path, title: str, filename: str, records: list[dict
 
 def main() -> None:
     args = parse_args()
+    phase_started_at = datetime.now(timezone.utc).isoformat()
     config_path = project_path(args.config).resolve()
     config = load_yaml(config_path)
     if args.max_epochs is not None:
@@ -348,6 +364,15 @@ def main() -> None:
         "validation_metadata_sha256": sha256_file(data_root / "validation" / "metadata.csv"),
     }
     train_subset, val_subset, subset_meta = prepare_datasets(config, preflight_dir)
+    if config["data"]["subset"] == "smoke":
+        access = {
+            "train_ids": subset_meta["train_ids"], "validation_ids": subset_meta["val_ids"],
+            "train_count": len(subset_meta["train_ids"]), "validation_count": len(subset_meta["val_ids"]),
+            "train_prefixes_valid": all(value.startswith("train_") for value in subset_meta["train_ids"]),
+            "validation_prefixes_valid": all(value.startswith("validation_") for value in subset_meta["val_ids"]),
+            "forbidden_splits_accessed": [],
+        }
+        (output_dir / "access_audit.json").write_text(json.dumps(access, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     model = SO1UNetDecomposer()
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -404,7 +429,10 @@ def main() -> None:
         early_stopping_patience=config["train"].get("early_stopping_patience"),
         resume_from=args.resume_from,
     )
-    records = trainer.fit(train_loader, val_loader, max_epochs=int(config["train"]["max_epochs"]))
+    fit_max_epochs = int(args.fit_max_epochs or config["train"]["max_epochs"])
+    if fit_max_epochs > int(config["train"]["max_epochs"]):
+        raise ValueError("fit-max-epochs cannot exceed configured max_epochs")
+    records = trainer.fit(train_loader, val_loader, max_epochs=fit_max_epochs)
     if args.resume_from is not None:
         checkpoint = load_checkpoint(
             output_dir / "checkpoints" / "last.pt",
@@ -426,6 +454,22 @@ def main() -> None:
         records,
         {"checkpoint_resume": args.resume_from is not None, "subset": config["data"]["subset"]},
     )
+    if args.phase_output_dir is not None:
+        phase_dir = project_path(args.phase_output_dir).resolve(); phase_dir.mkdir(parents=True, exist_ok=True)
+        (phase_dir / "training_history.csv").write_text((output_dir / "training_history.csv").read_text(encoding="utf-8-sig"), encoding="utf-8")
+        runtime = json.loads((output_dir / "runtime.json").read_text(encoding="utf-8"))
+        runtime.update({"process_id": os.getpid(), "phase_start_time": phase_started_at, "phase_end_time": datetime.now(timezone.utc).isoformat(), "memory": memory_payload()})
+        (phase_dir / "runtime.json").write_text(json.dumps(runtime, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if args.resume_from is not None:
+            audit = {
+                "checkpoint_path": str(args.resume_from.resolve()),
+                **trainer.resume_checkpoint_metadata,
+                "config_match": True,
+                "contract_match": True,
+                "history_epochs": [int(float(row["epoch"])) for row in records],
+                "history_continuous": [int(float(row["epoch"])) for row in records] == list(range(1, fit_max_epochs + 1)),
+            }
+            (phase_dir / "resume_audit.json").write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

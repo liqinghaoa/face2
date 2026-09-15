@@ -1,0 +1,1093 @@
+
+===== PAGE 1 =====
+R E S E A R C H A R T I C L E
+Deep learning-based pigment analysis model trained with
+optical approach and ground truth assistance
+Geunho Jung
+|
+Semin Kim
+|
+Jongha Lee
+|
+Sangwook Yoo
+AI R&D Center, Lululab Inc., Seoul,
+Republic of Korea
+Correspondence
+Geunho Jung, AI R&D Center, Lululab
+Inc., Seoul, Republic of Korea.
+Email: gh.jung@icloud.com
+Funding information
+NIPA
+Abstract
+This study introduces an integrated training
+method combining the optical approach
+with ground truth for skin pigment analy-
+sis. Deep learning is increasingly applied to
+skin pigment analysis, primarily melanin
+and hemoglobin. While regression analysis is a widely used training method to
+predict ground truth-like outputs, the input image resolution is restricted by com-
+putational resources. The optical approach-based regression method can alleviate
+this problem, but compromises performance. We propose a strategy to overcome
+the limitation of image resolution while preserving performance by incorporating
+ground truth within the optical approach-based learning structure. The proposed
+model decomposes skin images into melanin, hemoglobin, and shading maps,
+reconstructing them by solving the forward problem with reference to the ground
+truth for pigments. Evaluation against the VISIA system, a professional diagnostic
+equipment, yields correlation coefficients of 0.978 for melanin and 0.975 for
+hemoglobin. Furthermore, our model can produce
+pigment-modified
+images for applications like simulating treatment effects.
+K E Y W O R D S
+deep learning, diffuse Optics, skin analysis, skin pigment
+1
+|
+INTRODUCTION
+The coloration of human skin is influenced by the pres-
+ence of melanin and hemoglobin, which are prominent
+chromophores in the visible wavelength range. Melanin
+absorbs light across the entire spectrum with an expo-
+nential decrease from blue to red, contributing to the
+observed darkness and yellowish color [1]. Conversely,
+hemoglobin significantly absorbs green light, leading
+to the generation of a complementary red color [2].
+Quantifying melanin and hemoglobin concentrations
+through distribution maps offers an accurate method to
+assess dermatological conditions, such as erythema and
+hyperpigmentation [3].
+Spectral reflectance techniques are commonly used
+to measure skin melanin and hemoglobin concentra-
+tions [4]. Clinical devices either analyze the reflectance
+ratios at different wavelengths to determine melanin and
+hemoglobin indices [5, 6] or infer their concentrations
+from the absorption spectrum through methods like
+diffuse reflectance spectroscopy (DRS) [7]. These chromo-
+phore analysis techniques can be applied to image pixels,
+expanding the analysis from point measurement to
+spatial distribution. Whole optical-based image proces-
+sing approaches are prevalent in commercial equipment
+and efficient enough for clinical use [8, 9], but most analysis
+tools are restricted to the manufacturer's imaging equip-
+ment, limiting versatility. The independent component
+Received: 15 June 2023
+Revised: 14 August 2023
+Accepted: 15 August 2023
+DOI: 10.1002/jbio.202300231
+J. Biophotonics. 2023;16:e202300231.
+www.biophotonics-journal.org
+© 2023 Wiley-VCH GmbH.
+1 of 12
+https://doi.org/10.1002/jbio.202300231
+
+===== PAGE 2 =====
+analysis (ICA), which is one of the representative methods,
+requires significant pigment concentration variation within
+the image to distinguish color components [10]. Therefore,
+the process may involve manually sliding the window to
+identify analyzable regions within the image. Additionally,
+image analysis requires substantial computational time due
+to repetitive calculations such as least-square fitting [11] or
+ICA performed on all pixels.
+Deep learning-based approaches have recently gained
+popularity in skin pigment analysis, especially in the seg-
+mentation
+of
+erythema
+and
+hyperpigmented
+areas
+[12–14]. Regression analysis is a commonly used tech-
+nique that a neural network architecture learns the rela-
+tionship between input images and ground truths to
+predict desired outputs. However, this method requires
+the preparation of ground truth corresponding to the
+training dataset and faces limitations when applied to
+high-resolution images due to high memory require-
+ments, being computationally expensive, and the rela-
+tively
+small
+receptive
+field
+of
+convolutional
+filters
+compared to the image resolution. To alleviate these
+restrictions, our previous research applied the optical
+approach to train a pigment analysis model, providing an
+alternative to preparing ground truth for regression anal-
+ysis [15]. This model decomposes skin images into mela-
+nin, hemoglobin, specular, and shading maps, after
+which the forward problem is solved to create skin
+images. For clarity in terminology, we use the term
+“reconstructed image” for the theoretically created skin
+image based on the provided pigments and geometric
+conditions (represented as output maps), while the full-
+sized skin image employed for analysis is denoted to as
+the “input image” throughout this study. The model is
+trained to minimize the discrepancy between the input
+image and the reconstructed image, with the ultimate
+goal of generating accurate pigment maps that resemble
+actual skin conditions. Although regression analysis
+methods that use optical theory to substitute for ground
+truth achieve reasonable results and can analyze images
+at a higher resolution than the model's input size, their
+performance is not as good as when directly using ground
+truth.
+In this study, we propose an integrated training
+method that combines the optical approach with ground
+truth for pigment analysis. This method adopts the learn-
+ing structure of the optical approach while incorporating
+ground truth for pigments to simplify the learning
+process. We evaluate the performance of our integrated
+training method in comparison to regression analysis
+methods: one using ground truth and the other employ-
+ing the optical approach to substitute for preparing
+ground truth. By leveraging the strengths of separate
+approaches, the integrated training method can analyze
+higher resolution images beyond the input size limitation,
+achieve performance comparable to regression analy-
+sis, and generate pigment-modified images for various
+applications.
+2
+|
+MATERIALS AND METHODS
+The training and inference frameworks for the pigment
+analysis model is described in Figure 1. To clearly distin-
+guish among the training frameworks for regression anal-
+ysis, we use the term “simple regression network” for the
+model trained using prepared ground truth, “optical
+approach-based regression network” for the model utiliz-
+ing the optical approach as a substitute for preparing
+ground truth, and “integrated regression network” for
+the model that combines the optical approach with
+ground truth, incorporating ground truth within the optical
+approach-based learning structure. Similarly, the training
+methods for each network are sequentially referred to as
+“simple regression method,” “optical approach-based
+regression method,” and “integrated regression method.
+These terms will be consistently used in the subsequent
+sections.
+2.1
+|
+Model architecture
+Our model is based on the ResUNet++ architecture
+(Figure 2), which combines residual blocks, squeeze and exci-
+tation blocks, astrous spatial pyramid pooling (ASPP), and
+attention blocks, all integrated into the UNet structure. Previ-
+ous studies have demonstrated that the ResUNet++ architec-
+ture outperforms both UNet and ResUNet architectures [16].
+To optimize memory utilization, we have adapted the
+architecture
+by
+halving
+the
+number
+of
+channels.
+The modified version serves as the network architecture
+for the pigment analysis model across all three training
+methods, as well as for the skin segmentation model.
+2.2
+|
+Optical approach
+In our previous research, we utilized skin decomposition
+principles from computer vision [17] to train a pigment
+analysis model [15]. This model, based on a UNet struc-
+ture, decomposes skin regions into four components:
+melanin,
+hemoglobin,
+shading,
+and
+specular
+maps.
+Although the model yields reasonable analysis results, it
+faces training challenges from extensive exploration of
+output combinations and the significant time required
+for the training process stabilization. Under identical
+training conditions and with the same dataset, there have
+2 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 3 =====
+FIGURE 1
+Overview of the training and inference frameworks used in the pigment analysis model. During pre-processing, the skin
+region is segmented as a binary mask, overlaid onto the input image, and subsequently divided into multiple patches. The pigment analysis
+model takes a patch of a cross-polarized image as input and produces melanin and hemoglobin maps. The training frameworks for three
+regression networks are depicted: “simple regression network,” “optical approach-based regression network,” and “integrated regression
+network.” (A) In the training frameworks of both the optical approach-based regression network (the black dotted line) and the integrated
+regression network (both the black and red dotted lines), the pigment analysis model decomposes skin regions of patch images into melanin,
+hemoglobin, and shading maps. The output maps are reconstructed into the skin image by solving the forward problem, with training based
+on a loss function minimizing the discrepancy between the patch image and the reconstructed image. The training framework of the
+integrated regression network incorporates the ground truth for pigments within the learning structure of the optical approach-based
+regression network, and integrates the correlation between the ground truth and the output patches for melanin and hemoglobin into the
+loss function to simplify the learning process. During inference, the output patches derived from the trained network are combined to form
+melanin and hemoglobin maps for the entire skin region. (B) The simple regression network is trained to predict outputs resembling the
+prepared ground truth. To analyze higher resolution images that exceed the input size limitation, the input image is divided into multiple
+patches and combined, following the same approach as the integrated regression network.
+JUNG ET AL.
+3 of 12
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 4 =====
+been instances where the loss value did not change
+significantly over several hundred epochs. To alleviate
+these limitations, we made modifications to the model
+architecture and the training framework, as depicted by
+the black dotted line in Figure 1A. We set the input type
+to ideally captured cross-polarized images, which elimi-
+nate the effect of specularly reflected light on the cap-
+tured image, thereby excluding the specular map from
+the output. This change simplifies the learning process by
+reducing the number of outputs. We also employed a
+more advanced architecture to enhance performance.
+These modifications have resulted in improved perfor-
+mance and shorter training times, making the revised
+training framework and architecture more suitable for
+the optical approach-based regression network used in
+this study.
+In this section, we describe the theoretical process of
+acquiring skin images. We analyze the optical properties
+of the primary factors influencing image formation from
+the perspective of the light spectrum. We term this meth-
+odology the “optical approach” in this study.
+2.2.1
+|
+Pre-processing and post-processing
+The procedures involved in pre-processing and post-
+processing are demonstrated in Figure 1. In the pre-
+processing stage, the skin region is segmented as a binary
+mask and overlaid onto the input image. Then, the over-
+laid image is divided into multiple patches, referred to as
+the “patch image” in this study, that serve as input to the
+model. In the post-processing stage, the model's output
+patches are combined to create full-sized pigment maps
+of the same size as the original input image.
+Training the pigment analysis model using the optical
+approach required us to exclude non-skin regions exhibit-
+ing distinct optical properties. For this purpose, we
+employed a skin segmentation model based on the
+ResUNet++ architecture. This model produced a binary
+mask that effectively masked non-skin regions such as
+background, hair, eyebrows, eyelashes, eyes, nostrils, and
+mouth. We trained the skin segmentation model on a
+dataset comprising 2100 images, combining both cross-
+polarized and normal skin images with a resolution of
+640  480 pixels. The test set included 232 images of both
+types. The model successfully segmented two classes
+(skin and non-skin) and achieved a complete inter-
+section over union (CIoU) [18] score of 0.961.
+To overcome the input image resolution constraints
+imposed by computing resources, we adopted a patch-based
+strategy. This strategy involves dividing the input image
+into several patches and combining the output patches,
+assuming consistent lighting and camera conditions across
+FIGURE 2
+The architecture of the ResUNet++ model
+combines the ResNet and UNet structures. The model
+features a stem block and three sets of squeeze and excitation
+blocks (SE) and encoder blocks. The astrous spatial pyramid
+pooling (ASPP) module is located in the bottleneck,
+followed by three decoder blocks. Both the encoder and
+decoder blocks consist of two repetitions of batch
+normalization and ReLU activation (BN&ReLU) and
+convolution layers (Conv2D).
+4 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 5 =====
+the entire image. Each patch includes overlapping areas
+with adjacent ones to manage the issue of visible boundary
+lines between patches. In the overlapping areas, weighted
+blending is applied with opposite gradients. As the training
+process is performed on individual patches instead of the
+combined image, the training dataset does not include the
+overlapping area. For training purposes, images are divided
+into patches of size 310  310 pixels and are randomly
+cropped to 256  256 pixels for augmentation, which
+matches the model's input size. For inference, images are
+divided into patches of size 256  256 pixels, which include
+a 15-pixel overlapping area. To restore the linear character-
+istics of images for accurate analysis, the color space of the
+input patch image is converted from standard RGB (sRGB)
+to linear RGB using inverse gamma correction.
+2.2.2
+|
+Image formation
+The inverse problem approach of determining the optical
+properties of skin from measured reflected light is highly
+ill-posed, due to the skin's diffusive property [19]. In con-
+trast, we trained our model using a forward problem
+approach that derives the spectrum of the reflected light
+from the given pigment conditions, which are the model's
+outputs. This approach eliminates the need for iterative
+calculations as the forward problem has a unique
+solution. Furthermore, it does not require ground truth
+data for pigments and can be applied to various image
+acquisition
+systems,
+provided
+that
+a
+corresponding
+system's training dataset is available.
+The skin image formation process is based on a spec-
+tral approach, as shown in Figure 3. When the illumi-
+nated light encounters the boundary between the skin
+and air, part of the illuminated light undergoes specular
+reflection due to the difference in refractive index, while
+the remaining light refracts into the skin layers. Inside
+the skin, the refracted light is absorbed and scattered
+before being reflected back out. Both the specularly
+reflected light and diffusely reflected light, detected by
+the camera, contribute to skin image formation. Profes-
+sional skin diagnostic equipment used for measuring
+pigment regions [8, 20] selectively captures the diffusely
+reflected light as a cross-polarized image, providing
+enhanced features of concentrated melanin and hemoglo-
+bin areas. To incorporate this into our pigment analysis
+model, we restricted the input type to cross-polarized
+images
+and
+minimized
+the
+influence
+of
+specularly
+reflected light from the image formation process and the
+output maps. This adaptation aims to simplify the learn-
+ing process by reducing the number of outputs.
+Based on the presence of chromophores, the skin
+layers are classified into the epidermis layer with absorp-
+tion dominated by melanin and the dermis layer with
+absorption dominated by hemoglobin. In terms of scatter-
+ing properties, the epidermis has a negligible effect due
+to its small thickness, while the dermis, composed of
+elastin and collagen fibers, significantly contributes to
+FIGURE 3
+The skin image formation process initiates with incident light interacting with the skin. The reflected light captured by the
+camera sensor generates a skin image. This process involves the multiplication of the spectral power distribution of the light source, the
+skin's spectral reflectance, and the quantum efficiency of the camera sensor. The skin reflectance spectrum is approximated by optically
+modeling the skin layers, which factors in the absorption of chromophores and overall scattering. The resultant image is initially produced
+in a camera-specific RGB color space and is subsequently converted to the sRGB color space.
+JUNG ET AL.
+5 of 12
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 6 =====
+scattering and is considered the scattering-dominant
+layer [5].
+The absorption and reduced scattering coefficients are
+defined by the following equations [21]:
+μa λ
+ð Þ ¼ ΣiV iεi λ
+ð ÞCi
+ð1Þ
+μ0
+s λ
+ð Þ ¼ a f Ray
+λ
+λ0
+
+4
+þ 1f Ray
+
+
+λ
+λ0
+
+bMie
+ 
+!
+ð2Þ
+Here, the absorption coefficient μa λ
+ð Þ is calculated as
+the sum of the product of the volume fraction Vi, the
+extinction coefficient εi, and the concentration Ci of the
+chromophores i in melanin and hemoglobin. The scatter-
+ing
+component
+comprises
+the
+Rayleigh
+and
+Mie
+scattering terms, which depend on the scattering ampli-
+tude a, the scattering power b, and the fraction of the
+Rayleigh scattering events f Ray. In this study, the wave-
+length λ is defined as the visible range from λmin ¼ 450
+nm to λmax ¼ 750 nm.
+The skin reflectance is determined using a simplified
+form of the Kubelka-Munk theory, which assumes that
+the majority of diffusely reflected light originates from
+the dermis layer. The equation is as follows [22]:
+R λ
+ð Þ ¼ Tepidermis λ
+ð Þ2Rdermis λ
+ð Þ
+ð3Þ
+Here, the skin reflectance R λ
+ð Þ consists of the fraction
+of the transmitted light through the epidermis layer
+Tepidermis λ
+ð Þ and that of reflected light from the dermis
+layer Rdermis λ
+ð Þ. Previous studies [17, 23] have utilized
+skin reflectance data derived using the Kubelka-Munk
+theory, considering the volume fractions of melanin
+(ranging from 1.3% to 43%) and hemoglobin (from 2% to
+7%) [24, 25] along with their corresponding absorption
+spectra [26]. In this study, we adopt the same skin reflec-
+tance data for accurate analysis.
+The skin image is formed and converted using the
+following equations:
+Im ¼
+Zλmax
+λmin
+L λ
+ð Þ R λ
+ð ÞMshading
+
+
+Cmdλ
+ð4Þ
+Irgb ¼ Mxyztorgb Mcamtoxyz  Mwb Icam
+ð
+Þ
+ð5Þ
+Here, the generated image Im is obtained by integrat-
+ing the spectral power distribution (SPD) of the light
+source L λ
+ð Þ, the skin reflectance R λ
+ð Þ, the shading map
+Mshading, and the quantum efficiency of the camera sensor
+Cm over the wavelength range from λmin ¼ 450 nm to
+λmax ¼ 750 nm for each channel m in r, g, and b. The
+resulting image Icam ¼ Ir,Ig,Ib
+
+	
+is initially in the device-
+dependent color space. It is then sequentially converted to
+the XYZ color space, which is a standardized color repre-
+sentation [27], and further transformed to the RGB color
+space using the multiplication of the corresponding conver-
+sion matrices M. Furthermore, when saving the inferred
+reconstructed image, we convert the image's color space
+from RGB to sRGB using a gamma correction.
+2.2.3
+|
+Loss function
+The model is trained to minimize the discrepancy
+between the patch image and the reconstructed image,
+which is derived from the output maps. Under identical
+acquisition conditions (using the same camera and light
+source), a higher similarity between the input and recon-
+structed image suggests that the model has successfully
+learned to create output maps which closely resemble the
+pigment distributions of the input image. The loss func-
+tion used is the mean squared error (MSE) during train-
+ing and the peak signal-to-noise ratio (PSNR) during the
+evaluation process.
+2.3
+|
+Integrated regression network
+2.3.1
+|
+Training method
+The optical approach-based regression method offers
+analysis results comparable to those from professional
+skin diagnostic equipment, which is demonstrated in
+Section 3 and our previous research [15]. Despite the
+capabilities of this approach, it does have certain limita-
+tions. Throughout the training process, the loss function
+evaluates only the reconstructed image. This image is
+influenced by all outputs, including melanin, hemoglo-
+bin, and shading maps, making it difficult to verify the
+accurate training of individual outputs. For example,
+incorrect combinations of outputs can possibly generate
+colors resembling the patch image. Additionally, evalua-
+tions emphasizing representative values for the entire
+patch image could overlook the localized inaccuracies.
+To overcome these limitations, we introduce an inte-
+grated regression method. This technique combines the
+learning structure of the optical approach with ground
+truth data for pigments, as shown in Figure 1A. While
+the optical approach's primary strength lies in its ability
+to train without the need for ground truth, the integrated
+regression method incorporates ground truth into the
+training process to enhance performance. Differing from
+simple regression method, this method aims to support to
+6 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 7 =====
+correctly generate pigment maps while maintaining the
+skin image formation process. As a result, it enhances
+performance while retaining the benefits of the optical
+approach, such as combining output patches without
+occurrence of boundary lines and the generation of
+pigment-modified images.
+The data intended for ground truth was generated
+using the VISIA system [28], a diagnostic tool prevalent
+in the industry, which we explain in more detail in
+Section 2.4. This system produces pigment concentration
+maps, making it compatible with our model. In our previ-
+ous study [15], we noted that the VISIA system demon-
+strated a similar trend, but presents more accurate results.
+2.3.2
+|
+Loss function
+The loss function is defined as follows:
+Ltotal ¼ Lrecon þαLpigment
+ð6Þ
+Lrecon ¼ 1
+nΣn
+i¼1 Iinput ið Þ Irecon ið Þ
+
+2
+ð7Þ
+Lpigment ¼ Σk¼mel,Hb
+Σn
+i¼1 Mk ið Þ Mk
+
+
+GTk ið Þ GTk
+
+
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+Σn
+i¼1 Mk ið Þ Mk
+
+2Σn
+i¼1 GTk ið Þ GTk
+
+2
+q
+0
+B
+@
+1
+C
+A
+ð8Þ
+Here, the total loss function Ltotal is computed as the
+weighted sum of the reconstruction loss Lrecon and the
+pigment loss Lpigment. The reconstruction loss measures
+the mean squared error between the input image Iinput
+and the reconstructed image Irecon for i all pixels n. The
+pigment loss is the summation of the Pearson correlation
+coefficient for the melanin and hemoglobin components,
+which involve the output maps Mk, the corresponding
+ground truth GTk, and their respective mean values for
+all pixels Mk and GTk.
+While determining the weight value α, iterative
+attempts should be made, taking into account intermedi-
+ate results and dataset-specific adjustments. A high weight
+value might produce results similar to the regression net-
+work, potentially creating issues like differing scales in dif-
+ferent patches or visible boundary lines. In this study, we
+started with the weight value α of 0.00005 for the first 150
+epochs, adjusting it to 0.001 for the remaining epochs.
+2.4
+|
+Experiments
+We received the dataset from the Global Medical
+Research Center using the VISIA-CR acquisition system
+(Canfield Scientific, Inc). A total of 88 subjects participated
+in the data acquisition process, with all procedures com-
+plying with national regulations and institutional policies
+governing research ethics. Prior informed consent was
+obtained from all participants, and the study received
+approval from the authors' institutional review board. The
+VISIA VAESTRO image analysis system's RBX-Brown and
+RBX-Red Processing 1.0 modules [28] were utilized to
+generate melanin and hemoglobin distribution maps. This
+system is widely recognized as a reliable diagnostic tool for
+both research and clinical applications [20, 29].
+Our pigment analysis model was trained on a dataset
+consisting of cross-polarized images with a resolution of
+3648  5472 pixels. The training set comprised 77 subjects
+(1540 patches), and the test set included 11 subjects
+(220 patches). We did not separate a validation set in
+order to efficiently utilize the limited dataset for training,
+and
+we
+will
+address
+it
+further
+in
+the
+discussion
+(Section 3). The captured image (3648  5472 pixels) was
+cropped and resized to 1240  1550 pixels, subsequently
+divided into 20 patches (4  5) of 310  310 pixels.
+During training, these patches were randomly cropped to
+256  256 pixels, and data augmentation techniques such
+as horizontal flipping and rotation were applied using the
+“Albumentations” library [30]. The test dataset was
+cropped and resized to 979  1461 pixels, and divided
+into 20 (4  5) patches, each 256  256 pixels in size.
+Each patch incorporated a 15-pixel overlap to maintain
+the resolution of the original image (979  1461) when
+combining the patch results.
+We evaluated the performance of pigment analysis
+model trained with three different frameworks: the sim-
+ple
+regression
+network,
+the
+optical
+approach-based
+regression network, and the integrated regression net-
+work. These networks were trained using the same data-
+set under the image acquisition conditions of the
+standard illuminant “D65” and the “Canon 5D Mark II”
+camera model [31]. The results were then compared with
+those
+from
+the
+VISIA
+system.
+Evaluation
+metrics
+included correlation coefficients [32] for the melanin and
+hemoglobin maps, and PSNR and the structural similar-
+ity index (SSIM) between the reconstructed and patch
+images. Especially for the integrated regression network,
+PSNR and SSIM metrics were indicative of the skin image
+formation
+process's
+preservation
+after
+incorporating
+ground truth into the optical approach-based learning
+structure. We also conducted a qualitative comparison in
+pigmented regions to identify potential discrepancies not
+captured by numerical analysis. From our observations,
+integrating ground truth into the optical approach
+requires extra stabilization time due to the introduction
+of extra constraints in the loss function. For more effi-
+cient training, we initialized the integrated regression
+JUNG ET AL.
+7 of 12
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 8 =====
+network using weights from the optical approach-based
+regression network, which was trained for 250 epochs on
+our training dataset.
+Our models were trained on the PyTorch platform
+using an RTX 3090 GPU. We implemented a batch size of
+16, a learning rate of 0.002, and the Adam optimizer with
+a cosine annealing scheduler. The total training time to
+reach 900 epochs was as follows: 11.5 h for the simple
+regression network, 17 h for the optical approach-based
+regression network, and 13.5 h for the integrated regres-
+sion network.
+3
+|
+RESULTS
+The performance of the three regression networks-the
+simple regression network, the optical approach-based
+regression
+network,
+and
+the
+integrated
+regression
+network-is compared to that of the VISIA system, as illus-
+trated in Figure 4. The networks' performances are evalu-
+ated using correlation coefficients, PSNR, and SSIM,
+computed with the test dataset consisting of 11 subjects.
+Melanin and hemoglobin maps obtained from the
+VISIA system, which are colored brown and red respec-
+tively, are converted to grayscale for direct comparison.
+To modify the pigment regions, either to enhance or alle-
+viate them, the melanin and hemoglobin maps are multi-
+plied by a constant. Similarly, the overall skin tone is
+adjusted by adding a constant to the pigment maps.
+The performance metrics of the three regression net-
+works are presented in Table 1. For reference, we have
+also included the simple regression network using a full-
+sized image as input. This table reports the correlation
+coefficients for the hemoglobin and melanin maps, as
+well as the PSNR and SSIM for the reconstructed image.
+4
+|
+DISCUSSION
+Figure 4 compares the performance of the three regres-
+sion networks to the VISIA system. Figure 4A shows the
+change in correlation coefficients of melanin and hemo-
+globin over the training epochs. It is observed that all
+regression networks stabilize their correlation coefficients
+after about 300 epochs. The optical approach-based
+regression network exhibits relatively lower correlation
+coefficient values and a wider standard deviation than
+the other networks, particularly in melanin analysis. The
+simple regression network and the optical-approach
+based regression network yield similar coefficients, but
+the integrated regression network presents a wider stan-
+dard deviation in hemoglobin analysis. To evaluate the
+similarity between the input and reconstructed images,
+which indirectly reflects pigment analysis capability
+during training, Figure 4B presents the changes in PSNR
+and SSIM. These metrics validate whether the skin image
+formation process is maintained when integrating the
+ground truth during training. The simple regression
+network is excluded from this comparison as its learning
+structure does not encompass image formation.
+Given that the incorporation of ground truth into the
+optical approach-based learning structure requires sub-
+stantial time to stabilize during training, we applied pre-
+trained parameters for the integrated regression network,
+resulting in higher initial performance compared to the
+model trained solely with the optical approach. Even
+after ground truth integration, the PSNR values consis-
+tently exceed 30 dB. Such PSNR values suggest that the
+reconstructed image closely resembles the input image,
+making them difficult to distinguish by the human eye
+[33, 34], which confirms the effective preservation of the
+image formation process.
+Table 1 presents a comparison of the regression net-
+works' performance, including the simple regression
+network with a full-sized input image as a reference. In
+the simple regression network, the network using a full-
+sized image exhibits a higher correlation coefficient for
+hemoglobin than the network using a patch image, due
+to the absence of patch combination issues that can arise
+when combining patches. Nonetheless, training and
+inferring on full-sized images demand significant mem-
+ory capacity and computational resources, which restricts
+the maximum image resolution. The optical approach-
+based regression network mitigates this limitation by
+using multiple patch images, although its correlation
+coefficient for melanin is lower compared to the simple
+regression network. This might be due to the challenge of
+differentiating between skin darkness and shading, both
+of which exhibit similar variations to melanin. However,
+by referencing the ground truth, the correlation coeffi-
+cient of melanin increases by 7.9% to 0.978 and hemoglo-
+bin by 2.3% to 0.975, with both seeing a decrease in
+standard deviation. This approach demonstrates slightly
+higher correlation coefficients than the simple regression
+network (full) but also presents wider standard devia-
+tions,
+indicating
+a
+trade-off
+between
+accuracy
+and
+consistency.
+Figure 4C presents the melanin and hemoglobin
+maps generated for the same input image. The overall
+tendencies of the entire image appear to be similar, but
+noticeable differences are observed in the enlarged
+images presented in Figure 5. First, Figure 5A shows the
+comparison
+of
+the
+simple
+regression
+network
+and
+the integrated regression network. The simple regression
+network generally exhibits consistent patch results, with
+a
+few
+disparate
+regions
+appearing
+after
+merging.
+8 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 9 =====
+FIGURE 4
+Comparison of the pigment analysis model trained with three different frameworks against the VISIA system: the simple
+regression network, the optical approach-based regression network, and the integrated regression network. (A) Correlation coefficients
+between the three networks and the VISIA system for (upper) hemoglobin and (lower) melanin maps. (B) (upper) PSNR and (lower) SSIM
+between the reconstructed image and the input image. (C) Comparison of the resulting hemoglobin and melanin maps. The first column
+presents the input image, followed by output maps from the VISIA system and the three networks in subsequent columns.
+(D) Reconstructed images produced by altering the pigment maps from the integrated regression network. The upper row demonstrates
+separate adjustments to the hemoglobin and melanin regions, maintaining the overall skin tone, while the lower row illustrates
+modifications to the overall skin tone.
+JUNG ET AL.
+9 of 12
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 10 =====
+Occasional variations in patch scale and boundary lines
+are observed. In contrast, the integrated regression net-
+work consistently generates the same results, regardless of
+whether it processes local parts or the entire image at once,
+a uniformity attributable to the application of consistent
+light source and camera conditions across all pixels.
+Figure 5B demonstrates the changes when incorporat-
+ing ground truth into the optical approach-based learning
+structure. The optical approach-based regression network
+may produce local regions with saturated pixel values
+below 0 or above 255 in some cases. Incorporation of
+ground truth during training adjusts the overall scale of
+the map, repositioning the previously saturated values
+within the valid image range and recovering accurate
+information, as depicted in the upper images. Further-
+more, the previously blurred areas become clearer, and
+the contrast is enhanced in the lower images. The
+observed change suggests that the optical approach-based
+regression network generates intermediate values for
+ambiguous pixels, likely to prevent an increase in the loss
+function, with the ground truth providing clear guidance
+for these pixels.
+In addition to its ability to analyze high-resolution
+images, the integrated regression network offers the
+advantage of generating modified skin images by manip-
+ulating the pigment maps during the image formation
+process, as shown in Figure 4D. By multiplying the pig-
+ment maps by a constant, the values of the pigment
+regions undergo significant changes, while the rest of
+the image remains relatively unchanged. As a result,
+the severity of the pigment regions can be modulated
+while preserving the overall skin tone in the upper
+images. Adding a constant to the pigment maps mod-
+ifies the overall skin tone, as demonstrated in the
+lower images. These pigment-modified images high-
+light the versatility of the optical approach, which can
+simulate post-treatment images and create pigment-
+augmented datasets for pigment analysis or segmenta-
+tion models.
+In this study, the data were divided into training and
+test datasets without validation dataset, primarily due to
+two reasons. The first reason involves the discrepancy
+between our evaluation criteria during training and after
+training. During training, our focus is centered on the
+FIGURE 5
+Comparison of enlarged hemoglobin maps generated from the three regression networks. (A) Comparison of the simple
+regression network and the integrated regression network (B) Comparison of the optical approach-based regression network and the
+integrated regression network, focusing on the same regions of the same subjects.
+TABLE 1
+Performance of pigment analysis model trained with three different frameworks: the simple regression network (combining
+multiple patches vs. full-sized image), optical approach-based network, and integrated regression network.
+Hb (corr.)
+Mel (corr.)
+Recon. (PSNR)
+Recon. (SSIM)
+Simple regression (patches)
+0.958 ± 0.052
+0.977 ± 0.022
+-
+-
+Simple regression (full)
+0.971 ± 0.008
+0.976 ± 0.005
+-
+-
+Optical approach-based
+0.953 ± 0.057
+0.906 ± 0.125
+39.411 ± 1.305
+0.987 ± 0.003
+Integrated regression
+0.975 ± 0.027
+0.978 ± 0.025
+34.713 ± 1.330
+0.981 ± 0.004
+10 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 11 =====
+network's
+image
+reconstruction
+capability,
+whereas
+post-training evaluations compare the derived pigment
+maps with the VISIA system. The second reason is due to
+practical limitations in obtaining datasets of cross-
+polarized images and analyzed results. Therefore, rather
+than allocating resources to create a separate validation
+set, we increased the ratio of the training dataset.
+Undoubtedly, if the quantity of the dataset is sufficient,
+establishing a validation set would be optimal.
+A significant advantage of the proposed approach is
+its versatility. While most skin analysis tools are depen-
+dent on the image acquisition equipment of a specific
+company, the same training framework and model archi-
+tecture in our study can be applied to various types of
+image acquisition equipment. The proposed approach
+can be further enhanced by considering several strategies.
+Firstly, a larger dataset could improve performance by
+exposing the model to a wider variety of melanin and
+hemoglobin combinations, thus enhancing its accuracy.
+In this study, there was an additional benefit of dividing
+the images into multiple patches, which increased the
+size of the training dataset by a factor of 20. Additionally,
+incorporating ground truth for the shading map using
+image processing techniques could potentially enhance
+the training process, similar to the way we incorporated
+ground truth for pigments. From an application perspec-
+tive, integrating an additional model to convert the colors
+from any image acquisition conditions to those of the
+training dataset would significantly increase the versatil-
+ity of the proposed approach. Lastly, calibrating the scale
+values using a precise contact-type clinical device could
+yield more accurate and reliable measurements. These
+future directions hold great promise for advancing the
+proposed approach and expanding its applicability in var-
+ious domains.
+5
+|
+CONCLUSION
+In this study, we introduced an integrated regression
+method
+that
+combines
+the
+optical
+approach
+with
+ground truth for pigment analysis. Our model over-
+comes the limitations of the model's input size by divid-
+ing images into multiple patches, enabling detailed
+analysis. The incorporation of ground truth improves
+the network's performance, leading to more accurate
+pigment analysis results. Furthermore, the versatility of
+the integrated regression network is demonstrated
+through its ability to generate pigment-modified images
+for various potential applications. We believe that with
+further advancements and refinements, our proposed
+approach will find wider applicability in dermatology
+and beyond.
+AUTHOR CONTRIBUTIONS
+Geunho Jung was involved in writing the manuscript
+and implemented a skin analysis model. Semin Kim
+made technical contributions in implementing deep
+learning models. Jongha Lee and Sangwook Yoo were
+involved in preparing datasets and project manage-
+ment. All authors contributed to reviewing the manu-
+script. Geunho Jung is the corresponding author of this
+paper.
+ACKNOWLEDGMENTS
+This research was supported by National IT Industry Pro-
+motion Agency (NIPA) for computing resources. The
+research
+dataset
+was
+supplied
+by
+Global
+Medical
+Research Center (GMRC, Republic of Korea), and the
+IRB approval number is ”GIRB-21426-PD”.
+CONFLICT OF INTEREST STATEMENT
+The authors have no relevant financial interests in this
+article and no potential conflicts of interest to disclose.
+DATA AVAILABILITY STATEMENT
+The data that support the findings of this study are avail-
+able on request from the corresponding author. The data
+are not publicly available due to privacy or ethical
+restrictions.
+ORCID
+Geunho Jung
+https://orcid.org/0000-0002-4896-009X
+REFERENCES
+[1] G. Zonios, A. Dimou, I. Bassukas, D. Galaris, A. Tsolakidis, E.
+Kaxiras, J. Biomed. Opt. 2008, 13, 014017.
+[2] P. Agache, P. Humbert, Measuring the Skin, Springer Science
+and Business Media, Berlin and Heinderberg, 2004.
+[3] I. Saknite, S. Kwun, K. Zhang, A. Hood, F. Chen, L. Kangas, P.
+Kortteisto,
+A.
+Kukkonen,
+J.
+Spigulis,
+E.
+R.
+Tkaczyk,
+J. Biophotonics 2023, 16, e202300009.
+[4] G. N. Stamatas, B. Z. Zmudzka, N. Kollias, J. Z. Beer, Pigm.
+Cell Res. 2004, 17, 618.
+[5] L. E. Dolotov, Y. P. Sinichkin, V. V. Tuchin, S. R. Utz, G. B.
+Altshuler, I. V. Yaroslavsky, Lasers Surg. Med. 2004, 34, 127.
+[6] A. Treesirichod, S. Chansakulporn, P. Wattanapan, Indian
+J. Dermatol. 2014, 59, 339.
+[7] G. Zonios, J. Bykowski, N. Kollias, J. Invest. Dermatol. 2001,
+117, 1452.
+[8] Y. Zuo, A. Li, H. He, R. Wan, Y. Li, L. Li, Skin Res. Technol.
+2022, 28, 846.
+[9] Q. Marin, T. Honda, H. Nakajima, Y. Okano, M. Cherel, E.
+Prestat-Marquis, Skin Res. Technol. 2022, 28, 582.
+[10] N. Tsumura, H. Haneishi, Y. Miyake, Opt. Rev. 2000, 7, 479.
+[11] S.-H. Tseng, P. Bargo, A. Durkin, N. Kollias, Opt. Express 2009,
+17, 14599.
+[12] H. M. Son, W. Jeon, J. Kim, C. Y. Heo, H. J. Yoon, J.-U. Park,
+T.-M. Chung, Sci. Rep. 2021, 11, 5350.
+JUNG ET AL.
+11 of 12
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+===== PAGE 12 =====
+[13] Qian Zheng, Ankur Purwar, Heng Zhao, Guang Liang Lim,
+Ling Li, Debasish Behera, Qian Wang, Min Tan, Rizhao Cai,
+Jennifer Werner, Dennis Sng, Maurice van Steensel, Weisi
+Lin, Alex C. Kot, arXiv preprint arXiv:2203.16056 2022.
+[14] M. Kim, M. H. Song, Appl. Sci. 2023, 13, 989.
+[15] G. Jung, S. Kim, J. Lee, S. Yoo, J. Biomed.Opt. 2023, 28, 035001.
+[16] D. Jha, P. H. Smedsrud, M. A. Riegler, D. Johansen, T. De
+Lange, P. Halvorsen, H. D. Johansen, 2019 IEEE International
+Symposium on Multimedia (ISM), IEEE, San Diego, CA, 2019,
+p. 225.
+[17] Sarah
+Alotaibi,
+William
+Smith,
+arXiv
+preprint
+arXiv:
+1908.10578. 2019.
+[18] X. Chang, J. Wang, W. Yang, Y. Lei, Proceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern Recog-
+nition, IEEE Computer Society, Los Alamitos, CA, 2021,
+p. 1192.
+[19] J. Feng, Q. Sun, Z. Li, Z. Sun, K. Jia, J. Biomed. Opt. 2019, 24,
+051407.
+[20] X. Wang, X. Shu, Z. Li, W. Huo, L. Zou, Y. Tang, L. Li, Skin
+Res. Technol. 2018, 24, 379.
+[21] Lisa Kobayashi Frisk 2016.
+[22] M. Doi, S. Tominaga, Color Imaging VIII: Processing, Hard-
+copy, and Applications, SPIE, Bellingham, WA, 2003, p. 221.
+[23] A. Krishnaswamy, G. V. G. Baranoski, Computer Graphics
+Forum, Vol. 23, Wiley Online Library, Hoboken, NJ, 2004,
+p. 331.
+[24] M. A. Ansari, R. Massudi, Opt. Lasers Eng. 2009, 47, 965.
+[25] S. L. Jacques, R. D. Glickman, J. A. Schwartz, Laser-Tissue
+Interaction VII, SPIE, Bellingham, WA, 1996, p. 468.
+[26] SL Jacques, Skin Optics. Oregon Medical Laser Center
+News, 1998.
+[27] S. Bianco, F. Gasparini, A. Russo, R. Schettini, IEEE Trans.
+Consum. Electron. 2007, 53, 1020.
+[28] R. Demirli, P. Otto, R. Viswanathan, S. Patwardhan, J. Larkey,
+Canfield Systems White Paper 2007, 1, 1.
+[29] A. Goldsberry, C. W. Hanke, K. E. Hanke, J. Drugs Dermatol
+JDD 2014, 13, 1312.
+[30] A. Buslaev, V. I. Iglovikov, E. Khvedchenya, A. Parinov, M.
+Druzhinin, A. A. Kalinin, Information 2020, 11, 2.
+[31] J. Jiang, D. Liu, G. Jinwei, S. Süsstrunk, IEEE Workshop on
+Applications of Computer Vision (WACV), Vol. 2013, IEEE, Los
+Alamitos, CA, 2013, p. 168.
+[32] M.-T. Puth, M. Neuhäuser, G. D. Ruxton, Anim. Behav. 2014,
+93, 183.
+[33] X. Zeng, L. Ping, Z. Li, J. Multimedia 2009, 4, 3.
+[34] C.-C. Lee, W. Hsien-Chu, C.-S. Tsai, Y.-P. Chu, Pattern Recog-
+nit. 2008, 41, 2097.
+How to cite this article: G. Jung, S. Kim, J. Lee,
+S. Yoo, J. Biophotonics 2023, 16(12), e202300231.
+https://doi.org/10.1002/jbio.202300231
+12 of 12
+JUNG ET AL.
+ 18640648, 2023, 12, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/jbio.202300231 by Zhejiang Sci-Tech University, Wiley Online Library on [06/09/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

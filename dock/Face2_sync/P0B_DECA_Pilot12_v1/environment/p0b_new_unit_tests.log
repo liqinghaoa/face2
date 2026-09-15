@@ -1,8 +1,0 @@
-test_official_config_uses_explicit_bfm_texture_and_core_paths (tests.p0b.test_p0b_deca_runtime_unittest.DecaRuntimeUnitTests) ... ok
-test_renderer_coefficient_conversion_preserves_canonical_shading (tests.p0b.test_p0b_deca_runtime_unittest.DecaRuntimeUnitTests) ... ok
-test_single_channel_mapping_preserves_channel_axis (tests.p0b.test_p0b_deca_runtime_unittest.DecaRuntimeUnitTests) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 2.464s
-
-OK

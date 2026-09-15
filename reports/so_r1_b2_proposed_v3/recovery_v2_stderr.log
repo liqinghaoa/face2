@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b2_proposed_training.py", line 15, in <module>
+    print(run(args.project_root,resume=args.resume))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 361, in run
+    if failed.get("failure_type") != "MemoryError": raise RuntimeError("FAIL_RESUME_GATE:UNSUPPORTED_FAILURE")
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: FAIL_RESUME_GATE:UNSUPPORTED_FAILURE

@@ -1,0 +1,7 @@
+{
+  "b1_contract_hash": "7dcfb309d9d61c35b1de555b815a84e7c2f83be5d9b5e63f74bc91d14217b84f",
+  "selection_lock_hash": "56a33e14bf2c81f8d8c34a06e6bbd5401c618a585120e39d4b0072ff00d385d1",
+  "selection_protocol_hash": "d8ff71a332b057a427cf8f55ab868695b51b1d3f6ad001c767f577c4d41325e1",
+  "status": "RUNNING",
+  "training_started": true
+}

@@ -1,0 +1,8 @@
+{
+  "pearson_valid_fraction_m_mean": -0.04255813036363593,
+  "spearman_valid_fraction_m_mean": -0.05628775353406762,
+  "pearson_valid_fraction_h_mean": 0.04009699543027344,
+  "spearman_valid_fraction_h_mean": 0.031902712281967095,
+  "pass": true,
+  "allocation_attempt": 0
+}

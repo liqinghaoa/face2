@@ -1,0 +1,9 @@
+{
+  "Camera-OOD access": 2500,
+  "ID Test access": 5000,
+  "Joint-OOD access": 2500,
+  "Light-OOD access": 2500,
+  "Train RGB access": 0,
+  "Train target/mask access": 10000,
+  "Validation RGB access": 0
+}

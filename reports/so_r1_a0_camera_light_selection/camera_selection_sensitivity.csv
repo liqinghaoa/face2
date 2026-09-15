@@ -1,0 +1,2 @@
+primary_distance,sam_seen_cameras,sam_unseen_cameras,tv_seen_cameras,tv_unseen_cameras,selected_set_overlap,seen_set_overlap,unseen_set_overlap,jaccard_similarity,anchors_preserved,selection_sensitivity_pass
+SAM,Canon 5DMarkII; Nokia N900; Nikon D80; Pentax Q; SONY NEX-5N; Olympus E-PL2,Canon 1DMarkIII; Nikon D5100,Canon 5DMarkII; Nokia N900; Nikon D80; Pentax Q; Olympus E-PL2; SONY NEX-5N,Nikon D50; Canon 300D,6,6,0,0.6,True,True

@@ -1,0 +1,30 @@
+protocol_id: SO-R1-A2-D0
+status: FROZEN
+container: np.savez_compressed
+compression: zip_deflate / numpy default zlib
+rgb:
+  dtype: float16
+  shape:
+  - 5
+  - 3
+  - 256
+  - 256
+  range:
+  - 0
+  - 1
+  max_abs_error: 0.00025
+  p99_abs_error: 0.00023
+M_H:
+  dtype: float16
+  shape:
+  - 256
+  - 256
+  single_copy_per_latent: true
+mask:
+  dtype: uint8
+  shape:
+  - 256
+  - 256
+  single_copy_per_latent: true
+content_hash: SHA-256 of contiguous C-order decompressed arrays with dtype/shape header
+  plus canonical JSON metadata

@@ -1,0 +1,48 @@
+{
+  "case_decisions": [
+    {
+      "sample_id": "L024_A1",
+      "decision": "EXPOSURE_DRIVEN",
+      "camera_fail_count": 3,
+      "camera_specific": false,
+      "acquisition_global": false,
+      "ev0_high_clip": 0.0,
+      "p0_high_clip": 0.1030120849609375,
+      "ev0_p0_high_clip": 0.0
+    },
+    {
+      "sample_id": "L024_A2",
+      "decision": "EXPOSURE_DRIVEN",
+      "camera_fail_count": 6,
+      "camera_specific": false,
+      "acquisition_global": true,
+      "ev0_high_clip": 0.0,
+      "p0_high_clip": 0.1612396240234375,
+      "ev0_p0_high_clip": 0.0
+    },
+    {
+      "sample_id": "L040_A4",
+      "decision": "UNRESOLVED",
+      "camera_fail_count": 0,
+      "camera_specific": false,
+      "acquisition_global": false,
+      "ev0_high_clip": 0.0,
+      "p0_high_clip": 0.0,
+      "ev0_p0_high_clip": 0.0
+    },
+    {
+      "sample_id": "L048_A2",
+      "decision": "EXPOSURE_DRIVEN",
+      "camera_fail_count": 6,
+      "camera_specific": false,
+      "acquisition_global": true,
+      "ev0_high_clip": 0.0,
+      "p0_high_clip": 0.1122589111328125,
+      "ev0_p0_high_clip": 0.0
+    }
+  ],
+  "overall_decision": "STOP_CAMERA_OR_UNRESOLVED",
+  "camera_specific_count": 0,
+  "unresolved_count": 1,
+  "nuisance_sampler_revision_permitted": false
+}

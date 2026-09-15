@@ -1,0 +1,84 @@
+schema_version: 1
+stage: S1-5R
+run_id: hyperskin_s1_5r_train_v3
+status: train_only_development
+
+inputs:
+  region_spectra: data/processed/HyperSkin_Stage1_v1/region_spectra/train_only_v1/region_spectra_train.parquet
+  train_cache_provenance: data/processed/HyperSkin_Stage1_v1/region_spectra/train_only_v1/train_only_cache_provenance.json
+  s1_3_decision: data/processed/HyperSkin_Stage1_v1/region_spectra/s1_3_final_decision.json
+  s1_4r_decision: data/processed/HyperSkin_Stage1_v1/models/s1_4_revised_v3_synthetic_r7/s1_4r_decision.json
+  model_registry: configs/skin_optics_hsi/s1_4_revised_registry_v3.yaml
+
+data_roles:
+  allowed_split: train
+  primary_analysis_role: primary_development
+  primary_expression: neutral
+  primary_direction: front
+  primary_regions: [left_cheek, right_cheek]
+  usable_status: USABLE
+  expected_subjects: 44
+  expected_primary_spectra: 88
+
+models:
+  shape_primary: [B0-S, B2-PCA, D1-M, D2-MH]
+  confounding_stress: D3-MHG
+  oxygenation_conditional: D3-MHO
+  raw_primary: [B0-R, B2-RPCA, K2-MH-KM]
+  scattering_conditional: K3-MHS-KM
+  deferred: T2-MH-RTE
+
+fit:
+  statistic: median
+  reflectance_epsilon: 1.0e-8
+  minimum_valid_bands: 24
+  k2_global_gain_iterations: 3
+  k2_max_function_evaluations: 500
+  perturbation_repeats: 5
+  perturbation_seed: 20260908
+
+conditional_activation:
+  d3_mho:
+    median_subject_residual_correlation_abs_min: 0.50
+    consistent_subject_fraction_min: 0.70
+    subject_correlation_abs_min: 0.30
+  k3_mhs_km:
+    k2_median_raw_log_rmse_better_than_b0r: true
+    k2_improved_spectrum_fraction_min: 0.70
+    k2_boundary_fraction_max: 0.25
+
+sensitivity:
+  band_sets:
+    full_31: {exclude_nm: []}
+    remove_endpoints: {exclude_nm: [400, 700]}
+    remove_soret: {exclude_nm: [400, 410, 420, 430, 440]}
+  melanin_power: [2.9, 4.3, 5.8]
+  vessel_diameter_um: [0.0, 10.0, 15.0, 22.0, 44.0]
+  sO2_ref: [0.41, 0.50, 0.60]
+  assumed_gaussian_fwhm_nm: [0.0, 5.5, 10.0, 20.0]
+  center_shift_nm: [-5.0, -2.5, 0.0, 2.5, 5.0]
+  k2_epidermis_thickness_mm: [0.013, 0.063, 0.191]
+  k2_scattering_amplitude_mm1_at_600nm: [1.78, 1.99, 2.38]
+
+development_gates:
+  proxy:
+    d2_better_than_b0s_spectrum_fraction_min: 0.70
+    d2_to_b0s_median_shape_log_rmse_ratio_max: 0.90
+    median_physical_gain_retention_min: 0.50
+    d3_mh_spearman_min: 0.80
+    d3_mh_median_normalized_shift_max: 0.25
+    d2_design_condition_max: 10.0
+    perturbation_median_normalized_shift_max: 0.25
+    median_absolute_log_residual_per_band_max: 0.15
+  semi_mechanistic:
+    k2_better_than_b0r_spectrum_fraction_min: 0.70
+    k2_to_b0r_median_raw_log_rmse_ratio_max: 0.90
+    k2_boundary_fraction_max: 0.25
+    k2_to_d2_median_shape_log_rmse_ratio_max: 1.25
+  note: Train-only development gates authorize Validation review, not final Test PASS.
+
+access_policy:
+  validation_access_allowed: false
+  test_access_allowed: false
+  raw_hsi_access_allowed: false
+  refuse_existing_output: true

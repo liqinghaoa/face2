@@ -1,0 +1,9 @@
+{
+  "failure": "MemoryError((1000, 5, 2, 256, 256), dtype('float32'))",
+  "failure_type": "MemoryError",
+  "next_stage_authorized": false,
+  "proposed_checkpoint_authoritative": false,
+  "proposed_training_status": "NOT_COMPLETE",
+  "status": "FAIL",
+  "training_started": false
+}

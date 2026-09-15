@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-08-20T01:17:12",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "torch": "2.3.0+cu121",
+  "torchvision": "0.18.0+cu121",
+  "cuda_available": true,
+  "cuda_version": "12.1",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "git_head": "3251c11630e0a438f4dfa6f6755703675ff2330f"
+}

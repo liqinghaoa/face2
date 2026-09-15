@@ -1,0 +1,88 @@
+schema_version: 1
+stage: KM-BIO-v1-Stage-C
+run_id: km_bio_v1_train_inversion
+status: preregistered_train_only
+
+inputs:
+  observation_contract: configs/skin_optics_hsi/km_bio_v1_observation_contract.yaml
+  observation_audit: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_observation_audit/audit_summary.json
+  observation_manifest: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_observation_audit/train_primary_observation_manifest.parquet
+  formula_contract: configs/skin_optics_hsi/km_bio_v1_formula_contract.yaml
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+  optical_asset_1nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/reference_1nm/derived_optics_1nm.npz
+
+output_directory: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_train_inversion
+
+parameters:
+  names: [f_mel, f_blood, s]
+  lower: [0.0, 0.0, 0.0]
+  upper: [0.43, 0.10, 1.0]
+  profile_span_max: [0.03, 0.01, 0.20]
+  robustness_shift_max: [0.015, 0.005, 0.10]
+  boundary_fraction: 0.01
+  low_blood_threshold: 0.001
+
+solver:
+  name: scipy.optimize.least_squares
+  method: trf
+  loss: linear
+  scale_parameterization: true
+  sobol_starts: 32
+  include_center: true
+  random_seed: 20260909
+  ftol: 1.0e-10
+  xtol: 1.0e-10
+  gtol: 1.0e-8
+  max_nfev_per_start: 2000
+  dtype: float64
+  reflectance_epsilon: 1.0e-6
+
+profile:
+  grid_points_per_parameter: 51
+  sobol_starts_for_remaining_parameters: 8
+  include_main_solution_projection: true
+  main_delta_logrmse: 0.005
+  sensitivity_delta_logrmse: [0.0025, 0.010]
+  refinement_width_scaled: 0.002
+
+spectral_gates:
+  subject_median_logrmse_max: 0.06
+  subject_p90_logrmse_max: 0.10
+  subject_median_rmse_max: 0.03
+  subject_median_sam_deg_max: 3.0
+  maximum_abs_median_signed_band_residual: 0.03
+  loo_better_subject_fraction_min: 0.6666666666666666
+  loo_median_error_ratio_max: 0.90
+  input_coverage_min: 0.80
+  single_spectrum_logrmse_max: 0.10
+  single_spectrum_rmse_max: 0.05
+  single_spectrum_sam_deg_max: 5.0
+
+sensitivity:
+  epidermis_thickness_mm: [0.050, 0.070]
+  scattering_scale: [0.8, 1.2]
+  whole_blood_hb_g_l: [120.0, 180.0]
+  observation_scale: [0.95, 1.05]
+  observation_tilt: [-0.02, 0.02]
+  bandwidth_subset_nm: [420, 680]
+  gaussian_fwhm_nm: [5.0, 10.0]
+  gaussian_support_sigma: 3.0
+  gaussian_grid_step_nm: 1.0
+  required_stable_fraction: 0.80
+
+observation_confounding:
+  parameter_side_consistency_fraction: 0.80
+  brightness_parameter_spearman_abs: 0.70
+  material_side_difference: [0.015, 0.005, 0.10]
+
+free_gain_diagnostic:
+  lower: 0.5
+  upper: 1.5
+
+access_policy:
+  allowed_split: train
+  validation_content_allowed: false
+  test_content_allowed: false
+  raw_hsi_content_allowed: false
+  refuse_existing_output: true
+

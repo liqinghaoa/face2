@@ -1,0 +1,25 @@
+﻿comparison,true_class,transition,count
+RGB_B2MH_vs_RGB,all cases,both_correct,349
+RGB_B2MH_vs_RGB,all cases,RGB_only_correct,40
+RGB_B2MH_vs_RGB,all cases,RGB_B2MH_only_correct,42
+RGB_B2MH_vs_RGB,all cases,both_wrong,69
+RGB_B2MH_vs_RGB,Control,both_correct,59
+RGB_B2MH_vs_RGB,Control,RGB_only_correct,23
+RGB_B2MH_vs_RGB,Control,RGB_B2MH_only_correct,14
+RGB_B2MH_vs_RGB,Control,both_wrong,19
+RGB_B2MH_vs_RGB,Patient,both_correct,290
+RGB_B2MH_vs_RGB,Patient,RGB_only_correct,17
+RGB_B2MH_vs_RGB,Patient,RGB_B2MH_only_correct,28
+RGB_B2MH_vs_RGB,Patient,both_wrong,50
+RGB_B1MH_vs_RGB,all cases,both_correct,352
+RGB_B1MH_vs_RGB,all cases,RGB_only_correct,37
+RGB_B1MH_vs_RGB,all cases,RGB_B1MH_only_correct,28
+RGB_B1MH_vs_RGB,all cases,both_wrong,83
+RGB_B1MH_vs_RGB,Control,both_correct,60
+RGB_B1MH_vs_RGB,Control,RGB_only_correct,22
+RGB_B1MH_vs_RGB,Control,RGB_B1MH_only_correct,11
+RGB_B1MH_vs_RGB,Control,both_wrong,22
+RGB_B1MH_vs_RGB,Patient,both_correct,292
+RGB_B1MH_vs_RGB,Patient,RGB_only_correct,15
+RGB_B1MH_vs_RGB,Patient,RGB_B1MH_only_correct,17
+RGB_B1MH_vs_RGB,Patient,both_wrong,61

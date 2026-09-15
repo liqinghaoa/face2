@@ -1,0 +1,7 @@
+﻿expression,direction,samples,pass_fraction
+neutral,front,3,0.0
+neutral,left,3,0.0
+neutral,right,3,0.0
+smile,front,3,0.0
+smile,left,3,0.0
+smile,right,3,0.0

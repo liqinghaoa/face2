@@ -1,0 +1,47 @@
+{
+  "allowlist_hash": "6952c32b347d34df55e0cf297cb46ee9c218f4e9b7400ad3293d2f886b839346",
+  "camera_light_asset_hash": "5f10ad0e337de3ee8f6ce9995c3681cf5e6de37a3073902033a8d08585965c20",
+  "configs": [
+    {
+      "path": "config/so_r1/frozen_camera_light_split_v1_1.yaml",
+      "sha256": "57de567dcdaf0034f49b35961ad38add7cfbba9c36aa54ddead2895dc68cffac"
+    },
+    {
+      "path": "config/so_r1/frozen_mask_prior_v1.yaml",
+      "sha256": "1904202c936f9009ecfdd809781aed32307fda4b6fb91fbdd0bf66c12b34b4e6"
+    },
+    {
+      "path": "config/so_r1/frozen_acquisition_nuisance_protocol_v1.yaml",
+      "sha256": "d7acb8abe7080647cd15dbdbc62a05e9aee326947c4ab8abce623c6e3a4bcd08"
+    },
+    {
+      "path": "config/so_r1/frozen_storage_protocol_v1.yaml",
+      "sha256": "e2cba7add541b2c3da5901846ff79cea1a8542b963a55dab86347bf60d1bf3fd"
+    },
+    {
+      "path": "config/so_r1/frozen_full_dataset_split_v1.yaml",
+      "sha256": "77229c05be50bbb2c3ef59915e3ba4e049656bba1f2751312c76832e77719955"
+    },
+    {
+      "path": "config/so_r1/frozen_camera_light_24pair_allowlist_v1_1.csv",
+      "sha256": "6952c32b347d34df55e0cf297cb46ee9c218f4e9b7400ad3293d2f886b839346"
+    },
+    {
+      "path": "config/so_r1/so_r1_a2_full_generation_protocol_v1.yaml",
+      "sha256": "15b70ccd82d8bb191ae0097c6b0be3c5dad7f6f7c71a3b34fbea00d5ee016f3c"
+    }
+  ],
+  "content_hash_contract": "SHA-256, decompressed contiguous C-order arrays with dtype/shape header and canonical metadata",
+  "frozen_at": "2026-08-22T15:10:24.106202+00:00",
+  "git_commit": "3251c11630e0a438f4dfa6f6755703675ff2330f",
+  "protocol_id": "SO-R1-A2-D0",
+  "root_seed": 20260822,
+  "sampler_code_hashes": {
+    "mask": "35e82ee325dc79cc4e290fed2774017da17c7df3901b39bfdedeb3e9262a3914",
+    "mh": "3a5ba2fc92dc4e5dec2b6aba540cc354c8ab48baa6e0091217cea5a57dd9b0b8",
+    "nuisance": "a7de67e1e35672fec999a2a6082f1c3e670059e0720965501d340720f909f675"
+  },
+  "so0_config_hash": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+  "status": "FROZEN",
+  "version": "1.0"
+}

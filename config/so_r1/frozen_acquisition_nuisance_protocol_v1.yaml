@@ -1,0 +1,18 @@
+protocol_id: SO-R1-A2-D0
+status: FROZEN
+appearance_generator: src/skin_optics_so_r1/paired_pilot.py::_appearance
+shading: low-frequency spatial nuisance only; not directional illumination
+specular: specular-like nuisance
+exposure_ev_range:
+- -0.5
+- 0.31
+safe_boundary_ev: 0.36
+safety_margin_ev: 0.05
+retry_policy: resample S/P/exposure only; retain M/H/mask/camera/light; BLAKE2b attempt
+  seed; max 128
+qc:
+  high_clip_element_fraction_max: 0.1
+  low_clip_element_fraction_max: 0.1
+  channel_exact_zero_fraction_lt: 0.5
+  channel_exact_one_fraction_lt: 0.5
+  finite: true

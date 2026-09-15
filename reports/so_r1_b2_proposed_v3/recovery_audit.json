@@ -1,0 +1,15 @@
+{
+  "latest_recovery_attempt_status": "RESTARTING",
+  "protected_assets_unchanged": true,
+  "recovered_from_failure": {
+    "failure": "MemoryError((20, 2, 256, 256), dtype('float32'))",
+    "failure_type": "MemoryError",
+    "next_stage_authorized": false,
+    "proposed_checkpoint_authoritative": false,
+    "proposed_training_status": "NOT_COMPLETE",
+    "status": "FAIL",
+    "training_started": false
+  },
+  "recovery_mode": "lambda_0p50_from_latest_post_validation_checkpoint",
+  "status": "PASS"
+}

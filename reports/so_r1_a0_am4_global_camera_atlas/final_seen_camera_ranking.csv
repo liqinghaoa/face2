@@ -1,0 +1,57 @@
+seen_cameras,minimum_pairwise_sam,mean_pairwise_sam,tie_break_key,selection_rank
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D80', 'Point Grey Grasshopper2 14S5C']",0.20560759195239228,0.26277774652938485,Canon 5DMarkII|Hasselblad H2|Nikon D80|Point Grey Grasshopper2 14S5C,1
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.1949377957683456,0.23904482846851918,Canon 5DMarkII|Hasselblad H2|Nikon D90|Point Grey Grasshopper2 14S5C,2
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D300s', 'Point Grey Grasshopper2 14S5C']",0.1855187846887418,0.23339524226360261,Canon 5DMarkII|Hasselblad H2|Nikon D300s|Point Grey Grasshopper2 14S5C,3
+"['Canon 5DMarkII', 'Canon 20D', 'Hasselblad H2', 'Nikon D80']",0.1428924719676572,0.23492158349608863,Canon 5DMarkII|Canon 20D|Hasselblad H2|Nikon D80,4
+"['Canon 5DMarkII', 'Canon 20D', 'Hasselblad H2', 'Point Grey Grasshopper2 14S5C']",0.1428924719676572,0.23122837190420661,Canon 5DMarkII|Canon 20D|Hasselblad H2|Point Grey Grasshopper2 14S5C,5
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D80', 'Point Grey Grasshopper2 14S5C']",0.1428924719676572,0.22485332628004803,Canon 5DMarkII|Canon 20D|Nikon D80|Point Grey Grasshopper2 14S5C,6
+"['Canon 5DMarkII', 'Canon 20D', 'Hasselblad H2', 'Nikon D90']",0.1428924719676572,0.213468270742294,Canon 5DMarkII|Canon 20D|Hasselblad H2|Nikon D90,7
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.1428924719676572,0.2073950247859885,Canon 5DMarkII|Canon 20D|Nikon D90|Point Grey Grasshopper2 14S5C,8
+"['Canon 5DMarkII', 'Canon 20D', 'Hasselblad H2', 'Nikon D300s']",0.1428924719676572,0.2065460711601171,Canon 5DMarkII|Canon 20D|Hasselblad H2|Nikon D300s,9
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D300s', 'Point Grey Grasshopper2 14S5C']",0.1428924719676572,0.20008610666191076,Canon 5DMarkII|Canon 20D|Nikon D300s|Point Grey Grasshopper2 14S5C,10
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D80', 'Nikon D90']",0.13793933291994362,0.23349526513739138,Canon 5DMarkII|Hasselblad H2|Nikon D80|Nikon D90,11
+"['Canon 5DMarkII', 'Nikon D80', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.13793933291994362,0.22575867499682714,Canon 5DMarkII|Nikon D80|Nikon D90|Point Grey Grasshopper2 14S5C,12
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D80', 'Nikon D90']",0.13793933291994362,0.1802438121193776,Canon 5DMarkII|Canon 20D|Nikon D80|Nikon D90,13
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D300s', 'Nikon D80']",0.1261009173700187,0.2281058444575957,Canon 5DMarkII|Hasselblad H2|Nikon D300s|Nikon D80,14
+"['Canon 5DMarkII', 'Nikon D300s', 'Nikon D80', 'Point Grey Grasshopper2 14S5C']",0.1261009173700187,0.2199825357751307,Canon 5DMarkII|Nikon D300s|Nikon D80|Point Grey Grasshopper2 14S5C,15
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D300s', 'Nikon D80']",0.1261009173700187,0.1731950595204208,Canon 5DMarkII|Canon 20D|Nikon D300s|Nikon D80,16
+"['Canon 5DMarkII', 'Canon 40D', 'Hasselblad H2', 'Nikon D80']",0.1037422358468888,0.23977683718715873,Canon 5DMarkII|Canon 40D|Hasselblad H2|Nikon D80,17
+"['Canon 5DMarkII', 'Canon 40D', 'Hasselblad H2', 'Point Grey Grasshopper2 14S5C']",0.1037422358468888,0.23182294108000479,Canon 5DMarkII|Canon 40D|Hasselblad H2|Point Grey Grasshopper2 14S5C,18
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D80', 'Point Grey Grasshopper2 14S5C']",0.1037422358468888,0.22871889500497034,Canon 5DMarkII|Canon 40D|Nikon D80|Point Grey Grasshopper2 14S5C,19
+"['Canon 5DMarkII', 'Canon 40D', 'Hasselblad H2', 'Nikon D90']",0.1037422358468888,0.213464533624904,Canon 5DMarkII|Canon 40D|Hasselblad H2|Nikon D90,20
+"['Canon 5DMarkII', 'Canon 40D', 'Hasselblad H2', 'Nikon D300s']",0.1037422358468888,0.20799342098358733,Canon 5DMarkII|Canon 40D|Hasselblad H2|Nikon D300s,21
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.1037422358468888,0.2064016027024507,Canon 5DMarkII|Canon 40D|Nikon D90|Point Grey Grasshopper2 14S5C,22
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D300s', 'Point Grey Grasshopper2 14S5C']",0.1037422358468888,0.20054377151923322,Canon 5DMarkII|Canon 40D|Nikon D300s|Point Grey Grasshopper2 14S5C,23
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D80', 'Nikon D90']",0.1037422358468888,0.1835110745511117,Canon 5DMarkII|Canon 40D|Nikon D80|Nikon D90,24
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D300s', 'Nikon D80']",0.1037422358468888,0.17791340889301513,Canon 5DMarkII|Canon 40D|Nikon D300s|Nikon D80,25
+"['Canon 5DMarkII', 'Canon 600D', 'Hasselblad H2', 'Nikon D80']",0.09817280822773677,0.24647938456890772,Canon 5DMarkII|Canon 600D|Hasselblad H2|Nikon D80,26
+"['Canon 5DMarkII', 'Canon 600D', 'Hasselblad H2', 'Point Grey Grasshopper2 14S5C']",0.09817280822773677,0.23813028642134418,Canon 5DMarkII|Canon 600D|Hasselblad H2|Point Grey Grasshopper2 14S5C,27
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D80', 'Point Grey Grasshopper2 14S5C']",0.09817280822773677,0.2349791043092311,Canon 5DMarkII|Canon 600D|Nikon D80|Point Grey Grasshopper2 14S5C,28
+"['Canon 5DMarkII', 'Canon 600D', 'Hasselblad H2', 'Nikon D90']",0.09817280822773677,0.2176683469548583,Canon 5DMarkII|Canon 600D|Hasselblad H2|Nikon D90,29
+"['Canon 5DMarkII', 'Canon 600D', 'Hasselblad H2', 'Nikon D300s']",0.09817280822773677,0.21257940824807475,Canon 5DMarkII|Canon 600D|Hasselblad H2|Nikon D300s,30
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.09817280822773677,0.21016307795491682,Canon 5DMarkII|Canon 600D|Nikon D90|Point Grey Grasshopper2 14S5C,31
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D300s', 'Point Grey Grasshopper2 14S5C']",0.09817280822773677,0.2046874207062325,Canon 5DMarkII|Canon 600D|Nikon D300s|Point Grey Grasshopper2 14S5C,32
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 600D', 'Hasselblad H2']",0.09817280822773677,0.19979410018801358,Canon 5DMarkII|Canon 20D|Canon 600D|Hasselblad H2,33
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 600D', 'Point Grey Grasshopper2 14S5C']",0.09817280822773677,0.1899571641125957,Canon 5DMarkII|Canon 20D|Canon 600D|Point Grey Grasshopper2 14S5C,34
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D80', 'Nikon D90']",0.09817280822773677,0.18766775184398746,Canon 5DMarkII|Canon 600D|Nikon D80|Nikon D90,35
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D300s', 'Nikon D80']",0.09817280822773677,0.182452260120424,Canon 5DMarkII|Canon 600D|Nikon D300s|Nikon D80,36
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 600D', 'Nikon D80']",0.09817280822773677,0.17670461292467618,Canon 5DMarkII|Canon 20D|Canon 600D|Nikon D80,37
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 600D', 'Nikon D90']",0.09817280822773677,0.15416819187743291,Canon 5DMarkII|Canon 20D|Canon 600D|Nikon D90,38
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 600D', 'Nikon D300s']",0.09817280822773677,0.14741992125148826,Canon 5DMarkII|Canon 20D|Canon 600D|Nikon D300s,39
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Hasselblad H2']",0.08632370633107712,0.19004690343007244,Canon 5DMarkII|Canon 20D|Canon 40D|Hasselblad H2,40
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Point Grey Grasshopper2 14S5C']",0.08632370633107712,0.18065230543214272,Canon 5DMarkII|Canon 20D|Canon 40D|Point Grey Grasshopper2 14S5C,41
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Nikon D80']",0.08632370633107712,0.16700455220381358,Canon 5DMarkII|Canon 20D|Canon 40D|Nikon D80,42
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Nikon D90']",0.08632370633107712,0.14696686520836502,Canon 5DMarkII|Canon 20D|Canon 40D|Nikon D90,43
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Nikon D300s']",0.08632370633107712,0.13983642064788723,Canon 5DMarkII|Canon 20D|Canon 40D|Nikon D300s,44
+"['Canon 5DMarkII', 'Canon 40D', 'Canon 600D', 'Hasselblad H2']",0.07269349262108842,0.18821553128046772,Canon 5DMarkII|Canon 40D|Canon 600D|Hasselblad H2,45
+"['Canon 5DMarkII', 'Canon 40D', 'Canon 600D', 'Point Grey Grasshopper2 14S5C']",0.07269349262108842,0.17738891023890205,Canon 5DMarkII|Canon 40D|Canon 600D|Point Grey Grasshopper2 14S5C,46
+"['Canon 5DMarkII', 'Canon 40D', 'Canon 600D', 'Nikon D80']",0.07269349262108842,0.1683970435662544,Canon 5DMarkII|Canon 40D|Canon 600D|Nikon D80,47
+"['Canon 5DMarkII', 'Canon 40D', 'Canon 600D', 'Nikon D90']",0.07269349262108842,0.14100163171055105,Canon 5DMarkII|Canon 40D|Canon 600D|Nikon D90,48
+"['Canon 5DMarkII', 'Canon 40D', 'Canon 600D', 'Nikon D300s']",0.07269349262108842,0.13570444802546663,Canon 5DMarkII|Canon 40D|Canon 600D|Nikon D300s,49
+"['Canon 5DMarkII', 'Canon 20D', 'Canon 40D', 'Canon 600D']",0.07269349262108842,0.10519454423771095,Canon 5DMarkII|Canon 20D|Canon 40D|Canon 600D,50
+"['Canon 5DMarkII', 'Hasselblad H2', 'Nikon D300s', 'Nikon D90']",0.052042672734509375,0.19754644913721153,Canon 5DMarkII|Hasselblad H2|Nikon D300s|Nikon D90,51
+"['Canon 5DMarkII', 'Nikon D300s', 'Nikon D90', 'Point Grey Grasshopper2 14S5C']",0.052042672734509375,0.19341815171448165,Canon 5DMarkII|Nikon D300s|Nikon D90|Point Grey Grasshopper2 14S5C,52
+"['Canon 5DMarkII', 'Nikon D300s', 'Nikon D80', 'Nikon D90']",0.052042672734509375,0.15728432964998182,Canon 5DMarkII|Nikon D300s|Nikon D80|Nikon D90,53
+"['Canon 5DMarkII', 'Canon 600D', 'Nikon D300s', 'Nikon D90']",0.052042672734509375,0.15080975650659126,Canon 5DMarkII|Canon 600D|Nikon D300s|Nikon D90,54
+"['Canon 5DMarkII', 'Canon 20D', 'Nikon D300s', 'Nikon D90']",0.052042672734509375,0.14891028076684282,Canon 5DMarkII|Canon 20D|Nikon D300s|Nikon D90,55
+"['Canon 5DMarkII', 'Canon 40D', 'Nikon D300s', 'Nikon D90']",0.052042672734509375,0.14876963933097706,Canon 5DMarkII|Canon 40D|Nikon D300s|Nikon D90,56

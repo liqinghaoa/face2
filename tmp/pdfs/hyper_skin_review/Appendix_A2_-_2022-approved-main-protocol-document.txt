@@ -1,0 +1,615 @@
+                                         Human Participant Ethics Protocol Submission
+                                                       CONFIDENTIAL
+
+0 - Identification
+
+RIS Human Protocol Number
+42284
+
+Protocol Title
+Hyperspectral Video Analysis for Skin Health and Beauty
+
+Protocol Type
+Investigator Submission
+
+
+Applicant Information
+
+
+Applicant Name
+Dr Konstantinos Plataniotis
+Rank / Position                                                    Department / Faculty
+Professor                                                          Dept of Electrical & Computer Eng - Faculty of App
+Business Telephone                                                 Extension
+4169465605
+Email Address
+kostas@comm.utoronto.ca
+
+Collaborators/Co-Investigators
+
+            Name                          Department                               Email                         Phone                     Designation            Alt Contact
+
+            Pai Ng                   University of Toronto                pc.ng@utoronto.ca                   4169786845                Alternate Contact                 X
+
+
+Projected Project Dates
+
+Estimated Start Date                                               Estimated End Date
+1-Mar-22                                                           30-Jul-22
+
+
+
+2 - Location
+
+Location of the Research:                         University of Toronto                           Other Locations
+
+Administrative Approval/Consent
+
+Administrative Approval/Consent Needed:                        Yes            No
+
+
+Community Based Particatory Research Project?                   Yes         No
+
+Other Ethic Boards Approval(s)
+
+Another Institution or Site involved?                          Yes          No
+
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23           Page 1 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+3 - Agreements and Reviews
+
+Funding
+Project Funded?               Yes            No
+
+External Funds Administered by U of T
+
+        App No.                   Fund No.             Sponsor/Program                    Status                  Fund End Date              Peer Reviewed
+                                                     Huawei Technologies
+        216440                      513208                                               Awarded                    2023-03-31
+                                                       Canada Co., Ltd
+
+Agreements
+
+Funding/non-funding Agreement in Place?                        Yes          No
+
+Document Title                                                                               Document Date
+
+                            Signed Research Agreement                                          2021-09-30
+
+
+Any Team Member Declared Conflict of Interest?                 Yes           No
+
+
+Reviews
+      This research has gone under scholarly review by thesis committee, departmental review committee, peer review committee, or some other equivalent
+
+
+     This research will go under scholarly review prior to funding
+
+
+      This review will not go under a scholarly review
+
+
+4 - Potential Conflicts
+
+Conflict of Interest
+
+Will researchers, research team members, or immediate family members receive any personal benefit?                        Yes          No
+
+Restrictions on Information
+
+Are there any restrictions regarding access to, or disclosure of information (during or after closure)?            Yes           No
+
+Researcher Relationships
+
+Are there any pre-existing relationships between the researchers and the researched?                   Yes           No
+
+Collaborative Decision Making
+
+Is this a community based project - i.e.: a collaboration between the university and a community group?                  Yes          No
+
+
+
+
+5 - Project Details
+
+Summary
+
+Rationale
+ Describe the purpose and scholarly rationale for the project
+ (Purpose) The purpose of this project are to 1) reconstruct the hyperspectral images from RGB image captured by consumer grade smartphones or any end-
+ user devices; and 2) apply the advanced hyperspectral imaging (HIS) analysis techniques to predict users’ skin information, such as hemoglobin, oxygen
+ saturation, melanin, skin hydration, skin sebum.
+ (Rationale) Many skin analysis solutions rely on expensive clinical and laboratory equipment, which are not readily available to the end users. Specifically, a
+ skin camera enabled by spectroscopic technology is used under a control environment to extract users’ skin information. Through spectroscopic technology,
+ hyperspectral images can be acquired, these images are capable of unveiling richer information of a skin image through different wavelengths beyond the
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22            Expires On:19-May-23     Page 2 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+ visible spectrum. However, capturing hyperspectral images needed to be conducted in a controlled environment as the skin analysis is very sensitive to
+ illumination and environmental (ambient light) changes.
+ On the other hand, capturing selfie image has become a common activity for many people through their smartphone’s camera. Smartphone-based skin analysis
+ can benefit many people who want to get a quick overview of their current skin condition before researching useful skin products that can improve their skin
+ condition. The lack of hyperspectral imaging capabilities on current smartphones is the bottleneck to realizing pervasive skin analysis through everyday
+ smartphone. Rather than embedding expensive hardware components to realize the hyperspectral imaging capabilities on the smartphone, this project explores
+ the possibility of using AI technology to reconstruct the hyperspectral images given the standard RGB images captured by the normal smartphone’s camera.
+ Based on the reconstructed images, this project further applies advanced HIS techniques to extract skin information.
+ In summary, this project aims to develop the skin analysis with consumer-grade devices (e.g., smartphone and smartwatches). To that end, a hyperspectral
+ image reconstruction solution needs to be developed and implemented in consumer-grade device, while applying the advanced HIS analysis to predict the
+ user’s skin information. Large-scale hyperspectral and RGB images describing various skin conditions are needed to facilitate the development of this project.
+ Please note the following:
+ a) The outcome will be used for user-driven cosmetic purposes.
+ b) There are no medical or well-being results sought or obtained as the result of the process.
+ c) There is no direct physical contact with the participant during the data collection.
+ References:
+ 1. Lou Gevaiux, et al, Real time Skin Chromophore Estimation from Hyperspectral Imaging using a Neural Network, Wiley Skin Research Technology, 2021, 27:
+ 163-177, DOI: 10.1111/srt.12927.
+ 2. E. Zherebtsov, et al, Hyperspectral Imaging of Human Skin aided by Artificial Neural Networks, Biomedical Optical Express, 2019, 10-3545.
+
+Methods
+ Describe formal/informal procedures to be used
+ The data collection campaign attempts to collect large-scale dataset consisting of the hyperspectral and RGB images of various skin conditions from
+ approximately 50 volunteers. Three types of cameras will be used to capture the skin images:
+ 1.          A hyperspectral camera that can capture the hyperspectral image at different wavelengths (350-2000nm) via snapshot exposure. The data collected
+ from this camera will be used to facilitate the development of 1) hyperspectral image reconstruction and 2) skin analysis (for comparative study)
+ 2.          A smartphone camera to capture standard RGB images. The data collected from this camera will be used to facilitate the development of 1)
+ hyperspectral image reconstruction. And the reconstructed image will be used for 2) skin analysis (for experimental study and mobile application development)
+ 3.          A skin camera (e.g., VisioScope-PC35) that provides cosmetic information of a skin. The data collected from this camera will be used as ground truth
+ facilitating the 2) skin analysis (for ground truth labelling).
+ Both the hyperspectral and smartphone camera will be mounted on a tripod. The tripod will be placed at certain distances from the participant, sitting on a chair
+ with a fixed head/chin. Both cameras will be pre-calibrated so that they focus on the participant’s face. The investigator will signal the image acquisition process
+ verbally before triggering the acquisition button for both cameras simultaneously. The acquisition buttons are available through a remote control that can be
+ operated from a distance. The distance between the investigator and the participant should be at least 2m. For the skin camera, the user is required to operate
+ the skin camera by themselves to capture the skin information. A short briefing will be provided by the investigator to explain the operation of the skin camera
+ and the skin spot required by our project. A diagram that illustrates the camera positions, and further elaboration regarding the imaging instruments and
+ experimental setups are provided in the attached document. All users are required to understand and sign the consent form prior to the data collection.
+ While this step cannot be completed online via remote acquisition, our team will work carefully to ensure the compliance with the Covid-19 preventive
+ measures. All the Covid-19 protocols, including the entrance screening, vaccination requirements, masking, sanitization, and disinfection will be observed
+ carefully by our investigators. Specifically, these steps will be followed before allowing a user to participate in the data collection campaign:
+ 1 - COVID-19 screening process and precautions (e.g. screening questions and wearing facial mask/shield, hands/desk sanitization)
+ 2 - The participants (who are mainly UofT grad/undergrad students) will be asked to perform self-assessment (UCheck) before coming to the Uoft premises.
+ 3 - Collection of personal contact information, as required by public health and the University (e.g. Name, phone, address) for contact tracing.
+
+Copies of questionnaires, interview guided and/or other instruments used
+
+Document Title                                                                               Document Date
+
+           Example of online questionnaire to be filled by the participant                     2022-01-10
+
+     This document describes the instruments to be used for data collection
+                                                                                               2022-03-11
+                      campaign and the related setup
+
+Clinical Trials
+
+Is this a clinical trial?        Yes           No
+
+
+6 - Participants and Data
+
+Participants and/or Data
+
+
+What is the anticipated sample size of number of participants in the study? 50
+
+Describe the participants to be recruited, or the individuals about whom personally identifiable information will be collected. List the inclusion and exclusion
+criteria. Where the research involves extraction or collection personally identifiable information, please describe where the information will be obtained, what it will
+include, and how permission to access said information is being sought.
+
+ The data collection campaign targets to recruit 40-60 participants, with 50 participants under ideal recruiting conditions. The participants will be recruited either
+ through email invitations or advertisements posted at the University of Toronto forums and advertisement board. The desired sample size will vary depending
+ on the number of experimental conditions while the expected sample size of 50 is set based on budgetary considerations. While there are no specific criteria for
+
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23   Page 3 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+ inclusion/exclusion, healthy participants who are fully vaccinated and are able to show their proof of vaccination will be recruited for this data collection
+ campaign.
+ Participation in this study will be strictly voluntary. The participant will be briefed about the purpose of the data collection campaign, both in writing and orally.
+ Besides the consent form, the participant is expected to provide their demographic data by filling out an online questionnaire aiming to collect the following
+ personal information:
+ 1.          Age
+ 2.          Biological Sex
+ 3.          Ethnicity
+ 4.          Skin type
+ The online questionnaire will be designed using a secure Microsoft Forms survey form provided by EASI, University of Toronto (link: https://easi.its.utoronto.ca/
+ shared-services/office365/forms/). The outcomes of the survey will be stored privately using the password-encrypted Microsoft One-drive storage available
+ through the MS platform empowered by UofT. A sample draft of the survey questions designed through MS Forms is attached to this application as an
+ appendix. A list of private files with anonymous IDs linking to participants and their contact information will be stored privately in case a participant needs to be
+ contacted later for any reason, or if they request to withdraw from the study. The access to these private files is strictly restricted to the authorized personnel
+ (i.e., the supervisor of this project and the investigators). These files will not be distributed for any research purposes including experiment reproduction or
+ competition. Participants will need to sign a consent form to approve the collection of these personal data. Also, the collection of personal information will be
+ used for contact tracing purposes in case of a positive Covid-19 case following the current public health measures.
+ Please note that the reason is that this personal information is importance to skin analysis as each individual skin varies in terms of age, gender, ethnicity, and
+ skin type. A comprehensive analysis of diverse skin types from diverse group of people is desirable to provide richer data enabling the development of a more
+ generalized skin detection system.
+
+
+Is there any group or individual-level vulnerability related to the research that needs to be mitigated (for example, difficulty                  Yes          No
+understanding consent, history of exploitation by researchers, or power differential between the researcher and the potential
+participant)?
+
+Recruitment
+
+Is there recruitment of participant?        Yes          No
+ Recruitment details including how, from where, and by whom
+ The recruitment process started by circulating a poster via email list servers to those those at the University of Toronto (students), and posted on online forums.
+ An example of the poster is attached in this application as an appendix in the document section. There will be mass recruitment mailings sent either directly by
+ the researchers, or sent on behalf of the researchers through another organization or department.
+
+Is participant observation used?            Yes           No
+
+Will translation materials be used/required?           Yes           No
+
+Attach copies of all recruitment posters, flyers, letters, email text, or telephone scripts
+
+Document Title                                                                               Document Date
+
+                       Example of poster type advertisement                                    2022-01-13
+
+                  Example of poster type advertisement - Updated                               2022-05-16
+
+
+Compensation
+
+
+Will the participants receive compensation?               Yes           No
+
+Type of Compensation
+
+      Financial
+
+      In-kind
+
+      Other
+
+
+ Compensation Justification Details
+     Each participant will be engaged for approximately 0.5 hour (15min for each part). Participants will be compensated at the rate of $20/hr, plus $10 bonus for
+     good performance. Hence, the maximum compensation is $20 per participant for a data collection that last 30min. If a withdrawal should occur, participant
+     will be compensated on a pro-rated basis at $20 per hour, for the participant's involvement to that point. Compensation will be prorated to the next 15-
+     minute increment. Participants will not receive the $10 good performance bonus if decide to withdraw before the session is completed.
+
+Is there a withdrawal clause in the research procedure?              Yes           No
+
+ Is compensation affected when a participant withdraws?
+     Compensation will be pro-rated at $20 per hour. If a withdrawal occur compensation will be prorated to the next 15-minutes. Participants will not receive the
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23       Page 4 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+     $10 good performance bonus if decide to withdraw before the session is completed.
+
+
+7 - Investigator Experience
+
+Investigator Experience with this type of research
+
+Please provide a brief description of the previous experience for this type of research by the applicant, the research team, and any persons who will have direct
+contact with the applicants. If there is no previous experience, how will the applicant and research team be prepared?
+
+ The PI for this application, Professor K.N. Plataniotis, is a signal and image processing expert and an internationally recognized authority on color image
+ processing with pioneering contributions to color image processing, face detection and recognition. He has more than 25 years of experience in the area of
+ image processing, including hyperspectral/multispectral imaging for geoscience and defense related applications.
+ Under the guidance and direction advised by Professor K.N. Plataniotis, the research team from the internal and external groups will work collaboratively to
+ setup the equipment for data collection, disinfect the equipment, and train the participant on using the skin camera. Prior to that, the research team will work
+ closely on the camera’s calibration and remote setup so that the camera can be operated from a distance through a remote control. The research team had
+ previous experience in projects that involved high-end imaging devices and large-scale data collection. Hence, the research team only require minimal self-
+ training to get familiar with the operation of the cameras, including the skin camera. The research team will also be equipped with all the Covid-19 prevention
+ measures so that they can facilitate the data collection in a Covid-free environment.
+
+Are community members collecting and/or analyzing data?                Yes          No
+
+
+
+
+8 - Possible Risks and Benefits
+
+Possible Risks
+
+Potential Risk Details:
+
+Physical Risks                           Yes           No
+Psychological/emotional Risks            Yes           No
+Social Risk                               Yes          No
+Legal Risk                                Yes          No
+
+
+Potential Benefits
+
+ Benefit Description
+ Participants will be made aware that the data collected from the trial may benefit the scientific community and that the knowledge gained from their data will be
+ used to develop skin analysis application on consumer-grade smartphone, bringing skin analysis into every day activities.
+
+
+
+9 - Consent
+
+ Consent Process Details
+ Participants will receive both written and verbal instructions describing the experimental setup to capture the skin image. The skin image is a visual data that
+ contains the participant’s facial and skin information. We acknowledge that the facial data may expose participant’s identifiable information, and this will be
+ communicated to the participant so that he/she is aware that the collected data may render them identifiable. To protect the participant’s right and ensure the
+ confidentiality, the following steps will be taken:
+ 1.          The periocular area will be obfuscated by blurring out the participant’s periocular area.
+ 2.          The participant can also use “sunglasses” during data collection to cover the eye area.
+ It will be explained to the participants that the visual data will not leave the University of Toronto’s research repository without obfuscating periocular area. Our
+ research team will work to ensure all participants' privacy and identifiable information are protected.
+ Besides the briefing about the data collection process including the type of data that will be collected and how this data will be protected, our research team will
+ also answer any questions the participants may have. We will ensure the participants are well-informed about the experimental setup, the data, the privacy
+ protection before getting them to sign the consent form. The proposed form is included in this application as an appendix.
+
+Uploaded letter/consent form(s)
+
+Document Title                                                                               Document Date
+
+       Example of consent form that needs to be signed by the participant                      2022-01-10
+
+
+Is there additional documentation regarding consent such as screening materials, introductory letters etc.:               Yes           No
+
+Uploaded letter/consent form(s)
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23   Page 5 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+Will any information collected in the screening process - prior to full informed consent to participate in the study - be
+                                                                                                                                     Yes          No
+retained for those who are later excluded or refuse to participate in the study?
+
+Is the research taking place within a community or organization which requires formal consent be sought prior to the
+                                                                                                                                     Yes          No
+involvement of the individual participants
+
+Are any participants not capable (e.g.: children) of giving competent consent?               Yes            No
+
+
+10 - Debriefing and Dissemination
+
+DeBrief
+
+Will deception or intentional non disclosure be used?             Yes           No
+
+Will a written debrief be used?          Yes           No
+
+Do participants/communities have the right to withdraw their data following the debrief?              Yes          No
+
+ Information Feed Back Details following completion of a participants participation in the project
+ Participants will be informed about the completion of the experiment and re-assured that their data will be treated confidentially as per the agreed upon
+ procedure.
+
+ Procedural details which allow participants to withdraw from the project
+ The participants can withdraw from the project by giving a written or verbal notice either through email or phone conversation. At least one day (24hrs) notice
+ should be given to allow the research team to reschedule the data collection for the next participant.
+
+    Not Applicable
+
+ What happens to a participants data and any known consequences related to the removal of said participant
+ The participant’s data will be disposed and removed from our repository permanently, if they withdraw by giving one day notice. If the participant withdraw on-
+ the-spot, their information will be kept for the next 21 days for contact tracing purposes. After 21 days, the information will be removed permanently.
+
+    Not Applicable
+
+ List reasons why a participant can not withdraw from the project (either at all or after a certain period of time)
+
+
+
+    Not Applicable
+
+
+11 - Confidentiality and Privacy
+
+Confidentiality
+
+Is the data confidential?          Yes            No
+Will the confidentiality of the participants and/or informants be protected?           Yes           No
+
+ List confidentiality protection procedures
+ The privacy and confidentiality of the participant’s personal information and study data will be protected by assigning a non-descriptive alias to each of them.
+ The alias will be used to match the participant to the participant’s questionnaire, data, and interview (prior to consent). The mapping between the participant’s
+ identity and alias will not be made available to other participants or appear in any publication. As it was previously stated the image data recording will render
+ the participants identifiable. To protect the identity of participants, the visual data will not leave the University of Toronto’s research facilities without obfuscating
+ the participant’s periocular area so that to protect their identity.
+
+Are there any limitations on the protection of participant confidentiality?           Yes          No
+
+Is participant anonymity/confidentiality not applicable to this research project?            Yes            No
+
+Data Protection
+
+
+ Describe how the data (including written records, video/audio recordings, artifacts and questionnaires) will be protected during the conduct of the research and
+ subsequent dissemination of results
+
+ All digital data will be stored in a password protected computer system and physical records will be kept under lock-and-key in the Multimedia Laboratory
+ directed by the PI. Digital data will be transferred to a secure server hosted by the ECE department. The transfer or data from the equipment used to the
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                  Version:0003       Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23      Page 6 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+ password protected desktop computers and servers will be used using encrypted storage devices consistent with UofT's encryption guidelines. UofT's standard
+ cryptographic network protocol for network data transfers will be observed.
+ Information Technology support staff at the ECE department administer the Multimedia Laboratory's servers and computers. They will oversee compliance with
+ the university's policies and procedures. The mapping key between participant's identities and aliases will be stored in a separate, password protected folder,
+ from the data. Only the principal investigator and the con-investigator listed in this ethics protocol application will have access to the identity keys. During the
+ analysis stage, the data containing aliases will also be transferred to researchers' work computers that are password protected and their security is monitored
+ by the ECE department's IT staff. It should be noted that the participation/consent agreement explicitly states that all collected personal identifiers information
+ shall remain confidential.
+
+
+ Explain for how long, where and what format (identifiable, de-identified) data will be retained. Provide details of their destruction and/or continued storage.
+ Provide a justification if you intend to store identifiable data for an indefinite length of time. If regulatory requirements for data retention exists, please explain.
+ The data will retained for five (5) years as per standard practice in the discipline of computer research with human subjects. All data on paper will be converted
+ to digital format. All data will be stored in a programmable storage device which will automatically which will automatically delete the data after five (5) years.
+
+Will the data be shared with other researchers or users?             Yes           No
+
+
+ Please describe how and where the data will be stored and any restrictions that will be made regarding access.How will participant consent be obtained? If data
+ is to be made open access, please describe how and where they will be maintained.
+ Hyperspectral and visual images, with obfuscated periocular area so that to protect the participant's identity, will become available to the research community at
+ large for research purposes (open access). No other information or data pertinent to participants will be released. The participation / consent form states the
+ facts. Potential participants will be given the opportunity to discuss the process with the recruiter during the interview process. Researchers interested to access
+ the dataset for their research studies will have to submit an End-User-Licence-agreement (EULA), standard practice in the discipline, and get approved by the
+ principal investigator. Data will be stored, maintained, and curated at the Multimedia Laboratory, ECE Department, University of Toronto.
+
+
+12 - Level of Risk and Research Ethics Board
+
+Level of Risk for the Project
+
+
+Group Vulnerability Low
+
+Research Risk          Low
+
+Risk Level             1
+
+
+Explanation/Justification
+
+ Explanation/Justification detail for the group vulnerabilty and research risk listed above
+ Participants are familiar, through their every day activities, with cameras, and there is no risk of physical injury during the data acquisition campaign.
+ Participants will be provided with a disposable towel to clean their skin after the completion of the experiment. There will not be any hygienic issues since image
+ acquisition is done at a distance and each participants ground truth data will be obtained using disposable tips, a standard industry practice. During the
+ experiment, participants will be asked to notify investigators if they feel discomfort for any reason.
+ The experimental site is located inside the Multimedia Laboratory, Department of Electrical and Computer Engineering. Each participant is required to complete
+ the UCheck and show their proof of vaccination before entering to the experimental site. Only one participant is allowed in the experimental site at each time
+ slot. The maximum number of investigators on-site is limited to 2. All the equipment will be disinfected before and after the experiment.
+
+Research Ethics Board
+
+
+REB Associated with this project Health Sciences
+
+
+
+13 - Application Documents Summary
+
+Uploaded Documents
+
+Document Title                                                                               Document Date
+
+Response to REB Comment 1                                                                      2022-05-16
+
+Response to REB Comment 2                                                                      2022-05-16
+
+Response to REB Comment 3                                                                      2022-05-16
+
+Response to REB Comment 4                                                                      2022-05-16
+
+
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23       Page 7 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+Document Title                                                                               Document Date
+
+Response to REB Comment 5                                                                      2022-05-16
+
+Response to REB comments - comprehensive                                                       2022-05-16
+
+Revised Consent Document - Section 9                                                           2022-05-16
+
+Revised Poster Document                                                                        2022-05-16
+
+Demographic questionnaire                                                                      2022-05-16
+
+Signed Research Agreement                                                                      2021-09-30
+
+Example of online questionnaire to be filled by the participant                                2022-01-10
+
+This document describes the instruments to be used for data collection
+                                                                                               2022-03-11
+campaign and the related setup
+
+Example of poster type advertisement                                                           2022-01-13
+
+Example of poster type advertisement - Updated                                                 2022-05-16
+
+Example of consent form that needs to be signed by the participant                             2022-01-10
+
+Our input to the risk assessment form                                                          2022-03-14
+
+
+
+14 - Applicant Undertaking
+
+I confirm that I am aware of, understand, and will comply with all relevant laws governing the collection and use of personal identifiable information is research.
+I understand that for research involving extraction or collection of personally identifiable information, provincial, federal, and/or international laws may apply and
+ that any apparent mishandling of said personally identifiable information, must be reported to the office of research ethics.
+
+As the Principal Investigator of the project, I confirm that I will ensure that all procedures performed in accordance with all relevant university, provincial, national,
+and/or international policies and regulations that govern research with human participants. I understand that if there is any significant deviation in the project
+as originally approved, I must submit an amendment to the Research Ethics Board for approval prior to implementing any change.
+
+
+    I have read and agree to the above conditions
+
+
+
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23     Page 8 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+RIS Protocol
+Number:               42284
+
+Approval Date: 20-May-22
+
+                      Dr Konstantinos
+PI Name:
+                      Plataniotis
+Division Name:
+
+Dear Dr Konstantinos Plataniotis:
+
+Re: Your research protocol application entitled, “Hyperspectral Video Analysis for Skin Health and Beauty”
+The Health Sciences REB has conducted a Delegated review of your application and has granted approval to the attached
+protocol for the period 2022-05-20 to 2023-05-19.
+
+This approval covers the ethical acceptability of the human research activity; please ensure that all other approvals required
+to conduct your research are obtained prior to commencing the activity.
+Please be reminded of the following points:
+   •       An Amendment must be submitted to the REB for any proposed changes to the approved protocol. The
+       amended protocol must be reviewed and approved by the REB prior to implementation of the changes.
+     •        An annual Renewal must be submitted for ongoing research. Renewals should be submitted between 15 and 30
+           days prior to the current expiry date.
+     •         A Protocol Deviation Report (PDR) should be submitted when there is any departure from the REB-approved
+           ethics review application form that has occurred without prior approval from the REB (e.g., changes to the study
+           procedures, consent process, data protection measures). The submission of this form does not necessarily indicate
+           wrong-doing; however follow-up procedures may be required.
+     •          An Adverse Events Report (AER) must be submitted when adverse or unanticipated events occur to participants
+           in the course of the research process.
+     •          A Protocol Completion Report (PCR) is required when research using the protocol has been completed.
+     •         If your research is funded by a third party, please contact the assigned Research Funding Officer in Research
+           Services to ensure that your funds are released.
+Best wishes for the successful completion of your research.
+
+
+
+
+                                                                 Protocol #:31802
+Status: Delegated Review App                 Version:0003        Sub Version: 0000            Approved On:20-May-22          Expires On:19-May-23   Page 9 of 9
+OFFICE OF RESEARCH ETHICS
+McMurrich Building, 12 Queen’s Park Crescent West, 2nd Floor, Toronto, ON M5S 1S8 Canada
+Tel: +1 416 946-3273 ● Fax: +1 416 946-5763 ● ethics.review@utoronto.ca ● http://www.research.utoronto.ca/for-researchers-administrators/ethics
+

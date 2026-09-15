@@ -101,7 +101,7 @@ def plot_fold(
 
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.0), constrained_layout=True)
     fig.suptitle(
-        f"R3DPR ResNet18 binary baseline | Fold {fold} | best epoch {best_epoch} | val macro-AUC {best_auc:.3f}",
+        f"R3DPR binary baseline | Fold {fold} | best epoch {best_epoch} | val macro-AUC {best_auc:.3f}",
         fontsize=9,
     )
     colors = {"train": "#3C5488", "val": "#00A087", "best": "#D55E00"}

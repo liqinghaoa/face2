@@ -1,0 +1,68 @@
+[
+  {
+    "camera_name":"Canon 1DMarkIII",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  },
+  {
+    "camera_name":"Canon 300D",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  },
+  {
+    "camera_name":"Canon 5DMarkII",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  },
+  {
+    "camera_name":"Nikon D5100",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  },
+  {
+    "camera_name":"Nikon D80",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  },
+  {
+    "camera_name":"Olympus E-PL2",
+    "catastrophic_count":0,
+    "major_channel_collapse_count":0,
+    "severe_overall_low_clip_count":0,
+    "major_overall_low_clip_count":0,
+    "nonfinite_count":0,
+    "all_zero_count":0,
+    "all_one_count":0,
+    "pass":true
+  }
+]

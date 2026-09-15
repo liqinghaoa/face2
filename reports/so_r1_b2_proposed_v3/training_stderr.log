@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b2_proposed_training.py", line 14, in <module>
+    print(run(args.project_root))
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 276, in run
+    result=train_lambda_candidate(root,lambda_pair=value,contract=contract,lock={**selection_lock,"selection_protocol_hash":protocol_hash,"b1_training_contract_hash":b1["b1_acceptance"]["contract_hash"]},rows=rows,baseline=baseline,report=report)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 230, in train_lambda_candidate
+    access["Train"] += len(groups); evaluated=evaluate_validation_supervision(model,rows,mean_target,device,workers=contract["data_loader_contract"]["num_workers"],timeout_seconds=contract["data_loader_contract"]["timeout_seconds"]); access["Validation"] += evaluated["acquisition_count"]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 175, in evaluate_validation_supervision
+    for key,value in (("smooth",smooth),("abs",absolute),("sq",squared),("pred",flat_prediction*valid),("pred_sq",flat_prediction**2*valid),("target",flat_target*valid),("target_sq",flat_target**2*valid),("mean_abs",mean_abs)): sums[key] += value.sum((0,2,3))
+                                                                                                                                                                                      ~~~~~~~~~~~~~~^~~~~~
+numpy.core._exceptions._ArrayMemoryError: Unable to allocate 10.0 MiB for an array with shape (20, 2, 256, 256) and data type float32

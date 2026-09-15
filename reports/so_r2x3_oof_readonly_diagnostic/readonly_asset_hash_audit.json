@@ -1,0 +1,17 @@
+{
+  "after": {
+    "data\\processed\\SO_R2X3_ExploratoryClassification_v1\\R2X3_ACCEPTANCE.json": "dbb0feb34b4632b8c76573b8fbede3e4219d2580faae34cd364503bb4abfbdcb",
+    "reports\\so_r2x3_exploratory_classification\\fold_metrics.csv": "97b31584e839130509d315555c646eb2763ed65d877328dd6f1bd7b199c17f12",
+    "reports\\so_r2x3_exploratory_classification\\oof_confusion_matrix.csv": "ab5ab85eac2520730f200de32c9c907762210fb0ccc80a21d8a782cb7b4b5aeb",
+    "reports\\so_r2x3_exploratory_classification\\oof_metrics.csv": "a05f421846ee4dec6bf29143397679881e549fa89ab62368a37360c0e7bc7ddb",
+    "reports\\so_r2x3_exploratory_classification\\oof_predictions.csv": "62510fa8e6b8b11d8bb7a968eabab591238277ccef5c916091e7b8d22f957e2b"
+  },
+  "before": {
+    "data\\processed\\SO_R2X3_ExploratoryClassification_v1\\R2X3_ACCEPTANCE.json": "dbb0feb34b4632b8c76573b8fbede3e4219d2580faae34cd364503bb4abfbdcb",
+    "reports\\so_r2x3_exploratory_classification\\fold_metrics.csv": "97b31584e839130509d315555c646eb2763ed65d877328dd6f1bd7b199c17f12",
+    "reports\\so_r2x3_exploratory_classification\\oof_confusion_matrix.csv": "ab5ab85eac2520730f200de32c9c907762210fb0ccc80a21d8a782cb7b4b5aeb",
+    "reports\\so_r2x3_exploratory_classification\\oof_metrics.csv": "a05f421846ee4dec6bf29143397679881e549fa89ab62368a37360c0e7bc7ddb",
+    "reports\\so_r2x3_exploratory_classification\\oof_predictions.csv": "62510fa8e6b8b11d8bb7a968eabab591238277ccef5c916091e7b8d22f957e2b"
+  },
+  "unchanged": true
+}

@@ -1,0 +1,82 @@
+{
+  "Baseline|Camera-OOD|H": {
+    "mean_within_between_ratio": 0.5904293617120632,
+    "pass": true,
+    "within_lt_between_proportion": 0.85
+  },
+  "Baseline|Camera-OOD|M": {
+    "mean_within_between_ratio": 0.3878802554934898,
+    "pass": true,
+    "within_lt_between_proportion": 0.9315
+  },
+  "Baseline|ID Test|H": {
+    "mean_within_between_ratio": 0.5120959586293752,
+    "pass": true,
+    "within_lt_between_proportion": 0.87875
+  },
+  "Baseline|ID Test|M": {
+    "mean_within_between_ratio": 0.37897897066124214,
+    "pass": true,
+    "within_lt_between_proportion": 0.9425
+  },
+  "Baseline|Joint-OOD|H": {
+    "mean_within_between_ratio": 1.1282634566401162,
+    "pass": true,
+    "within_lt_between_proportion": 0.7445
+  },
+  "Baseline|Joint-OOD|M": {
+    "mean_within_between_ratio": 0.8399977176597451,
+    "pass": true,
+    "within_lt_between_proportion": 0.674
+  },
+  "Baseline|Light-OOD|H": {
+    "mean_within_between_ratio": 1.2621283451806176,
+    "pass": true,
+    "within_lt_between_proportion": 0.7315
+  },
+  "Baseline|Light-OOD|M": {
+    "mean_within_between_ratio": 0.796100649733372,
+    "pass": true,
+    "within_lt_between_proportion": 0.6975
+  },
+  "Proposed|Camera-OOD|H": {
+    "mean_within_between_ratio": 0.4820423949322086,
+    "pass": true,
+    "within_lt_between_proportion": 0.8745
+  },
+  "Proposed|Camera-OOD|M": {
+    "mean_within_between_ratio": 0.3802356634349431,
+    "pass": true,
+    "within_lt_between_proportion": 0.9485
+  },
+  "Proposed|ID Test|H": {
+    "mean_within_between_ratio": 0.4448521971830177,
+    "pass": true,
+    "within_lt_between_proportion": 0.8805
+  },
+  "Proposed|ID Test|M": {
+    "mean_within_between_ratio": 0.38665986653046924,
+    "pass": true,
+    "within_lt_between_proportion": 0.94975
+  },
+  "Proposed|Joint-OOD|H": {
+    "mean_within_between_ratio": 0.9197441567357145,
+    "pass": true,
+    "within_lt_between_proportion": 0.75
+  },
+  "Proposed|Joint-OOD|M": {
+    "mean_within_between_ratio": 0.8830064004697079,
+    "pass": true,
+    "within_lt_between_proportion": 0.6295
+  },
+  "Proposed|Light-OOD|H": {
+    "mean_within_between_ratio": 0.9732119704056444,
+    "pass": true,
+    "within_lt_between_proportion": 0.7655
+  },
+  "Proposed|Light-OOD|M": {
+    "mean_within_between_ratio": 0.7956576661650049,
+    "pass": true,
+    "within_lt_between_proportion": 0.6825
+  }
+}

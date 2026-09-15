@@ -1,0 +1,5 @@
+{
+  "f09669_independent_128_attempt_replay_pass": true,
+  "amended_pilot_replay_status": "NOT_RUN_BLOCKED_BY_FAIL_AMENDED_CAMERA_SET_STRESS",
+  "overall_reproducibility_gate": "NOT_APPLICABLE_AFTER_TERMINAL_STRESS_FAILURE"
+}

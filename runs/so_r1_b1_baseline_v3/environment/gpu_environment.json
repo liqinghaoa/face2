@@ -1,0 +1,11 @@
+{
+  "cuda_available": true,
+  "cuda_runtime": "12.1",
+  "gpu_memory_bytes": 8585216000,
+  "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "nvidia_driver": "581.42",
+  "os": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC v.1942 64 bit (AMD64)]",
+  "selected_device": "cuda:0",
+  "torch": "2.3.0+cu121"
+}

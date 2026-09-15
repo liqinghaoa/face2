@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b1_baseline_training.py", line 7, in <module>
+    try: print(diagnose_gradient_stability(args.project_root,args.steps) if args.mode == 'diagnose' else run(args.project_root))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 330, in diagnose_gradient_stability
+    _configure_determinism(seed); torch.cuda.empty_cache(); torch.cuda.reset_peak_memory_stats(device)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\torch\cuda\memory.py", line 309, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Invalid device argument 

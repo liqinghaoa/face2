@@ -1,0 +1,707 @@
+Deep learning-based optical approach for skin analysis
+       of melanin and hemoglobin distribution
+
+      Geunho Jung ,* Semin Kim , Jongha Lee , and Sangwook Yoo
+                          Lulu-lab, AI R&D Center, Seoul, Republic of Korea
+
+Abstract
+Significance: Melanin and hemoglobin have been measured as important diagnostic indicators
+of facial skin conditions for aesthetic and diagnostic purposes. Commercial clinical equipment
+provides reliable analysis results, but it has several drawbacks: exclusive to the acquisition
+system, expensive, and computationally intensive.
+Aim: We propose an approach to alleviate those drawbacks using a deep learning model trained
+to solve the forward problem of light–tissue interactions. The model is structurally extensible
+for various light sources and cameras and maintains the input image resolution for medical
+applications.
+Approach: A facial image is divided into multiple patches and decomposed into melanin, hemo-
+globin, shading, and specular maps. The outputs are reconstructed into a facial image by solving
+the forward problem over skin areas. As learning progresses, the difference between the recon-
+structed image and input image is reduced, resulting in the melanin and hemoglobin maps
+becoming closer to their distribution of the input image.
+Results: The proposed approach was evaluated on 30 subjects using the professional clinical
+system, VISIA VAESTRO. The correlation coefficients for melanin and hemoglobin were found
+to be 0.932 and 0.857, respectively. Additionally, this approach was applied to simulated images
+with varying amounts of melanin and hemoglobin.
+Conclusion: The proposed approach showed high correlation with the clinical system for
+analyzing melanin and hemoglobin distribution, indicating its potential for accurate diagnosis.
+Further calibration studies using clinical equipment can enhance its diagnostic ability. The struc-
+turally extensible model makes it a promising tool for various image acquisition conditions.
+© The Authors. Published by SPIE under a Creative Commons Attribution 4.0 International License.
+Distribution or reproduction of this work in whole or in part requires full attribution of the original
+publication, including its DOI. [DOI: 10.1117/1.JBO.28.3.035001]
+Keywords: skin analysis; deep learning; light–tissue interaction; melanin; hemoglobin; VISIA.
+Paper 220286GR received Dec. 1, 2022; accepted for publication Mar. 6, 2023; published online
+Mar. 27, 2023.
+
+
+1 Introduction
+The optical properties of human skin have been studied for various purposes. Skin layers are
+optically modeled in computer vision for a detailed description of the face.1,2 In dermatology,
+light absorption and scattering are the main principles for diagnosing skin conditions.3,4 In bio-
+medical research, the distribution of chromophores and hemodynamic changes are imaged using
+diffuse optical tomography,5 optical coherence tomography,6 and spatial frequency domain
+imaging.7
+    In terms of skin analysis equipment, the optical measurement approach has various advan-
+tages compared to other imaging modalities: non-invasive, relatively safe, and real-time or fre-
+quent measurements. As examples of single-measurement devices, the Mexameter, Sebumeter,
+and Visiometer can be used to quantify pigmentation, oiliness, and wrinkles, respectively.8,9
+Multifunctional systems utilize image processing techniques to skin images acquired from
+
+
+*Address all correspondence to Geunho Jung, gh.jung@lulu-lab.com
+
+
+Journal of Biomedical Optics                            035001-1               March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+well-constructed optical systems with minimal ambient light. For example, VISIA, Robo skin
+analyzer, and DermaVision provide the ability to measure melanin, hemoglobin, wrinkles, and
+pores.10–12
+    Multifunctional systems analyze shape and color-related skin information based on the opti-
+cal properties of human skin. The shape features, such as the skin surface and facial structure, are
+enhanced in the specular light images, and the wrinkles13,14 and pores15 belong to these features.
+Skin color is the result of the interactions between light and skin chromophores such as melanin
+and hemoglobin,16 and this feature is enhanced in cross-polarized images.17 For accurate mea-
+surements, clinical multi-functional systems are used to acquire and analyze skin images with
+ambient light blocked. Despite the fact that these professional systems have produced reliable
+analysis results and are widely used in clinics, they have several limitations: the analytical tool is
+dedicated to the image acquisition system. Images should be acquired in a specific environment
+and this result in a lack of versatility. The image acquisition system and analysis tools require a
+high cost, and the analysis process is time-consuming due to the complex calculations involved,
+such as fitting for each pixel. This is particularly important in medical applications that require
+high-resolution images, even if it needs high computational resources and time.
+    To alleviate those limitations, we propose a novel approach using a deep learning model
+trained to solve the forward problem of light–tissue interactions. The model is structurally exten-
+sible for various light sources and cameras and it maintains the resolution of the input image for
+medical applications. The proposed approach is evaluated with the professional clinical system,
+VISIAVAESTRO. In addition, this approach was applied to simulations with varying amounts of
+melanin and hemoglobin.
+
+
+2 Methods
+The concept of the decomposition structure is based on the reference study in Ref. 18. The
+referenced structure has been modified and extended to include a skin segmentation model, patch
+divider and combiner, and virtual ColorChecker in Fig. 1 and verified for medical applications.
+
+
+2.1 Skin Segmentation Model
+As the forward model is based on the optical properties of the skin, it is necessary to separate
+non-skin areas, such as the background, eyes, nostrils, and lips. To extract the skin area from any
+face image, we developed a skin segmentation model using a lightened structure of the basic
+
+
+
+
+           Fig. 1 Diagram of the entire system: the training and inference processes.
+
+Journal of Biomedical Optics                    035001-2                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+U-Net model with reduced number of channels. The model was trained using 380 images with
+an input and output size of 640 × 480 pixels, achieving a performance of CIoU 0.95.
+
+
+2.2 Patch Divider and Combiner
+When a high-resolution image is resized to the UNet input size, the detailed features of the image
+are lost. This loss could be a critical problem in medical applications where diagnostics require
+detailed characteristics. Therefore, the input image is divided into multiple patches to maintain
+the input image resolution. To remove borderlines that may appear after merging, the patches are
+combined by multiplying the overlapping areas by the gradient weight, and the overlapping area
+is added to the patch size. Since the image acquisition conditions for all patches are the same,
+the skin’s optical properties do not change even if analyzed in units of patches. In this study,
+the input image is divided into 4 × 6 patches with a size of 256 × 256 pixels for inference.
+    After dividing into patches, the gamma correction is inverted by Eq. 1 to make the image
+linear,
+                                                            
+                                               I srgb þ 0.055 2.4
+                                     I rgb ¼                      ;
+                                      EQ-TARGET;temp:intralink-;e001;116;555                    (1)
+                                                     1.055
+
+where I srgb is the input color image in the sRGB color space, while I rgb is the corresponding
+image in the RGB color space with inverted gamma correction.
+
+
+2.3 UNet Model and Training Conditions
+Figure 2 shows the architecture of the UNet model used for image decomposition. For training,
+the model is initialized with the pretrained model for the Carvana dataset. The Adam optimizer is
+used with l2 weight decay and a cosine annealing scheduler. The mean squared error (MSE) is
+employed as a loss function, and the peak signal-to-noise ratio (PSNR) is used to estimate the
+similarity between reconstructed and original skin images. The python library “albumentation”
+is used to augment the training dataset by randomly flipping, scaling, and rotating it.
+    The proposed model decomposes a color image into four outputs: melanin, hemoglobin,
+shading, and specular maps, allowing for the separation of the face image into its color and
+morphological components. Shading is used to add depth to a flat image and create a three-
+dimensional appearance. Specular represents light that is directly reflected from the skin surface
+and includes morphological elements constituting the input image, such as surface shape and
+roughness, as well. This study primarily focuses on color-related skin components, melanin and
+
+
+
+
+                Fig. 2 Architecture for the image decomposition: the UNet model.
+
+Journal of Biomedical Optics                                                   035001-3   March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+
+
+                Fig. 3 Schematic diagram of the skin image acquisition process.
+
+
+hemoglobin maps. As skin color is also affected by morphological factors, shading and specular
+maps are incorporated into the structure to account for their effects.
+
+
+2.4 Forward Model
+2.4.1 Image acquisition. Figure 3 shows a schematic diagram of the skin image acquis-
+ition process, in which light emitted from the source is reflected from the skin, detected by a
+camera, and formed into an image. The spectral characteristics of a light source, which cover all
+light that affects the image including ambient light, are expressed using spectral power distri-
+bution (SPD). In a typical measurement environment, the light source is a combination of various
+indoor lights and sunlight. In controlled conditions where ambient light is blocked, and images
+are acquired using professional equipment, the SPD of the light source of the equipment is sup-
+plied by the manufacturer’s specifications. In uncontrolled conditions, where images are
+acquired in an open environment, images are affected by various light sources, and the SPD
+can be measured directly using a spectrometer. Most of the light that illuminated the skin is
+diffused into the skin layers, and the rest is reflected from the surface. In the skin layers, visible
+light is mainly absorbed by melanin and hemoglobin and scattered exponentially as a function of
+wavelength.19,20 Skin reflectance is affected by various factors, including the scattering proper-
+ties of the skin as well as the absorption of the melanin and hemoglobin, which have been exten-
+sively researched.21–24 The specular light and diffusely reflected light are detected as photons by
+the camera sensor and then converted into electrical signals according to the quantum efficiency
+of the camera to form an image. This image is in a RGB color space dependent on the camera
+device and is sequentially converted to the common color space XYZ, RGB, and sRGB.25
+
+2.4.2 Forward and inverse problem. Under a given light and skin reflectance, the dif-
+fusely reflected light is predicted as a unique solution to a forward problem. The radiative trans-
+fer equation (RTE), diffuse equation,26 or a stochastic methods Monte Carlo simulation27,28 can
+be used to solve this mathematical model. Acquiring skin images and analyzing skin components
+is the opposite process. It is difficult to obtain the actual values of skin properties because skin is
+a scattering-dominant material. Therefore, it has been predicted by solving the inverse problem
+using Inverse Monte Carlo,29,30 principal component analysis (PCA),31 independent component
+analysis (ICA),32 or polynomial fitting.33 During the fitting process, different skin property val-
+ues are iteratively given, and the corresponding forward problems are solved until the error
+becomes lower than the threshold. It requires enough time to repeatedly calculate the forward
+problem for each pixel of the whole image. As the forward problem has been studied for a long
+
+Journal of Biomedical Optics                    035001-4                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+time and applied to various studies,34,35 it is considered reliable and used to train the pro-
+posed model.
+
+2.4.3 Acquisition conditions. The image acquisition environment must be set in advance
+to proceed with the forward model. There are two factors: a light source and camera sensitivity.
+In this study, skin images were acquired using the “VISIA-CR” system. To ensure consistency
+between image acquisition and analysis conditions, the spectral data of the standard illuminant
+“D65” in ISO 2002 and the camera sensitivity of the “Canon 5D Mark II”36,37 within the wave-
+length range of 400 to 720 nm are used. The spectrum of the light source is normalized by
+inversely multiplying a scaling factor, which is derived by multiplying the light source and the
+maximum sensitivity value of the camera channels.
+
+2.4.4 Optical modeling of skin layers. The epidermis is the outermost layer of the skin.
+In the epidermis layer, light is absorbed by melanin and scattered by keratin fibers. However, the
+change in light direction could be ignored because of the thin thickness. In the dermis layer, light
+mainly experiences absorption in the hemoglobin of the capillaries and blood vessels, and scat-
+tering in collagen fibers and elastin fibers.38 Therefore, skin layers are optically modeled as
+follows: the epidermis is modeled as a melanin absorption layer, and the dermis is modeled
+as a combination of a hemoglobin absorption layer and multiple scattering layers. The measured
+light includes both the specular reflected light from the skin surface and the diffusely reflected
+light that is absorbed in the epidermis and dermis layers.
+
+2.4.5 Skin reflectance. The Kubelka–Munk theory is one of the popular methods for
+modeling light reflection in skin layers.39,40 Assuming that light is reflected only from the dermis
+layer, the simplified form of the theory is represented as follows:
+
+                                                                                                         RðλÞ ¼ T epidermis ðλÞ2 Rdermis ðλÞ;
+                                                                     EQ-TARGET;temp:intralink-;e002;116;439                                                                                                                                        (2)
+
+where T epidermis represents the fraction of light that transmitted the epidermis, and Rdermis refers to
+the fraction of light reflected from the dermis layer.
+    The absorption and reduced scattering coefficient are shown in Eqs. (3) and (4).41 In a method
+which precisely measures in a wider wavelength range, such as diffuse reflectance spectroscopy,
+more chromophores can be included in Eq. (3), such as met-hemoglobin, water, lipid, and
+beta-carotene42,43
+
+                                                                                                                                                                                           μa ðλÞ ¼ Σi Si ϵi ðλÞCi ;
+                                                                                                                                                       EQ-TARGET;temp:intralink-;e003;116;333                                                      (3)
+                                                                              −4                 −b 
+                                                                               λ                    λ   Mie
+                                                            μs0 ðλÞ ¼ a f Ray       þ ð1 − f Ray Þ          ;                                                                                                                                      (4)
+                                                                               λ0                   λ0
+                        EQ-TARGET;temp:intralink-;e004;116;290
+
+
+
+
+where Si is the volume fraction, ϵi is the extinction coefficient, Ci is the concentration for i in
+melanin and hemoglobin, a is the scattering amplitude, bMie is the scattering power of Mie
+scattering, and f Ray is the fraction of scattering events as Rayleigh scattering.
+    The reflectance can be obtained through the diffusion equation.42 In this study, the skin
+reflectance calculated from Refs. 18, 34, and 44 is used based on the Kubelka-Munk theory.
+The volume fraction of the melanin is limited to a range of 1.3% to 43%, and the hemoglobin
+is in the range of 2% to 7%.45–47
+
+2.4.6 Image formation. The camera image measured by the sensor is described for each
+color channel m
+                                                                                                                                                                                                Z λ
+                                                                                                                                                                                                      max
+                                                                                                                                                  Im ¼
+                                                                                                              EQ-TARGET;temp:intralink-;e005;116;146                                                        LðλÞRðλÞCm ðλÞdλ;                       (5)
+                                                                                                                                                                                                 λmin
+
+
+where LðλÞ is the SPD of the light source, RðλÞ is the skin reflectance, Cm ðλÞ is the camera
+sensitivity of color channel m ∈ fr; g; bg. In this study, λmin ¼ 450 nm and λmax ¼ 750 nm.
+
+Journal of Biomedical Optics                                                                                                                                                                            035001-5                March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+   The light entering the camera is affected by the light source and skin reflectance [LðλÞRðλÞ in
+Eq. (5)] and consists of specular and diffusely reflected light
+                                   Z λ
+                                       max
+                            Im ¼           ðI dðmÞ ðλÞ þ I sðmÞ ðλÞÞCm dλ;                     (6)
+                                                                        EQ-TARGET;temp:intralink-;e006;116;711
+
+
+
+
+                                                                                                                                                                                                                                            λmin
+
+
+                                                                                                                                                     I dðmÞ ðλÞ ¼ LðλÞRðλÞMshading ðλÞ;
+                                                                                                                 EQ-TARGET;temp:intralink-;e007;116;655                                                                                                                                             (7)
+
+                                                                                                                                                                                                                                       I sðmÞ ðλÞ ¼ LðλÞMspecular ðλÞ;
+                                                                                                                                                                                                   EQ-TARGET;temp:intralink-;e008;116;632                                                           (8)
+
+where M shading and M specular are the model outputs, the shading and specular maps; I dðmÞ ðλÞ and
+I sðmÞ ðλÞ are the diffuse and specular images for each color channel m; and I cam ¼ ½I r ; I g ; I b  is the
+camera image. The diffusely reflected light is influenced by the geometry of the face and the skin
+reflectance through optical interaction with the skin components in Eq. (7), whereas the specular
+light is directly reflected from the skin surface and is significantly affected by the geometry of
+the face in Eq. (8).
+
+2.4.7 Color transformation matrix with virtual ColorChecker. A transformation
+matrix is required to convert between different color spaces. Considering its applicability in
+various acquisition systems and environments, the reflectance of the 24-patch version of
+ColorChecker48 is employed in Fig. 4. Given a light source and ColorChecker, it is possible
+to theoretically compute the RGB value of the camera and the XYZ (CIE 1931 2 degree standard
+observer) value for each color patch. The transformation matrix between different color spaces is
+derived by polynomial expansion.49 In this study, this method is specified as the “Virtual
+ColorChecker” and implemented using the Python Colour-Science library.
+
+2.4.8 Image formation.       White balance is a normalization process that divides the sensor’s
+intensity by the value when the light source is directly detected lm
+                                                                   2         3 2                                                                                                                                                                                      32 3
+                                                                     I wbðrÞ       1∕lr                                                                                                                                                                 0         0     I
+                                                                   4 I wbðgÞ 5 ¼ 6
+                               EQ-TARGET;temp:intralink-;e009;116;404
+
+
+
+
+                                                                                 4 0                                                                                                                                                                   1∕lg
+                                                                                                                                                                                                                                                                      7 r
+                                                                                                                                                                                                                                                                  0 54 I g 5:                      (9)
+                                                                     I wbðbÞ        0                                                                                                                                                                   0        1∕lb   Ib
+
+    The color space of the camera image is an inherent characteristic of a camera device. It should
+be converted to the common color spaces XYZ, RGB, and sRGB, sequentially. The color space
+is converted by multiplying the color transformation matrix, and the sRGB image is obtained by
+applying gamma correction to RGB in Eq. (10). In this study, it is assumed that a minimally
+processed image captured by the camera is used
+                                                                                                                                                                                                                                                      ð1∕2.4Þ
+                                                                                                                                                                                              I srgb ¼ 1.055I rgb
+                                                                                                                                                          EQ-TARGET;temp:intralink-;e010;116;279                                                                − 0.055;                          (10)
+
+
+
+
+ Fig. 4 (a) Plate of the ColorChecker 2005 and (b) its reflectance measurements in Ref. 48.
+
+Journal of Biomedical Optics                                                                                                                                                                                                                       035001-6                     March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+where I rgb is an image in the RGB color space, and I srgb is the gamma corrected image in the
+sRGB color space.
+
+
+2.5 Metrics
+To quantify the performance of the proposed model, three methods are employed in this study: the
+MSE, PSNR, and the Pearson product-moment correlation coefficients.50,51 For training and vali-
+dation, the MSE and PSNR are used to estimate the similarity between the input and reconstructed
+images, indirectly improving the melanin and hemoglobin analysis ability. After training, the cor-
+relation coefficient is used to directly compare the results with the clinical equipment, VISIA system.
+Since the VISIA system produces single-color distribution maps with red and brown for hemoglobin
+and melanin, respectively, they are converted to grayscale and employed for comparison.
+
+
+2.6 Experiments
+The polarized image dataset was acquired from 198 subjects using the VISIA acquisition system,
+VISIA–CR. The dataset was divided into 2 groups: 168 subjects for model training and 30 sub-
+jects for testing the performance of the trained model. Facial images were collected with
+informed consent from all subjects, in accordance with all relevant national regulations and insti-
+tutional policies, and approved by the authors’ institutional committees. The training images are
+divided into 20 patches (4 × 5) of 310 × 310 pixels and randomly cropped to 256 × 256 pixels
+during augmentation for reducing overfitting and improving robustness of the model. For testing,
+the images are divided into 24 patches (4 × 6) of 256 × 256 pixels. These patches are used as
+inputs to the model, and the output patches are combined to form a full image. To avoid the
+occurrence of blurry lines on the border of output patches, boundary areas are overlapped by 15
+pixels and combined by multiplying the opposite gradient weights. Including the overlapping
+boundary areas, the combined output size is 979 × 1461 pixels. Finally, the proposed model and
+VISIA VAESTRO system are compared to analyze the correlation of the two system measure-
+ments for melanin and hemoglobin. The VISIA VAESTRO system is the integrated skin analysis
+toolkits including the melanin and hemoglobin analysis modules, RBX-Brown and RBX-Red
+Processing 1.0.52,53 To avoid repetition of software name throughout this manuscript, we will use
+the term VISIA system to refer to this analysis system. In addition, this approach is applied to
+simulated images with varying amounts of melanin and hemoglobin.
+
+
+3 Results
+The proposed model decomposes the skin segmented area into hemoglobin, melanin, shading,
+and specular components that are combined to reconstruct the skin image, as shown in Fig. 5. The
+trained model achieved an average PSNR value of 42.7, and an example of the input and recon-
+structed images is shown in Fig. 5. The analyzed results of the hemoglobin and melanin obtained
+from the proposed model and the VISIA system are shown in Fig. 6 and their correlation coef-
+ficients according to training epochs are shown in Fig. 7. As the hemoglobin and melanin values
+increase, the intensity in grayscale image decreases in the VISIA system, while it increases in the
+proposed method. To facilitate comparison between the two methods, the grayscale images pro-
+duced by the proposed method are inverted in Figs. 5 and 6. The results of the proposed model for
+seven different epochs are postprocessed and compared to the VISIA system. The correlation
+coefficient is 0.932 (std 0.083) for melanin and 0.857 (std 0.155) for hemoglobin in 2900 epochs.
+    The simulated images by manipulating its melanin and hemoglobin levels in the skin are
+shown in Fig. 8. The simulated images are generated by modifying the center image with
+changes to melanin (multiplying by −1.2 and þ1.2) and hemoglobin (adding −1 and þ1) levels.
+
+
+4 Discussion
+The average PSNR value of the trained model exceeds 30, which indicates a high degree of
+similarity54 between the input and reconstructed images, shown in Fig. 5. The proposed model
+
+Journal of Biomedical Optics                    035001-7                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+
+
+Fig. 5 Decomposed (inverted in hemoglobin and melanin) and reconstructed images produced by
+the proposed model.
+
+
+and the VISIA system show a similar tendency in Fig. 6, especially the melanin map has a higher
+overall value in (upper) dark skin than in (lower) lighter skin. The exact value of human skin
+properties is difficult to determine. Therefore, the proposed approach’s performance is evaluated
+by comparing it with one of the most reliable clinical equipment systems, the VISIA
+system.11,52,55 This implies that the correlation values are a comparison to determine the strength
+and direction of the relationship between the two systems, rather than an absolute accuracy of
+skin measurements. The proposed model is considered sufficiently trained at around 200 epochs,
+with correlation coefficients of 0.932 and 0.857 for melanin and hemoglobin, as shown in Fig. 7.
+Considering that image processing and deep learning are different approaches and the results of
+
+
+
+
+Fig. 6 Hemoglobin and melanin analysis results from the proposed model (inverted) and VISIA
+system.
+
+Journal of Biomedical Optics                    035001-8                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+
+
+Fig. 7 Correlation coefficients between the proposed model and the VISIA system depending on
+the number of epochs in training.
+
+
+the VISIA system are not used in training, this strong positive relationship with clinical equip-
+ment can be interpreted as the light–tissue interactions being learned well as intended.
+    However, the VISIA system outperforms our proposed model, especially in terms of captur-
+ing detailed features. As an example, Fig. 9 shows the right corner of the mouth area from the
+melanin maps of the upper line in Fig. 6. When considering the input image, it is reasonable that
+the red spot in the result of the proposed method should not be emphasized like in the VISIA
+system. When the correlation coefficient is calculated by excluding the red spot, the difference in
+the coefficient is only 0.002. This insignificant value indicates that small differences in detailed
+areas are challenging to capture using overall representative values.
+    Besides the results, there are factors that can potentially affect the correlation values. The
+overall pixel values in the image can change depending on the plotting range when converting
+the analysis results into an image. This issue applied to both the proposed model and the VISIA
+system. To mitigate it, we conducted the analysis with constant plotting options for both systems.
+The VISIA system used the optimal conditions determined through postprocessing as a constant
+in the analysis process. To compare the analysis results of both systems, we calculated the cor-
+relation coefficients of the entire image rather than comparing the pixel intensity alone. This
+approach minimizes the effects caused by this issue. Next, the format of the result image differs
+between the single-color distribution map of the VISIA system and the grayscale image of the
+proposed model. It is possible that a slight difference may occur in the process of converting the
+color image to grayscale for the VISIA system.
+    The proposed approach has demonstrated the potential for generating simulated images with
+varying amounts of melanin and hemoglobin, as shown in Fig. 8. While changes in melanin and
+hemoglobin levels do affect skin tone, it is important to note that further research and verification
+are needed to accurately represent these changes in simulated images.
+    For diagnostic purposes, the following studies could be conducted. The forward model
+applied in the training part aims to find the absolute amount of skin components. If the range
+of output values and plotting options are calibrated with clinical equipment that supplies absolute
+values, such as Mexameter, the proposed model could be used for evaluating the severity of the
+disease. Furthermore, this study primarily focuses on color-related information, while the mor-
+phological characteristics are mainly utilized for accounting for color changes caused by shape-
+related features. If a follow-up study is conducted to enhance the morphological features of the
+specular map by modifying the learning process or applying postprocessing, the proposed
+method could be extended to the diagnosis of wrinkles and pores. Finally, the proposed model
+
+Journal of Biomedical Optics                    035001-9                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+
+
+                      Fig. 8 Simulated images for melanin and hemoglobin.
+
+
+
+
+Fig. 9 Magnified area of the melanin map from (a) the proposed model and (b) the VISIA system.
+
+
+
+requires prior knowledge of the light source and camera information. If an additional algorithm is
+applied to estimate that spectrum information, the range of application will be expanded to
+images acquired from uncontrolled environments.
+     To enhance the performance of the proposed model, the following methods are considered.
+First, using the results of the VISIA system as ground truth (GT) during training can potentially
+improve the model’s performance by providing detailed information about skin properties.
+However, in this study, we intentionally chose not to use any GT for skin images to focus
+on investigating the performance of the proposed model in implementing light interaction with
+the skin. Using GTs is a standard practice for training deep learning models, and modifying the
+proposed model to include GTs will require extensive trials to optimize performance while pre-
+serving the advantages of both the current method and GTs. Second, in this study, a lightweight
+version of the basic U-Net model is employed to ensure efficient computational time. However,
+if the model prioritizes high performance over shorter analysis time and memory capacity, it may
+be worth trying model structures that use more parameters and take longer computational time
+but have superior performance. Finally, training with a large number of datasets and measuring
+accurate SPD using a spectrometer can help improve accuracy.
+
+
+Journal of Biomedical Optics                   035001-10                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+5 Conclusion
+In this study, we trained a deep learning model to solve the forward problem of light–tissue
+interactions and its performance was evaluated using professional clinical equipment, the
+VISIA system. The model is structurally extensible for various acquisition conditions, and the
+skin segmentation model, patch divider and combiner, and virtual ColorChecker methods are
+applied for medical applications. The results showed a high correlation coefficients for melanin
+and hemoglobin. In addition, this approach was applied to simulated images with varying
+amounts of melanin and hemoglobin. It is expected that the proposed approach will be further
+developed for skin analysis and disease diagnosis through calibration studies using clinical
+equipment, ultimately providing a valuable tool for dermatologists and clinicians.
+
+
+Disclosures
+The authors have no relevant financial interests in this article and no potential conflicts of interest
+to disclose.
+
+
+Acknowledgments
+This research was supported by Technological Innovation Project (Grant No. S3197480) from
+the “Ministry of SMEs and Startups” and NIPA. The research data were supplied by GMRC
+(Global Medical Research Center, Republic of Korea).
+
+
+Code, Data and Materials Statement
+The code associated with this article is available upon request sent to the corresponding author.
+The image dataset is subject to institutional restrictions and can only be used for research pur-
+poses with the prior consent of the subjects and the approval of the author’s institutional com-
+mittees. These restrictions are in place to protect the privacy and confidentiality of the subjects.
+
+
+References
+ 1. A. Dib et al., “Practical face reconstruction via differentiable ray tracing,” Comput. Graph.
+    Forum 40(2), 153–164 (2021).
+ 2. C. Li et al., “Specular highlight removal in facial images,” in Proc. IEEE Conf. Comput. Vis.
+    and Pattern Recognit., pp. 3107–3116 (2017).
+ 3. Z. Husain and T. S. Alster, “The role of lasers and intense pulsed light technology in
+    dermatology,” Clin. Cosmetic Investig. Dermatol. 9, 29–40 (2016).
+ 4. E. R. Tkaczyk, “Innovations and developments in dermatologic non-invasive optical imag-
+    ing and potential clinical applications,” Acta Dermato-Venereol. Suppl 218, 5–13
+    (2017).
+ 5. D. A. Boas et al., “Imaging the body with diffuse optical tomography,” IEEE Signal
+    Process. Mag. 18(6), 57–75 (2001).
+ 6. A. G. Podoleanu, “Optical coherence tomography,” J. Microsc. 247(3), 209–219 (2012).
+ 7. S. Gioux, A. Mazhar, and D. J. Cuccia, “Spatial frequency domain imaging in 2019:
+    principles, applications, and perspectives,” J. Biomed. Opt. 24(7), 071613 (2019).
+ 8. B. K. Koh, C. K. Lee, and K. Chae, “Photorejuvenation with submillisecond neodymium-
+    doped yttrium aluminum garnet (1,064 nm) laser: a 24-week follow-up,” Dermatol. Surg.
+    36(3), 355–362 (2010).
+ 9. B. Hersant et al., “Assessment tools for facial rejuvenation treatment: a review,” Aesthetic
+    Plastic Surg. 40(4), 556–565 (2016).
+10. H.-S. Gang, B.-S. Jeong, and B.-J. Jeong, “Real-time automatic analysis of facial skin
+    chromophore: dermavision,” in Proc. Opt. Soc. of Korea Conf., Optical Society of
+    Korea, pp. 185–186 (2006).
+
+
+Journal of Biomedical Optics                   035001-11                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+11. X. Wang et al., “Comparison of two kinds of skin imaging analysis software: visia
+    from canfield and IPP from media cybernetics,” Skin Res. Technol. 24(3), 379–385
+    (2018).
+12. Y. Tani, H. Akai, and K. Akai, “New skin analyzing system-robo skin analyzer,” (2004).
+13. K. Kim, Y.-H. Choi, and E. Hwang, “Wrinkle feature-based skin age estimation scheme,”
+    in IEEE Int. Conf. Multimedia and Expo, IEEE, pp. 1222–1225 (2009).
+14. Y.-H. Choi et al., “Skin feature extraction and processing model for statistical skin age
+    estimation,” Multimedia Tools Appl. 64(2), 227–247 (2013).
+15. J. Sun et al., “Automatic facial pore analysis system using multi-scale pore detection,” Skin
+    Res. Technol. 23(3), 354–362 (2017).
+16. N. Tsumura et al., “Image-based skin color and texture analysis/synthesis by extracting
+    hemoglobin and melanin information in the skin,” in ACM SIGGRAPH 2003 Papers,
+    pp. 770–779 (2003).
+17. B. Jung et al., “Characterization of port wine stain skin erythema and melanin content
+    using cross-polarized diffuse reflectance imaging,” Lasers Surg. Med. 34(2), 174–181
+    (2004).
+18. S. Alotaibi and W. A. P. Smith, “BiofaceNet: deep biophysical face image interpretation,” in
+    Proc. Br. Mach. Vis. Conf. (BMVC) (2019).
+19. I. Nishidate, Y. Aizu, and H. Mishina, “Estimation of melanin and hemoglobin in skin tissue
+    using multiple regression analysis aided by monte carlo simulation,” J. Biomed. Opt. 9(4),
+    700–710 (2004).
+20. H. Jonasson et al., “In vivo characterization of light scattering properties of human skin in
+    the 475-to 850-nm wavelength range in a Swedish cohort,” J. Biomed. Opt. 23(12), 121608
+    (2018).
+21. J. Dawson et al., “A theoretical and experimental study of light absorption and scattering by
+    in vivo skin,” Phys. Med. Biol. 25(4), 695 (1980).
+22. E. A. Thibodeau and J. A. D’Ambrosio, “Measurement of lip and skin pigmentation using
+    reflectance spectrophotometry,” Eur. J. Oral Sci. 105(4), 373–375 (1997).
+23. Y. Masuda et al., “An innovative method to measure skin pigmentation,” Skin Res. Technol.
+    15(2), 224–229 (2009).
+24. G. N. Stamatas and N. Kollias, “Blood stasis contributions to the perception of skin
+    pigmentation,” J. Biomed. Opt. 9(2), 315–322 (2004).
+25. M. Afifi et al., “CIE XYZ Net: unprocessing images for low-level computer vision tasks,”
+    IEEE Trans. Pattern Anal. Mach. Intell. 44(9), 4688–4700 (2021).
+26. S.-H. Tseng and M.-F. Hou, “Analysis of a diffusion-model-based approach for efficient
+    quantification of superficial tissue properties,” Opt. Lett. 35(22), 3739–3741 (2010).
+27. L. Wang, S. L. Jacques, and L. Zheng, “MCML—Monte Carlo modeling of light transport
+    in multi-layered tissues,” Comput. Methods Programs Biomed. 47(2), 131–146 (1995).
+28. G. Jung and J. G. Kim, “An approach for correcting optical paths of different wavelength
+    lasers in diffusive medium based on Monte Carlo simulation,” Opt. Laser Technol. 120,
+    105712 (2019).
+29. Z. Ma et al., “An inverse Monte-Carlo method for determining tissue optical properties,”
+    Proc. SPIE 6434, 382–390 (2007).
+30. I. Fredriksson, M. Larsson, and T. Strömberg, “Inverse Monte Carlo method in a multilay-
+    ered tissue model for diffuse reflectance spectroscopy,” J. Biomed. Opt. 17(4), 047004
+    (2012).
+31. M. Hirose et al., “Principal component analysis for surface reflection components and
+    structure in facial images and synthesis of facial images for various ages,” Opt. Rev.
+    24(4), 517–528 (2017).
+32. N. Tsumura, H. Haneishi, and Y. Miyake, “Independent component analysis of spectral
+    absorbance image in human skin,” Opt. Rev. 7(6), 479–482 (2000).
+33. Z. Liu and J. Zerubia, “Skin image illumination modeling and chromophore identification
+    for melanoma diagnosis,” Phys. Med. Biol. 60(9), 3415 (2015).
+34. S. J. Preece and E. Claridge, “Spectral filter optimization for the recovery of parameters
+    which describe human skin,” IEEE Trans. Pattern Anal. Mach. Intell. 26(7), 913–922
+    (2004).
+
+Journal of Biomedical Optics                   035001-12                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+35. K. Nielsen et al., “Retrieval of the physiological state of human skin from UV–VIS
+    reflectance spectra–a feasibility study,” J. Photochem. Photobiol. B: Biol. 93(1), 23–31
+    (2008).
+36. S. L. Jacques, “Optical properties of biological tissues: a review,” Phys. Med. Biol. 58(11),
+    R37 (2013).
+37. J. Jiang et al., “What is the space of spectral sensitivity functions for digital color
+    cameras?” in IEEE Workshop on Appl. of Comput. Vis. (WACV), IEEE, pp. 168–179
+    (2013).
+38. T. Igarashi et al., “The appearance of human skin: a survey,” Found. Trends Comput. Graph.
+    Vision 3(1), 1–95 (2007).
+39. M. Doi and S. Tominaga, “Spectral estimation of human skin color using the Kubelka-Munk
+    theory,” Proc. SPIE 5008, 221–228 (2003).
+40. L. Annala and I. Pölönen, “Kubelka–Munk model and stochastic model comparison in skin
+    physical parameter retrieval,” in Computational Sciences and Artificial Intelligence in
+    Industry: New Digital Technologies for Solving Future Societal and Economical
+    Challenges, T. Tuovinen, J. Periaux, and P. Neittaanmäki, eds., pp. 137–151, Springer,
+    Cham (2022).
+41. L. Kobayashi Frisk, “Diffuse reflectance spectroscopy: using a Monte Carlo method to
+    determine chromophore compositions of tissue,” (2016).
+42. J. H. Lam, K. J. Tu, and S. Kim, “Narrowband diffuse reflectance spectroscopy in the
+    900–1000 nm wavelength region to quantify water and lipid content of turbid media,”
+    Biomed. Opt. Express 12(6), 3091–3102 (2021).
+43. T. M. Bydlon et al., “Chromophore based analyses of steady-state diffuse reflectance
+    spectroscopy: current status and perspectives for clinical adoption,” J. Biophotonics
+    8(1–2), 9–24 (2015).
+44. A. Krishnaswamy and G. V. Baranoski, “A biophysically-based spectral model of light
+    interaction with human skin,” Comput. Graph. Forum 23(3), 331–340 (2004).
+45. M. Ansari and R. Massudi, “Study of light propagation in Asian and Caucasian
+    skins by means of the boundary element method,” Opt. Lasers Eng. 47(9), 965–970
+    (2009).
+46. S. L. Jacques, R. D. Glickman, and J. A. Schwartz, “Internal absorption coefficient and
+    threshold for pulsed laser disruption of melanosomes isolated from retinal pigment
+    epithelium,” Proc. SPIE 2681, 468–477 (1996).
+47. S. Jacques, “Skin optics,” Oregon Medical Laser Center News (January 1998).
+48. N. Ohta, The Basis of Color Reproduction Engineering, Corona-sha Co, Japan (1997).
+49. V. Cheung et al., “A comparative study of the characterisation of colour cameras by means
+    of neural networks and polynomial transforms,” Coloration Technol. 120(1), 19–25
+    (2004).
+50. V. Starovoytov, E. Eldarova, and K. T. Iskakov, “Comparative analysis of the SSIM index
+    and the Pearson coefficient as a criterion for image similarity,” Eurasian J. Math. Comput.
+    Appl. 8(1), 76–90 (2020).
+51. T. C. George et al., “Quantitative measurement of nuclear translocation events using
+    similarity analysis of multispectral cellular images obtained in flow,” J. Immunol. Methods
+    311(1-2), 117–129 (2006).
+52. R. Demirli et al., “RBX technology overview,” Canfield Systems White Paper (2007).
+53. Y. Pan et al., “Effectiveness of VISIA system in evaluating the severity of rosacea,” Skin Res.
+    Technol. 28(5), 740–748 (2022).
+54. C.-C. Lee et al., “Adaptive lossless steganographic scheme with centralized difference
+    expansion,” Pattern Recognit. 41(6), 2097–2106 (2008).
+55. N. Sun et al., “Novel neural network model for predicting susceptibility of facial
+    post-inflammatory hyperpigmentation,” Med. Eng. Phys. 110, 103884 (2022).
+
+Geunho Jung received his BS degree in biomedical engineering from Yonsei University in 2014
+and his MS and PhD degrees in biomedical science and engineering from Gwangju Institute of
+Science and Technology in 2016 and 2020, respectively. He worked at Korea Institute of
+Lighting and ICT from 2020 to 2022. Since 2022, he has been working as a senior research
+
+
+Journal of Biomedical Optics                   035001-13                         March 2023 • Vol. 28(3)
+Jung et al.: Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution
+
+
+engineer at the AI R&D center of Lulu-lab Inc. His research interests include skin analysis using
+deep learning and diffuse optics.
+
+Semin Kim received his ME degree in computer engineering from Kyungpook National
+University in 2008 and his PhD in information and communication engineering from Korea
+Advanced Instituted of Science and Technology in 2014. He worked at Samsung Electronics
+from 2014 to 2019 and Hyundai Mobis from 2019 to 2021. Since 2021, he has been working
+as a principal research engineer at Lulu-lab, Inc. His research interests include image recogni-
+tions with deep learning and implementation of image inference systems.
+
+Jongha Lee received his BS degree in electronics from Kyungpook National University in 1999
+and his MS degree in electrical engineering from Seoul National University in 2001. He worked
+at Samsung Advanced Institute of Technology until 2014 and Samsung Electronics as a senior
+engineer for medical image processing and radiography systems. Since 2021, he has been work-
+ing at the AI R&D Center of Lulu-lab as Director. His research interests include machine learn-
+ing and computer vision.
+
+Sangwook Yoo received his BS degree in computer science from Sogang University in 2005 and
+his MS and PhD degrees in computer science from Korea Advanced Institute of Science and
+Technology in 2008 and 2013, respectively. He was working as a senior engineer in Health &
+Medical Equipment Business Division at Samsung Electronics. He cofounded Lulu-lab, Inc.,
+and has served as CTO since 2017. His research interests include skin analysis using deep learn-
+ing and optics and image analysis-based disease prediction.
+
+
+
+
+Journal of Biomedical Optics                   035001-14                         March 2023 • Vol. 28(3)
+

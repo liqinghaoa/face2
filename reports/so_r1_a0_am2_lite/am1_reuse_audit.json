@@ -1,0 +1,51 @@
+[
+  {
+    "artifact": "src\\skin_optics_so0\\configs\\so0\\forward_model_mvp.yaml",
+    "expected_hash": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+    "observed_hash": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "config\\so_r1\\frozen_camera_light_split_v1.yaml",
+    "expected_hash": "99d4e51442d542aed8522547e6c7ef0d59d7f3429edf7ecee698fc5acf873aee",
+    "observed_hash": "99d4e51442d542aed8522547e6c7ef0d59d7f3429edf7ecee698fc5acf873aee",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "data\\processed\\SO_R1_A1_PairedPilot_v1\\manifests\\dataset_content_hashes.csv",
+    "expected_hash": "2ce9ec0e1e22bf0ade5e29e1e3859f99109f20a157d792dabbc40bc7f513469d",
+    "observed_hash": "2ce9ec0e1e22bf0ade5e29e1e3859f99109f20a157d792dabbc40bc7f513469d",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "data\\processed\\SO_R1_A2_P0_C2_MaskBenchmarkClosure_v1\\C2_ACCEPTANCE.json",
+    "expected_hash": "94cda32c1df222b98dd9faf672b97ceb11eb07946ed8b0133ca8fc8df83e64cf",
+    "observed_hash": "94cda32c1df222b98dd9faf672b97ceb11eb07946ed8b0133ca8fc8df83e64cf",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "data\\processed\\SO_R1_A0_AM1_CameraReplacement_v1\\AM1_ACCEPTANCE.json",
+    "expected_hash": "bf8da39910f6537acb99360fc19a0eef33728492bf2b122b902f8689cddedb5a",
+    "observed_hash": "bf8da39910f6537acb99360fc19a0eef33728492bf2b122b902f8689cddedb5a",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "reports\\so_r1_a0_am1_camera_replacement\\replacement_candidate_inventory.csv",
+    "expected_hash": "a4488fe39d2d2775eb284d91d4432c0cc77a98dbc224c3d1ebce0e2be991ce7b",
+    "observed_hash": "a4488fe39d2d2775eb284d91d4432c0cc77a98dbc224c3d1ebce0e2be991ce7b",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  },
+  {
+    "artifact": "reports\\so_r1_a0_am1_camera_replacement\\candidate_high_m_summary.csv",
+    "expected_hash": "adf1f33bab5f632d63312c8195c08d826dd969406ff9d0adc87a07e55a96a0ca",
+    "observed_hash": "adf1f33bab5f632d63312c8195c08d826dd969406ff9d0adc87a07e55a96a0ca",
+    "reusable": true,
+    "reason": "AM1 artifact exists, hash readable, schema consumed"
+  }
+]

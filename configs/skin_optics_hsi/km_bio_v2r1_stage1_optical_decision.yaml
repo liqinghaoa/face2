@@ -1,0 +1,208 @@
+schema_version: 1
+stage: KM-BIO-v2R.1-STAGE1-DECISION
+task_id: STAGE1_OPTICAL_LAYER_DECISION
+protocol_version: KM-BIO-v2R.1
+status: preregistered_stage1_optical_layer_decision
+frozen_date: 2026-09-11
+justification: >-
+  R-D closed the last registered execution batch of the KM-BIO line and left
+  exactly one registered action: the stage-1 optical-layer decision. This batch
+  aggregates the already-registered evidence of v1 A/B/C, v2R R-A/R-B/R-C0 and
+  v2R.1 R-C0R/R-C1/R-C1R/R-D into a single decision under the 05 section 7.5
+  state ladder, and freezes the deliverable interface of section 3.6. It reads
+  no raw HSI, RGB, Validation, Test or clinical-500 content: every input is an
+  already-audited decision JSON or summary table from a registered batch.
+  Test, clinical-500 and RGB encoder training stay locked.
+
+inputs:
+  v1_stage_c_decision: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_train_inversion/stage_c_decision.json
+  v2r_formula_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit/audit_summary.json
+  r_b_observation_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/audit_summary.json
+  r_b_side_pair_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/side_pair_audit.csv
+  historical_r_c0_decision: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/candidate_decision.json
+  r_c0r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/r_c0r_decision.json
+  r_c0r_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/audit_summary.json
+  r_c0r_global_profile_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/global_profile_summary.csv
+  r_c0r_fold_manifest: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/fold_manifest.csv
+  r_c1r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/r_c1r_decision.json
+  r_c1r_integrity_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/r_c1r_integrity_audit.json
+  r_c1r_parameter_profile_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/parameter_profile_summary.csv
+  r_c1r_side_pressure_linkage: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/side_pressure_linkage.csv
+  r_d_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd/r_d_decision.json
+  r_d_integrity_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd/r_d_integrity_audit.json
+  r_d_frozen_global_parameters: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd/frozen_global_parameters.json
+  r_d_direction_consistency_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd/direction_consistency_summary.csv
+  r_d_edge_band_comparison: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd/edge_band_residual_comparison.csv
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+
+output_directory: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_optical_decision
+
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r1_optical_decision.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r1_optical_decision.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r1_optical_decision.py
+
+selected_candidate: V2R-PS
+
+folds:
+  expected_sha256: e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370
+
+analysis:
+  unit: subject_level_bilateral_symmetric_spectrum
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  train_subject_count: 44
+  validation_subject_count: 3
+  validation_is_developmental_only: true
+
+# Section 7.1 of the decision document.  The seven strong targets keep the v1
+# numeric standard.  `reference_better_fraction` and
+# `model_to_reference_median_error_ratio` report the outside-fold fixed
+# reference-spectrum control.
+strong_spectral_targets:
+  - key: median_logrmse
+    summary_field: median_logrmse
+    operator: le
+    target: 0.06
+    unit: log_rmse
+  - key: p90_logrmse
+    summary_field: p90_logrmse
+    operator: le
+    target: 0.10
+    unit: log_rmse
+  - key: median_rmse
+    summary_field: median_rmse
+    operator: le
+    target: 0.03
+    unit: reflectance
+  - key: median_sam_deg
+    summary_field: median_sam_deg
+    operator: le
+    target: 3.0
+    unit: degree
+  - key: maximum_abs_median_signed_band_residual
+    summary_field: maximum_abs_median_signed_band_residual
+    operator: le
+    target: 0.03
+    unit: reflectance
+  - key: reference_better_fraction
+    summary_field: model_better_than_reference_fraction
+    operator: ge
+    target: 0.6666666666666666
+    unit: fraction
+  - key: model_to_reference_median_error_ratio
+    summary_field: median_model_to_reference_error_ratio
+    operator: le
+    target: 0.90
+    unit: ratio
+
+# Section 7.5 state ladder.  Predicates are evaluated in the declared priority
+# order and the first satisfied state is the outcome.
+state_ladder:
+  priority:
+    - V2R_STOP_KM
+    - V2R_STRONG_THETA_READY
+    - V2R_READY_WITH_S
+    - V2R_PARTIAL_THETA_CANDIDATE
+    - V2R_REVISE_OBSERVATION
+    - V2R_SPECTRAL_ONLY
+  development_candidate_criteria:
+    model_to_reference_median_error_ratio_below: 1.0
+    reference_better_fraction_min: 0.50
+  partial_theta_criteria:
+    require_validation_direction_consistent: true
+    require_at_least_one_parameter_reliable_or_conditional: true
+  ready_with_s_criteria:
+    require_partial_theta_state: true
+    require_s_reliable_or_conditional: true
+  strong_theta_criteria:
+    require_all_strong_targets: true
+    require_all_output_parameters_reliable: true
+  stop_km_criteria:
+    reference_better_fraction_min: 0.50
+    model_to_reference_median_error_ratio_at_or_above: 1.0
+    require_validation_direction_consistent: true
+    forbid_per_spectrum_high_capacity_correction: true
+  reliability_values_usable: [reliable, conditional]
+
+# Section 7.5 `V2R_REVISE_OBSERVATION` fires only when the unified observation
+# scale or the fixed left-right side difference is still the *main* blocker.
+# Both quantities are measured, never assumed.
+observation_blocker_analysis:
+  unified_scale:
+    quantity: g0
+    estimated_in_candidate: V2R-PSG
+    require_all_fold_profiles_identifiable: true
+    require_zero_boundary_folds: true
+    declared_fixed_candidate: V2R-PS
+    declared_fixed_value: 1.0
+    selection_tolerance_immateriality: 0.005
+    display_name_zh: 统一观测尺度
+  fixed_side_difference:
+    primary_parameters: [f_mel, f_blood]
+    pearson_r_threshold: 0.40
+    pearson_p_threshold: 0.05
+    source_candidate: V2R-PS
+    primary_observation_unit_excludes_side_difference: true
+    display_name_zh: 固定左右侧差
+  high_capacity_correction:
+    fitted_per_subject_parameter_count: 2
+    maximum_allowed_per_subject_parameters: 4
+    per_spectrum_free_gain_used: false
+    v1_free_gain_boundary_count: 47
+    v1_free_gain_spectrum_count: 88
+    v1_free_gain_source: 05_Results_and_Decisions section 2.5
+    display_name_zh: 逐谱高容量校正
+
+# Carried forward verbatim from R-C1R; this batch recomputes nothing.
+carried_forward:
+  parameter_reliability:
+    f_mel: unreliable
+    f_blood: unreliable
+    s: unreliable
+  parameter_reliability_rule:
+    f_mel_boundary_fraction_max: 0.10
+    f_blood_identifiable_fraction_min: 0.20
+    s_identifiable_fraction_min: 0.20
+    acceptable_normalized_envelope_span_max: 0.20
+
+locked_stages:
+  test_executed: false
+  clinical_500_executed: false
+  rgb_encoder_training_executed: false
+  stage2_design_executed: false
+  parameter_upgrade_allowed: false
+  parameter_upgrade_forbidden_reason: f_mel_f_blood_s_all_unreliable_in_R_C1R
+
+execution:
+  run_decision_gate: true
+  run_test: false
+  run_clinical_500: false
+  run_rgb_encoder_training: false
+  run_stage2_design: false
+  require_no_new_data_content_reads: true
+
+access_policy:
+  allowed_splits: [train, valid]
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  summary_artifacts_only: true
+  refuse_existing_output: true
+
+required_outputs:
+  - stage1_km_bio_decision.json
+  - STAGE1_KM_BIO_DECISION.md
+  - strong_spectral_target_audit.csv
+  - parameter_reliability_audit.csv
+  - observation_blocker_analysis.csv
+  - decision_ladder_audit.csv
+  - residual_risk_register.csv
+  - upstream_decision_chain.csv
+  - stage2_interface_freeze.json
+  - evidence_access_log.csv
+  - audit_summary.json
+  - audit_summary.md
+  - artifact_hash_manifest.csv

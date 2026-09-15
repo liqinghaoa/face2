@@ -1,0 +1,16 @@
+{
+  "AMP": {
+    "data_loader_workers": 2,
+    "loss": 0.4127458930015564,
+    "overflow_detected": false,
+    "peak_memory_bytes": 1818425344,
+    "status": "PASS"
+  },
+  "FP32": {
+    "data_loader_workers": 2,
+    "loss": 0.4127925932407379,
+    "overflow_detected": false,
+    "peak_memory_bytes": 2134524416,
+    "status": "PASS"
+  }
+}

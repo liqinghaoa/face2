@@ -1,0 +1,30 @@
+{
+  "sample_id": "p003_neutral_front",
+  "created_utc": "2026-09-08T03:13:59.893287+00:00",
+  "rgb_path": "E:\\projects\\face2\\data\\raw\\Hyper-Skin(RGB, VIS)\\train\\RGB\\p003_neutral_front.jpg",
+  "rgb_sha256_expected": "7d47b1441f6031740cc322521f9f151623446893ec10a74db155bc763ce412fe",
+  "image_shape": [
+    1024,
+    1024,
+    3
+  ],
+  "detections": 1,
+  "detection_route": "detector_expanded_crop",
+  "selected_detection_confidence": 0.8793971538543701,
+  "selected_detection_bbox": [
+    279,
+    337,
+    517,
+    517
+  ],
+  "expanded_bbox": [
+    175,
+    285,
+    725,
+    673
+  ],
+  "landmark_count": 478,
+  "parser_checkpoint": "E:\\projects\\face2\\preprocessing\\checkpoints\\face_parsing\\79999_iter.pth",
+  "parser_checkpoint_sha256": "468e13ca13a9b43cc0881a9f99083a430e9c0a38abd935431d1c28ee94b26567",
+  "parser_device": "cuda:0"
+}

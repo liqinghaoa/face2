@@ -1,0 +1,29 @@
+camera_name,npz_index,join_pass
+Canon 1DMarkIII,0,True
+Canon 20D,1,True
+Canon 300D,2,True
+Canon 40D,3,True
+Canon 500D,4,True
+Canon 50D,5,True
+Canon 5DMarkII,6,True
+Canon 600D,7,True
+Canon 60D,8,True
+Hasselblad H2,9,True
+Nikon D3X,10,True
+Nikon D200,11,True
+Nikon D3,12,True
+Nikon D300s,13,True
+Nikon D40,14,True
+Nikon D50,15,True
+Nikon D5100,16,True
+Nikon D700,17,True
+Nikon D80,18,True
+Nikon D90,19,True
+Nokia N900,20,True
+Olympus E-PL2,21,True
+Pentax K-5,22,True
+Pentax Q,23,True
+Point Grey Grasshopper 50S5C,24,True
+Point Grey Grasshopper2 14S5C,25,True
+Phase One,26,True
+SONY NEX-5N,27,True

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "task_id": "STAGE1_OPTICAL_LAYER_DECISION",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "STAGE1_OPTICAL_LAYER_DECISION_COMPLETE",
+  "created_utc": "2026-09-11T07:47:12.719508+00:00",
+  "emitted_utc": "2026-09-11T07:47:12.726339+00:00",
+  "emission": {
+    "mode": "primary_run",
+    "upstream_fits_recomputed": false,
+    "aggregation_source": "upstream_registered_summaries",
+    "thresholds_changed": false
+  },
+  "preflight_checks": {
+    "v1_c_revise_status": true,
+    "v1_c_spectral_gate_failed": true,
+    "v2r_formula_audit_pass": true,
+    "r_b_observation_audit_pass": true,
+    "r_b_symmetric_unit_is_one_spectrum_per_subject": true,
+    "historical_r_c0_stopped_at_failed_upgrade": true,
+    "historical_r_c0_read_only": true,
+    "r_c0r_complete": true,
+    "r_c0r_selected_candidate_matches": true,
+    "r_c0r_next_stage_is_r_c1": true,
+    "r_c1r_complete": true,
+    "r_c1r_next_stage_is_r_d": true,
+    "r_c1r_confirms_no_validation_access": true,
+    "r_d_complete": true,
+    "r_d_frozen_candidate_matches": true,
+    "r_d_direction_consistent": true,
+    "r_d_validation_not_used_in_freeze": true,
+    "r_d_frozen_parameters_hash_chain": true,
+    "r_d_frozen_parameters_are_consistent": true,
+    "r_d_next_stage_is_the_decision_gate": true,
+    "r_d_did_not_open_locked_stages": true,
+    "frozen_fold_manifest_hash": true
+  },
+  "preflight_all_passed": true,
+  "decision_state": "V2R_SPECTRAL_ONLY",
+  "ladder_priority": [
+    "V2R_STOP_KM",
+    "V2R_STRONG_THETA_READY",
+    "V2R_READY_WITH_S",
+    "V2R_PARTIAL_THETA_CANDIDATE",
+    "V2R_REVISE_OBSERVATION",
+    "V2R_SPECTRAL_ONLY"
+  ],
+  "ladder_satisfied": {
+    "V2R_DEVELOPMENT_SPECTRAL_CANDIDATE": true,
+    "V2R_STOP_KM": false,
+    "V2R_STRONG_THETA_READY": false,
+    "V2R_READY_WITH_S": false,
+    "V2R_PARTIAL_THETA_CANDIDATE": false,
+    "V2R_REVISE_OBSERVATION": false,
+    "V2R_SPECTRAL_ONLY": true
+  },
+  "hierarchy_audit": {
+    "stop_km_triggers_checked": [
+      "reference_better_fraction_below_min",
+      "error_ratio_at_or_above_one",
+      "direction_inconsistent",
+      "high_capacity_correction_required"
+    ],
+    "precedence_respected": true
+  },
+  "data_access": {
+    "raw_hsi_reads": 0,
+    "rgb_reads": 0,
+    "validation_reads": 0,
+    "test_reads": 0,
+    "clinical_500_reads": 0,
+    "new_data_content_reads": 0,
+    "summary_artifact_reads": 18
+  },
+  "frozen_fold_manifest_sha256": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370",
+  "frozen_model_state_sha256": "596df39ef5c83369fe83d1400e2cfdd15249504ed55fa8ccf9f9f159515ee239",
+  "authorized_stages": [],
+  "locked_stages": {
+    "test_executed": false,
+    "clinical_500_executed": false,
+    "rgb_encoder_training_executed": false,
+    "stage2_design_executed": false,
+    "parameter_upgrade_allowed": false,
+    "parameter_upgrade_forbidden_reason": "f_mel_f_blood_s_all_unreliable_in_R_C1R"
+  }
+}

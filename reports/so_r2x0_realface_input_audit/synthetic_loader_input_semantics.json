@@ -1,0 +1,29 @@
+{
+  "augmentation": "none",
+  "fixed_train_latent_count": 128,
+  "forward_tensor_is_flattened_images": true,
+  "mask_dtype": "torch.float32",
+  "mask_is_model_input": false,
+  "mask_shape": [
+    1,
+    256,
+    256
+  ],
+  "mask_unique": [
+    0.0,
+    1.0
+  ],
+  "model_input_dtype": "torch.float32",
+  "model_input_shape": [
+    3,
+    256,
+    256
+  ],
+  "normalization": "none; linear-sRGB FP32",
+  "rgb_mask_outside_abs_max": 0.0,
+  "rgb_mask_outside_abs_mean": 0.0,
+  "rgb_mask_outside_nonzero_fraction": 0.0,
+  "rgb_max": 0.5419921875,
+  "rgb_min": 0.0,
+  "source": "B1 PairedGroupDataset -> loader -> model.forward"
+}

@@ -1,0 +1,9 @@
+﻿source_stage,model_id,candidate,parameter,subject_count,identifiable_fraction,boundary_fraction,median_envelope_normalized_span,classification,usable_as_stage2_theta,evidence
+v1_C,KM2L-HF-v1,KM-BIO-v1,f_mel,44,0.0,,,unreliable,False,v1_C_parameter_summary
+v1_C,KM2L-HF-v1,KM-BIO-v1,f_blood,44,0.0,,,unreliable,False,v1_C_parameter_summary
+v1_C,KM2L-HF-v1,KM-BIO-v1,s,44,0.0,,,unreliable,False,v1_C_parameter_summary
+R-C1R,KM-BIO-v2R.1,V2R-PS,f_mel,44,1.0,0.4772727272727273,0.004435269176164,unreliable,False,r_c1r_parameter_profile_summary
+R-C1R,KM-BIO-v2R.1,V2R-PS,f_blood,44,0.3181818181818182,0.4772727272727273,0.3399999999999999,unreliable,False,r_c1r_parameter_profile_summary
+R-C1R,KM-BIO-v2R.1,V2R-BEST-O(V2R-PS),f_mel,44,1.0,0.6590909090909091,0.0055112140911022,unreliable,False,r_c1r_best_o_profile_summary
+R-C1R,KM-BIO-v2R.1,V2R-BEST-O(V2R-PS),f_blood,44,0.3181818181818182,0.6590909090909091,0.36,unreliable,False,r_c1r_best_o_profile_summary
+R-C1R,KM-BIO-v2R.1,V2R-BEST-O(V2R-PS),s,44,0.25,0.6590909090909091,0.4,unreliable,False,r_c1r_best_o_profile_summary

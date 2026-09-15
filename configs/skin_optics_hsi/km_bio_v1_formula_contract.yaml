@@ -1,0 +1,44 @@
+schema_version: 1
+model_id: KM2L-HF-v1
+status: formula_audit_pass_observation_audit_pending
+description: >-
+  Finite epidermis plus semi-infinite dermis effective two-flux
+  Kubelka-Munk model. Parameters are model-conditional effective quantities.
+wavelength_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+parameters:
+  f_mel: {min: 0.0, max: 0.43, unit: fraction, meaning: effective melanosome volume fraction}
+  f_blood: {min: 0.0, max: 0.10, unit: fraction, meaning: equivalent uniform dermal blood volume fraction}
+  s: {min: 0.0, max: 1.0, unit: fraction, meaning: model oxygenated haemoglobin fraction}
+fixed:
+  epidermis_thickness_mm: 0.060
+  dermis: semi_infinite
+  whole_blood_hb_g_per_l: 150.0
+  k_mapping: 2*mua
+  s_mapping: musp_reduced
+  surface_fresnel: omitted
+  per_spectrum_gain: forbidden
+optical_assets:
+  path: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+  source_units: cm^-1
+  model_units: mm^-1
+  cm_to_mm_divisor: 10
+  melanin_field: mua_mel_alternative_cm1
+  baseline_field: mua_base_cm1
+  hbo2_field: mua_hbo2_whole_blood_150gL_cm1
+  hb_field: mua_hb_whole_blood_150gL_cm1
+  reduced_scattering_field: musp_total_cm1
+formula:
+  q: sqrt(K*(K+2*S))
+  beta: sqrt(K/(K+2*S))
+  D: (1+beta)^2-(1-beta)^2*exp(-2*q*d)
+  R_layer: (1-beta^2)*(1-exp(-2*q*d))/D
+  T_layer: 4*beta*exp(-q*d)/D
+  R_semi_infinite: S/(K+S+sqrt(K*(K+2*S)))
+audit:
+  random_seed: 20260909
+  random_parameter_count: 10000
+  gradient_fd_step: 1.0e-5
+  physical_tolerance: 1.0e-10
+  last_run_status: PASS
+  hsi_read: false
+  artifact: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_formula_audit/audit_summary.json

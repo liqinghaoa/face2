@@ -1,0 +1,14 @@
+status: VALIDATED_CANDIDATE_FOR_A2_D0
+frozen: false
+protocol: R1 exposure-driven minimal sampler correction
+exposure_ev_range:
+- -0.5
+- 0.31
+maximum_tested_safe_ev: 0.36
+safety_margin_ev: 0.05
+evidence: All four failures pass at EV=0; +0.38 fails at least one controlled failure
+  scene; no camera-specific evidence.
+AUDIT_ONLY: true
+TRAINING_FORBIDDEN: true
+ATTRIBUTION_ONLY: true
+NOT_PART_OF_FORMAL_DATASET: true

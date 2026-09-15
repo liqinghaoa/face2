@@ -1,0 +1,5 @@
+sample_id,decision,camera_fail_count,camera_specific,acquisition_global,ev0_high_clip,p0_high_clip,ev0_p0_high_clip
+L024_A1,EXPOSURE_DRIVEN,3,False,False,0.0,0.1030120849609375,0.0
+L024_A2,EXPOSURE_DRIVEN,6,False,True,0.0,0.1612396240234375,0.0
+L040_A4,EXPOSURE_DRIVEN,6,False,True,0.0027313232421875,0.150146484375,0.0027313232421875
+L048_A2,EXPOSURE_DRIVEN,6,False,True,0.0,0.1122589111328125,0.0

@@ -1,0 +1,30 @@
+{
+  "primary_metric": "oof_subject_median_logrmse",
+  "best_observed_median_logrmse": 0.05881906981538026,
+  "tie_tolerance": 0.005,
+  "eligible_candidates": [
+    "V2R-PSG",
+    "V2R-PS"
+  ],
+  "selected_candidate": "V2R-PS",
+  "selection_reason": "within_0p005_of_best_select_lower_complexity",
+  "selected_median_logrmse": 0.061478291574805354,
+  "ranking": [
+    {
+      "candidate": "V2R-PSG",
+      "median_logrmse": 0.05881906981538026
+    },
+    {
+      "candidate": "V2R-PS",
+      "median_logrmse": 0.061478291574805354
+    },
+    {
+      "candidate": "V2R-P",
+      "median_logrmse": 0.0964815294766327
+    },
+    {
+      "candidate": "V2R-0",
+      "median_logrmse": 0.10928087793534105
+    }
+  ]
+}

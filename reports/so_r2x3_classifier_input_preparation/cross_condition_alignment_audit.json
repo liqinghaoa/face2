@@ -1,0 +1,6 @@
+{
+  "comparison": "np.array_equal, all 500 cases",
+  "rgb_equal_rgb_b1mh_first3": true,
+  "rgb_equal_rgb_b2mh_first3": true,
+  "status": "PASS"
+}

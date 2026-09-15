@@ -1,0 +1,282 @@
+schema_version: 3
+stage: S1-4R
+registry_id: hyperskin_stage1_revised_candidate_models_v3
+status: ready_for_s1_4r_synthetic_audit
+
+wavelength_contract:
+  centers_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+  ordering: ascending
+  centers_status: confirmed_from_official_code
+  effective_srf_status: missing
+
+spectral_assets:
+  hemoglobin_npz: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+  srf_sensitivity_npz: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/reference_1nm/derived_optics_1nm.npz
+  hemoglobin_sha256: 30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6
+  srf_sensitivity_sha256: 6dc1350517a45f5e13a06a025be59921e0c2f398d022b93bf2fd6bf2293feef9
+
+parameters:
+  delta_M_OD:
+    category: bio
+    unit: dimensionless_relative_path_OD_at_570nm
+    min: -2.0
+    max: 2.0
+    reference_value: 0.0
+    interpretation: relative_melanin_sensitive_contrast_proxy
+    range_status: signed_proxy_development_range
+    evidence: centered_log_ratio_relative_to_train_reference; not_absolute_concentration
+  delta_Hb_OD:
+    category: bio
+    unit: dimensionless_relative_Hb_sensitive_OD_at_570nm
+    min: -2.0
+    max: 2.0
+    reference_value: 0.0
+    interpretation: relative_packaged_Hb_sensitive_contrast_proxy
+    range_status: signed_proxy_development_range
+    evidence: centered_log_ratio_relative_to_train_reference; not_absolute_concentration
+  q_tilt:
+    category: nuisance
+    unit: dimensionless_log_spectral_tilt
+    min: -2.0
+    max: 2.0
+    reference_value: 0.0
+    interpretation: smooth_broadband_observation_or_scattering_mixture_nuisance
+    range_status: diagnostic_only
+    evidence: not_a_reduced_scattering_coefficient
+  delta_sO2:
+    category: nuisance
+    unit: fraction_relative_oxygenation_contrast
+    min: -0.5
+    max: 0.5
+    reference_value: 0.0
+    interpretation: conditional_HbO2_Hb_contrast_nuisance
+    range_status: conditional_diagnostic_only
+    evidence: Hyper-Skin_has_no_oxygenation_truth
+  M_epi_OD:
+    category: bio
+    unit: dimensionless_one_way_effective_epidermal_melanin_OD_at_570nm
+    min: 0.0
+    max: 1.0
+    reference_value: 0.13
+    interpretation: semi_mechanistic_epidermal_path_absorbance_proxy
+    range_status: conservative_development_bound_not_a_physiologic_interval
+    evidence: Jonasson_2023_melanin_OD_times_thickness_median_approximately_0.13
+  f_blood_proxy:
+    category: bio
+    unit: fraction
+    min: 0.0
+    max: 0.05
+    reference_value: 0.011
+    interpretation: semi_mechanistic_dermal_blood_volume_fraction_proxy
+    range_status: conservative_development_bound_not_a_concentration_truth
+    evidence: Jonasson_2023_upper_dermis_median_0.011_IQR_0.0071_to_0.016
+  S_amp:
+    category: nuisance
+    unit: mm^-1_reduced_scattering_at_600nm
+    min: 1.0
+    max: 4.0
+    reference_value: 1.99
+    interpretation: conditional_semi_mechanistic_scattering_amplitude
+    range_status: conditional_diagnostic_only
+    evidence: Jonasson_2023_median_1.99_IQR_1.78_to_2.38
+  pca_1:
+    category: latent
+    unit: standardized_centered_log_shape_score
+    min: -10.0
+    max: 10.0
+    reference_value: 0.0
+    interpretation: nonphysical_matched_baseline_only
+    range_status: numerical_projection_range
+    evidence: fold_fitted_PCA_baseline_not_a_biological_parameter
+  pca_2:
+    category: latent
+    unit: standardized_centered_log_shape_score
+    min: -10.0
+    max: 10.0
+    reference_value: 0.0
+    interpretation: nonphysical_matched_baseline_only
+    range_status: numerical_projection_range
+    evidence: fold_fitted_PCA_baseline_not_a_biological_parameter
+  pca_raw_1:
+    category: latent
+    unit: standardized_raw_log_score
+    min: -10.0
+    max: 10.0
+    reference_value: 0.0
+    interpretation: nonphysical_raw_matched_baseline_only
+    range_status: numerical_projection_range
+    evidence: fold_fitted_PCA_baseline_not_a_biological_parameter
+  pca_raw_2:
+    category: latent
+    unit: standardized_raw_log_score
+    min: -10.0
+    max: 10.0
+    reference_value: 0.0
+    interpretation: nonphysical_raw_matched_baseline_only
+    range_status: numerical_projection_range
+    evidence: fold_fitted_PCA_baseline_not_a_biological_parameter
+
+global_parameters:
+  reference_wavelength_nm:
+    value: 570.0
+    unit: nm
+  scattering_reference_wavelength_nm:
+    value: 600.0
+    unit: nm
+  melanin_power:
+    value: 4.3
+    unit: dimensionless
+  sO2_ref:
+    value: 0.50
+    unit: fraction
+  vessel_diameter_um:
+    value: 15.0
+    unit: um
+  vessel_diameter_sensitivity_um:
+    value: [10.0, 22.0, 44.0]
+    unit: um
+  epidermis_thickness_mm:
+    value: 0.063
+    unit: mm
+  epidermis_thickness_sensitivity_mm:
+    value: [0.013, 0.191]
+    unit: mm
+  scattering_amplitude_mm1_at_600nm:
+    value: 1.99
+    unit: mm^-1
+  scattering_slope:
+    value: 0.82
+    unit: dimensionless
+  rayleigh_fraction:
+    value: 0.31
+    unit: fraction
+  global_reflectance_scale:
+    value: 1.0
+    unit: multiplier
+  side_log_gain_by_region:
+    value:
+      image_left: 0.0
+      image_right: 0.0
+      other: 0.0
+    unit: natural_log_multiplier
+  km_mapping:
+    value: classical_two_flux
+    K_formula: 2*mu_a_dermis
+    S_formula: 0.75*mu_s_prime - 0.25*mu_a_dermis
+    status: semi_mechanistic_measurement_condition_sensitive
+
+fixed_physics:
+  baseline_absorption_formula_cm1: 0.244 + 85.3*exp(-(wavelength_nm-154)/66.2)
+  dermal_reflectance: semi_infinite_kubelka_munk
+  packaging_formula: (1-exp(-mu_a_blood*D_v))/(mu_a_blood*D_v)
+  packaging_radius_equivalence: D_v=2*r_v
+  effective_srf_status: missing
+
+models:
+  B0-R:
+    family: raw_reference_baseline
+    theta_bio: []
+    theta_nuisance: []
+    status: enabled_required_baseline
+    activation: always
+    purpose: subject_balanced_train_reference_in_raw_reflectance_space
+  B0-S:
+    family: centered_log_reference_baseline
+    theta_bio: []
+    theta_nuisance: []
+    status: enabled_required_baseline
+    activation: always
+    purpose: zero_centered_shape_with_shared_analytic_amplitude
+  B2-PCA:
+    family: centered_log_pca
+    theta_bio: [pca_1, pca_2]
+    theta_nuisance: []
+    status: enabled_required_matched_baseline
+    activation: always
+    purpose: two_dimensional_nonphysical_shape_reference
+  B2-RPCA:
+    family: raw_log_pca
+    theta_bio: [pca_raw_1, pca_raw_2]
+    theta_nuisance: []
+    status: enabled_required_matched_baseline
+    activation: always
+    purpose: two_dimensional_nonphysical_raw_reference
+  D1-M:
+    family: proxy_linear
+    theta_bio: [delta_M_OD]
+    theta_nuisance: []
+    status: enabled_required_proxy
+    activation: always
+    purpose: melanin_sensitive_contrast_proxy
+  D2-MH:
+    family: proxy_linear
+    theta_bio: [delta_M_OD, delta_Hb_OD]
+    theta_nuisance: []
+    status: enabled_primary_proxy
+    activation: always
+    purpose: minimum_M_H_contrast_proxy
+  D3-MHG:
+    family: proxy_linear
+    theta_bio: [delta_M_OD, delta_Hb_OD]
+    theta_nuisance: [q_tilt]
+    status: enabled_confounding_stress_test
+    activation: always
+    purpose: test_M_H_sensitivity_to_broadband_tilt_confounding
+  D3-MHO:
+    family: proxy_linear_oxygenation
+    theta_bio: [delta_M_OD, delta_Hb_OD]
+    theta_nuisance: [delta_sO2]
+    status: conditional_diagnostic
+    activation: only_after_stable_residual_HbO2_Hb_shape
+    purpose: conditional_oxygenation_contrast_diagnostic
+  K2-MH-KM:
+    family: semi_mechanistic_km
+    theta_bio: [M_epi_OD, f_blood_proxy]
+    theta_nuisance: []
+    status: diagnostic_not_strict_mechanistic
+    activation: always
+    purpose: packaged_Hb_layered_KM_bridge
+  K3-MHS-KM:
+    family: semi_mechanistic_km
+    theta_bio: [M_epi_OD, f_blood_proxy]
+    theta_nuisance: [S_amp]
+    status: conditional_diagnostic
+    activation: only_after_K2_covers_basic_shape
+    purpose: scattering_mixing_diagnostic
+  T2-MH-RTE:
+    family: deferred_rte
+    theta_bio: []
+    theta_nuisance: []
+    status: deferred_missing_observation_operator
+    activation: never
+    purpose: strict_mechanistic_model_deferred
+
+sensitivity:
+  band_sets:
+    full_31:
+      include_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+      role: primary
+    remove_endpoints:
+      exclude_nm: [400, 700]
+      role: prespecified_sensitivity
+    remove_soret_region:
+      exclude_nm: [400, 410, 420, 430, 440]
+      role: high_risk_soret_sensitivity
+  center_shift_nm: [-5.0, -2.5, 0.0, 2.5, 5.0]
+  assumed_gaussian_fwhm_nm: [0.0, 5.5, 10.0, 20.0]
+  policy: Train_only_synthetic_and_development; no_Validation_model_selection
+
+observation_policy:
+  per_spectrum_exposure_scale_allowed: false
+  analytic_shared_log_amplitude_allowed_for_proxy: true
+  global_system_gain_only_for_semi_mechanistic: true
+  no_model_specific_wavelength_correction: true
+
+references:
+  - "Jonasson et al. Absorption and reduced scattering coefficients in epidermis and dermis from a Swedish cohort study. J Biomed Opt. 2023;28(11):115001. doi:10.1117/1.JBO.28.11.115001."
+  - "van Veen et al. Diffuse-reflectance spectroscopy from 500 to 1060 nm by correction for inhomogeneously distributed absorbers. Opt Lett. 2002;27(4):246-248. doi:10.1364/OL.27.000246."
+  - "Rajaram et al. Experimental Validation of the Effects of Microvasculature Pigment Packaging on In Vivo Diffuse Reflectance Spectroscopy. Lasers Surg Med. 2010;42(7):680-688. doi:10.1002/lsm.20933."
+  - "Thennadil. Relationship between the Kubelka-Munk scattering and radiative transfer coefficients. J Opt Soc Am A. 2008;25(7):1480-1485. doi:10.1364/JOSAA.25.001480."
+  - "Roy et al. Empirical relationship between Kubelka-Munk and radiative transfer coefficients for extracting optical parameters of tissues. J Biomed Opt. 2012;17(11):115006. doi:10.1117/1.JBO.17.11.115006."
+
+interpretation_boundary: Proxy parameters are relative optical contrasts; K models are semi-mechanistic diagnostics only; no absolute concentration, oxygenation truth, or cross-device equivalence claim.

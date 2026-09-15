@@ -1,0 +1,6 @@
+{
+  "checkpoint_write_scope": "X4_own_inner_best_only",
+  "optimizer_step_count": 4780,
+  "outer_test_model_selection_access": 0,
+  "posthoc_frozen_reference_oof_read": "allowed_and_audited"
+}

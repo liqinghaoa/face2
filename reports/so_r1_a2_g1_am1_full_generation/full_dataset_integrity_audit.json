@@ -1,0 +1,22 @@
+{
+  "acquisition_count": 67500,
+  "first_invalid": [],
+  "invalid_latent_count": 0,
+  "latent_count": 13500,
+  "mask_counts": {
+    "Full": 5400,
+    "Mild": 5400,
+    "Strong": 2700
+  },
+  "pair_count": 54000,
+  "split_counts": {
+    "Camera-OOD": 500,
+    "ID Test": 1000,
+    "Joint-OOD": 500,
+    "Light-OOD": 500,
+    "Train": 10000,
+    "Validation": 1000
+  },
+  "status": "PASS",
+  "tmp_file_count": 0
+}

@@ -1,0 +1,26 @@
+{"best_epoch": 1, "epoch": 1, "train_masked_smooth_l1": 0.11072865324728191, "validation_masked_smooth_l1": 0.11082477732749445}
+{"best_epoch": 2, "epoch": 2, "train_masked_smooth_l1": 0.09652147725149988, "validation_masked_smooth_l1": 0.08593148114039954}
+{"best_epoch": 2, "epoch": 3, "train_masked_smooth_l1": 0.08863529333509505, "validation_masked_smooth_l1": 0.09114895165036492}
+{"best_epoch": 4, "epoch": 4, "train_masked_smooth_l1": 0.08608142895661294, "validation_masked_smooth_l1": 0.08585772590465762}
+{"best_epoch": 5, "epoch": 5, "train_masked_smooth_l1": 0.08495531773380935, "validation_masked_smooth_l1": 0.08387843336987018}
+{"best_epoch": 6, "epoch": 6, "train_masked_smooth_l1": 0.08317360302060843, "validation_masked_smooth_l1": 0.0805284064686206}
+{"best_epoch": 7, "epoch": 7, "train_masked_smooth_l1": 0.07681793448850513, "validation_masked_smooth_l1": 0.07573452317576645}
+{"best_epoch": 8, "epoch": 8, "train_masked_smooth_l1": 0.05700805096924305, "validation_masked_smooth_l1": 0.059188684847737164}
+{"best_epoch": 9, "epoch": 9, "train_masked_smooth_l1": 0.049914858988206835, "validation_masked_smooth_l1": 0.04613946677613853}
+{"best_epoch": 9, "epoch": 10, "train_masked_smooth_l1": 0.04655481825498864, "validation_masked_smooth_l1": 0.04625314410090446}
+{"best_epoch": 9, "epoch": 11, "train_masked_smooth_l1": 0.045504077802132815, "validation_masked_smooth_l1": 0.04636380985102325}
+{"best_epoch": 12, "epoch": 12, "train_masked_smooth_l1": 0.043303316581808034, "validation_masked_smooth_l1": 0.04088922222636913}
+{"best_epoch": 12, "epoch": 13, "train_masked_smooth_l1": 0.04199928473699838, "validation_masked_smooth_l1": 0.04209622456285939}
+{"best_epoch": 14, "epoch": 14, "train_masked_smooth_l1": 0.040193081298843025, "validation_masked_smooth_l1": 0.03964801091986025}
+{"best_epoch": 15, "epoch": 15, "train_masked_smooth_l1": 0.03864333465872333, "validation_masked_smooth_l1": 0.037675514187158025}
+{"best_epoch": 15, "epoch": 16, "train_masked_smooth_l1": 0.03746979302382097, "validation_masked_smooth_l1": 0.0405250229798663}
+{"best_epoch": 17, "epoch": 17, "train_masked_smooth_l1": 0.03620099380658939, "validation_masked_smooth_l1": 0.035639377800872195}
+{"best_epoch": 18, "epoch": 18, "train_masked_smooth_l1": 0.03521158999353647, "validation_masked_smooth_l1": 0.03495100924180222}
+{"best_epoch": 18, "epoch": 19, "train_masked_smooth_l1": 0.034559160694479944, "validation_masked_smooth_l1": 0.035357245770185355}
+{"best_epoch": 20, "epoch": 20, "train_masked_smooth_l1": 0.03347454900294542, "validation_masked_smooth_l1": 0.033542778056462365}
+{"best_epoch": 21, "epoch": 21, "train_masked_smooth_l1": 0.03264496555682272, "validation_masked_smooth_l1": 0.03338820342045332}
+{"best_epoch": 22, "epoch": 22, "train_masked_smooth_l1": 0.03209087157640606, "validation_masked_smooth_l1": 0.03287802274988785}
+{"best_epoch": 23, "epoch": 23, "train_masked_smooth_l1": 0.03182427049963735, "validation_masked_smooth_l1": 0.03257485550925254}
+{"best_epoch": 24, "epoch": 24, "train_masked_smooth_l1": 0.031742186162248255, "validation_masked_smooth_l1": 0.032341186044536584}
+{"best_epoch": 25, "epoch": 25, "train_masked_smooth_l1": 0.030863851072080433, "validation_masked_smooth_l1": 0.032326715149536375}
+{'status': 'PASS', 'baseline_training_status': 'COMPLETE', 'baseline_checkpoint_authoritative': True, 'baseline_viability_status': 'PASS', 'source_dataset_unchanged': True, 'training_authorized': True, 'next_stage': 'SO-R1-B2', 'next_stage_authorized': True, 'proposed_training_started': False, 'best_checkpoint': 'E:\\projects\\face2\\runs\\so_r1_b1_baseline_v6\\checkpoints\\best_val_masked_smoothl1.pt', 'best_epoch': 25, 'contract_hash': '7dcfb309d9d61c35b1de555b815a84e7c2f83be5d9b5e63f74bc91d14217b84f'}

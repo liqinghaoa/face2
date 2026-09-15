@@ -1,0 +1,27 @@
+{
+  "allowed_fields_read": [
+    "ID",
+    "patient_group_id",
+    "fold",
+    "binary_label",
+    "SEX"
+  ],
+  "conditions": {
+    "RGB": [
+      "rgb",
+      3
+    ],
+    "RGB_B1MH": [
+      "rgb_b1mh",
+      5
+    ],
+    "RGB_B2MH": [
+      "rgb_b2mh",
+      5
+    ]
+  },
+  "forbidden_clinical_fields_read": 0,
+  "input_root": "data/processed/SO_R2X3_ClassifierInputs_v1",
+  "sex_used_as_model_feature": false,
+  "sex_used_for_stratification_only": true
+}

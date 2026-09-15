@@ -1,0 +1,5 @@
+{
+  "offset": 16,
+  "status": "SEAM_AUDIT_DESCRIPTIVE",
+  "warning_rule": "manual review if repeated high ratios; no pre-frozen artifact threshold"
+}

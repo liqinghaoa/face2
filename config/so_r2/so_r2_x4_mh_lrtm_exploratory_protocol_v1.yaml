@@ -1,0 +1,15 @@
+stage: SO-R2-X4
+purpose: exploratory_internal_oof_only
+input: data/processed/SO_R2X3_ClassifierInputs_v1/rgb_b2mh
+outer_folds: 5
+models: [LATE_CONCAT, MH_LRF, MH_LRTM]
+seed_base: 12026
+batch_size: 16
+precision: fp32
+optimizer: {name: AdamW, lr: 0.0001, weight_decay: 0.0001}
+loss: {name: weighted_cross_entropy, label_smoothing: 0.05}
+selection: {metric: macro_auc, max_epochs: 50, patience: 10, strict_improvement: true}
+formal_SO_R1_C_status: FAIL
+official_SO_R2_authorization: false
+SO_R3_authorization: false
+next_stage_authorized: false

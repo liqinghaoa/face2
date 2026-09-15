@@ -1,0 +1,4 @@
+preflight_pytest=PASS
+training=PASS
+aggregate_only_finalize=PASS
+postflight_pytest=pending_external_command

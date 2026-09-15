@@ -6,7 +6,6 @@
 **研究任务：** Control（NYHA 0）与 Patient（NYHA I–IV）二分类  
 **文档性质：** 当前研究主线、工程接口、训练协议、评价协议与停止规则的统一约束  
 **上游固定文档：** `Face_Cardiac_Skin_Optics_Research_Roadmap_v2_Lean.md`  
-**当前状态：** SO-0 已完成并冻结；下一步实现 SO-1 合成数据生成与分解网络预训练
 
 ---
 

@@ -539,6 +539,34 @@ def find_image_for_id(image_id: str, image_dir: Path) -> Path | None:
     return None
 
 
+def fallback_face_detection_from_facemesh(
+    image_rgb: np.ndarray,
+    face_mesh: Any,
+) -> alignment.FaceDetection | None:
+    """Build a face box from full-image FaceMesh landmarks when needed."""
+    landmarks = alignment.run_facemesh(image_rgb, face_mesh)
+    if landmarks is None:
+        return None
+    height, width = image_rgb.shape[:2]
+    points = np.array(
+        [[float(point.x) * width, float(point.y) * height] for point in landmarks],
+        dtype=np.float32,
+    )
+    if points.size == 0 or not np.isfinite(points).all():
+        return None
+    x1 = max(0, int(math.floor(float(points[:, 0].min()))))
+    y1 = max(0, int(math.floor(float(points[:, 1].min()))))
+    x2 = min(width, int(math.ceil(float(points[:, 0].max()))))
+    y2 = min(height, int(math.ceil(float(points[:, 1].max()))))
+    if x2 <= x1 or y2 <= y1:
+        return None
+    return alignment.FaceDetection(
+        index=-1,
+        bbox=(x1, y1, x2 - x1, y2 - y1),
+        confidence=float("nan"),
+    )
+
+
 def generate_intermediates(
     image_id: str,
     image_dir: Path,
@@ -557,9 +585,13 @@ def generate_intermediates(
 
     detections = alignment.detect_faces(image_rgb, detector)
     selected_face = alignment.select_face(detections, image_rgb.shape)
+    face_detection_source = "face_detection"
+    if selected_face is None:
+        selected_face = fallback_face_detection_from_facemesh(image_rgb, face_mesh)
+        face_detection_source = "facemesh_fallback"
     if selected_face is None:
         raise alignment.SampleFailure(
-            "failed_no_face", "mediapipe_face_detection_returned_none"
+            "failed_no_face", "mediapipe_face_detection_and_facemesh_returned_none"
         )
 
     aligned_rgb, _, align_stats, _ = (
@@ -608,6 +640,7 @@ def generate_intermediates(
         **align_stats,
         "num_faces_detected": len(detections),
         "selected_face_index": selected_face.index,
+        "face_detection_source": face_detection_source,
         "selected_semantic_area_ratio": float((selected_mask > 0).sum())
         / float(selected_mask.size),
         "final_face_mask_area_ratio": final_pixels / float(final_mask.size),
@@ -886,16 +919,52 @@ def define_cheek_pair_bboxes(
     min_side_w = max(args.min_roi_width, int(round(0.26 * face_w)))
     min_h = max(args.min_roi_height, int(round(0.22 * face_h)))
 
+    # Keep each cheek crop on its anatomical side of the nose. The parsing mask
+    # gives the local contour while FaceMesh covers missed nose pixels.
+    try:
+        parsed_nose_bbox = bbox_from_classes(
+            label_map, (parsing.CLASS_NOSE,), min_pixels=4
+        )
+    except RoiFailure:
+        parsed_nose_bbox = None
+    landmark_nose_bbox = bbox_from_landmarks(landmarks, NOSE_INDICES, image_size)
+    try:
+        nose_bbox = union_bboxes(
+            (parsed_nose_bbox, landmark_nose_bbox), image_size
+        )
+    except RoiFailure:
+        nose_bbox = None
+
+    if nose_bbox is not None:
+        nose_gap = max(1, int(round(0.015 * face_w)))
+        left_outer_limit = face_bbox.x1 + int(round(0.02 * face_w))
+        right_outer_limit = face_bbox.x2 - int(round(0.02 * face_w))
+        left_x2 = min(left_x2, nose_bbox.x1 - nose_gap)
+        right_x1 = max(right_x1, nose_bbox.x2 + nose_gap)
+
+        # Preserve the target width by expanding only toward the outer cheek.
+        left_min_w = min(
+            min_side_w, max(args.min_roi_width, left_x2 - left_outer_limit)
+        )
+        right_min_w = min(
+            min_side_w, max(args.min_roi_width, right_outer_limit - right_x1)
+        )
+        left_x1 = max(left_outer_limit, min(left_x1, left_x2 - left_min_w))
+        right_x2 = min(right_outer_limit, max(right_x2, right_x1 + right_min_w))
+    else:
+        left_min_w = min_side_w
+        right_min_w = min_side_w
+
     left = ensure_bbox_size(
         clip_bbox(BBox(left_x1, y1, left_x2, y2), image_size),
         image_size,
-        min_side_w,
+        left_min_w,
         min_h,
     )
     right = ensure_bbox_size(
         clip_bbox(BBox(right_x1, y1, right_x2, y2), image_size),
         image_size,
-        min_side_w,
+        right_min_w,
         min_h,
     )
     validate_bbox(left, "left_cheek_internal", args.min_roi_width, args.min_roi_height)
@@ -1123,13 +1192,37 @@ def roi_target_mask(
     label_map: np.ndarray,
     final_mask: np.ndarray,
 ) -> np.ndarray:
-    _ = roi_type, label_map
-    # v2 masked ROI is deliberately the raw ROI intersected with the global
-    # final face mask only. Parsing labels are used for QC/statistics and ROI
-    # validity checks, not for carving ROI-specific internal semantic holes.
     mask = final_mask > 0
     if int(mask.sum()) == 0:
         raise RoiFailure("global_final_face_mask_empty")
+
+    if roi_type == "eye_roi":
+        # Suppress the eyes while preserving brows and periocular skin.
+        mask &= ~np.isin(
+            label_map, (parsing.CLASS_LEFT_EYE, parsing.CLASS_RIGHT_EYE)
+        )
+    elif roi_type == "lip_roi":
+        # The global face envelope can exclude facial hair when the parser
+        # mistakes moustache or beard for hair/hat. Preserve local facial
+        # evidence in the lip crop, then black out only the oral cavity.
+        lip_local_face = np.isin(
+            label_map,
+            (
+                parsing.CLASS_SKIN,
+                parsing.CLASS_NOSE,
+                parsing.CLASS_MOUTH,
+                parsing.CLASS_UPPER_LIP,
+                parsing.CLASS_LOWER_LIP,
+                parsing.CLASS_HAIR,
+                parsing.CLASS_HAT,
+            ),
+        )
+        mask |= lip_local_face
+        mask &= label_map != parsing.CLASS_MOUTH
+    elif roi_type == "cheek_roi":
+        # A semantic safeguard for rare residual nose pixels after the bbox
+        # geometry has already kept each cheek on its own side of the nose.
+        mask &= label_map != parsing.CLASS_NOSE
     return mask.astype(np.uint8) * 255
 
 
@@ -1249,7 +1342,11 @@ def warning_flags(
             warnings.append("warning_cheek_contains_mouth")
         if metrics["eye_ratio"] > 0.02:
             warnings.append("warning_cheek_contains_eye")
-        if metrics.get("cheek_min_side_w", metrics["bbox_w"]) < 40:
+        # Nose-constrained cheek crops can validly be narrower than the old
+        # fixed 40 px threshold. Keep a warning only for genuinely tiny sides.
+        if metrics.get("cheek_min_side_w", metrics["bbox_w"]) < max(
+            32, int(args.min_roi_width) * 4
+        ):
             warnings.append("warning_cheek_too_narrow")
         if metrics.get("cheek_pair_asymmetry", 0.0) > 0.30:
             warnings.append("warning_cheek_pair_asymmetry")

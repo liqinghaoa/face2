@@ -1,0 +1,7 @@
+camera_name,catastrophic_count,major_channel_collapse_count,severe_overall_low_clip_count,major_overall_low_clip_count,nonfinite_count,all_zero_count,all_one_count,pass
+Canon 1DMarkIII,0,0,0,0,0,0,0,True
+Canon 300D,0,0,0,0,0,0,0,True
+Canon 5DMarkII,0,0,0,0,0,0,0,True
+Nikon D5100,0,0,0,0,0,0,0,True
+Nikon D80,0,0,0,0,0,0,0,True
+Olympus E-PL2,0,0,0,0,0,0,0,True

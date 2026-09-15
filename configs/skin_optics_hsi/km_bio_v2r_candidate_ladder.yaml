@@ -1,0 +1,180 @@
+schema_version: 1
+stage: KM-BIO-v2R-R-C0
+run_id: km_bio_v2r_candidate_ladder
+status: preregistered_train_only
+frozen_utc: 2026-09-10T00:00:00Z
+
+inputs:
+  formula_contract: configs/skin_optics_hsi/km_bio_v2r_formula_contract.yaml
+  formula_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit/audit_summary.json
+  observation_contract: configs/skin_optics_hsi/km_bio_v2r_observation_contract.yaml
+  observation_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/audit_summary.json
+  observation_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/train_symmetric_observation_manifest.parquet
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+
+output_directory: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder
+
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r_stage_c0.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r_stage_c0.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r_stage_c0.py
+
+analysis:
+  unit: subject_level_bilateral_symmetric_spectrum
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  aggregation: subject
+  primary_loss: equal_weight_logrmse
+  prediction_minus_observation_residual: true
+  epsilon: 1.0e-6
+
+parameters:
+  names: [f_mel, f_blood]
+  lower: [0.0, 0.0]
+  upper: [0.43, 0.10]
+  fixed_s0: 0.70
+  boundary_tolerance_normalized: 0.01
+  profile_delta_logrmse: 0.005
+  profile_span_max: [0.03, 0.01]
+  profile_reliable_coverage_min: 0.80
+  robustness_shift_max: [0.015, 0.005]
+
+folds:
+  method: explicit_numpy_default_rng_permutation_then_array_split
+  random_seed: 20260910
+  sorted_subjects_before_permutation: true
+  count: 5
+  assignments:
+    1: [p049, p044, p006, p011, p051, p050, p019, p004, p032]
+    2: [p013, p018, p038, p041, p003, p037, p020, p010, p023]
+    3: [p046, p021, p043, p033, p028, p022, p014, p008, p015]
+    4: [p034, p048, p031, p012, p029, p005, p026, p025, p027]
+    5: [p045, p007, p040, p009, p017, p047, p042, p024]
+
+candidates:
+  order: [V2R-0, V2R-P, V2R-PS, V2R-PSG]
+  V2R-0:
+    diameter_um: 0.0
+    scattering_amplitude: 1.0
+    delta_bs: 0.0
+    g0: 1.0
+  V2R-P:
+    diameter_um: 15.0
+    scattering_amplitude: 1.0
+    delta_bs: 0.0
+    g0: 1.0
+  V2R-PS:
+    diameter_um: 15.0
+    estimate_train_global: [A_s, delta_bs]
+    g0: 1.0
+    estimation_loss: centered_logrmse
+  V2R-PSG:
+    diameter_um: 15.0
+    freeze_from_previous: [A_s, delta_bs]
+    estimate_train_global: [g0]
+    estimation_loss: raw_logrmse
+
+solver:
+  individual:
+    name: scipy.optimize.least_squares
+    method: trf
+    loss: linear
+    scaled_parameterization: true
+    sobol_starts: 32
+    include_center: true
+    random_seed: 20260910
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev_per_start: 2000
+    dtype: float64
+  global_shape:
+    name: scipy.optimize.least_squares_joint
+    scaled_parameterization: true
+    starts: 5
+    start_global_u: [[0.4, 0.5], [0.0, 0.0], [1.0, 1.0], [0.2, 0.8], [0.8, 0.2]]
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev_per_start: 1000
+    profile_grid_points: 51
+    profile_conditional_max_nfev: 500
+  global_gain:
+    method: analytic_bounded_raw_logrmse
+    bounds: [0.5, 1.5]
+    profile_uniform_grid_points: 201
+    include_exact_optimum: true
+
+spectral_gates:
+  subject_median_logrmse_max: 0.06
+  subject_p90_logrmse_max: 0.10
+  subject_median_rmse_max: 0.03
+  subject_median_sam_deg_max: 3.0
+  maximum_abs_median_signed_band_residual: 0.03
+  outer_fold_reference_better_fraction_min: 0.6666666666666666
+  model_to_reference_median_error_ratio_max: 0.90
+
+upgrade_gates:
+  median_logrmse_relative_reduction_min: 0.05
+  improved_subject_fraction_min: 0.6666666666666666
+  f_blood_upper_boundary_fraction_max: 0.20
+  f_mel_any_boundary_fraction_max: 0.10
+  boundary_nonworsening_subject_tolerance: 0
+  all_final_spectral_gates_required: true
+  residual_direction:
+    V2R-P:
+      metric: abs_median_signed_residual_soret_minus_q_mean
+      soret_nm: [420]
+      q_nm: [540, 550, 570, 580]
+      relative_reduction_min: 0.0
+      strict_improvement: true
+    V2R-PS:
+      metric: median_subject_centered_logrmse
+      relative_reduction_min: 0.05
+    V2R-PSG:
+      metric: abs_global_median_subject_mean_log_residual
+      relative_reduction_min: 0.05
+  global_direction_consistent_fold_fraction_min: 0.80
+  global_boundary_reject_fold_count_at_least: 3
+  global_profile_delta_logrmse: 0.005
+  global_profile_max_normalized_envelope_span: 0.20
+
+fixed_quantity_sensitivity:
+  required_stable_coverage_min: 0.80
+  fixed_s0: [0.50, 0.90]
+  epidermis_thickness_mm: [0.050, 0.070]
+  whole_blood_hb_g_l: [120.0, 180.0]
+  packaging_diameter_um_for_packaged_candidates: [7.5, 30.0]
+  rule: refit_individual_parameters_with_candidate_fold_globals_frozen
+
+execution:
+  run_V2R_0_and_V2R_P_unconditionally: true
+  stop_after_first_failed_upgrade: true
+  unevaluated_expensive_gates_after_prior_failure: true
+  full_train_global_refit_allowed_only_after_candidate_selection: true
+  oxygenation_extension_in_scope: false
+
+access_policy:
+  allowed_split: train
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  source_manifest_only: true
+  refuse_existing_output: true
+
+required_outputs:
+  - fold_manifest.csv
+  - fold_manifest.sha256
+  - candidate_subject_metrics.csv
+  - oof_predictions.csv
+  - oof_residuals.csv
+  - outer_fold_reference_metrics.csv
+  - candidate_comparisons.csv
+  - fold_global_parameters.csv
+  - global_parameter_profiles.csv
+  - candidate_decision.json
+  - audit_summary.json
+  - audit_summary.md
+  - artifact_hash_manifest.csv

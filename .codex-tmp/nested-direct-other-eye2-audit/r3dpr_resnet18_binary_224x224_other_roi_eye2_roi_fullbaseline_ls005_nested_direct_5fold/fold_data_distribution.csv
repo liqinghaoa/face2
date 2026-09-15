@@ -1,0 +1,6 @@
+﻿fold,development_n,development_control,development_patient,outer_test_n,outer_test_control,outer_test_patient,outer_test_sex_distribution
+0,400,92,308,100,23,77,"{0: 45, 1: 55}"
+1,400,92,308,100,23,77,"{0: 43, 1: 57}"
+2,400,92,308,100,23,77,"{0: 44, 1: 56}"
+3,400,92,308,100,23,77,"{0: 43, 1: 57}"
+4,400,92,308,100,23,77,"{0: 43, 1: 57}"

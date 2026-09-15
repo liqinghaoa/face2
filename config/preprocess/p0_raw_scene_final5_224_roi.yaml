@@ -1,0 +1,46 @@
+project_root: .
+
+split_csv: data/processed/global_face_R3DPR/nyha_2class_sex_stratified_group_5fold.csv
+image_dir: data/processed/P0_Physics_Audit_v1/images/raw_scene
+output_dir: data/processed/roi_raw_dataset
+global_intermediate_dir: data/processed/roi_raw_dataset/intermediates_optional
+
+save_intermediates: true
+overwrite: false
+max_samples: null
+seed: 42
+num_qc_preview: 20
+
+parsing_model: bisenet
+parsing_checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+parsing_device: auto
+min_detection_confidence: 0.5
+
+image_size: 224
+canvas_size: 224
+roi_types: [eye_roi, lip_roi, cheek_roi, forehead_roi, chin_roi]
+core_roi_types: [eye_roi, lip_roi, cheek_roi, forehead_roi, chin_roi]
+padding_color: [0, 0, 0]
+keep_aspect_ratio: true
+output_format: png
+min_roi_width: 8
+min_roi_height: 8
+
+final_mask_mode: hybrid
+forehead_band_ratio: 0.35
+hair_repair_threshold: 0.10
+jaggedness_threshold: 0.04
+enable_jaggedness_trigger: false
+forehead_expand_ratio: 0.15
+side_expand_ratio: 0.04
+chin_expand_ratio: 0.02
+
+max_padding_ratio: 0.60
+max_background_ratio: 0.20
+max_cloth_ratio: 0.05
+max_neck_ratio: 0.05
+forehead_hair_warning: 0.30
+cheek_background_warning: 0.15
+eye_nose_warning: 0.10
+chin_neck_warning: 0.10
+chin_cloth_warning: 0.05

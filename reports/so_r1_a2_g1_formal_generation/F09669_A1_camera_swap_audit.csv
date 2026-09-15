@@ -1,0 +1,7 @@
+high_clip_element_fraction,low_clip_element_fraction,nonfinite_count,all_zero,all_one,R_zero_fraction,R_one_fraction,G_zero_fraction,G_one_fraction,B_zero_fraction,B_one_fraction,camera,light,exposure_ev,attempt
+0.0,0.0,0,False,False,0.0,0.0,0.0,0.0,0.0,0.0,Canon 5DMarkII,FL2,-0.041833325135190724,36
+0.0,0.0,0,False,False,0.0,0.0,0.0,0.0,0.0,0.0,Nikon D80,FL2,-0.041833325135190724,36
+0.0,0.11096196868008948,0,False,False,0.0,0.0,0.0,0.0,0.3327181208053691,0.0,Olympus E-PL2,FL2,-0.041833325135190724,36
+0.0,0.0013003355704697987,0,False,False,0.0,0.0,0.0,0.0,0.003901006711409396,0.0,Canon 300D,FL2,-0.041833325135190724,36
+0.0,0.0,0,False,False,0.0,0.0,0.0,0.0,0.0,0.0,Canon 1DMarkIII,FL2,-0.041833325135190724,36
+0.0,0.0,0,False,False,0.0,0.0,0.0,0.0,0.0,0.0,Nikon D5100,FL2,-0.041833325135190724,36

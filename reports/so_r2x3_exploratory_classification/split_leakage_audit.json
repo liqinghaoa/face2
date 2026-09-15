@@ -1,0 +1,190 @@
+{
+  "all_pass": true,
+  "folds": [
+    {
+      "condition": "RGB",
+      "development": 400,
+      "fold": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB",
+      "development": 400,
+      "fold": 1,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB",
+      "development": 400,
+      "fold": 2,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB",
+      "development": 400,
+      "fold": 3,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB",
+      "development": 400,
+      "fold": 4,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B1MH",
+      "development": 400,
+      "fold": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B1MH",
+      "development": 400,
+      "fold": 1,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B1MH",
+      "development": 400,
+      "fold": 2,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B1MH",
+      "development": 400,
+      "fold": 3,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B1MH",
+      "development": 400,
+      "fold": 4,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B2MH",
+      "development": 400,
+      "fold": 0,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B2MH",
+      "development": 400,
+      "fold": 1,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B2MH",
+      "development": 400,
+      "fold": 2,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B2MH",
+      "development": 400,
+      "fold": 3,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    },
+    {
+      "condition": "RGB_B2MH",
+      "development": 400,
+      "fold": 4,
+      "id_overlap_train_outer": 0,
+      "id_overlap_train_val": 0,
+      "id_overlap_val_outer": 0,
+      "inner_train": 320,
+      "inner_validation": 80,
+      "outer_test": 100,
+      "outer_test_model_selection_access": 0
+    }
+  ],
+  "outer_test_prediction_coverage": {
+    "RGB": 500,
+    "RGB_B1MH": 500,
+    "RGB_B2MH": 500
+  }
+}

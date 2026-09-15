@@ -1,0 +1,7 @@
+sample_id,fold,true_class,predicted_class,prob_patient,target_class,target_name,output_png
+102400553,0,1,1,0.884330,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_0\102400553_gradcam.png
+203151068,0,1,1,0.895176,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_0\203151068_gradcam.png
+A001813114,0,1,1,0.886729,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_0\A001813114_gradcam.png
+A002345714,0,1,1,0.953297,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_0\A002345714_gradcam.png
+A000477213,1,1,1,0.967270,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_1\A000477213_gradcam.png
+A002128820,1,1,1,0.957935,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\figures\gradcam_oof\fold_1\A002128820_gradcam.png

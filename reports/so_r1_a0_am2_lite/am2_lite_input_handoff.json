@@ -1,0 +1,38 @@
+{
+  "protocol_id": "SO-R1-A0-AM2-Lite",
+  "hashes": {
+    "so0_config": "3a6642557fafb1a9db80bcbb4f9f1a24cd167873b5a4a1b59b24525763740872",
+    "a0_v1": "99d4e51442d542aed8522547e6c7ef0d59d7f3429edf7ecee698fc5acf873aee",
+    "a1_content": "2ce9ec0e1e22bf0ade5e29e1e3859f99109f20a157d792dabbc40bc7f513469d",
+    "c2_acceptance": "94cda32c1df222b98dd9faf672b97ceb11eb07946ed8b0133ca8fc8df83e64cf",
+    "am1_acceptance": "bf8da39910f6537acb99360fc19a0eef33728492bf2b122b902f8689cddedb5a",
+    "am1_inventory": "a4488fe39d2d2775eb284d91d4432c0cc77a98dbc224c3d1ebce0e2be991ce7b",
+    "am1_stage1": "adf1f33bab5f632d63312c8195c08d826dd969406ff9d0adc87a07e55a96a0ca"
+  },
+  "fixed_seen": [
+    "Canon 5DMarkII",
+    "Nikon D80",
+    "Olympus E-PL2"
+  ],
+  "fixed_unseen": [
+    "Canon 1DMarkIII",
+    "Nikon D5100"
+  ],
+  "excluded_cameras": [
+    "Nokia N900",
+    "Pentax Q",
+    "SONY NEX-5N"
+  ],
+  "git_commit": "3251c11630e0a438f4dfa6f6755703675ff2330f",
+  "reuse_safe": [
+    "AM1 candidate inventory",
+    "AM1 stage-1 only after hash/schema verification"
+  ],
+  "must_recompute": [
+    "all eligible candidate expanded stress",
+    "all passing candidate original-14",
+    "fixed-3 SAM/TV ranking",
+    "final six-camera stress",
+    "24-pair regression pilot"
+  ]
+}

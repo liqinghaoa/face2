@@ -1,0 +1,2 @@
+﻿sample_id,fold,true_class,predicted_class,prob_control,prob_patient,target_class,target_name,checkpoint_path,input_image_path,output_png
+100037382,0,1,1,0.1736011654138565,0.8263988494873047,1,Patient,E:\projects\face2\experiments\500Data\R3DPR_ResNet18_ControlVsPatient_Binary_256x320_v2_relight_neutral_front_fullbaseline_ls005_5fold\fold_0\checkpoints\best_macro_auc.pth,E:\projects\face2\data\processed\global_face_R3DPR\SH093\images\100037382.png,E:\projects\face2\.codex-tmp\gradcam_oof_smoke\fold_0\100037382_gradcam.png

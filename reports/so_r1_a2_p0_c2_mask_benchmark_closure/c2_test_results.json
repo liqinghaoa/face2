@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "command": "E:\\resarch\\Anaconda3\\python.exe -m pytest -q tests/so_r1/test_so_r1_a2_p0_c2_mask_benchmark_closure.py",
+      "returncode": 0,
+      "stdout": ".......                                                                  [100%]\n7 passed in 1.17s\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": "E:\\resarch\\Anaconda3\\python.exe -m pytest -q tests/so_r1",
+      "returncode": 0,
+      "stdout": "..............                                                           [100%]\n14 passed in 2.68s\n",
+      "stderr": "",
+      "passed": true
+    }
+  ]
+}

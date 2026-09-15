@@ -1,0 +1,12 @@
+protocol_id: SO-R1-A0-AM2-Lite
+root_seed: 20260822
+audit_only: true
+training_forbidden: true
+am2_lite_regression_only: true
+fixed_seen: [Canon 5DMarkII, Nikon D80, Olympus E-PL2]
+fixed_unseen: [Canon 1DMarkIII, Nikon D5100]
+excluded_cameras: [Nokia N900, Pentax Q, SONY NEX-5N]
+lights: [D65, A, FL2, FL11]
+output_root: data/processed/SO_R1_A0_AM2_Lite_CameraSet_v1
+regression_root: data/processed/SO_R1_A0_AM2_Lite_RegressionPilot_v1
+report_root: reports/so_r1_a0_am2_lite

@@ -1,0 +1,8 @@
+{
+  "requested_latents": 64,
+  "matched_latents": 64,
+  "requested_rgb": 320,
+  "matched_rgb": 320,
+  "metadata_match": true,
+  "pass": true
+}

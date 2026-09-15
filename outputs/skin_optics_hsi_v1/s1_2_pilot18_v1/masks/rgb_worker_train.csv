@@ -1,0 +1,19 @@
+﻿failure_code,failure_detail,sample_id,split,status
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p003_neutral_front,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p003_neutral_left,train,FAIL
+face_detection_failed,RuntimeError('face_detection_failed'),p003_neutral_right,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p003_smile_front,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p003_smile_left,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p003_smile_right,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p004_neutral_front,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p004_neutral_left,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p004_neutral_right,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p004_smile_front,train,FAIL
+face_detection_failed,RuntimeError('face_detection_failed'),p004_smile_left,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p004_smile_right,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_neutral_front,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_neutral_left,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_neutral_right,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_smile_front,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_smile_left,train,FAIL
+"ValueError(""Reference mode is unavailable if 'data' is not c_contiguous.""","ValueError(""Reference mode is unavailable if 'data' is not c_contiguous."")",p005_smile_right,train,FAIL

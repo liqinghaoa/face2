@@ -1,0 +1,9 @@
+{
+  "failure": "FileExistsError(17, '\u5f53\u6587\u4ef6\u5df2\u5b58\u5728\u65f6\uff0c\u65e0\u6cd5\u521b\u5efa\u8be5\u6587\u4ef6\u3002')",
+  "failure_type": "FileExistsError",
+  "formal_b1_training_started": false,
+  "precision": "FP32",
+  "status": "FAIL",
+  "verification": "workers=2 FP32 preflight plus one complete epoch",
+  "workers": 2
+}

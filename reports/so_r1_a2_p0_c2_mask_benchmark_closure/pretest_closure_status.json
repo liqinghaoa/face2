@@ -1,0 +1,12 @@
+{
+  "mask_pass": true,
+  "independence_pass": true,
+  "warmup_pass": true,
+  "rss_pass": true,
+  "float16_pass": true,
+  "replay_pass": true,
+  "loader_pass": true,
+  "coverage_pass": true,
+  "storage_gate": "PASS",
+  "protected_pass": true
+}

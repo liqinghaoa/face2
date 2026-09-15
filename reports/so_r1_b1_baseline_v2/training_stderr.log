@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b1_baseline_training.py", line 7, in <module>
+    try: print(run(args.project_root))
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 339, in run
+    loss, overflow=_one_step(model,optimizer,batch,device,amp,scaler)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 222, in _one_step
+    if not all(_finite(p.grad) for p in model.parameters() if p.grad is not None): raise RuntimeError("FAIL_NONFINITE_GRADIENT")
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: FAIL_NONFINITE_GRADIENT

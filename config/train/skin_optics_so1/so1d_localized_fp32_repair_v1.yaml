@@ -1,0 +1,36 @@
+phase: SO-1D-R2
+protocol_version: SO1D_Localized_FP32_Repair_v1
+base_protocol: SO1D_Formal_Train_v1.0
+
+seed: 20260801
+
+numerical_precision:
+  mode: localized_fp32
+  fp32_blocks:
+    - up1.conv
+
+training:
+  batch_size: 8
+  amp: true
+
+optimizer:
+  type: AdamW
+  lr: 0.001
+  weight_decay: 0.0001
+
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 30
+  eta_min: 0.000001
+  step_unit: epoch
+
+loss:
+  type: masked_smooth_l1
+  beta: 0.1
+  channel_weights: [0.25, 0.25, 0.25, 0.25]
+
+diagnostic:
+  exact_epoch7_order_sha256: 36224640f943244a6ec498226a86ce7d624f8b3486a866d69901ffc098e027b3
+  failing_batch_index: 555
+  bn_monitor_interval_batches: 50
+  diagnostic_only: true

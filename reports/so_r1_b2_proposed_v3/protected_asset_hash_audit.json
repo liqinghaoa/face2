@@ -1,0 +1,106 @@
+{
+  "after": {
+    "allowlist_pair_count": 24,
+    "am4_status": "PASS",
+    "payload_audit": {
+      "acceptance_sha256": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+      "first_payload_failure": [],
+      "ledger_records": 13500,
+      "ledger_sha256": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+      "manifest_hashes": {
+        "acquisition_manifest.csv": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+        "latent_manifest.csv": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+        "pair_manifest.csv": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+        "qc_manifest.csv": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+      },
+      "payload_failure_count": 0,
+      "payloads_verified": true,
+      "protocol_lock_sha256": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+      "status": "PASS",
+      "target_range": {
+        "H": [
+          0.0,
+          1.0
+        ],
+        "M": [
+          0.0,
+          1.0
+        ]
+      },
+      "target_range_is_unit_interval": true
+    },
+    "sha256": {
+      "acquisition_manifest": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+      "am4_acceptance": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+      "am4_camera_config": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+      "b1_acceptance": "0f377eccb21f196aa76f25c7864402565ec44109db402f6d7d5c79756a30756a",
+      "b1_checkpoint": "5b1dd85f840d4d00a7c1c1f3b7c0a9306031408ecf0c5a557f53ca0810c0265b",
+      "b1_contract": "a12d478202fabcf7ba696a7815498104af4ca7653769aea8eae231a09c81887d",
+      "b1_metrics": "0edbe27591183ec98432203302164d2f386f0cd3c1d99820532184825632046e",
+      "b1_protected_audit": "dc890bfe66ac55e26cc40b811489c1471025aa8929ae99466621fe93b72badc9",
+      "b1_schedules": "6df5d305445505737a9fa4c674b7721501b1a550b776eccefa637504b059a8a2",
+      "d0_config": "1acbbd17c400c2075a77a3fff49ca2d671f2506de401cd530a0c744e6ea03808",
+      "d0_lock": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+      "final_24pair_allowlist": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+      "g1_acceptance": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+      "g1_ledger": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+      "latent_manifest": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+      "pair_manifest": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+      "qc_manifest": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+    },
+    "status": "PASS"
+  },
+  "before": {
+    "allowlist_pair_count": 24,
+    "am4_status": "PASS",
+    "payload_audit": {
+      "acceptance_sha256": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+      "first_payload_failure": [],
+      "ledger_records": 13500,
+      "ledger_sha256": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+      "manifest_hashes": {
+        "acquisition_manifest.csv": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+        "latent_manifest.csv": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+        "pair_manifest.csv": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+        "qc_manifest.csv": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+      },
+      "payload_failure_count": 0,
+      "payloads_verified": true,
+      "protocol_lock_sha256": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+      "status": "PASS",
+      "target_range": {
+        "H": [
+          0.0,
+          1.0
+        ],
+        "M": [
+          0.0,
+          1.0
+        ]
+      },
+      "target_range_is_unit_interval": true
+    },
+    "sha256": {
+      "acquisition_manifest": "0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee",
+      "am4_acceptance": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+      "am4_camera_config": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+      "b1_acceptance": "0f377eccb21f196aa76f25c7864402565ec44109db402f6d7d5c79756a30756a",
+      "b1_checkpoint": "5b1dd85f840d4d00a7c1c1f3b7c0a9306031408ecf0c5a557f53ca0810c0265b",
+      "b1_contract": "a12d478202fabcf7ba696a7815498104af4ca7653769aea8eae231a09c81887d",
+      "b1_metrics": "0edbe27591183ec98432203302164d2f386f0cd3c1d99820532184825632046e",
+      "b1_protected_audit": "dc890bfe66ac55e26cc40b811489c1471025aa8929ae99466621fe93b72badc9",
+      "b1_schedules": "6df5d305445505737a9fa4c674b7721501b1a550b776eccefa637504b059a8a2",
+      "d0_config": "1acbbd17c400c2075a77a3fff49ca2d671f2506de401cd530a0c744e6ea03808",
+      "d0_lock": "982b8a19777b32a9d87d630c1fec373ca474a39e7eb35da4318e43418f9c25c3",
+      "final_24pair_allowlist": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+      "g1_acceptance": "5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb",
+      "g1_ledger": "67412c6bbc7799ae032315a2fd944e9bcc753b4f413e201380a0c9b14892bc16",
+      "latent_manifest": "035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046",
+      "pair_manifest": "61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac",
+      "qc_manifest": "62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef"
+    },
+    "status": "PASS"
+  },
+  "changed": 0,
+  "missing": 0
+}

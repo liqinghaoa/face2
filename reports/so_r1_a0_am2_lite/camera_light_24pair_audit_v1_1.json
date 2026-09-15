@@ -1,0 +1,10 @@
+{
+  "row_count": 24,
+  "unique_pair_count": 24,
+  "quality_pass_count": 24,
+  "stress_pass_count": 24,
+  "duplicate_count": 0,
+  "missing_count": 0,
+  "candidate_only": true,
+  "not_frozen_reason": "64-latent regression high clipping gate failed"
+}

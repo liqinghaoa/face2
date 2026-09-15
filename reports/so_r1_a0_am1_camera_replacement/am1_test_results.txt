@@ -1,0 +1,8 @@
+E:\resarch\Anaconda3\python.exe -m pytest -q tests/so_r1/test_so_r1_a0_am1_camera_replacement.py
+....                                                                     [100%]
+4 passed in 0.55s
+
+
+E:\resarch\Anaconda3\python.exe -m pytest -q tests/so_r1
+..................                                                       [100%]
+18 passed in 2.36s

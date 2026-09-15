@@ -1,0 +1,10 @@
+{
+  "baseline_checkpoint_authoritative": false,
+  "baseline_training_status": "NOT_STARTED",
+  "failure": "yaml.representer.RepresenterError: TorchVersion is not YAML-serializable",
+  "failure_stage": "contract_serialization_after_preflight",
+  "next_stage_authorized": false,
+  "proposed_training_started": false,
+  "status": "FAIL_IMPLEMENTATION_PRETRAIN",
+  "training_authorized": false
+}

@@ -1,0 +1,11 @@
+{
+  "clinical_fields_read": [],
+  "image_input": "rgb_b2mh_only",
+  "x3_split_fields": [
+    "ID",
+    "patient_group_id",
+    "fold",
+    "binary_label",
+    "SEX"
+  ]
+}

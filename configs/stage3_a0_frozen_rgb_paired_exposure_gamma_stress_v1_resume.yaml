@@ -1,9 +1,0 @@
-resume_from: counterfactual_generation
-selected_inference_mode: original_validation_batch16_cuda
-paired_baseline_source: reproduced_original_probabilities
-skip_completed_preflight: false
-rerun_original_baseline: true
-run_counterfactual_inference: true
-run_training: false
-modify_checkpoints: false
-classification_threshold: 0.5

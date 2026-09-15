@@ -174,3 +174,63 @@ def build_face_valid_mask(
         "min_component_area_px": min_area,
         "face_valid_area_ratio": float((final_mask > 0).sum() / final_mask.size),
     }
+
+
+def build_outer_fine_hair_mask(
+    parsing_label: np.ndarray,
+    source_valid_mask: np.ndarray,
+    base_face_valid_mask: np.ndarray,
+    canvas_landmarks: np.ndarray,
+    outer_band_px: int,
+    contact_dilation_px: int,
+    max_component_area_ratio: float,
+    max_mean_thickness_px: float,
+) -> dict[str, np.ndarray | int | float]:
+    """Select small parsed-hair components only in a narrow band outside the face oval."""
+    if parsing_label.shape != source_valid_mask.shape or parsing_label.shape != base_face_valid_mask.shape:
+        raise SampleFailure("invalid_output_shape", "fine-hair inputs must share the same shape")
+    if outer_band_px <= 0 or contact_dilation_px < 0:
+        raise ValueError("fine-hair dilation radii must be non-negative, with outer_band_px positive")
+    if not 0.0 < max_component_area_ratio <= 1.0 or max_mean_thickness_px <= 0.0:
+        raise ValueError("fine-hair component limits are invalid")
+
+    face_oval = np.zeros(parsing_label.shape, dtype=np.uint8)
+    oval_points = regions.points_for(regions.FACE_OVAL_INDICES, canvas_landmarks)
+    cv2.fillPoly(face_oval, [np.rint(oval_points).astype(np.int32)], 255)
+    outer_band = (dilate_binary(face_oval, outer_band_px) > 0) & (face_oval == 0)
+    hair_id = face_parser.class_ids(("hair",))[0]
+    candidate = (parsing_label == hair_id) & outer_band & (source_valid_mask > 0)
+    candidate_mask = binary_uint8(candidate)
+    face_contact = dilate_binary(base_face_valid_mask, contact_dilation_px) > 0
+    max_component_area_px = max(1, int(round(candidate.size * max_component_area_ratio)))
+
+    count, labels, stats, _ = cv2.connectedComponentsWithStats(candidate.astype(np.uint8), connectivity=8)
+    restored = np.zeros_like(candidate, dtype=np.uint8)
+    restored_components = 0
+    for label in range(1, count):
+        area = int(stats[label, cv2.CC_STAT_AREA])
+        width = int(stats[label, cv2.CC_STAT_WIDTH])
+        height = int(stats[label, cv2.CC_STAT_HEIGHT])
+        component = labels == label
+        mean_thickness = area / max(width, height)
+        if (
+            area <= max_component_area_px
+            and mean_thickness <= max_mean_thickness_px
+            and np.any(component & face_contact)
+        ):
+            restored[component] = 1
+            restored_components += 1
+    restored_mask = binary_uint8(restored)
+    return {
+        "fine_hair_mask": restored_mask,
+        "fine_hair_candidate_mask": candidate_mask,
+        "fine_hair_face_oval_mask": face_oval,
+        "fine_hair_outer_band_mask": binary_uint8(outer_band),
+        "fine_hair_candidate_component_count": max(0, count - 1),
+        "fine_hair_restored_component_count": restored_components,
+        "fine_hair_restored_pixel_count": int(restored.sum()),
+        "fine_hair_outer_band_px": outer_band_px,
+        "fine_hair_contact_dilation_px": contact_dilation_px,
+        "fine_hair_max_component_area_px": max_component_area_px,
+        "fine_hair_max_mean_thickness_px": float(max_mean_thickness_px),
+    }

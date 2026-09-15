@@ -1,0 +1,17 @@
+protocol_id: SO-R1-A2-P0-C1
+status: CORRECTIVE_COMPLETION
+audit_only: true
+training_forbidden: true
+full_generation_authorized: false
+root_seed: 20260822
+benchmark: {latent_count: 256, acquisitions_per_latent: 5, warmup_latent_count: 16, replay_latent_count: 32}
+split_counts: {train_like_id: 190, validation_like_id: 19, id_test: 19, camera_ood: 10, light_ood: 9, joint_ood: 9}
+mask_prior:
+  full: {count: 102, min_valid_fraction: 1.0, max_valid_fraction: 1.0}
+  mild: {count: 102, min_valid_fraction: 0.70, max_valid_fraction: 0.95}
+  strong: {count: 52, min_valid_fraction: 0.30, max_valid_fraction: 0.70}
+output_root: data/processed/SO_R1_A2_P0_C1_Completion_v1
+report_root: reports/so_r1_a2_p0_c1_completion
+frozen_split: config/so_r1/frozen_camera_light_split_v1.yaml
+a1_root: data/processed/SO_R1_A1_PairedPilot_v1
+p0_root: data/processed/SO_R1_A2_P0_PrefreezeAudit_v1

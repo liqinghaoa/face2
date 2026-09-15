@@ -1,0 +1,6 @@
+{
+  "status": "NOT_APPLICABLE_AM2_FAIL",
+  "inherits_c2_projection_only": false,
+  "reason": "AM2-Lite regression high clipping failure and missing AM2 float16/RSS measurement prevent release projection",
+  "full_generation_authorized": false
+}

@@ -1,4 +1,4 @@
-"""Train the independent R3DPR direct-label ResNet18 binary baseline."""
+"""Train the independent R3DPR direct-label ResNet binary baseline."""
 
 from __future__ import annotations
 
@@ -25,7 +25,11 @@ if str(PROJECT_ROOT) not in sys.path:
 from datasets.R3DPR.binary_face_dataset import R3DPRBinaryFaceDataset, build_r3dpr_transforms
 from losses.classification_losses import build_criterion
 from metrics.R3DPR.binary_classification_metrics import compute_binary_metrics, flatten_metrics
-from models.R3DPR.resnet18_binary import build_r3dpr_resnet18_binary, count_parameters
+from models.R3DPR.resnet18_binary import (
+    SUPPORTED_R3DPR_RESNET_BACKBONES,
+    build_r3dpr_resnet_binary,
+    count_parameters,
+)
 from utils.R3DPR.binary_data_audit import audit_r3dpr_binary_data
 from utils.experiment_utils import configure_logging, load_yaml, save_yaml, seed_worker, set_random_seed
 
@@ -262,11 +266,12 @@ def run_fold(config: dict, table: pd.DataFrame, output_dir: Path, fold: int, dev
 
     strategy = str(config["model"].get("trainability_strategy", "full_finetune"))
     batchnorm_mode = str(train_cfg.get("batchnorm_mode", "train")).strip().lower()
-    model = build_r3dpr_resnet18_binary(config["model"]["pretrained"], dropout=config["model"].get("dropout")).to(device)
+    backbone = str(config["model"]["backbone"]).strip().lower()
+    model = build_r3dpr_resnet_binary(backbone, config["model"]["pretrained"], dropout=config["model"].get("dropout")).to(device)
     configure_trainability(model, strategy)
     final_linear = classifier_linear(model)
-    if final_linear.in_features != 512 or final_linear.out_features != 2:
-        raise RuntimeError("R3DPR baseline must use Linear(512, 2) classifier head")
+    if final_linear.out_features != 2:
+        raise RuntimeError("R3DPR baseline must use a two-logit classifier head")
     weights = compute_class_weights(train_set.labels).to(device)
     loss_name = str(train_cfg.get("loss", "weighted_cross_entropy")).strip().lower()
     label_smoothing_alpha = float(train_cfg.get("label_smoothing_alpha", 0.0))
@@ -289,6 +294,8 @@ def run_fold(config: dict, table: pd.DataFrame, output_dir: Path, fold: int, dev
         )
     fold_info = {
         "fold": fold,
+        "backbone": backbone,
+        "classifier_in_features": int(final_linear.in_features),
         "trainability_strategy": strategy,
         "batchnorm_mode": batchnorm_mode,
         "backbone_batchnorm_eval": batchnorm_mode == "eval" or strategy in {"head_only", "staged_layer4"},
@@ -374,8 +381,11 @@ def main() -> Path:
         config["train"]["epochs"] = int(args.epochs)
     if config["task"]["type"] != "binary_control_vs_patient" or int(config["task"]["num_classes"]) != 2:
         raise ValueError("R3DPR requires the fixed Control-versus-Patient binary task")
-    if config["model"]["backbone"] != "resnet18" or int(config["model"]["num_classes"]) != 2:
-        raise ValueError("R3DPR baseline requires ResNet18 with two output logits")
+    backbone = str(config["model"]["backbone"]).strip().lower()
+    if backbone not in SUPPORTED_R3DPR_RESNET_BACKBONES or int(config["model"]["num_classes"]) != 2:
+        raise ValueError(
+            "R3DPR baseline requires resnet18, resnet34, or resnet50 with two output logits"
+        )
     strategy = config["model"].get("trainability_strategy")
     if strategy not in {"full_finetune", "head_only", "staged_layer4"}:
         raise ValueError("R3DPR trainability_strategy must be full_finetune, head_only, or staged_layer4")

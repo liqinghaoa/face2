@@ -1,0 +1,39 @@
+{
+  "case_count": 500,
+  "conditions": {
+    "RGB": {
+      "count": 500,
+      "shape": [
+        3,
+        320,
+        256
+      ]
+    },
+    "RGB_B1MH": {
+      "count": 500,
+      "shape": [
+        5,
+        320,
+        256
+      ]
+    },
+    "RGB_B2MH": {
+      "count": 500,
+      "shape": [
+        5,
+        320,
+        256
+      ]
+    }
+  },
+  "dtype": "float32",
+  "dtype_float32_all": true,
+  "exact_file_inventory": true,
+  "finite_all": true,
+  "layout": "C\u00d7H\u00d7W",
+  "mask_binary_0_255_all": true,
+  "mask_outside_zero": true,
+  "mh_source_trace_all_cases": true,
+  "padding_row_zero": true,
+  "status": "PASS"
+}

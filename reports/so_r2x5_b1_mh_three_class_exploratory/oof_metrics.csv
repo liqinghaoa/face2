@@ -1,0 +1,2 @@
+scope,macro_ovr_auc,accuracy,macro_f1,balanced_accuracy
+pooled_oof,0.6723237935993932,0.452,0.4517206173320096,0.4995035695437595

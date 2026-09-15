@@ -1,0 +1,8 @@
+﻿candidate,target_key,summary_field,value,operator,target,unit,recomputed_pass,engine_pass,audit_agrees
+V2R-PS,median_logrmse,median_logrmse,0.061478291574805354,le,0.06,log_rmse,False,False,True
+V2R-PS,p90_logrmse,p90_logrmse,0.11687712088429199,le,0.1,log_rmse,False,False,True
+V2R-PS,median_rmse,median_rmse,0.018109445539665536,le,0.03,reflectance,True,True,True
+V2R-PS,median_sam_deg,median_sam_deg,3.484414323927867,le,3.0,degree,False,False,True
+V2R-PS,maximum_abs_median_signed_band_residual,maximum_abs_median_signed_band_residual,0.03419971900544064,le,0.03,reflectance,False,False,True
+V2R-PS,reference_better_fraction,model_better_than_reference_fraction,0.9318181818181818,ge,0.6666666666666666,fraction,True,True,True
+V2R-PS,model_to_reference_median_error_ratio,median_model_to_reference_error_ratio,0.4431593301842419,le,0.9,ratio,True,True,True

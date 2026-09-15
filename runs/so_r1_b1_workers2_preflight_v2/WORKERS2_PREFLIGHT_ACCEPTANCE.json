@@ -1,0 +1,81 @@
+{
+  "checkpoint": "E:\\projects\\face2\\runs\\so_r1_b1_workers2_preflight_v2\\checkpoints\\epoch_01.pt",
+  "checkpoint_is_authoritative": false,
+  "contract_hash": "cdddb85dba22a80e475ee5b34fe2cfbafbb78635977564530465ececfa339918",
+  "elapsed_seconds": 389.1720000000005,
+  "epoch": 1,
+  "formal_b1_training_started": false,
+  "paired_schedule": {
+    "duplicate_latent_count": 0,
+    "epoch": 1,
+    "epoch_pair_schedule_hash": "b9cf1ec9d6bee3761f7cc2ed3859727482a65d5eca4c3bebb8cf05754ade646f",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  "precision": "FP32",
+  "source_dataset_unchanged": true,
+  "status": "PASS",
+  "train_batches": 2500,
+  "train_masked_smooth_l1": 0.11072865324728191,
+  "validation": {
+    "mae": [
+      0.04124449135545007,
+      0.2521285587972636
+    ],
+    "masked_smooth_l1": [
+      0.01621149812414558,
+      0.20543805653084332
+    ],
+    "mean_predictor_mae": [
+      0.2528877476880144,
+      0.250338844442905
+    ],
+    "one_saturation_fraction": [
+      0.0,
+      0.0
+    ],
+    "pearson": [
+      0.9915090503437498,
+      0.24245249849391887
+    ],
+    "prediction_mean": [
+      0.4844799042761891,
+      0.5771910672216667
+    ],
+    "prediction_variance": [
+      0.08408545607775048,
+      0.0038798593819965865
+    ],
+    "rmse": [
+      0.06741216306710979,
+      0.2961161617896864
+    ],
+    "spearman": [
+      0.9932796648255401,
+      0.23530958136618887
+    ],
+    "target_mean": [
+      0.4971985989941424,
+      0.4981203787866298
+    ],
+    "target_variance": [
+      0.08505252677151898,
+      0.08396739892706453
+    ],
+    "variance_ratio": [
+      0.9886297241189977,
+      0.046206735370791896
+    ],
+    "zero_saturation_fraction": [
+      0.0,
+      0.0
+    ]
+  },
+  "verification": "workers=2 FP32 preflight plus one complete epoch",
+  "workers": 2
+}

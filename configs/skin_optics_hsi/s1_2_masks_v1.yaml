@@ -1,0 +1,73 @@
+schema_version: 1
+stage: S1-2
+status: provisional_train_protocol
+output_revision: r2
+
+runtime:
+  rgb_worker_python: E:/resarch/Anaconda3/envs/face2/python.exe
+  parser_checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+  parser_model: bisenet_celebamaskhq_19class
+  parser_device: cuda:0
+  face_detection_model_selection: 1
+  face_detection_min_confidence: 0.5
+  face_mesh_min_confidence: 0.5
+  bbox_expand_top_ratio: 0.10
+  bbox_expand_bottom_ratio: 0.20
+  bbox_expand_side_ratio: 0.20
+
+semantic:
+  anatomical_class_ids: [1, 10]
+  exclusion_class_ids: [0, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18]
+  landmark_exclusion_dilation_px: 4
+  anatomical_boundary_erosion_px: 5
+
+radiometric:
+  finite_bands_required: 31
+  reflectance_tolerance: 1.0e-6
+  minimum_broadband_reflectance: 0.015
+  saturation_band_threshold: 0.999
+  saturation_min_band_fraction: 0.10
+
+illumination:
+  minimum_broadband_reflectance: 0.03
+  maximum_broadband_reflectance: 0.90
+  rgb_specular_value_min: 0.94
+  rgb_specular_chroma_max: 0.08
+  scanline_robust_z: 10.0
+  scanline_min_absolute_jump: 0.03
+  scanline_dilation_px: 2
+  scanline_min_candidate_pixels: 64
+
+roi:
+  cheek_center_x_fraction: [0.30, 0.70]
+  cheek_center_y_between_eye_mouth: 0.58
+  cheek_radius_x_face_width: 0.14
+  cheek_radius_y_face_height: 0.12
+  forehead_x_fraction: [0.30, 0.70]
+  forehead_top_face_fraction: 0.12
+  forehead_bottom_above_brow_fraction: 0.04
+  minimum_whole_skin_pixels: 5000
+  minimum_cheek_pixels: 1000
+  minimum_forehead_pixels: 1000
+
+qc:
+  minimum_final_to_anatomical_fraction: 0.25
+  minimum_largest_component_fraction: 0.70
+  minimum_largest_component_fraction_side: 0.65
+  maximum_radiometric_exclusion_fraction: 0.10
+  maximum_illumination_exclusion_fraction: 0.60
+  maximum_sample_failure_fraction: 0.05
+  maximum_sample_review_fraction: 0.50
+  minimum_stratum_usable_fraction: 0.80
+  review_contact_sheet_max_samples: 24
+
+policy:
+  develop_split: train
+  validation_split: valid
+  test_access_allowed: false
+  masks_coordinate_system: aligned_rgb_yx
+  side_pose_rule: left_view_uses_image_right_cheek_and_right_view_uses_image_left_cheek
+  front_pose_rule: require_both_cheeks
+  forehead_role: secondary_optional_with_review
+  nose_role: excluded_from_primary_roi
+  publication_subject_allowlist: [p012, p019, p027]

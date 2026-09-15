@@ -1,0 +1,49 @@
+{
+  "protocol": {
+    "channels": [
+      "M_sensitive",
+      "H_sensitive"
+    ],
+    "forward_calls_allowed": 0,
+    "label_access_allowed": false,
+    "map_statistics": "valid-mask only",
+    "models": [
+      "B1_baseline",
+      "B2_proposed_lambda_0p50"
+    ],
+    "qualitative_indices": [
+      1,
+      46,
+      91,
+      137,
+      182,
+      228,
+      273,
+      319,
+      364,
+      410,
+      455,
+      500
+    ],
+    "qualitative_selection": "canonical full_ids fixed quantiles",
+    "reference_offset": 16,
+    "seam_x": [
+      241,
+      482,
+      723
+    ],
+    "seam_y": [
+      241,
+      482,
+      723,
+      964
+    ],
+    "source_stage": "SO-R2-X1",
+    "stage": "SO-R2-X2",
+    "visualization": {
+      "map_display": "per-board valid-mask percentile 1-99 only; source arrays unchanged"
+    }
+  },
+  "protocol_sha256": "de7091ce01011414888a5b0d6538197a4f4acd124b52cd37e5045e4aee4bd886",
+  "status": "FROZEN"
+}

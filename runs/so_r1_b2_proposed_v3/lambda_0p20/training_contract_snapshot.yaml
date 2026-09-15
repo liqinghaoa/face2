@@ -1,0 +1,28 @@
+status: TUNING_CANDIDATE
+authoritative: false
+lambda_pair: 0.2
+b1_contract_hash: 7dcfb309d9d61c35b1de555b815a84e7c2f83be5d9b5e63f74bc91d14217b84f
+selection_protocol_hash: d8ff71a332b057a427cf8f55ab868695b51b1d3f6ad001c767f577c4d41325e1
+model_init_seed: 983833781
+paired_sampler_seed: 983833781
+precision: FP32
+batch_contract:
+  latent_groups_per_batch: 4
+  images_per_batch: 8
+  pair_flattening: '[B,2,3,H,W] -> [2B,3,H,W]; independent supervised samples only'
+data_loader_contract:
+  num_workers: 2
+  pin_memory: true
+  persistent_workers: true
+  timeout_seconds: 120
+  worker_seed: torch initial seed + worker id
+  augmentation: geometric/photometric/color-jitter/exposure/gamma/crop all disabled
+optimizer:
+  type: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 25
+  eta_min: 1.0e-06
+num_epochs: 25

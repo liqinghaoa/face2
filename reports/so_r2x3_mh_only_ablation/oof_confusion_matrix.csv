@@ -1,0 +1,9 @@
+﻿condition,true_class,Control,Patient
+B1_MH_ONLY,Control,55,60
+B1_MH_ONLY,Patient,61,324
+B2_MH_ONLY,Control,62,53
+B2_MH_ONLY,Patient,70,315
+B2_M_ONLY,Control,71,44
+B2_M_ONLY,Patient,73,312
+B2_H_ONLY,Control,71,44
+B2_H_ONLY,Patient,66,319

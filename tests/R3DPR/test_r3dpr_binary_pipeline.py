@@ -11,7 +11,7 @@ from PIL import Image
 from datasets.R3DPR.binary_face_dataset import R3DPRBinaryFaceDataset, build_r3dpr_transforms
 from losses.classification_losses import build_criterion
 from metrics.R3DPR.binary_classification_metrics import compute_binary_metrics
-from models.R3DPR.resnet18_binary import build_r3dpr_resnet18_binary
+from models.R3DPR.resnet18_binary import build_r3dpr_resnet18_binary, build_r3dpr_resnet_binary
 from scripts.evaluate.R3DPR.plot_r3dpr_training_diagnostics import plot_experiment
 from scripts.train.R3DPR.train_r3dpr_resnet18_binary_5fold import apply_training_mode, build_lr_scheduler, configure_trainability
 from utils.R3DPR.binary_data_audit import audit_r3dpr_binary_data
@@ -71,7 +71,15 @@ def test_audit_requires_complete_images_and_group_isolation(tmp_path: Path):
 def test_metrics_and_model_head_are_binary():
     metrics = compute_binary_metrics([0, 1, 0, 1], [[0.9, 0.1], [0.2, 0.8], [0.7, 0.3], [0.1, 0.9]])
     assert metrics["macro_auc"] == 1.0
+    assert metrics["sensitivity"] == 1.0
+    assert metrics["specificity"] == 1.0
     assert metrics["confusion_matrix"].tolist() == [[2, 0], [0, 2]]
+    asymmetric_metrics = compute_binary_metrics(
+        [0, 0, 1, 1],
+        [[0.9, 0.1], [0.2, 0.8], [0.7, 0.3], [0.1, 0.9]],
+    )
+    assert asymmetric_metrics["sensitivity"] == pytest.approx(0.5)
+    assert asymmetric_metrics["specificity"] == pytest.approx(0.5)
     with pytest.raises(ValueError):
         compute_binary_metrics([0, 0], [[0.8, 0.2], [0.7, 0.3]])
     model = build_r3dpr_resnet18_binary(pretrained="none")
@@ -84,6 +92,18 @@ def test_metrics_and_model_head_are_binary():
     assert dropout_model.fc[0].p == pytest.approx(0.3)
     assert dropout_model.fc[-1].in_features == 512
     assert dropout_model.fc[-1].out_features == 2
+
+
+@pytest.mark.parametrize(
+    ("backbone", "features"),
+    [("resnet18", 512), ("resnet34", 512), ("resnet50", 2048)],
+)
+def test_supported_r3dpr_resnets_have_two_logit_heads(backbone: str, features: int):
+    model = build_r3dpr_resnet_binary(backbone, pretrained="none")
+    assert model.fc.in_features == features
+    assert model.fc.out_features == 2
+    with torch.no_grad():
+        assert tuple(model(torch.zeros(1, 3, 64, 64)).shape) == (1, 2)
 
 
 def test_head_only_freezes_backbone_and_batchnorm_statistics():

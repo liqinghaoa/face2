@@ -1,0 +1,14 @@
+{
+  "container_format": "npz",
+  "writer": "np.savez_compressed",
+  "compression_enabled": true,
+  "compression_algorithm": "zip_deflate",
+  "compression_level": "numpy/default zlib",
+  "per_latent_file_count": 1,
+  "latent_file_count": 256,
+  "actual_stored_bytes": 280772813,
+  "uncompressed_theoretical_bytes": 587202560,
+  "compression_ratio": 2.091379694942188,
+  "serialization_mb_s": 8.497521995535655,
+  "deserialization_mb_s": 36.618595411185765
+}

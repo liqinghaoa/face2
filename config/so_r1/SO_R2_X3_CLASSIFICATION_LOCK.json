@@ -1,0 +1,13 @@
+{
+  "stage": "SO-R2-X3",
+  "protocol_version": "v1",
+  "conditions": ["RGB", "RGB_B1MH", "RGB_B2MH"],
+  "input_only": "SO_R2X3_ClassifierInputs_v1",
+  "comparison_primary": "RGB_B2MH - RGB pooled OOF Macro-AUC",
+  "comparison_secondary": "RGB_B1MH - RGB pooled OOF Macro-AUC",
+  "no_bootstrap_p_values_or_winner_selection": true,
+  "formal_SO_R1_C_status": "FAIL",
+  "official_SO_R2_authorization": false,
+  "SO_R3_authorization": false,
+  "next_stage_authorized": false
+}

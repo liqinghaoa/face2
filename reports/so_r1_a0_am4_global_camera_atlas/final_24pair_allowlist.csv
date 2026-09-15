@@ -1,0 +1,25 @@
+camera_name,light_name,camera_role,light_role,evaluation_role
+Canon 5DMarkII,D65,seen,seen,ID
+Canon 5DMarkII,A,seen,seen,ID
+Canon 5DMarkII,FL2,seen,seen,ID
+Canon 5DMarkII,FL11,seen,unseen,LIGHT_OOD
+Hasselblad H2,D65,seen,seen,ID
+Hasselblad H2,A,seen,seen,ID
+Hasselblad H2,FL2,seen,seen,ID
+Hasselblad H2,FL11,seen,unseen,LIGHT_OOD
+Nikon D80,D65,seen,seen,ID
+Nikon D80,A,seen,seen,ID
+Nikon D80,FL2,seen,seen,ID
+Nikon D80,FL11,seen,unseen,LIGHT_OOD
+Point Grey Grasshopper2 14S5C,D65,seen,seen,ID
+Point Grey Grasshopper2 14S5C,A,seen,seen,ID
+Point Grey Grasshopper2 14S5C,FL2,seen,seen,ID
+Point Grey Grasshopper2 14S5C,FL11,seen,unseen,LIGHT_OOD
+Canon 1DMarkIII,D65,unseen,seen,CAMERA_OOD
+Canon 1DMarkIII,A,unseen,seen,CAMERA_OOD
+Canon 1DMarkIII,FL2,unseen,seen,CAMERA_OOD
+Canon 1DMarkIII,FL11,unseen,unseen,JOINT_OOD
+Nikon D5100,D65,unseen,seen,CAMERA_OOD
+Nikon D5100,A,unseen,seen,CAMERA_OOD
+Nikon D5100,FL2,unseen,seen,CAMERA_OOD
+Nikon D5100,FL11,unseen,unseen,JOINT_OOD

@@ -1,0 +1,168 @@
+schema_version: 1
+stage: S1-4
+registry_id: hyperskin_stage1_candidate_models_v1
+status: provisional_for_train_development
+
+wavelength_contract:
+  centers_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+  ordering: ascending
+  centers_status: confirmed_from_official_code
+  effective_srf_status: missing
+
+spectral_assets:
+  hemoglobin_npz: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_5nm/source_standardized_5nm.npz
+  usage: read_only_audited_omlc_derived_shape_basis
+
+parameters:
+  M_absorbance:
+    category: bio
+    order_within_category: 0
+    unit: dimensionless_path_integrated_absorbance_at_570nm
+    min: 0.005
+    max: 0.75
+    reference_value: 0.13
+    interpretation: melanin-sensitive epidermal path-integrated absorption proxy
+    range_status: provisional_broad_development_range
+    evidence: Jonasson_2023_reports_median_0.13_IQR_0.077_to_0.24_for_mua_epi_times_t_epi_at_570nm
+  Hb_absorbance_proxy:
+    category: bio
+    order_within_category: 1
+    unit: mm^-1_absorption_amplitude_at_570nm
+    min: 0.005
+    max: 0.50
+    reference_value: 0.18
+    interpretation: fixed-shape dermal hemoglobin-sensitive absorption proxy
+    range_status: provisional_broad_development_range
+    evidence: Jonasson_2023_reports_upper_dermis_mua_570nm_median_approximately_0.18_IQR_0.12_to_0.25
+  S_amp:
+    category: nuisance
+    order_within_category: 0
+    unit: mm^-1_reduced_scattering_at_600nm
+    min: 1.0
+    max: 4.0
+    reference_value: 1.99
+    interpretation: reduced-scattering amplitude; not a stage-two biological target by default
+    range_status: provisional_broad_development_range
+    evidence: Jonasson_2023_reports_alpha_median_1.99_IQR_1.78_to_2.38_mm^-1
+  sO2:
+    category: nuisance
+    order_within_category: 1
+    unit: fraction
+    min: 0.20
+    max: 0.90
+    reference_value: 0.50
+    interpretation: oxygenation-dependent HbO2/Hb spectral-mixture nuisance
+    range_status: provisional_diagnostic_range
+    evidence: Jonasson_2023_reports_median_0.50_IQR_0.41_to_0.60_but_Hyper-Skin_has_no_sO2_truth
+
+global_parameters:
+  scattering_slope:
+    value: 0.82
+    unit: dimensionless
+    allowed_min: 0.30
+    allowed_max: 1.60
+    status: fixed_literature_value_until_train_only_sensitivity
+    evidence: Jonasson_2023_beta_median_0.82_IQR_0.55_to_1.20
+  rayleigh_fraction:
+    value: 0.31
+    unit: fraction
+    allowed_min: 0.0
+    allowed_max: 0.60
+    status: fixed_literature_value_until_train_only_sensitivity
+    evidence: Jonasson_2023_gamma_median_0.31_IQR_0.21_to_0.39
+  global_reflectance_scale:
+    value: 1.0
+    unit: multiplier
+    allowed_min: 0.75
+    allowed_max: 1.25
+    status: fixed_at_one_no_per_spectrum_exposure
+  side_log_gain_by_region:
+    value:
+      image_left: 0.0
+      image_right: 0.0
+      other: 0.0
+    unit: natural_log_multiplier
+    status: zero_placeholder_may_only_be_estimated_once_from_train_and_then_frozen
+    note: This interface manages the fixed side effect found in S1-3; it is not a per-image free parameter.
+
+fixed_physics:
+  reference_wavelength_nm: 570.0
+  scattering_reference_wavelength_nm: 600.0
+  melanin_power: 4.3
+  fixed_oxygenation: 0.50
+  fixed_scattering_amplitude_mm1_at_600nm: 1.99
+  baseline_absorption_formula_cm1: 0.244 + 85.3*exp(-(wavelength_nm-154)/66.2)
+  dermal_reflectance: semi_infinite_kubelka_munk
+  epidermal_transmission: exp(-2*M_absorbance*melanin_shape)
+
+models:
+  B0:
+    family: train_mean_nonphysical
+    theta_bio: []
+    theta_nuisance: []
+    status: enabled_required_baseline
+    activation: always
+    purpose: Train-only mean spectrum baseline; the mean is supplied and hashed by S1-5.
+  B1:
+    family: reduced_kubelka_munk
+    theta_bio: [M_absorbance]
+    theta_nuisance: []
+    status: enabled_required_baseline
+    activation: always
+    purpose: Quantify what a melanin-sensitive absorbance alone explains.
+  P2:
+    family: reduced_kubelka_munk
+    theta_bio: [M_absorbance, Hb_absorbance_proxy]
+    theta_nuisance: []
+    status: enabled_primary_candidate
+    activation: always
+    purpose: Minimum biological proxy candidate.
+  P3-S:
+    family: reduced_kubelka_munk
+    theta_bio: [M_absorbance, Hb_absorbance_proxy]
+    theta_nuisance: [S_amp]
+    status: enabled_required_nuisance_comparison
+    activation: always
+    purpose: Test whether M/H compensate for reduced-scattering amplitude.
+  P3-O:
+    family: reduced_kubelka_munk
+    theta_bio: [M_absorbance, Hb_absorbance_proxy]
+    theta_nuisance: [sO2]
+    status: implemented_but_not_activated
+    activation: only_after_train_residual_shows_stable_hb_shape_error
+    purpose: Conditional oxygenation-shape diagnostic; not a default stage-two target.
+  P4:
+    family: reduced_kubelka_munk
+    theta_bio: [M_absorbance, Hb_absorbance_proxy]
+    theta_nuisance: [S_amp, sO2]
+    status: implemented_but_not_activated
+    activation: only_after_both_scattering_and_hb_shape_residual_evidence
+    purpose: Diagnostic complexity upper bound; never the default stage-two representation.
+
+sensitivity:
+  band_sets:
+    full_31:
+      include_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+      role: primary
+    remove_endpoints:
+      exclude_nm: [400, 700]
+      role: prespecified_sensitivity
+    remove_high_curvature_candidates:
+      exclude_nm: [400, 420, 590, 670, 680, 690, 700]
+      role: prespecified_sensitivity_not_automatic_bad_band_deletion
+  center_shift_nm: [-5.0, -2.5, 0.0, 2.5, 5.0]
+  assumed_gaussian_fwhm_nm: [0.0, 5.5, 10.0, 20.0]
+  policy: S1-5_uses_Train_only;_Validation_does_not_create_new_settings;_formal_Test_uses_frozen_settings
+
+observation_policy:
+  per_spectrum_exposure_scale_allowed: false
+  side_metadata_required_for_primary_cheek_analysis: true
+  allowed_region_sides: [image_left, image_right, other]
+  side_effect_policy: report_sides_separately_and_symmetrically_aggregate;_optional_fixed_gain_must_be_Train-only_and_frozen
+
+references:
+  - "Jonasson et al. Absorption and reduced scattering coefficients in epidermis and dermis from a Swedish cohort study. J Biomed Opt. 2023;28(11):115001. doi:10.1117/1.JBO.28.11.115001."
+  - "Jacques SL. Optical properties of biological tissues: a review. Phys Med Biol. 2013;58:R37-R61."
+  - "Prahl S. Optical Absorption of Hemoglobin. Oregon Medical Laser Center spectral table."
+
+interpretation_boundary: Reduced-order candidate screening models only; not equivalent to the Jonasson three-layer inverse Monte Carlo model and not absolute physiological measurements.

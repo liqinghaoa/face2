@@ -1,0 +1,84 @@
+phase: SO-1D
+protocol_version: SO1D_Formal_Train_v1.1
+
+seed: 20260801
+
+data:
+  train_split: train
+  validation_split: validation
+  train_samples: 20000
+  validation_samples: 2000
+  forbidden_splits:
+    - id_test
+    - camera_ood
+    - light_ood
+    - joint_ood
+
+model:
+  architecture: standard_unet
+  encoder_channels: [64, 128, 256, 512]
+  bottleneck_channels: 1024
+  decoder_channels: [512, 256, 128, 64]
+  output_channels: 4
+  output_order: [M_norm, H_norm, S_norm, P_norm]
+  normalization: BatchNorm
+  activation: LeakyReLU
+  final_activation: Sigmoid
+
+numerical_precision:
+  global_amp: true
+  mode: localized_fp32
+  fp32_blocks:
+    - up1.conv
+
+loss:
+  type: masked_smooth_l1
+  beta: 0.1
+  channel_weights: [0.25, 0.25, 0.25, 0.25]
+
+optimizer:
+  type: AdamW
+  lr: 0.001
+  weight_decay: 0.0001
+
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 30
+  eta_min: 0.000001
+  step_unit: epoch
+
+training:
+  batch_size: 8
+  max_epochs: 30
+  gradient_accumulation: false
+  gradient_clipping: false
+
+early_stopping:
+  enabled: true
+  monitor: val_M_MAE_plus_val_H_MAE
+  mode: min
+  patience: 5
+  min_delta: 0.0
+
+checkpoint:
+  selection_metric: val_M_MAE_plus_val_H_MAE
+  save_best: true
+  save_last: true
+  milestone_epochs: [5, 10, 15, 20, 25, 30]
+
+dataloader:
+  num_workers: 2
+  pin_memory: true
+  persistent_workers: true
+  prefetch_factor: 2
+
+augmentation:
+  enabled: false
+
+amp_overflow:
+  recoverable_gradient_overflow_allowed: true
+  fail_on_forward_nonfinite: true
+  fail_on_loss_nonfinite: true
+  fail_on_state_contamination: true
+  max_consecutive_overflows: 5
+  max_overflows_per_100_batches: 10

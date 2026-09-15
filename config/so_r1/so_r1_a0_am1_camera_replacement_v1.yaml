@@ -1,0 +1,14 @@
+protocol_id: SO-R1-A0-AM1
+root_seed: 20260822
+image_size: 256
+audit_only: true
+training_forbidden: true
+amendment_regression_only: true
+removed_seen_camera: Nokia N900
+retained_seen_cameras: [Canon 5DMarkII, Nikon D80, Pentax Q, SONY NEX-5N, Olympus E-PL2]
+unseen_cameras: [Canon 1DMarkIII, Nikon D5100]
+seen_lights: [D65, A, FL2]
+unseen_lights: [FL11]
+output_root: data/processed/SO_R1_A0_AM1_CameraReplacement_v1
+regression_root: data/processed/SO_R1_A0_AM1_RegressionPilot_v1
+report_root: reports/so_r1_a0_am1_camera_replacement

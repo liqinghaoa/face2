@@ -1,0 +1,41 @@
+{
+  "batch_contract": {
+    "images": 8,
+    "latent_groups": 4
+  },
+  "modes": {
+    "AMP": {
+      "completed_steps": 2413,
+      "failure": {
+        "error": "RuntimeError('FAIL_NONFINITE_GRADIENT')",
+        "losses_before_failure": 2413,
+        "nonfinite_gradient_parameters": [
+          "inc.layers.0.weight"
+        ],
+        "step": 2414
+      },
+      "first_loss": [
+        0.4127458930015564
+      ],
+      "last_loss": [
+        0.0760958194732666
+      ],
+      "peak_memory_bytes": 1885262848,
+      "status": "FAIL"
+    },
+    "FP32": {
+      "completed_steps": 2500,
+      "failure": null,
+      "first_loss": [
+        0.4127925932407379
+      ],
+      "last_loss": [
+        0.12519563734531403
+      ],
+      "peak_memory_bytes": 2199525888,
+      "status": "PASS"
+    }
+  },
+  "steps_requested": 2500,
+  "workers": 2
+}

@@ -1,0 +1,4 @@
+model,total_parameters,trainable_parameters,rgb_encoder_parameters,m_encoder_parameters,h_encoder_parameters,mmtm_parameters,lmf_parameters,classifier_parameters
+LATE_CONCAT,13126762,13126762,11689512,619936,619936,0,0,197378
+MH_LRF,13212140,13212140,11689512,619936,619936,0,132352,150404
+MH_LRTM,13376940,13376940,11689512,619936,619936,164800,132352,233092

@@ -1,0 +1,25 @@
+camera_name,light_name,camera_role,light_role,evaluation_role,quality_pass,stress_pass,am2_overall_release_gate,config_hash,candidate_only,frozen_by
+Canon 5DMarkII,D65,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 5DMarkII,A,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 5DMarkII,FL2,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 5DMarkII,FL11,seen,unseen,LIGHT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D80,D65,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D80,A,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D80,FL2,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D80,FL11,seen,unseen,LIGHT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Olympus E-PL2,D65,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Olympus E-PL2,A,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Olympus E-PL2,FL2,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Olympus E-PL2,FL11,seen,unseen,LIGHT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 300D,D65,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 300D,A,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 300D,FL2,seen,seen,ID,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 300D,FL11,seen,unseen,LIGHT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 1DMarkIII,D65,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 1DMarkIII,A,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 1DMarkIII,FL2,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Canon 1DMarkIII,FL11,unseen,unseen,JOINT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D5100,D65,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D5100,A,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D5100,FL2,unseen,seen,CAMERA_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0
+Nikon D5100,FL11,unseen,unseen,JOINT_OOD,True,True,False,672eafb8981e1ea324e10ccaa8dae47bb43af0e56bf05346afa87c26d065aea3,False,SO-R1-A2-D0

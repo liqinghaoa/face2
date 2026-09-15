@@ -1,0 +1,40 @@
+{
+  "mh_normalization": {
+    "mean": 0.5,
+    "std": 0.5
+  },
+  "only_allowed_p0_tensor_sources": {
+    "B1_MH_ONLY": {
+      "channels": [
+        3,
+        4
+      ],
+      "directory": "rgb_b1mh"
+    },
+    "B2_H_ONLY": {
+      "channels": [
+        4
+      ],
+      "directory": "rgb_b2mh"
+    },
+    "B2_MH_ONLY": {
+      "channels": [
+        3,
+        4
+      ],
+      "directory": "rgb_b2mh"
+    },
+    "B2_M_ONLY": {
+      "channels": [
+        3
+      ],
+      "directory": "rgb_b2mh"
+    }
+  },
+  "rgb_channels_read": false,
+  "source_tensor_shape": [
+    5,
+    320,
+    256
+  ]
+}

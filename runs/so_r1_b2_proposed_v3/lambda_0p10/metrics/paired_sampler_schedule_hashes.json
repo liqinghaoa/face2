@@ -1,0 +1,302 @@
+[
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 1,
+    "epoch_pair_schedule_hash": "b9cf1ec9d6bee3761f7cc2ed3859727482a65d5eca4c3bebb8cf05754ade646f",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 2,
+    "epoch_pair_schedule_hash": "161664b323deb6b5092b6d9b71fa5a8e6ddd82c65070ebb99cc633104a4967da",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 3,
+    "epoch_pair_schedule_hash": "1f664a2ba279c294c8b691dc0c3a2c0dea6a12ed6b9fa07924ae954392137b7b",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 4,
+    "epoch_pair_schedule_hash": "3253e5f36e967a706cb5184cbfdee749137d60bb214a0f63fd45e18e8f2269b0",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 5,
+    "epoch_pair_schedule_hash": "c1362e3039d063ff2b19b6349526763db823680241a0bd8529483335204c3516",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 6,
+    "epoch_pair_schedule_hash": "2611b06c490e8801243af445367b49e1c54099b3d412896cc45dd6f0559b0549",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 7,
+    "epoch_pair_schedule_hash": "a2aa4842f826493662a340b2404880ab0d7b85b4551ca09bb692015e7900ff2e",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 8,
+    "epoch_pair_schedule_hash": "27d05cf6070e81430c491873659ad92ab4a76b06f04a724d130248c7a3fec280",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 9,
+    "epoch_pair_schedule_hash": "e44af9b778b5fdd68bdd6274b384529eaa1df130b0134988e4559612bc84d5eb",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 10,
+    "epoch_pair_schedule_hash": "b0db585cced2d3e957da5db4929899840d165311f200275e57f4af14772f3547",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 11,
+    "epoch_pair_schedule_hash": "47cf21f19131af592c0a263cbd53bf87207278bf9c820af7b986084861af3894",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 12,
+    "epoch_pair_schedule_hash": "92f10bd53d00c2500101e077ec3dc038b5550b20b4a786bdb078111a4d50c535",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 13,
+    "epoch_pair_schedule_hash": "2bac703c03aa34e922b9fff514f9fd03c5f66e7f560b3a111aef392bd1ab7ed0",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 14,
+    "epoch_pair_schedule_hash": "97b3ee689c55039973caba18d51a72b7d5280b78390bc2bc4d394c1624666f17",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 15,
+    "epoch_pair_schedule_hash": "e4d72976534de9fedeee41a8fd70d94e6efeb047ac75b689c3fd518ab09cbe59",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 16,
+    "epoch_pair_schedule_hash": "459cdf6c36bfe7d0c77c0e2218937cac2f0048b3e5e42c1dd0a467fc384814c6",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 17,
+    "epoch_pair_schedule_hash": "1f27e963c5af0c309fdce9d5de61d6a956192be07db16df46c22c6ce6be6d7e1",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 18,
+    "epoch_pair_schedule_hash": "f4cf2b7ec99ef2b4a0b4fd205d88bb47682af66fb02880da0f63f07f9a5b53c9",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 19,
+    "epoch_pair_schedule_hash": "72d0763bf9ec9198c6c95547ed16b99fed8baf2ecbdc7d1b8e00259f5134886e",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 20,
+    "epoch_pair_schedule_hash": "89e7a44a9afc44f2c3c84d39f741dbff81b9ebf22e383738f44948cb6265a00b",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 21,
+    "epoch_pair_schedule_hash": "aa2d0f1fd79e846ca2e98925cce3ee4bb35cd9ec631235c290c3dd8adc1936ed",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 22,
+    "epoch_pair_schedule_hash": "523ed462875263111c866a2ba4f3e36b82d927a9bc4086847f57a94ed3a53e22",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 23,
+    "epoch_pair_schedule_hash": "d7356e4db56921a1d800baf451c8777ba83f12e87a7837e0ce9863bdef60bdef",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 24,
+    "epoch_pair_schedule_hash": "40e0aec586a7e97552dd920a9591649ea4af2df89d5f15db8d44596d0d841ec9",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  },
+  {
+    "duplicate_latent_count": 0,
+    "epoch": 25,
+    "epoch_pair_schedule_hash": "5f752910b1f7f6e03db38fc4c939f776e34407af011b2059ad41727eb5c2dddb",
+    "pair_type_count": {
+      "appearance_only": 2500,
+      "camera_only": 2500,
+      "joint": 2500,
+      "light_only": 2500
+    },
+    "unique_latent_count": 10000
+  }
+]

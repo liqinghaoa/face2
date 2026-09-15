@@ -1,0 +1,9 @@
+{
+  "failure": "RuntimeError('FAIL_RESUME_GATE:UNSUPPORTED_FAILURE')",
+  "failure_type": "RuntimeError",
+  "next_stage_authorized": false,
+  "proposed_checkpoint_authoritative": false,
+  "proposed_training_status": "NOT_COMPLETE",
+  "status": "FAIL",
+  "training_started": false
+}

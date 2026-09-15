@@ -1,0 +1,38 @@
+{
+  "protocol_id": "SO-R1-A2-P0-C2",
+  "c2_execution_status": "COMPLETE",
+  "inherited_p0_1": "FAIL_CAMERA_COLOR_CHAIN_ARTIFACT",
+  "inherited_p0_2": "FAIL_MASK_PRIOR",
+  "inherited_p0_3": "INCOMPLETE_UNVERIFIED",
+  "c1_execution_status": "INCOMPLETE",
+  "p0_1_status": "FAIL_CAMERA_COLOR_CHAIN_ARTIFACT",
+  "p0_2_status": "PASS",
+  "p0_3_status": "PASS",
+  "overall_p0_status": "FAIL",
+  "decision": "PROTOCOL_AMENDMENT_REQUIRED",
+  "next_stage": "SO-R1-A0-AM1",
+  "next_stage_authorized": true,
+  "a2_d0_authorized": false,
+  "full_generation_authorized": false,
+  "tests_pass": true,
+  "test_result": {
+    "passed": true,
+    "results": [
+      {
+        "command": "E:\\resarch\\Anaconda3\\python.exe -m pytest -q tests/so_r1/test_so_r1_a2_p0_c2_mask_benchmark_closure.py",
+        "returncode": 0,
+        "passed": true
+      },
+      {
+        "command": "E:\\resarch\\Anaconda3\\python.exe -m pytest -q tests/so_r1",
+        "returncode": 0,
+        "passed": true
+      }
+    ]
+  },
+  "all_c2_data_flags": [
+    "AUDIT_ONLY",
+    "TRAINING_FORBIDDEN",
+    "NOT_PART_OF_FORMAL_DATASET"
+  ]
+}

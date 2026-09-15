@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v1-Stage-C-verification",
+  "status": "PASS",
+  "created_utc": "2026-09-09T16:44:14.392202+00:00",
+  "model_decision_verified": "REVISE_OBSERVATION_OR_MODEL",
+  "checks": {
+    "decision_status_is_registered": true,
+    "all_recorded_output_hashes_match": true,
+    "main_result_count_88": true,
+    "main_starts_33_per_spectrum": true,
+    "profile_three_parameters_per_spectrum": true,
+    "profile_nine_starts_per_point": true,
+    "all_profile_conditional_fits_converged": true,
+    "sensitivity_thirteen_settings_per_spectrum": true,
+    "sensitivity_setting_names_match_contract": true,
+    "all_sensitivity_fits_converged": true,
+    "stored_logrmse_recomputes": true,
+    "shape_diagnostic_finite": true,
+    "validation_content_reads_zero": true,
+    "test_content_reads_zero": true
+  },
+  "output_hash_mismatches": [],
+  "shape_diagnostic": {
+    "row_count": 88,
+    "median_centered_logrmse": 0.17552362076061584,
+    "p90_centered_logrmse": 0.27098448228152255,
+    "median_mean_log_residual": 0.0025558233309682225,
+    "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion_verification\\shape_diagnostic.csv",
+    "sha256": "2368cdac06557d953f17ffd5cddac9ea0f5d694d51e09674205cf22c4e6ee207"
+  },
+  "implementation_hashes": {
+    "km_bio_v1.py": "10ec8373c858d485191651c1842e186647d377521686bfe0912499e66f933f11",
+    "km_bio_inverse.py": "05f616ecef53eb4e44b7b7603551f81fb7045f675a8eefccaa2e39b19a3b48d1",
+    "km_bio_stage_c.py": "1d46570421a184bd244d2e1f6d0263f365ccea924863b739a7a07acdf300b7e1",
+    "run_km_bio_stage_c.py": "be8c11c5adbc8c164e7168843d0a5912244c09df3b219ea2f5cb16972a1ba31a",
+    "verify_km_bio_stage_c.py": "fc6e4f07dff9e23843ba41e78577eba6fe69b835725d9c6225e58963e6e91a05"
+  }
+}

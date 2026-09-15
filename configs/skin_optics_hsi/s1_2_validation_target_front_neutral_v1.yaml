@@ -1,0 +1,21 @@
+schema_version: 1
+stage: S1-2
+profile_id: target_front_neutral_v1
+status: provisional_validation_acceptance_profile
+
+target_domain:
+  expression: neutral
+  direction: front
+  eyewear_requirement: no_eyewear_in_deployment
+  eyewear_status_in_hyperskin_validation: unavailable_and_not_verified
+
+primary_gate:
+  maximum_failure_fraction: 0.0
+  maximum_review_fraction: 0.0
+  minimum_usable_fraction: 1.0
+  minimum_sample_count: 1
+
+stress_domain:
+  role: non_blocking_diagnostic
+  includes_all_validation_rows_outside_primary_domain: true
+  failures_must_be_reported: true

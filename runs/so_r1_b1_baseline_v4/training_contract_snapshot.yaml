@@ -1,0 +1,146 @@
+stage_id: SO-R1-B1
+contract_version: v4
+source_dataset_protocol_hash: fff5f3a01c6c486e0d982debc462f235f56a42033e9c7c4983d9b912fa84df45
+source_dataset_acceptance_hash: 5639d5198af0d6854bc569e79dfd74e3276acf68a4b5c05836fef5f54bad3bfb
+dataset_root: E:\projects\face2\data\processed\SO_R1_A2_G1_AM1_FullGeneration_v1
+dataset_manifest_hashes:
+  latent_manifest.csv: 035bb97cd2279eaedc6e54e3532302e91b7f1b5f2e74643d1987575252dc3046
+  acquisition_manifest.csv: 0ac1171b4b538d2ee4a833ffe45b5c6186bef21976fa1ea084013d422c10b6ee
+  pair_manifest.csv: 61e95ece1c8212fafc71868185d7b7d6a0e8e4bd19033f0d0888880a1d6de2ac
+  qc_manifest.csv: 62dbd2301b1fe711066c4f4282536e9b75ebb1b2df068b19cf6bc7e5685afaef
+target_range_audit:
+  M:
+  - 0.0
+  - 1.0
+  H:
+  - 0.0
+  - 1.0
+model_architecture:
+  id: SO_R1_B1_UNet_GN_32_64_128_256_512_3to2_sigmoid_v1
+  parameter_count: 7763074
+  input_channels: 3
+  output_channels: 2
+  output_order:
+  - M-sensitive
+  - H-sensitive
+  encoder_channels:
+  - 32
+  - 64
+  - 128
+  - 256
+  - 512
+  normalization: GroupNorm(8)
+  activation: LeakyReLU(0.01)
+  output_activation: Sigmoid
+paired_comparison_seed:
+  derivation: int(sha256('SO-R1-B1 paired comparison seed v1|' + D0 protocol hash)[:8])
+    mod (2^31-1)
+  value: 983833781
+model_init_seed: 983833781
+paired_sampler_seed: 983833781
+training_seed: 983833781
+num_epochs: 25
+optimizer:
+  type: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 25
+  eta_min: 1.0e-06
+batch_contract:
+  latent_groups_per_batch: 4
+  images_per_batch: 8
+  pair_flattening: '[B,2,3,H,W] -> [2B,3,H,W]; independent supervised samples only'
+amp_contract:
+  precision: FP32
+  amp_preflight:
+    FP32:
+      status: PASS
+      loss: 0.4127925932407379
+      overflow_detected: false
+      peak_memory_bytes: 2134524416
+      data_loader_workers: 2
+    AMP:
+      status: PASS
+      loss: 0.4127458930015564
+      overflow_detected: false
+      peak_memory_bytes: 1818425344
+      data_loader_workers: 2
+  stability_diagnosis:
+    batch_contract:
+      images: 8
+      latent_groups: 4
+    modes:
+      AMP:
+        completed_steps: 2413
+        failure:
+          error: RuntimeError('FAIL_NONFINITE_GRADIENT')
+          losses_before_failure: 2413
+          nonfinite_gradient_parameters:
+          - inc.layers.0.weight
+          step: 2414
+        first_loss:
+        - 0.4127458930015564
+        last_loss:
+        - 0.0760958194732666
+        peak_memory_bytes: 1885262848
+        status: FAIL
+      FP32:
+        completed_steps: 2500
+        failure: null
+        first_loss:
+        - 0.4127925932407379
+        last_loss:
+        - 0.12519563734531403
+        peak_memory_bytes: 2199525888
+        status: PASS
+    steps_requested: 2500
+    workers: 2
+data_loader_contract:
+  num_workers: 2
+  pin_memory: true
+  persistent_workers: true
+  worker_seed: torch initial seed + worker id
+  augmentation: geometric/photometric/color-jitter/exposure/gamma/crop all disabled
+loss_contract:
+  name: masked SmoothL1
+  beta: 0.1
+  channel_weights:
+  - 0.5
+  - 0.5
+  lambda_pair: 0
+  pair_loss: absent
+  feature_loss: absent
+  adversarial_loss: absent
+  reconstruction_loss: absent
+validation_contract:
+  split: Validation
+  latent: 1000
+  acquisition: 5000
+checkpoint_selection_rule: lowest validation masked SmoothL1; earliest epoch on exact
+  tie
+software_environment:
+  os: Windows-10-10.0.26200-SP0
+  python: 3.11.15 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:12:53) [MSC
+    v.1942 64 bit (AMD64)]
+  torch: 2.3.0+cu121
+  cuda_runtime: '12.1'
+  gpu_name: NVIDIA GeForce RTX 4060 Laptop GPU
+  gpu_memory_bytes: 8585216000
+  nvidia_driver: '581.42'
+  cuda_available: true
+  selected_device: cuda:0
+batch_capacity_preflight:
+  precision: FP32
+  candidates:
+    '4':
+      status: PASS
+      steps: 10
+      overflow_detected: false
+      peak_memory_bytes: 2199394816
+      last_loss: 0.11894382536411285
+      data_loader_workers: 2
+  selected_latent_groups_per_batch: 4
+  images_per_batch: 8
+  data_loader_workers: 2

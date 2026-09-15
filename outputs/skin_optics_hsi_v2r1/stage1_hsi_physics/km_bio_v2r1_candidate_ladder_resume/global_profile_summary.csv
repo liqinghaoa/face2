@@ -1,0 +1,6 @@
+﻿candidate,parameter,fold_count,boundary_fold_count,frequently_boundary,all_fold_profiles_identifiable,profile_row_count,profile_source
+V2R-PS,A_s,5,0,False,False,260,estimated_in_fold
+V2R-PS,delta_bs,5,5,True,False,255,estimated_in_fold
+V2R-PSG,A_s,5,0,False,False,260,frozen_from_V2R-PS
+V2R-PSG,delta_bs,5,5,True,False,255,frozen_from_V2R-PS
+V2R-PSG,g0,5,0,False,True,1010,estimated_in_fold

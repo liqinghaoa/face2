@@ -1,0 +1,4 @@
+﻿parameter,spearman_brightness_vs_parameter_difference,same_direction_fraction,median_image_left_minus_right,median_abs_difference,observation_confounding
+f_mel,-0.6715997181113459,0.9545454545454546,-0.02185565749177771,0.02185565749177771,True
+f_blood,-0.25189005576216766,0.3409090909090909,0.0,0.0,False
+s,0.6949964763918253,1.0,0.4787208780114032,0.4787208780114032,True

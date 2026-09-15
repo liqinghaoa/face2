@@ -1,0 +1,7 @@
+{
+  "completed_steps": 2500,
+  "last_loss": 0.12519563734531403,
+  "mode": "FP32",
+  "requested_steps": 2500,
+  "status": "RUNNING"
+}

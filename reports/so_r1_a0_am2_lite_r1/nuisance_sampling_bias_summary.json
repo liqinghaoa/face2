@@ -1,0 +1,17 @@
+{
+  "AUDIT_ONLY": true,
+  "TRAINING_FORBIDDEN": true,
+  "ATTRIBUTION_ONLY": true,
+  "NOT_PART_OF_FORMAL_DATASET": true,
+  "row_count": 640,
+  "rejection_rate": 0.0,
+  "p95_attempt_count": 1.0,
+  "max_attempt_count": 1,
+  "camera_mean_attempt_gap": 0.0,
+  "light_mean_attempt_gap": 0.0,
+  "pearson_attempt_M_mean": 0.0,
+  "spearman_attempt_M_mean": 0.0,
+  "pearson_attempt_H_mean": 0.0,
+  "spearman_attempt_H_mean": 0.0,
+  "pass": true
+}

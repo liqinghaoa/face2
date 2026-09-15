@@ -1,0 +1,19 @@
+{
+  "input_shape": [
+    16,
+    2,
+    320,
+    256
+  ],
+  "dtype": "float32",
+  "logits_shape": [
+    16,
+    3
+  ],
+  "class_order": [
+    "Normal",
+    "Mild",
+    "Severe"
+  ],
+  "imagenet_conv1_mean_initialization": true
+}

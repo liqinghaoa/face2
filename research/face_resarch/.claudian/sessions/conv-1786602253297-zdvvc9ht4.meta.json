@@ -1,0 +1,28 @@
+{
+  "id": "conv-1786602253297-zdvvc9ht4",
+  "providerId": "codex",
+  "title": "概述文章主要内容",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786602253302,
+  "lastActivityAt": 1786602848985,
+  "sessionId": "019ff9d2-8ecc-7e10-8160-12e6f4b15120",
+  "selectedModel": "gpt-5.5",
+  "providerState": {
+    "transcriptRootPath": "C:\\Users\\16924\\.codex\\sessions",
+    "threadId": "019ff9d2-8ecc-7e10-8160-12e6f4b15120",
+    "nativeConversationContextEstablished": true,
+    "sessionFilePath": "C:\\Users\\16924\\.codex\\sessions\\2026\\08\\13\\rollout-2026-08-13T14-32-33-019ff9d2-8ecc-7e10-8160-12e6f4b15120.jsonl",
+    "workspaceDependencyToolVersion": 1
+  },
+  "currentNote": "raw/【数字化】谷歌是如何在刷短视频时算心率的.md",
+  "usage": {
+    "inputTokens": 33116,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 30080,
+    "contextWindow": 258400,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 33116,
+    "percentage": 13,
+    "model": "gpt-5.5"
+  }
+}

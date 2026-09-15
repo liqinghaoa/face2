@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "task_id": "R-C1_PARAMETER_IDENTIFIABILITY_ROBUSTNESS",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "R_C1_COMPLETE",
+  "candidate_scope": [
+    "V2R-PS",
+    "V2R-PSG"
+  ],
+  "selected_development_candidate": "V2R-PS",
+  "best_oof_candidate": "V2R-PSG",
+  "validation_executed": false,
+  "test_executed": false,
+  "clinical_500_executed": false,
+  "rgb_encoder_training_executed": false,
+  "interpretation": "Train-only identifiability and robustness audit; no physiological truth claim."
+}

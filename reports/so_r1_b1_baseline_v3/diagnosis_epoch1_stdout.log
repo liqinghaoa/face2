@@ -1,0 +1,20 @@
+{"mode": "AMP", "completed_steps": 250, "requested_steps": 2500, "last_loss": 0.0819290429353714}
+{"mode": "AMP", "completed_steps": 500, "requested_steps": 2500, "last_loss": 0.12754769623279572}
+{"mode": "AMP", "completed_steps": 750, "requested_steps": 2500, "last_loss": 0.12654200196266174}
+{"mode": "AMP", "completed_steps": 1000, "requested_steps": 2500, "last_loss": 0.10113058984279633}
+{"mode": "AMP", "completed_steps": 1250, "requested_steps": 2500, "last_loss": 0.11594878137111664}
+{"mode": "AMP", "completed_steps": 1500, "requested_steps": 2500, "last_loss": 0.08517897874116898}
+{"mode": "AMP", "completed_steps": 1750, "requested_steps": 2500, "last_loss": 0.10736141353845596}
+{"mode": "AMP", "completed_steps": 2000, "requested_steps": 2500, "last_loss": 0.05153034254908562}
+{"mode": "AMP", "completed_steps": 2250, "requested_steps": 2500, "last_loss": 0.07201923429965973}
+{"mode": "FP32", "completed_steps": 250, "requested_steps": 2500, "last_loss": 0.08053222298622131}
+{"mode": "FP32", "completed_steps": 500, "requested_steps": 2500, "last_loss": 0.1268150806427002}
+{"mode": "FP32", "completed_steps": 750, "requested_steps": 2500, "last_loss": 0.1277521699666977}
+{"mode": "FP32", "completed_steps": 1000, "requested_steps": 2500, "last_loss": 0.10254989564418793}
+{"mode": "FP32", "completed_steps": 1250, "requested_steps": 2500, "last_loss": 0.11451893299818039}
+{"mode": "FP32", "completed_steps": 1500, "requested_steps": 2500, "last_loss": 0.09152954816818237}
+{"mode": "FP32", "completed_steps": 1750, "requested_steps": 2500, "last_loss": 0.1025102362036705}
+{"mode": "FP32", "completed_steps": 2000, "requested_steps": 2500, "last_loss": 0.05891209840774536}
+{"mode": "FP32", "completed_steps": 2250, "requested_steps": 2500, "last_loss": 0.0782020092010498}
+{"mode": "FP32", "completed_steps": 2500, "requested_steps": 2500, "last_loss": 0.12519563734531403}
+{'steps_requested': 2500, 'workers': 2, 'batch_contract': {'latent_groups': 4, 'images': 8}, 'modes': {'AMP': {'status': 'FAIL', 'completed_steps': 2413, 'first_loss': [0.4127458930015564], 'last_loss': [0.0760958194732666], 'failure': {'step': 2414, 'error': "RuntimeError('FAIL_NONFINITE_GRADIENT')", 'nonfinite_gradient_parameters': ['inc.layers.0.weight'], 'losses_before_failure': 2413}, 'peak_memory_bytes': 1885262848}, 'FP32': {'status': 'PASS', 'completed_steps': 2500, 'first_loss': [0.4127925932407379], 'last_loss': [0.12519563734531403], 'failure': None, 'peak_memory_bytes': 2199525888}}}

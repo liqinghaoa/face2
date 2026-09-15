@@ -1,0 +1,12 @@
+stage: SO-R2-X5
+scope: exploratory_internal_oof_only
+input: rgb_b1mh channels [3, 4]
+labels: {Normal: [0], Mild: [1, 2], Severe: [3, 4]}
+outer_split: data/processed/global_face_R3DPR/nyha_2class_sex_stratified_group_5fold.csv
+inner_split: StratifiedGroupKFold(n_splits=5, shuffle=true, seed=2026+outer_fold), first_split
+model: ImageNet_1K_ResNet18_two_channel_mean_conv1_initialization
+training: {precision: fp32, batch_size: 16, optimizer: AdamW, lr: 0.0001, weight_decay: 0.0001, label_smoothing: 0.05, max_epochs: 50, early_stop_patience: 10, selection_metric: macro_ovr_auc, strict_improvement: true}
+formal_SO_R1_C_status: FAIL
+official_SO_R2_authorization: false
+SO_R3_authorization: false
+next_stage_authorized: false

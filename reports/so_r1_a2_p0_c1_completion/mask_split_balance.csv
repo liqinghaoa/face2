@@ -1,0 +1,4 @@
+mask_category,camera_ood,id_test,joint_ood,light_ood,train_like_id,validation_like_id
+full,1,10,3,3,76,9
+mild,4,6,4,3,78,7
+strong,5,3,2,3,36,3

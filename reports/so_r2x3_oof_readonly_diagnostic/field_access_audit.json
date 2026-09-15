@@ -1,0 +1,18 @@
+{
+  "OOF_modification_count": 0,
+  "allowed_oof_columns": [
+    "ID",
+    "fold",
+    "binary_label",
+    "prob_control",
+    "prob_patient",
+    "pred_class",
+    "condition",
+    "selected_epoch"
+  ],
+  "checkpoint_write_count": 0,
+  "forbidden_columns_loaded": [],
+  "model_forward_calls": 0,
+  "optimizer_step_count": 0,
+  "training_calls": 0
+}

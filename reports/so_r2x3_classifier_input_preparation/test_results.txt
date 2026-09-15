@@ -1,0 +1,4 @@
+X3专项测试（conda run -n face2 python -m pytest -q tests/so_r1/test_r2x3_classifier_input_preparation.py）：6 passed
+X3数据生成：COMPLETE_CLASSIFIER_INPUT_PREPARATION
+全量 tests/so_r1（conda run -n face2 python -m pytest -q tests/so_r1）：91 passed, 1 warning, 17.08s
+git diff --check：PASS（仅既有文件 CRLF warning，无 whitespace error）

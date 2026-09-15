@@ -1,0 +1,13 @@
+Input,Backbone,Pooled_OOF_Macro_AUC,N
+Whole-face,ResNet-18,0.818272,500
+Whole-face,ResNet-34,0.774726,500
+Whole-face,ResNet-50,0.829565,500
+Eye,ResNet-18,0.743038,500
+Eye,ResNet-34,0.763456,500
+Eye,ResNet-50,0.754195,500
+Cheek,ResNet-18,0.727883,500
+Cheek,ResNet-34,0.737053,500
+Cheek,ResNet-50,0.787939,500
+Lip,ResNet-18,0.727386,500
+Lip,ResNet-34,0.747736,500
+Lip,ResNet-50,0.761084,500

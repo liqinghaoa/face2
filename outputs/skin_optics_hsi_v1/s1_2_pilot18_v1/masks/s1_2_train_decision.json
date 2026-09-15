@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "stage": "S1-2",
+  "split": "train",
+  "created_utc": "2026-09-08T03:09:28.433270+00:00",
+  "status": "REVISE",
+  "automatic_decision": "REVISE",
+  "automatic_checks": {
+    "failure_fraction": false,
+    "review_fraction": true,
+    "all_strata_pass_fraction": false
+  },
+  "sample_counts": {
+    "FAIL": 18
+  },
+  "sample_count": 18,
+  "failure_fraction": 1.0,
+  "review_fraction": 0.0,
+  "config_path": "E:\\projects\\face2\\configs\\skin_optics_hsi\\s1_2_masks_v1.yaml",
+  "config_sha256": "ca5c1735731e4ce3062d0377e84cb1477f7f7db6ae05b4a02327cace41507543",
+  "contract_path": "E:\\projects\\face2\\data\\processed\\HyperSkin_Stage1_v1\\contracts\\data_contract.json",
+  "contract_sha256": "a3f0c0543d27c0ba6a4a0729b7253b323212ffadd754ed17ff4acba0bf4799cf",
+  "registration_path": "E:\\projects\\face2\\data\\processed\\HyperSkin_Stage1_v1\\registration_qc\\registration_decision.json",
+  "registration_sha256": "5e0a273dfb3281f385e8e0b8f8e52bd9f01e27ebde566f0cb2942d1d92b41665",
+  "manifest_path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\s1_2_pilot18_v1\\manifests\\mask_manifest_train.parquet",
+  "manifest_sha256": "fa1ed712ec251a394217cb7c34e297ef2dbfc5c09b0a142344584421f32c3a03",
+  "parser_checkpoint_sha256": null,
+  "manual_review": {
+    "status": "pending",
+    "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\s1_2_pilot18_v1\\masks\\manual_review_train.csv"
+  },
+  "protocol_frozen": false,
+  "next_stage_allowed": false,
+  "test_access_count": 0
+}

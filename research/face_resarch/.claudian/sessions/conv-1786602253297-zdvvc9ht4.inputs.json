@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1786602253297-zdvvc9ht4",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786602253455-mvkh13h",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786602253294-q86msno",
+      "timestamp": 1786602253294,
+      "rawDisplayText": "简单介绍这篇文章。",
+      "canonicalText": "简单介绍这篇文章。",
+      "context": {
+        "currentNote": {
+          "path": "raw/【数字化】谷歌是如何在刷短视频时算心率的.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "9f51e738ca21950c593853a8c5116253d6a76f000d6b6c724834856a0de45a56"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1786602748023-w8jrdag",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1786602747892-negmqn0",
+      "timestamp": 1786602747892,
+      "rawDisplayText": "简单介绍这篇文章。",
+      "canonicalText": "简单介绍这篇文章。",
+      "context": {
+        "currentNote": {
+          "path": "raw/【数字化】谷歌是如何在刷短视频时算心率的.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "9f51e738ca21950c593853a8c5116253d6a76f000d6b6c724834856a0de45a56",
+      "providerUserMessageId": "b9f81265-b3b9-42fe-833b-40bc4413be7b",
+      "providerAssistantMessageId": "msg_0a200dfa6e879073016a7d655685d081949528d8b303f74b32"
+    }
+  ]
+}

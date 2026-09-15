@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v1-Stage-B",
+  "model_id": "KM2L-HF-v1",
+  "status": "PASS_FOR_TRAIN_INVERSION",
+  "created_utc": "2026-09-09T15:53:07.069093+00:00",
+  "checks": {
+    "data_contract_pass": true,
+    "split_manifest_hash_matches_data_contract": true,
+    "registration_is_frozen_transpose": true,
+    "frozen_mask_protocol_status": true,
+    "frozen_mask_manifest_hash_matches": true,
+    "region_cache_hash_matches_provenance": true,
+    "region_cache_lineage_matches_decision": true,
+    "wavelength_contract_matches": true,
+    "expected_subject_count": true,
+    "expected_capture_count": true,
+    "expected_region_spectrum_count": true,
+    "all_region_spectra_pass_input_qc": true,
+    "all_hsi_hashes_match": true,
+    "all_rgb_hashes_match": true,
+    "all_mask_hashes_and_paths_match": true,
+    "historical_cache_preserves_raw_scale_within_tolerance": true,
+    "historical_clipping_does_not_change_primary_region_medians": true,
+    "all_observed_values_finite_and_positive": true,
+    "validation_hsi_content_reads_zero": true,
+    "test_hsi_content_reads_zero": true
+  },
+  "counts": {
+    "subjects": 44,
+    "captures": 44,
+    "region_spectra": 88,
+    "train_hsi_content_reads": 44,
+    "train_rgb_byte_hash_reads": 44,
+    "validation_hsi_content_reads": 0,
+    "test_hsi_content_reads": 0
+  },
+  "scale_audit": {
+    "observed_reflectance_min": 0.11566558525741044,
+    "observed_reflectance_max": 0.7377834181316985,
+    "maximum_abs_raw_float64_vs_historical_cache": 4.8927603302217904e-08,
+    "maximum_abs_raw_vs_clipped_region_median": 0.0,
+    "image_left_brighter_broadband_subject_count": 44,
+    "median_image_left_minus_right_broadband": 0.07669239100926593,
+    "main_observation_gain": 1.0,
+    "per_spectrum_gain_fitted": false,
+    "side_gain_applied": false,
+    "normalization_applied": "none"
+  },
+  "rgb_source_audit": {
+    "release_pairing": "one_to_one_jpeg_by_sample_id",
+    "dataset_description": "author_generated_rgb_paired_with_released_hsi",
+    "exact_release_rendering_pipeline_available": false,
+    "per_image_camera_response_identity_available": false,
+    "classification_as_same_scene_phone_capture": "forbidden",
+    "stage_b_use": "provenance_and_pairing_audit_only",
+    "stage_c_model_input": false,
+    "paired_rgb_count": 44,
+    "all_rgb_hashes_match_split_manifest": true,
+    "decoded_rgb_content_reads": 0
+  },
+  "mismatches": {
+    "hsi": [],
+    "rgb": [],
+    "mask": []
+  },
+  "source_hashes": {
+    "observation_contract": "0fb38cf67dbe7dcbda9f668fe2ae8d4c6c4c4fe4d3f842c10bec68a10ae4f27b",
+    "data_contract": "96f2ea585cbbd2ba282469541297fb91cb7b1966aff9273367f47c84dd86f367",
+    "split_manifest": "71d23c523c632f3efee0235140aed1915415e37e980f7ac4a04396743126be45",
+    "registration_decision": "5e0a273dfb3281f385e8e0b8f8e52bd9f01e27ebde566f0cb2942d1d92b41665",
+    "frozen_mask_provenance": "ce168dbea2e9101635c8de52a3c8af362f24bfdfeead73fdc4bdd1e51c6201a2",
+    "frozen_train_mask_manifest": "c34b2fe496c03192b615efad638d72515858a1e33a7aafbbab1c17248aaf9861",
+    "region_cache": "7aca06c8607727190cfff548ea3cf40bd2ddae94d3e3e8761fec707c0847f2fa",
+    "region_cache_provenance": "975f6700af38fdbc2d56a03dddeb92044f1a6199e8436c17ed4af4ae5df28e5f",
+    "region_cache_decision": "ffecaa41b86f58900df3835cf55815767862f511a7251eed343ff4fb508ba749"
+  },
+  "outputs": {
+    "input_manifest_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_observation_audit\\train_primary_observation_manifest.parquet",
+      "sha256": "1f947138769684136c3012ad7cbd0fa0f12d14805fa1964bc046f35c60fe07fa"
+    },
+    "input_manifest_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_observation_audit\\train_primary_observation_manifest.csv",
+      "sha256": "a45acaf1e60a9a437b27318900f762519c0121156c0a0988f4d822b96ea9115c"
+    },
+    "spectrum_scale_audit_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_observation_audit\\spectrum_scale_audit.csv",
+      "sha256": "14bc0ab872f1d9922b5986f85f0e0a67a0f0683a231f0efd0b7958100c91ec29"
+    }
+  },
+  "next_stage_allowed": true,
+  "authorized_next_stage": "C_TRAIN_INVERSION"
+}

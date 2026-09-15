@@ -1,0 +1,18 @@
+{
+  "all_outputs_finite": true,
+  "case_count": 500,
+  "classification_started": false,
+  "current_index_unchanged_during_x1": true,
+  "data_content_unchanged": true,
+  "formal_so_r1_c_status": "FAIL",
+  "fusion_coverage_complete": true,
+  "index_order_renormalization_documented": true,
+  "labels_accessed": false,
+  "model_count": 2,
+  "non_index_protected_assets_unchanged": true,
+  "official_so_r2_authorization": false,
+  "patch_count": 10000,
+  "r2x0_input_contract": "PASS_INPUT_CONTRACT",
+  "so_r3_authorization": false,
+  "status": "COMPLETE_EXPLORATORY_FROZEN_INFERENCE"
+}

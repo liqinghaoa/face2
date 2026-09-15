@@ -1,0 +1,63 @@
+{
+  "acquisition_manifest_hash": "bad2bd00805a232af675eb81d8d9f58820d928ee07004bd5e7574fbb408385a4",
+  "am4_acceptance_hash": "aa241052c8b2a4d09a827cbd20c3f350887f3f85cc69578cf82d0a1c0e0cf022",
+  "am4_camera_config_hash": "ffeec4478f6c842ad0b6fef6e30fbea4df8535e8105ed9bc8a94a03a45aeaaa5",
+  "camera_set": [
+    "Canon 5DMarkII",
+    "Hasselblad H2",
+    "Nikon D80",
+    "Point Grey Grasshopper2 14S5C",
+    "Canon 1DMarkIII",
+    "Nikon D5100"
+  ],
+  "canonical_protocol_config_hash": "1acbbd17c400c2075a77a3fff49ca2d671f2506de401cd530a0c744e6ea03808",
+  "created_at_utc": "2026-08-23T15:07:26.933259+00:00",
+  "dataset_counts": {
+    "acquisition": 67500,
+    "latent": 13500,
+    "pair": 54000
+  },
+  "excluded_camera_set": [
+    "Nokia N900",
+    "Pentax Q",
+    "SONY NEX-5N",
+    "Olympus E-PL2",
+    "Canon 300D"
+  ],
+  "final_24pair_allowlist_hash": "30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2",
+  "formal_generation_authorized": true,
+  "formal_rgb_generated": 0,
+  "latent_manifest_hash": "474e8ec5083667cbffbf8058c295e517628830fddf73f01b4bc6e45143babb4c",
+  "light_set": [
+    "D65",
+    "A",
+    "FL2",
+    "FL11"
+  ],
+  "manifest_integrity_audit_hash": "05408b8c789f872294c0953d2436de6d80f281dd1a99e7546c9ef1d1017e6c31",
+  "mask_quotas": {
+    "Full": 5400,
+    "Mild": 5400,
+    "Strong": 2700
+  },
+  "next_stage": "SO-R1-A2-G1-AM1",
+  "pair_manifest_hash": "2adb847a722f51dfe2a47cba6e34db2f8310aa249cc61237aca6aace502e1fa6",
+  "protected_input_ledger_hash": "fef19b6daa8adcf8f6ecd45ff93b253b7010a068694d660d5f6381b48aadf06d",
+  "protocol_hash": "fff5f3a01c6c486e0d982debc462f235f56a42033e9c7c4983d9b912fa84df45",
+  "protocol_version": "1.1",
+  "qc_contract": {
+    "exposure_ev": [
+      -0.5,
+      0.31
+    ],
+    "low_high_clip_max": 0.1,
+    "max_retry": 128
+  },
+  "resource_preflight_hash": "a8989b78695fa72e5459ba8f4409a71725ab92d6d96a00a23e9536688d8d42f1",
+  "seed_contract_hash": "f80d91657e7ca2260e87cbbef131f094ac8f36a4394d630801cdb48099e60280",
+  "source_d0_v1_protocol_hash": "699267361007a8355d842685272074507e91163f3d770d222714a26d388112f3",
+  "stage_id": "SO-R1-A2-D0-AM1",
+  "status": "FROZEN",
+  "storage_contract": "np.savez_compressed / float16 RGB+M+H / uint8 mask",
+  "training_authorized": false
+}

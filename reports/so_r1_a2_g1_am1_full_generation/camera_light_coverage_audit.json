@@ -1,0 +1,17 @@
+{
+  "allowlist_role_counts": {
+    "CAMERA_OOD": 6,
+    "ID": 12,
+    "JOINT_OOD": 2,
+    "LIGHT_OOD": 4
+  },
+  "excluded_camera_occurrences": {
+    "Canon 300D": 0,
+    "Nokia N900": 0,
+    "Olympus E-PL2": 0,
+    "Pentax Q": 0,
+    "SONY NEX-5N": 0
+  },
+  "status": "PASS",
+  "unique_camera_light_pairs": 24
+}

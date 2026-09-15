@@ -1,0 +1,3 @@
+smoke=PASS
+optimizer_steps=0
+checkpoint_writes=0

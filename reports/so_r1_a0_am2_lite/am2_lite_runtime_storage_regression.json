@@ -1,0 +1,21 @@
+{
+  "wall_seconds": 141.58588680000685,
+  "seconds_per_latent": 2.212279481250107,
+  "seconds_per_acquisition": 0.4424558962500214,
+  "peak_rss_recorded": false,
+  "peak_rss_reason": "original AM2 regression run predates RSS sampler; result remains FAIL independently",
+  "compressed_bytes_per_latent": 1263800.359375,
+  "compression_ratio": 1.8149702071095757,
+  "loader": {
+    "tested_latents": 64,
+    "sequential_read_mb_s": 43.45359294996217,
+    "random_read_median_ms": 11.53044999227859,
+    "random_read_p95_ms": 16.839344993059058,
+    "dtype_mismatch_count": 0,
+    "shape_mismatch_count": 0,
+    "metadata_mismatch_count": 0
+  },
+  "float16_rgb_error": "NOT_REMEASURED_AFTER_FAIL",
+  "relative_compressed_bytes_vs_c2": 0.15229422871508574,
+  "full_generation_authorized": false
+}

@@ -1,0 +1,143 @@
+# KM-BIO-v2R R-B observation audit
+
+No raw HSI/RGB/Validation/Test/clinical content was read.
+
+```json
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v2R-R-B",
+  "model_id": "KM2L-HF-v2R",
+  "status": "PASS_FOR_V2R_TRAIN_INVERSION",
+  "created_utc": "2026-09-10T13:34:58.299572+00:00",
+  "hsi_content_reads": 0,
+  "rgb_content_reads": 0,
+  "validation_hsi_content_reads": 0,
+  "test_hsi_content_reads": 0,
+  "clinical_500_content_reads": 0,
+  "checks": {
+    "r_a_formula_contract_and_audit_pass": true,
+    "source_manifest_hash_matches_v1_audit": true,
+    "exact_left_right_pairing": true,
+    "paired_capture_metadata_agreement": true,
+    "source_rows_are_v1_and_qc_passed": true,
+    "subject_and_capture_counts": true,
+    "no_side_gain_or_normalization": true,
+    "strict_positive_log_inputs": true,
+    "symmetric_formula_reconstruction": true,
+    "fit_and_edge_band_roles": true,
+    "validation_test_500_isolation": true,
+    "all_symmetric_values_finite_positive": true
+  },
+  "counts": {
+    "input_region_spectra": 88,
+    "subjects": 44,
+    "captures": 44,
+    "symmetric_spectra": 44
+  },
+  "wavelength": {
+    "full_centers_nm": [
+      400.0,
+      410.0,
+      420.0,
+      430.0,
+      440.0,
+      450.0,
+      460.0,
+      470.0,
+      480.0,
+      490.0,
+      500.0,
+      510.0,
+      520.0,
+      530.0,
+      540.0,
+      550.0,
+      560.0,
+      570.0,
+      580.0,
+      590.0,
+      600.0,
+      610.0,
+      620.0,
+      630.0,
+      640.0,
+      650.0,
+      660.0,
+      670.0,
+      680.0,
+      690.0,
+      700.0
+    ],
+    "fit_centers_nm": [
+      420,
+      430,
+      440,
+      450,
+      460,
+      470,
+      480,
+      490,
+      500,
+      510,
+      520,
+      530,
+      540,
+      550,
+      560,
+      570,
+      580,
+      590,
+      600,
+      610,
+      620,
+      630,
+      640,
+      650,
+      660,
+      670,
+      680
+    ],
+    "edge_diagnostic_centers_nm": [
+      400,
+      410,
+      690,
+      700
+    ]
+  },
+  "formula": "exp((log(R_left)+log(R_right))/2)",
+  "side_audit": {
+    "left_brighter_broadband_subject_count": 44,
+    "median_left_minus_right_broadband": 0.07669239100926593,
+    "median_log_left_minus_log_right_mean": 0.2575982901736881,
+    "maximum_formula_reconstruction_abs": 0.0
+  },
+  "source_hashes": {
+    "v2r_formula_contract": "212a3cb32bb2bcd31088cec3da88813d2e6f4d2c0675e6902e4f3b77272df30d",
+    "v2r_formula_audit": "441c38c94892f142ad3d532d5a712255d3d36fcf6c728d1d916d6229a92503f9",
+    "source_manifest_parquet": "1f947138769684136c3012ad7cbd0fa0f12d14805fa1964bc046f35c60fe07fa",
+    "source_audit_summary_json": "ea22529e30da10c1902dbefabd384a5956dcc5278c2f39c2e8957f272f78e636",
+    "source_observation_contract": "0fb38cf67dbe7dcbda9f668fe2ae8d4c6c4c4fe4d3f842c10bec68a10ae4f27b",
+    "v2r_observation_contract": "9374969cb305de16023265bbbcebed974eaa629877f651aec6f09b216a78385e",
+    "implementation_source": "6b3d9bd91693ab2d601722adbcc28c56755cf15bf3a99b1b2ba14ae7cede0b12",
+    "implementation_runner": "ff45c1e24e98965412ff0728f578513fcf76df2322cedbe210805a93f419e376",
+    "implementation_tests": "d677deb283327c90d749dd1c6332c203382cfde477ec2d360635b12501d609d8"
+  },
+  "outputs": {
+    "symmetric_manifest_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r\\stage1_hsi_physics\\km_bio_v2r_observation_audit\\train_symmetric_observation_manifest.parquet",
+      "sha256": "d9d95ec627dc7e4cef92dc46b8197c439e1d4244a42419e1a82fb1a80cfccb09"
+    },
+    "symmetric_manifest_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r\\stage1_hsi_physics\\km_bio_v2r_observation_audit\\train_symmetric_observation_manifest.csv",
+      "sha256": "6ffc089d5ae267ad048c7e9ea0e097bf51117343e227c8dcb94b85633a37a3e0"
+    },
+    "side_pair_audit_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r\\stage1_hsi_physics\\km_bio_v2r_observation_audit\\side_pair_audit.csv",
+      "sha256": "38965b3e908e34247c15465e3f860b42152c614e4ca29e72dd2ad983857204f6"
+    }
+  },
+  "authorized_next_stage": "R-C0_CANDIDATE_LADDER",
+  "r_c0_train_inversion_allowed": true,
+  "real_hsi_inversion_performed_in_r_b": false
+}
+```

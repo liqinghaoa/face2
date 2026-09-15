@@ -1,0 +1,12 @@
+{
+  "expected_by_type": {
+    "appearance_only": 13500,
+    "camera_only": 13500,
+    "joint": 13500,
+    "light_only": 13500
+  },
+  "first_invalid_pair": [],
+  "invalid_pair_count": 0,
+  "pair_count": 54000,
+  "status": "PASS"
+}

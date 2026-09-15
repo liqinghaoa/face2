@@ -1,0 +1,75 @@
+schema_version: '1.0'
+protocol_id: SO-R1-A0
+freeze_id: SO_R1_CameraLightSplit_v1.0
+status: FROZEN
+source_assets:
+  camera_spectral_asset: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/source_standardized_10nm.npz
+  camera_spectral_asset_sha256: 154fde064b9c2c016aaecb6183abeb196c33f44fd8ceab574118f3057a8dcb08
+  so0_audit_root: outputs/SO0_Forward_Model_v1.1
+  multicamera_metrics_sha256: e89f6da91b7fd01ae67e2c03e28cc3c4f054a64a0507eeccaa5ccca69f1dd512
+  colorchecker_metrics_sha256: 912a93b86eaa9e1875ed802533134336fd571796662a6a7a74276259005e185f
+  mh_observation_metrics_sha256: faf2887e49ea154b13bcf440d276d86ff6bd7e2e83c7a789009de2b19bb1b2cf
+  resolution_metrics_sha256: c348b22ab345e4bef9eeb9450343e683a973a76cdd8b3855a091a3e3610be0f7
+  multilight_metrics_sha256: a593537a6f4b371191d222129a8da5c5d56978f162919b0559c4f2f29672408f
+camera_scope:
+  total_camera_identities: 28
+  quality_qualified_4_of_4: 27
+  consumer_mobile_candidate_count: 24
+seen_cameras:
+- Canon 5DMarkII
+- Nokia N900
+- Nikon D80
+- Pentax Q
+- SONY NEX-5N
+- Olympus E-PL2
+unseen_cameras:
+- Canon 1DMarkIII
+- Nikon D5100
+excluded_cameras:
+- name: Point Grey Grasshopper 50S5C
+  reason: failed_3_of_4_camera_light_pairs
+- name: Point Grey Grasshopper2 14S5C
+  reason: industrial_camera_profile
+- name: Hasselblad H2
+  reason: specialized_medium_format_profile
+- name: Phase One
+  reason: specialized_medium_format_profile
+seen_lights:
+- D65
+- A
+- FL2
+unseen_lights:
+- FL11
+selection_method:
+  primary_distance: channel_mean_spectral_angle
+  secondary_distance: channel_mean_total_variation
+  response_source: native_10nm
+  response_normalization: per_camera_per_channel_area_normalization
+  seen_strategy: anchored_greedy_maximin
+  unseen_strategy: farthest_from_final_seen
+  tie_tolerance: 1.0e-12
+  tie_break: camera_name_unicode_ascending
+  random_selection: false
+  model_result_used: false
+anchors:
+  forced_seen:
+  - Canon 5DMarkII
+  - Nokia N900
+combination_counts:
+  id: 18
+  camera_ood: 6
+  light_ood: 6
+  joint_ood: 2
+  total: 32
+gates:
+  protected_assets_unchanged: true
+  camera_identity_join_pass: true
+  selected_camera_count_pass: true
+  selected_camera_quality_pass: true
+  light_quality_pass: true
+  allowlist_32_of_32_pass: true
+  deterministic_rerun_pass: true
+  selection_sensitivity_pass: true
+  tests_pass: true
+final_status: PASS
+protected_asset_manifest_sha256: 251e0b23bbe7459d4871cf2b4146a8df8c2285f49167b327b4c19abb99796eff

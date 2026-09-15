@@ -1,0 +1,10 @@
+status: SMOKE_CANDIDATE
+authoritative: false
+formal_training_config: false
+not_for_model_selection: true
+stage: SO-R2-X4-S0
+variants: [LATE_CONCAT, MH_LRF, MH_LRTM]
+input: {shape: [5, 320, 256], rgb: [0,1,2], m: [3], h: [4]}
+mh_encoder: {channels: [32,32,64,128,128], norm: GroupNorm}
+lmf: {rank: 4, embedding: 128, augmented_embedding: 129}
+residual_scale: 0.1

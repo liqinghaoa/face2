@@ -1,0 +1,6 @@
+{
+  "warmup_seconds": 0,
+  "wall_seconds": 835.4426682000048,
+  "latent_per_second": 0.306424378050456,
+  "acquisition_per_second": 1.5321218902522802
+}

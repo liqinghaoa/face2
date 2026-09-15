@@ -1,0 +1,27 @@
+protocol_id: SO-R1-A0-AM3
+version: '1.2'
+status: REJECTED_STRESS_FAILURE
+amendment_reason: Olympus E-PL2 FL2 camera-specific low clipping
+selected_replacement: Canon 20D
+seen_cameras:
+- Canon 5DMarkII
+- Nikon D80
+- Canon 300D
+- Canon 20D
+unseen_cameras:
+- Canon 1DMarkIII
+- Nikon D5100
+excluded_cameras:
+- Olympus E-PL2
+- Nokia N900
+- Pentax Q
+- SONY NEX-5N
+seen_lights:
+- D65
+- A
+- FL2
+unseen_lights:
+- FL11
+allowlist_hash: 2d4207fd3c2f713895e271b08eeb0f379fb35d7f6af1531041b8cc180c5e1ee2
+full_generation_authorized: false
+training_authorized: false

@@ -1,0 +1,5 @@
+{
+  "checkpoint_write_count": 0,
+  "optimizer_step_count": 0,
+  "status": "PASS_SMOKE_TEST"
+}

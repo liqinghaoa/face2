@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "task_id": "R-C1_PARAMETER_IDENTIFIABILITY_ROBUSTNESS",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "R_C1_COMPLETE",
+  "data_access": {
+    "manifest_content_reads": 1,
+    "raw_hsi_reads": 0,
+    "rgb_reads": 0,
+    "validation_reads": 0,
+    "test_reads": 0,
+    "clinical_500_reads": 0
+  },
+  "subject_count": 44,
+  "candidates": [
+    "V2R-PS",
+    "V2R-PSG"
+  ],
+  "all_sensitivity_converged": true,
+  "reflectance_clipping_applied": false,
+  "fit_band_count": 27,
+  "edge_band_count": 4
+}

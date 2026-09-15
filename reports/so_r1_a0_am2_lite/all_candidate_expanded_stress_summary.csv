@@ -1,0 +1,14 @@
+camera_name,catastrophic_count,major_channel_collapse_count,severe_overall_low_clip_count,major_overall_low_clip_count,nonfinite_count,all_zero_count,all_one_count,pass
+Canon 20D,0,0,0,0,0,0,0,True
+Canon 300D,0,0,0,0,0,0,0,True
+Canon 40D,0,0,0,0,0,0,0,True
+Canon 500D,0,0,0,0,0,0,0,True
+Canon 600D,0,0,0,0,0,0,0,True
+Canon 60D,0,0,0,0,0,0,0,True
+Nikon D200,0,0,0,0,0,0,0,True
+Nikon D3,0,0,0,0,0,0,0,True
+Nikon D300s,0,0,0,0,0,0,0,True
+Nikon D3X,0,0,0,0,0,0,0,True
+Nikon D700,0,0,0,0,0,0,0,True
+Nikon D90,0,0,0,0,0,0,0,True
+Pentax K-5,0,0,0,0,0,0,0,True

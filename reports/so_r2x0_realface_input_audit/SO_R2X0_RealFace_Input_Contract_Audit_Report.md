@@ -1,0 +1,21 @@
+# SO-R2-X0 RealFace Input Contract Audit
+
+Conclusion: **PASS_INPUT_CONTRACT**. This audit is read-only and canary-only; no full real-face inference or M/H export was performed.
+
+{
+  "status": "PASS_INPUT_CONTRACT",
+  "pipeline_validity": "PASS",
+  "input_contract_status": "PASS_INPUT_CONTRACT",
+  "b1_checkpoint_sha256": "5b1dd85f840d4d00a7c1c1f3b7c0a9306031408ecf0c5a557f53ca0810c0265b",
+  "b2_checkpoint_sha256": "5cd86ceee6c9ad7f448676b59b3f1f5e8d80dc28bce106101b19d1286b6562a0",
+  "b1_training_contract_hash": "7dcfb309d9d61c35b1de555b815a84e7c2f83be5d9b5e63f74bc91d14217b84f",
+  "real_case_count": 500,
+  "real_patch_count": 10000,
+  "canary_count": 12,
+  "canary_status": "PASS",
+  "protected_assets_unchanged": true,
+  "full_inference_started": false,
+  "next_step": "\u5efa\u8bae\u8fdb\u5165\u4e0b\u4e00\u6b65\u5168\u91cf\u51bb\u7ed3\u63a8\u7406\u4e0e M/H patch \u878d\u5408",
+  "next_stage_authorized": false,
+  "nyha_labels_folds_sex_read": false
+}

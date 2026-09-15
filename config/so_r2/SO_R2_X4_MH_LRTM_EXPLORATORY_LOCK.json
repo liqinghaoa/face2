@@ -1,0 +1,11 @@
+{
+  "stage": "SO-R2-X4",
+  "classification_scope": "exploratory_internal_oof_only",
+  "input_condition": "rgb_b2mh",
+  "models": ["LATE_CONCAT", "MH_LRF", "MH_LRTM"],
+  "outer_test_model_selection_access": 0,
+  "formal_SO_R1_C_status": "FAIL",
+  "official_SO_R2_authorization": false,
+  "SO_R3_authorization": false,
+  "next_stage_authorized": false
+}

@@ -1,0 +1,32 @@
+schema_version: 1
+stage: S1-2
+profile_id: target_front_neutral_v3
+status: provisional_validation_acceptance_profile
+
+target_domain:
+  expression: neutral
+  direction: front
+  eyewear_requirement: no_eyewear_in_deployment
+  eyewear_status_in_hyperskin_validation: unavailable_and_not_verified
+
+primary_gate:
+  maximum_failure_fraction: 0.0
+  maximum_review_fraction: 0.50
+  minimum_usable_fraction: 1.0
+  minimum_sample_count: 1
+  allowed_review_codes:
+    - fragmented_whole_skin
+    - forehead_secondary_roi_small
+  require_both_cheeks_visible: true
+  minimum_each_cheek_pixels: 1000
+
+stress_domain:
+  role: non_blocking_diagnostic
+  includes_all_validation_rows_outside_primary_domain: true
+  failures_must_be_reported: true
+
+evidence_policy:
+  profile_defined_after_broad_validation_review: true
+  independent_validation_claim_allowed: false
+  permitted_use: development_gate_for_s1_3
+  future_requirement: new_target_domain_holdout_or_external_validation

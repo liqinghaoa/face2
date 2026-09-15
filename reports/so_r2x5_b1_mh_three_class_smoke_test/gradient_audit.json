@@ -1,0 +1,15 @@
+{
+  "groups": {
+    "conv1": {
+      "finite": true,
+      "nonzero": true,
+      "norm": 13.353927612304688
+    },
+    "fc": {
+      "finite": true,
+      "nonzero": true,
+      "norm": 11.323891639709473
+    }
+  },
+  "all_trainable_gradients_finite": true
+}

@@ -1,0 +1,6 @@
+{
+  "max_abs_error": 0.000244140625,
+  "p99_abs_error": 0.0002208948,
+  "mask_exact": true,
+  "read_32_pass": true
+}

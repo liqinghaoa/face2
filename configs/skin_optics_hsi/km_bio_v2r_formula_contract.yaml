@@ -1,0 +1,131 @@
+schema_version: 1
+contract_id: km_bio_v2r_formula_contract
+model_id: KM2L-HF-v2R
+status: formula_audit_pass
+implementation_status: R_A_COMPLETE
+hsi_read: false
+description: >-
+  Independent finite-epidermis plus semi-infinite-dermis effective two-flux
+  Kubelka-Munk contract. v2R adds fixed blood packaging, Train-global
+  scattering calibration and a sequential global observation scale.
+parameterization:
+  base:
+    names: [f_mel, f_blood]
+    lower: [0.0, 0.0]
+    upper: [0.43, 0.10]
+    units: [fraction, fraction]
+    s_rule: fixed_s0
+  extended:
+    names: [f_mel, f_blood, s]
+    lower: [0.0, 0.0, 0.0]
+    upper: [0.43, 0.10, 1.0]
+    units: [fraction, fraction, fraction]
+  s0:
+    reference: 0.70
+    sensitivity: [0.50, 0.90]
+    interpretation: fixed model blood oxygenation mixture, never individual SpO2
+fixed:
+  epidermis_thickness_mm: 0.060
+  dermis: semi_infinite
+  whole_blood_hb_g_per_l: 150.0
+  hb_molar_mass_g_per_mol: 64500.0
+  k_mapping: 2*mua
+  s_mapping: musp_reduced
+  surface_fresnel: omitted
+  per_spectrum_gain: forbidden
+  per_band_residual: forbidden
+blood_packaging:
+  diameter_unit_input: um
+  diameter_unit_formula: mm
+  main_diameter_um: 15.0
+  sensitivity_diameter_um: [0.0, 7.5, 30.0]
+  formula: (1-exp(-mua_blood*Dv_mm))/(mua_blood*Dv_mm)
+  zero_argument_limit: 1.0
+  interpretation: equivalent packaging scale, not individual vessel diameter
+scattering:
+  formula: As*musp_ref*(lambda_nm/600)^(-delta_bs)
+  amplitude_name: A_s
+  amplitude_bounds: [0.6, 1.6]
+  amplitude_reference: 1.0
+  slope_name: delta_bs
+  slope_bounds: [-0.5, 0.5]
+  slope_reference: 0.0
+  level: train_global
+observation_scale:
+  formula: g0*R_KM
+  bounds: [0.5, 1.5]
+  reference: 1.0
+  level: train_global
+  clipping: forbidden
+  sequential_estimation:
+    step_1: centered_logRMSE_estimates_A_s_and_delta_bs_with_g0_fixed_to_1_using_full_KM_predictions
+    step_2: raw_logRMSE_estimates_g0_after_scattering_is_frozen
+    leakage_rule: estimate_inside_training_fold_only_then_apply_to_outer_subject
+  g0_profile:
+    base_uniform_grid_count: 201
+    include_exact_optimum: true
+global_identifiability:
+  acceptable_loss_delta_logrmse: 0.005
+  maximum_acceptable_normalized_envelope_span: 0.20
+  parameter_bounds_used_for_normalization:
+    A_s: [0.6, 1.6]
+    delta_bs: [-0.5, 0.5]
+    g0: [0.5, 1.5]
+  boundary_tolerance_normalized: 0.01
+  reject_if_boundary_fold_count_at_least: 3
+  rule: reject_candidate_if_any_global_parameter_profile_span_exceeds_limit_or_boundary_rule_fails
+  interpretation: engineering_identifiability_gate_not_confidence_interval
+optical_assets:
+  path: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+  source_units: cm^-1
+  model_units: mm^-1
+  cm_to_mm_divisor: 10
+  fields:
+    wavelength: wavelength_nm
+    melanin: mua_mel_alternative_cm1
+    baseline: mua_base_cm1
+    hbo2: mua_hbo2_whole_blood_150gL_cm1
+    hb: mua_hb_whole_blood_150gL_cm1
+    reduced_scattering: musp_total_cm1
+  read_only: true
+wavelengths:
+  full_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+  fit_range_nm: [420, 680]
+  edge_diagnostic_nm: [400, 410, 690, 700]
+formula:
+  finite_layer:
+    q: sqrt(K*(K+2*S))
+    beta: sqrt(K/(K+2*S))
+    D: (1+beta)^2-(1-beta)^2*exp(-2*q*d)
+    R_layer: (1-beta^2)*(1-exp(-2*q*d))/D
+    T_layer: 4*beta*exp(-q*d)/D
+  semi_infinite: S/(K+S+sqrt(K*(K+2*S)))
+  layer_combination: R_e + T_e^2*R_d/(1-R_e*R_d)
+audit:
+  random_seed: 20260910
+  random_layer_count: 10000
+  finite_difference_step: 1.0e-5
+  physical_tolerance: 1.0e-10
+  gradient_tolerance_absolute: 1.0e-6
+  gradient_tolerance_relative: 1.0e-4
+  hsi_read_required: false
+  output_directory: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit
+  last_run_status: PASS
+  artifact: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit/audit_summary.json
+  required_checks:
+    - finite_layer_degeneracy
+    - packaging_zero_diameter_limit
+    - scattering_identity_limit
+    - observation_scale_identity_limit
+    - physical_bounds
+    - numpy_torch_parity
+    - gradient_finite_difference
+    - sequential_scale_interface_bounds
+    - global_profile_identifiability_rule
+  identifiability_note: centered_logRMSE_removes_direct_multiplicative_scale_but_A_s_may_remain_identifiable_through_full_KM_shape_changes
+prohibited:
+  - overwrite_km_bio_v1
+  - read_validation_or_test_hsi
+  - fit_per_spectrum_gain
+  - clip_reflectance_to_unit_interval
+  - infer_individual_vessel_diameter

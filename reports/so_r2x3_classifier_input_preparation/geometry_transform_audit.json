@@ -1,0 +1,24 @@
+{
+  "MH_interpolation": "bilinear, float32, align_corners=false",
+  "RGB_interpolation": "bilinear, float32, align_corners=false",
+  "crop_rotation_translation_warp": false,
+  "mask_interpolation": "nearest",
+  "padding_rule": "one all-zero row appended at bottom",
+  "resize_rule": "single aspect-ratio-preserving resize 979x1220 -> 256x319 (WxH)",
+  "resized_shape_hw": [
+    319,
+    256
+  ],
+  "resized_shape_wh": [
+    256,
+    319
+  ],
+  "source_shape_hw": [
+    1220,
+    979
+  ],
+  "target_shape_hw": [
+    320,
+    256
+  ]
+}

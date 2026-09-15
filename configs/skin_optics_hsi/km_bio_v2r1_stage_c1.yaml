@@ -1,0 +1,68 @@
+schema_version: 1
+stage: KM-BIO-v2R.1-R-C1
+task_id: R-C1_PARAMETER_IDENTIFIABILITY_ROBUSTNESS
+protocol_version: KM-BIO-v2R.1
+status: preregistered_train_only
+frozen_date: 2026-09-11
+inputs:
+  r_c0r_config: configs/skin_optics_hsi/km_bio_v2r1_candidate_ladder_resume.yaml
+  r_c0r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/r_c0r_decision.json
+  r_c0r_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/audit_summary.json
+  r_c0r_output: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume
+  observation_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/train_symmetric_observation_manifest.parquet
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+output_directory: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1
+selection:
+  selected_candidate: V2R-PS
+  tolerance_candidate: V2R-PSG
+  median_logrmse_tolerance: 0.005
+  candidates: [V2R-PS, V2R-PSG]
+analysis:
+  fit_centers_nm: [420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680]
+  edge_diagnostic_centers_nm: [400,410,690,700]
+  epsilon: 1.0e-6
+  loss: equal_weight_logrmse
+  fixed_s0: 0.70
+  fixed_thickness_mm: 0.060
+  fixed_diameter_um: 15.0
+  fixed_hb_g_l: 150.0
+  boundary_tolerance_normalized: 0.01
+sensitivity:
+  diameter_um: [0.0, 7.5, 15.0, 30.0]
+  s0: [0.50, 0.70, 0.90]
+  epidermis_thickness_mm: [0.050, 0.060, 0.070]
+  whole_blood_hb_g_l: [100.0, 150.0, 200.0]
+  scattering_amplitude_multiplier: [0.90, 1.00, 1.05]
+  delta_bs_shift: [-0.10, 0.00]
+  bandwidth: ["420_680", "430_670", "440_660"]
+solver:
+  sobol_starts: 1
+  random_seed: 20260911
+  ftol: 1.0e-9
+  xtol: 1.0e-9
+  gtol: 1.0e-7
+  max_nfev: 300
+execution:
+  train_only: true
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  run_best_o: false
+  run_validation: false
+  run_test: false
+  run_clinical_500: false
+  run_rgb_encoder_training: false
+  reflectance_clipping: false
+required_outputs:
+  - candidate_selection_recheck.csv
+  - subject_parameter_profiles.csv
+  - parameter_profile_summary.csv
+  - sensitivity_subject_metrics.csv
+  - sensitivity_summary.csv
+  - fold_global_parameters_reused.csv
+  - r_c1_integrity_audit.json
+  - r_c1_decision.json
+  - R_C1_REPORT.md
+  - artifact_hash_manifest.csv

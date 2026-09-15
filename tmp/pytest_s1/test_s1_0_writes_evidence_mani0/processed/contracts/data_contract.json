@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "stage": "S1-0",
+  "created_utc": "2026-09-07T18:31:04.199986+00:00",
+  "status": "FAIL",
+  "readiness": {
+    "s1_1_allowed": false,
+    "formal_test_allowed": false,
+    "formal_test_blockers": [
+      "wavelength_centers_not_author_confirmed",
+      "effective_srf_missing",
+      "spatial_mapping_pending_s1_1"
+    ]
+  },
+  "dataset": {
+    "name": "Hyper-Skin RGB_VIS release",
+    "version": "downloaded_release_version_not_labelled",
+    "raw_root": "E:\\projects\\face2\\tmp\\pytest_s1\\test_s1_0_writes_evidence_mani0\\Hyper-Skin(RGB, VIS)",
+    "raw_data_policy": "read_only",
+    "license_publication_subject_allowlist": [
+      "p012",
+      "p019",
+      "p027"
+    ]
+  },
+  "counts": {
+    "samples": 3,
+    "expected_by_split": {
+      "train": 1,
+      "valid": 1,
+      "test": 1
+    },
+    "actual_by_split": {
+      "train": 1,
+      "valid": 1,
+      "test": 1
+    },
+    "subjects_by_split": {
+      "train": 1,
+      "valid": 1,
+      "test": 1
+    },
+    "subject_ids_by_split": {
+      "train": [
+        "p001"
+      ],
+      "valid": [
+        "p002"
+      ],
+      "test": [
+        "p003"
+      ]
+    }
+  },
+  "pairing": {
+    "rgb_vis_one_to_one": true,
+    "missing_rgb_count": 0
+  },
+  "hsi_storage": {
+    "container": "MATLAB v7.3 / HDF5",
+    "dataset_key": "cube",
+    "stored_shapes": [
+      "[31, 64, 64]"
+    ],
+    "loader_shapes_before_s1_1": [
+      "[64, 64, 31]"
+    ],
+    "dtypes": [
+      "float32"
+    ],
+    "axis_contract": {
+      "stored_band_axis": 0,
+      "loader_operation": "move unique 31-length axis to last",
+      "rgb_spatial_mapping": {
+        "status": "pending",
+        "to_be_frozen_by": "S1-1"
+      }
+    }
+  },
+  "physical_quantity": {
+    "name": "normalized spectral reflectance",
+    "status": "confirmed_from_dataset_documentation",
+    "file_embedded_calibration_metadata": "missing",
+    "raw_expected_range": [
+      0.0,
+      1.0
+    ],
+    "derived_clip_range": [
+      0.0,
+      1.0
+    ],
+    "clip_policy": "derived_arrays_only_never_raw"
+  },
+  "wavelength": {
+    "coverage_nm": {
+      "start": 400.0,
+      "stop": 700.0,
+      "status": "confirmed"
+    },
+    "band_count": {
+      "value": 31,
+      "status": "confirmed_from_files_and_documentation"
+    },
+    "centers_nm": {
+      "value": [
+        400.0,
+        410.0,
+        420.0,
+        430.0,
+        440.0,
+        450.0,
+        460.0,
+        470.0,
+        480.0,
+        490.0,
+        500.0,
+        510.0,
+        520.0,
+        530.0,
+        540.0,
+        550.0,
+        560.0,
+        570.0,
+        580.0,
+        590.0,
+        600.0,
+        610.0,
+        620.0,
+        630.0,
+        640.0,
+        650.0,
+        660.0,
+        670.0,
+        680.0,
+        690.0,
+        700.0
+      ],
+      "status": "inferred"
+    },
+    "ordering": "ascending_assumed_pending_author_or_code_confirmation",
+    "raw_system_fwhm_nm": {
+      "value": 5.5,
+      "status": "confirmed_for_raw_FX10_not_release_bands"
+    },
+    "release_effective_bandwidth_or_srf": {
+      "value": null,
+      "status": "missing"
+    }
+  },
+  "value_audit": {
+    "mode": "full",
+    "global_min": 0.11999999731779099,
+    "global_max": 0.7719374895095825,
+    "nan_count": 0,
+    "inf_count": 0,
+    "below_zero_count": 0,
+    "above_one_count": 0
+  },
+  "manifest": {
+    "path": "E:\\projects\\face2\\tmp\\pytest_s1\\test_s1_0_writes_evidence_mani0\\processed\\manifests\\split_manifest.csv",
+    "sha256": "3fc13935faf9603ae36a6eefd3a8e623317646053d09f50377512b0fba1a3d71",
+    "row_count": 3,
+    "hash_algorithm": "SHA-256"
+  },
+  "evidence": [
+    {
+      "field": "physical_quantity",
+      "status": "confirmed",
+      "claim": "暗场校正和白参考归一化后的光谱反射率",
+      "source": "face2_research\\01_Background_and_Literature\\Key_Papers\\11_Ng_2023_Hyper_Skin\\Hyper-Skin_A_Hyperspectral_Dataset_for_Reconstructing_Facial_Skin-Spectra_from_RGB_Images.pdf",
+      "location": "Methods / hyperspectral acquisition and preprocessing"
+    },
+    {
+      "field": "raw_sensor",
+      "status": "confirmed",
+      "claim": "Specim FX10；400–1000 nm；448 波段；约 1.34 nm sampling；约 5.5 nm raw FWHM",
+      "source": "face2_research\\01_Background_and_Literature\\Key_Papers\\11_Ng_2023_Hyper_Skin\\SupportingInformation\\Appendix A1 - Hyperspectral_Data_Acquisition_Documentation.pdf",
+      "location": "camera and acquisition specification"
+    },
+    {
+      "field": "release_vis",
+      "status": "confirmed",
+      "claim": "发布 VIS 为 400–700 nm、31 波段；由原始波段插值得到",
+      "source": "face2_research\\01_Background_and_Literature\\Key_Papers\\11_Ng_2023_Hyper_Skin\\SupportingInformation\\Appendix A1 - Hyper_Skin_Datasheets.pdf",
+      "location": "VIS dataset description"
+    },
+    {
+      "field": "wavelength_centers",
+      "status": "inferred",
+      "claim": "31 个中心暂按 400:10:700 nm",
+      "source": "range + band count + regular-grid interpretation",
+      "location": "not explicitly enumerated in supplied documents"
+    },
+    {
+      "field": "release_srf",
+      "status": "missing",
+      "claim": "31 波段有效 SRF/带宽未提供",
+      "source": "downloaded release and supplied documents",
+      "location": "not found"
+    }
+  ],
+  "inspection_failures": [],
+  "issues": [
+    {
+      "severity": "critical",
+      "code": "RGB_SHAPE_MISMATCH",
+      "message": "['64x64']"
+    },
+    {
+      "severity": "warning",
+      "code": "WAVELENGTH_CENTERS_INFERRED",
+      "message": "400:10:700 nm is inferred, not shipped as metadata"
+    },
+    {
+      "severity": "warning",
+      "code": "EFFECTIVE_SRF_MISSING",
+      "message": "31-band effective SRF/bandwidth is not available"
+    },
+    {
+      "severity": "pending",
+      "code": "SPATIAL_MAPPING_PENDING_S1_1",
+      "message": "RGB-HSI transform must be frozen by S1-1"
+    }
+  ]
+}

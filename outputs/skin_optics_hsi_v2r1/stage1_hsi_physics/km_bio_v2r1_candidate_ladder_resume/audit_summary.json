@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "task_id": "R-C0R_RESUME_REGISTERED_CANDIDATE_LADDER",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "R_C0R_COMPLETE",
+  "created_utc": "2026-09-10T18:52:27.031999+00:00",
+  "preflight_checks": {
+    "formula_audit_pass": true,
+    "observation_audit_pass": true,
+    "observation_manifest_hash": true,
+    "formula_contract_hash_chain": true,
+    "formula_audit_hash_chain": true,
+    "historical_r_c0_hashes_pass": true,
+    "fixed_fold_verification_pass": true
+  },
+  "fold_manifest_sha256": "e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370",
+  "historical_artifact_hash_entries": 22,
+  "historical_artifact_hash_failures": 0,
+  "reference_reproduction_checks": [
+    {
+      "candidate": "V2R-PS",
+      "maximum_abs_outer_fold_reference_logrmse_difference": 8.326672684688674e-17,
+      "pass": true
+    },
+    {
+      "candidate": "V2R-PSG",
+      "maximum_abs_outer_fold_reference_logrmse_difference": 8.326672684688674e-17,
+      "pass": true
+    }
+  ],
+  "data_access": {
+    "r_b_manifest_content_reads": 1,
+    "historical_r_c0_artifact_content_reads": 8,
+    "raw_hsi_reads": 0,
+    "rgb_reads": 0,
+    "validation_reads": 0,
+    "test_reads": 0,
+    "clinical_500_reads": 0
+  },
+  "reflectance_clipping_applied": false,
+  "input_hashes": {
+    "formula_contract": "212a3cb32bb2bcd31088cec3da88813d2e6f4d2c0675e6902e4f3b77272df30d",
+    "formula_audit": "441c38c94892f142ad3d532d5a712255d3d36fcf6c728d1d916d6229a92503f9",
+    "observation_contract": "9374969cb305de16023265bbbcebed974eaa629877f651aec6f09b216a78385e",
+    "observation_audit": "50d3940c76575f80d78aceeed7ae08ad5c1bbaea927f685122cbc1c52b3efe64",
+    "observation_manifest": "d9d95ec627dc7e4cef92dc46b8197c439e1d4244a42419e1a82fb1a80cfccb09",
+    "optical_asset_10nm": "30de54c4bd5af2453a32490559c96e36854b86b31f65336ab700cf32de0488f6"
+  },
+  "implementation_hashes": {
+    "source": "b39518d0fdc99008ddc5cca447f17223ff504c59720a3b30f5b40c77d1aa3e38",
+    "runner": "af09f102efdcdca46ae059b0b7408fb99e94e0f1248ff8bccdf09f5017e5fde1",
+    "tests": "f6a290c047f0773b1f1365ac535bf6fc782234399c7c727bd12e68cc5c6e177e"
+  }
+}

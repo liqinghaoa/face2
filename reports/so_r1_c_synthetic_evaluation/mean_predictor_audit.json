@@ -1,0 +1,82 @@
+{
+  "Baseline|Camera-OOD|H": {
+    "mean_predictor_mae": 0.2513306828811765,
+    "model_mae": 0.10290338346315547,
+    "pass": true
+  },
+  "Baseline|Camera-OOD|M": {
+    "mean_predictor_mae": 0.2514533542431891,
+    "model_mae": 0.015554249410331249,
+    "pass": true
+  },
+  "Baseline|ID Test|H": {
+    "mean_predictor_mae": 0.2514147957451642,
+    "model_mae": 0.0966394879880827,
+    "pass": true
+  },
+  "Baseline|ID Test|M": {
+    "mean_predictor_mae": 0.25128969878144564,
+    "model_mae": 0.015155764457210898,
+    "pass": true
+  },
+  "Baseline|Joint-OOD|H": {
+    "mean_predictor_mae": 0.2514721840396523,
+    "model_mae": 0.2008220818599686,
+    "pass": true
+  },
+  "Baseline|Joint-OOD|M": {
+    "mean_predictor_mae": 0.2513740440867841,
+    "model_mae": 0.03304781391015276,
+    "pass": true
+  },
+  "Baseline|Light-OOD|H": {
+    "mean_predictor_mae": 0.25120619002729655,
+    "model_mae": 0.18206231241775678,
+    "pass": true
+  },
+  "Baseline|Light-OOD|M": {
+    "mean_predictor_mae": 0.2513017194457352,
+    "model_mae": 0.029761098281666638,
+    "pass": true
+  },
+  "Proposed|Camera-OOD|H": {
+    "mean_predictor_mae": 0.2513306828811765,
+    "model_mae": 0.09629231712576002,
+    "pass": true
+  },
+  "Proposed|Camera-OOD|M": {
+    "mean_predictor_mae": 0.2514533542431891,
+    "model_mae": 0.014872565290890634,
+    "pass": true
+  },
+  "Proposed|ID Test|H": {
+    "mean_predictor_mae": 0.2514147957451642,
+    "model_mae": 0.09143947063274682,
+    "pass": true
+  },
+  "Proposed|ID Test|M": {
+    "mean_predictor_mae": 0.25128969878144564,
+    "model_mae": 0.014742454987438395,
+    "pass": true
+  },
+  "Proposed|Joint-OOD|H": {
+    "mean_predictor_mae": 0.2514721840396523,
+    "model_mae": 0.18605296595748513,
+    "pass": true
+  },
+  "Proposed|Joint-OOD|M": {
+    "mean_predictor_mae": 0.2513740440867841,
+    "model_mae": 0.031291060939291494,
+    "pass": true
+  },
+  "Proposed|Light-OOD|H": {
+    "mean_predictor_mae": 0.25120619002729655,
+    "model_mae": 0.17278374288640916,
+    "pass": true
+  },
+  "Proposed|Light-OOD|M": {
+    "mean_predictor_mae": 0.2513017194457352,
+    "model_mae": 0.028296256296522916,
+    "pass": true
+  }
+}

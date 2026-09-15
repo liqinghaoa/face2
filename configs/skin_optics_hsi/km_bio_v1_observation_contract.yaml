@@ -1,0 +1,80 @@
+schema_version: 1
+contract_id: KM-BIO-v1-observation
+model_id: KM2L-HF-v1
+status: preregistered_for_stage_b_audit
+
+scope:
+  split: train
+  expression: neutral
+  direction: front
+  analysis_role: primary_development
+  regions: [left_cheek, right_cheek]
+  expected_subjects: 44
+  expected_captures: 44
+  expected_region_spectra: 88
+  validation_content_allowed: false
+  test_content_allowed: false
+
+observation:
+  quantity: white_reference_normalized_reflectance
+  absolute_hemispherical_scale_verified: false
+  main_observation_gain: 1.0
+  per_spectrum_gain_fitted: false
+  side_gain_applied: false
+  learned_spectral_residual: false
+  normalization_applied: none
+  authoritative_region_statistic: per_band_median_from_raw_hdf5_float64
+  reflectance_epsilon_for_future_log_loss: 1.0e-6
+
+wavelength:
+  centers_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+  ordering: ascending
+  centers_source_status: confirmed_from_official_code
+  release_effective_srf_status: missing
+  raw_sensor_fwhm_is_release_bandwidth: false
+
+spatial:
+  hsi_dataset_key: cube
+  expected_stored_shape: [31, 1024, 1024]
+  expected_stored_dtype: float64
+  loader_band_operation: move_unique_31_axis_to_last
+  frozen_rgb_hsi_transform: transpose
+  mask_coordinate_system: aligned_rgb_yx
+  roi_laterality: image_coordinate_not_anatomical
+  minimum_region_pixels: 1000
+
+historical_cache:
+  statistic: per_band_median
+  loader_dtype: float32
+  derived_clip_range: [0.0, 1.0]
+  maximum_allowed_abs_difference_from_raw_float64_median: 5.0e-7
+  maximum_allowed_abs_effect_of_clipping_on_region_median: 1.0e-12
+  permitted_use: scale_and_lineage_cross_check
+
+rgb_source:
+  release_pairing: one_to_one_jpeg_by_sample_id
+  dataset_description: author_generated_rgb_paired_with_released_hsi
+  exact_release_rendering_pipeline_available: false
+  per_image_camera_response_identity_available: false
+  classification_as_same_scene_phone_capture: forbidden
+  stage_b_use: provenance_and_pairing_audit_only
+  stage_c_model_input: false
+
+inputs:
+  data_contract: data/processed/HyperSkin_Stage1_v1/contracts/data_contract.json
+  split_manifest: data/processed/HyperSkin_Stage1_v1/manifests/split_manifest.csv
+  registration_decision: data/processed/HyperSkin_Stage1_v1/registration_qc/registration_decision.json
+  frozen_mask_provenance: data/processed/HyperSkin_Stage1_v1/freeze/s1_2_mask_protocol_provenance.json
+  frozen_train_mask_manifest: data/processed/HyperSkin_Stage1_v1/manifests/mask_manifest_train_r2.parquet
+  region_cache: data/processed/HyperSkin_Stage1_v1/region_spectra/train_only_v1/region_spectra_train.parquet
+  region_cache_provenance: data/processed/HyperSkin_Stage1_v1/region_spectra/train_only_v1/train_only_cache_provenance.json
+  region_cache_decision: data/processed/HyperSkin_Stage1_v1/region_spectra/s1_3_decision.json
+
+outputs:
+  directory: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_observation_audit
+  input_manifest_parquet: train_primary_observation_manifest.parquet
+  input_manifest_csv: train_primary_observation_manifest.csv
+  spectrum_scale_audit_csv: spectrum_scale_audit.csv
+  audit_summary_json: audit_summary.json
+  audit_summary_markdown: audit_summary.md
+

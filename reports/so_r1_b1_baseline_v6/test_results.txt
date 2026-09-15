@@ -1,0 +1,3 @@
+Command: E:\resarch\Anaconda3\envs\face2\python.exe -m pytest -q tests/so_r1
+Result: 45 passed in 8.47s
+Purpose: Final SO-R1-B1 v6 post-training test record.

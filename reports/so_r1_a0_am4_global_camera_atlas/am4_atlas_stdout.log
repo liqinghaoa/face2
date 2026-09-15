@@ -1,0 +1,19 @@
+{
+  "status": "PENDING_REQUIRED_PILOT",
+  "atlas_status": "NOT_FROZEN",
+  "safe_camera_count": 11,
+  "seen_cameras": [
+    "Canon 5DMarkII",
+    "Hasselblad H2",
+    "Nikon D80",
+    "Point Grey Grasshopper2 14S5C"
+  ],
+  "unseen_cameras": [
+    "Canon 1DMarkIII",
+    "Nikon D5100"
+  ],
+  "next_stage_authorized": false,
+  "formal_generation_authorized": false,
+  "training_authorized": false,
+  "protected_assets_unchanged": true
+}

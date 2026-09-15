@@ -1,0 +1,38 @@
+schema_version: 1
+stage: S1-5R-REPRESENTATION
+run_id: hyperskin_s1_5r_representation_v1
+status: train_evidence_reinterpretation
+
+inputs:
+  prior_decision: data/processed/HyperSkin_Stage1_v1/train_development/s1_5r_v7/s1_5r_decision.json
+  train_evidence: data/processed/HyperSkin_Stage1_v1/train_development/s1_5r_v7/train_evidence.json
+  per_spectrum_fits: data/processed/HyperSkin_Stage1_v1/train_development/s1_5r_v7/per_spectrum_fits.parquet
+  fit_failures: data/processed/HyperSkin_Stage1_v1/train_development/s1_5r_v7/fit_failures.json
+
+data_roles:
+  allowed_split: train
+  expected_subjects: 44
+  expected_primary_spectra: 88
+  validation_rows_read: 0
+  test_rows_read: 0
+  raw_hsi_files_read: 0
+
+representation_candidates:
+  primary: [D1-M, D2-MH, D3-MHG]
+  comparator: [B0-R, B0-S, B2-PCA, B2-RPCA]
+  diagnostic_rejected: [K2-MH-KM]
+
+representation_gates:
+  minimum_primary_fit_fraction: 1.0
+  d2_better_than_b0s_fraction_min: 0.70
+  d2_to_b0s_median_shape_log_rmse_ratio_max: 0.90
+  d2_physical_gain_retention_min: 0.50
+  d2_perturbation_median_normalized_shift_max: 0.25
+  max_primary_boundary_fraction: 0.25
+  require_finite_metrics: true
+  semantic_mh_gate: false
+
+policy:
+  do_not_overwrite_prior_outputs: true
+  interpretation_layer: deferred_to_stage2
+  validation_required_to_select_final_model: true

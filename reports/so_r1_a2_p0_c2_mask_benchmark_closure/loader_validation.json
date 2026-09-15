@@ -1,0 +1,14 @@
+{
+  "tested_latents": 256,
+  "successful_latents": 256,
+  "failed_latents": 0,
+  "sequential_read_mb_s": 36.618595411185765,
+  "random_read_mb_s": 69.39657223988496,
+  "median_latent_read_ms": 14.62599999649683,
+  "p95_latent_read_ms": 24.98486000113189,
+  "decompression_seconds": 7.667492700013099,
+  "metadata_mismatch_count": 0,
+  "shape_mismatch_count": 0,
+  "dtype_mismatch_count": 0,
+  "hash_mismatch_count": 0
+}

@@ -1,0 +1,7 @@
+{
+  "count": 4,
+  "min_high_clip_element_fraction": 0.1030120849609375,
+  "max_high_clip_element_fraction": 0.1612396240234375,
+  "metric_definition_mismatch": false,
+  "reason": "AM2 original high_clip_fraction used preclip RGB channel elements > 1; canonical audit uses >= 1-1e-6. Both identify the same four cases."
+}

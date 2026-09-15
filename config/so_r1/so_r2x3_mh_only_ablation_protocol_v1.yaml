@@ -1,0 +1,17 @@
+stage: SO-R2-X3-MH
+design: exploratory_internal_nested_direct_5fold_oof
+input_root: data/processed/SO_R2X3_ClassifierInputs_v1
+allowed_sources:
+  B1_MH_ONLY: {directory: rgb_b1mh, channels: [3, 4]}
+  B2_MH_ONLY: {directory: rgb_b2mh, channels: [3, 4]}
+  B2_M_ONLY: {directory: rgb_b2mh, channels: [3]}
+  B2_H_ONLY: {directory: rgb_b2mh, channels: [4]}
+outer_folds: [0, 1, 2, 3, 4]
+base_seed: 2026
+inner_split_seed_offset: 10000
+stratification: [binary_label, SEX]
+model: {architecture: resnet18, pretrained: ImageNet, full_finetune: true, logits: [Control, Patient], precision: fp32}
+training: {optimizer: AdamW, learning_rate: 0.0001, weight_decay: 0.0001, batch_size: 16, max_epochs: 50, scheduler: absent, loss: weighted_cross_entropy, label_smoothing_alpha: 0.05, early_stopping_patience: 10, monitor: inner_validation_macro_auc}
+normalization: {mh_mean: [0.5], mh_std: [0.5]}
+prohibitions: [RGB_channels, old_RGB_directory, raw_images, X1_maps, patch_assets, bootstrap, p_values, winner_selection]
+status_boundary: {formal_SO_R1_C_status: FAIL, official_SO_R2_authorization: false, SO_R3_authorization: false, next_stage_authorized: false}

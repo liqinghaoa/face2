@@ -1,0 +1,15 @@
+{
+  "panel_hash": "2841c30c4554d56eff77c584f7a29db6",
+  "latent_count": 216,
+  "mask_quota": {
+    "Full": 72,
+    "Mild": 72,
+    "Strong": 72
+  },
+  "lights": [
+    "D65",
+    "A",
+    "FL2",
+    "FL11"
+  ]
+}

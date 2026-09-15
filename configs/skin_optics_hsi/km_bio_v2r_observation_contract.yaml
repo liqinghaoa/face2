@@ -1,0 +1,84 @@
+schema_version: 1
+contract_id: km_bio_v2r_observation_contract
+model_id: KM2L-HF-v2R
+status: observation_audit_pass
+implementation_status: R_B_COMPLETE
+source_observation_contract: configs/skin_optics_hsi/km_bio_v1_observation_contract.yaml
+scope:
+  split: train
+  expression: neutral
+  direction: front
+  analysis_role: primary_development
+  input_rois: [left_cheek, right_cheek]
+  output_unit: subject_level_bilateral_symmetric_spectrum
+  expected_subjects: 44
+  expected_captures: 44
+  expected_input_region_spectra: 88
+  expected_output_symmetric_spectra: 44
+  validation_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+observation:
+  quantity: white_reference_normalized_reflectance
+  input_statistic: per_band_median_from_raw_hdf5_float64
+  normalization_applied: none
+  side_gain_applied: false
+  per_spectrum_gain_fitted: false
+  formula: exp((log(R_left)+log(R_right))/2)
+  aggregation_domain: natural_log_reflectance
+  log_requires_strict_positive_inputs: true
+  epsilon_added_to_aggregation: false
+  output_interpretation: subject_level_effective_bilateral_observation
+  pixel_parameter_map_claim: forbidden
+wavelength:
+  centers_nm: [400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700]
+  ordering: ascending
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  fit_index_zero_based: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  edge_diagnostic_index_zero_based: [0, 1, 29, 30]
+inputs:
+  v2r_formula_contract: configs/skin_optics_hsi/km_bio_v2r_formula_contract.yaml
+  v2r_formula_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_formula_audit/audit_summary.json
+  source_manifest_parquet: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_observation_audit/train_primary_observation_manifest.parquet
+  source_audit_summary_json: outputs/skin_optics_hsi_v1/stage1_hsi_physics/km_bio_v1_observation_audit/audit_summary.json
+  source_observation_contract: configs/skin_optics_hsi/km_bio_v1_observation_contract.yaml
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r_observation.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r_observation_contract.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r_observation.py
+outputs:
+  directory: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit
+  symmetric_manifest_parquet: train_symmetric_observation_manifest.parquet
+  symmetric_manifest_csv: train_symmetric_observation_manifest.csv
+  side_pair_audit_csv: side_pair_audit.csv
+  audit_summary_json: audit_summary.json
+  audit_summary_markdown: audit_summary.md
+  artifact_hash_manifest_csv: artifact_hash_manifest.csv
+audit:
+  hsi_content_reads: 0
+  rgb_content_reads: 0
+  validation_hsi_content_reads: 0
+  test_hsi_content_reads: 0
+  tolerance_reconstruction_abs: 1.0e-12
+  source_manifest_hash_required: true
+  required_checks:
+    - r_a_formula_contract_and_audit_pass
+    - source_manifest_hash_matches_v1_audit
+    - exact_left_right_pairing
+    - paired_capture_metadata_agreement
+    - source_rows_are_v1_and_qc_passed
+    - subject_and_capture_counts
+    - no_side_gain_or_normalization
+    - strict_positive_log_inputs
+    - symmetric_formula_reconstruction
+    - fit_and_edge_band_roles
+    - validation_test_500_isolation
+prohibited:
+  - reread_raw_hsi
+  - read_validation_or_test_hsi
+  - read_clinical_500
+  - apply_side_gain
+  - apply_per_spectrum_normalization
+  - drop_edge_bands_from_output
+  - claim_pixel_level_parameters

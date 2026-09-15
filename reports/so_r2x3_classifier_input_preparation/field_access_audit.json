@@ -1,0 +1,8 @@
+{
+  "checkpoint_writes": 0,
+  "clinical_field_read_count": 0,
+  "forbidden_fields_read": false,
+  "label_or_split_field_read_count": 0,
+  "model_forward_calls": 0,
+  "training_calls": 0
+}

@@ -1,0 +1,45 @@
+protocol_id: SO-R1-A2-P0-C2
+status: CORRECTIVE_CLOSURE
+audit_only: true
+training_forbidden: true
+not_part_of_formal_dataset: true
+root_seed: 20260822
+image_size: 256
+inherited_status:
+  p0_1: FAIL_CAMERA_COLOR_CHAIN_ARTIFACT
+  p0_2: FAIL_MASK_PRIOR
+  p0_3: INCOMPLETE_UNVERIFIED
+  c1: INCOMPLETE
+rerun_p0_1: false
+modify_a0_camera_list: false
+continue_after_inherited_failure: true
+benchmark:
+  latent_count: 256
+  acquisitions_per_latent: 5
+  warmup_latent_count: 16
+  replay_latent_count: 32
+splits: {train_like_id: 190, validation_like_id: 19, id_test: 19, camera_ood: 10, light_ood: 9, joint_ood: 9}
+mask_prior:
+  full: {count: 102, accepted_range: [1.0, 1.0]}
+  mild: {count: 102, target_range: [0.72, 0.93], accepted_range: [0.70, 0.95]}
+  strong: {count: 52, target_range: [0.32, 0.68], accepted_range: [0.30, 0.70]}
+  max_resample_attempts: 128
+  largest_connected_component_fraction_min: 0.90
+  nonfull_unique_hash_fraction_min: 0.95
+storage:
+  container_format: npz
+  writer: numpy.savez_compressed
+  compression_enabled: true
+  compression_algorithm: zip_deflate
+  rgb_dtype: float16
+  mh_dtype: float16
+  mask_dtype: uint8
+  preview_policy: audit_subset_only
+full_scale: {latent_count: 13500, acquisition_count: 67500}
+frozen_split: config/so_r1/frozen_camera_light_split_v1.yaml
+so0_config: src/skin_optics_so0/configs/so0/forward_model_mvp.yaml
+a1_root: data/processed/SO_R1_A1_PairedPilot_v1
+p0_root: data/processed/SO_R1_A2_P0_PrefreezeAudit_v1
+c1_root: data/processed/SO_R1_A2_P0_C1_Completion_v1
+output_root: data/processed/SO_R1_A2_P0_C2_MaskBenchmarkClosure_v1
+report_root: reports/so_r1_a2_p0_c2_mask_benchmark_closure

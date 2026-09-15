@@ -1,2 +1,0 @@
-{'status': 'failed_environment', 'reason': 'deca_import; rasterizer_test; texture_enabled; encode_decode_render; sh_light_render; deterministic'}
-P0-B1 exit code: 2

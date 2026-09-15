@@ -1,0 +1,21 @@
+failed_sample_id,compared_sample_id,comparison_role,camera,light,high_clip_element_fraction,low_clip_element_fraction
+L024_A1,L024_A0,reference,Canon 5DMarkII,D65,0.077056884765625,0.0
+L024_A1,L024_A1,camera_only,Nikon D80,D65,0.1030120849609375,0.0
+L024_A1,L024_A2,light_only,Canon 5DMarkII,A,0.1612396240234375,0.0
+L024_A1,L024_A3,appearance_only,Canon 5DMarkII,D65,0.004786173502604167,0.0
+L024_A1,L024_A4,joint,Nikon D80,A,0.06744384765625,0.0
+L024_A2,L024_A0,reference,Canon 5DMarkII,D65,0.077056884765625,0.0
+L024_A2,L024_A1,camera_only,Nikon D80,D65,0.1030120849609375,0.0
+L024_A2,L024_A2,light_only,Canon 5DMarkII,A,0.1612396240234375,0.0
+L024_A2,L024_A3,appearance_only,Canon 5DMarkII,D65,0.004786173502604167,0.0
+L024_A2,L024_A4,joint,Nikon D80,A,0.06744384765625,0.0
+L040_A4,L040_A0,reference,Canon 5DMarkII,D65,0.0,0.0
+L040_A4,L040_A1,camera_only,Canon 1DMarkIII,D65,0.0,0.0
+L040_A4,L040_A2,light_only,Canon 5DMarkII,A,0.0,0.0
+L040_A4,L040_A3,appearance_only,Canon 5DMarkII,D65,0.0,0.0
+L040_A4,L040_A4,joint,Canon 1DMarkIII,A,0.15100606282552084,0.0
+L048_A2,L048_A0,reference,Canon 5DMarkII,D65,0.049906412760416664,0.0
+L048_A2,L048_A1,camera_only,Nikon D80,D65,0.07208760579427083,0.0
+L048_A2,L048_A2,light_only,Canon 5DMarkII,FL11,0.1122589111328125,0.0
+L048_A2,L048_A3,appearance_only,Canon 5DMarkII,D65,0.0,0.0
+L048_A2,L048_A4,joint,Nikon D80,FL11,0.0011749267578125,0.0

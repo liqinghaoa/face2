@@ -1,0 +1,17 @@
+protocol_id: SO-R1-A2-D0
+status: FROZEN
+root_seed: 20260822
+seed_algorithm: BLAKE2b-64 v1; protocol_id|protocol_version|root_seed|split|latent_index|component_name|attempt_index
+splits:
+  Train: 10000
+  Validation: 1000
+  ID Test: 1000
+  Camera-OOD: 500
+  Light-OOD: 500
+  Joint-OOD: 500
+latent_count: 13500
+acquisitions_per_latent: 5
+pairs_per_latent: 4
+M_H_sampler: "src/skin_optics_so_r1/paired_pilot.py::_field; base uniform strata in\
+  \ [0,1], low-frequency plus 1\u20133 local Gaussian variations, amplitude <=0.12,\
+  \ clip [0,1], float32 generation then float16 storage"

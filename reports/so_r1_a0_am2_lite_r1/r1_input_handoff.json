@@ -1,0 +1,28 @@
+{
+  "AUDIT_ONLY": true,
+  "TRAINING_FORBIDDEN": true,
+  "ATTRIBUTION_ONLY": true,
+  "NOT_PART_OF_FORMAL_DATASET": true,
+  "selected_fourth_seen_camera": "Canon 300D",
+  "final_seen_cameras": [
+    "Canon 5DMarkII",
+    "Nikon D80",
+    "Olympus E-PL2",
+    "Canon 300D"
+  ],
+  "final_unseen_cameras": [
+    "Canon 1DMarkIII",
+    "Nikon D5100"
+  ],
+  "seen_lights": [
+    "D65",
+    "A",
+    "FL2"
+  ],
+  "unseen_light": "FL11",
+  "final_stress_status": "PASS",
+  "regression_status": "FAIL",
+  "reported_high_clip_violation_count": 4,
+  "source_acquisition_manifest_hash": "88aee04840828cdfc070f20e34a319a7d98eb7c25d6251e6f8ecbb659121f236",
+  "git_commit": "3251c11630e0a438f4dfa6f6755703675ff2330f"
+}

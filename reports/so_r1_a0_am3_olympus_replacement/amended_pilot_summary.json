@@ -1,0 +1,8 @@
+{
+  "status": "NOT_RUN",
+  "reason": "BLOCKED_BY_FAIL_AMENDED_CAMERA_SET_STRESS",
+  "required_latent_count": 128,
+  "required_acquisition_count": 640,
+  "required_pair_count": 512,
+  "required_replay_latent_count": 32
+}

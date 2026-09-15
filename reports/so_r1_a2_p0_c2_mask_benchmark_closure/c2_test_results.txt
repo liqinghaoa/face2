@@ -1,0 +1,8 @@
+E:\resarch\Anaconda3\python.exe -m pytest -q tests/so_r1/test_so_r1_a2_p0_c2_mask_benchmark_closure.py
+.......                                                                  [100%]
+7 passed in 1.17s
+
+
+E:\resarch\Anaconda3\python.exe -m pytest -q tests/so_r1
+..............                                                           [100%]
+14 passed in 2.68s

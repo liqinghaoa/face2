@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b1_baseline_training.py", line 7, in <module>
+    try: print(diagnose_gradient_stability(args.project_root,args.steps) if args.mode == 'diagnose' else run(args.project_root))
+                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 371, in run
+    precision_evidence=choose_precision_from_stability_diagnosis(root); precision=precision_evidence["selected_precision"]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 274, in choose_precision_from_stability_diagnosis
+    if not path.is_file(): raise RuntimeError("FAIL_MISSING_STABILITY_DIAGNOSIS")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: FAIL_MISSING_STABILITY_DIAGNOSIS

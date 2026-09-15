@@ -1,0 +1,29 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "E:\resarch\Anaconda3\Lib\concurrent\futures\process.py", line 254, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 81, in _generate_task
+    if final is None:raise RuntimeError(f'FAIL_QC_RETRY_EXHAUSTED:{lid}:A{j}')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: FAIL_QC_RETRY_EXHAUSTED:F09669:A1
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a2_g1_formal_generation.py", line 9, in <module>
+    if __name__=='__main__': main(ROOT)
+                             ~~~~^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 132, in main
+    tasks=[{'root':str(root),'outroot':str(out),'row':x,'calibration':False} for x in planned];results,wall=_run(tasks,8);lat,aq,pair,qc=_collect(results);mroot=out/'manifests';mroot.mkdir(parents=True,exist_ok=True);_copy_manifest(mroot/'latent_manifest.csv',lat);_copy_manifest(mroot/'acquisition_manifest.csv',aq);_copy_manifest(mroot/'pair_manifest.csv',pair);_copy_manifest(mroot/'qc_manifest.csv',qc);_copy_manifest(mroot/'content_hash_manifest.csv',[{'latent_id':x['latent_id'],'canonical_content_hash':x['canonical_content_hash'],'file_sha256':x['file_sha256']} for x in lat])
+                                                                                                            ~~~~^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\formal_generation.py", line 106, in _run
+    for f in as_completed(futures):r.append(f.result())
+                                            ~~~~~~~~^^
+  File "E:\resarch\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "E:\resarch\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+RuntimeError: FAIL_QC_RETRY_EXHAUSTED:F09669:A1

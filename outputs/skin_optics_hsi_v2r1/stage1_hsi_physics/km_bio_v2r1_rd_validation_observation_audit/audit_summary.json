@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v2R.1-R-D-validation-observation",
+  "model_id": "KM2L-HF-v2R",
+  "protocol_version": "KM-BIO-v2R.1",
+  "status": "PASS_FOR_R_D_VALIDATION_INVERSION",
+  "created_utc": "2026-09-11T05:38:04.136201+00:00",
+  "checks": {
+    "v2r_train_observation_contract_pass": true,
+    "source_manifest_rows_are_valid_split_only": true,
+    "no_train_or_test_path_is_opened": true,
+    "exact_left_right_pairing": true,
+    "paired_capture_metadata_agreement": true,
+    "subject_and_capture_counts": true,
+    "no_side_gain_or_normalization": true,
+    "all_hsi_hashes_match": true,
+    "all_mask_hashes_and_paths_match": true,
+    "raw_float64_vs_float32_cache_within_tolerance": true,
+    "all_region_spectra_pass_input_qc": true,
+    "strict_positive_log_inputs": true,
+    "symmetric_formula_reconstruction": true,
+    "fit_and_edge_band_roles": true,
+    "all_symmetric_values_finite_positive": true
+  },
+  "counts": {
+    "subjects": 3,
+    "captures": 3,
+    "region_spectra": 6,
+    "symmetric_spectra": 3,
+    "validation_hsi_content_reads": 3,
+    "train_hsi_content_reads": 0,
+    "test_hsi_content_reads": 0,
+    "clinical_500_content_reads": 0
+  },
+  "wavelength": {
+    "full_centers_nm": [
+      400.0,
+      410.0,
+      420.0,
+      430.0,
+      440.0,
+      450.0,
+      460.0,
+      470.0,
+      480.0,
+      490.0,
+      500.0,
+      510.0,
+      520.0,
+      530.0,
+      540.0,
+      550.0,
+      560.0,
+      570.0,
+      580.0,
+      590.0,
+      600.0,
+      610.0,
+      620.0,
+      630.0,
+      640.0,
+      650.0,
+      660.0,
+      670.0,
+      680.0,
+      690.0,
+      700.0
+    ],
+    "fit_centers_nm": [
+      420,
+      430,
+      440,
+      450,
+      460,
+      470,
+      480,
+      490,
+      500,
+      510,
+      520,
+      530,
+      540,
+      550,
+      560,
+      570,
+      580,
+      590,
+      600,
+      610,
+      620,
+      630,
+      640,
+      650,
+      660,
+      670,
+      680
+    ],
+    "edge_diagnostic_centers_nm": [
+      400,
+      410,
+      690,
+      700
+    ]
+  },
+  "observation": {
+    "quantity": "white_reference_normalized_reflectance",
+    "formula": "exp((log(R_left)+log(R_right))/2)",
+    "input_statistic": "per_band_median_from_raw_hdf5_float64",
+    "reflectance_clipping_applied": false,
+    "side_gain_applied": false,
+    "normalization_applied": "none"
+  },
+  "scale_audit": {
+    "observed_reflectance_min": 0.17626218655041953,
+    "observed_reflectance_max": 0.6301085342451063,
+    "region_median_min": 0.15409946276317044,
+    "region_median_max": 0.8035325939549693,
+    "maximum_abs_raw_float64_vs_float32_cache": 4.3464677190740986e-08,
+    "maximum_formula_reconstruction_abs": 0.0,
+    "minimum_mask_pixel_count": 10781,
+    "left_brighter_broadband_subject_count": 3,
+    "median_left_minus_right_broadband": 0.12709175503238462,
+    "median_log_left_minus_log_right_mean": 0.3760869860591047
+  },
+  "subject_ids": [
+    "p001",
+    "p016",
+    "p030"
+  ],
+  "frozen_mask_manifest_sha256": "8162e2154d301473fa27f3d69cb052957a75b122e12a8ff431df07327334d40e",
+  "source_hashes": {
+    "split_manifest": "71d23c523c632f3efee0235140aed1915415e37e980f7ac4a04396743126be45",
+    "frozen_mask_manifest_valid": "8162e2154d301473fa27f3d69cb052957a75b122e12a8ff431df07327334d40e",
+    "region_spectra": "e5c29ddc37608aba119c5e07d6351361ce347fba4558bbeb980228b390820076",
+    "v2r_observation_contract": "9374969cb305de16023265bbbcebed974eaa629877f651aec6f09b216a78385e",
+    "v2r_observation_audit": "50d3940c76575f80d78aceeed7ae08ad5c1bbaea927f685122cbc1c52b3efe64"
+  },
+  "implementation_hashes": {
+    "source": "771586ccc65aedc2e04ff317f501f8d039007692370531a686180838bfe4cb35",
+    "runner": "415637266604adc4a1dce802d76d51e551af6045b0ce4d46056e46b4a99d678d",
+    "tests": "b89ebd6f8c457276c2f897959663ba3e3af77a6af9c04ff93874037a4702e2e9"
+  },
+  "outputs": {
+    "symmetric_manifest_parquet": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r1\\stage1_hsi_physics\\km_bio_v2r1_rd_validation_observation_audit\\validation_symmetric_observation_manifest.parquet",
+      "sha256": "e6e117d4f3df77342ede3a905c7c0ca172656e10fcd33ea8d7a190b9ebf25350"
+    },
+    "symmetric_manifest_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r1\\stage1_hsi_physics\\km_bio_v2r1_rd_validation_observation_audit\\validation_symmetric_observation_manifest.csv",
+      "sha256": "bb3fef18fdaa310a9751e072e6dafb2ed3cbc9fd9e2bfa1f424d99fba376dc91"
+    },
+    "side_pair_audit_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r1\\stage1_hsi_physics\\km_bio_v2r1_rd_validation_observation_audit\\validation_side_pair_audit.csv",
+      "sha256": "676b16141da43e59de3905a80195d040762044cf98fa6fcd3689ad727663f44c"
+    },
+    "scale_audit_csv": {
+      "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v2r1\\stage1_hsi_physics\\km_bio_v2r1_rd_validation_observation_audit\\validation_region_spectrum_scale_audit.csv",
+      "sha256": "ac55462c3ffc65d0ab5ab28b34bb24634949bdf57b3f70447770951d20001463"
+    }
+  },
+  "authorized_next_stage": "R_D_FREEZE_AND_VALIDATION_INVERSION",
+  "validation_observation_allowed": true,
+  "test_or_clinical_500_allowed": false,
+  "no_validation_information_used_for_freeze": true
+}

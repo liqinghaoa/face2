@@ -1,0 +1,6 @@
+{
+  "hard_failure_count": 0,
+  "hard_failures": [],
+  "output_boundary": "[0,1] sigmoid; near-boundary epsilon=1e-4",
+  "status": "PASS"
+}

@@ -1,0 +1,21 @@
+protocol_id: SO-R1-A0-AM2-Lite
+version: 1.1-candidate
+status: NOT_FROZEN
+blocked: true
+seen_cameras:
+- Canon 5DMarkII
+- Nikon D80
+- Olympus E-PL2
+- Canon 300D
+unseen_cameras:
+- Canon 1DMarkIII
+- Nikon D5100
+seen_lights:
+- D65
+- A
+- FL2
+unseen_lights:
+- FL11
+blocking_findings:
+- 64-latent regression major overall high clipping >0.10
+full_generation_authorized: false

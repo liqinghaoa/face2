@@ -1,0 +1,275 @@
+{
+  "all_theoretically_balanced": false,
+  "rows": [
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "appearance_only",
+      "split": "Camera-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 6,
+      "imbalance": 2,
+      "max_count": 84,
+      "min_count": 82,
+      "role": "camera_only",
+      "split": "Camera-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 6,
+      "imbalance": 2,
+      "max_count": 84,
+      "min_count": 82,
+      "role": "joint",
+      "split": "Camera-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "light_only",
+      "split": "Camera-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "reference",
+      "split": "Camera-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "appearance_only",
+      "split": "ID Test",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "camera_only",
+      "split": "ID Test",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "joint",
+      "split": "ID Test",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "light_only",
+      "split": "ID Test",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "reference",
+      "split": "ID Test",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "appearance_only",
+      "split": "Joint-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 6,
+      "imbalance": 2,
+      "max_count": 84,
+      "min_count": 82,
+      "role": "camera_only",
+      "split": "Joint-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 2,
+      "imbalance": 0,
+      "max_count": 250,
+      "min_count": 250,
+      "role": "joint",
+      "split": "Joint-OOD",
+      "theoretical_minimum_imbalance": 0
+    },
+    {
+      "allowed_pair_count": 4,
+      "imbalance": 0,
+      "max_count": 125,
+      "min_count": 125,
+      "role": "light_only",
+      "split": "Joint-OOD",
+      "theoretical_minimum_imbalance": 0
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "reference",
+      "split": "Joint-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "appearance_only",
+      "split": "Light-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "camera_only",
+      "split": "Light-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 4,
+      "imbalance": 0,
+      "max_count": 125,
+      "min_count": 125,
+      "role": "joint",
+      "split": "Light-OOD",
+      "theoretical_minimum_imbalance": 0
+    },
+    {
+      "allowed_pair_count": 4,
+      "imbalance": 0,
+      "max_count": 125,
+      "min_count": 125,
+      "role": "light_only",
+      "split": "Light-OOD",
+      "theoretical_minimum_imbalance": 0
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 42,
+      "min_count": 41,
+      "role": "reference",
+      "split": "Light-OOD",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 834,
+      "min_count": 833,
+      "role": "appearance_only",
+      "split": "Train",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 834,
+      "min_count": 833,
+      "role": "camera_only",
+      "split": "Train",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 834,
+      "min_count": 833,
+      "role": "joint",
+      "split": "Train",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 834,
+      "min_count": 833,
+      "role": "light_only",
+      "split": "Train",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 834,
+      "min_count": 833,
+      "role": "reference",
+      "split": "Train",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "appearance_only",
+      "split": "Validation",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "camera_only",
+      "split": "Validation",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "joint",
+      "split": "Validation",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "light_only",
+      "split": "Validation",
+      "theoretical_minimum_imbalance": 1
+    },
+    {
+      "allowed_pair_count": 12,
+      "imbalance": 1,
+      "max_count": 84,
+      "min_count": 83,
+      "role": "reference",
+      "split": "Validation",
+      "theoretical_minimum_imbalance": 1
+    }
+  ]
+}

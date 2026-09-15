@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "stage": "KM-BIO-v1-Stage-C-profile-reconciliation",
+  "status": "PASS",
+  "created_utc": "2026-09-09T16:47:48.758464+00:00",
+  "method": "min/max across every tolerance-accepted conditional grid solution and all saved conditional multistart solutions",
+  "main_delta": 0.005,
+  "profile_gate_counts": {
+    "f_blood": 34,
+    "f_mel": 88,
+    "s": 31
+  },
+  "span_statistics": {
+    "f_blood": {
+      "median": 0.013312500000000005,
+      "p90": 0.053825,
+      "maximum": 0.06325
+    },
+    "f_mel": {
+      "median": 0.011519552117713404,
+      "p90": 0.015831134930732516,
+      "maximum": 0.019887500000000016
+    },
+    "s": {
+      "median": 0.37375,
+      "p90": 0.5333749999999999,
+      "maximum": 0.62125
+    }
+  },
+  "stage_c_status_unchanged": "REVISE_OBSERVATION_OR_MODEL",
+  "reason_status_unchanged": "all 88 spectra failed the prerequisite single-spectrum spectral gate",
+  "output": {
+    "path": "E:\\projects\\face2\\outputs\\skin_optics_hsi_v1\\stage1_hsi_physics\\km_bio_v1_train_inversion_verification\\profile_solution_set_reconciliation.csv",
+    "sha256": "2ed9508542fa816b19dc3bae23434f314dad90148bb51f817df319cae174f291"
+  }
+}

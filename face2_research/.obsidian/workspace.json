@@ -1,0 +1,234 @@
+{
+  "main": {
+    "id": "5f5ce4f3ceb6c5e8",
+    "type": "split",
+    "children": [
+      {
+        "id": "c466ab50a8ed169e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "397d36d42143e45c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_Method_and_Experiment/阶段一_KM_BIO_v3_实施规划.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "阶段一_KM_BIO_v3_实施规划"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3515383c920c0442",
+    "type": "split",
+    "children": [
+      {
+        "id": "5d0abf1c69517b17",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f2bb440796053da2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "be0f1ed70a1e3446",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "8244483c5e11a586",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 330.16668701171875
+  },
+  "right": {
+    "id": "f9f59b51699badf0",
+    "type": "split",
+    "children": [
+      {
+        "id": "6931d8b8f07c835f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a83e6529e461d4d5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01_Background_and_Literature/Key_Papers/11_Ng_2023_Hyper_Skin/Hyper-Skin_A_Hyperspectral_Dataset_for_Reconstructing_Facial_Skin-Spectra_from_RGB_Images.pdf",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "5600e94e305a9a54",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "04_Experiment_Records/Experiment_Index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "53711f5bb6138c03",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "eb848d2a3e39ec6a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "5bd8d75b12434378",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "03_Method_and_Experiment/阶段一_KM_BIO_v3_实施规划.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 330.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "397d36d42143e45c",
+  "lastOpenFiles": [
+    "03_Method_and_Experiment/阶段一_双层KM生理模型实施规划.md",
+    "03_Method_and_Experiment/阶段一_KM_BIO_v3_实施规划.md",
+    "03_Method_and_Experiment/阶段一_HSI_物理验证运行手册.md",
+    "未命名 1.base",
+    "未命名.base",
+    "02_Research_Ideas/研究路线.md",
+    "02_Research_Ideas/阶段实现.md",
+    "04_Experiment_Records/阶段一_双层KM生理模型实验记录.md",
+    "05_Results_and_Decisions/KM-BIO-v1_C阶段失败原因与v2R修订方案.md",
+    "04_Experiment_Records/Experiment_Index.md",
+    "未命名",
+    "04_Experiment_Records/阶段一_HSI_物理验证实验记录.md",
+    "01_Background_and_Literature/Key_Papers/Jung 等 - 2023 - Deep learning-based optical approach for skin analysis of melanin and hemoglobin distribution.pdf",
+    "01_Background_and_Literature/Face_Cardiac_Skin_Optics_Current_Research_Roadmap_2026-09.md",
+    "01_Background_and_Literature/Key_Papers/10_Jonasson_2023_Skin_optical_coefficients/Jonasson_2023_Absorption_and_reduced_scattering_coefficients.pdf",
+    "01_Background_and_Literature/Key_Papers/11_Ng_2023_Hyper_Skin/Hyper-Skin_A_Hyperspectral_Dataset_for_Reconstructing_Facial_Skin-Spectra_from_RGB_Images.pdf",
+    "01_Background_and_Literature/Key_Papers/08_Jung_2023_Optical_GT_assisted_pigment_analysis/Journal of Biophotonics - 2023 - Jung - Deep learning‐based pigment analysis model trained with optical approach and ground.pdf",
+    "01_Background_and_Literature/Key_Papers/07_Jung_2024_Integrated_cross_polarized_MH/Jung_2024_Integrated_cross_polarized_images_PMC_fulltext.pdf",
+    "01_Background_and_Literature/Key_Papers/06_Jung_2024_Spectrum_based_DL_pigment_analysis/Spectrum-based deep learning framework for dermatological pigmentanalysis and simulation.pdf",
+    "01_Background_and_Literature/Face_Cardiac_Skin_Optics_Recent_Literature_2021-2026.md",
+    "tmp/pdfs/jung_2023.txt",
+    "tmp/pdfs/hyper_skin_reread/datasheet_p22-22.png",
+    "tmp/pdfs/hyper_skin_reread/paper_p8_9-09.png",
+    "tmp/pdfs/hyper_skin_reread/paper_p8_9-08.png",
+    "tmp/pdfs/hyper_skin_reread/paper_p5_6-06.png",
+    "tmp/pdfs/hyper_skin_reread/paper_p5_6-05.png",
+    "tmp/pdfs/hyper_skin_reread/paper_p1-01.png",
+    "01_Background_and_Literature/Key_Papers/DOWNLOAD_STATUS.md",
+    "01_Background_and_Literature/Face_Cardiac_Skin_Optics_Research_Roadmap.png",
+    "01_Background_and_Literature/Face_Cardiac_Skin_Optics_Recent_Literature_2021-09_to_2026-09.md",
+    "00_Project_Overview.md",
+    "04_Experiment_Records/EXP-007_SO-R2-X3_Binary_Classification/README.md",
+    "04_Experiment_Records/EXP-009_SO-R2-X5_Three_Class/README.md",
+    "04_Experiment_Records/EXP-005_SO-R1-C_Synthetic_Evaluation/README.md",
+    "04_Experiment_Records/EXP-003_SO-R1-B1_Baseline/README.md",
+    "04_Experiment_Records/EXP-002_SO-R1-A1-A2_Dataset_Construction/README.md",
+    "04_Experiment_Records/EXP-001_SO-R1-A0_Camera_Selection/README.md",
+    "04_Experiment_Records/EXP-008_SO-R2-X4_Fusion_Classification/README.md",
+    "04_Experiment_Records/EXP-006_SO-R2-X0-X2_RealFace_Inference/README.md",
+    "04_Experiment_Records/EXP-004_SO-R1-B2_Proposed/README.md"
+  ]
+}

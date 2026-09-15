@@ -1,0 +1,47 @@
+project_root: .
+
+paths:
+  image_dir: data/processed/P0_Physics_Audit_v1/images/raw_scene
+  split_csv: data/processed/P0_Physics_Audit_v1/splits_500/nyha_2class_sex_stratified_group_5fold.csv
+  pilot_output_dir: data/processed/skin_optics/skinoptics_realface_979x1220_blackbg_v1_pilot32
+  full_output_dir: data/processed/skin_optics/skinoptics_realface_979x1220_blackbg_v1
+
+# These are Scheme-B's established detector and expanded FaceMesh-crop settings.
+detection:
+  min_detection_confidence: 0.5
+  model_selection: 0
+  expand_top_ratio: 0.10
+  expand_bottom_ratio: 0.20
+  expand_side_ratio: 0.20
+
+# The only geometry change from Scheme B is the required target aspect ratio:
+# 979 / 1220.  All face-boundary/margin parameters are inherited unchanged.
+geometry:
+  output_width: 979
+  output_height: 1220
+  side_margin_ratio: 0.03
+  top_margin_ratio: 0.08
+  bottom_margin_ratio: 0.025
+  face_quantile_low: 0.02
+  face_quantile_high: 0.98
+
+parser:
+  model: bisenet
+  checkpoint: preprocessing/checkpoints/face_parsing/79999_iter.pth
+  device: auto
+
+# Existing strict exposed-skin implementation, promoted here as physics_core_skin.
+physics_core_skin:
+  eye_brow_lip_dilation_ratio: 0.006
+  nostril_dilation_ratio: 0.003
+  min_component_area_ratio: 0.0002
+
+patches:
+  patch_size: 256
+  overlap: 15
+  stride: 241
+  columns: 4
+  rows: 5
+
+pilot:
+  count: 32

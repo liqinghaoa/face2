@@ -1,0 +1,5 @@
+﻿check,expected,actual,pass
+historical_manifest_sha256,e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370,e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370,True
+historical_and_v2r1_assignment_content_equal,exact_match,True,True
+subject_coverage,44,44,True
+fold_sizes,"9,9,9,9,8","9,9,9,9,8",True

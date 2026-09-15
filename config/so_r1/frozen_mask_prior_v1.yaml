@@ -1,0 +1,24 @@
+protocol_id: SO-R1-A2-D0
+status: FROZEN
+sampler_code: src/skin_optics_so_r1/mask_benchmark_closure.py::_derive_mask
+sampler_version: C2_v1
+image_size: 256
+categories:
+  Full:
+    fraction: 0.4
+    coverage:
+    - 1.0
+    - 1.0
+  Mild:
+    fraction: 0.4
+    coverage:
+    - 0.7
+    - 0.95
+  Strong:
+    fraction: 0.2
+    coverage:
+    - 0.3
+    - 0.7
+max_resample_attempts: 128
+largest_connected_component_fraction_min: 0.9
+nonfull_unique_hash_fraction_min: 0.95

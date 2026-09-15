@@ -1,0 +1,63 @@
+{
+  "pass": true,
+  "source": "AM3 independent renderer replay",
+  "evidence": {
+    "status": "PASS",
+    "pass": true,
+    "method": "independent frozen 128-attempt nuisance-only renderer replay; G1 evidence read-only",
+    "latent_id": "F09669",
+    "acquisition_id": "A1",
+    "camera": "Olympus E-PL2",
+    "light": "FL2",
+    "mask_category": "Strong",
+    "mask_coverage": 0.36376953125,
+    "mask_hash": "04b4e513519ab26c0d76a4301d061c066e4c9b8db42e355c0c1cf449ddc82ddc",
+    "checks": {
+      "metadata": true,
+      "attempt_count": true,
+      "all_attempts_fail_qc": true,
+      "best_attempt": true,
+      "appearance_seed": true,
+      "exposure_ev": true,
+      "low_clip": true,
+      "b_zero": true,
+      "nonfinite": true
+    },
+    "best_attempt": {
+      "high_clip_element_fraction": 0.0,
+      "low_clip_element_fraction": 0.11096196868008948,
+      "nonfinite_count": 0,
+      "all_zero": false,
+      "all_one": false,
+      "R_zero_fraction": 0.0,
+      "R_one_fraction": 0.0,
+      "G_zero_fraction": 0.0,
+      "G_one_fraction": 0.0,
+      "B_zero_fraction": 0.3327181208053691,
+      "B_one_fraction": 0.0,
+      "attempt": 36,
+      "appearance_seed": 17670975469201768739,
+      "exposure_ev": -0.041833325135190724,
+      "canonical_unclipped_hash": "3353ae00f8321bed61e62ae63f9e9115aceb733c59b34cf31a53c480ad277aca"
+    },
+    "reference_best_attempt": {
+      "high_clip_element_fraction": 0.0,
+      "low_clip_element_fraction": 0.11096196868008948,
+      "nonfinite_count": 0,
+      "all_zero": false,
+      "all_one": false,
+      "R_zero_fraction": 0.0,
+      "R_one_fraction": 0.0,
+      "G_zero_fraction": 0.0,
+      "G_one_fraction": 0.0,
+      "B_zero_fraction": 0.3327181208053691,
+      "B_one_fraction": 0.0,
+      "attempt": 36,
+      "appearance_seed": 17670975469201768739,
+      "exposure_ev": -0.041833325135190724,
+      "S_mean": 1.0,
+      "P_mean": 0.0004773920518346131,
+      "P_max": 0.04266371577978134
+    }
+  }
+}

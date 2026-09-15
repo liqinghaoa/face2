@@ -1,0 +1,11 @@
+protocol_id: SO-R1-A0-AM2-Lite-R1
+root_seed: 20260822
+image_size: 256
+clip_threshold: 0.10
+output_root: data/processed/SO_R1_A0_AM2_Lite_R1_HighClipAudit_v1
+report_root: reports/so_r1_a0_am2_lite_r1
+source_regression_root: data/processed/SO_R1_A0_AM2_Lite_RegressionPilot_v1
+status: AUDIT_ONLY
+training_forbidden: true
+attribution_only: true
+not_part_of_formal_dataset: true

@@ -1,0 +1,15 @@
+{
+  "ranking_rule": [
+    "max min SAM",
+    "max mean SAM",
+    "max TV",
+    "min clipping",
+    "min zero",
+    "camera name"
+  ],
+  "shortlist": [
+    "Nikon D3X",
+    "Canon 20D",
+    "Canon 300D"
+  ]
+}

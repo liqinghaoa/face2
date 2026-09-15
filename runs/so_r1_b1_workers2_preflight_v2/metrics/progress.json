@@ -1,0 +1,10 @@
+{
+  "completed_batches": 2500,
+  "elapsed_seconds": 334.5,
+  "last_loss": 0.12519563734531403,
+  "phase": "epoch_1_train",
+  "precision": "FP32",
+  "status": "RUNNING",
+  "total_batches": 2500,
+  "workers": 2
+}

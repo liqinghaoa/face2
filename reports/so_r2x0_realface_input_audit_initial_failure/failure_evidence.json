@@ -1,0 +1,5 @@
+{
+  "error": "RuntimeError('FAIL_REAL_PATCH_INVENTORY:FULL_IDS')",
+  "error_type": "RuntimeError",
+  "status": "FAIL_INPUT_SEMANTICS"
+}

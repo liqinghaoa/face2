@@ -1,0 +1,17 @@
+{
+  "candidate": "V2R-PS",
+  "A_s": 1.483455915077612,
+  "delta_bs": 0.4999999999999999,
+  "g0": 1.0,
+  "diameter_um": 15.0,
+  "s0": 0.7,
+  "epidermis_thickness_mm": 0.06,
+  "estimator": "full_train_joint_centered_log_shape",
+  "train_subject_count": 44,
+  "train_centered_logrmse": 0.06338284428645172,
+  "initial_theta_source": "historical_r_c0_candidate_subject_metrics_V2R-P",
+  "fitted_from_splits": [
+    "train"
+  ],
+  "validation_used_in_freeze": false
+}

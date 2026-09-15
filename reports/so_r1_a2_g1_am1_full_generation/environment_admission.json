@@ -1,0 +1,12 @@
+{
+  "gpu_used": false,
+  "multiprocessing_start_method": "spawn",
+  "renderer_backend": "CPU_NUMPY_FROZEN_PATH",
+  "thread_env": {
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "workers": 8
+}

@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b1_baseline_training.py", line 6, in <module>
+    parser=argparse.ArgumentParser(); parser.add_argument('--project-root',type=Path,default=ROOT); args=parser.parse_args(); print(run(args.project_root))
+                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 297, in run
+    contract_hash=_canon_hash(contract); (root/"config/so_r1").mkdir(parents=True,exist_ok=True); (root/"config/so_r1/so_r1_b1_training_contract_v1.yaml").write_text(yaml.safe_dump(contract,sort_keys=False),encoding="utf-8"); (run_dir/"training_contract_snapshot.yaml").write_text(yaml.safe_dump(contract,sort_keys=False),encoding="utf-8"); _dump_json(run_dir/"run_manifest.json",{"status":"RUNNING","contract_hash":contract_hash,"source_hash_audit":before,"training_authorized":False,"proposed_training_started":False})
+                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\__init__.py", line 269, in safe_dump
+    return dump_all([data], stream, Dumper=SafeDumper, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\__init__.py", line 241, in dump_all
+    dumper.represent(data)
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 27, in represent
+    node = self.represent_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 48, in represent_data
+    node = self.yaml_representers[data_types[0]](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 207, in represent_dict
+    return self.represent_mapping('tag:yaml.org,2002:map', data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 118, in represent_mapping
+    node_value = self.represent_data(item_value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 58, in represent_data
+    node = self.yaml_representers[None](self, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\yaml\representer.py", line 231, in represent_undefined
+    raise RepresenterError("cannot represent an object", data)
+yaml.representer.RepresenterError: ('cannot represent an object', '2.3.0+cu121')

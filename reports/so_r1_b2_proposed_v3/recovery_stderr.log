@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b2_proposed_training.py", line 15, in <module>
+    print(run(args.project_root,resume=args.resume))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 367, in run
+    device=torch.device("cuda:0"); baseline=revalidate_baseline_reference(root,contract,rows,device); _dump(report/"baseline_reference_validation.json",baseline)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 229, in revalidate_baseline_reference
+    detailed=evaluate_validation_supervision(model,rows,mean_target,device,workers=contract["data_loader_contract"]["num_workers"],timeout_seconds=contract["data_loader_contract"]["timeout_seconds"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\proposed_training.py", line 185, in evaluate_validation_supervision
+    target_mean_tensor=torch.as_tensor(mean_target,dtype=target.dtype,device=device).view(1,2,1,1)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: shape '[1, 2, 1, 1]' is invalid for input of size 131072

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_a0_am3_olympus_replacement.py", line 7, in <module>
+    if __name__=='__main__':print(run(ROOT))
+                                  ~~~^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\olympus_replacement_amendment.py", line 62, in run
+    fixed=[x for x in fa['camera_swap'] if x['camera']==selected][0];_w(rep/'f09669_fixed_latent_replacement_check.json',{'selected_replacement':selected,'pass':fixed['low_clip_element_fraction']<=.1,'fixed_attempt':36,'evidence':fixed,'all_camera_comparison':fa['camera_swap']})
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range

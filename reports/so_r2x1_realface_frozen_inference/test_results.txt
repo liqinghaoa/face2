@@ -1,0 +1,3 @@
+pytest -q tests/so_r1: 80 passed, 1 warning
+git diff --check: PASS
+X1 full inference: COMPLETE

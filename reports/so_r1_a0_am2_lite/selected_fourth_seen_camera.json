@@ -1,0 +1,12 @@
+{
+  "camera_name": "Canon 300D",
+  "min_sam_to_fixed_seen": 0.19848129710211646,
+  "mean_sam_to_fixed_seen": 0.21303778754846278,
+  "aggregate_seen_pairwise_sam_if_added": 1.3741508427559377,
+  "tv_coverage_increment": 0.11729747882931753,
+  "worst_channel_zero_fraction": 0.0,
+  "worst_channel_one_fraction": 0.0,
+  "worst_overall_low_clip_fraction": 0.0,
+  "worst_overall_high_clip_fraction": 0.0,
+  "selection_rank": 1
+}

@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "E:\projects\face2\scripts\so_r1\run_so_r1_b1_baseline_training.py", line 7, in <module>
+    try: print(diagnose_gradient_stability(args.project_root,args.steps) if args.mode == 'diagnose' else run(args.project_root))
+                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\projects\face2\src\skin_optics_so_r1\baseline_training.py", line 388, in run
+    pd.DataFrame(metrics).to_csv(run_dir/"metrics/epoch_metrics.csv",index=False); pd.DataFrame(metrics).to_csv(report/"training_curves.csv",index=False); _dump_json(run_dir/"metrics/paired_sampler_schedule_hashes.json",schedules)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\core\generic.py", line 3967, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+         ^^^^^^^^^^^
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\io\common.py", line 749, in get_handle
+    check_parent_directory(str(handle))
+  File "E:\resarch\Anaconda3\envs\face2\Lib\site-packages\pandas\io\common.py", line 616, in check_parent_directory
+    raise OSError(rf"Cannot save file into a non-existent directory: '{parent}'")
+OSError: Cannot save file into a non-existent directory: 'E:\projects\face2\runs\so_r1_b1_baseline_v4\metrics'

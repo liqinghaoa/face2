@@ -1,0 +1,9 @@
+{
+  "outer_fold": 0,
+  "selected_epoch": 1,
+  "inner_best_macro_auc": 0.7437446074201898,
+  "selection_epochs_run": 1,
+  "inner_train_size": 320,
+  "inner_validation_size": 80,
+  "selection_checkpoint": "E:\\projects\\face2\\.codex-tmp\\nested-direct-smoke-20260820\\fold_0\\checkpoints\\inner_best_macro_auc.pth"
+}

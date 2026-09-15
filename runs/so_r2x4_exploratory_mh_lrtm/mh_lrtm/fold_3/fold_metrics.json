@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.72,
+  "balanced_accuracy": 0.7419536984754376,
+  "inner_best_macro_auc": 0.8334771354616047,
+  "macro_auc": 0.8277809147374364,
+  "macro_f1": 0.6783088235294117,
+  "macro_precision": 0.677139313766019,
+  "macro_recall": 0.7419536984754376,
+  "model_name": "MH_LRTM",
+  "outer_fold": 3,
+  "selected_epoch": 2,
+  "selection_epochs_run": 12,
+  "sensitivity": 0.7012987012987013,
+  "specificity": 0.782608695652174
+}

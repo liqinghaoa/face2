@@ -1,0 +1,16 @@
+{
+  "removed_camera": "Nokia N900",
+  "selected_camera": "Nikon D3X",
+  "selection_rank": 1,
+  "eligible_candidate_count": 16,
+  "quality_gate": true,
+  "high_m_gate": true,
+  "expanded_stress_gate": true,
+  "original_14case_gate": true,
+  "min_sam_to_retained": 0.14402544755179214,
+  "mean_sam_to_retained": 0.18701527004119564,
+  "tv_sensitivity": 0.10513403016485819,
+  "selection_reason": "predefined ranking",
+  "root_seed": 20260822,
+  "config_hash": "8ff640a513136dfd8779fd3d16dd1202d8ca37462864c093b2b234b725dd9388"
+}

@@ -1,0 +1,30 @@
+protocol_id: SO-R1-A0-AM4
+version: '1.3'
+status: FROZEN
+seen_cameras:
+- Canon 5DMarkII
+- Hasselblad H2
+- Nikon D80
+- Point Grey Grasshopper2 14S5C
+unseen_cameras:
+- Canon 1DMarkIII
+- Nikon D5100
+excluded_cameras:
+- Canon 300D
+- Nokia N900
+- Olympus E-PL2
+- Pentax Q
+- SONY NEX-5N
+seen_lights:
+- D65
+- A
+- FL2
+unseen_lights:
+- FL11
+allowlist_hash: 30dc9df99cc2fd5b67bcac7a0a4def6a6ca6c971ca35731567b3bb42dd6bb2c2
+selection_rule: max min pairwise SAM; mean SAM; alphabetical
+root_causes:
+  Olympus E-PL2: CAMERA_SPECIFIC_LOW_CLIPPING_ARTIFACT
+  Canon 300D: CAMERA_SPECIFIC_LOW_CLIPPING_ARTIFACT
+full_generation_authorized: false
+training_authorized: false

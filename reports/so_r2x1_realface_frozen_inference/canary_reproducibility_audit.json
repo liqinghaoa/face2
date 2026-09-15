@@ -1,0 +1,9 @@
+{
+  "all_outputs_finite": true,
+  "case_ids": ["100037382", "A001619585", "A002366013"],
+  "forward_count": 24,
+  "patches": ["P01", "P10", "P11", "P20"],
+  "prediction_maps_saved": false,
+  "status": "PASS_COVERED_BY_X1_FORWARD",
+  "note": "The fixed X0 canary patches were included in the single permitted X1 forward per patch/model; no duplicate forward was run."
+}

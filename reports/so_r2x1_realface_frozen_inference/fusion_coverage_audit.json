@@ -1,0 +1,10 @@
+{
+  "case_count": 500,
+  "full_shape": [
+    2,
+    1220,
+    979
+  ],
+  "mask_outside_zero": true,
+  "status": "PASS"
+}

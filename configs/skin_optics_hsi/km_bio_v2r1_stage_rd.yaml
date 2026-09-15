@@ -1,0 +1,171 @@
+schema_version: 1
+stage: KM-BIO-v2R.1-R-D
+task_id: R-D_FREEZE_AND_DEVELOPMENTAL_VALIDATION
+protocol_version: KM-BIO-v2R.1
+status: preregistered_freeze_and_developmental_validation
+frozen_date: 2026-09-11
+justification: >-
+  R-C0R/C1/C1R left one registered action: freeze the selected development
+  candidate on the complete Train split and use the frozen candidate for a
+  developmental Validation spectral review. This batch implements section 8.5
+  R-D with pre-registered fixed quantities and direction-consistency
+  thresholds. Validation is 3 subjects and can only support a developmental
+  review, never a stable population estimate. Test and clinical-500 stay locked.
+
+inputs:
+  r_b_observation_manifest: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/train_symmetric_observation_manifest.parquet
+  r_b_observation_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/audit_summary.json
+  r_b_side_pair_audit: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_observation_audit/side_pair_audit.csv
+  r_c0r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/r_c0r_decision.json
+  r_c0r_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/audit_summary.json
+  r_c0r_fold_manifest: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_candidate_ladder_resume/fold_manifest.csv
+  r_c1r_decision: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/r_c1r_decision.json
+  r_c1r_integrity_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/r_c1r_integrity_audit.json
+  r_c1r_parameter_profile_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/parameter_profile_summary.csv
+  r_c1r_best_o_profile_summary: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_c1r/best_o_profile_summary.csv
+  historical_r_c0_subject_metrics: outputs/skin_optics_hsi_v2r/stage1_hsi_physics/km_bio_v2r_candidate_ladder/candidate_subject_metrics.csv
+  rd_validation_observation_manifest: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_rd_validation_observation_audit/validation_symmetric_observation_manifest.parquet
+  rd_validation_observation_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_rd_validation_observation_audit/audit_summary.json
+  rd_validation_side_pair_audit: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_rd_validation_observation_audit/validation_side_pair_audit.csv
+  optical_asset_10nm: data/external/SO0_Spectral_Assets_v1/processed/SO0_Spectral_Standardized_v1/production_10nm/derived_optics_10nm.npz
+
+output_directory: outputs/skin_optics_hsi_v2r1/stage1_hsi_physics/km_bio_v2r1_stage_rd
+
+scope:
+  train_split: train
+  validation_split: valid
+  train_subject_count: 44
+  validation_subject_count: 3
+  validation_is_developmental_only: true
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+
+implementation:
+  source: src/skin_optics_hsi/km_bio_v2r1_stage_rd.py
+  runner: scripts/skin_optics_hsi/run_km_bio_v2r1_stage_rd.py
+  tests: tests/skin_optics_hsi/test_km_bio_v2r1_stage_rd.py
+
+frozen_candidate: V2R-PS
+
+folds:
+  expected_sha256: e763a9f3dc7f58babe264f7056699c3d5b3722187fbb558f83f2fdb5d6b67370
+
+analysis:
+  unit: subject_level_bilateral_symmetric_spectrum
+  fit_centers_nm: [420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680]
+  edge_diagnostic_centers_nm: [400, 410, 690, 700]
+  epsilon: 1.0e-6
+  primary_loss: equal_weight_logrmse
+  residual_definition: prediction_minus_observation
+  reflectance_clipping: forbidden
+
+parameters:
+  names: [f_mel, f_blood]
+  lower: [0.0, 0.0]
+  upper: [0.43, 0.10]
+  fixed_s0: 0.70
+  fixed_diameter_um: 15.0
+  fixed_g0: 1.0
+  boundary_tolerance_normalized: 0.01
+
+freeze:
+  candidate: V2R-PS
+  estimator: full_train_joint_centered_log_shape
+  train_global_estimation: [A_s, delta_bs]
+  train_global_loss: centered_logrmse
+  initial_theta_source: historical_r_c0_candidate_subject_metrics_V2R-P
+  frozen_quantities:
+    fixed_s0: 0.70
+    fixed_diameter_um: 15.0
+    fixed_g0: 1.0
+    fixed_epidermis_thickness_mm: 0.060
+  identifiability:
+    acceptable_loss_delta_logrmse: 0.005
+    maximum_acceptable_normalized_envelope_span: 0.20
+    boundary_tolerance_normalized: 0.01
+
+solver:
+  individual:
+    name: scipy.optimize.least_squares
+    method: trf
+    loss: linear
+    scaled_parameterization: true
+    sobol_starts: 32
+    random_seed: 20260911
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev: 2000
+  global_shape:
+    name: scipy.optimize.least_squares_joint_centered_logrmse
+    scaled_parameterization: true
+    start_global_u: [[0.4, 0.5], [0.0, 0.0], [1.0, 1.0], [0.2, 0.8], [0.8, 0.2]]
+    tie_loss_tolerance: 1.0e-12
+    ftol: 1.0e-10
+    xtol: 1.0e-10
+    gtol: 1.0e-8
+    max_nfev_per_start: 1000
+    profile_grid_points: 51
+    profile_conditional_max_nfev: 500
+
+direction_consistency:
+  reference: full_train_individual_refit_with_frozen_globals
+  train_reference_spectrum: full_train_log_geometric_mean
+  thresholds:
+    median_logrmse_absolute_regression_max: 0.03
+    median_sam_deg_absolute_regression_max: 3.0
+    validation_better_than_reference_fraction_min: 0.5
+    parameter_median_margin_fraction_of_train_range: 0.20
+    edge_median_abs_signed_residual_change_max: 0.03
+    f_blood_upper_boundary_fraction_absolute_increase_max: 0.35
+  action: report_only_no_re_tuning
+
+decision:
+  retained_development_state: V2R_DEVELOPMENT_SPECTRAL_CANDIDATE
+  spectral_only_state: V2R_SPECTRAL_ONLY
+  revise_state: V2R_REVISE_OBSERVATION
+  stop_state: V2R_STOP_KM
+  parameter_upgrade_allowed_states: [V2R_PARTIAL_THETA_CANDIDATE, V2R_READY_WITH_S]
+  parameter_upgrade_forbidden: true
+  parameter_upgrade_forbidden_reason: f_mel_f_blood_s_all_unreliable_in_R_C1R
+
+execution:
+  run_freeze: true
+  run_validation: true
+  require_freeze_before_validation: true
+  run_test: false
+  run_clinical_500: false
+  run_rgb_encoder_training: false
+
+access_policy:
+  allowed_splits: [train, valid]
+  train_content_allowed: true
+  validation_content_allowed: true
+  raw_hsi_content_allowed: false
+  rgb_content_allowed: false
+  test_content_allowed: false
+  clinical_500_content_allowed: false
+  refuse_existing_output: true
+
+required_outputs:
+  - frozen_global_parameters.json
+  - frozen_global_parameters.sha256
+  - freeze_multistart_results.csv
+  - freeze_global_profiles.csv
+  - freeze_global_profile_summary.csv
+  - freeze_train_theta.csv
+  - train_reference_spectrum.csv
+  - train_frozen_refit_subject_metrics.csv
+  - train_frozen_refit_residuals.csv
+  - train_frozen_refit_predictions.csv
+  - validation_subject_metrics.csv
+  - validation_residuals.csv
+  - validation_predictions.csv
+  - direction_consistency_summary.csv
+  - edge_band_residual_comparison.csv
+  - validation_side_linkage.csv
+  - r_c1r_parameter_reliability_reused.csv
+  - r_d_decision.json
+  - r_d_integrity_audit.json
+  - R_D_REPORT.md
+  - artifact_hash_manifest.csv

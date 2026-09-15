@@ -1,0 +1,4 @@
+SO-R1-B2 final verification
+Command: E:\resarch\Anaconda3\envs\face2\python.exe -m pytest -q tests/so_r1
+Result: 55 passed in 10.07s
+Status: PASS

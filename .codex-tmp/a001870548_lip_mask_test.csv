@@ -1,0 +1,2 @@
+ID,patient_group_id,SEX,sex_name,NYHA,fold,binary_label,binary_name
+100037382,100037382,0,female,3,0,1,Patient
